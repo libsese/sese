@@ -2,6 +2,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${PROJECT_SOURCE_DIR}/cmake"
 
 if (SESE_BUILD_TEST)
     enable_testing()
+    add_subdirectory(benchmark)
     add_subdirectory(test)
 endif ()
 

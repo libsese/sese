@@ -4,6 +4,7 @@ apt install -yq --no-install-recommends \
     g++ \
     ninja-build \
     libgtest-dev \
+    libbenchmark-dev \
     python3 \
     libarchive-dev \
     libssl-dev \

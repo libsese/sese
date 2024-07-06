@@ -222,6 +222,10 @@ subject to the terms and conditions of the following licenses:
     Project URL: https://github.com/google/googletest/
     License: BSD 3-Clause "New" or "Revised" License
 
+- google/benchmark
+    Project URL: https://github.com/google/benchmark
+    License: Apache-2.0 License
+
 - zlib
     Project URL: https://zlib.net
     License: zlib License

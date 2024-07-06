@@ -26,11 +26,22 @@
 #include <sese/text/Util.h>
 #include <sese/text/FormatOption.h>
 #include <sese/types/is_iterable.h>
+#include <sese/Util.h>
 
 #include <cassert>
 #include <cmath>
 
 namespace sese::text {
+
+struct FmtCtx {
+    StringBuilder builder;
+    std::string_view pattern;
+    std::string_view::const_iterator pos;
+
+    explicit FmtCtx(std::string_view p);
+
+    bool parsing(std::string &args);
+};
 
 /// 解析并校验字符串格式化选项
 /// \param opt 选项
@@ -39,10 +50,10 @@ namespace sese::text {
 bool FormatOption_StringParse(FormatOption &opt, const std::string &opt_str);
 
 /// 按照格式化选项格式化字符串（对齐）
+/// \param ctx 上下文
 /// \param opt 选项
 /// \param value 字符串
-/// \return 格式化字符串
-std::string FormatOption_StringFormat(FormatOption &opt, const std::string &value);
+void FormatOption_StringFormat(FmtCtx &ctx, FormatOption &opt, const std::string &value);
 
 /// 解析并校验字符串格式化选项
 /// \param opt 选项
@@ -50,47 +61,103 @@ std::string FormatOption_StringFormat(FormatOption &opt, const std::string &valu
 /// \return 解析是否成功
 bool FormatOption_NumberParse(FormatOption &opt, const std::string &opt_str);
 
-/// 按照整形格式化标准格式化字符串
+template<typename T>
+SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption &opt, T number, int radix, bool upper_case) {
+    StringBuilder &builder = ctx.builder;
+    auto len = number2StringLength(number, radix);
+    if (opt.wide <= len) {
+        Number::toString(builder, number, radix, upper_case);
+        return;
+    }
+    auto diff = opt.wide - len;
+    switch (opt.align) {
+        case Align::LEFT:
+            Number::toString(builder, number, radix, upper_case);
+            builder << std::string(diff, opt.wide_char);
+            break;
+        case Align::RIGHT:
+            builder << std::string(diff, opt.wide_char);
+            Number::toString(builder, number, radix, upper_case);
+            break;
+        case Align::CENTER:
+            builder << std::string(diff / 2, opt.wide_char);
+            Number::toString(builder, number, radix, upper_case);
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            break;
+    }
+}
+
+/// 按照整形格式化标准格式化字符串，包括对齐
 /// \tparam T 整形类型
+/// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 整形
 /// \return 格式化字符串
 template<typename T>
-std::string FormatOption_NumberFormat(FormatOption &opt, T number) {
+void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     auto radix = opt.ext_type;
     if (radix == 'X') {
-        return Number::toHex(static_cast<T>(number), true);
+        FormatOption_NumberFormatAlgin(ctx, opt, number, 16, true);
     } else if (radix == 'x') {
-        return Number::toHex(static_cast<T>(number), false);
+        FormatOption_NumberFormatAlgin(ctx, opt, number, 16, false);
     } else if (radix == 'o') {
-        return Number::toOct(static_cast<T>(number));
+        FormatOption_NumberFormatAlgin(ctx, opt, number, 8, true);
     } else if (radix == 'b') {
-        return Number::toBin(static_cast<T>(number));
+        FormatOption_NumberFormatAlgin(ctx, opt, number, 2, true);
     } else {
-        return std::to_string(number);
+        FormatOption_NumberFormatAlgin(ctx, opt, number, 10, true);
     }
 }
 
 /// 按照浮点格式化标准格式化字符串
 /// \tparam T 浮点类型
+/// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 浮点数
 /// \return 格式化字符串
 template<typename T>
-std::string FormatOption_FloatNumberFormat(FormatOption &opt, T number) {
+void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     if (opt.float_placeholder == 0) {
         opt.float_placeholder = 1;
     }
-    char buffer[256]{};
+    StringBuilder &builder = ctx.builder;
+    size_t len;
     if (opt.ext_type == '%') {
         number *= 100;
-        const std::string PATTERN = "%." + std::to_string(opt.float_placeholder) + "f%%";
-        sese::text::snprintf(buffer, sizeof(buffer), PATTERN.c_str(), number);
+        len = floating2StringLength(number, opt.float_placeholder);
+        len += 1;
     } else {
-        const std::string PATTERN = "%." + std::to_string(opt.float_placeholder) + "f";
-        sese::text::snprintf(buffer, sizeof(buffer), PATTERN.c_str(), number);
+        len = floating2StringLength(number, opt.float_placeholder);
     }
-    return buffer;
+    if (opt.wide <= len) {
+        Number::toString(builder, number, opt.float_placeholder);
+        return;
+    }
+    auto diff = opt.wide - len;
+    switch (opt.align) {
+        case Align::LEFT:
+            Number::toString(builder, number, opt.float_placeholder);
+            builder << std::string(diff, opt.wide_char);
+            if (opt.ext_type == '%') {
+                builder.append('%');
+            }
+            break;
+        case Align::RIGHT:
+            builder << std::string(diff, opt.wide_char);
+            Number::toString(builder, number, opt.float_placeholder);
+            if (opt.ext_type == '%') {
+                builder.append('%');
+            }
+            break;
+        case Align::CENTER:
+            builder << std::string(diff / 2, opt.wide_char);
+            Number::toString(builder, number, opt.float_placeholder);
+            if (opt.ext_type == '%') {
+                builder.append('%');
+            }
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            break;
+    }
 }
 
 namespace overload {
@@ -101,8 +168,7 @@ namespace overload {
             return false;
         }
 
-        std::string format(const VALUE &) {
-            return {};
+        void format(FmtCtx &, const VALUE &) {
         }
     };
 
@@ -114,8 +180,8 @@ namespace overload {
             return FormatOption_StringParse(option, opt_str);
         }
 
-        std::string format(const std::string &value) {
-            return FormatOption_StringFormat(option, value);
+        void format(FmtCtx &ctx, const std::string &value) {
+            FormatOption_StringFormat(ctx, option, value);
         }
     };
 
@@ -126,36 +192,22 @@ namespace overload {
         bool parse(const std::string &opt_str) {
             return FormatOption_StringParse(option, opt_str);
         }
-        std::string format(const char *value) {
-            return FormatOption_StringFormat(option, value);
+
+        void format(FmtCtx &ctx, const char *value) {
+            FormatOption_StringFormat(ctx, option, value);
         }
     };
 
     template<typename VALUE>
-    struct Formatter<VALUE, std::enable_if_t<std::is_integral_v<VALUE> && std::is_signed_v<VALUE>>> {
+    struct Formatter<VALUE, std::enable_if_t<std::is_integral_v<VALUE>>> {
         FormatOption option;
 
         bool parse(const std::string &opt_str) {
             return FormatOption_NumberParse(option, opt_str);
         }
 
-        std::string format(const VALUE &value) {
-            auto number = FormatOption_NumberFormat<int64_t>(option, value);
-            return FormatOption_StringFormat(option, number);
-        }
-    };
-
-    template<typename VALUE>
-    struct Formatter<VALUE, std::enable_if_t<std::is_integral_v<VALUE> && std::is_unsigned_v<VALUE>>> {
-        FormatOption option;
-
-        bool parse(const std::string &opt_str) {
-            return FormatOption_NumberParse(option, opt_str);
-        }
-
-        std::string format(const VALUE &value) {
-            auto number = FormatOption_NumberFormat<uint64_t>(option, value);
-            return FormatOption_StringFormat(option, number);
+        void format(FmtCtx &ctx, const VALUE &value) {
+            FormatOption_NumberFormat(ctx, option, value);
         }
     };
 
@@ -166,12 +218,13 @@ namespace overload {
         bool parse(const std::string &opt_str) {
             return FormatOption_NumberParse(option, opt_str);
         }
-        std::string format(const VALUE &value) {
-            if(std::isnan(value)) {
-                return "NaN";
+
+        void format(FmtCtx &ctx, const VALUE &value) {
+            if (std::isnan(value)) {
+                ctx.builder << "NaN";
+            } else {
+                FormatOption_FloatNumberFormat<VALUE>(ctx, option, value);
             }
-            auto number = FormatOption_FloatNumberFormat<VALUE>(option, value);
-            return FormatOption_StringFormat(option, number);
         }
     };
 
@@ -191,8 +244,8 @@ namespace overload {
             return false;
         }
 
-        std::string format(VALUE &value) {
-            StringBuilder builder;
+        void format(FmtCtx &ctx, VALUE &value) {
+            StringBuilder &builder = ctx.builder;
             builder << begin_ch;
             bool first = true;
             for (auto &&item: value) {
@@ -202,24 +255,13 @@ namespace overload {
                 } else {
                     builder << split_ch;
                 }
-                builder << formatter.format(item);
+                formatter.format(ctx, item);
             }
             builder << end_ch;
-            return builder.toString();
         }
     };
 
 } // namespace overload
-
-struct FmtCtx {
-    StringBuilder builder;
-    std::string_view pattern;
-    std::string_view::const_iterator pos;
-
-    explicit FmtCtx(std::string_view p);
-
-    bool parsing(std::string &args);
-};
 
 constexpr size_t FormatParameterCounter(const char *pattern) {
     size_t count = 0;
@@ -245,13 +287,13 @@ void Format(FmtCtx &ctx, T &&arg) {
     auto formatter = overload::Formatter<std::decay_t<T>>();
     if (!parsing_args.empty()) {
         if (formatter.parse(parsing_args)) {
-            ctx.builder << formatter.format(std::forward<T>(arg));
+            formatter.format(ctx, std::forward<T>(arg));
         } else {
             ctx.builder << "!{parsing failed}";
         }
         ctx.parsing(parsing_args);
     } else {
-        ctx.builder << formatter.format(std::forward<T>(arg));
+        formatter.format(ctx, std::forward<T>(arg));
         ctx.parsing(parsing_args);
     }
 }
@@ -266,13 +308,13 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
     auto formatter = overload::Formatter<std::decay_t<T>>();
     if (!parsing_args.empty()) {
         if (formatter.parse(parsing_args)) {
-            ctx.builder << formatter.format(std::forward<T>(arg));
+            formatter.format(ctx, std::forward<T>(arg));
         } else {
             ctx.builder << "!{parsing failed}";
         }
         Format(ctx, std::forward<ARGS>(args)...);
     } else {
-        ctx.builder << formatter.format(std::forward<T>(arg));
+        formatter.format(ctx, std::forward<T>(arg));
         Format(ctx, std::forward<ARGS>(args)...);
     }
 }
@@ -283,10 +325,12 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...) {
+#ifdef SESE_IS_DEBUG
     auto param = FormatParameterCounter(pattern.data());
     if (param) {
         return "!{Mismatch in number of parameters}";
     }
+#endif
     return {pattern.begin(), pattern.end()};
 }
 
@@ -297,10 +341,12 @@ std::string fmt(std::string_view pattern, ARGS &&...) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...args) {
+#ifdef SESE_IS_DEBUG
     auto param = FormatParameterCounter(pattern.data());
     if (param != sizeof...(args)) {
         return "!{Mismatch in number of parameters}";
     }
+#endif
     FmtCtx ctx(pattern);
     Format(ctx, std::forward<ARGS>(args)...);
     return ctx.builder.toString();

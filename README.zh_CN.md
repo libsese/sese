@@ -33,8 +33,8 @@ namespace sese::text::overload {
 template<>
 struct Formatter<Point> {
     bool parse(const std::string &) { return true; }
-    std::string format(const Point &p) {
-        return fmt("({},{})", p.x, p.y);
+    void format(FmtCtx &ctx, const Point &p) {
+        ctx.builder << fmt("({},{})", p.x, p.y);
     }
 };
 }

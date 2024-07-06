@@ -39,10 +39,6 @@
 #include "sese/native/darwin/Config.h"
 #endif
 
-#ifdef assert
-#undef assert
-#endif
-
 #define SESE_MARCO_END \
     switch (0)         \
     case 0:            \

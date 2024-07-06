@@ -7,6 +7,7 @@ dnf install -yq \
     community-mysql-devel \
     libpq-devel \
     gtest-devel \
+    google-benchmark-devel \
     libarchive-devel \
     asio-devel \
     libunwind-devel

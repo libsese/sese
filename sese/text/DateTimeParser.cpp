@@ -81,7 +81,7 @@ std::optional<DateTime> DateTimeParser::parse(const std::string &format, const s
                         break;
                     }
                 }
-                utc = std::strtol(buffer, &end, 10);
+                utc = static_cast<int>(std::strtol(buffer, &end, 10));
                 if (*end != 0) {
                     return std::nullopt;
                 }

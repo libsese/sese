@@ -37,16 +37,16 @@ struct Formatter<Point> {
         SESE_INFO("args {}", args);
         return true;
     }
-    static std::string format(const Point &p) {
-        return fmt("({},{})", p.x, p.y);
+    static void format(FmtCtx &ctx, const Point &p) {
+        ctx.builder << fmt("({},{})", p.x, p.y);
     }
 };
 
 template<>
 struct Formatter<MyMapPair> {
     void parse(const std::string &) {}
-    static std::string format(MyMapPair &pair) {
-        return "{" + pair.first + "," + std::to_string(pair.second) + "}";
+    static void format(FmtCtx &ctx, MyMapPair &pair) {
+        ctx.builder << "{" + pair.first + "," + std::to_string(pair.second) + "}";
     }
 };
 } // namespace sese::text::overload
@@ -92,6 +92,10 @@ TEST(TestFormat, OptionParse) {
     {
         FormatOption option{};
         EXPECT_FALSE(option.parse("0"));
+    }
+    {
+        FormatOption option{};
+        EXPECT_FALSE(option.parse(":d0"));
     }
 }
 

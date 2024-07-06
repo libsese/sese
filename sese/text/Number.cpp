@@ -5,37 +5,27 @@
 using sese::text::Number;
 
 std::string Number::toHex(uint64_t number, bool upper_case) noexcept {
-    char buffer[32];
-    size_t len;
-    if (upper_case) {
-        len = std::snprintf(buffer, 32, "%" PRIX64, number);
-    } else {
-        len = std::snprintf(buffer, 32, "%" PRIx64, number);
-    }
-    return std::string{buffer, len};
+    StringBuilder builder(number2StringLength(number));
+    toString(builder, number, 16, upper_case);
+    return builder.toString();
 }
 
 std::string Number::toHex(int64_t number, bool upper_case) noexcept {
-    char buffer[32];
-    size_t len;
-    if (upper_case) {
-        len = std::snprintf(buffer, 32, "%" PRIX64, number);
-    } else {
-        len = std::snprintf(buffer, 32, "%" PRIx64, number);
-    }
-    return std::string{buffer, len};
+    StringBuilder builder(number2StringLength(number));
+    toString(builder, number, 16, upper_case);
+    return builder.toString();
 }
 
 std::string Number::toOct(uint64_t number) noexcept {
-    char buffer[32];
-    size_t len = std::snprintf(buffer, 32, "%" PRIo64, number);
-    return std::string{buffer, len};
+    StringBuilder builder(number2StringLength(number));
+    toString(builder, number, 8, true);
+    return builder.toString();
 }
 
 std::string Number::toOct(int64_t number) noexcept {
-    char buffer[32];
-    size_t len = std::snprintf(buffer, 32, "%" PRIo64, number);
-    return std::string{buffer, len};
+    StringBuilder builder(number2StringLength(number));
+    toString(builder, number, 8, true);
+    return builder.toString();
 }
 
 std::string Number::toBin(uint64_t number) noexcept {
@@ -46,6 +36,12 @@ std::string Number::toBin(uint64_t number) noexcept {
 std::string Number::toBin(int64_t number) noexcept {
     std::bitset<64> bits(number);
     return toStringWithNoLeadingZeros(bits.to_string());
+}
+
+std::string Number::toString(double number, uint16_t placeholder) noexcept {
+    StringBuilder builder(floating2StringLength(number, placeholder));
+    toString(builder, number, placeholder);
+    return builder.toString();
 }
 
 std::string Number::toStringWithNoLeadingZeros(const std::string &number) noexcept {

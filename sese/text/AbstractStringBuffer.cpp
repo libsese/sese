@@ -272,7 +272,7 @@ void AbstractStringBuffer::append(char ch) noexcept {
     AbstractStringBuffer::append(&ch, 1);
 }
 
-const void *AbstractStringBuffer::buf() {
+void *AbstractStringBuffer::buf() {
     return buffer;
 }
 

@@ -45,6 +45,8 @@ class API Exception : public NativeException {
 public:
     explicit Exception(const char *message);
 
+    ~Exception() override;
+
     /// 向标准输出打印堆栈跟踪
     void printStacktrace();
 
@@ -62,6 +64,6 @@ protected:
 
     virtual std::string buildStacktrace();
 
-    std::unique_ptr<sese::system::StackInfo> stackInfo{};
+    system::StackInfo* stackInfo{};
 };
 } // namespace sese

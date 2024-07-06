@@ -246,8 +246,8 @@ public:
     bool operator==(const Value &rhs) const;
     bool operator!=(const Value &rhs) const;
 
-private:
     void toString(text::StringBuilder &string_builder, size_t level) const noexcept;
+private:
 
     std::variant<Null, bool, Integer, double, String, Blob, List, Dict> data;
 };
@@ -266,8 +266,8 @@ namespace text::overload {
             return true;
         }
 
-        std::string format(Value &value) const {
-            return value.toString(level);
+        void format(FmtCtx &ctx, Value &value) const {
+            value.toString(ctx.builder, level);
         }
     };
 } // namespace text::overload

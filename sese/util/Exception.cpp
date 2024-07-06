@@ -15,7 +15,11 @@ uint16_t sese::Exception::offset = 2;
 
 sese::Exception::Exception(const char *message)
     : NativeException(message) {
-    stackInfo = std::make_unique<system::StackInfo>(16, offset);
+    stackInfo = new system::StackInfo(16, offset);
+}
+
+ sese::Exception::~Exception() {
+    delete stackInfo;
 }
 
 std::string sese::Exception::buildStacktrace() {
