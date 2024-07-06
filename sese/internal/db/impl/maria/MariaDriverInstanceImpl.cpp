@@ -67,7 +67,7 @@ bool impl::MariaDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
     auto rt = executeQuery("show variables like 'autocommit';");
     if (rt) {
         while (rt->next()) {
-            status = strcmp(rt->getString(1).data(), "ON") == 0;
+            status = rt->getString(1) == "ON";
         }
         return true;
     } else {

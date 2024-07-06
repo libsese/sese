@@ -20,7 +20,7 @@ TEST(TestMariaTransaction, GetAutoCommit) {
 
     bool status;
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    ASSERT_EQ(1, status);
+    ASSERT_TRUE(status);
 }
 
 TEST(TestMariaTransaction, SetAutoCommit) {
@@ -34,11 +34,11 @@ TEST(TestMariaTransaction, SetAutoCommit) {
 
     bool status;
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    ASSERT_EQ(1, status);
+    ASSERT_TRUE(status);
     ASSERT_EQ(true, instance->setAutoCommit(false));
 
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    ASSERT_EQ(0, status);
+    ASSERT_FALSE(status);
 
     ASSERT_EQ(true, instance->setAutoCommit(true));
     ASSERT_EQ(true, instance->getAutoCommit(status));
@@ -57,7 +57,7 @@ TEST(TestMariaTransaction, Commit) {
     bool status;
     ASSERT_EQ(true, instance->setAutoCommit(false));
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    ASSERT_EQ(0, status);
+    ASSERT_FALSE(status);
 
     auto count = instance->executeUpdate("insert into tb_commit (id, name) values (3, 'mike')");
     ASSERT_NE(0, count);
@@ -69,12 +69,12 @@ TEST(TestMariaTransaction, Commit) {
     if (results->next()) {
         ASSERT_EQ(1, results->getInteger(0));
         std::string_view strings = "foo";
-        ASSERT_EQ(strings, results->getString(1).data());
+        ASSERT_EQ(strings, results->getString(1));
     }
     if (results->next()) {
         ASSERT_EQ(2, results->getInteger(0));
         std::string_view strings = "bar";
-        ASSERT_EQ(strings, results->getString(1).data());
+        ASSERT_EQ(strings, results->getString(1));
     }
     if (results->next()) {
         ASSERT_EQ(3, results->getInteger(0));
@@ -96,7 +96,7 @@ TEST(TestMariaTransaction, RollBack) {
     bool status;
     ASSERT_EQ(true, instance->setAutoCommit(false));
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    ASSERT_EQ(0, status);
+    ASSERT_FALSE(status);
 
     auto count = instance->executeUpdate("insert into tb_rollBack (id, name) values (3, 'mike');");
     ASSERT_NE(0, count);
