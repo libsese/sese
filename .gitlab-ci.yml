@@ -7,15 +7,14 @@ docker_build:
   stage: build
   image: reg.mikumikumi.xyz/base/kaniko-builder
   variables:
-    BUILD_DOCKERFILE: dockerfile
+    BUILD_DOCKERFILE: alpine-x64.dockerfile
   script:
     - build
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes:
-        - dockerfile
+        - alpine-x64.dockerfile
         - requirements.txt
-        - scripts/install_ubuntu_deps.sh
       when: always
 
 docker_build_manual:
@@ -23,7 +22,7 @@ docker_build_manual:
   image: reg.mikumikumi.xyz/base/kaniko-builder
   when: manual
   variables:
-    BUILD_DOCKERFILE: dockerfile
+    BUILD_DOCKERFILE: alpine-x64.dockerfile
   script:
     - build
 
@@ -56,6 +55,7 @@ gtest:
       -DSESE_DB_USE_SQLITE=ON
       -DSESE_DB_USE_MARIADB=ON
       -DSESE_DB_USE_POSTGRES=ON
+      -DSESE_REPLACE_EXECINFO=ON
       -DSESE_DB_SQLITE_CONNECTION_STRING="/tmp/db_test.db"
       -DSESE_DB_MYSQL_CONNECTION_STRING="host=mysql\;port=3306\;user=root\;pwd=libsese\;db=db_test\;"
       -DSESE_DB_PSQL_CONNECTION_STRING="host=postgres\;port=5432\;user=postgres\;pwd=libsese\;db=db_test\;"
