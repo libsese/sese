@@ -32,6 +32,7 @@ static void BM_SnprintfFloat(benchmark::State &state) {
         auto buf = std::make_unique<char[]>(SZ);
         sese::text::snprintf(buf.get(), SZ, "%.3f", PI);
         benchmark::DoNotOptimize(buf);
+        buf.reset();
     }
 }
 
@@ -39,7 +40,7 @@ static void BM_SnprintfFloat(benchmark::State &state) {
 static void BM_Format(benchmark::State &state) {
     for (auto _: state) {
         auto date = sese::DateTime::now();
-        std::string str = sese::text::fmt("{} {} {} {}", STR, date.getYears(), date.getMonths(), date.getDays());
+        std::string str = sese::text::fmt("String={}, Years={}, Months={}, Days={}", STR, date.getYears(), date.getMonths(), date.getDays());
         benchmark::DoNotOptimize(str);
     }
 }
@@ -48,8 +49,9 @@ static void BM_Snprintf(benchmark::State &state) {
     for (auto _: state) {
         auto date = sese::DateTime::now();
         auto buf = std::make_unique<char[]>(SZ);
-        sese::text::snprintf(buf.get(), SZ, "%s %d %d %d", STR.c_str(), date.getYears(), date.getMonths(), date.getDays());
+        sese::text::snprintf(buf.get(), SZ, "String=%s, Years=%d, Months=%d, Days=%d", STR.c_str(), date.getYears(), date.getMonths(), date.getDays());
         benchmark::DoNotOptimize(buf);
+        buf.reset();
     }
 }
 

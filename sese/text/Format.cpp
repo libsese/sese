@@ -18,7 +18,7 @@ sese::text::FmtCtx::FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()
 
 bool sese::text::FmtCtx::parsing(std::string &args) {
     bool status;
-    text::StringBuilder args_builder(UINT8_MAX);
+    std::unique_ptr<StringBuilder> args_builder;
     std::string_view::iterator n, m;
     std::string_view::iterator pre_n, pre_m;
     while (true) {
@@ -28,24 +28,30 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
         n = std::find(pre_n, pattern.end(), '{');
         if (n == pattern.end()) {
             // 直接写入常量
-            std::string substr(pre_n, n);
-            builder.append(substr);
+            // std::string substr(pre_n, n);
+            auto begin = pattern.data() + (pre_n - pattern.begin());
+            auto len = n - pre_n;
+            builder.append(begin, len);
             status = false;
             pos = n;
             break;
         }
         if (n != pattern.begin() && *(n - 1) == '\\') {
             // 找到但是是转义字符
-            std::string substr(pre_n, n - 1);
-            builder.append(substr);
+            // std::string substr(pre_n, n - 1);
+            auto begin = pattern.data() + (pre_n - pattern.begin());
+            auto len = n - pre_n - 1;
+            builder.append(begin, len);
             builder << '{';
             pre_n = n + 1;
             goto find_n;
         }
         {
             // 有效 '{'
-            std::string substr(pre_n, n);
-            builder.append(substr);
+            // std::string substr(pre_n, n);
+            auto begin = pattern.data() + (pre_n - pattern.begin());
+            auto len = n - pre_n;
+            builder.append(begin, len);
             pre_m = n + 1;
         }
 
@@ -64,20 +70,34 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
         if (m != pattern.begin()) {
             if (*(m - 1) == '\\') {
                 // 找到但是是转义字符
-                std::string substr(pre_m, m - 1);
-                args_builder << substr;
-                args_builder << '}';
+                // std::string substr(pre_m, m - 1);
+                auto begin = pattern.data() + (pre_m - pattern.begin());
+                auto len = m - pre_m - 1;
+                if (args_builder == nullptr) {
+                    args_builder = std::make_unique<StringBuilder>(UINT8_MAX);
+                }
+                if (len) {
+                    args_builder->append(begin, len);
+                }
+                args_builder->append('}');
                 pre_m = m + 1;
                 goto find_m;
-            } else {
-                // 有效 '}'
-                std::string substr(pre_m, m);
-                args_builder << substr;
-                args = args_builder.toString();
-                status = true;
-                pos = m + 1;
-                break;
             }
+            // 有效 '}'
+            // std::string substr(pre_m, m);
+            auto begin = pattern.data() + (pre_m - pattern.begin());
+            auto len = m - pre_m;
+            if (len) {
+                if (args_builder == nullptr) {
+                    args = std::string(begin, len);
+                } else {
+                    args_builder->append(begin, len);
+                    args = args_builder->toString();
+                }
+            }
+            status = true;
+            pos = m + 1;
+            break;
         }
     }
     return status;
