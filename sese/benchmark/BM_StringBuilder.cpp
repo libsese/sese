@@ -19,12 +19,12 @@
 using sese::text::StringBuilder;
 using std::stringstream;
 
-constexpr auto SIZE = 16 * 1024;
+constexpr auto SZ = 16 * 1024;
 constexpr auto TIMES = 1000;
 
 static void BM_StringBuilder(benchmark::State &state) {
     for (auto _: state) {
-        StringBuilder builder(SIZE);
+        StringBuilder builder(SZ);
         for (int i = 0; i < TIMES; ++i) {
             builder << "Number:" << std::to_string(i) << ";";
         }
