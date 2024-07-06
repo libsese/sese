@@ -128,7 +128,7 @@ static int count(const char &ch, const char *str) {
     return 4;
 }
 
-std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime, const std::string &pattern) {
+std::string sese::text::DateTimeFormatter::format(const sese::DateTime &date_time, const std::string &pattern) {
     auto builder = StringBuilder(128);
     auto input = sese::io::InputBufferWrapper(pattern.c_str(), pattern.length()); // GCOVR_EXCL_LINE
 
@@ -140,57 +140,57 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
         if (buffer[0] == 'd') {
             auto count = ::count('d', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getDays())); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getDays())); // GCOVR_EXCL_LINE
             } else if (count == 2) {
-                if (dateTime.getDays() < 10) {
+                if (date_time.getDays() < 10) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getDays())); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getDays())); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(WK_DAY[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
+                builder.append(WK_DAY[date_time.getDayOfWeek()]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(WEEK_DAY[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
+                builder.append(WEEK_DAY[date_time.getDayOfWeek()]); // GCOVR_EXCL_LINE
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'm') {
             auto count = ::count('m', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getMinutes())); // GCOVR_EXCL_LINE
-                input.trunc(1);                                        // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getMinutes())); // GCOVR_EXCL_LINE
+                input.trunc(1);                                         // GCOVR_EXCL_LINE
             } else if (count > 1) {
-                if (dateTime.getMinutes() < 10) {
+                if (date_time.getMinutes() < 10) {
                     builder.append('0');
                 }
-                builder.append(std::to_string(dateTime.getMinutes())); // GCOVR_EXCL_LINE
-                input.trunc(2);                                        // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getMinutes())); // GCOVR_EXCL_LINE
+                input.trunc(2);                                         // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 'M') {
             auto count = ::count('M', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getMonths())); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getMonths())); // GCOVR_EXCL_LINE
             } else if (count == 2) {
-                if (dateTime.getMonths() < 10) {
+                if (date_time.getMonths() < 10) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getMonths())); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getMonths())); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(MON_ARRAY[dateTime.getMonths() - 1]); // GCOVR_EXCL_LINE
+                builder.append(MON_ARRAY[date_time.getMonths() - 1]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(MONTH_ARRAY[dateTime.getMonths() - 1]); // GCOVR_EXCL_LINE
+                builder.append(MONTH_ARRAY[date_time.getMonths() - 1]); // GCOVR_EXCL_LINE
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'y') {
             auto count = ::count('y', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getYears() % 100)); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getYears() % 100)); // GCOVR_EXCL_LINE
             } else if (count == 2) {
-                auto year = dateTime.getYears() % 100;
+                auto year = date_time.getYears() % 100;
                 if (year < 10) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
                 builder.append(std::to_string(year)); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                auto year = dateTime.getYears() % 1000;
+                auto year = date_time.getYears() % 1000;
                 if (year < 100) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
@@ -201,7 +201,7 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
             } else {
                 // 此处时间通常不会小于 10，因为 DateTime 时间戳默认是无符号整数
                 // GCOVR_EXCL_START
-                auto year = dateTime.getYears() % 10000;
+                auto year = date_time.getYears() % 10000;
                 if (year < 1000) {
                     builder.append('0');
                 }
@@ -216,14 +216,14 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'z') {
-            if (dateTime.getUTC() >= 0) {
+            if (date_time.getUTC() >= 0) {
                 builder.append('+'); // GCOVR_EXCL_LINE
             }
-            builder.append(std::to_string(dateTime.getUTC())); // GCOVR_EXCL_LINE
-            input.trunc(1);                                    // GCOVR_EXCL_LINE
+            builder.append(std::to_string(date_time.getUTC())); // GCOVR_EXCL_LINE
+            input.trunc(1);                                     // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'h') {
             auto count = ::count('h', buffer);
-            auto hour = dateTime.getHours();
+            auto hour = date_time.getHours();
             hour = hour % 12 == 0 ? 12 : hour % 12;
             if (count == 1) {
                 builder.append(std::to_string(hour)); // GCOVR_EXCL_LINE
@@ -238,36 +238,36 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
         } else if (buffer[0] == 'H') {
             auto count = ::count('H', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getHours())); // GCOVR_EXCL_LINE
-                input.trunc(1);                                      // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getHours())); // GCOVR_EXCL_LINE
+                input.trunc(1);                                       // GCOVR_EXCL_LINE
             } else if (count > 1) {
-                if (dateTime.getHours() < 10) {
+                if (date_time.getHours() < 10) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getHours())); // GCOVR_EXCL_LINE
-                input.trunc(2);                                      // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getHours())); // GCOVR_EXCL_LINE
+                input.trunc(2);                                       // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 't') {
-            builder.append(dateTime.getHours() < 12 ? "AM" : "PM"); // GCOVR_EXCL_LINE
-            input.trunc(1);                                         // GCOVR_EXCL_LINE
+            builder.append(date_time.getHours() < 12 ? "AM" : "PM"); // GCOVR_EXCL_LINE
+            input.trunc(1);                                          // GCOVR_EXCL_LINE
         } else if (buffer[0] == 's') {
             auto count = ::count('s', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getSeconds())); // GCOVR_EXCL_LINE
-                input.trunc(1);                                        // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getSeconds())); // GCOVR_EXCL_LINE
+                input.trunc(1);                                         // GCOVR_EXCL_LINE
             } else if (count > 1) {
-                if (dateTime.getSeconds() < 10) {
+                if (date_time.getSeconds() < 10) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getSeconds())); // GCOVR_EXCL_LINE
-                input.trunc(2);                                        // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getSeconds())); // GCOVR_EXCL_LINE
+                input.trunc(2);                                         // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 'f') {
             auto count = ::count('f', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getMilliseconds())); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getMilliseconds())); // GCOVR_EXCL_LINE
             } else if (count == 2) {
-                auto num = dateTime.getMilliseconds();
+                auto num = date_time.getMilliseconds();
                 if (num < 100) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
@@ -276,9 +276,9 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
                 }
                 builder.append(std::to_string(num)); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(std::to_string(dateTime.getMicroseconds())); // GCOVR_EXCL_LINE
+                builder.append(std::to_string(date_time.getMicroseconds())); // GCOVR_EXCL_LINE
             } else {
-                auto num = dateTime.getMicroseconds();
+                auto num = date_time.getMicroseconds();
                 if (num < 100) {
                     builder.append('0'); // GCOVR_EXCL_LINE
                 }
@@ -304,8 +304,8 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
     return builder.toString(); // GCOVR_EXCL_LINE
 }
 
-std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dateTime, const std::string &pattern) {
-    return format(*dateTime.get(), pattern);
+std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &date_time, const std::string &pattern) {
+    return format(*date_time.get(), pattern);
 }
 
 #ifdef WIN32
@@ -325,7 +325,7 @@ int sese::text::DateTimeFormatter::mon2number(const std::string &str) {
 // GCOVR_EXCL_START
 
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
-    struct tm tm{};
+    struct tm tm {};
     auto mon = text.substr(8, 3);
     tm.tm_mon = mon2number(mon);
     if (text[7] == '-') {
@@ -371,7 +371,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
 }
 
 uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text) {
-    struct tm tm{};
+    struct tm tm {};
     if (text.length() == 10) {
         auto date = StringBuilder::split(text, "-");
         if (date.size() == 3) {
@@ -383,10 +383,10 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
     } else if (text.length() == 19) {
-        auto dateTime = StringBuilder::split(text, " ");
-        if (dateTime.size() != 2) return UINT64_MAX;
+        auto date_time = StringBuilder::split(text, " ");
+        if (date_time.size() != 2) return UINT64_MAX;
 
-        auto date = StringBuilder::split(dateTime[0], "-");
+        auto date = StringBuilder::split(date_time[0], "-");
         if (date.size() == 3) {
             tm.tm_year = (int) (std::stoi(date[0]) - 1900);
             tm.tm_mon = (int) (std::stoi(date[1]) - 1);
@@ -395,7 +395,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
 
-        auto time = StringBuilder::split(dateTime[1], ":");
+        auto time = StringBuilder::split(date_time[1], ":");
         if (time.size() == 3) {
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
@@ -405,10 +405,10 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
     } else if (text.length() == 20) {
-        auto dateTime = StringBuilder::split(text, "T");
-        if (dateTime.size() != 2) return UINT64_MAX;
+        auto date_time = StringBuilder::split(text, "T");
+        if (date_time.size() != 2) return UINT64_MAX;
 
-        auto date = StringBuilder::split(dateTime[0], "-");
+        auto date = StringBuilder::split(date_time[0], "-");
         if (date.size() == 3) {
             tm.tm_year = (int) (std::stoi(date[0]) - 1900);
             tm.tm_mon = (int) (std::stoi(date[1]) - 1);
@@ -417,7 +417,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
 
-        auto time = StringBuilder::split(dateTime[1], ":");
+        auto time = StringBuilder::split(date_time[1], ":");
         if (time.size() == 3) {
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
@@ -427,10 +427,10 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
     } else if (text.length() == 22) {
-        auto dateTimeZone = StringBuilder::split(text, " ");
-        if (dateTimeZone.size() != 3) return UINT64_MAX;
+        auto date_time_zone = StringBuilder::split(text, " ");
+        if (date_time_zone.size() != 3) return UINT64_MAX;
 
-        auto date = StringBuilder::split(dateTimeZone[0], "-");
+        auto date = StringBuilder::split(date_time_zone[0], "-");
         if (date.size() == 3) {
             tm.tm_year = (int) (std::stoi(date[0]) - 1900);
             tm.tm_mon = (int) (std::stoi(date[1]) - 1);
@@ -439,20 +439,20 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
 
-        auto time = StringBuilder::split(dateTimeZone[1], ":");
+        auto time = StringBuilder::split(date_time_zone[1], ":");
         if (time.size() == 3) {
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
             tm.tm_sec = (int) std::stoi(time[2]);
-            return timegm(&tm) - std::stoi(dateTimeZone[2]) * 60 * 60;
+            return timegm(&tm) - std::stoi(date_time_zone[2]) * 60 * 60;
         } else {
             return UINT64_MAX;
         }
     } else if (text.length() == 25) {
-        auto dateTimeZone = StringBuilder::split(text, "T");
-        if (dateTimeZone.size() != 2) return UINT64_MAX;
+        auto date_time_zone = StringBuilder::split(text, "T");
+        if (date_time_zone.size() != 2) return UINT64_MAX;
 
-        auto date = StringBuilder::split(dateTimeZone[0], "-");
+        auto date = StringBuilder::split(date_time_zone[0], "-");
         if (date.size() == 3) {
             tm.tm_year = (int) (std::stoi(date[0]) - 1900);
             tm.tm_mon = (int) (std::stoi(date[1]) - 1);
@@ -461,7 +461,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
 
-        auto time = StringBuilder::split(dateTimeZone[1], ":");
+        auto time = StringBuilder::split(date_time_zone[1], ":");
         if (time.size() == 4) {
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
@@ -470,9 +470,9 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             return UINT64_MAX;
         }
 
-        auto timeZone = StringBuilder::split(text, "+");
-        if (timeZone.size() != 2) return UINT64_MAX;
-        auto zone = StringBuilder::split(timeZone[1], ":");
+        auto time_zone = StringBuilder::split(text, "+");
+        if (time_zone.size() != 2) return UINT64_MAX;
+        auto zone = StringBuilder::split(time_zone[1], ":");
         if (zone.size() != 2) return UINT64_MAX;
         auto hour = std::stoi(zone[0]);
         auto min = std::stoi(zone[1]);

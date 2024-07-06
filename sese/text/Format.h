@@ -89,6 +89,7 @@ SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption
 
 /// 按照整形格式化标准格式化字符串，包括对齐
 /// \tparam T 整形类型
+/// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 整形
 /// \return 格式化字符串
@@ -110,6 +111,7 @@ void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
 
 /// 按照浮点格式化标准格式化字符串
 /// \tparam T 浮点类型
+/// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 浮点数
 /// \return 格式化字符串
@@ -119,7 +121,14 @@ void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
         opt.float_placeholder = 1;
     }
     StringBuilder &builder = ctx.builder;
-    auto len = floating2StringLength(number, opt.float_placeholder);
+    size_t len;
+    if (opt.ext_type == '%') {
+        number *= 100;
+        len = floating2StringLength(number, opt.float_placeholder);
+        len += 1;
+    } else {
+        len = floating2StringLength(number, opt.float_placeholder);
+    }
     if (opt.wide <= len) {
         Number::toString(builder, number, opt.float_placeholder);
         return;
@@ -129,14 +138,23 @@ void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
         case Align::LEFT:
             Number::toString(builder, number, opt.float_placeholder);
             builder << std::string(diff, opt.wide_char);
+            if (opt.ext_type == '%') {
+                builder.append('%');
+            }
             break;
         case Align::RIGHT:
             builder << std::string(diff, opt.wide_char);
             Number::toString(builder, number, opt.float_placeholder);
+            if (opt.ext_type == '%') {
+                builder.append('%');
+            }
             break;
         case Align::CENTER:
             builder << std::string(diff / 2, opt.wide_char);
             Number::toString(builder, number, opt.float_placeholder);
+            if (opt.ext_type == '%') {
+                builder.append('%');
+            }
             builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
             break;
     }
