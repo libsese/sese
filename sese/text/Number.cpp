@@ -5,37 +5,27 @@
 using sese::text::Number;
 
 std::string Number::toHex(uint64_t number, bool upper_case) noexcept {
-    char buffer[32];
-    size_t len;
-    if (upper_case) {
-        len = std::snprintf(buffer, 32, "%" PRIX64, number);
-    } else {
-        len = std::snprintf(buffer, 32, "%" PRIx64, number);
-    }
-    return std::string{buffer, len};
+    StringBuilder builder;
+    toString(builder, number, 16, upper_case);
+    return builder.toString();
 }
 
 std::string Number::toHex(int64_t number, bool upper_case) noexcept {
-    char buffer[32];
-    size_t len;
-    if (upper_case) {
-        len = std::snprintf(buffer, 32, "%" PRIX64, number);
-    } else {
-        len = std::snprintf(buffer, 32, "%" PRIx64, number);
-    }
-    return std::string{buffer, len};
+    StringBuilder builder(32);
+    toString(builder, number, 16, upper_case);
+    return builder.toString();
 }
 
 std::string Number::toOct(uint64_t number) noexcept {
-    char buffer[32];
-    size_t len = std::snprintf(buffer, 32, "%" PRIo64, number);
-    return std::string{buffer, len};
+    StringBuilder builder(32);
+    toString(builder, number, 8, true);
+    return builder.toString();
 }
 
 std::string Number::toOct(int64_t number) noexcept {
-    char buffer[32];
-    size_t len = std::snprintf(buffer, 32, "%" PRIo64, number);
-    return std::string{buffer, len};
+    StringBuilder builder(32);
+    toString(builder, number, 8, true);
+    return builder.toString();
 }
 
 std::string Number::toBin(uint64_t number) noexcept {

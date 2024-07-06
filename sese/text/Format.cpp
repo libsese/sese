@@ -83,7 +83,7 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
     return status;
 }
 
-bool sese::text::FormatOption_StringParse(sese::text::FormatOption &opt, const std::string &opt_str) {
+bool sese::text::FormatOption_StringParse(FormatOption &opt, const std::string &opt_str) {
     auto status = opt.parse(opt_str);
     if (!status) {
         return false;
@@ -97,25 +97,29 @@ bool sese::text::FormatOption_StringParse(sese::text::FormatOption &opt, const s
     return true;
 }
 
-std::string sese::text::FormatOption_StringFormat(sese::text::FormatOption &opt, const std::string &value) {
+void sese::text::FormatOption_StringFormat(FmtCtx &ctx, FormatOption &opt, const std::string &value) {
+    StringBuilder &builder = ctx.builder;
     if (opt.wide <= value.length()) {
-        return value;
+        builder << value;
+        return;
     }
     auto diff = opt.wide - value.length();
     switch (opt.align) {
         case Align::LEFT:
-            return value + std::string(diff, opt.wide_char);
+            builder << value + std::string(diff, opt.wide_char);
+            break;
         case Align::RIGHT:
-            return std::string(diff, opt.wide_char) + value;
+            builder << std::string(diff, opt.wide_char) + value;
+            break;
         case Align::CENTER:
-            return std::string(diff / 2, opt.wide_char) +
-                   value +
-                   std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            builder << std::string(diff / 2, opt.wide_char) +
+                               value +
+                               std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            break;
     }
-    return {};
 }
 
-bool sese::text::FormatOption_NumberParse(sese::text::FormatOption &opt, const std::string &opt_str) {
+bool sese::text::FormatOption_NumberParse(FormatOption &opt, const std::string &opt_str) {
     auto status = opt.parse(opt_str);
     if (!status) {
         return false;

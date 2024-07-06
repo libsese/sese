@@ -31,18 +31,18 @@ struct FormatOption {
     uint16_t float_placeholder = 0;
     char ext_type = 0;
 
-    SESE_ALWAYS_INLINE static bool is_align(const char ch) {
-        return ch == '<' || ch == '>' || ch == '^';
+    SESE_ALWAYS_INLINE static bool is_align(const char CH) {
+        return CH == '<' || CH == '>' || CH == '^';
     }
 
-    SESE_ALWAYS_INLINE static Align delect_align(const char ch) { // NOLINT
-        if (ch == '<') {
+    SESE_ALWAYS_INLINE static Align delect_align(const char CH) {
+        if (CH == '<') {
             return Align::LEFT;
         }
-        if (ch == '>') {
+        if (CH == '>') {
             return Align::RIGHT;
         }
-        if (ch == '^') {
+        if (CH == '^') {
             return Align::CENTER;
         }
         assert(false);

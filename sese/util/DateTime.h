@@ -103,8 +103,8 @@ namespace text::overload {
             return true;
         }
 
-        [[nodiscard]] std::string format(const DateTime &datetime) const {
-            return DateTimeFormatter::format(datetime, datetime_pattern);
+        void format(FmtCtx &ctx, const DateTime &datetime) const {
+            ctx.builder << DateTimeFormatter::format(datetime, datetime_pattern);
         }
     };
 }
