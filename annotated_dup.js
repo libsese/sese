@@ -267,8 +267,7 @@ var annotated_dup =
           [ "Formatter< Value >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4" ],
           [ "Formatter< VALUE, std::enable_if_t< is_iterable_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8" ],
           [ "Formatter< VALUE, std::enable_if_t< std::is_floating_point_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921" ],
-          [ "Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > &&std::is_signed_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8" ],
-          [ "Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > &&std::is_unsigned_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434" ]
+          [ "Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_14386da942ee78ccb7afb372ea291d4d.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_14386da942ee78ccb7afb372ea291d4d" ]
         ] ],
         [ "AbstractStringBuffer", "classsese_1_1text_1_1_abstract_string_buffer.html", "classsese_1_1text_1_1_abstract_string_buffer" ],
         [ "DateTimeFormatter", "classsese_1_1text_1_1_date_time_formatter.html", "classsese_1_1text_1_1_date_time_formatter" ],
@@ -364,5 +363,7 @@ var annotated_dup =
       [ "SChar", "structsstr_1_1_s_char.html", "structsstr_1_1_s_char" ],
       [ "SString", "classsstr_1_1_s_string.html", "classsstr_1_1_s_string" ],
       [ "SStringView", "classsstr_1_1_s_string_view.html", "classsstr_1_1_s_string_view" ]
-    ] ]
+    ] ],
+    [ "MockFormatOption1", "class_mock_format_option1.html", "class_mock_format_option1" ],
+    [ "MockFormatOption2", "class_mock_format_option2.html", "class_mock_format_option2" ]
 ];

@@ -12,6 +12,8 @@ var searchData=
   ['message_9',['Message',['../classsese_1_1system_1_1_message.html',1,'sese::system']]],
   ['messagedigest_10',['messagedigest',['../classsese_1_1_message_digest.html',1,'sese::MessageDigest'],['../classsese_1_1security_1_1_message_digest.html',1,'sese::security::MessageDigest']]],
   ['messageiterator_11',['MessageIterator',['../structsese_1_1system_1_1_message_iterator.html',1,'sese::system']]],
-  ['module_12',['Module',['../classsese_1_1plugin_1_1_module.html',1,'sese::plugin']]],
-  ['moduleinfo_13',['ModuleInfo',['../structsese_1_1plugin_1_1_module_info.html',1,'sese::plugin']]]
+  ['mockformatoption1_12',['MockFormatOption1',['../class_mock_format_option1.html',1,'']]],
+  ['mockformatoption2_13',['MockFormatOption2',['../class_mock_format_option2.html',1,'']]],
+  ['module_14',['Module',['../classsese_1_1plugin_1_1_module.html',1,'sese::plugin']]],
+  ['moduleinfo_15',['ModuleInfo',['../structsese_1_1plugin_1_1_module_info.html',1,'sese::plugin']]]
 ];

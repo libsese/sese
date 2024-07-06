@@ -213,35 +213,47 @@ $(document).ready(function(){initNavTree('util_2_util_8h_source.html',''); initR
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>}</div>
 </div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TP&gt;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
 <div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">  153</a></span>std::time_t <a class="code hl_function" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">to_time_t</a>(TP tp) {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">using namespace </span>std::chrono;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">auto</span> sctp = time_point_cast&lt;system_clock::duration&gt;(tp - TP::clock::now() + system_clock::now());</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">return</span> system_clock::to_time_t(sctp);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">  153</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">floating2StringLength</a>(T num, uint16_t placeholder) {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">static_assert</span>(std::is_same_v&lt;T, double&gt; || std::is_same_v&lt;T, float&gt;, <span class="stringliteral">&quot;Must be a floating number&quot;</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">size_t</span> length = <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(<span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(num));</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">if</span> (placeholder &gt; 0) {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        length += 1 + placeholder;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>}</div>
 </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>} <span class="comment">// namespace sese</span></div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74">getSpecificVersion</a>();</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#pragma warning(disable : 4996)</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">  175</a></span><span class="preprocessor">#define CheckRange(x, max) ((unsigned int) (x) &lt; (max))</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#af5377339bff575301da756d2f685a510">  180</a></span><span class="preprocessor">#define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) &gt;= 0)</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TP&gt;</div>
+<div class="foldopen" id="foldopen00169" data-start="{" data-end="}">
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">  169</a></span>std::time_t <a class="code hl_function" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">to_time_t</a>(TP tp) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keyword">using namespace </span>std::chrono;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keyword">auto</span> sctp = time_point_cast&lt;system_clock::duration&gt;(tp - TP::clock::now() + system_clock::now());</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">return</span> system_clock::to_time_t(sctp);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
+</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74">getSpecificVersion</a>();</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#pragma warning(disable : 4996)</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">  191</a></span><span class="preprocessor">#define CheckRange(x, max) ((unsigned int) (x) &lt; (max))</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#af5377339bff575301da756d2f685a510">  196</a></span><span class="preprocessor">#define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) &gt;= 0)</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="util_2_util_8h.html">Util.h</a></li>
-    <li class="footer">生成于 2024年 七月 5日 星期五 08:16:11 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 6日 星期六 09:52:46 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

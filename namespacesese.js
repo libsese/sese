@@ -111,6 +111,7 @@ var namespacesese =
     [ "dynamicPointerCast", "namespacesese.html#ae9952e668a5e895829dc9a66c7e69386", null ],
     [ "dynamicPointerCast", "namespacesese.html#aa99f874dee8b31bc6cccd133826e6f87", null ],
     [ "findFirstAt", "namespacesese.html#a7c52b4c131447df3e4b83a9a7451ee97", null ],
+    [ "floating2StringLength", "namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c", null ],
     [ "getClassName", "namespacesese.html#a7f6ec509913dbb14930e43b251141591", null ],
     [ "getErrorCode", "namespacesese.html#ab5e35a3f44b1c1dd95685d82185df166", null ],
     [ "getErrorString", "namespacesese.html#a1833da64507c8e59f6799b93d2504ec6", null ],

@@ -492,6 +492,9 @@ $(document).ready(function(){initNavTree('namespacesese.html',''); initResizable
 <tr class="memitem:a0a951f1886af83a7d610e57a8257b834" id="r_a0a951f1886af83a7d610e57a8257b834"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:a0a951f1886af83a7d610e57a8257b834"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a> (T num, size_t radix=10)</td></tr>
 <tr class="separator:a0a951f1886af83a7d610e57a8257b834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2efaa72ae22e5bed06aa1d1666d8810c" id="r_a2efaa72ae22e5bed06aa1d1666d8810c"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a2efaa72ae22e5bed06aa1d1666d8810c"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">floating2StringLength</a> (T num, uint16_t placeholder)</td></tr>
+<tr class="separator:a2efaa72ae22e5bed06aa1d1666d8810c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad65b873dcf755a6a9d2f3e3186598b08" id="r_ad65b873dcf755a6a9d2f3e3186598b08"><td class="memTemplParams" colspan="2">template&lt;typename TP &gt; </td></tr>
 <tr class="memitem:ad65b873dcf755a6a9d2f3e3186598b08"><td class="memTemplItemLeft" align="right" valign="top">std::time_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">to_time_t</a> (TP tp)</td></tr>
 <tr class="separator:ad65b873dcf755a6a9d2f3e3186598b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -998,6 +1001,55 @@ template&lt;typename RETURN_TYPE , typename RAW_TYPE &gt; </div>
 
 </div>
 </div>
+<a id="a2efaa72ae22e5bed06aa1d1666d8810c" name="a2efaa72ae22e5bed06aa1d1666d8810c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2efaa72ae22e5bed06aa1d1666d8810c">&#9670;&#160;</a></span>floating2StringLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::floating2StringLength </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>placeholder</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>获取数字转字符串后所需的字节长度 </p><dl class="section note"><dt>注解</dt><dd>只能转换浮点数 </dd></dl>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>入参浮点数类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>待转换的数字 </td></tr>
+    <tr><td class="paramname">placeholder</td><td>精度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>数字字符串所需长度 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="namespacesese_1_1text.html#af5bba434dd8f81024a3b1e308195f4a7">sese::text::FormatOption_FloatNumberFormat()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">sese::text::Number::toString()</a>.</p>
+
+</div>
+</div>
 <a id="a7f6ec509913dbb14930e43b251141591" name="a7f6ec509913dbb14930e43b251141591"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f6ec509913dbb14930e43b251141591">&#9670;&#160;</a></span>getClassName()</h2>
 
@@ -1408,7 +1460,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>数字字符串所需长度 </dd></dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1net_1_1http_1_1_range.html#a3024521d1fed57d54b919de3f241b5f8">sese::net::http::Range::toStringLength()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">floating2StringLength()</a>, <a class="el" href="namespacesese_1_1text.html#a51edfc3e33212cdc6dcf2e57724e5175">sese::text::FormatOption_NumberFormatAlgin()</a>, <a class="el" href="classsese_1_1text_1_1_number.html#a3c0894e125a61ff89196765d443b3f6d">sese::text::Number::toHex()</a>, <a class="el" href="classsese_1_1text_1_1_number.html#ae629dc747550bb53f6046c3d305a4ba2">sese::text::Number::toHex()</a>, <a class="el" href="classsese_1_1text_1_1_number.html#a530850a79457d0c899b40cf1ce505b37">sese::text::Number::toOct()</a>, <a class="el" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">sese::text::Number::toOct()</a>, <a class="el" href="classsese_1_1text_1_1_number.html#afde02cdb75fa6e8bce01a46f1d525aab">sese::text::Number::toString()</a> , 以及 <a class="el" href="structsese_1_1net_1_1http_1_1_range.html#a3024521d1fed57d54b919de3f241b5f8">sese::net::http::Range::toStringLength()</a>.</p>
 
 </div>
 </div>
@@ -1745,7 +1797,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li>
-    <li class="footer">生成于 2024年 七月 5日 星期五 08:16:12 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 6日 星期六 09:52:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

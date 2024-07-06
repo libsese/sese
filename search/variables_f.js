@@ -9,9 +9,14 @@ var searchData=
   ['patch_5f_6',['patch_',['../classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3',1,'sese::Version']]],
   ['path_7',['path',['../classsese_1_1net_1_1http_1_1_cookie.html#ad03881ed1b737fc88293c4f54a8ff369',1,'sese::net::http::Cookie']]],
   ['pattern_8',['pattern',['../structsese_1_1text_1_1_fmt_ctx.html#a21bb7fcb091faa86791df810a1b557f0',1,'sese::text::FmtCtx']]],
-  ['pool_9',['pool',['../classsese_1_1net_1_1_address_pool.html#a15317358dafd5c6bcbe541dbe44f0849',1,'sese::net::AddressPool']]],
-  ['pos_10',['pos',['../classsese_1_1io_1_1_buffered_input_stream.html#a82d1e479eabba4b96a618ac46204fa1e',1,'sese::io::BufferedInputStream::pos'],['../classsese_1_1io_1_1_buffered_output_stream.html#af20398c97547b9535de79f8f10db6ba1',1,'sese::io::BufferedOutputStream::pos'],['../classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51',1,'sese::io::BufferedStream::pos'],['../classsese_1_1io_1_1_input_buffer_wrapper.html#a867a41a5e6b5e68f5b79cf4bbc8b521b',1,'sese::io::InputBufferWrapper::pos'],['../classsese_1_1res_1_1_resource_stream.html#a861190898164fed75a9a3fa948c2a5e0',1,'sese::res::ResourceStream::pos'],['../structsese_1_1text_1_1_fmt_ctx.html#a5b2fe3aa6a8cde96c8bd9b1cce73d973',1,'sese::text::FmtCtx::pos']]],
-  ['predefined_5fheaders_11',['PREDEFINED_HEADERS',['../namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d',1,'sese::net::http']]],
-  ['protocol_12',['protocol',['../classsese_1_1net_1_1http_1_1_url.html#a8cd46e6e54bff5d3f6ecc17bcd8f3fd9',1,'sese::net::http::Url']]],
-  ['pwrapper_13',['pWrapper',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae6bea00be8273ce1c43619020359da25',1,'sese::_windows::iocp::v1::NativeContext']]]
+  ['pattern1_9',['PATTERN1',['../_b_m___format_parse_8cpp.html#af478868e374742899f8b5c8237122405',1,'BM_FormatParse.cpp']]],
+  ['pattern2_10',['PATTERN2',['../_b_m___format_parse_8cpp.html#a08a519f679b7ebb756006a394c382f88',1,'BM_FormatParse.cpp']]],
+  ['pattern3_11',['PATTERN3',['../_b_m___format_parse_8cpp.html#a13c501502c8ca1edf4a8d217c0dd85aa',1,'BM_FormatParse.cpp']]],
+  ['pattern4_12',['PATTERN4',['../_b_m___format_parse_8cpp.html#a0c51c747b9dd90bd635da48e51cbda3a',1,'BM_FormatParse.cpp']]],
+  ['pi_13',['PI',['../_b_m___format_8cpp.html#a5f16bd6445334b527ea2ac2b4d035723',1,'BM_Format.cpp']]],
+  ['pool_14',['pool',['../classsese_1_1net_1_1_address_pool.html#a15317358dafd5c6bcbe541dbe44f0849',1,'sese::net::AddressPool']]],
+  ['pos_15',['pos',['../classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51',1,'sese::io::BufferedStream::pos'],['../structsese_1_1text_1_1_fmt_ctx.html#a5b2fe3aa6a8cde96c8bd9b1cce73d973',1,'sese::text::FmtCtx::pos'],['../classsese_1_1res_1_1_resource_stream.html#a861190898164fed75a9a3fa948c2a5e0',1,'sese::res::ResourceStream::pos'],['../classsese_1_1io_1_1_input_buffer_wrapper.html#a867a41a5e6b5e68f5b79cf4bbc8b521b',1,'sese::io::InputBufferWrapper::pos'],['../classsese_1_1io_1_1_buffered_output_stream.html#af20398c97547b9535de79f8f10db6ba1',1,'sese::io::BufferedOutputStream::pos'],['../classsese_1_1io_1_1_buffered_input_stream.html#a82d1e479eabba4b96a618ac46204fa1e',1,'sese::io::BufferedInputStream::pos']]],
+  ['predefined_5fheaders_16',['PREDEFINED_HEADERS',['../namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d',1,'sese::net::http']]],
+  ['protocol_17',['protocol',['../classsese_1_1net_1_1http_1_1_url.html#a8cd46e6e54bff5d3f6ecc17bcd8f3fd9',1,'sese::net::http::Url']]],
+  ['pwrapper_18',['pWrapper',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae6bea00be8273ce1c43619020359da25',1,'sese::_windows::iocp::v1::NativeContext']]]
 ];

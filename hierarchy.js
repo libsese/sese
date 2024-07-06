@@ -139,7 +139,10 @@ var hierarchy =
     [ "sese::system::FileNotifier", "classsese_1_1system_1_1_file_notifier.html", null ],
     [ "sese::system::FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", null ],
     [ "sese::text::FmtCtx", "structsese_1_1text_1_1_fmt_ctx.html", null ],
-    [ "sese::text::FormatOption", "structsese_1_1text_1_1_format_option.html", null ],
+    [ "sese::text::FormatOption", "structsese_1_1text_1_1_format_option.html", [
+      [ "MockFormatOption1", "class_mock_format_option1.html", null ],
+      [ "MockFormatOption2", "class_mock_format_option2.html", null ]
+    ] ],
     [ "sese::text::overload::Formatter< VALUE, ENABLE >", "structsese_1_1text_1_1overload_1_1_formatter.html", null ],
     [ "sese::text::overload::Formatter< const char * >", "structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html", null ],
     [ "sese::text::overload::Formatter< DateTime >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html", null ],
@@ -147,8 +150,7 @@ var hierarchy =
     [ "sese::text::overload::Formatter< Value >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html", null ],
     [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< is_iterable_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html", null ],
     [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< std::is_floating_point_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html", null ],
-    [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > &&std::is_signed_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html", null ],
-    [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > &&std::is_unsigned_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html", null ],
+    [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_14386da942ee78ccb7afb372ea291d4d.html", null ],
     [ "sese::net::dns::FrameFlagsInfo", "structsese_1_1net_1_1dns_1_1_frame_flags_info.html", null ],
     [ "sese::net::dns::FrameHeaderInfo", "structsese_1_1net_1_1dns_1_1_frame_header_info.html", null ],
     [ "sese::GlobalThreadPool", "classsese_1_1_global_thread_pool.html", null ],
