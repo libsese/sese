@@ -143,6 +143,22 @@ size_t number2StringLength(T num, size_t radix = 10) {
     return length;
 }
 
+/// 获取数字转字符串后所需的字节长度
+/// @note 只能转换浮点数
+/// @tparam T 入参浮点数类型
+/// @param num 待转换的数字
+/// @param placeholder 精度
+/// @return 数字字符串所需长度
+template<class T>
+size_t floating2StringLength(T num, uint16_t placeholder) {
+    static_assert(std::is_same_v<T, double> || std::is_same_v<T, float>, "Must be a floating number");
+    size_t length = number2StringLength(static_cast<int64_t>(num));
+    if (placeholder > 0) {
+        length += 1 + placeholder;
+    }
+    return length;
+}
+
 // GCOVR_EXCL_START
 /// 时间类型转换
 /// @see https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t

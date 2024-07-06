@@ -8,6 +8,8 @@
 
 #include <sese/util/NotInstantiable.h>
 #include <sese/text/StringBuilder.h>
+#include <sese/Util.h>
+#include <cmath>
 
 namespace sese::text {
 /// 数字转字符串工具
@@ -27,7 +29,9 @@ public:
 
     static std::string toBin(int64_t number) noexcept;
 
-    template <typename T>
+    static std::string toString(double number, uint16_t placeholder) noexcept;
+
+    template<typename T>
     static void toString(StringBuilder &builder, T number, int radix, bool upper_case) noexcept {
         if (number < 0) {
             builder.append('-');
@@ -38,7 +42,7 @@ public:
         constexpr auto DIGIT_DOWN = "0123456789abcdef";
         const auto DIGIT = upper_case ? DIGIT_UP : DIGIT_DOWN;
         do {
-            int index = number  % radix;
+            int index = number % radix;
             builder.append(DIGIT[index]);
             number /= radix;
             count += 1;
@@ -46,6 +50,32 @@ public:
 
         // 直接反转 builder 中部分内存
         std::reverse(static_cast<char *>(builder.buf()) + builder.length() - count, static_cast<char *>(builder.buf()) + builder.length());
+    }
+
+    template<typename T>
+    static void toString(StringBuilder &builder, T number, uint16_t placeholder) noexcept {
+        auto int_part = static_cast<int64_t>(number);
+        double frac = number - int_part;
+        double rounding_factor = std::pow(10, placeholder);
+        auto rounded_part = static_cast<int64_t>(frac * rounding_factor);
+
+        if (static_cast<double>(rounded_part) >= rounding_factor) {
+            int_part += 1;
+            rounded_part -= static_cast<int64_t>(rounding_factor);
+        }
+
+        toString(builder, int_part, 10, true);
+        if (placeholder > 0) {
+            builder.append('.');
+            if (rounded_part < 0) {
+                rounded_part = -rounded_part;
+            }
+            toString(builder, rounded_part, 10, true);
+            auto len = number2StringLength(rounded_part, 10);
+            if (len < placeholder) {
+                builder.append(std::string(placeholder - len, '0'));
+            }
+        }
     }
 
 private:

@@ -36,3 +36,18 @@ TEST(TestNumber, Binary) {
         EXPECT_EQ(str, "1111111111111111111111111111111111111111");
     }
 }
+
+TEST(TestNumber, Double) {
+    {
+        auto str = Number::toString(3.1415926, 2);
+        EXPECT_EQ(str, "3.14");
+    }
+    {
+        auto str = Number::toString(3.1415926, 3);
+        EXPECT_EQ(str, "3.141");
+    }
+    {
+        auto str = Number::toString(-3.14, 4);
+        EXPECT_EQ(str, "-3.1400");
+    }
+}

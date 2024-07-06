@@ -114,20 +114,32 @@ void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
 /// \param number 浮点数
 /// \return 格式化字符串
 template<typename T>
-std::string FormatOption_FloatNumberFormat(FormatOption &opt, T number) {
+void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     if (opt.float_placeholder == 0) {
         opt.float_placeholder = 1;
     }
-    char buffer[256]{};
-    if (opt.ext_type == '%') {
-        number *= 100;
-        const std::string PATTERN = "%." + std::to_string(opt.float_placeholder) + "f%%";
-        sese::text::snprintf(buffer, sizeof(buffer), PATTERN.c_str(), number);
-    } else {
-        const std::string PATTERN = "%." + std::to_string(opt.float_placeholder) + "f";
-        sese::text::snprintf(buffer, sizeof(buffer), PATTERN.c_str(), number);
+    StringBuilder &builder = ctx.builder;
+    auto len = floating2StringLength(number, opt.float_placeholder);
+    if (opt.wide <= len) {
+        Number::toString(builder, number, opt.float_placeholder);
+        return;
     }
-    return buffer;
+    auto diff = opt.wide - len;
+    switch (opt.align) {
+        case Align::LEFT:
+            Number::toString(builder, number, opt.float_placeholder);
+            builder << std::string(diff, opt.wide_char);
+            break;
+        case Align::RIGHT:
+            builder << std::string(diff, opt.wide_char);
+            Number::toString(builder, number, opt.float_placeholder);
+            break;
+        case Align::CENTER:
+            builder << std::string(diff / 2, opt.wide_char);
+            Number::toString(builder, number, opt.float_placeholder);
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            break;
+    }
 }
 
 namespace overload {
@@ -193,8 +205,7 @@ namespace overload {
             if (std::isnan(value)) {
                 ctx.builder << "NaN";
             } else {
-                auto number = FormatOption_FloatNumberFormat<VALUE>(option, value);
-                FormatOption_StringFormat(ctx, option, number);
+                FormatOption_FloatNumberFormat<VALUE>(ctx, option, value);
             }
         }
     };
