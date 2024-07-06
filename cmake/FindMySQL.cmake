@@ -1,24 +1,24 @@
 # -*- indent-tabs-mode:nil; -*-
 # vim: set expandtab:
 #
-# Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2011, 2024, Oracle and/or its affiliates.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License, version 2.0, as
 # published by the Free Software Foundation.
 #
-# This program is also distributed with certain software (including
-# but not limited to OpenSSL) that is licensed under separate terms,
-# as designated in a particular file or component or in included license
-# documentation. The authors of MySQL hereby grant you an
-# additional permission to link the program and your derivative works
-# with the separately licensed software that they have included with
-# MySQL.
+# This program is designed to work with certain software (including
+# but not limited to OpenSSL) that is licensed under separate terms, as
+# designated in a particular file or component or in included license
+# documentation. The authors of MySQL hereby grant you an additional
+# permission to link the program and your derivative works with the
+# separately licensed software that they have either included with
+# the program or referenced in the documentation.
 #
 # Without limiting anything contained in the foregoing, this file,
-# which is part of MySQL Connector/ODBC, is also subject to the
+# which is part of Connector/ODBC, is also subject to the
 # Universal FOSS Exception, version 1.0, a copy of which can be found at
-# http://oss.oracle.com/licenses/universal-foss-exception.
+# https://oss.oracle.com/licenses/universal-foss-exception.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -534,6 +534,10 @@ elseif(MYSQL_CONFIG_EXECUTABLE)
                         "\"${MYSQL_CONFIG_EXECUTABLE}\"")
   endif()
 
+  # If there are multiple INCLUDE_DIR
+  list(GET MYSQL_INCLUDE_DIR 0 MYSQL_INCLUDE_DIR)
+  # message("${MYSQL_INCLUDE_DIR}/mysql.h")
+
   if(NOT EXISTS "${MYSQL_INCLUDE_DIR}/mysql.h")
     message(FATAL_ERROR "Could not find \"mysql.h\" in \"${MYSQL_INCLUDE_DIR}\" "
                         "found from running \"${MYSQL_CONFIG_EXECUTABLE}\"")
@@ -754,18 +758,11 @@ if(MYSQLCLIENT_STATIC_LINKING AND
   list(APPEND MYSQL_LIBRARIES "rt")
 endif()
 
-# For dynamic linking use the built-in sys and strings
-if(NOT MYSQLCLIENT_STATIC_LINKING)
-   list(APPEND SYS_LIBRARIES "mysql_sys")
-   list(APPEND SYS_LIBRARIES "mysql_strings")
-   list(APPEND SYS_LIBRARIES ${MYSQL_LIBRARIES})
-   SET(MYSQL_LIBRARIES ${SYS_LIBRARIES})
-
-#if(NOT MYSQLCLIENT_STATIC_LINKING AND ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-#  list(REVERSE MYSQL_LIBRARIES)
-#endif()
-
-endif()
+# The built-in sys and strings are used for static and dynamic linking.
+list(APPEND SYS_LIBRARIES "mysql_sys")
+list(APPEND SYS_LIBRARIES "mysql_strings")
+list(APPEND SYS_LIBRARIES ${MYSQL_LIBRARIES})
+SET(MYSQL_LIBRARIES ${SYS_LIBRARIES})
 
 if(MYSQL_EXTRA_LIBRARIES)
   separate_arguments(MYSQL_EXTRA_LIBRARIES)
