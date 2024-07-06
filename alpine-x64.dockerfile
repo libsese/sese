@@ -20,7 +20,8 @@ RUN apk add \
     openssl-dev \
     libarchive-dev \
     python3 \
-    py3-pip
+    py3-pip \
+    doxygen
 
 COPY ./requirements.txt /tmp/requirements.txt
 
