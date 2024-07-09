@@ -57,6 +57,7 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
 
         // 无参数直接返回
         if (*pre_m == '}') {
+            pos = pre_m + 1;
             return true;
         }
 

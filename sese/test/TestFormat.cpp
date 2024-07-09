@@ -123,16 +123,17 @@ TEST(TestFormat, Number) {
 }
 
 TEST(TestFormat, Formatter) {
-    Point point{1, 2};
-    SESE_INFO(R"(\{{\}123\}ABC\}})", point);
-    auto datetime = sese::DateTime::now();
-    SESE_INFO("{} | {HH:mm:ss}", datetime, datetime);
-    SESE_INFO("{A}", "Hello");
+    // Point point{1, 2};
+    // SESE_INFO(R"(\{{\}123\}ABC\}})", point);
+    // auto datetime = sese::DateTime::now();
+    // SESE_INFO("{} | {HH:mm:ss}", datetime, datetime);
+    // SESE_INFO("{A}", "Hello");
+    SESE_INFO("free buffer[{}] = 0x{:x}", 1, 123456);
 }
 
 TEST(TestFormat, MismatchParam) {
     SESE_INFO("{}");
-    SESE_INFO("{}",1, 2);
+    SESE_INFO("{}", 1, 2);
 }
 
 TEST(TestFormat, Constexpr) {
