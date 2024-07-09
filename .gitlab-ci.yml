@@ -67,6 +67,7 @@ gtest:
     - sqlite3 /tmp/db_test.db < ./scripts/sqlite_dump.sql
     # run tests
     - build/linux-release/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
+    - sed -i 's|/builds/libsese/sese-core||g' build/test_report.xml
     # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg
