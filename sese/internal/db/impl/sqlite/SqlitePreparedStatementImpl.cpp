@@ -92,6 +92,7 @@ int64_t impl::SqlitePreparedStatementImpl::executeUpdate() noexcept {
 }
 
 bool impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, const double &value) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     if (this->isManual[index - 1]) {
         free(this->buffer[index - 1]);
@@ -102,6 +103,7 @@ bool impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, const double &
 }
 
 bool impl::SqlitePreparedStatementImpl::setFloat(uint32_t index, const float &value) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     if (this->isManual[index - 1]) {
         free(this->buffer[index - 1]);
@@ -112,6 +114,7 @@ bool impl::SqlitePreparedStatementImpl::setFloat(uint32_t index, const float &va
 }
 
 bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, const int64_t &value) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     if (this->isManual[index - 1]) {
         free(this->buffer[index - 1]);
@@ -122,6 +125,7 @@ bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, const int64_t &v
 }
 
 bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, const int32_t &value) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     if (this->isManual[index - 1]) {
         free(this->buffer[index - 1]);
@@ -132,6 +136,7 @@ bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, const int32_t
 }
 
 bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     if (this->isManual[index - 1]) {
         free(this->buffer[index - 1]);
@@ -148,6 +153,7 @@ bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *valu
 }
 
 bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     if (this->isManual[index - 1]) {
         free(this->buffer[index - 1]);
@@ -158,6 +164,7 @@ bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
 }
 
 bool impl::SqlitePreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
+    if (index == 0 || index > count) return false;
     if (this->stmtStatus) sqlite3_reset(stmt);
     this->stmtStatus = false;
 
