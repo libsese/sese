@@ -17,14 +17,14 @@ endif ()
 if (SESE_DB_USE_SQLITE)
     target_compile_definitions(DB PUBLIC -DHAS_SQLITE)
     target_sources(DB PRIVATE
-            ../internal/db/impl/sqlite/SqliteDriverInstanceImpl.cpp
-            ../internal/db/impl/sqlite/SqliteDriverInstanceImpl.h
-            ../internal/db/impl/sqlite/SqlitePreparedStatementImpl.cpp
-            ../internal/db/impl/sqlite/SqlitePreparedStatementImpl.h
-            ../internal/db/impl/sqlite/SqliteResultSetImpl.cpp
-            ../internal/db/impl/sqlite/SqliteResultSetImpl.h
-            ../internal/db/impl/sqlite/SqliteStmtResultSetImpl.cpp
-            ../internal/db/impl/sqlite/SqliteStmtResultSetImpl.h
+            ../internal/db/sqlite/SqliteDriverInstanceImpl.cpp
+            ../internal/db/sqlite/SqliteDriverInstanceImpl.h
+            ../internal/db/sqlite/SqlitePreparedStatementImpl.cpp
+            ../internal/db/sqlite/SqlitePreparedStatementImpl.h
+            ../internal/db/sqlite/SqliteResultSetImpl.cpp
+            ../internal/db/sqlite/SqliteResultSetImpl.h
+            ../internal/db/sqlite/SqliteStmtResultSetImpl.cpp
+            ../internal/db/sqlite/SqliteStmtResultSetImpl.h
     )
     if (SESE_USE_NATIVE_MANAGER)
         find_package(SQLite3 REQUIRED)
@@ -38,14 +38,14 @@ endif ()
 if (SESE_DB_USE_MARIADB)
     target_compile_definitions(DB PUBLIC -DHAS_MARIADB)
     target_sources(DB PRIVATE
-            ../internal/db/impl/maria/MariaDriverInstanceImpl.cpp
-            ../internal/db/impl/maria/MariaDriverInstanceImpl.h
-            ../internal/db/impl/maria/MariaPreparedStatementImpl.cpp
-            ../internal/db/impl/maria/MariaPreparedStatementImpl.h
-            ../internal/db/impl/maria/MariaResultSetImpl.cpp
-            ../internal/db/impl/maria/MariaResultSetImpl.h
-            ../internal/db/impl/maria/MariaStmtResultSetImpl.cpp
-            ../internal/db/impl/maria/MariaStmtResultSetImpl.h
+            ../internal/db/maria/MariaDriverInstanceImpl.cpp
+            ../internal/db/maria/MariaDriverInstanceImpl.h
+            ../internal/db/maria/MariaPreparedStatementImpl.cpp
+            ../internal/db/maria/MariaPreparedStatementImpl.h
+            ../internal/db/maria/MariaResultSetImpl.cpp
+            ../internal/db/maria/MariaResultSetImpl.h
+            ../internal/db/maria/MariaStmtResultSetImpl.cpp
+            ../internal/db/maria/MariaStmtResultSetImpl.h
     )
     if (SESE_USE_NATIVE_MANAGER)
         if (CMAKE_SYSTEM_NAME MATCHES "Linux")
@@ -81,12 +81,12 @@ endif ()
 if (SESE_DB_USE_POSTGRES)
     target_compile_definitions(DB PUBLIC -DHAS_POSTGRES)
     target_sources(DB PRIVATE
-            ../internal/db/impl/pgsql/PostgresDriverInstanceImpl.cpp
-            ../internal/db/impl/pgsql/PostgresDriverInstanceImpl.h
-            ../internal/db/impl/pgsql/PostgresPreparedStatementImpl.cpp
-            ../internal/db/impl/pgsql/PostgresPreparedStatementImpl.h
-            ../internal/db/impl/pgsql/PostgresResultSetImpl.cpp
-            ../internal/db/impl/pgsql/PostgresResultSetImpl.h
+            ../internal/db/pgsql/PostgresDriverInstanceImpl.cpp
+            ../internal/db/pgsql/PostgresDriverInstanceImpl.h
+            ../internal/db/pgsql/PostgresPreparedStatementImpl.cpp
+            ../internal/db/pgsql/PostgresPreparedStatementImpl.h
+            ../internal/db/pgsql/PostgresResultSetImpl.cpp
+            ../internal/db/pgsql/PostgresResultSetImpl.h
     )
     find_package(PostgreSQL REQUIRED)
     target_link_libraries(DB PUBLIC PostgreSQL::PostgreSQL)

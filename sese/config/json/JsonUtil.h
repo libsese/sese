@@ -20,7 +20,7 @@
 namespace sese::json {
 
 /// JSON 序列化工具类
-class API JsonUtil final : public NotInstantiable {
+class  JsonUtil final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;

@@ -18,7 +18,7 @@ namespace sese::net {
 
 /// IP 地址池
 template<class ADDRESS>
-class API AddressPool final {
+class  AddressPool final {
 public:
     /// 获取域名与 IP 地址的映射关系
     /// \param domain 域名

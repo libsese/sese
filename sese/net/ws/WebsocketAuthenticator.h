@@ -13,7 +13,7 @@
 namespace sese::net::ws {
 
 /// Websocket 验证器
-class API WebsocketAuthenticator final : public NotInstantiable {
+class  WebsocketAuthenticator final : public NotInstantiable {
 public:
     WebsocketAuthenticator() = delete;
 

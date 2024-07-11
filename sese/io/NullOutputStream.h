@@ -14,7 +14,7 @@
 namespace sese::io {
 
 /// 黑洞输出流
-class API NullOutputStream : public OutputStream {
+class  NullOutputStream : public OutputStream {
 public:
     int64_t write(const void *buffer, size_t length) override;
 };

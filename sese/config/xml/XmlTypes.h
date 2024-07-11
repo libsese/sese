@@ -16,7 +16,7 @@
 namespace sese::xml {
 
 /// XML 元素对象
-class API Element {
+class  Element {
 public:
     using Ptr = std::shared_ptr<Element>;
     using AttrType = std::map<std::string, std::string>;

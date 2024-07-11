@@ -54,7 +54,7 @@ namespace text {
  %    转义符号
  @endverbatim
  */
-    class API DateTimeFormatter {
+    class  DateTimeFormatter {
     public:
         static std::string format(const DateTime &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
 

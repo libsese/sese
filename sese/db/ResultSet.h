@@ -13,7 +13,7 @@
 namespace sese::db {
 
     /// \brief 查询结果集
-    class SESE_DB_API ResultSet {
+    class  ResultSet {
     public:
         using Ptr = std::unique_ptr<ResultSet>;
 

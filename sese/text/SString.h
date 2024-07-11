@@ -13,7 +13,7 @@
 namespace sstr {
 
 /// Unicode 字符
-struct API SChar final {
+struct  SChar final {
     uint32_t code = 0;
 
     explicit SChar(uint32_t code) noexcept;
@@ -35,38 +35,38 @@ struct API SChar final {
 /// 获取 UTF-8 字符代码
 /// \param u8char UTF-8 字符
 /// \return 字符代码
-API SChar getUnicodeFromUTF8Char(const char *u8char);
+ SChar getUnicodeFromUTF8Char(const char *u8char);
 
 /// 获取 UTF-8 字符串长度
 /// \param str 字符串
 /// \return 字符串长度
-API size_t getStringLengthFromUTF8String(const char *str);
+ size_t getStringLengthFromUTF8String(const char *str);
 
 /// 获取 UTF-8 字符串字节长度
 /// \param str 目标字符串
 /// \return 字符串字节长度
-API size_t getByteLengthFromUTF8String(const char *str);
+ size_t getByteLengthFromUTF8String(const char *str);
 
 /// 获取 UTF-8 字符占位字节数
 /// \param ch 目标字符
 /// \return 字符占位字节数
-API char getSizeFromUTF8Char(char ch);
+ char getSizeFromUTF8Char(char ch);
 
 /// 从 SChar 中获取该字符在 UTF-8 中的字节占位字节数
 /// \param ch Unicode 字符
 /// \return 占位字节数
-API char getUTF8SizeFromUnicodeChar(SChar ch);
+ char getUTF8SizeFromUnicodeChar(SChar ch);
 
 /// 从 UTF-8 字符串中获取 Unicode 字符
 /// \param size 该 UTF-8 占位字节数
 /// \param ch UTF-8 字符起始位置
 /// \return Unicode 字符
-API SChar getUnicodeCharFromUTF8Char(char size, const char *ch);
+ SChar getUnicodeCharFromUTF8Char(char size, const char *ch);
 
 class SString;
 
 /// 字符串视图
-class API SStringView {
+class  SStringView {
 public:
     SStringView() noexcept = default;
     explicit SStringView(const char *u8str) noexcept;
@@ -232,7 +232,7 @@ protected:
 };
 
 /// 字符串
-class API SString final : public SStringView {
+class  SString final : public SStringView {
 public:
     friend class SStringView;
 

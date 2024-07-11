@@ -1,20 +1,20 @@
-/// \file PostgresDriverInstanceImpl.h
-/// \brief PSQL 驱动实现
+/// \file MariaDriverInstanceImpl.h
+/// \brief Maria 驱动实现
 /// \author kaoru
 /// \date 2024年04月10日
 
 #pragma once
 
 #include <sese/db/DriverInstance.h>
-#include <sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.h>
+#include <sese/internal/db/maria/MariaPreparedStatementImpl.h>
 
 namespace sese::db::impl {
 
-    /// \brief PSQL 驱动实现
-    class SESE_DB_API PostgresDriverInstanceImpl : public DriverInstance {
+    /// \brief Maria 驱动实现
+    class  MariaDriverInstanceImpl final : public DriverInstance {
     public:
-        explicit PostgresDriverInstanceImpl(PGconn *conn) noexcept;
-        ~PostgresDriverInstanceImpl() noexcept override;
+        explicit MariaDriverInstanceImpl(MYSQL *conn) noexcept;
+        ~MariaDriverInstanceImpl() noexcept override;
 
         ResultSet::Ptr executeQuery(const char *sql) noexcept override;
         int64_t executeUpdate(const char *sql) noexcept override;
@@ -32,10 +32,7 @@ namespace sese::db::impl {
         [[nodiscard]] bool getInsertId(int64_t &id) const noexcept override;
 
     protected:
-        PGconn *conn;
-        PGresult *result;
-        int error = 0;
-
-        std::random_device rd{};
+        MYSQL *conn;
     };
-}// namespace sese::db
+
+}// namespace sese::db::impl

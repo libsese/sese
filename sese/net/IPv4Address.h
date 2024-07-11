@@ -13,7 +13,7 @@ namespace sese::net {
 /**
      * @brief IPv4 地址类
      */
-class API IPv4Address final : public IPAddress {
+class  IPv4Address final : public IPAddress {
 public:
     using Ptr = std::shared_ptr<IPv4Address>;
     static IPv4Address::Ptr create(const char *address, uint16_t port);

@@ -12,7 +12,7 @@
 
 namespace sese {
 /// 信息摘要工具类
-class API MessageDigest final : public NotInstantiable {
+class  MessageDigest final : public NotInstantiable {
 public:
     using InputStream = sese::io::InputStream;
 

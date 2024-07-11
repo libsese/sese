@@ -18,7 +18,7 @@ namespace sese {
 struct Bitset32;
 
 /// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
-class API SHA256Util {
+class  SHA256Util {
 public:
     using OutputStream = sese::io::OutputStream;
     using InputStream = sese::io::InputStream;

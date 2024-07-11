@@ -13,7 +13,7 @@
 namespace sese {
 
 /// 解压器
-class API Decompressor {
+class  Decompressor {
 public:
     using OutputStream = sese::io::OutputStream;
 

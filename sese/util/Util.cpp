@@ -1,8 +1,7 @@
-#include "sese/util/Util.h"
+#include <sese/util/Util.h>
+#include <sese/convert/SymbolConverter.h>
 
 #include <cstring>
-
-#include <sese/convert/SymbolConverter.h>
 
 #ifndef SESE_PLATFORM_WINDOWS
 #include <unistd.h>

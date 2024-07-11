@@ -18,14 +18,14 @@
 namespace sese::net::dns {
 
 /// DNS 配置
-struct API DnsConfig {
+struct  DnsConfig {
     IPAddress::Ptr address;
     std::map<std::string, std::string> hostIPv4Map;
     std::map<std::string, std::string> hostIPv6Map;
 };
 
 /// DNS 服务器
-class API DnsServer {
+class  DnsServer {
 public:
     using Ptr = std::unique_ptr<DnsServer>;
 

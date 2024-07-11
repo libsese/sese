@@ -13,7 +13,7 @@
 namespace sese::security::evp {
 
 /// EVP SHA384 算法上下文
-class API SHA384Context : public Context {
+class  SHA384Context : public Context {
 public:
     SHA384Context() noexcept;
     ~SHA384Context() noexcept override;

@@ -14,7 +14,7 @@ namespace sese::net {
 /**
  * @brief IP 地址类
  */
-class API IPAddress : public Address {
+class  IPAddress : public Address {
 public:
     using Ptr = std::shared_ptr<IPAddress>;
 

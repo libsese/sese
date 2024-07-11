@@ -45,7 +45,7 @@ struct TimeoutEventSlot {
 /**
  * @brief 时间轮
  */
-class API TimeWheel {
+class  TimeWheel {
 public:
     TimeWheel();
 

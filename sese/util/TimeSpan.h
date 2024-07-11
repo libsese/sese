@@ -20,7 +20,7 @@ namespace sese {
 /**
  * @brief 时间间隔类
  */
-class API TimeSpan {
+class  TimeSpan {
 public:
     /**
      * @brief 零时间间隔

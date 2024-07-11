@@ -41,7 +41,7 @@ public:
 /**
  * @brief 线程类
  */
-class API Thread : public Noncopyable {
+class  Thread : public Noncopyable {
 public:
     using Ptr = std::unique_ptr<Thread>;
 

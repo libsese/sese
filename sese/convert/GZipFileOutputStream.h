@@ -11,7 +11,7 @@
 namespace sese {
 
 /// GZip 文件输出流（压缩）
-class API GZipFileOutputStream : public io::OutputStream {
+class  GZipFileOutputStream : public io::OutputStream {
 public:
     static void deleter(GZipFileOutputStream *data) noexcept;
 

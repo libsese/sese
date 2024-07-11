@@ -1,4 +1,4 @@
-#include <sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.h>
+#include <sese/internal/db/pgsql/PostgresPreparedStatementImpl.h>
 #include <sstream>
 #include <utility>
 

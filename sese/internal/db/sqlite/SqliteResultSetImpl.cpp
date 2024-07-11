@@ -1,4 +1,4 @@
-#include <sese/internal/db/impl/sqlite/SqliteResultSetImpl.h>
+#include <sese/internal/db/sqlite/SqliteResultSetImpl.h>
 #include <sese/text/DateTimeParser.h>
 
 using namespace sese::db;

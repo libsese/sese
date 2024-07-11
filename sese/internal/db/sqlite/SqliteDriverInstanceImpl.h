@@ -6,12 +6,12 @@
 #pragma once
 
 #include <sese/db/DriverInstance.h>
-#include <sese/internal/db/impl/sqlite/SqlitePreparedStatementImpl.h>
+#include <sese/internal/db/sqlite/SqlitePreparedStatementImpl.h>
 
 namespace sese::db::impl {
 
     /// \brief SQLite 驱动实现
-    class SESE_DB_API SqliteDriverInstanceImpl final : public DriverInstance {
+    class  SqliteDriverInstanceImpl final : public DriverInstance {
     public:
         explicit SqliteDriverInstanceImpl(sqlite3 *conn) noexcept;
         ~SqliteDriverInstanceImpl() noexcept override;

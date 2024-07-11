@@ -12,7 +12,7 @@
 namespace sstr {
 
 /// SString 构造器
-class API SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBuilder final {
+class  SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBuilder final {
     // 构造相关
 public:
     SStringBuilder(const SStringBuilder &builder);     // NOLINT

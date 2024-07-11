@@ -12,7 +12,7 @@
 namespace sese::res {
 
 /// 静态资源流
-class API ResourceStream : public io::PeekableStream, public io::InputStream {
+class  ResourceStream : public io::PeekableStream, public io::InputStream {
 public:
     using Ptr = std::unique_ptr<ResourceStream>;
 

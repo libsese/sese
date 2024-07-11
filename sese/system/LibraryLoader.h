@@ -19,7 +19,7 @@ namespace sese::system {
 /**
  * @brief 库对象
  */
-class API LibraryObject {
+class  LibraryObject {
 public:
     using Ptr = std::shared_ptr<LibraryObject>;
 #ifdef _WIN32

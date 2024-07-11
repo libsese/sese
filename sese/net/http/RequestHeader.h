@@ -31,7 +31,7 @@ enum class RequestType {
  * @brief 请求头类
  * @warning 字段 uri 未进行任何处理（URL + QueryString）
  */
-class API RequestHeader : public Header {
+class  RequestHeader : public Header {
 public:
     using Ptr = std::unique_ptr<RequestHeader>;
 

@@ -16,7 +16,7 @@
 namespace sese::text {
 
 /// 文本读取类
-class API TextReader final {
+class  TextReader final {
 public:
     /// 文本读取类智能指针
     using Ptr = std::shared_ptr<TextReader>;

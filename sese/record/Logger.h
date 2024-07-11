@@ -35,7 +35,7 @@ class ConsoleAppender;
 /**
  * @brief 日志输出类
  */
-class API Logger {
+class  Logger {
 public:
     /// 智能指针
     typedef std::shared_ptr<Logger> Ptr;
@@ -89,5 +89,5 @@ public:
  * 获取全局 Logger 指针
  * @return Logger 指针
  */
-extern API record::Logger *getLogger() noexcept;
+extern  record::Logger *getLogger() noexcept;
 } // namespace sese::record

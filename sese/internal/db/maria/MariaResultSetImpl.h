@@ -1,20 +1,21 @@
-/// \file SqliteResultSetImpl.h
-/// \brief SQLite 结果集实现
+/// \file MariaResultSetImpl.h
+/// \brief Maria 结果集实现
 /// \author kaoru
 /// \date 2024年04月10日
 
 #pragma once
 
 #include <sese/db/ResultSet.h>
-#include <sqlite3.h>
+
+#include <mysql.h>
 
 namespace sese::db::impl {
 
-    /// \brief SQLite 结果集实现
-    class SESE_DB_API SqliteResultSetImpl final : public ResultSet {
+    /// \brief Maria 结果集实现
+    class  MariaResultSetImpl final : public ResultSet {
     public:
-        SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;
-        ~SqliteResultSetImpl() noexcept override;
+        explicit MariaResultSetImpl(MYSQL_RES *res) noexcept;
+        ~MariaResultSetImpl() noexcept override;
 
         void reset() noexcept override;
         [[nodiscard]] bool next() noexcept override;
@@ -29,11 +30,8 @@ namespace sese::db::impl {
         [[nodiscard]] std::optional<sese::DateTime> getDateTime(size_t index) const noexcept override;
 
     protected:
-        size_t rows;
-        size_t columns;
-        char **table;
-        char *error = nullptr;
-        size_t current = 0;
+        MYSQL_RES *res;
+        MYSQL_ROW row = nullptr;
     };
 
 }// namespace sese::db::impl

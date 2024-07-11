@@ -13,7 +13,7 @@
 namespace sese::io {
 
 /// \brief 输出缓存包装器
-class API OutputBufferWrapper final : public OutputStream {
+class  OutputBufferWrapper final : public OutputStream {
 public:
     OutputBufferWrapper(char *buffer, size_t cap);
 

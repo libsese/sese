@@ -1,5 +1,5 @@
-#include <sese/internal/db/impl/maria/MariaStmtResultSetImpl.h>
-#include <sese/internal/db/impl/maria/MariaPreparedStatementImpl.h>
+#include <sese/internal/db/maria/MariaStmtResultSetImpl.h>
+#include <sese/internal/db/maria/MariaPreparedStatementImpl.h>
 #include <ctime>
 
 sese::db::impl::MariaStmtResultSet::MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept {

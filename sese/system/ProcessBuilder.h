@@ -25,7 +25,7 @@
 
 namespace sese::system {
 /// @brief 进程构建器
-class API ProcessBuilder {
+class  ProcessBuilder {
 public:
     /**
      * @brief 根据进程可执行文件路径初始化进程构建器

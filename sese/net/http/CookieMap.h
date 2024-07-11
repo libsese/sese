@@ -17,7 +17,7 @@
 namespace sese::net::http {
 
 /// \brief Cookie 映射集合类
-class API CookieMap {
+class  CookieMap {
 public:
     using Ptr = std::shared_ptr<CookieMap>;
     using Map = std::map<std::string, Cookie::Ptr>;

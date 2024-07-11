@@ -13,7 +13,7 @@
 namespace sese::io {
 
 /// 线程安全的固定大小缓存
-class API FixedBuffer final : public AbstractFixedBuffer {
+class  FixedBuffer final : public AbstractFixedBuffer {
 public:
     explicit FixedBuffer(size_t size) noexcept;
 

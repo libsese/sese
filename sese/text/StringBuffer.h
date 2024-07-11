@@ -21,7 +21,7 @@ namespace sese::text {
 /**
  * @brief 线程安全的字符串缓存类
  */
-class API StringBuffer final : private AbstractStringBuffer {
+class  StringBuffer final : private AbstractStringBuffer {
 public:
     using Ptr = std::unique_ptr<StringBuffer>;
 

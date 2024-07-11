@@ -19,7 +19,7 @@ struct SHA1Context {
 };
 
 /// SHA1 算法工具
-class API SHA1Util {
+class  SHA1Util {
 public:
     using OutputStream = sese::io::OutputStream;
     using InputStream = sese::io::InputStream;

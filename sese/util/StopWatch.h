@@ -13,7 +13,7 @@
 namespace sese {
 
 /// 停表类
-class API StopWatch {
+class  StopWatch {
 public:
     StopWatch();
 

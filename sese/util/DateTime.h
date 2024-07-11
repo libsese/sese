@@ -27,7 +27,7 @@ namespace sese {
 /**
  * @brief 日期时间类
  */
-class API DateTime {
+class  DateTime {
 public:
     using Ptr = std::unique_ptr<DateTime>;
 

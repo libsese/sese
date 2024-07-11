@@ -12,7 +12,7 @@ namespace sese {
 /**
  * @brief 不可实例化类
  */
-class API NotInstantiable {
+class  NotInstantiable {
 public:
     NotInstantiable() = delete;
     virtual ~NotInstantiable() = default;

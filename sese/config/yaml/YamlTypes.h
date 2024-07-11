@@ -30,7 +30,7 @@ class ArrayData;
 class BasicData;
 
 /// 类型基类
-class API Data {
+class  Data {
 public:
     using Ptr = std::shared_ptr<Data>;
 
@@ -44,7 +44,7 @@ private:
 };
 
 /// 对象类型
-class API ObjectData final : public Data {
+class  ObjectData final : public Data {
 public:
     using Ptr = std::shared_ptr<ObjectData>;
 
@@ -74,7 +74,7 @@ protected:
 };
 
 /// 数组类型
-class API ArrayData final : public Data {
+class  ArrayData final : public Data {
 public:
     using Ptr = std::shared_ptr<ArrayData>;
 
@@ -90,7 +90,7 @@ protected:
 };
 
 /// 基本数据类
-class API BasicData final : public Data {
+class  BasicData final : public Data {
 public:
     using Ptr = std::shared_ptr<BasicData>;
 

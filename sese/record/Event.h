@@ -32,7 +32,7 @@ enum class Level {
 /**
  * @brief 日志事件类
  */
-class API Event {
+class  Event {
 public:
     typedef std::shared_ptr<Event> Ptr;
 

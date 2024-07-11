@@ -13,7 +13,7 @@
 namespace sese::security::evp {
 
 /// EVP SHA1 算法上下文
-class API SHA1Context : public Context {
+class  SHA1Context : public Context {
 public:
     SHA1Context() noexcept;
     ~SHA1Context() noexcept override;

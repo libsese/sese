@@ -18,7 +18,7 @@
 namespace sese::record {
 
 /// 异步日志器
-class API AsyncLogger final : public Logger {
+class  AsyncLogger final : public Logger {
 public:
     AsyncLogger();
 

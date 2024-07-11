@@ -35,7 +35,7 @@ static T CreateMask(uint32_t bits) {
 /**
  * @brief 地址类
  */
-class API Address {
+class  Address {
 public:
     using Ptr = std::shared_ptr<Address>;
 

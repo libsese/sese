@@ -11,7 +11,7 @@
 namespace sese::security {
 
 /// SSL 上下文
-class API SSLContext final : public std::enable_shared_from_this<SSLContext> {
+class  SSLContext final : public std::enable_shared_from_this<SSLContext> {
 public:
     using Ptr = std::shared_ptr<SSLContext>;
     using Socket = sese::net::Socket;

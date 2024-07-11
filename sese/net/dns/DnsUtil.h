@@ -19,7 +19,7 @@
 
 namespace sese::net::dns {
 /// DNS 帧编码解码工具
-class API DnsUtil {
+class  DnsUtil {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;

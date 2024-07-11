@@ -13,7 +13,7 @@
 namespace sese::security::evp {
 
 /// EVP MD5 算法上下文
-class API MD5Context : public Context {
+class  MD5Context : public Context {
 public:
     MD5Context() noexcept;
     ~MD5Context() noexcept override;

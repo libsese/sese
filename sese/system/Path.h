@@ -14,7 +14,7 @@
 namespace sese::system {
 
 /// UNIX-LIKE 路径转换类
-class API Path {
+class  Path {
 public:
     /** \brief 路径构造函数
      *  \verbatim

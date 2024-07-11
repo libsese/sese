@@ -12,7 +12,7 @@
 
 namespace sese::security {
 /// 安全模块初始化任务
-class API SecurityInitTask final : public InitiateTask {
+class  SecurityInitTask final : public InitiateTask {
 public:
     SecurityInitTask() : InitiateTask(__FUNCTION__) {}
 

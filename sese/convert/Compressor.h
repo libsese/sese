@@ -13,7 +13,7 @@
 namespace sese {
 
 /// 压缩器
-class API Compressor {
+class  Compressor {
 public:
     using OutputStream = sese::io::OutputStream;
 

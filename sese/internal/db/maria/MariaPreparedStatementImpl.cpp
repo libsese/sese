@@ -1,6 +1,6 @@
 #define SESE_C_LIKE_FORMAT
 
-#include <sese/internal/db/impl/maria/MariaPreparedStatementImpl.h>
+#include <sese/internal/db/maria/MariaPreparedStatementImpl.h>
 #include <sese/record/Marco.h>
 
 #undef SESE_DEBUG

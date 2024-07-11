@@ -19,7 +19,7 @@ namespace sese::service {
 /// \brief 系统均衡负载器（无用户调度的负载器）
 /// \warning 此负载器仅在 Linux 上生效
 /// \see sese::service::BalanceLoader
-class API SystemBalanceLoader final {
+class  SystemBalanceLoader final {
 public:
     ~SystemBalanceLoader() noexcept;
 

@@ -22,7 +22,7 @@ struct SubStackInfo {
 };
 
 /// 堆栈信息
-class API StackInfo {
+class  StackInfo {
 public:
     /// 创建一个容器以存储当前的堆栈信息
     /// \param limit 堆栈深度上限

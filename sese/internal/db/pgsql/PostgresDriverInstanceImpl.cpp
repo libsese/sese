@@ -1,5 +1,5 @@
-#include <sese/internal/db/impl/pgsql/PostgresDriverInstanceImpl.h>
-#include <sese/internal/db/impl/pgsql/PostgresResultSetImpl.h>
+#include <sese/internal/db/pgsql/PostgresDriverInstanceImpl.h>
+#include <sese/internal/db/pgsql/PostgresResultSetImpl.h>
 #include <sese/text/StringBuilder.h>
 
 using namespace sese::db;

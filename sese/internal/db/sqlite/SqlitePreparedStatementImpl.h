@@ -7,14 +7,14 @@
 
 #include <sese/util/Util.h>
 #include <sese/db/PreparedStatement.h>
-#include <sese/internal/db/impl/sqlite/SqliteStmtResultSetImpl.h>
+#include <sese/internal/db/sqlite/SqliteStmtResultSetImpl.h>
 
 #include <set>
 
 namespace sese::db::impl {
 
     /// \brief SQLite 预处理语句实现
-    class SESE_DB_API SqlitePreparedStatementImpl final : public PreparedStatement {
+    class  SqlitePreparedStatementImpl final : public PreparedStatement {
     public:
         explicit SqlitePreparedStatementImpl(sqlite3_stmt *stmt, size_t count) noexcept;
         ~SqlitePreparedStatementImpl() noexcept override;

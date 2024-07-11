@@ -10,7 +10,7 @@
 namespace sese::io {
 
 /// 输出流缓存类
-class API BufferedOutputStream : public OutputStream {
+class  BufferedOutputStream : public OutputStream {
 public:
     using Ptr = std::shared_ptr<BufferedOutputStream>;
 

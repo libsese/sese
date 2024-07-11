@@ -14,7 +14,7 @@
 namespace sese::text {
 
 /// 日期解析器
-class API DateTimeParser {
+class  DateTimeParser {
 public:
     /**
      * 尝试将字符串还原为数据结构

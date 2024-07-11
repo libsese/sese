@@ -18,7 +18,7 @@
 namespace sese::system {
 
 /// 文件变更回调选项类
-struct API FileNotifyOption {
+struct  FileNotifyOption {
     virtual ~FileNotifyOption() = default;
 
     /// 创建文件
@@ -37,7 +37,7 @@ struct API FileNotifyOption {
 /// \brief 文件变更监视器
 /// \bug 此实现 Darwin 事件顺序与 Windows 和 Linux 不一致。 <p>
 /// Darwin 优先触发同一文件多个事件，Windows 和 Linux 按时间顺序触发。
-class API FileNotifier {
+class  FileNotifier {
 public:
     using Ptr = std::unique_ptr<FileNotifier>;
 

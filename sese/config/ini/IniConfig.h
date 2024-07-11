@@ -18,7 +18,7 @@
 namespace sese::ini {
 
 /// INI 配置类
-struct API IniConfig {
+struct  IniConfig {
 public:
     /// INI SECTION
     using Section = std::map<std::string, std::string>;
