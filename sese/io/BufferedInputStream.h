@@ -5,11 +5,8 @@
 /// \date 2022.11.20
 #pragma once
 
-#include "sese/io/InputStream.h"
-
-#ifdef WIN32
-#pragma warning(disable : 4251)
-#endif
+#include <sese/Config.h>
+#include <sese/io/InputStream.h>
 
 namespace sese::io {
 
