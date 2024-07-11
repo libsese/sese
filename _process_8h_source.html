@@ -143,41 +143,41 @@ $(document).ready(function(){initNavTree('_process_8h_source.html',''); initResi
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1system.html">sese::system</a> {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process.html">   14</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1system_1_1_process.html" title="进程类">Process</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process.html">   14</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1system_1_1_process.html" title="进程类">Process</a> {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">   16</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Ptr</a> = std::unique_ptr&lt;Process&gt;;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a> create(<span class="keyword">const</span> <span class="keywordtype">char</span> *command) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a79e195a84f2b555e3d12ae99b369fdb8">create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *command) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    [[nodiscard]] <span class="keyword">static</span> <a class="code hl_typedef" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5" title="进程 ID 标识符">pid_t</a> getCurrentProcessId() noexcept;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    [[nodiscard]] <span class="keyword">static</span> <a class="code hl_typedef" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5" title="进程 ID 标识符">pid_t</a> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#abf9ea1c83caea24d7c7af4fc52991473">getCurrentProcessId</a>() noexcept;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    [[nodiscard]] <span class="keywordtype">int</span> wait() const noexcept;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a26576173c8042401314803be3d0b4271">wait</a>() const noexcept;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    [[nodiscard]] <span class="keywordtype">bool</span> kill() const noexcept;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a41b3269066f148355282ea5354c22bc3">kill</a>() const noexcept;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [[nodiscard]] <a class="code hl_typedef" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5" title="进程 ID 标识符">pid_t</a> getProcessId() const noexcept;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [[nodiscard]] <a class="code hl_typedef" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5" title="进程 ID 标识符">pid_t</a> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a2f236e5e0b6b26cb7613b5d12c880237">getProcessId</a>() const noexcept;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>private:</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process.html#a1f079d2a5fb0c8f88f13c5a1a9fc1d8c">   40</a></span>    <a class="code hl_class" href="classsese_1_1system_1_1_process.html" title="进程类">Process</a>() = default;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#ifdef _WIN32</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classsese_1_1system_1_1_process.html" title="进程类">~Process</a>() noexcept;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a07ff40a4769b99627fb2e88d467136f0">~Process</a>() noexcept;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>private:</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> *startup_info = <span class="keywordtype">nullptr</span>;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> *process_info = <span class="keywordtype">nullptr</span>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classsese_1_1system_1_1_process.html" title="进程类">~Process</a>() noexcept = default;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a07ff40a4769b99627fb2e88d467136f0">~Process</a>() noexcept = default;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>private:</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// Unix-like 执行新进程实现</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    static <span class="keywordtype">void</span> exec(<span class="keywordtype">char</span> *p_command) noexcept;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    static <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#abb638054ee26bd6b029f1994e863990e">exec</a>(<span class="keywordtype">char</span> *p_command) noexcept;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// 计算字符串中参数的个数</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    static <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>(const <span class="keywordtype">char</span> *p_command) noexcept;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    static <span class="keywordtype">size_t</span> <a class="code hl_function" href="classsese_1_1system_1_1_process.html#a93d03f07bdbc7ae0a49638e4b0f206f4">count</a>(const <span class="keywordtype">char</span> *p_command) noexcept;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// 将下一个空格设置为 &#39;\0&#39;，并返回空格下一个字符的指针</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    static <span class="keywordtype">char</span> *spilt(<span class="keywordtype">char</span> *p_command) noexcept;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    static <span class="keywordtype">char</span> *<a class="code hl_function" href="classsese_1_1system_1_1_process.html#a6e57b277ea2f15a1fcea8ead351e5111">spilt</a>(<span class="keywordtype">char</span> *p_command) noexcept;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process.html#a0d8c961499ee551b6995cc49469db263">   61</a></span>    <a class="code hl_typedef" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5" title="进程 ID 标识符">pid_t</a> <span class="keywordtype">id</span> = -1;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif</span></div>
@@ -190,7 +190,7 @@ $(document).ready(function(){initNavTree('_process_8h_source.html',''); initResi
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4143f1e6dbe5f494b17fda6fba951f90.html">system</a></li><li class="navelem"><a class="el" href="_process_8h.html">Process.h</a></li>
-    <li class="footer">生成于 2024年 七月 10日 星期三 11:18:50 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

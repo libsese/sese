@@ -5,6 +5,5 @@ var namespacesese_1_1security =
     [ "SecurityInitTask", "classsese_1_1security_1_1_security_init_task.html", "classsese_1_1security_1_1_security_init_task" ],
     [ "SecuritySocket", "classsese_1_1security_1_1_security_socket.html", "classsese_1_1security_1_1_security_socket" ],
     [ "SSLContext", "classsese_1_1security_1_1_s_s_l_context.html", "classsese_1_1security_1_1_s_s_l_context" ],
-    [ "SSLContextBuilder", "classsese_1_1security_1_1_s_s_l_context_builder.html", "classsese_1_1security_1_1_s_s_l_context_builder" ],
-    [ "SSLContext", "namespacesese_1_1security.html#a11ea107ec78a1f5c603289ae6750651b", null ]
+    [ "SSLContextBuilder", "classsese_1_1security_1_1_s_s_l_context_builder.html", "classsese_1_1security_1_1_s_s_l_context_builder" ]
 ];

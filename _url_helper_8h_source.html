@@ -146,33 +146,33 @@ $(document).ready(function(){initNavTree('_url_helper_8h_source.html',''); initR
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1net_1_1http.html">sese::net::http</a> {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html">   19</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_url.html" title="Url 解析器">Url</a> final {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html">   19</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1net_1_1http_1_1_url.html" title="Url 解析器">Url</a> final {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html#a505374701082074bceb58b33c9fb3a34">   21</a></span>    <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_url.html#a505374701082074bceb58b33c9fb3a34">Url</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_url.html" title="Url 解析器">Url</a>(<span class="keyword">const</span> std::string &amp;url) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_url.html#a505374701082074bceb58b33c9fb3a34">Url</a>(<span class="keyword">const</span> std::string &amp;<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_url.html#ae113a8d0d72e30d1e092dde2463e6727" title="资源">url</a>) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html#ae3e2a8e2734e7c9c8aef520f84f7c72d">   25</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_url.html#ae3e2a8e2734e7c9c8aef520f84f7c72d">getProtocol</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">return</span> protocol;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_url.html#a8cd46e6e54bff5d3f6ecc17bcd8f3fd9" title="协议">protocol</a>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
 </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html#a5dede43b598690d3fd1e45b4057d101e">   29</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_url.html#a5dede43b598690d3fd1e45b4057d101e">getHost</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">return</span> host;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_url.html#ad1e15997e994506d50ba7c7cf9ef058b" title="域名">host</a>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html#a35131054553c5f230dd464cd00ef1536">   33</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_url.html#a35131054553c5f230dd464cd00ef1536">getUrl</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">return</span> url;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_url.html#ae113a8d0d72e30d1e092dde2463e6727" title="资源">url</a>;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
 </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_url.html#ab8899b72d05fdc434821071d0f8b1bb1">   37</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_url.html#ab8899b72d05fdc434821071d0f8b1bb1">getQuery</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> query;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_url.html#a874fa5b1155f3c33b32c219847f7c361" title="查询">query</a>;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
 </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
@@ -190,7 +190,7 @@ $(document).ready(function(){initNavTree('_url_helper_8h_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_fc5eb64f8b6490c66e0bc105dbd81c03.html">http</a></li><li class="navelem"><a class="el" href="_url_helper_8h.html">UrlHelper.h</a></li>
-    <li class="footer">生成于 2024年 七月 10日 星期三 11:18:50 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

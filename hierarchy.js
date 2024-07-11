@@ -213,7 +213,9 @@ var hierarchy =
     ] ],
     [ "sese::io::InputStreamReader", "classsese_1_1io_1_1_input_stream_reader.html", null ],
     [ "sese::iocp::IOBufNode", "structsese_1_1iocp_1_1_i_o_buf_node.html", null ],
-    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", null ],
+    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", [
+      [ "MyIOCPServer", "class_my_i_o_c_p_server.html", null ]
+    ] ],
     [ "sese::system::IPCChannel", "classsese_1_1system_1_1_i_p_c_channel.html", null ],
     [ "sese::Range< TYPE >::Iterator", "classsese_1_1_range_1_1_iterator.html", null ],
     [ "sstr::SStringView::Iterator", "classsstr_1_1_s_string_view_1_1_iterator.html", null ],

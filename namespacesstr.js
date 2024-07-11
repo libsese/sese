@@ -16,5 +16,5 @@ var namespacesstr =
     [ "LeftShiftElement", "namespacesstr.html#ac37b1daa78646595e8f9d403ae15251e", null ],
     [ "NORMAL", "namespacesstr.html#a76f6f1d44d1aad60f456bd9bd7685056", null ],
     [ "RightShiftElement", "namespacesstr.html#ab09c2d6ffdfbc1b70dc7e1e78a3aefc7", null ],
-    [ "SESE_DEPRECATED_WITH", "namespacesstr.html#a893bbb4334be73cdbbb54856646810c5", null ]
+    [ "SESE_DEPRECATED_WITH", "namespacesstr.html#a8131275f3d943451dc451c56d5f2834f", null ]
 ];

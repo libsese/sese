@@ -1,4 +1,4 @@
 var _simple_formatter_8cpp =
 [
-    [ "getLevelString", "_simple_formatter_8cpp.html#afc7d59d9d8452fc29f620cd384261565", null ]
+    [ "getLevelString", "_simple_formatter_8cpp.html#afe8ef8abc4b5d8b2778fc2ae3fdc0ab2", null ]
 ];

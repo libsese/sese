@@ -144,16 +144,16 @@ $(document).ready(function(){initNavTree('_locker_8h_source.html',''); initResiz
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = std::mutex&gt;</div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classsese_1_1_locker.html">   19</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1_locker.html" title="std::mutex 包装器">Locker</a> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classsese_1_1_locker.html">   19</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1_locker.html" title="std::mutex 包装器">Locker</a> {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsese_1_1_locker.html#a95230a82b2446f0e2ce413b7fc11d0dd">   21</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classsese_1_1_locker.html#a95230a82b2446f0e2ce413b7fc11d0dd">Locker</a>(T &amp;t) : mutex(t) {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        mutex.lock();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsese_1_1_locker.html#a95230a82b2446f0e2ce413b7fc11d0dd">   21</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classsese_1_1_locker.html#a95230a82b2446f0e2ce413b7fc11d0dd">Locker</a>(T &amp;t) : <a class="code hl_variable" href="classsese_1_1_locker.html#a4e871e7fa76b8575d7396fab51322cb7">mutex</a>(t) {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="classsese_1_1_locker.html#a4e871e7fa76b8575d7396fab51322cb7">mutex</a>.lock();</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
 </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classsese_1_1_locker.html#aed0c68c00274e4fe1ec0f9dc235b9e3e">   24</a></span>    <a class="code hl_function" href="classsese_1_1_locker.html#aed0c68c00274e4fe1ec0f9dc235b9e3e">~Locker</a>() {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        mutex.unlock();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="classsese_1_1_locker.html#a4e871e7fa76b8575d7396fab51322cb7">mutex</a>.unlock();</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('_locker_8h_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_a0a6df3daa909360b7fe562239cac02e.html">thread</a></li><li class="navelem"><a class="el" href="_locker_8h.html">Locker.h</a></li>
-    <li class="footer">生成于 2024年 七月 10日 星期三 11:18:50 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

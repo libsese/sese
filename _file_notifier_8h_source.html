@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('_file_notifier_8h_source.html',''); in
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1system.html">sese::system</a> {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1system_1_1_file_notify_option.html">   21</a></span><span class="keyword">struct </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_struct" href="structsese_1_1system_1_1_file_notify_option.html" title="文件变更回调选项类">FileNotifyOption</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1system_1_1_file_notify_option.html">   21</a></span><span class="keyword">struct  </span><a class="code hl_struct" href="structsese_1_1system_1_1_file_notify_option.html" title="文件变更回调选项类">FileNotifyOption</a> {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structsese_1_1system_1_1_file_notify_option.html#a43153fc1c0a780ac1fc3e31a3303ade2">   22</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="structsese_1_1system_1_1_file_notify_option.html#a43153fc1c0a780ac1fc3e31a3303ade2">~FileNotifyOption</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structsese_1_1system_1_1_file_notify_option.html#a0c624c82fa912da287890a18e6f75a78">   25</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structsese_1_1system_1_1_file_notify_option.html#a0c624c82fa912da287890a18e6f75a78" title="创建文件">onCreate</a>(std::string_view name) = 0;</div>
@@ -164,17 +164,17 @@ $(document).ready(function(){initNavTree('_file_notifier_8h_source.html',''); in
 </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_file_notifier.html">   40</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1system_1_1_file_notifier.html" title="文件变更监视器">FileNotifier</a> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_file_notifier.html">   40</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1system_1_1_file_notifier.html" title="文件变更监视器">FileNotifier</a> {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_file_notifier.html#a742b5e2f2ea550bead834fb4bd8c88c8">   42</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_file_notifier.html#a742b5e2f2ea550bead834fb4bd8c88c8">Ptr</a> = std::unique_ptr&lt;FileNotifier&gt;;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_file_notifier.html#a742b5e2f2ea550bead834fb4bd8c88c8">FileNotifier::Ptr</a> create(<span class="keyword">const</span> std::string &amp;path, <a class="code hl_struct" href="structsese_1_1system_1_1_file_notify_option.html" title="文件变更回调选项类">FileNotifyOption</a> *option) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_file_notifier.html#a742b5e2f2ea550bead834fb4bd8c88c8">FileNotifier::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_file_notifier.html#a3e9cb4c190e5ec266c73bb2a04f0809e">create</a>(<span class="keyword">const</span> std::string &amp;path, <a class="code hl_struct" href="structsese_1_1system_1_1_file_notify_option.html" title="文件变更回调选项类">FileNotifyOption</a> *option) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classsese_1_1system_1_1_file_notifier.html" title="文件变更监视器">~FileNotifier</a>() noexcept;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classsese_1_1system_1_1_file_notifier.html#a3bb4e75333341df153a046191a7d27f3">~FileNotifier</a>() noexcept;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> loopNonblocking() noexcept;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1system_1_1_file_notifier.html#a9da0fd7e668a72e2b96d24f4e756b0c5" title="启动线程，开始处理变更事件">loopNonblocking</a>() noexcept;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> shutdown() noexcept;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1system_1_1_file_notifier.html#a844550dad1d2a8d786ed3ffbef855783" title="关闭监视器并阻塞至后台线程退出">shutdown</a>() noexcept;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>private:</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_file_notifier.html#ae65a96fa4752c2afed9dc717d8f4e51d">   59</a></span>    <a class="code hl_class" href="classsese_1_1system_1_1_file_notifier.html" title="文件变更监视器">FileNotifier</a>() = default;</div>
@@ -204,7 +204,7 @@ $(document).ready(function(){initNavTree('_file_notifier_8h_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4143f1e6dbe5f494b17fda6fba951f90.html">system</a></li><li class="navelem"><a class="el" href="_file_notifier_8h.html">FileNotifier.h</a></li>
-    <li class="footer">生成于 2024年 七月 10日 星期三 11:18:50 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

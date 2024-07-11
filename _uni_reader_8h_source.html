@@ -150,15 +150,15 @@ $(document).ready(function(){initNavTree('_uni_reader_8h_source.html',''); initR
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classsese_1_1_uni_reader.html">   26</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1_uni_reader.html" title="跨平台的文件读取器，主要适配 Windows，支持 UTF-8">UniReader</a> final {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classsese_1_1_uni_reader.html">   26</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1_uni_reader.html" title="跨平台的文件读取器，主要适配 Windows，支持 UTF-8">UniReader</a> final {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classsese_1_1_uni_reader.html#a49f16ea02f943651227059bd6c08a0b1">   28</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1_uni_reader.html#a49f16ea02f943651227059bd6c08a0b1">Ptr</a> = std::shared_ptr&lt;UniReader&gt;;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_class" href="classsese_1_1_uni_reader.html" title="跨平台的文件读取器，主要适配 Windows，支持 UTF-8">~UniReader</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_function" href="classsese_1_1_uni_reader.html#a59a573f076a422ab1919ff266a1be79e">~UniReader</a>();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">static</span> std::shared_ptr&lt;UniReader&gt; create(<span class="keyword">const</span> std::string &amp;fileName) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">static</span> std::shared_ptr&lt;UniReader&gt; <a class="code hl_function" href="classsese_1_1_uni_reader.html#aeb8b5e2a8d416fc5f0c9afa994620a59">create</a>(<span class="keyword">const</span> std::string &amp;fileName) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::string readLine();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::string <a class="code hl_function" href="classsese_1_1_uni_reader.html#a10f6075bf3bf2a1bbfbd5f8064787a74">readLine</a>();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classsese_1_1_uni_reader.html#a9bd40b289f3a84af6a10f4d84405a308">   46</a></span>    <a class="code hl_function" href="classsese_1_1_uni_reader.html#a9bd40b289f3a84af6a10f4d84405a308">UniReader</a>() = <span class="keywordflow">default</span>;</div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('_uni_reader_8h_source.html',''); initR
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classsese_1_1_uni_reader.html#a8ebe58f16142634a1c7fdfb7ca15330c">   48</a></span>    <a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">io::FileStream::Ptr</a> <a class="code hl_variable" href="classsese_1_1_uni_reader.html#a8ebe58f16142634a1c7fdfb7ca15330c">fileStream</a>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#ifdef SESE_PLATFORM_WINDOWS</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::wstring_convert&lt;std::codecvt_utf8&lt;wchar_t&gt;&gt; <a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_typedef" href="classsese_1_1io_1_1_base_stream_reader.html#ae3a680d4af31c5b0a08b14ff3afd1e2f">io::WStreamReader::Ptr</a> reader;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_typedef" href="classsese_1_1io_1_1_base_stream_reader.html#ae3a680d4af31c5b0a08b14ff3afd1e2f">io::WStreamReader::Ptr</a> <a class="code hl_variable" href="classsese_1_1_uni_reader.html#ab694a114190af4c15564728fbe5d21a1">reader</a>;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classsese_1_1_uni_reader.html#ab694a114190af4c15564728fbe5d21a1">   53</a></span>    <a class="code hl_typedef" href="classsese_1_1io_1_1_base_stream_reader.html#ae3a680d4af31c5b0a08b14ff3afd1e2f">io::StreamReader::Ptr</a> <a class="code hl_variable" href="classsese_1_1_uni_reader.html#ab694a114190af4c15564728fbe5d21a1">reader</a>;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('_uni_reader_8h_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5ecdf26e97b02d25bfabe621b34c1b3c.html">config</a></li><li class="navelem"><a class="el" href="_uni_reader_8h.html">UniReader.h</a></li>
-    <li class="footer">生成于 2024年 七月 10日 星期三 11:18:49 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

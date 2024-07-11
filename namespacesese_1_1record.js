@@ -17,6 +17,6 @@ var namespacesese_1_1record =
       [ "WARN", "namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277", null ],
       [ "ERR", "namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482", null ]
     ] ],
-    [ "getLogger", "namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe", null ],
+    [ "getLogger", "namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87", null ],
     [ "logger", "namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3", null ]
 ];

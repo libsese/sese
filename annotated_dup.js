@@ -365,5 +365,6 @@ var annotated_dup =
       [ "SStringView", "classsstr_1_1_s_string_view.html", "classsstr_1_1_s_string_view" ]
     ] ],
     [ "MockFormatOption1", "class_mock_format_option1.html", "class_mock_format_option1" ],
-    [ "MockFormatOption2", "class_mock_format_option2.html", "class_mock_format_option2" ]
+    [ "MockFormatOption2", "class_mock_format_option2.html", "class_mock_format_option2" ],
+    [ "MyIOCPServer", "class_my_i_o_c_p_server.html", "class_my_i_o_c_p_server" ]
 ];

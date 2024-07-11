@@ -115,8 +115,8 @@ var namespacesese =
     [ "getClassName", "namespacesese.html#a7f6ec509913dbb14930e43b251141591", null ],
     [ "getErrorCode", "namespacesese.html#ab5e35a3f44b1c1dd95685d82185df166", null ],
     [ "getErrorString", "namespacesese.html#a1833da64507c8e59f6799b93d2504ec6", null ],
-    [ "getLevelString", "namespacesese.html#ab14e5e23a63f2107c457534c877646a8", null ],
-    [ "getLevelString", "namespacesese.html#afc7d59d9d8452fc29f620cd384261565", null ],
+    [ "getLevelString", "namespacesese.html#aa1d206a5404e3a285ef301d61df25860", null ],
+    [ "getLevelString", "namespacesese.html#afe8ef8abc4b5d8b2778fc2ae3fdc0ab2", null ],
     [ "initCore", "namespacesese.html#a1f4b46ffad174639bc2bfe96d85f8892", null ],
     [ "isSpace", "namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37", null ],
     [ "makeShared", "namespacesese.html#ad9753bbc0af8293d0974d9bf39ebb393", null ],
@@ -124,7 +124,7 @@ var namespacesese =
     [ "makeUnique", "namespacesese.html#a24624225e57bb1d94b52ec6c33c0b8a1", null ],
     [ "makeUniqueFromList", "namespacesese.html#ae4ef3a5bd39012ba08ea948e8fd22fa7", null ],
     [ "number2StringLength", "namespacesese.html#a0a951f1886af83a7d610e57a8257b834", null ],
-    [ "sleep", "namespacesese.html#a1a5605fe9c056879ab684e6fa8e2c460", null ],
+    [ "sleep", "namespacesese.html#af714b4f593478e52e031ec08942b991e", null ],
     [ "sleep", "namespacesese.html#aac383eba57816760f6f2c997d7345143", null ],
     [ "strcmp", "namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1", null ],
     [ "strcmpDoNotCase", "namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd", null ],
@@ -132,6 +132,5 @@ var namespacesese =
     [ "to_time_t", "namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08", null ],
     [ "toInteger", "namespacesese.html#a6453fe856f0afc7bce5187768095cf4f", null ],
     [ "current_data", "namespacesese.html#a188c7e63df4af0f87d26afe95591f4a4", null ],
-    [ "is_iterable_v", "namespacesese.html#a5174b9bd39720fb3b1a592bb3ba91f9a", null ],
-    [ "Timer", "namespacesese.html#a2ee79c0896ba8dcd8d4d232c79f96cb8", null ]
+    [ "is_iterable_v", "namespacesese.html#a5174b9bd39720fb3b1a592bb3ba91f9a", null ]
 ];
