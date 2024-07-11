@@ -12,9 +12,7 @@
 #include <map>
 #include <list>
 
-#ifdef _WIN32
-#pragma warning(disable : 4251)
-#else
+#ifndef _WIN32
 #define _atoi64(val) strtoll(val, nullptr, 10)
 #endif
 
@@ -116,6 +114,8 @@ protected:
     bool _isNull;
 };
 
+// GCOVR_EXCL_START
+
 template<typename T>
 std::enable_if_t<std::is_same_v<T, std::string>, std::string> BasicData::getDataAs(const T &default_value) {
     if (_isNull) {
@@ -188,6 +188,8 @@ void BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>,
     data = "\"" + t + "\"";
 }
 
+// GCOVR_EXCL_STOP
+
 class ArrayData;
 
 /// JSON 对象数据类型
@@ -196,12 +198,12 @@ public:
     using Ptr = std::shared_ptr<ObjectData>;
     explicit ObjectData();
 
-    [[nodiscard]] inline size_t size() const noexcept { return keyValueSet.size(); }
-    [[nodiscard]] inline bool empty() const noexcept { return keyValueSet.empty(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE size_t size() const noexcept { return keyValueSet.size(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE bool empty() const noexcept { return keyValueSet.empty(); }
     void set(const std::string &key, const Data::Ptr &data);
     [[nodiscard]] Data::Ptr get(const std::string &key) const noexcept;
-    inline std::map<std::string, Data::Ptr>::iterator begin() noexcept { return keyValueSet.begin(); }
-    inline std::map<std::string, Data::Ptr>::iterator end() noexcept { return keyValueSet.end(); }
+    SESE_ALWAYS_INLINE std::map<std::string, Data::Ptr>::iterator begin() noexcept { return keyValueSet.begin(); }
+    SESE_ALWAYS_INLINE std::map<std::string, Data::Ptr>::iterator end() noexcept { return keyValueSet.end(); }
 
     template<typename T>
     std::shared_ptr<std::enable_if_t<std::is_same_v<BasicData, T>, BasicData>>
@@ -267,11 +269,11 @@ public:
     using Ptr = std::shared_ptr<ArrayData>;
     explicit ArrayData();
 
-    [[nodiscard]] inline size_t size() const noexcept { return valueSet.size(); }
-    [[nodiscard]] inline bool empty() const noexcept { return valueSet.empty(); }
-    void push(const Data::Ptr &data) noexcept { valueSet.emplace_back(data); }
-    inline std::list<Data::Ptr>::iterator begin() noexcept { return valueSet.begin(); }
-    inline std::list<Data::Ptr>::iterator end() noexcept { return valueSet.end(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE size_t size() const noexcept { return valueSet.size(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE bool empty() const noexcept { return valueSet.empty(); }
+    void push(const Data::Ptr &data) noexcept { valueSet.emplace_back(data); } // GCOVR_EXCL_LINE
+    SESE_ALWAYS_INLINE std::list<Data::Ptr>::iterator begin() noexcept { return valueSet.begin(); }
+    SESE_ALWAYS_INLINE std::list<Data::Ptr>::iterator end() noexcept { return valueSet.end(); }
 
 protected:
     std::list<Data::Ptr> valueSet;
