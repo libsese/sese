@@ -18,7 +18,7 @@
 namespace sese::yaml {
 
 /// YAML 工具类
-class API YamlUtil final : public NotInstantiable {
+class  YamlUtil final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;

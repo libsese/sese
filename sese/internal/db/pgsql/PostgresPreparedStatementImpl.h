@@ -6,14 +6,14 @@
 #pragma once
 
 #include <sese/db/PreparedStatement.h>
-#include <sese/internal/db/impl/pgsql/PostgresResultSetImpl.h>
+#include <sese/internal/db/pgsql/PostgresResultSetImpl.h>
 #include <random>
 #include <libpq-fe.h>
 
 namespace sese::db::impl {
 
     /// \brief PSQL 预处理语句实现
-    class SESE_DB_API PostgresPreparedStatementImpl : public PreparedStatement {
+    class  PostgresPreparedStatementImpl : public PreparedStatement {
     public:
         explicit PostgresPreparedStatementImpl(std::string stmt_name, std::string stmt_string, uint32_t count, PGconn *conn) noexcept;
         ~PostgresPreparedStatementImpl() noexcept override;

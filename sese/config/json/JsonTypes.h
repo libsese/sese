@@ -31,7 +31,7 @@ enum class DataType {
 };
 
 /// JSON 数据基类
-class API Data {
+class  Data {
 public:
     using Ptr = std::shared_ptr<Data>;
 
@@ -49,7 +49,7 @@ protected:
 };
 
 /// JSON 基础数据类型
-class API BasicData final : public Data {
+class  BasicData final : public Data {
 public:
     using Ptr = std::shared_ptr<BasicData>;
 
@@ -191,7 +191,7 @@ void BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>,
 class ArrayData;
 
 /// JSON 对象数据类型
-class API ObjectData final : public Data {
+class  ObjectData final : public Data {
 public:
     using Ptr = std::shared_ptr<ObjectData>;
     explicit ObjectData();
@@ -262,7 +262,7 @@ std::shared_ptr<std::enable_if_t<std::is_same_v<ArrayData, T>, ArrayData>> Objec
 }
 
 /// JSON 数组数据类型
-class API ArrayData final : public Data {
+class  ArrayData final : public Data {
 public:
     using Ptr = std::shared_ptr<ArrayData>;
     explicit ArrayData();

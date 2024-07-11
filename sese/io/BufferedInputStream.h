@@ -14,7 +14,7 @@
 namespace sese::io {
 
 /// 输入流缓存类
-class API BufferedInputStream : public InputStream {
+class  BufferedInputStream : public InputStream {
 public:
     using Ptr = std::shared_ptr<BufferedInputStream>;
 

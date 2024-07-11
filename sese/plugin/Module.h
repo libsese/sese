@@ -16,7 +16,7 @@
 namespace sese::plugin {
 
 /// 插件模块对象
-class API Module {
+class  Module {
 public:
     using Ptr = std::unique_ptr<Module>;
     using LibraryObject = sese::system::LibraryObject;

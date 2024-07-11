@@ -50,7 +50,7 @@ enum class Seek {
 /**
  * @brief 文件流类
  */
-class API FileStream final : public Stream, public Closeable, public PeekableStream {
+class  FileStream final : public Stream, public Closeable, public PeekableStream {
 public:
 #ifdef SESE_PLATFORM_WINDOWS
     static constexpr const char *B_READ_W = BINARY_READ_EXISTED_W;               // NOLINT

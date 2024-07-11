@@ -72,7 +72,3 @@ add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 add_subdirectory(sese)
-
-if (SESE_BUILD_EXAMPLE)
-    add_subdirectory(demo)
-endif ()

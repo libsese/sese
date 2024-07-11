@@ -14,7 +14,7 @@
 namespace sese::ini {
 
 /// INI 工具类
-class API IniUtil {
+class  IniUtil {
 public:
     /// 工具支持的输入流
     using InputStream = io::PeekableStream;

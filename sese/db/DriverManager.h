@@ -15,7 +15,7 @@ namespace sese::db {
     };
 
     /// \brief 数据库驱动实例管理器
-    class SESE_DB_API DriverManager {
+    class  DriverManager {
     public:
         /// \brief 创建数据库驱动实例
         /// \param type 数据库类型

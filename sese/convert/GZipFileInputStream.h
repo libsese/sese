@@ -11,7 +11,7 @@
 namespace sese {
 
 /// GZip 文件输入流（解压）
-class API GZipFileInputStream : public io::InputStream {
+class  GZipFileInputStream : public io::InputStream {
 public:
     static void deleter(GZipFileInputStream *data) noexcept;
 

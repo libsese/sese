@@ -22,12 +22,12 @@ namespace sese {
 /**
  * @brief 传统配置文件类
  */
-class API ConfigObject {
+class  ConfigObject {
 public:
     using Ptr = std::shared_ptr<ConfigObject>;
 
     /// 节
-    struct API Section {
+    struct  Section {
         using Ptr = std::shared_ptr<Section>;
 
         std::string name;
@@ -64,7 +64,7 @@ private:
 /**
  * @brief 传统配置文件工具
  */
-class API SESE_DEPRECATED ConfigUtil {
+class  SESE_DEPRECATED ConfigUtil {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;

@@ -13,7 +13,7 @@
 namespace sese::security::evp {
 
 /// EVP SHA512 算法上下文
-class API SHA512Context : public Context {
+class  SHA512Context : public Context {
 public:
     SHA512Context() noexcept;
     ~SHA512Context() noexcept override;

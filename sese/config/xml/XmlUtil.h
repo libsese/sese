@@ -17,7 +17,7 @@
 namespace sese::xml {
 
 /// XML 序列化工具类
-class API XmlUtil final : public NotInstantiable {
+class  XmlUtil final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;

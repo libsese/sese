@@ -14,7 +14,7 @@ namespace sese::record {
 /**
  * @brief 控制台输出源类
  */
-class API ConsoleAppender final : public AbstractAppender {
+class  ConsoleAppender final : public AbstractAppender {
 public:
     explicit ConsoleAppender(Level level = Level::DEBUG) noexcept;
 

@@ -10,10 +10,10 @@
 
 namespace sese::security {
 
-class API SSLContext;
+class  SSLContext;
 
 /// 安全套接字
-class API SecuritySocket final : public sese::net::Socket {
+class  SecuritySocket final : public sese::net::Socket {
 public:
     using Socket = sese::net::Socket;
     using Address = sese::net::Address;

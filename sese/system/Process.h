@@ -11,7 +11,7 @@
 namespace sese::system {
 
 /// 进程类
-class API Process {
+class  Process {
 public:
     using Ptr = std::unique_ptr<Process>;
 

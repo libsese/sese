@@ -23,7 +23,7 @@ struct TimeoutEvent {
 };
 
 /// 可定时服务
-class API TimerableService : public event::EventLoop {
+class  TimerableService : public event::EventLoop {
 public:
     /// 分发事件
     /// \param timeout 超时时间

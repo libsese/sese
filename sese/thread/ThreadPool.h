@@ -24,7 +24,7 @@ namespace sese {
 /**
  * @brief 线程池类
  */
-class API ThreadPool : public Noncopyable {
+class  ThreadPool : public Noncopyable {
 public:
     using Ptr = std::unique_ptr<ThreadPool>;
 

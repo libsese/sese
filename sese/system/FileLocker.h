@@ -13,7 +13,7 @@ namespace sese::system {
 /**
  * @brief 文件锁
  */
-class API FileLocker {
+class  FileLocker {
 public:
     /// 根据文件描述符初始化一个文件锁
     /// \param fd 文件描述符

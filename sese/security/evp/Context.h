@@ -13,7 +13,7 @@
 namespace sese::security::evp {
 
 /// EVP 上下文基类
-class API Context {
+class  Context {
 public:
     using Ptr = std::unique_ptr<Context>;
 

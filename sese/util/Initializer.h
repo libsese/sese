@@ -16,7 +16,7 @@
 namespace sese {
 
 /// 初始化任务基类
-class API InitiateTask {
+class  InitiateTask {
 public:
     /**
      * \brief 初始化任务智能指针
@@ -41,7 +41,7 @@ private:
 };
 
 /// 初始化器
-class API Initializer {
+class  Initializer {
 public:
     virtual ~Initializer();
 

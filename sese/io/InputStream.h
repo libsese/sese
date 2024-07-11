@@ -16,7 +16,7 @@
 namespace sese::io {
 
 /// \brief 流式输入接口类
-class API InputStream {
+class  InputStream {
 public:
     typedef std::shared_ptr<InputStream> Ptr;
 

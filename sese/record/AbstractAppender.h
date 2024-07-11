@@ -21,7 +21,7 @@ namespace sese::record {
 /**
  * @brief 日志输出源基类
  */
-class API AbstractAppender {
+class  AbstractAppender {
 public:
     typedef std::shared_ptr<AbstractAppender> Ptr;
 

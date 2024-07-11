@@ -19,7 +19,7 @@ namespace sese::service {
 class MasterEventLoop;
 
 /// 用户均衡负载器，此负载器适用于全部平台
-class API UserBalanceLoader {
+class  UserBalanceLoader {
 public:
     ~UserBalanceLoader() noexcept;
 

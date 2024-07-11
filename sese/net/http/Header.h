@@ -27,7 +27,7 @@ enum class HttpVersion {
 /**
  * @brief HTTP 头部键值集合
  */
-class API Header {
+class  Header {
 public:
     using Ptr = std::unique_ptr<Header>;
     using KeyValueType = std::pair<std::string, std::string>;

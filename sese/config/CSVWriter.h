@@ -14,7 +14,7 @@
 namespace sese {
 
 /// CSV 流写入器
-class API CSVWriter {
+class  CSVWriter {
 public:
     /// 工具支持的输出流
     using OutputStream = io::OutputStream;

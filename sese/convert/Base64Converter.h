@@ -18,7 +18,7 @@ namespace sese {
 /**
  * @brief BASE64 转换器
  */
-class API Base64Converter final : public NotInstantiable {
+class  Base64Converter final : public NotInstantiable {
 public:
     using OutputStream = sese::io::OutputStream;
     using InputStream = sese::io::InputStream;

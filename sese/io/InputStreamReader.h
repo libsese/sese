@@ -11,7 +11,7 @@
 namespace sese::io {
 
 /// 可读流读取器
-class API InputStreamReader {
+class  InputStreamReader {
 public:
     explicit InputStreamReader(io::PeekableStream *input) noexcept;
 

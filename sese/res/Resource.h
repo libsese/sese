@@ -10,7 +10,7 @@
 namespace sese::res {
 
 /// 静态资源
-class API Resource {
+class  Resource {
 public:
     using Ptr = std::shared_ptr<Resource>;
 

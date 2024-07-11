@@ -16,7 +16,7 @@ namespace sese {
  * @tparam T std::mutex
  */
 template<typename T = std::mutex>
-class API Locker {
+class  Locker {
 public:
     explicit Locker(T &t) : mutex(t) {
         mutex.lock();

@@ -12,7 +12,7 @@
 namespace sese::db {
 
     /// \brief 预处理语句对象
-    class SESE_DB_API PreparedStatement {
+    class  PreparedStatement {
     public:
         using Ptr = std::unique_ptr<PreparedStatement>;
 

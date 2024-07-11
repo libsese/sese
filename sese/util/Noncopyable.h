@@ -12,7 +12,7 @@ namespace sese {
 /**
  * @brief 不可复制类
  */
-class API Noncopyable {
+class  Noncopyable {
 public:
     Noncopyable() = default;
     virtual~Noncopyable() = default;

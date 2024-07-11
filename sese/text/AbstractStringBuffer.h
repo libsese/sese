@@ -17,7 +17,7 @@ namespace sese::text {
 /**
  * @brief 字符串缓冲类
  */
-class API AbstractStringBuffer {
+class  AbstractStringBuffer {
 public:
     /**
      * @param cap 初始容量

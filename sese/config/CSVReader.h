@@ -14,7 +14,7 @@
 namespace sese {
 
 /// CSV 流读取器
-class API CSVReader {
+class  CSVReader {
 public:
     /// 工具支持的输入流
     using InputStream = io::InputStream;

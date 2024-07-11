@@ -1,24 +1,23 @@
-/// \file MariaResultSetImpl.h
-/// \brief Maria 结果集实现
+/// \file MariaStmtResultSetImpl.h
+/// \brief Maria 预处理结果集实现
 /// \author kaoru
 /// \date 2024年04月10日
 
 #pragma once
 
 #include <sese/db/ResultSet.h>
-
 #include <mysql.h>
 
 namespace sese::db::impl {
 
-    /// \brief Maria 结果集实现
-    class SESE_DB_API MariaResultSetImpl final : public ResultSet {
+    /// \brief Maria 预处理结果集实现
+    class  MariaStmtResultSet final : public ResultSet {
     public:
-        explicit MariaResultSetImpl(MYSQL_RES *res) noexcept;
-        ~MariaResultSetImpl() noexcept override;
+        explicit MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept;
+        ~MariaStmtResultSet() noexcept override;
 
         void reset() noexcept override;
-        [[nodiscard]] bool next() noexcept override;
+        [[nodiscard]]bool next() noexcept override;
         [[nodiscard]] bool isNull(size_t index) const noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
 
@@ -30,8 +29,9 @@ namespace sese::db::impl {
         [[nodiscard]] std::optional<sese::DateTime> getDateTime(size_t index) const noexcept override;
 
     protected:
-        MYSQL_RES *res;
-        MYSQL_ROW row = nullptr;
+        MYSQL_STMT *stmt;
+        MYSQL_BIND *row;
+        size_t columns;
     };
 
 }// namespace sese::db::impl

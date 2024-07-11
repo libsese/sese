@@ -16,7 +16,7 @@
 namespace sese::system {
 
 /// \brief 共享内存类
-class API SharedMemory final {
+class  SharedMemory final {
 public:
     using Ptr = std::unique_ptr<SharedMemory>;
 

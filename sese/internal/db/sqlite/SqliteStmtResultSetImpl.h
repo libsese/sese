@@ -1,19 +1,19 @@
-/// \file PostgresResultSetImpl.h
-/// \brief PSQL 结果集实现
+/// \file SqliteStmtResultSetImpl.h
+/// \brief SQLite 预处理语句结果集
 /// \author kaoru
 /// \date 2024年04月10日
 
 #pragma once
 
 #include <sese/db/ResultSet.h>
-#include <libpq-fe.h>
+#include <sqlite3.h>
 
 namespace sese::db::impl {
-    /// \brief PSQL 结果集实现
-    class SESE_DB_API PostgresResultSetImpl : public ResultSet {
+
+    /// \brief SQLite 预处理语句结果集
+    class  SqliteStmtResultSetImpl final : public ResultSet {
     public:
-        explicit PostgresResultSetImpl(PGresult *res) noexcept;
-        ~PostgresResultSetImpl() noexcept override;
+        explicit SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexcept;
 
         void reset() noexcept override;
         [[nodiscard]] bool next() noexcept override;
@@ -26,9 +26,9 @@ namespace sese::db::impl {
         [[nodiscard]] double getDouble(size_t index) const noexcept override;
         [[nodiscard]] float getFloat(size_t index) const noexcept override;
         [[nodiscard]] std::optional<sese::DateTime> getDateTime(size_t index) const noexcept override;
+
     protected:
-        PGresult *res;
-        int row;
-        int totalRow;
+        sqlite3_stmt *stmt;
     };
+
 }// namespace sese::db::impl

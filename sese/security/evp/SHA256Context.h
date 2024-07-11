@@ -13,7 +13,7 @@
 namespace sese::security::evp {
 
 /// EVP SHA256 算法上下文
-class API SHA256Context : public Context {
+class  SHA256Context : public Context {
 public:
     SHA256Context() noexcept;
     ~SHA256Context() noexcept override;

@@ -16,7 +16,7 @@ namespace sese::record {
 /**
  * @brief 日志格式化类
  */
-class API AbstractFormatter {
+class  AbstractFormatter {
 public:
     typedef std::shared_ptr<AbstractFormatter> Ptr;
 

@@ -16,7 +16,7 @@ namespace sese {
  * @tparam N
  */
 template<typename T, class X = void, int N = 0>
-class API Singleton {
+class  Singleton {
 public:
     static T *getInstance() {
         static T v;
@@ -31,7 +31,7 @@ public:
  * @tparam N
  */
 template<typename T, class X = void, int N = 0>
-class API SingletonPtr {
+class  SingletonPtr {
 public:
     static std::shared_ptr<T> getInstance() {
         static std::shared_ptr<T> v(new T); // GCOVR_EXCL_LINE

@@ -15,7 +15,7 @@ namespace sese::io {
 /**
  * @brief 字节缓冲区类
  */
-class API AbstractByteBuffer : public Stream, public PeekableStream {
+class  AbstractByteBuffer : public Stream, public PeekableStream {
 private:
     /**
      * @brief 缓冲节点

@@ -2,15 +2,15 @@
 #include <sese/db/Util.h>
 
 #ifdef HAS_MARIADB
-#include <sese/internal/db/impl/maria/MariaDriverInstanceImpl.h>
+#include <sese/internal/db/maria/MariaDriverInstanceImpl.h>
 #endif
 
 #ifdef HAS_SQLITE
-#include <sese/internal/db/impl/sqlite/SqliteDriverInstanceImpl.h>
+#include <sese/internal/db/sqlite/SqliteDriverInstanceImpl.h>
 #endif
 
 #ifdef HAS_POSTGRES
-#include <sese/internal/db/impl/pgsql/PostgresDriverInstanceImpl.h>
+#include <sese/internal/db/pgsql/PostgresDriverInstanceImpl.h>
 #endif
 
 using namespace sese::db;

@@ -38,7 +38,7 @@ struct TcpConnection {
 };
 
 /// TCP 传输器配置
-struct API TcpTransporterConfig {
+struct  TcpTransporterConfig {
     uint32_t keepalive = 30;
     security::SSLContext::Ptr servCtx = nullptr;
 
@@ -48,7 +48,7 @@ struct API TcpTransporterConfig {
 };
 
 /// TCP 传输器
-class API TcpTransporter : public v1::TimerableService {
+class  TcpTransporter : public v1::TimerableService {
 public:
     explicit TcpTransporter(TcpTransporterConfig *transporter_config) noexcept;
     ~TcpTransporter() override;

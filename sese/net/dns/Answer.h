@@ -11,7 +11,7 @@
 namespace sese::net::dns {
 
 /// DNS 应答类
-class API Answer {
+class  Answer {
 public:
     Answer(std::string name, uint16_t type, uint16_t class_, uint32_t time, uint16_t len, std::string data) noexcept
         : name(std::move(name)), type(type), class_(class_), liveTime(time), length(len), data(std::move(data)) {}

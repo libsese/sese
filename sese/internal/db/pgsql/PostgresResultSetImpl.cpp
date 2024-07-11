@@ -1,4 +1,4 @@
-#include <sese/internal/db/impl/pgsql/PostgresResultSetImpl.h>
+#include <sese/internal/db/pgsql/PostgresResultSetImpl.h>
 #include <sese/text/DateTimeParser.h>
 
 using namespace sese::db;

@@ -13,7 +13,7 @@
 namespace sese::io {
 
 /// 随机输入流
-class API RandomInputStream : public InputStream {
+class  RandomInputStream : public InputStream {
 public:
     int64_t read(void *buffer, size_t length) override;
 };

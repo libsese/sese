@@ -16,7 +16,7 @@
 namespace sese::net::http {
 
 /// Url 解析器
-class API Url final {
+class  Url final {
 public:
     Url() = default;
 

@@ -41,7 +41,7 @@ using NativeException = UnixException;
 #endif
 
 /// 异常类
-class API Exception : public NativeException {
+class  Exception : public NativeException {
 public:
     explicit Exception(const char *message);
 

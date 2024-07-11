@@ -6,19 +6,14 @@ if (SESE_BUILD_TEST)
     add_subdirectory(test)
 endif ()
 
+if (SESE_BUILD_EXAMPLE)
+    add_subdirectory(example)
+endif ()
+
 ###################################################################################
 # 通用目标
 # 1.Core
-# 2.Plugin
 ###################################################################################
-add_library(Plugin STATIC
-        plugin/BaseClass.h
-        plugin/ClassFactory.cpp
-        plugin/ClassFactory.h
-        plugin/Marco.h
-        plugin/ModuleInfo.h
-)
-
 file(
         GLOB_RECURSE PUBLIC_SRC
         "concurrent/*.cpp" "concurrent/*.h"
@@ -59,21 +54,12 @@ add_library(Core
         Util.h
 )
 
-target_link_libraries(Core PUBLIC Plugin)
-
 if (SESE_BUILD_TEST)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
 endif ()
 
 target_include_directories(
         Core
-        PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
-        $<INSTALL_INTERFACE:include>
-)
-
-target_include_directories(
-        Plugin
         PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
@@ -88,19 +74,9 @@ set_target_properties(
         WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
-set_target_properties(
-        Plugin PROPERTIES
-        CXX_STANDARD 17
-)
-
 if (MSVC AND NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
     target_compile_options(Core PRIVATE /Zi)
     set_target_properties(Core PROPERTIES
-            LINK_FLAGS "/DEBUG /OPT:REF /OPT:ICF"
-    )
-
-    target_compile_options(Plugin PRIVATE /Zi)
-    set_target_properties(Plugin PROPERTIES
             LINK_FLAGS "/DEBUG /OPT:REF /OPT:ICF"
     )
 endif ()
@@ -216,7 +192,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
     if (MSVC)
         target_compile_options(Core PRIVATE "/utf-8")
-        target_compile_options(Plugin PRIVATE "/utf-8")
     endif ()
     target_link_libraries(Core PUBLIC crypt32 ws2_32 wsock32 dbghelp iphlpapi advapi32 secur32)
 
@@ -242,8 +217,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # target_compile_options(Core PUBLIC "-fPIC")
     set_target_properties(Core PROPERTIES POSITION_INDEPENDENT_CODE ON)
     target_link_options(Core PUBLIC "-rdynamic")
-    # target_compile_options(Plugin PUBLIC "-fPIC")
-    set_target_properties(Plugin PROPERTIES POSITION_INDEPENDENT_CODE ON)
 endif ()
 
 ###################################################################################
@@ -256,8 +229,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     # target_compile_options(Core PRIVATE "-fno-exceptions")
-    # target_compile_options(Plugin PUBLIC "-fPIC")
-    set_target_properties(Plugin PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
     file(GLOB_RECURSE NATIVE_DRAWIN_SRC "native/darwin/*.cpp" "native/darwin/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
@@ -275,7 +246,7 @@ configure_package_config_file(
 )
 
 install(
-        TARGETS ${ARCHIVE_TARGET} DB Core Plugin
+        TARGETS ${ARCHIVE_TARGET} DB Core
         EXPORT SeseTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
@@ -291,6 +262,7 @@ install(
         PATTERN "*.hpp"
         PATTERN "${CMAKE_CURRENT_LIST_DIR}/internal" EXCLUDE
         PATTERN "${CMAKE_CURRENT_LIST_DIR}/test" EXCLUDE
+        PATTERN "${CMAKE_CURRENT_LIST_DIR}/example" EXCLUDE
 )
 
 install(

@@ -14,7 +14,7 @@ namespace sese::record {
 /**
  * @brief 简单格式化类
  */
-class API SimpleFormatter final : public AbstractFormatter {
+class  SimpleFormatter final : public AbstractFormatter {
 public:
     /**
      * 默认构造函数

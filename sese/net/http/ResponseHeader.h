@@ -12,7 +12,7 @@ namespace sese::net::http {
 /**
  * @brief 响应头类
  */
-class API ResponseHeader : public Header {
+class  ResponseHeader : public Header {
 public:
     using Ptr = std::unique_ptr<ResponseHeader>;
 

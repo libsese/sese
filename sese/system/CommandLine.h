@@ -23,7 +23,7 @@ public:
 };
 
 /// 命令行参数类
-class API CommandLine final : public NotInstantiable {
+class  CommandLine final : public NotInstantiable {
 public:
     CommandLine() = delete;
 

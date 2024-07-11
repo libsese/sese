@@ -19,7 +19,7 @@ namespace sese {
 /**
  * @brief 百分号编码转换器
  */
-class API PercentConverter final : public NotInstantiable {
+class  PercentConverter final : public NotInstantiable {
 public:
     using OutputStream = io::OutputStream;
 

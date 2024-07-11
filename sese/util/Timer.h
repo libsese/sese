@@ -17,9 +17,9 @@
 
 namespace sese {
 
-class API Timer;
+class  Timer;
 /// 定时任务
-class API TimerTask final : public std::enable_shared_from_this<TimerTask> {
+class  TimerTask final : public std::enable_shared_from_this<TimerTask> {
 public:
     friend class Timer;
     using Ptr = std::shared_ptr<TimerTask>;
@@ -43,7 +43,7 @@ private:
 };
 
 /// 低精度计时器类
-class API Timer final : public std::enable_shared_from_this<Timer> {
+class  Timer final : public std::enable_shared_from_this<Timer> {
 public:
     using Ptr = std::shared_ptr<Timer>;
 

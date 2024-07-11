@@ -18,7 +18,7 @@
 namespace sese::net::http {
 
 /// HPACK 解压缩工具类
-class API HPackUtil final : public NotInstantiable {
+class  HPackUtil final : public NotInstantiable {
 public:
     /// 工具指定输入流
     using InputStream = io::InputStream;

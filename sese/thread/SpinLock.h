@@ -14,7 +14,7 @@
 
 namespace sese {
 /// 自旋锁
-class API SpinLock {
+class  SpinLock {
 public:
     void lock();
 

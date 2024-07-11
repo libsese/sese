@@ -1,5 +1,5 @@
-/// \file SqliteStmtResultSetImpl.h
-/// \brief SQLite 预处理语句结果集
+/// \file SqliteResultSetImpl.h
+/// \brief SQLite 结果集实现
 /// \author kaoru
 /// \date 2024年04月10日
 
@@ -10,10 +10,11 @@
 
 namespace sese::db::impl {
 
-    /// \brief SQLite 预处理语句结果集
-    class SESE_DB_API SqliteStmtResultSetImpl final : public ResultSet {
+    /// \brief SQLite 结果集实现
+    class  SqliteResultSetImpl final : public ResultSet {
     public:
-        explicit SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexcept;
+        SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;
+        ~SqliteResultSetImpl() noexcept override;
 
         void reset() noexcept override;
         [[nodiscard]] bool next() noexcept override;
@@ -28,7 +29,11 @@ namespace sese::db::impl {
         [[nodiscard]] std::optional<sese::DateTime> getDateTime(size_t index) const noexcept override;
 
     protected:
-        sqlite3_stmt *stmt;
+        size_t rows;
+        size_t columns;
+        char **table;
+        char *error = nullptr;
+        size_t current = 0;
     };
 
 }// namespace sese::db::impl

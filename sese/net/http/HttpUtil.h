@@ -15,7 +15,7 @@
 namespace sese::net::http {
 
 /// @brief HTTP 工具类
-class API HttpUtil {
+class  HttpUtil {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;

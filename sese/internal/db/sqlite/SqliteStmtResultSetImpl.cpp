@@ -1,4 +1,4 @@
-#include <sese/internal/db/impl/sqlite/SqliteStmtResultSetImpl.h>
+#include <sese/internal/db/sqlite/SqliteStmtResultSetImpl.h>
 #include <sese/text/DateTimeParser.h>
 
 

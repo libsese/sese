@@ -33,7 +33,7 @@ public:
 /**
  * @brief Native Socket 类
  */
-class API Socket : public io::Stream, public io::PeekableStream, public io::Closeable {
+class  Socket : public io::Stream, public io::PeekableStream, public io::Closeable {
 public:
     using Ptr = std::shared_ptr<Socket>;
 

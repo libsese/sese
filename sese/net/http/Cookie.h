@@ -17,7 +17,7 @@
 namespace sese::net::http {
 
 /// Cookie 类
-class API Cookie {
+class  Cookie {
 public:
     using Ptr = std::shared_ptr<Cookie>;
 

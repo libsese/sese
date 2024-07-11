@@ -32,7 +32,7 @@ struct Node {
  * @param newValue 欲设置的值
  * @return 是否设置成功
  */
-extern "C" API inline bool compareAndSwapPointer(void *volatile *object, void *oldValue, void *newValue) noexcept;
+extern "C" inline bool compareAndSwapPointer(void *volatile *object, void *oldValue, void *newValue) noexcept;
 
 #ifdef _MSC_VER
 bool compareAndSwapPointer(void *volatile *object, void *oldValue, void *newValue) noexcept {

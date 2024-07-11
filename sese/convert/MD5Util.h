@@ -13,7 +13,7 @@ namespace sese {
 /**
     * @brief MD5 算法类
     */
-class API MD5Util {
+class  MD5Util {
 public:
     /// 工具所用输出流
     using OutputStream = sese::io::OutputStream;

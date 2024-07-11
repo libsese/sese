@@ -10,7 +10,7 @@
 
 namespace sese {
 
-extern "C" API const char *getLevelString(record::Level level) noexcept {
+extern "C"  const char *getLevelString(record::Level level) noexcept {
     switch (level) { // GCOVR_EXCL_LINE
         case record::Level::DEBUG:
             return "D";

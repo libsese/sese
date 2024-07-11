@@ -13,7 +13,7 @@
 namespace sese::io {
 
 /// 固定大小的字节缓冲区类
-class API AbstractFixedBuffer : public Stream, public PeekableStream {
+class  AbstractFixedBuffer : public Stream, public PeekableStream {
 public:
     explicit AbstractFixedBuffer(size_t size) noexcept;
     ~AbstractFixedBuffer() noexcept override;

@@ -15,7 +15,7 @@
 namespace sese::record {
 
 /// 分块文件日志输出源类
-class API BlockAppender final : public AbstractAppender {
+class  BlockAppender final : public AbstractAppender {
 public:
     /// 初始化分块参数
     /// \param block_max_size 分块的预定大小，此参数在非 DEBUG 模式下具有最小值限制，至少为 1000 * 1024，即 1MB

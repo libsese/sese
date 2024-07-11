@@ -19,7 +19,7 @@ namespace sese::system {
 /**
  * @brief 环境信息类
  */
-class API Environment final : public NotInstantiable {
+class  Environment final : public NotInstantiable {
 public:
     Environment() = delete;
 

@@ -1,4 +1,4 @@
-#include <sese/internal/db/impl/maria/MariaResultSetImpl.h>
+#include <sese/internal/db/maria/MariaResultSetImpl.h>
 #include <sese/text/DateTimeParser.h>
 
 using namespace sese::db;

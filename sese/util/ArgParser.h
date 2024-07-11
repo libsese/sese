@@ -20,7 +20,7 @@ namespace sese {
 /**
  * @brief 命令行参数解析类
  */
-class API ArgParser {
+class  ArgParser {
 public:
     typedef std::unique_ptr<ArgParser> Ptr;
 

@@ -10,7 +10,7 @@
 
 namespace sese::io {
 /// 可关闭接口
-class API Closeable {
+class  Closeable {
 public:
     virtual ~Closeable() = default;
     virtual void close() = 0;

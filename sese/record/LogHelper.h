@@ -12,7 +12,7 @@ namespace sese::record {
 /**
  * @brief 日志工具
  */
-class API LogHelper {
+class  LogHelper {
 public:
     using Ptr = std::shared_ptr<LogHelper>;
 

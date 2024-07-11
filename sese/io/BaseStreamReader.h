@@ -21,7 +21,7 @@ namespace sese::io {
  * @brief 输出流包装类，Windows 下 UTF-8 需要特殊处理
  */
 template<typename T = char>
-class API BaseStreamReader {
+class  BaseStreamReader {
 public:
     using Ptr = std::shared_ptr<BaseStreamReader<T>>;
 

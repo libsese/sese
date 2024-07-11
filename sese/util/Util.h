@@ -54,7 +54,7 @@ struct StrCmpI {
  * \param rv 字符串2
  * \return 比较结果
  */
-API bool strcmp(char const *lv, char const *rv) noexcept;
+ bool strcmp(char const *lv, char const *rv) noexcept;
 
 /**
  * 比较两个字符串是否相同（忽略大小写）
@@ -62,21 +62,21 @@ API bool strcmp(char const *lv, char const *rv) noexcept;
  * \param rv 字符串2
  * \return 比较结果
  */
-API bool strcmpDoNotCase(char const *lv, char const *rv) noexcept;
+ bool strcmpDoNotCase(char const *lv, char const *rv) noexcept;
 
 /**
  * 判断字符是否属于空白
  * @param ch 欲判断的字符
  * @return 是否属于空白
  */
-API bool isSpace(char ch) noexcept;
+ bool isSpace(char ch) noexcept;
 
 /**
  * 根据日志等级返回对应的字符串
  * @param level 日志等级
  * @return 字符串
  */
-API const char *getLevelString(Level level) noexcept;
+ const char *getLevelString(Level level) noexcept;
 
 /**
  * 查找某字符在字符串中第一次出现的位置
@@ -84,19 +84,19 @@ API const char *getLevelString(Level level) noexcept;
  * @param ch 欲查找的字符
  * @return 第一次出现的位置，没有则返回 -1
  */
-API int32_t findFirstAt(const char *str, char ch);
+ int32_t findFirstAt(const char *str, char ch);
 
 /**
  * 使当前线程休眠一段时间，NATIVE API 实现
  * @param second 秒
  */
-API void sleep(uint32_t second);
+ void sleep(uint32_t second);
 
 /**
  * 使当前线程休眠一段时间，std 实现
  */
 template<class REP, class PERIOD>
-API void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
+ void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
     std::this_thread::sleep_for(duration);
 }
 
@@ -105,20 +105,20 @@ API void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
  * @param error 错误代码
  * @return 错误描述
  */
-API std::string getErrorString(int64_t error = errno);
+ std::string getErrorString(int64_t error = errno);
 
 /**
  * 获取 error 代码
  * @return error 代码
  */
-API int64_t getErrorCode();
+ int64_t getErrorCode();
 
 /// 移动流数据
 /// \param out 输出流
 /// \param in 输入流
 /// \param size 移动大小
 /// \return 实际移动大小
-API size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
+ size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
 
 /// 获取数字转字符串后所需的字节长度
 /// @note 只能转换整数

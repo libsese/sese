@@ -14,7 +14,7 @@
 namespace sese::net::dns {
 
 /// DNS 会话类
-class API DnsSession {
+class  DnsSession {
 public:
     [[nodiscard]] auto &getQueries() { return queries; }
     [[nodiscard]] auto &getAnswers() { return answers; }

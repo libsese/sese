@@ -14,7 +14,7 @@
 namespace sese::io {
 
 /// \brief 输入缓存包装器
-class API InputBufferWrapper final : public InputStream, public PeekableStream {
+class  InputBufferWrapper final : public InputStream, public PeekableStream {
 public:
     InputBufferWrapper(const char *buffer, size_t cap);
 

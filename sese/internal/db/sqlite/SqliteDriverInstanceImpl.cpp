@@ -1,5 +1,5 @@
-#include <sese/internal/db/impl/sqlite/SqliteDriverInstanceImpl.h>
-#include <sese/internal/db/impl/sqlite/SqliteResultSetImpl.h>
+#include <sese/internal/db/sqlite/SqliteDriverInstanceImpl.h>
+#include <sese/internal/db/sqlite/SqliteResultSetImpl.h>
 
 using namespace sese::db;
 

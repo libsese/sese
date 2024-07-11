@@ -21,7 +21,7 @@ namespace sese {
 /**
  * @brief 字符串编码转换
  */
-class API SESE_DEPRECATED EncodingConverter final : public NotInstantiable {
+class  SESE_DEPRECATED EncodingConverter final : public NotInstantiable {
 public:
     EncodingConverter() = delete;
 
