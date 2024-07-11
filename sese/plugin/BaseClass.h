@@ -9,6 +9,8 @@
 
 #include <memory>
 
+// GCOVR_EXCL_START
+
 namespace sese::plugin {
 /// 模块基类
 class BaseClass : public std::enable_shared_from_this<BaseClass> {
@@ -18,3 +20,5 @@ public:
     virtual ~BaseClass() = default;
 };
 } // namespace sese::plugin
+
+// GCOVR_EXCL_STOP

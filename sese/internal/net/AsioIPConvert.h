@@ -1,7 +1,9 @@
 #pragma once
 
-#include "sese/net/IPv6Address.h"
+#include <sese/net/IPv6Address.h>
 #include <asio.hpp>
+
+// GCOVR_EXCL_START
 
 namespace sese::internal::net {
 inline asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
@@ -32,3 +34,5 @@ inline asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
     }
 }
 } // namespace sese::internal::net
+
+// GCOVR_EXCL_STOP
