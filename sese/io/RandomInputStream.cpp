@@ -1,6 +1,8 @@
 #include <sese/io/RandomInputStream.h>
 #include <sese/util/RandomUtil.h>
 
+#include <memory.h>
+
 int64_t sese::io::RandomInputStream::read(void *buffer, size_t length) {
     size_t count = 0;
     while (count != length) {
