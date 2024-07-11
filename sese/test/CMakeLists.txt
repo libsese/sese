@@ -14,6 +14,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif ()
 
 add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
+add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
+add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 file(GLOB TEST_SRC "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
 add_executable(

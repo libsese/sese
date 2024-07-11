@@ -68,7 +68,4 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "Re
     endif ()
 endif ()
 
-add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
-add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
-
 add_subdirectory(sese)

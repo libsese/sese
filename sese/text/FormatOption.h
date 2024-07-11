@@ -63,6 +63,11 @@ struct FormatOption {
         // 对齐相关判断
         bool has_align = false;
         auto pos = value.begin() + 1;
+        if (pos == value.end()) {
+            // 不存在手动指定的对齐方式，直接退出
+            align = Align::LEFT;
+            return true;
+        }
         if (!is_align(*pos)) {
             if (pos + 1 != value.end() && is_align(*(pos + 1))) {
                 wide_char = *pos;
