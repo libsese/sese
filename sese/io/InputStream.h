@@ -7,6 +7,8 @@
  */
 #pragma once
 
+#include <memory>
+
 // GCOVR_EXCL_START
 
 namespace sese::io {
