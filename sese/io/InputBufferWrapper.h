@@ -13,6 +13,8 @@
 
 namespace sese::io {
 
+// GCOVR_EXCL_START
+
 /// \brief 输入缓存包装器
 class  InputBufferWrapper final : public InputStream, public PeekableStream {
 public:
@@ -35,6 +37,9 @@ protected:
     size_t pos = 0;
     size_t cap = 0;
 };
+
+// GCOVR_EXCL_STOP
+
 } // namespace sese::io
 
 int64_t operator<<(sese::io::OutputStream &out, sese::io::InputBufferWrapper &input) noexcept;

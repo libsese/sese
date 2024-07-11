@@ -7,11 +7,7 @@
  */
 #pragma once
 
-#include "sese/Config.h"
-
-#ifdef WIN32
-#pragma warning(disable : 4251)
-#endif
+// GCOVR_EXCL_START
 
 namespace sese::io {
 
@@ -26,3 +22,5 @@ public:
 };
 
 } // namespace sese::io
+
+// GCOVR_EXCL_STOP
