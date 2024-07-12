@@ -92,7 +92,6 @@ SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption
 /// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 整形
-/// \return 格式化字符串
 template<typename T>
 void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     auto radix = opt.ext_type;
@@ -114,7 +113,6 @@ void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
 /// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 浮点数
-/// \return 格式化字符串
 template<typename T>
 void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     if (opt.float_placeholder == 0) {

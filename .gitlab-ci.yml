@@ -70,7 +70,7 @@ gtest:
     - sed -i 's|/builds/libsese/sese-core||g' build/test_report.xml
     # make coverage reposts
     - mkdir -p build/coverage
-    - gcovr --config gcovr-cobertura.cfg
+    - gcovr --config gcovr/cobertura.cfg
   coverage: /^\s*lines:\s*\d+.\d+\%/
   artifacts:
     name: "${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}"
@@ -84,7 +84,7 @@ pages:
   stage: deploy
   image: $CI_REGISTRY/libsese/sese-core:latest
   script:
-    - doxygen
+    - doxygen docs/Doxyfile
     - mv build/html public
   artifacts:
     paths:

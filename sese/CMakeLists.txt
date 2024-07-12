@@ -185,7 +185,7 @@ endif ()
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     file(GLOB_RECURSE NATIVE_WIN_SRC "native/win/*.cpp" "native/win/*.h")
     set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
-    configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
+    configure_file(WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_sources(Core PRIVATE ${NATIVE_WIN_SRC})

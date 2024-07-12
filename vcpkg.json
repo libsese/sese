@@ -48,23 +48,23 @@
         "libpq"
       ]
     },
-    "sqlite3": {
-      "description": "add sqlite3 support",
-      "dependencies": [
-        "sqlite3"
-      ]
-    },
     "replace-execinfo": {
       "description": "replace the system execinfo implementation",
       "dependencies": [
         "libunwind"
       ]
     },
+    "sqlite3": {
+      "description": "add sqlite3 support",
+      "dependencies": [
+        "sqlite3"
+      ]
+    },
     "tests": {
       "description": "build the unit test",
       "dependencies": [
-        "gtest",
-        "benchmark"
+        "benchmark",
+        "gtest"
       ]
     }
   }
