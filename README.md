@@ -263,7 +263,7 @@ Gcovr needs to be installed, either by pip or using the System Package Manager.
 
 ```bash
 mkdir -p build/coverage/html
-gcovr --config gcovr/html.cfg
+gcovr
 ```
 
 > [!NOTE]
