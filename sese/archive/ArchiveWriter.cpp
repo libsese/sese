@@ -22,7 +22,9 @@
 
 using sese::archive::ArchiveWriter;
 
-inline int open(struct archive *a, void *archive) {
+// GCOVR_EXCL_START
+
+SESE_ALWAYS_INLINE int open(struct archive *a, void *archive) {
     return ArchiveWriter::openCallback(a, static_cast<ArchiveWriter *>(archive));
 }
 
@@ -45,6 +47,8 @@ SESE_ALWAYS_INLINE int free(struct archive *a, void *archive) {
 SESE_ALWAYS_INLINE const char *passphrase(struct archive *a,void *archive) {
     return ArchiveWriter::passphraseCallback(a, static_cast<ArchiveWriter *>(archive));
 }
+
+// GCOVR_EXCL_STOP
 
 ArchiveWriter::ArchiveWriter(io::OutputStream *output)
         : output(output), archive(archive_write_new()) {

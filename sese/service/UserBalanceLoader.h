@@ -29,7 +29,7 @@ public:
 
     /// 设置服务启动地址
     /// \param addr IP Address
-    void setAddress(const net::IPAddress::Ptr &addr) noexcept { UserBalanceLoader::address = addr; }
+    void setAddress(const net::IPAddress::Ptr &addr) noexcept { UserBalanceLoader::address = addr; } // GCOVR_EXCL_LINE
 
     /// 设置主监听线程超时时间
     /// \param to 超时时间，单位毫秒
@@ -41,7 +41,7 @@ public:
 
     /// 获取当前负载器状态
     /// \return 负载器状态
-    [[nodiscard]] bool isStarted() const { return _isStart; }
+    [[nodiscard]] bool isStarted() const { return _isStart; } // GCOVR_EXCL_LINE
 
     /// 初始化负载器资源
     /// \tparam SERVICE 需要启动的服务

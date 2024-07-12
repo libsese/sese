@@ -36,7 +36,7 @@ public:
 
     /// 将集合中 max age 字段转换成 expires
     /// \param offset 单位秒
-    void update(uint64_t offset);
+    void updateExpiresFrom(uint64_t offset);
 
     [[nodiscard]] size_t size() const { return map.size(); }
     [[nodiscard]] bool empty() const { return map.empty(); }

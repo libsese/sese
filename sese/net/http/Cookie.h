@@ -43,7 +43,7 @@ public:
     [[nodiscard]] const std::string &getPath() const;
     void setPath(const std::string &path);
 
-    void update(uint64_t now);
+    void updateExpiresFrom(uint64_t now);
 
 private:
     bool secure = false;

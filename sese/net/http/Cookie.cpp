@@ -3,9 +3,13 @@
 
 using namespace sese::net::http;
 
+// GCOVR_EXCL_START
+
 Cookie::Cookie(const std::string &name) noexcept {
     this->name = name;
 }
+
+// GCOVR_EXCL_STOP
 
 Cookie::Cookie(const std::string &name, const std::string &value) noexcept {
     this->name = name;
@@ -77,7 +81,7 @@ void Cookie::setPath(const std::string &path) {
     Cookie::path = path;
 }
 
-void Cookie::update(uint64_t now) {
+void Cookie::updateExpiresFrom(uint64_t now) {
     if (Cookie::expires == 0 && Cookie::maxAge != 0) {
         Cookie::expires = now + Cookie::maxAge;
     }

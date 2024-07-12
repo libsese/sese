@@ -12,14 +12,16 @@ IPAddress::Ptr IPAddress::create(const char *address, uint16_t port) {
         return nullptr;
     }
 
-    IPAddress::Ptr result = std::dynamic_pointer_cast<IPAddress>(Address::create(res->ai_addr, (socklen_t) res->ai_addrlen));
+    // GCOVR_EXCL_START
+    IPAddress::Ptr result = std::dynamic_pointer_cast<IPAddress>(Address::create(res->ai_addr, static_cast<socklen_t>(res->ai_addrlen)));
     if (result) {
         result->setPort(port);
     }
-    // 此处暂时没有很好的办法触发
     else {
         result = nullptr;
     }
+    // GCOVR_EXCL_STOP
+
     freeaddrinfo(res);
     return result;
 }

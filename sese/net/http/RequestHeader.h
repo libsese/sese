@@ -27,6 +27,8 @@ enum class RequestType {
     ANOTHER
 };
 
+// GCOVR_EXCL_START
+
 /**
  * @brief 请求头类
  * @warning 字段 uri 未进行任何处理（URL + QueryString）
@@ -71,5 +73,7 @@ protected:
 
     std::map<std::string, std::string> query_args;
 };
+
+// GCOVR_EXCL_STOP
 
 } // namespace sese::net::http

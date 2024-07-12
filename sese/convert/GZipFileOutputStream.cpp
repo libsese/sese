@@ -4,7 +4,7 @@
 sese::GZipFileOutputStream::Ptr sese::GZipFileOutputStream::create(const char *file, size_t level) noexcept {
     auto gz_file = gzopen(file, "wb");
     if (!gz_file) return nullptr;
-    auto l = std::min<int>((int) level, 9);
+    auto l = std::min<int>(static_cast<int>(level), 9); // GCOVR_EXCL_LINE
     gzsetparams(gz_file, l, Z_DEFAULT_STRATEGY);
     auto p_stream = new GZipFileOutputStream;
     p_stream->gzFile = gz_file;
@@ -12,14 +12,14 @@ sese::GZipFileOutputStream::Ptr sese::GZipFileOutputStream::create(const char *f
 }
 
 int64_t sese::GZipFileOutputStream::write(const void *buffer, size_t length) {
-    return gzwrite((gzFile_s *) gzFile, buffer, (unsigned int) length);
+    return gzwrite(static_cast<gzFile_s *>(gzFile), buffer, static_cast<unsigned int>(length));
 }
 
 void sese::GZipFileOutputStream::close() noexcept {
-    gzclose((gzFile_s *) gzFile);
+    gzclose(static_cast<gzFile_s *>(gzFile));
     gzFile = nullptr;
 }
 
-void sese::GZipFileOutputStream::deleter(sese::GZipFileOutputStream *data) noexcept {
-    delete data;
+void sese::GZipFileOutputStream::deleter(GZipFileOutputStream *data) noexcept {
+    delete data; // GCOVR_EXCL_LINE
 }

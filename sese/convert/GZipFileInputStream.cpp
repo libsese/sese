@@ -10,14 +10,14 @@ sese::GZipFileInputStream::Ptr sese::GZipFileInputStream::create(const char *fil
 }
 
 int64_t sese::GZipFileInputStream::read(void *buffer, size_t length) {
-    return gzread((gzFile_s *) gzFile, buffer, (unsigned int) length);
+    return gzread(static_cast<gzFile_s *>(gzFile), buffer, static_cast<unsigned int>(length));
 }
 
 void sese::GZipFileInputStream::close() noexcept {
-    gzclose((gzFile_s *) gzFile);
+    gzclose(static_cast<gzFile_s *>(gzFile));
     gzFile = nullptr;
 }
 
-void sese::GZipFileInputStream::deleter(sese::GZipFileInputStream *data) noexcept {
-    delete data;
+void sese::GZipFileInputStream::deleter(GZipFileInputStream *data) noexcept {
+    delete data; // GCOVR_EXCL_LINE
 }

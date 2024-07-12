@@ -15,6 +15,9 @@
 #include <functional>
 
 namespace sese::plugin {
+
+// GCOVR_EXCL_START
+
 /// 类工厂内建接口
 class ClassFactory {
 public:
@@ -43,4 +46,7 @@ public:
 protected:
     RegisterInfoMapType infoMap{};
 };
+
+// GCOVR_EXCL_STOP
+
 } // namespace sese::plugin

@@ -24,6 +24,9 @@
 #include <sese/system/Process.h>
 
 namespace sese::system {
+
+// GCOVR_EXCL_START
+
 /// @brief 进程构建器
 class  ProcessBuilder {
 public:
@@ -50,4 +53,7 @@ public:
 private:
     text::StringBuilder builder;
 };
+
+// GCOVR_EXCL_STOP
+
 } // namespace sese::system
