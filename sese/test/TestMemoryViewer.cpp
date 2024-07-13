@@ -4,7 +4,7 @@
 #include "sese/io/ConsoleOutputStream.h"
 #include "sese/io/OutputUtil.h"
 
-TEST(TestMemoryViewer, _0) {
+TEST(TestMemoryViewer, Output) {
     int8_t i8 = 20;
     int16_t i16 = 40;
     int32_t i32 = 90;
