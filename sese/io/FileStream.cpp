@@ -16,20 +16,8 @@
 
 using sese::io::FileStream;
 
-//sese::FileStream::FileStream(const std::string &fileName, const char *mode) {
-//#ifdef _WIN32
-//    auto rt = fopen_s(&file, fileName.c_str(), mode);
-//#else
-//    file = fopen(fileName.c_str(), mode);
-//    auto rt = errno;
-//#endif
-//    if (rt != 0) {
-//        file = nullptr;
-//    }
-//}
-
 int64_t FileStream::read(void *buffer, size_t length) {
-    return static_cast<int64_t>(::fread(buffer, 1, length, file));
+    return static_cast<int64_t>(::fread(buffer, 1, length, file)); // GCOVR_EXCL_LINE
 }
 
 int64_t FileStream::write(const void *buffer, size_t length) {

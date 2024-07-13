@@ -22,9 +22,6 @@
 
 using namespace sese::text;
 
-using MyMap = std::map<std::string, int>;
-using MyMapPair = std::pair<const std::string, int>;
-
 struct Point {
     int x;
     int y;
@@ -39,14 +36,6 @@ struct Formatter<Point> {
     }
     static void format(FmtCtx &ctx, const Point &p) {
         ctx.builder << fmt("({},{})", p.x, p.y);
-    }
-};
-
-template<>
-struct Formatter<MyMapPair> {
-    void parse(const std::string &) {}
-    static void format(FmtCtx &ctx, MyMapPair &pair) {
-        ctx.builder << "{" + pair.first + "," + std::to_string(pair.second) + "}";
     }
 };
 } // namespace sese::text::overload
@@ -144,11 +133,12 @@ TEST(TestFormat, Constexpr) {
 TEST(TestFormat, Iterable) {
     auto array = std::array<int, 3>({1, 2, 3});
     EXPECT_EQ("[1,2,3]", fmt("{}", array));
+}
 
-    MyMap map;
-    map["abc"] = 114;
-    map["efg"] = 514;
-    EXPECT_EQ("[{abc,114},{efg,514}]", fmt("{}", map));
+TEST(TestFormat, ContainerForEach) {
+    std::map<std::string, int> map{{"Hello", 10}, {"World", 2}};
+    EXPECT_EQ("[{Hello, 10}, {World, 2}]", fmt("{}", for_each(map)));
 
-    SESE_INFO("{A,B}|{C,D}", map, array);
+    auto array = std::array<int, 3>({1, 2, 3});
+    EXPECT_EQ("[1, 2, 3]", fmt("{}", for_each(array)));
 }

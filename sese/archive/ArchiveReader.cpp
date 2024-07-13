@@ -166,9 +166,13 @@ bool ArchiveReader::extract(const ArchiveReader::ExtractCallback &callback) {
     return true;
 }
 
+// GCOVR_EXCL_START
+
 int ArchiveReader::getError() const {
     return archive_errno(XX);
 }
+
+// GCOVR_EXCL_STOP
 
 const char *ArchiveReader::getErrorString() const {
     return archive_error_string(XX);

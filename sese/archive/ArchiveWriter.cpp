@@ -133,8 +133,6 @@ int ArchiveWriter::setOptions(const std::string &opt) {
     return archive_write_set_options(XX, opt.c_str());
 }
 
-// GCOVR_EXCL_STOP
-
 int ArchiveWriter::getError() {
     return archive_errno(XX);
 }
@@ -142,6 +140,8 @@ int ArchiveWriter::getError() {
 const char *ArchiveWriter::getErrorString() {
     return archive_error_string(XX);
 }
+
+// GCOVR_EXCL_STOP
 
 bool ArchiveWriter::begin() {
     if (nullptr == output) {

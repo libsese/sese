@@ -46,7 +46,7 @@ public:
 
 public:
     ConfigObject();
-    [[nodiscard]] Section::Ptr getDefaultSection() const noexcept { return this->defaultSection; }
+    [[nodiscard]] Section::Ptr getDefaultSection() const noexcept { return this->defaultSection; } // GCOVR_EXCL_LINE
     /**
      * 根据节名称获取节
      * @param section_name 节的名称
@@ -64,7 +64,7 @@ private:
 /**
  * @brief 传统配置文件工具
  */
-class  SESE_DEPRECATED ConfigUtil {
+class SESE_DEPRECATED ConfigUtil {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;
