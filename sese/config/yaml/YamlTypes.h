@@ -11,6 +11,10 @@
 #include <map>
 #include <list>
 
+#ifdef _WIN32
+#pragma warning(disable : 4996)
+#endif
+
 namespace sese::yaml {
 
 /// 类型枚举

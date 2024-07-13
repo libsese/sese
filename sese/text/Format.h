@@ -73,16 +73,16 @@ SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption
     switch (opt.align) {
         case Align::LEFT:
             Number::toString(builder, number, radix, upper_case);
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             break;
         case Align::RIGHT:
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, radix, upper_case);
             break;
         case Align::CENTER:
-            builder << std::string(diff / 2, opt.wide_char);
+            builder << std::string(diff / 2, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, radix, upper_case);
-            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char); // GCOVR_EXCL_LINE
             break;
     }
 }
@@ -129,31 +129,34 @@ void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     }
     if (opt.wide <= len) {
         Number::toString(builder, number, opt.float_placeholder);
+        if (opt.ext_type == '%') {
+            builder.append('%');
+        }
         return;
     }
     auto diff = opt.wide - len;
     switch (opt.align) {
         case Align::LEFT:
             Number::toString(builder, number, opt.float_placeholder);
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
             break;
         case Align::RIGHT:
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, opt.float_placeholder);
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
             break;
         case Align::CENTER:
-            builder << std::string(diff / 2, opt.wide_char);
+            builder << std::string(diff / 2, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, opt.float_placeholder);
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
-            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char); // GCOVR_EXCL_LINE
             break;
     }
 }

@@ -3,7 +3,7 @@
 
 #include <array>
 
-#ifdef WIN32
+#ifdef _WIN32
 #pragma warning(disable : 4996)
 #endif
 

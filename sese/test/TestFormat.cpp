@@ -19,6 +19,7 @@
 #include <sese/Log.h>
 
 #include <map>
+#include <limits>
 
 using namespace sese::text;
 
@@ -109,6 +110,16 @@ TEST(TestFormat, Number) {
     EXPECT_EQ("0x001e240", fmt("0x{:0>7x}", 123456));
     EXPECT_EQ("000030071", fmt("0{:0>8o}", 12345));
     EXPECT_EQ("b01111011", fmt("b{:0>8b}", 123));
+
+    EXPECT_EQ("123 ", fmt("{:<4}", 123));
+    EXPECT_EQ(" 123 ", fmt("{:^5}", 123));
+}
+
+TEST(TestFormat, Float) {
+    EXPECT_EQ("12.30%", fmt("{:<1.2%}", 0.123));
+    EXPECT_EQ(" 12.30% ", fmt("{:^8.2%}", 0.123));
+    EXPECT_EQ(" 12.30%", fmt("{:>7.2%}", 0.123));
+    EXPECT_EQ("NaN", fmt("{}", std::numeric_limits<double>::quiet_NaN()));
 }
 
 TEST(TestFormat, Formatter) {
@@ -133,12 +144,19 @@ TEST(TestFormat, Constexpr) {
 TEST(TestFormat, Iterable) {
     auto array = std::array<int, 3>({1, 2, 3});
     EXPECT_EQ("[1,2,3]", fmt("{}", array));
+    EXPECT_EQ("<1:2:3>", fmt("{<:>}", array));
+    // bug: 无法解析 '{}' 参数
+    // EXPECT_EQ("!{parsing failed}", fmt("{\\{:\\}}", array));
 }
 
 TEST(TestFormat, ContainerForEach) {
     std::map<std::string, int> map{{"Hello", 10}, {"World", 2}};
     EXPECT_EQ("[{Hello, 10}, {World, 2}]", fmt("{}", for_each(map)));
+    map.clear();
+    EXPECT_EQ("[]", fmt("{}", for_each(map)));
 
-    auto array = std::array<int, 3>({1, 2, 3});
+    auto array = std::vector<int>({1, 2, 3});
     EXPECT_EQ("[1, 2, 3]", fmt("{}", for_each(array)));
+    array.clear();
+    EXPECT_EQ("[]", fmt("{}", for_each(array)));
 }
