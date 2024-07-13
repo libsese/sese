@@ -37,3 +37,30 @@ TEST(TestServlet, HeaderArgs) {
     EXPECT_EQ(1, serv.getExpectHeaders().size());
     SESE_INFO("headers: {}", for_each(serv.getExpectHeaders()));
 }
+
+// case: no args
+TEST(TestServlet, NoArgs) {
+    auto serv = Servlet(sese::net::http::RequestType::POST, "/api/v2/login");
+    EXPECT_EQ(sese::net::http::RequestType::POST, serv.getExpectType());
+    EXPECT_EQ(0, serv.getExpectQueryArgs().size());
+    EXPECT_EQ(0, serv.getExpectHeaders().size());
+}
+
+// case: no callback
+TEST(TestServlet, NoCallback) {
+    auto serv = Servlet(sese::net::http::RequestType::GET, "/api/v2/login");
+    sese::net::http::Request req;
+    sese::net::http::Response resp;
+    serv.invoke(req, resp);
+    EXPECT_EQ(500, resp.getCode());
+}
+
+// case: no expect type
+TEST(TestServlet, NoExpectType) {
+    auto serv = Servlet(sese::net::http::RequestType::POST, "/api/v2/login");
+    serv = [](sese::net::http::Request &, sese::net::http::Response &) {};
+    sese::net::http::Request req;
+    sese::net::http::Response resp;
+    serv.invoke(req, resp);
+    EXPECT_EQ(403, resp.getCode());
+}
