@@ -18,6 +18,8 @@ AsioHttpClient::~AsioHttpClient() {
     socket.close();
 }
 
+// GCOVR_EXCL_START
+
 int AsioHttpClient::getLastError() {
     return code.value();
 }
@@ -26,9 +28,13 @@ std::string AsioHttpClient::getLastErrorString() {
     return code.message();
 }
 
+// GCOVR_EXCL_STOP
+
 bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
     auto url_result = RequestParser::parse(url);
     req = std::move(url_result.request);
+    // 不方便CI测试
+    // GCOVR_EXCL_START
     if (!proxy.empty()) {
         auto proxy_result = RequestParser::parse(proxy);
         if (proxy_result.address == nullptr) {
@@ -39,7 +45,9 @@ bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
         req->set("proxy-connection", "keep-alive");
         address = std::move(proxy_result.address);
         ssl = strcmpDoNotCase("https", proxy_result.url.getProtocol().c_str());
-    } else {
+    }
+    // GCOVR_EXCL_STOP
+    else {
         if (url_result.address == nullptr) {
             return false;
         }
