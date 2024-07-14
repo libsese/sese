@@ -19,20 +19,17 @@
 #include <sese/Log.h>
 
 #include <map>
+#include <limits>
 
 using namespace sese::text;
-
-using MyMap = std::map<std::string, int>;
-using MyMapPair = std::pair<const std::string, int>;
 
 struct Point {
     int x;
     int y;
 };
 
-namespace sese::text::overload {
 template<>
-struct Formatter<Point> {
+struct sese::text::overload::Formatter<Point> {
     static bool parse(const std::string &args) {
         SESE_INFO("args {}", args);
         return true;
@@ -40,16 +37,55 @@ struct Formatter<Point> {
     static void format(FmtCtx &ctx, const Point &p) {
         ctx.builder << fmt("({},{})", p.x, p.y);
     }
-};
+}; // namespace sese::text::overload
 
-template<>
-struct Formatter<MyMapPair> {
-    void parse(const std::string &) {}
-    static void format(FmtCtx &ctx, MyMapPair &pair) {
-        ctx.builder << "{" + pair.first + "," + std::to_string(pair.second) + "}";
+TEST(TestFormat, FmtCtx) {
+    {
+        // 最简格式
+        std::string args;
+        FmtCtx ctx("{}");
+        EXPECT_TRUE(ctx.parsing(args));
+        EXPECT_EQ("", args);
     }
-};
-} // namespace sese::text::overload
+    {
+        // 参数外转义字符1
+        std::string args;
+        FmtCtx ctx("\\{\\} {}");
+        EXPECT_TRUE(ctx.parsing(args));
+        EXPECT_EQ("", args);
+        EXPECT_EQ("{} ", ctx.builder.toString());
+    }
+    {
+        // 参数外转义字符2
+        std::string args;
+        FmtCtx ctx("\\}\\{ {}");
+        EXPECT_TRUE(ctx.parsing(args));
+        EXPECT_EQ("", args);
+        EXPECT_EQ("}{ ", ctx.builder.toString());
+    }
+    {
+        // 参数外转义字符3
+        std::string args;
+        FmtCtx ctx("ABC\\}EDF\\{ {}");
+        EXPECT_TRUE(ctx.parsing(args));
+        EXPECT_EQ("", args);
+        EXPECT_EQ("ABC}EDF{ ", ctx.builder.toString());
+    }
+    {
+        // 参数内转义字符1
+        std::string args;
+        FmtCtx ctx("{\\{,\\}}");
+        EXPECT_TRUE(ctx.parsing(args));
+        EXPECT_EQ("{,}", args);
+    }
+    {
+        // 参数内转义字符2
+        std::string args;
+        FmtCtx ctx("{ABC\\},EFG\\{}");
+        EXPECT_TRUE(ctx.parsing(args));
+        EXPECT_EQ("ABC},EFG{", args);
+    }
+}
 
 TEST(TestFormat, OptionParse) {
     {
@@ -120,6 +156,17 @@ TEST(TestFormat, Number) {
     EXPECT_EQ("0x001e240", fmt("0x{:0>7x}", 123456));
     EXPECT_EQ("000030071", fmt("0{:0>8o}", 12345));
     EXPECT_EQ("b01111011", fmt("b{:0>8b}", 123));
+
+    EXPECT_EQ("123 ", fmt("{:<4}", 123));
+    EXPECT_EQ(" 123 ", fmt("{:^5}", 123));
+}
+
+TEST(TestFormat, Float) {
+    // EXPECT_EQ("12.30%", fmt("{:<1.2%}", 0.123));
+    EXPECT_EQ("12.30% ", fmt("{:<7.2%}", 0.123));
+    // EXPECT_EQ(" 12.30% ", fmt("{:^8.2%}", 0.123));
+    // EXPECT_EQ(" 12.30%", fmt("{:>7.2%}", 0.123));
+    // EXPECT_EQ("NaN", fmt("{}", std::numeric_limits<double>::quiet_NaN()));
 }
 
 TEST(TestFormat, Formatter) {
@@ -144,11 +191,19 @@ TEST(TestFormat, Constexpr) {
 TEST(TestFormat, Iterable) {
     auto array = std::array<int, 3>({1, 2, 3});
     EXPECT_EQ("[1,2,3]", fmt("{}", array));
+    EXPECT_EQ("<1:2:3>", fmt("{<:>}", array));
+    EXPECT_EQ("{1,2,3}", fmt("{\\{,\\}}", array));
+    // EXPECT_EQ("!{parsing failed}", fmt("{\\{:\\}}", array));
+}
 
-    MyMap map;
-    map["abc"] = 114;
-    map["efg"] = 514;
-    EXPECT_EQ("[{abc,114},{efg,514}]", fmt("{}", map));
+TEST(TestFormat, ContainerForEach) {
+    std::map<std::string, int> map{{"Hello", 10}, {"World", 2}};
+    EXPECT_EQ("[{Hello, 10}, {World, 2}]", fmt("{}", for_each(map)));
+    map.clear();
+    EXPECT_EQ("[]", fmt("{}", for_each(map)));
 
-    SESE_INFO("{A,B}|{C,D}", map, array);
+    auto array = std::vector<int>({1, 2, 3});
+    EXPECT_EQ("[1, 2, 3]", fmt("{}", for_each(array)));
+    array.clear();
+    EXPECT_EQ("[]", fmt("{}", for_each(array)));
 }

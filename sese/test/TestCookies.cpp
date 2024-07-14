@@ -1,4 +1,5 @@
 #include <sese/net/http/HttpUtil.h>
+#include <sese/util/DateTime.h>
 
 #include <gtest/gtest.h>
 
@@ -30,4 +31,23 @@ TEST(TestCookies, ParseCookie) {
     EXPECT_EQ("value3", cookie->find("cookie3")->getValue());
 
     EXPECT_EQ(nullptr, cookie->find("cookie4"));
+}
+
+TEST(TestCookies, Expired) {
+    auto now = sese::DateTime::now(0);
+    {
+        auto str = "AAA=your_value; Expires=Fri, 12 Jul 2024 10:00:00 GMT; Path=/; Secure; HttpOnly";
+        auto cookie = sese::net::http::HttpUtil::parseFromSetCookie(str);
+        EXPECT_NE(cookie, nullptr);
+        ASSERT_EQ(cookie->getMaxAge(), 0);
+        EXPECT_TRUE(cookie->expired(now.getTimestamp()));
+    }
+    {
+        auto str = "Set-Cookie: AAA=your_value; Max-Age=10; Path=/; Secure; HttpOnly";
+        auto cookie = sese::net::http::HttpUtil::parseFromSetCookie(str);
+        EXPECT_NE(cookie, nullptr);
+        ASSERT_GT(cookie->getMaxAge(), 0);
+        cookie->updateExpiresFrom(now.getTimestamp());
+        EXPECT_TRUE(cookie->expired(now.getTimestamp() + 20));
+    }
 }

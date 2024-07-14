@@ -14,6 +14,7 @@
 
 #include <benchmark/benchmark.h>
 #include <sese/text/Format.h>
+#include <sese/text/Util.h>
 #include <sese/util/DateTime.h>
 
 constexpr auto PI = 3.14159265;

@@ -34,6 +34,10 @@ public:
 
     [[nodiscard]] RequestType getExpectType() const { return expect_type; }
 
+    [[nodiscard]] auto &getExpectQueryArgs() const { return expect_query_args; }
+
+    [[nodiscard]] auto &getExpectHeaders() const { return expect_headers; }
+
     void requiredQueryArg(const std::string &arg);
 
     void requiredHeader(const std::string &arg);

@@ -19,7 +19,7 @@ public:
 
     ResourceManager() = default;
 
-    virtual ~ResourceManager() = default;
+    virtual ~ResourceManager() = default; // GCOVR_EXCL_LINE
 
     /// 根据资源名称获取资源
     /// \param name 资源名称

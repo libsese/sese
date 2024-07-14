@@ -4,6 +4,8 @@ CMakeUserPresets.json
 build
 build-*
 .xmake
+venv
+.venv
 temp
 *.csv
 *.gcov

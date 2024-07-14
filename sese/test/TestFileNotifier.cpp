@@ -29,7 +29,7 @@ public:
     }
 };
 
-TEST(TestFileNotifier, _0) {
+TEST(TestFileNotifier, Notify) {
     Option option{};
     auto notifier = sese::system::FileNotifier::create(PATH, &option);
     notifier->loopNonblocking();

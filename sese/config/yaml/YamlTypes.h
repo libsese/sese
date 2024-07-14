@@ -11,9 +11,8 @@
 #include <map>
 #include <list>
 
-#if defined(_MSC_VER)
+#ifdef _WIN32
 #pragma warning(disable : 4996)
-#pragma warning(disable : 4251)
 #endif
 
 namespace sese::yaml {
@@ -29,8 +28,10 @@ class ObjectData;
 class ArrayData;
 class BasicData;
 
+// GCOVR_EXCL_START
+
 /// 类型基类
-class  Data {
+class Data {
 public:
     using Ptr = std::shared_ptr<Data>;
 
@@ -43,30 +44,32 @@ private:
     const DataType TYPE;
 };
 
+// GCOVR_EXCL_STOP
+
 /// 对象类型
-class  ObjectData final : public Data {
+class ObjectData final : public Data {
 public:
     using Ptr = std::shared_ptr<ObjectData>;
 
     explicit ObjectData() noexcept;
 
-    [[nodiscard]] inline size_t size() const noexcept { return keyValueSet.size(); }
-    [[nodiscard]] inline bool empty() const noexcept { return keyValueSet.empty(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE size_t size() const noexcept { return keyValueSet.size(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE bool empty() const noexcept { return keyValueSet.empty(); }
     void set(const std::string &key, const Data::Ptr &data) noexcept;
     [[nodiscard]] Data::Ptr get(const std::string &key) noexcept;
-    inline std::map<std::string, Data::Ptr>::iterator begin() noexcept { return keyValueSet.begin(); }
-    inline std::map<std::string, Data::Ptr>::iterator end() noexcept { return keyValueSet.end(); }
+    SESE_ALWAYS_INLINE std::map<std::string, Data::Ptr>::iterator begin() noexcept { return keyValueSet.begin(); }
+    SESE_ALWAYS_INLINE std::map<std::string, Data::Ptr>::iterator end() noexcept { return keyValueSet.end(); }
 
     template<class T>
-    std::enable_if_t<std::is_same_v<T, ObjectData>, std::shared_ptr<sese::yaml::ObjectData>>
+    std::enable_if_t<std::is_same_v<T, ObjectData>, std::shared_ptr<ObjectData>>
     getDataAs(const std::string &key) noexcept;
 
     template<class T>
-    std::enable_if_t<std::is_same_v<T, ArrayData>, std::shared_ptr<sese::yaml::ArrayData>>
+    std::enable_if_t<std::is_same_v<T, ArrayData>, std::shared_ptr<ArrayData>>
     getDataAs(const std::string &key) noexcept;
 
     template<class T>
-    std::enable_if_t<std::is_same_v<T, BasicData>, std::shared_ptr<sese::yaml::BasicData>>
+    std::enable_if_t<std::is_same_v<T, BasicData>, std::shared_ptr<BasicData>>
     getDataAs(const std::string &key) noexcept;
 
 protected:
@@ -74,23 +77,25 @@ protected:
 };
 
 /// 数组类型
-class  ArrayData final : public Data {
+class ArrayData final : public Data {
 public:
     using Ptr = std::shared_ptr<ArrayData>;
 
     explicit ArrayData() noexcept;
-    [[nodiscard]] inline size_t size() const noexcept { return valueSet.size(); }
-    [[nodiscard]] inline bool empty() const noexcept { return valueSet.empty(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE size_t size() const noexcept { return valueSet.size(); }
+    [[nodiscard]] SESE_ALWAYS_INLINE bool empty() const noexcept { return valueSet.empty(); }
     void push(const Data::Ptr &data) noexcept { valueSet.emplace_back(data); }
-    inline std::list<Data::Ptr>::iterator begin() noexcept { return valueSet.begin(); }
-    inline std::list<Data::Ptr>::iterator end() noexcept { return valueSet.end(); }
+    SESE_ALWAYS_INLINE std::list<Data::Ptr>::iterator begin() noexcept { return valueSet.begin(); }
+    SESE_ALWAYS_INLINE std::list<Data::Ptr>::iterator end() noexcept { return valueSet.end(); }
 
 protected:
     std::list<Data::Ptr> valueSet;
 };
 
+// GCOVR_EXCL_START
+
 /// 基本数据类
-class  BasicData final : public Data {
+class BasicData final : public Data {
 public:
     using Ptr = std::shared_ptr<BasicData>;
 
@@ -219,6 +224,8 @@ public:
     setDataAs(std::enable_if_t<std::is_same_v<T, double>, double> value) noexcept {
         this->data = std::to_string(value);
     }
+
+    // GCOVR_EXCL_STOP
 
     /// 设置当前值是否为空
     /// \param null 是否为空

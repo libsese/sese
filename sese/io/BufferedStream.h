@@ -9,10 +9,6 @@
 #include "sese/io/Stream.h"
 #include "sese/util/Noncopyable.h"
 
-#ifdef _WIN32
-#pragma warning(disable : 4251)
-#endif
-
 namespace sese::io {
 
 /// @brief 流缓存类

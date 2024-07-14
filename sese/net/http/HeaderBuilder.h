@@ -15,7 +15,6 @@ class HeaderBuilder {
 
 public:
     explicit HeaderBuilder(Header &header);
-    HeaderBuilder(HeaderBuilder &&other) noexcept ;
     HeaderBuilder &operator=(HeaderBuilder &&other) = delete;
     HeaderBuilder(const HeaderBuilder &other) = delete;
     const HeaderBuilder &operator=(const HeaderBuilder &) = delete;

@@ -5,7 +5,7 @@
 
 using Func = double(double);
 
-TEST(TestLibraryLoader, _0) {
+TEST(TestLibraryLoader, Sin) {
 #ifdef _WIN32
     auto lib_name = "NTDLL.DLL";
 #elif __linux__

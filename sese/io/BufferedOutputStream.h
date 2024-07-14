@@ -5,6 +5,7 @@
 /// \date 2022.11.20
 #pragma once
 
+#include "sese/Config.h"
 #include "sese/io/OutputStream.h"
 
 namespace sese::io {

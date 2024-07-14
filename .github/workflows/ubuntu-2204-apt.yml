@@ -97,8 +97,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           mkdir -p build/coverage/html
-          gcovr --config gcovr-html.cfg
-          gcovr --config gcovr-cobertura.cfg
+          gcovr
 
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.3.0

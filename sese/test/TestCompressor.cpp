@@ -36,7 +36,7 @@ TEST(TestCompress, ZLIB) {
     auto compress_size = builder.read(compress_buffer_out, 32);
     builder.freeCapacity();
     sese::Decompressor decompressor(sese::CompressionType::ZLIB, 8);
-    decompressor.input(compress_buffer_out, (unsigned int) compress_size);
+    decompressor.input(compress_buffer_out, static_cast<unsigned int>(compress_size));
     last_time = 0;
     do {
         rt = decompressor.inflate(&out);
@@ -58,7 +58,7 @@ TEST(TestCompress, GZIP) {
     using sese::GZipFileInputStream;
     using sese::GZipFileOutputStream;
 
-    auto output = GZipFileOutputStream::create("test.txt.gz", 9);
+    auto output = GZipFileOutputStream::create("test.txt.gz", 10); // 10 will replace to 9
     ASSERT_TRUE(output);
     for (int i = 0; i < 10; ++i) {
         output->write("Hello, World\n", 13);

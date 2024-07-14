@@ -9,11 +9,9 @@
 
 #include "sese/Config.h"
 
-#ifdef WIN32
-#pragma warning(disable : 4251)
-#endif
-
 namespace sese::io {
+
+// GCOVR_EXCL_START
 
 /// \brief 流式输出接口类
 class  OutputStream {
@@ -24,5 +22,7 @@ public:
 
     virtual int64_t write(const void *buffer, size_t length) = 0;
 };
+
+// GCOVR_EXCL_STOP
 
 } // namespace sese::io

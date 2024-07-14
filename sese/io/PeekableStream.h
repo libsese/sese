@@ -8,14 +8,12 @@
 
 #include "sese/Config.h"
 
-#ifdef WIN32
-#pragma warning(disable : 4251)
-#endif
-
 namespace sese::io {
 
+// GCOVR_EXCL_START
+
 /// 可窥视流接口
-class  PeekableStream {
+class PeekableStream {
 public:
     virtual ~PeekableStream() = default;
     typedef std::shared_ptr<PeekableStream> Ptr;
@@ -31,4 +29,7 @@ public:
     /// \return 实际步进大小
     virtual int64_t trunc(size_t length) = 0;
 };
+
+// GCOVR_EXCL_STOP
+
 } // namespace sese::io

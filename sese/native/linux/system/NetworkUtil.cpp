@@ -24,10 +24,13 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
 
     auto p_address = p_if_address;
     while (p_address) {
+        // 此处触发概率低，目前仅能在有隧道接口的服务器上复现
+        // GCOVR_EXCL_START
         if (p_address->ifa_addr == nullptr) {
             p_address = p_address->ifa_next;
             continue;
         }
+        // GCOVR_EXCL_STOP
 
         if (p_address->ifa_addr->sa_family == AF_INET ||
             p_address->ifa_addr->sa_family == AF_PACKET) {

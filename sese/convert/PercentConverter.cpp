@@ -40,15 +40,18 @@ void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest) {
 }
 
 char inline getHexChar(char ch) {
+    // GCOVR_EXCL_START
     if (ch >= 'A' && ch <= 'F') {
         return ch - 55;
-    } else if (ch >= 'a' && ch <= 'f') {
-        return ch - 87;
-    } else if (ch >= '0' && ch <= '9') {
-        return ch - 48;
-    } else {
-        return static_cast<char>(-1);
     }
+    if (ch >= 'a' && ch <= 'f') {
+        return ch - 87;
+    }
+    if (ch >= '0' && ch <= '9') {
+        return ch - 48;
+    }
+    // GCOVR_EXCL_STOP
+    return static_cast<char>(-1);
 }
 
 bool PercentConverter::decode(const char *src, const OutputStream::Ptr &dest) {

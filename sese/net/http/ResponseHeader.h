@@ -1,6 +1,6 @@
 /**
  * @file ResponseHeader.h
- * @author your name (you@domain.com)
+ * @author kaoru
  * @brief 响应头类
  * @date 2022年05月17日
  */
@@ -8,6 +8,8 @@
 #include <sese/net/http/Header.h>
 
 namespace sese::net::http {
+
+// GCOVR_EXCL_START
 
 /**
  * @brief 响应头类
@@ -31,5 +33,7 @@ protected:
     uint16_t statusCode = 200;
     HttpVersion version = HttpVersion::VERSION_1_1;
 };
+
+// GCOVR_EXCL_STOP
 
 } // namespace sese::net::http

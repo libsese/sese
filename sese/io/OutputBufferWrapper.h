@@ -10,7 +10,11 @@
 
 #include "sese/io/OutputStream.h"
 
+#include <cstdint>
+
 namespace sese::io {
+
+// GCOVR_EXCL_START
 
 /// \brief 输出缓存包装器
 class  OutputBufferWrapper final : public OutputStream {
@@ -30,5 +34,7 @@ protected:
     size_t len = 0;
     size_t cap = 0;
 };
+
+// GCOVR_EXCL_STOP
 
 } // namespace sese::io

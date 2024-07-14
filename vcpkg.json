@@ -5,6 +5,7 @@
   "homepage": "https://github.com/libsese/sese",
   "license": "Apache-2.0",
   "supports": "x64 & (windows | osx | linux) & !uwp",
+  "builtin-baseline": "f7423ee180c4b7f40d43402c2feb3859161ef625",
   "dependencies": [
     {
       "name": "asio",
@@ -48,23 +49,23 @@
         "libpq"
       ]
     },
-    "sqlite3": {
-      "description": "add sqlite3 support",
-      "dependencies": [
-        "sqlite3"
-      ]
-    },
     "replace-execinfo": {
       "description": "replace the system execinfo implementation",
       "dependencies": [
         "libunwind"
       ]
     },
+    "sqlite3": {
+      "description": "add sqlite3 support",
+      "dependencies": [
+        "sqlite3"
+      ]
+    },
     "tests": {
       "description": "build the unit test",
       "dependencies": [
-        "gtest",
-        "benchmark"
+        "benchmark",
+        "gtest"
       ]
     }
   }

@@ -254,7 +254,7 @@ sqlite3 build/db_test.db < scripts/sqlite_dump.sql
 
 ```bash
 mkdir -p build/coverage/html
-gcovr --config gcovr-html.cfg
+gcovr
 ```
 
 > [!NOTE]

@@ -23,9 +23,9 @@
 #include <sese/Config.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/text/Number.h>
-#include <sese/text/Util.h>
 #include <sese/text/FormatOption.h>
 #include <sese/types/is_iterable.h>
+#include <sese/types/is_pair.h>
 #include <sese/Util.h>
 
 #include <cassert>
@@ -73,16 +73,16 @@ SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption
     switch (opt.align) {
         case Align::LEFT:
             Number::toString(builder, number, radix, upper_case);
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             break;
         case Align::RIGHT:
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, radix, upper_case);
             break;
         case Align::CENTER:
-            builder << std::string(diff / 2, opt.wide_char);
+            builder << std::string(diff / 2, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, radix, upper_case);
-            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char); // GCOVR_EXCL_LINE
             break;
     }
 }
@@ -92,7 +92,6 @@ SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption
 /// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 整形
-/// \return 格式化字符串
 template<typename T>
 void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     auto radix = opt.ext_type;
@@ -114,7 +113,6 @@ void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
 /// \param ctx 格式化上下文
 /// \param opt 选项
 /// \param number 浮点数
-/// \return 格式化字符串
 template<typename T>
 void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     if (opt.float_placeholder == 0) {
@@ -131,58 +129,53 @@ void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     }
     if (opt.wide <= len) {
         Number::toString(builder, number, opt.float_placeholder);
+        if (opt.ext_type == '%') {
+            builder.append('%');
+        }
         return;
     }
     auto diff = opt.wide - len;
     switch (opt.align) {
         case Align::LEFT:
             Number::toString(builder, number, opt.float_placeholder);
-            builder << std::string(diff, opt.wide_char);
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             break;
         case Align::RIGHT:
-            builder << std::string(diff, opt.wide_char);
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, opt.float_placeholder);
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
             break;
         case Align::CENTER:
-            builder << std::string(diff / 2, opt.wide_char);
+            builder << std::string(diff / 2, opt.wide_char); // GCOVR_EXCL_LINE
             Number::toString(builder, number, opt.float_placeholder);
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
-            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
+            builder << std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char); // GCOVR_EXCL_LINE
             break;
     }
 }
 
 namespace overload {
-
     template<typename VALUE, typename ENABLE = void>
     struct Formatter {
-        bool parse(const std::string &) {
-            return false;
-        }
+        bool parse(const std::string &) { return false; }
 
-        void format(FmtCtx &, const VALUE &) {
-        }
+        void format(FmtCtx &, const VALUE &) {}
     };
 
     template<>
     struct Formatter<std::string> {
         FormatOption option;
 
-        bool parse(const std::string &opt_str) {
-            return FormatOption_StringParse(option, opt_str);
-        }
+        bool parse(const std::string &opt_str) { return FormatOption_StringParse(option, opt_str); }
 
-        void format(FmtCtx &ctx, const std::string &value) {
-            FormatOption_StringFormat(ctx, option, value);
-        }
+        void format(FmtCtx &ctx, const std::string &value) { FormatOption_StringFormat(ctx, option, value); }
     };
 
     template<>
@@ -263,10 +256,66 @@ namespace overload {
 
 } // namespace overload
 
+template<typename C, std::enable_if_t<!is_pair<typename C::value_type>::value, int> = 0>
+std::string for_each(const C &container) {
+    constexpr char SPLIT_CH = ',';
+    constexpr char BEGIN_CH = '[';
+    constexpr char END_CH = ']';
+    if (container.empty()) {
+        return "[]";
+    }
+    FmtCtx ctx("");
+    auto formatter = overload::Formatter<std::decay_t<typename C::value_type>>();
+    bool first = true;
+    ctx.builder << BEGIN_CH;
+    for (const auto &item: container) {
+        if (first) {
+            first = false;
+        } else {
+            ctx.builder << SPLIT_CH << ' ';
+        }
+        formatter.format(ctx, item);
+    }
+    ctx.builder << END_CH;
+    return ctx.builder.toString();
+}
+
+template<typename C, std::enable_if_t<is_pair<typename C::value_type>::value, int> = 0>
+std::string for_each(const C &container) {
+    constexpr char SPLIT_CH = ',';
+    constexpr char BEGIN_CH = '[';
+    constexpr char END_CH = ']';
+    constexpr char PAIR_BEGIN_CH = '{';
+    constexpr char PAIR_END_CH = '}';
+    if (container.empty()) {
+        return "[]";
+    }
+    FmtCtx ctx("");
+    auto key_formatter = overload::Formatter<std::decay_t<typename C::key_type>>();
+    auto value_formatter = overload::Formatter<std::decay_t<typename C::mapped_type>>();
+    bool first = true;
+    ctx.builder << BEGIN_CH;
+    for (auto &&[key, value]: container) {
+        if (first) {
+            first = false;
+        } else {
+            ctx.builder << SPLIT_CH << ' ';
+        }
+        ctx.builder << PAIR_BEGIN_CH;
+        key_formatter.format(ctx, key);
+        ctx.builder << SPLIT_CH << ' ';
+        value_formatter.format(ctx, value);
+        ctx.builder << PAIR_END_CH;
+    }
+    ctx.builder << END_CH;
+    return ctx.builder.toString();
+}
+
 constexpr size_t FormatParameterCounter(const char *pattern) {
     size_t count = 0;
     const char *p = pattern;
-    if (*p == '{') count += 1;
+    if (*p == '{')
+        count += 1;
     p++;
     while (*p != 0) {
         if (*p == '{' && *(p - 1) != '\\') {
@@ -326,8 +375,7 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...) {
 #ifdef SESE_IS_DEBUG
-    auto param = FormatParameterCounter(pattern.data());
-    if (param) {
+    if (FormatParameterCounter(pattern.data())) {
         return "!{Mismatch in number of parameters}";
     }
 #endif
