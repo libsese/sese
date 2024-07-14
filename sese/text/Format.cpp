@@ -16,92 +16,69 @@
 
 sese::text::FmtCtx::FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()) {}
 
+SESE_ALWAYS_INLINE bool isKeyWord(char c) {
+    return c == '{' || c == '}';
+}
+
 bool sese::text::FmtCtx::parsing(std::string &args) {
-    bool status;
+    // { asdasdasd }
+    // ^           ^^
+    // pos1    pos2  pos
+    bool in_args = false;
     std::unique_ptr<StringBuilder> args_builder;
-    std::string_view::iterator n, m;
-    std::string_view::iterator pre_n, pre_m;
-    while (true) {
-        // '{' 查找并提取常量
-        pre_n = pos;
-    find_n:
-        n = std::find(pre_n, pattern.end(), '{');
-        if (n == pattern.end()) {
-            // 直接写入常量
-            // std::string substr(pre_n, n);
-            auto begin = pattern.data() + (pre_n - pattern.begin());
-            auto len = n - pre_n;
-            builder.append(begin, len);
-            status = false;
-            pos = n;
-            break;
-        }
-        if (n != pattern.begin() && *(n - 1) == '\\') {
-            // 找到但是是转义字符
-            // std::string substr(pre_n, n - 1);
-            auto begin = pattern.data() + (pre_n - pattern.begin());
-            auto len = n - pre_n - 1;
-            builder.append(begin, len);
-            builder << '{';
-            pre_n = n + 1;
-            goto find_n;
-        }
-        {
-            // 有效 '{'
-            // std::string substr(pre_n, n);
-            auto begin = pattern.data() + (pre_n - pattern.begin());
-            auto len = n - pre_n;
-            builder.append(begin, len);
-            pre_m = n + 1;
-        }
-
-        // 无参数直接返回
-        if (*pre_m == '}') {
-            pos = pre_m + 1;
-            return true;
-        }
-
-    find_m:
-        m = std::find(pre_m, pattern.end(), '}');
-        if (m == pattern.end()) {
-            // 没有闭包，直接退出
-            status = false;
-            break;
-        }
-        if (m != pattern.begin()) {
-            if (*(m - 1) == '\\') {
-                // 找到但是是转义字符
-                // std::string substr(pre_m, m - 1);
-                auto begin = pattern.data() + (pre_m - pattern.begin());
-                auto len = m - pre_m - 1;
-                if (args_builder == nullptr) {
-                    args_builder = std::make_unique<StringBuilder>(UINT8_MAX);
-                }
-                if (len) {
-                    args_builder->append(begin, len);
-                }
-                args_builder->append('}');
-                pre_m = m + 1;
-                goto find_m;
+    std::string_view::const_iterator pos1 = pos, pos2;
+    while (pos1 != pattern.end()) {
+        pos2 = std::find_if(pos1, pattern.end(), isKeyWord);
+        if (in_args) {
+            // 缺少闭包 '}'
+            if (pos2 == pattern.end()) {
+                return false;
             }
-            // 有效 '}'
-            // std::string substr(pre_m, m);
-            auto begin = pattern.data() + (pre_m - pattern.begin());
-            auto len = m - pre_m;
-            if (len) {
+            // 转义字符
+            if (pos2 != pattern.begin() && *(pos2 - 1) == '\\') {
                 if (args_builder == nullptr) {
-                    args = std::string(begin, len);
-                } else {
-                    args_builder->append(begin, len);
+                    args_builder = std::make_unique<StringBuilder>();
+                }
+                args_builder->append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1 - 1);
+                args_builder->append(*pos2);
+                pos1 = pos2 + 1;
+                continue;
+            }
+            // 闭包字符
+            if (*pos2 == '}') {
+                in_args = false;
+                if (args_builder) {
                     args = args_builder->toString();
+                } else {
+                    args = {pos1, pos2};
                 }
+                pos = pos2 + 1;
+                break;
             }
-            status = true;
-            pos = m + 1;
-            break;
+        } else {
+            // 没有开包
+            if (pos2 == pattern.end()) {
+                builder.append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1);
+                pos = pattern.end();
+                return true;
+            }
+            // 转义字符
+            if (pos2 != pattern.begin() && *(pos2 - 1) == '\\') {
+                builder.append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1 - 1);
+                builder.append(*pos2);
+                pos1 = pos2 + 1;
+                continue;
+            }
+            // 开包字符
+            if (*pos2 == '{') {
+                builder.append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1);
+                pos1 = pos2 + 1;
+                in_args = true;
+            }
         }
     }
-    return status;
+    assert(!in_args);
+    return true;
 }
 
 bool sese::text::FormatOption_StringParse(FormatOption &opt, const std::string &opt_str) {

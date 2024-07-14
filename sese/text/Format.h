@@ -138,10 +138,10 @@ void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     switch (opt.align) {
         case Align::LEFT:
             Number::toString(builder, number, opt.float_placeholder);
-            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             if (opt.ext_type == '%') {
                 builder.append('%');
             }
+            builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
             break;
         case Align::RIGHT:
             builder << std::string(diff, opt.wide_char); // GCOVR_EXCL_LINE
