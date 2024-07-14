@@ -316,6 +316,8 @@ var annotated_dup =
       [ "Initializer", "classsese_1_1_initializer.html", "classsese_1_1_initializer" ],
       [ "InitiateTask", "classsese_1_1_initiate_task.html", "classsese_1_1_initiate_task" ],
       [ "is_iterable", "structsese_1_1is__iterable.html", null ],
+      [ "is_pair", "structsese_1_1is__pair.html", null ],
+      [ "is_pair< std::pair< T1, T2 > >", "structsese_1_1is__pair_3_01std_1_1pair_3_01_t1_00_01_t2_01_4_01_4.html", null ],
       [ "Json", "classsese_1_1_json.html", "classsese_1_1_json" ],
       [ "Locker", "classsese_1_1_locker.html", "classsese_1_1_locker" ],
       [ "LongLongSplitter", "structsese_1_1_long_long_splitter.html", "structsese_1_1_long_long_splitter" ],

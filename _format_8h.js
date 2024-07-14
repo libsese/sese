@@ -9,6 +9,7 @@ var _format_8h =
     [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< is_iterable_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8" ],
     [ "fmt", "_format_8h.html#a1d92c1d1b0f01228eb8e4c02c1b9df67", null ],
     [ "fmt", "_format_8h.html#ada2867179602d198d716931ca1935117", null ],
+    [ "for_each", "_format_8h.html#a26033567b49a5d147217eb81ad2ca855", null ],
     [ "Format", "_format_8h.html#a4a75ff442c41206d6393f9108d0253f8", null ],
     [ "Format", "_format_8h.html#aae09db0004933fb4261ff1503c174c44", null ],
     [ "FormatOption_FloatNumberFormat", "_format_8h.html#af5bba434dd8f81024a3b1e308195f4a7", null ],

@@ -139,9 +139,9 @@ $(document).ready(function(){initNavTree('_format_8h.html',''); initResizable();
 <div class="textblock"><code>#include &lt;<a class="el" href="_config_8h_source.html">sese/Config.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_string_builder_8h_source.html">sese/text/StringBuilder.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_number_8h_source.html">sese/text/Number.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="text_2_util_8h_source.html">sese/text/Util.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_format_option_8h_source.html">sese/text/FormatOption.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="is__iterable_8h_source.html">sese/types/is_iterable.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="is__pair_8h_source.html">sese/types/is_pair.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_util_8h_source.html">sese/Util.h</a>&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
@@ -191,6 +191,9 @@ $(document).ready(function(){initNavTree('_format_8h.html',''); initResizable();
 <tr class="memitem:af5bba434dd8f81024a3b1e308195f4a7" id="r_af5bba434dd8f81024a3b1e308195f4a7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:af5bba434dd8f81024a3b1e308195f4a7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#af5bba434dd8f81024a3b1e308195f4a7">sese::text::FormatOption_FloatNumberFormat</a> (<a class="el" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, <a class="el" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> &amp;opt, T number)</td></tr>
 <tr class="separator:af5bba434dd8f81024a3b1e308195f4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26033567b49a5d147217eb81ad2ca855" id="r_a26033567b49a5d147217eb81ad2ca855"><td class="memTemplParams" colspan="2">template&lt;typename C , std::enable_if_t&lt;!<a class="el" href="structsese_1_1is__pair.html">is_pair</a>&lt; typename C::value_type &gt;::value, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:a26033567b49a5d147217eb81ad2ca855"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#a26033567b49a5d147217eb81ad2ca855">sese::text::for_each</a> (const C &amp;container)</td></tr>
+<tr class="separator:a26033567b49a5d147217eb81ad2ca855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21b9ee3fffb7b152e5b4d96e1aa709bc" id="r_a21b9ee3fffb7b152e5b4d96e1aa709bc"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">sese::text::FormatParameterCounter</a> (const char *pattern)</td></tr>
 <tr class="separator:a21b9ee3fffb7b152e5b4d96e1aa709bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a75ff442c41206d6393f9108d0253f8" id="r_a4a75ff442c41206d6393f9108d0253f8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -216,7 +219,7 @@ $(document).ready(function(){initNavTree('_format_8h.html',''); initResizable();
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li><li class="navelem"><a class="el" href="_format_8h.html">Format.h</a></li>
-    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:46 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 14日 星期日 05:33:23 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

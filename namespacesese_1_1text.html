@@ -203,6 +203,9 @@ $(document).ready(function(){initNavTree('namespacesese_1_1text.html',''); initR
 <tr class="memitem:af5bba434dd8f81024a3b1e308195f4a7" id="r_af5bba434dd8f81024a3b1e308195f4a7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:af5bba434dd8f81024a3b1e308195f4a7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#af5bba434dd8f81024a3b1e308195f4a7">FormatOption_FloatNumberFormat</a> (<a class="el" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, <a class="el" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> &amp;opt, T number)</td></tr>
 <tr class="separator:af5bba434dd8f81024a3b1e308195f4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26033567b49a5d147217eb81ad2ca855" id="r_a26033567b49a5d147217eb81ad2ca855"><td class="memTemplParams" colspan="2">template&lt;typename C , std::enable_if_t&lt;!<a class="el" href="structsese_1_1is__pair.html">is_pair</a>&lt; typename C::value_type &gt;::value, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:a26033567b49a5d147217eb81ad2ca855"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#a26033567b49a5d147217eb81ad2ca855">for_each</a> (const C &amp;container)</td></tr>
+<tr class="separator:a26033567b49a5d147217eb81ad2ca855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21b9ee3fffb7b152e5b4d96e1aa709bc" id="r_a21b9ee3fffb7b152e5b4d96e1aa709bc"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">FormatParameterCounter</a> (const char *pattern)</td></tr>
 <tr class="separator:a21b9ee3fffb7b152e5b4d96e1aa709bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a75ff442c41206d6393f9108d0253f8" id="r_a4a75ff442c41206d6393f9108d0253f8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -385,6 +388,28 @@ template&lt;typename... ARGS, std::enable_if_t&lt; sizeof...(ARGS) !=0, int &gt;
 
 </div>
 </div>
+<a id="a26033567b49a5d147217eb81ad2ca855" name="a26033567b49a5d147217eb81ad2ca855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26033567b49a5d147217eb81ad2ca855">&#9670;&#160;</a></span>for_each()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , std::enable_if_t&lt;!<a class="el" href="structsese_1_1is__pair.html">is_pair</a>&lt; typename C::value_type &gt;::value, int &gt;  = 0&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::text::for_each </td>
+          <td>(</td>
+          <td class="paramtype">const C &amp;&#160;</td>
+          <td class="paramname"><em>container</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">sese::text::FmtCtx::builder</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+</div>
+</div>
 <a id="a4a75ff442c41206d6393f9108d0253f8" name="a4a75ff442c41206d6393f9108d0253f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a75ff442c41206d6393f9108d0253f8">&#9670;&#160;</a></span>Format() <span class="overload">[1/2]</span></h2>
 
@@ -504,7 +529,6 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>格式化字符串 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="structsese_1_1text_1_1_format_option.html#a5a6a48bed84e1a152c6298ffe73cf961">sese::text::FormatOption::align</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">sese::text::FmtCtx::builder</a>, <a class="el" href="namespacesese_1_1text.html#a79b0b85354dab3a79b1a52c938db3e6dac397289ee45877be0cd49811fe245b4e">CENTER</a>, <a class="el" href="structsese_1_1text_1_1_format_option.html#a0a3e6608e45a6e9c8b3ee146211b0a1f">sese::text::FormatOption::ext_type</a>, <a class="el" href="structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7">sese::text::FormatOption::float_placeholder</a>, <a class="el" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">sese::floating2StringLength()</a>, <a class="el" href="namespacesese_1_1text.html#a79b0b85354dab3a79b1a52c938db3e6da684d325a7303f52e64011467ff5c5758">LEFT</a>, <a class="el" href="namespacesese_1_1text.html#a79b0b85354dab3a79b1a52c938db3e6da21507b40c80068eda19865706fdc2403">RIGHT</a>, <a class="el" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">sese::text::Number::toString()</a>, <a class="el" href="structsese_1_1text_1_1_format_option.html#aa813e7742a29f275914ec69df8ba13c3">sese::text::FormatOption::wide</a> , 以及 <a class="el" href="structsese_1_1text_1_1_format_option.html#a08c106991986e33371c915a3b7590157">sese::text::FormatOption::wide_char</a>.</p>
 
@@ -557,7 +581,6 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>格式化字符串 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="structsese_1_1text_1_1_format_option.html#a0a3e6608e45a6e9c8b3ee146211b0a1f">sese::text::FormatOption::ext_type</a> , 以及 <a class="el" href="namespacesese_1_1text.html#a51edfc3e33212cdc6dcf2e57724e5175">FormatOption_NumberFormatAlgin()</a>.</p>
 
@@ -831,7 +854,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1text.html">text</a></li>
-    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 14日 星期日 05:33:24 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

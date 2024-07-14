@@ -10,6 +10,6 @@ var classsese_1_1net_1_1http_1_1_cookie_map =
     [ "expired", "classsese_1_1net_1_1http_1_1_cookie_map.html#a458a59516cf921f82798bda41a806b9e", null ],
     [ "find", "classsese_1_1net_1_1http_1_1_cookie_map.html#ae972a7e933b81edcd983be92fd0b55c3", null ],
     [ "size", "classsese_1_1net_1_1http_1_1_cookie_map.html#a914898e6c7e33b3161db684ea00a4320", null ],
-    [ "update", "classsese_1_1net_1_1http_1_1_cookie_map.html#a4c28af2e6d5186226ef0aa53baa94d3a", null ],
+    [ "updateExpiresFrom", "classsese_1_1net_1_1http_1_1_cookie_map.html#add0cda4edaad37b1961b3acdb4d9437f", null ],
     [ "map", "classsese_1_1net_1_1http_1_1_cookie_map.html#ac220ac694367db75ace492f440b907bc", null ]
 ];

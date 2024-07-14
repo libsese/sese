@@ -19,7 +19,7 @@ var classsese_1_1net_1_1http_1_1_cookie =
     [ "setPath", "classsese_1_1net_1_1http_1_1_cookie.html#a20cf3a19cb45dfcbee53e1ad8646adf1", null ],
     [ "setSecure", "classsese_1_1net_1_1http_1_1_cookie.html#aae66d1e0cb62fb0e69cd48f5973a2d6b", null ],
     [ "setValue", "classsese_1_1net_1_1http_1_1_cookie.html#a4015fe4114a91950881d3d0740772e5e", null ],
-    [ "update", "classsese_1_1net_1_1http_1_1_cookie.html#a094cc598dd359131305e610779d679bc", null ],
+    [ "updateExpiresFrom", "classsese_1_1net_1_1http_1_1_cookie.html#a11039f50ed10026932af9650bc7513c1", null ],
     [ "domain", "classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e", null ],
     [ "expires", "classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b", null ],
     [ "httpOnly", "classsese_1_1net_1_1http_1_1_cookie.html#a74914ce504293cc039cfde225a8a7de4", null ],

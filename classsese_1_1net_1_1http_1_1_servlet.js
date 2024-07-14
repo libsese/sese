@@ -4,6 +4,8 @@ var classsese_1_1net_1_1http_1_1_servlet =
     [ "Ptr", "classsese_1_1net_1_1http_1_1_servlet.html#a2149dea896ee0c5cd8d212fb49bf5a8b", null ],
     [ "Servlet", "classsese_1_1net_1_1http_1_1_servlet.html#a935522e6a634ff245830a2148507f127", null ],
     [ "Servlet", "classsese_1_1net_1_1http_1_1_servlet.html#afebc9ee98d74472749d6b23d5ced9267", null ],
+    [ "getExpectHeaders", "classsese_1_1net_1_1http_1_1_servlet.html#a8a9389f0d17bcebf1a3c2e006dd04120", null ],
+    [ "getExpectQueryArgs", "classsese_1_1net_1_1http_1_1_servlet.html#a13db77d370fc192477d07cf7febec312", null ],
     [ "getExpectType", "classsese_1_1net_1_1http_1_1_servlet.html#a001884507e6f22ead9931e7fa34eb47f", null ],
     [ "getUri", "classsese_1_1net_1_1http_1_1_servlet.html#a07dcaf96e592a346b74a581a87b4ce5b", null ],
     [ "invoke", "classsese_1_1net_1_1http_1_1_servlet.html#a66b423a1e055c4831cf284a763ba4673", null ],

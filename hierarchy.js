@@ -133,7 +133,8 @@ var hierarchy =
     ] ],
     [ "std::false_type", null, [
       [ "sese::has_begin< T, typename >", "structsese_1_1has__begin.html", null ],
-      [ "sese::has_end< T, typename >", "structsese_1_1has__end.html", null ]
+      [ "sese::has_end< T, typename >", "structsese_1_1has__end.html", null ],
+      [ "sese::is_pair< T >", "structsese_1_1is__pair.html", null ]
     ] ],
     [ "sese::system::FileLocker", "classsese_1_1system_1_1_file_locker.html", null ],
     [ "sese::system::FileNotifier", "classsese_1_1system_1_1_file_notifier.html", null ],
@@ -368,7 +369,8 @@ var hierarchy =
     [ "sese::TimeWheel", "classsese_1_1_time_wheel.html", null ],
     [ "std::true_type", null, [
       [ "sese::has_begin< T, void_t< decltype(std::declval< T >().begin())> >", "structsese_1_1has__begin_3_01_t_00_01void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_08_8begin_07_08_08_4_01_4.html", null ],
-      [ "sese::has_end< T, void_t< decltype(std::declval< T >().begin())> >", "structsese_1_1has__end_3_01_t_00_01void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_08_8begin_07_08_08_4_01_4.html", null ]
+      [ "sese::has_end< T, void_t< decltype(std::declval< T >().begin())> >", "structsese_1_1has__end_3_01_t_00_01void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_08_8begin_07_08_08_4_01_4.html", null ],
+      [ "sese::is_pair< std::pair< T1, T2 > >", "structsese_1_1is__pair_3_01std_1_1pair_3_01_t1_00_01_t2_01_4_01_4.html", null ]
     ] ],
     [ "sese::UniReader", "classsese_1_1_uni_reader.html", null ],
     [ "sese::net::http::Url", "classsese_1_1net_1_1http_1_1_url.html", null ],

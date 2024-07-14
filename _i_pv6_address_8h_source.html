@@ -163,40 +163,31 @@ $(document).ready(function(){initNavTree('_i_pv6_address_8h_source.html',''); in
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    [[nodiscard]] <a class="code hl_class" href="classsese_1_1net_1_1_i_p_address.html" title="IP 地址类">IPAddress</a>::<a class="code hl_typedef" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">Ptr</a> <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#a4fbf651d3fe2e928d48e93c584b6fde0">getSubnetMask</a>(uint32_t prefix_len) const noexcept override;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#a9a93367d61de89ca59bb8917fabd5a01">   36</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#a9a93367d61de89ca59bb8917fabd5a01">setPort</a>(uint16_t port) noexcept<span class="keyword"> override </span>{ this-&gt;address.sin6_port = <a class="code hl_function" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16</a>(port); }</div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">   37</a></span>    [[nodiscard]] uint16_t <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">getPort</a>() const noexcept<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">//#if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">//            return ByteSwap16(address.sin6_port);</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">//#else</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">//            return address.sin6_port;</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">//#endif</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16</a>(<a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.sin6_port);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">   37</a></span>    [[nodiscard]] uint16_t <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">getPort</a>() const noexcept<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16</a>(<a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.sin6_port); }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7">   39</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7">setFamily</a>(uint16_t family) <span class="keyword">noexcept</span> <span class="keyword">override</span> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.sin6_family = family;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+</div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#af269c184ff714b50ae3cf53189f3c5f7">   42</a></span>    uint16_t <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#af269c184ff714b50ae3cf53189f3c5f7">getFamily</a>() noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.sin6_family;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
 </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7">   46</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7">setFamily</a>(uint16_t family) <span class="keyword">noexcept</span> <span class="keyword">override</span> {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.sin6_family = family;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">   47</a></span>    sockaddr_in6 <a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>{0};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
 </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#af269c184ff714b50ae3cf53189f3c5f7">   49</a></span>    uint16_t <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#af269c184ff714b50ae3cf53189f3c5f7">getFamily</a>() noexcept<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.sin6_family;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
-</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">   54</a></span>    sockaddr_in6 <a class="code hl_variable" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>{0};</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
-</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>} <span class="comment">// namespace sese::net</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <span class="comment">// namespace sese::net</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="_i_pv6_address_8h.html">IPv6Address.h</a></li>
-    <li class="footer">生成于 2024年 七月 11日 星期四 12:11:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 14日 星期日 05:33:23 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
