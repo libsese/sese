@@ -374,11 +374,9 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...) {
-#ifdef SESE_IS_DEBUG
     if (FormatParameterCounter(pattern.data())) {
         return "!{Mismatch in number of parameters}";
     }
-#endif
     return {pattern.begin(), pattern.end()};
 }
 
@@ -389,12 +387,10 @@ std::string fmt(std::string_view pattern, ARGS &&...) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...args) {
-#ifdef SESE_IS_DEBUG
     auto param = FormatParameterCounter(pattern.data());
     if (param != sizeof...(args)) {
         return "!{Mismatch in number of parameters}";
     }
-#endif
     FmtCtx ctx(pattern);
     Format(ctx, std::forward<ARGS>(args)...);
     return ctx.builder.toString();

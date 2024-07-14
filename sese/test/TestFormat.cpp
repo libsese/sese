@@ -162,11 +162,11 @@ TEST(TestFormat, Number) {
 }
 
 TEST(TestFormat, Float) {
-    // EXPECT_EQ("12.30%", fmt("{:<1.2%}", 0.123));
+    EXPECT_EQ("12.30%", fmt("{:<1.2%}", 0.123));
     EXPECT_EQ("12.30% ", fmt("{:<7.2%}", 0.123));
-    // EXPECT_EQ(" 12.30% ", fmt("{:^8.2%}", 0.123));
-    // EXPECT_EQ(" 12.30%", fmt("{:>7.2%}", 0.123));
-    // EXPECT_EQ("NaN", fmt("{}", std::numeric_limits<double>::quiet_NaN()));
+    EXPECT_EQ(" 12.30% ", fmt("{:^8.2%}", 0.123));
+    EXPECT_EQ(" 12.30%", fmt("{:>7.2%}", 0.123));
+    EXPECT_EQ("NaN", fmt("{}", std::numeric_limits<double>::quiet_NaN()));
 }
 
 TEST(TestFormat, Formatter) {
@@ -175,12 +175,13 @@ TEST(TestFormat, Formatter) {
     // auto datetime = sese::DateTime::now();
     // SESE_INFO("{} | {HH:mm:ss}", datetime, datetime);
     // SESE_INFO("{A}", "Hello");
-    SESE_INFO("free buffer[{}] = 0x{:x}", 1, 123456);
+    EXPECT_EQ("buffer[1] = 0x1e240" ,fmt("buffer[{}] = 0x{:x}", 1, 123456));
 }
 
 TEST(TestFormat, MismatchParam) {
-    SESE_INFO("{}");
-    SESE_INFO("{}", 1, 2);
+    std::string str = "!{Mismatch in number of parameters}";
+    EXPECT_EQ(str, fmt("{}"));
+    EXPECT_EQ(str, fmt("{}", 1, 2));
 }
 
 TEST(TestFormat, Constexpr) {
