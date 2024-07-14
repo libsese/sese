@@ -29,12 +29,14 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: driver-type
+    id: module-type
     attributes:
-      label: 驱动类型
-      description: 请选择需要报告的驱动类型
+      label: 模块
+      description: 请选择需要报告的模块
       options:
-        - interface
+        - common
+        - archive
+        - db interface
         - sqlite
         - mariadb
         - mysql
