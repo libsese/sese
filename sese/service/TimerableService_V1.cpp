@@ -99,7 +99,7 @@ void TimerableService::freeTimeoutEvent(TimeoutEvent *timeout_event) {
 }
 
 void TimerableService::dispatch(uint32_t timeout) {
-    auto now = (uint64_t) std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+    auto now = static_cast<uint64_t>(std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count());
     auto index = (now - startTimestamp) % 60;
     auto &table = timeoutTable[index];
 

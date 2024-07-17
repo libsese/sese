@@ -18,7 +18,7 @@ ResultSet::Ptr impl::SqliteDriverInstanceImpl::executeQuery(const char *sql) noe
     char *error = nullptr;
     int rt = sqlite3_get_table(conn, sql, &table, &rows, &columns, &error);
     if (0 != rt) return nullptr;
-    return std::make_unique<SqliteResultSetImpl>(table, (size_t) rows, (size_t) columns, error);
+    return std::make_unique<SqliteResultSetImpl>(table, static_cast<size_t>(rows), static_cast<size_t>(columns), error);
 }
 
 int64_t impl::SqliteDriverInstanceImpl::executeUpdate(const char *sql) noexcept {

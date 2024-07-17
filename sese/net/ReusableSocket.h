@@ -20,7 +20,7 @@ namespace sese::net {
 /// Darwin: 无负载均衡，只有最后一个 Socket 能接收到连接 <p>
 /// Windows: 无负载均衡，只有第一个 Socket 能接收到连接
 /// \see https://www.cnblogs.com/xybaby/p/7341579.html
-class ReusableSocket {
+class ReusableSocket { // GCOVR_EXCL_LINE
 public:
     /// 初始化可重用地址和端口的套接字模板
     /// \param address 地址

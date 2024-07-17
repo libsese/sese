@@ -19,7 +19,7 @@ sese::net::http::RequestParser::Result sese::net::http::RequestParser::parse(con
         auto split_result = text::StringBuilder::split(result.url.getHost(), ":");
         if (split_result.size() == 2) {
             char *end_ptr;
-            port = (uint16_t) std::strtol(split_result[1].c_str(), &end_ptr, 10);
+            port = static_cast<uint16_t>(std::strtol(split_result[1].c_str(), &end_ptr, 10));
             if (*end_ptr != 0) {
                 return result;
             }

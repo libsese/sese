@@ -13,8 +13,8 @@ sese::service::TcpTransporter::TcpTransporter(sese::service::TcpTransporterConfi
     if (this->config->servCtx) {
         // ALPN
         SSL_CTX_set_alpn_select_cb(
-                (SSL_CTX *) config->servCtx->getContext(),
-                (SSL_CTX_alpn_select_cb_func) &alpnCallbackFunction,
+                static_cast<SSL_CTX *>(config->servCtx->getContext()),
+                reinterpret_cast<SSL_CTX_alpn_select_cb_func>(&alpnCallbackFunction),
                 this
         );
     }
@@ -23,12 +23,12 @@ sese::service::TcpTransporter::TcpTransporter(sese::service::TcpTransporterConfi
 sese::service::TcpTransporter::~TcpTransporter() {
     for (auto &item: eventMap) {
         auto event = item.second;
-        auto conn = (TcpConnection *) event->data;
+        auto conn = static_cast<TcpConnection *>(event->data);
         if (conn->timeoutEvent) {
             this->freeTimeoutEvent(conn->timeoutEvent);
         }
         if (config->servCtx) {
-            SSL_free((SSL *) conn->ssl);
+            SSL_free(static_cast<SSL *>(conn->ssl));
         }
         sese::net::Socket::close(event->fd);
         // delete conn;
@@ -50,7 +50,7 @@ void sese::service::TcpTransporter::onAccept(int fd) {
 
     // GCOVR_EXCL_STOP
     if (config->servCtx) {
-        client_ssl = SSL_new((SSL_CTX *) config->servCtx->getContext());
+        client_ssl = SSL_new(static_cast<SSL_CTX *>(config->servCtx->getContext()));
         SSL_set_fd(client_ssl, (int) fd);
         SSL_set_accept_state(client_ssl);
 
@@ -89,7 +89,7 @@ void sese::service::TcpTransporter::onAccept(int fd) {
 }
 
 void sese::service::TcpTransporter::onRead(sese::event::BaseEvent *event) {
-    auto conn = (TcpConnection *) event->data;
+    auto conn = static_cast<TcpConnection *>(event->data);
 
     if (config->keepalive && conn->timeoutEvent) {
         cancelTimeoutEvent(conn->timeoutEvent);
@@ -106,7 +106,7 @@ void sese::service::TcpTransporter::onRead(sese::event::BaseEvent *event) {
                 }
                 onProcClose(conn);
                 if (config->servCtx) {
-                    SSL_free((SSL *) conn->ssl);
+                    SSL_free(static_cast<SSL *>(conn->ssl));
                 }
                 sese::net::Socket::close(event->fd);
                 // delete conn;
@@ -124,7 +124,7 @@ void sese::service::TcpTransporter::onRead(sese::event::BaseEvent *event) {
 }
 
 void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
-    auto conn = (TcpConnection *) event->data;
+    auto conn = static_cast<TcpConnection *>(event->data);
     char buf[MTU_VALUE];
     while (true) {
         auto len = conn->buffer2write.peek(buf, MTU_VALUE);
@@ -146,7 +146,7 @@ void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
                 }
                 onProcClose(conn);
                 if (config->servCtx) {
-                    SSL_free((SSL *) conn->ssl);
+                    SSL_free(static_cast<SSL *>(conn->ssl));
                 }
                 sese::net::Socket::close(event->fd);
                 // delete conn;
@@ -165,7 +165,7 @@ void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
 }
 
 void sese::service::TcpTransporter::onClose(sese::event::BaseEvent *event) {
-    auto conn = (TcpConnection *) event->data;
+    auto conn = static_cast<TcpConnection *>(event->data);
     /// \brief 若连接进行异步处理，则不应由对端关闭事件对此连接进行资源释放
     /// \see tcp_connection_delay_close_by_async
     if (!conn->isAsync) {
@@ -174,7 +174,7 @@ void sese::service::TcpTransporter::onClose(sese::event::BaseEvent *event) {
         }
         onProcClose(conn);
         if (config->servCtx) {
-            SSL_free((SSL *) conn->ssl);
+            SSL_free(static_cast<SSL *>(conn->ssl));
         }
         sese::net::Socket::close(event->fd);
         // delete conn;
@@ -196,7 +196,7 @@ void sese::service::TcpTransporter::freeEventEx(event::BaseEvent *event) noexcep
 
 int64_t sese::service::TcpTransporter::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
-        return SSL_read((SSL *) ssl, buffer, (int) len);
+        return SSL_read(static_cast<SSL *>(ssl), buffer, static_cast<int>(len));
     } else {
         return sese::net::Socket::read(fd, buffer, len, 0);
     }
@@ -204,17 +204,17 @@ int64_t sese::service::TcpTransporter::read(int fd, void *buffer, size_t len, vo
 
 int64_t sese::service::TcpTransporter::write(int fd, const void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
-        return SSL_write((SSL *) ssl, buffer, (int) len);
+        return SSL_write(static_cast<SSL *>(ssl), buffer, static_cast<int>(len));
     } else {
         return sese::net::Socket::write(fd, buffer, len, 0);
     }
 }
 
 void sese::service::TcpTransporter::onTimeout(sese::service::v1::TimeoutEvent *timeout_event) {
-    auto conn = (TcpConnection *) timeout_event->data;
+    auto conn = static_cast<TcpConnection *>(timeout_event->data);
     onProcClose(conn);
     if (config->servCtx) {
-        SSL_free((SSL *) conn->ssl);
+        SSL_free(static_cast<SSL *>(conn->ssl));
     }
     sese::net::Socket::close(conn->event->fd);
     this->freeEventEx(conn->event);

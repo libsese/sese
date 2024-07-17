@@ -23,7 +23,7 @@ public:
 public:
     explicit IPv6Address() noexcept;
     explicit IPv6Address(const sockaddr_in6 &address) noexcept;
-    explicit IPv6Address(uint8_t *address, uint16_t port = 0);
+    explicit IPv6Address(const uint8_t *address, uint16_t port = 0);
 
     [[nodiscard]] sockaddr *getRawAddress() const noexcept override;
     [[nodiscard]] socklen_t getRawAddressLength() const noexcept override;

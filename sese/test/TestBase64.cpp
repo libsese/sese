@@ -102,13 +102,13 @@ TEST(TestBase62, EncodeInteger_1) {
 
 TEST(TestBase62, DecodeBuffer_0) {
     const char *code = "ftXl";
-    auto num = sese::Base64Converter::decodeBuffer((const unsigned char *) code, 4);
+    auto num = sese::Base64Converter::decodeBuffer(reinterpret_cast<const unsigned char *>(code), 4);
     ASSERT_EQ(num, 7562611);
 }
 
 TEST(TestBase62, DecodeBuffer_1) {
     const char *code = "ftX-";
-    auto num = sese::Base64Converter::decodeBuffer((const unsigned char *) code, 4);
+    auto num = sese::Base64Converter::decodeBuffer(reinterpret_cast<const unsigned char *>(code), 4);
     ASSERT_EQ(num, -1);
 }
 

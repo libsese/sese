@@ -6,6 +6,7 @@
  */
 
 #pragma once
+
 #include "sese/Config.h"
 #include <stack>
 
@@ -41,9 +42,9 @@ private:
 };
 
 /// 初始化器
-class  Initializer {
+class Initializer final { // GCOVR_EXCL_LINE
 public:
-    virtual ~Initializer();
+    ~Initializer();
 
 private:
     std::stack<InitiateTask::Ptr> tasks;

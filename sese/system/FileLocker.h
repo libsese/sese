@@ -1,5 +1,5 @@
 /**
- * @file FileLocker.cpp
+ * @file FileLocker.h
  * @brief kaoru
  * @author 文件锁
  */

@@ -73,7 +73,7 @@ void HttpServer::regController(ARGS &&...args) {
     for (auto &&servlet: *controller) {
         servlets.emplace(servlet.getUri(), servlet);
     }
-    controllers.push_back(controller);
+    controllers.push_back(controller); // GCOVR_EXCL_LINE
 }
 
 } // namespace sese::service::http::v3

@@ -10,9 +10,9 @@ using sese::Base64Converter;
 using sese::io::Stream;
 
 /// 标准 BASE64 码表
-sese::Base64Converter::CodePage base64_code_page = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+sese::Base64Converter::CodePage base64_code_page = reinterpret_cast<sese::Base64Converter::CodePage>("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
 
-sese::Base64Converter::CodePage base62_code_page = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+sese::Base64Converter::CodePage base62_code_page = reinterpret_cast<sese::Base64Converter::CodePage>("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
 
 void inline encode(unsigned char in, unsigned char &out) {
     out = base64_code_page[in];
@@ -119,9 +119,9 @@ bool Base64Converter::encodeInteger(size_t num, OutputStream *output) noexcept {
     }
 
     std::vector<unsigned char> vector;
-    auto base = strlen((const char *) base62_code_page);
+    auto base = strlen(reinterpret_cast<const char *>(base62_code_page));
     while (num > 0) {
-        std::div_t res = div((int) num, (int) base);
+        std::div_t res = div(static_cast<int>(num), static_cast<int>(base));
         num = res.quot;
         vector.push_back(base62_code_page[res.rem]);
     }
@@ -131,8 +131,8 @@ bool Base64Converter::encodeInteger(size_t num, OutputStream *output) noexcept {
 }
 
 int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size) noexcept {
-    auto base = strlen((const char *) base62_code_page);
-    auto page = std::string_view((const char *) base62_code_page, base);
+    auto base = strlen(reinterpret_cast<const char *>(base62_code_page));
+    auto page = std::string_view(reinterpret_cast<const char *>(base62_code_page), base);
     int64_t num = 0;
     for (auto idx = 0; idx < size; ++idx) {
         auto power = (size - (idx + 1));
@@ -158,7 +158,7 @@ bool Base64Converter::encodeBase62(InputStream *input, OutputStream *output) noe
             buffer[1] = 0;
         }
         // buffer[0] always be zero
-        auto num = *(uint32_t *) &buffer;
+        auto num = *reinterpret_cast<uint32_t *>(&buffer);
         num = FromBigEndian32(num);
         if (!encodeInteger(num, output)) {
             return false;
@@ -181,15 +181,15 @@ bool Base64Converter::decodeBase62(InputStream *input, OutputStream *output) noe
 
         num = ToBigEndian32(num);
         if (len == 4) {
-            if (3 != output->write(((char *) &num) + 1, 3)) {
+            if (3 != output->write(reinterpret_cast<char *>(&num) + 1, 3)) {
                 return false;
             }
         } else if (len == 3) {
-            if (2 != output->write(((char *) &num) + 2, 2)) {
+            if (2 != output->write(reinterpret_cast<char *>(&num) + 2, 2)) {
                 return false;
             }
         } else if (len == 2) {
-            if (1 != output->write(((char *) &num) + 3, 1)) {
+            if (1 != output->write(reinterpret_cast<char *>(&num) + 3, 1)) {
                 return false;
             }
         } else {

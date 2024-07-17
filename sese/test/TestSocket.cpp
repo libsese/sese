@@ -145,7 +145,7 @@ GTEST_TEST(TestSocket, NativeAPI) {
 
     auto socket = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
     GTEST_ASSERT_NE(socket, -1);
-    GTEST_ASSERT_EQ(sese::net::Socket::bind(socket, (const sockaddr *) &address, sizeof(address)), 0);
+    GTEST_ASSERT_EQ(sese::net::Socket::bind(socket, reinterpret_cast<const sockaddr *>(&address), sizeof(address)), 0);
     GTEST_ASSERT_EQ(sese::net::Socket::listen(socket, SERVER_MAX_CONNECTION), 0);
 
     auto th = sese::Thread(
@@ -164,7 +164,7 @@ GTEST_TEST(TestSocket, NativeAPI) {
     auto client = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
     GTEST_ASSERT_NE(client, -1);
     SESE_INFO("connecting");
-    GTEST_ASSERT_EQ(sese::net::Socket::connect(client, (const sockaddr *) &address, sizeof(address)), 0);
+    GTEST_ASSERT_EQ(sese::net::Socket::connect(client, reinterpret_cast<const sockaddr *>(&address), sizeof(address)), 0);
     SESE_INFO("connected");
 
     char buffer[32]{};

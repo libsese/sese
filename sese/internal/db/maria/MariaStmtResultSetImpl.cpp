@@ -26,29 +26,29 @@ size_t sese::db::impl::MariaStmtResultSet::getColumns() const noexcept {
 
 int64_t sese::db::impl::MariaStmtResultSet::getLong(size_t index) const noexcept {
     int64_t value;
-    value = *(int64_t *) row[index].buffer;
+    value = *static_cast<int64_t *>(row[index].buffer);
     return value;
 }
 
 int32_t sese::db::impl::MariaStmtResultSet::getInteger(size_t index) const noexcept {
     int32_t value;
-    value = *(int32_t *) row[index].buffer;
+    value = *static_cast<int32_t *>(row[index].buffer);
     return value;
 }
 
 std::string_view sese::db::impl::MariaStmtResultSet::getString(size_t index) const noexcept {
-    return {(const char *) row[index].buffer};
+    return {static_cast<const char *>(row[index].buffer)};
 }
 
 double sese::db::impl::MariaStmtResultSet::getDouble(size_t index) const noexcept {
     double value;
-    value = *(double *) row[index].buffer;
+    value = *static_cast<double *>(row[index].buffer);
     return value;
 }
 
 float sese::db::impl::MariaStmtResultSet::getFloat(size_t index) const noexcept {
     float value;
-    value = *(float *) row[index].buffer;
+    value = *static_cast<float *>(row[index].buffer);
     return value;
 }
 

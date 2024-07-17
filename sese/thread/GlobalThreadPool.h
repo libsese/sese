@@ -55,7 +55,7 @@ std::shared_future<RETURN_TYPE> sese::GlobalThreadPool::postTask(const std::func
 
 template<class RETURN_TYPE>
 DWORD sese::GlobalThreadPool::taskRunner2(LPVOID lp_parma) {
-    auto task2 = (Task2<RETURN_TYPE> *) lp_parma;
+    auto task2 = static_cast<Task2<RETURN_TYPE> *>(lp_parma);
     task2->packagedTask();
     delete task2;
     return 0;

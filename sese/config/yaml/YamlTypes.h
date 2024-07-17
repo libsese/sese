@@ -84,7 +84,7 @@ public:
     explicit ArrayData() noexcept;
     [[nodiscard]] SESE_ALWAYS_INLINE size_t size() const noexcept { return valueSet.size(); }
     [[nodiscard]] SESE_ALWAYS_INLINE bool empty() const noexcept { return valueSet.empty(); }
-    void push(const Data::Ptr &data) noexcept { valueSet.emplace_back(data); }
+    void push(const Data::Ptr &data) noexcept { valueSet.emplace_back(data); } // GCOVR_EXCL_LINEs
     SESE_ALWAYS_INLINE std::list<Data::Ptr>::iterator begin() noexcept { return valueSet.begin(); }
     SESE_ALWAYS_INLINE std::list<Data::Ptr>::iterator end() noexcept { return valueSet.end(); }
 

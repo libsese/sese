@@ -15,7 +15,7 @@ std::optional<Socket> ReusableSocket::builtinMakeSocket() noexcept {
     );
 
     BOOL opt = TRUE;
-    if (0 != setsockopt(socket.getRawSocket(), SOL_SOCKET, SO_REUSEADDR, (const char *) &opt, sizeof(opt))) {
+    if (0 != setsockopt(socket.getRawSocket(), SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char *>(&opt), sizeof(opt))) {
         return std::nullopt;
     }
 

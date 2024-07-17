@@ -9,7 +9,6 @@
 
 #include "sese/Config.h"
 #include "sese/record/AbstractFormatter.h"
-#include "sese/record/AbstractFormatter.h"
 #include "sese/record/Event.h"
 
 #ifdef _WIN32

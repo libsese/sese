@@ -44,13 +44,13 @@ public:
     [[nodiscard]] bool isStarted() const { return _isStart; }
 
     /// 初始化负载器资源
-    /// \tparam Service 需要启动的服务
+    /// \tparam SERVICE 需要启动的服务
     /// \return 是否初始化成功
     template<class SERVICE>
     bool init() noexcept;
 
     /// 初始化均衡器资源
-    /// \tparam Service 需要启动的服务
+    /// \tparam SERVICE 需要启动的服务
     /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
     /// \return 是否初始化成功
     template<class SERVICE>
@@ -107,7 +107,7 @@ bool sese::service::SystemBalanceLoader::init(std::function<SERVICE *()> creator
         if (event == nullptr) {
             goto freeEvent;
         }
-        event->setListenFd((int) socketVector[i]);
+        event->setListenFd(static_cast<int>(socketVector[i]));
         if (!event->init()) {
             delete event;
             goto freeEvent;

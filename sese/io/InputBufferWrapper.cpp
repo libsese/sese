@@ -10,23 +10,23 @@ int64_t sese::io::InputBufferWrapper::read(void *buf, size_t length) {
     if ((cap - pos) >= length) {
         memcpy(buf, buffer + pos, length);
         pos += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto remain = cap - pos;
         memcpy(buf, buffer + pos, remain);
         pos = cap;
-        return (int64_t) (remain);
+        return static_cast<int64_t>(remain);
     }
 }
 
 int64_t sese::io::InputBufferWrapper::peek(void *buf, size_t length) {
     if ((cap - pos) >= length) {
         memcpy(buf, buffer + pos, length);
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto remain = cap - pos;
         memcpy(buf, buffer + pos, remain);
-        return (int64_t) (remain);
+        return static_cast<int64_t>(remain);
     }
 }
 
@@ -50,12 +50,12 @@ int64_t sese::io::InputBufferWrapper::trunc(size_t length) {
     if ((cap - pos) >= length) {
         // memcpy(buf, buffer + pos, length);
         pos += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto remain = cap - pos;
         // memcpy(buf, buffer + pos, remain);
         pos = cap;
-        return (int64_t) (remain);
+        return static_cast<int64_t>(remain);
     }
 }
 

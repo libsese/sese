@@ -32,7 +32,7 @@ struct sese::Bitset32 {
     }
 
     uint32_t get() {
-        return FromBigEndian32(*(uint32_t *) this);
+        return FromBigEndian32(*reinterpret_cast<uint32_t *>(this));
     }
 
     inline Bitset32 rightShift3() const noexcept {

@@ -8,8 +8,8 @@ TEST(TestOutputUtil, Vector) {
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
     output << std::vector<int>{1, 2};
 
-    auto a = (int *) &buffer[0];
-    auto b = (int *) &buffer[4];
+    auto a = reinterpret_cast<int *>(&buffer[0]);
+    auto b = reinterpret_cast<int *>(&buffer[4]);
     ASSERT_EQ(*a, 1);
     ASSERT_EQ(*b, 2);
 }
@@ -18,8 +18,8 @@ TEST(TestOutputUtil, Array) {
     char buffer[8];
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
     output << std::array<int, 2>{3, 4};
-    auto a = (int *) &buffer[0];
-    auto b = (int *) &buffer[4];
+    auto a = reinterpret_cast<int *>(&buffer[0]);
+    auto b = reinterpret_cast<int *>(&buffer[4]);
     ASSERT_EQ(*a, 3);
     ASSERT_EQ(*b, 4);
 }

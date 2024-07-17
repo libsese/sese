@@ -24,9 +24,9 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
     if (length <= this->cap) {
         if (this->cap - this->len >= length) {
             // 字节数足够 - 不需要刷新
-            memcpy((char *) this->buffer + this->len, buf, length);
+            memcpy(static_cast<char *>(this->buffer) + this->len, buf, length);
             this->len += length;
-            return (int64_t) length;
+            return static_cast<int64_t>(length);
         } else {
             // 字节数不足 - 需要刷新
             size_t expect = len - pos;
@@ -34,7 +34,7 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
                 memcpy(this->buffer, (char *) buf, length);
                 this->len = length;
                 expect = length;
-                return (int64_t) expect;
+                return static_cast<int64_t>(expect);
             } else {
                 // flush 失败
                 return -1;
@@ -53,7 +53,7 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
 
         int64_t wrote = 0;
         while (true) {
-            auto rt = source->write((const char *) buf + wrote, length - wrote >= cap ? cap : length - wrote);
+            auto rt = source->write(static_cast<const char *>(buf) + wrote, length - wrote >= cap ? cap : length - wrote);
             if (rt <= 0) return -1;
             wrote += rt;
             if (wrote == length) break;
@@ -65,7 +65,7 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
 
 int64_t BufferedOutputStream::flush() noexcept {
     // 将已有未处理数据立即写入流
-    auto wrote = source->write((char *) buffer + pos, len - pos);
+    auto wrote = source->write(static_cast<char *>(buffer) + pos, len - pos);
     pos = 0;
     len = 0;
     return wrote;

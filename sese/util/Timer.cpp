@@ -15,7 +15,7 @@ void TimerTask::cancel() noexcept {
 
 Timer::Ptr Timer::create(size_t number) noexcept {
     auto timer = MAKE_SHARED_PRIVATE(sese::Timer);
-    // number 至少为 2
+    // number 至少为 5
     timer->number = std::max<size_t>(5, number);
     timer->timerTasks = new std::list<TimerTask::Ptr>[timer->number]; // GCOVR_EXCL_LINE
     // 启动线程

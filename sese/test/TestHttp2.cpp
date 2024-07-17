@@ -64,7 +64,7 @@ TEST(TestHttp2, HuffmanEncoder) {
         ASSERT_TRUE(!code.empty());
 
         std::string_view buf_view{BUF, sizeof(BUF) - 1};
-        std::string_view code_view{(const char *) code.data(), code.size()};
+        std::string_view code_view{reinterpret_cast<const char *>(code.data()), code.size()};
         EXPECT_TRUE(buf_view == code_view);
     }
     {
@@ -73,7 +73,7 @@ TEST(TestHttp2, HuffmanEncoder) {
         ASSERT_TRUE(!code.empty());
 
         std::string_view buf_view{BUF, sizeof(BUF) - 1};
-        std::string_view code_view{(const char *) code.data(), code.size()};
+        std::string_view code_view{reinterpret_cast<const char *>(code.data()), code.size()};
         EXPECT_TRUE(buf_view == code_view);
     }
 }

@@ -41,7 +41,7 @@ public:
 /**
  * @brief 线程类
  */
-class  Thread : public Noncopyable {
+class Thread final : public Noncopyable { // GCOVR_EXCL_LINE
 public:
     using Ptr = std::unique_ptr<Thread>;
 

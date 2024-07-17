@@ -63,14 +63,14 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
             auto y = this->years;
             auto u = timestamp % (1000 * 1000);
             this->isLeap = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0);
-            this->milliseconds = (int32_t) ((int64_t) u / 1000);
-            this->microseconds = (int32_t) ((int64_t) u % 1000);
+            this->milliseconds = static_cast<int32_t>(static_cast<int64_t>(u) / 1000);
+            this->microseconds = static_cast<int32_t>(static_cast<int64_t>(u) % 1000);
         }
     }
 }
 
 int32_t DateTime::compareTo(const DateTime &date_time) const noexcept {
-    auto rt = (int64_t) this->timestamp - (int64_t) date_time.timestamp;
+    auto rt = static_cast<int64_t>(this->timestamp) - static_cast<int64_t>(date_time.timestamp);
     if (rt < 0) {
         return -1;
     } else if (rt > 0) {
@@ -81,15 +81,15 @@ int32_t DateTime::compareTo(const DateTime &date_time) const noexcept {
 }
 
 int32_t DateTime::unclearCompareTo(const DateTime &date_time) const noexcept {
-    auto rt = (int64_t) this->timestamp - (int64_t) date_time.timestamp;
+    auto rt = static_cast<int64_t>(this->timestamp) - static_cast<int64_t>(date_time.timestamp);
     rt /= 1000 * 1000;
     if (rt < 0) {
         return -1;
-    } else if (rt > 0) {
-        return 1;
-    } else {
-        return 0;
     }
+    if (rt > 0) {
+        return 1;
+    }
+    return 0;
 }
 
 TimeSpan DateTime::operator-(const DateTime &date_time) const noexcept {

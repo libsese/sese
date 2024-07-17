@@ -34,32 +34,32 @@ size_t impl::PostgresResultSetImpl::getColumns() const noexcept {
 
 int32_t impl::PostgresResultSetImpl::getInteger(size_t index) const noexcept {
     char *end;
-    return (int32_t) std::strtol(PQgetvalue(res, row - 1, (int) index), &end, 10);
+    return static_cast<int32_t>(std::strtol(PQgetvalue(res, row - 1, static_cast<int>(index)), &end, 10));
 }
 
 int64_t impl::PostgresResultSetImpl::getLong(size_t index) const noexcept {
     char *end;
-    return std::strtol(PQgetvalue(res, row - 1, (int) index), &end, 10);
+    return std::strtol(PQgetvalue(res, row - 1, static_cast<int>(index)), &end, 10);
 }
 
 std::string_view impl::PostgresResultSetImpl::getString(size_t index) const noexcept {
-    return PQgetvalue(res, row - 1, (int) index);
+    return PQgetvalue(res, row - 1, static_cast<int>(index));
 }
 
 double impl::PostgresResultSetImpl::getDouble(size_t index) const noexcept {
     char *end;
-    return std::strtod(PQgetvalue(res, row - 1, (int) index), &end);
+    return std::strtod(PQgetvalue(res, row - 1, static_cast<int>(index)), &end);
 }
 
 float impl::PostgresResultSetImpl::getFloat(size_t index) const noexcept {
     char *end;
-    return std::strtof(PQgetvalue(res, row - 1, (int) index), &end);
+    return std::strtof(PQgetvalue(res, row - 1, static_cast<int>(index)), &end);
 }
 std::optional<sese::DateTime> impl::PostgresResultSetImpl::getDateTime(size_t index) const noexcept {
-    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", PQgetvalue(res, row - 1, (int) index));
+    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", PQgetvalue(res, row - 1, static_cast<int>(index)));
     return rt;
 }
 bool impl::PostgresResultSetImpl::isNull(size_t index) const noexcept {
-    if (PQgetisnull(res, row - 1, (int) index)) return true;
+    if (PQgetisnull(res, row - 1, static_cast<int>(index))) return true;
     return false;
 }

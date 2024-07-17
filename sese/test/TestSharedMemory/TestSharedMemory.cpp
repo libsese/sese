@@ -19,7 +19,7 @@ TEST(TestSharedMemory, MEM_D) {
     }
     ASSERT_NE(mem, nullptr) << "failed to use shared memory: " << sese::getErrorString();
 
-    auto p_int = (int64_t *) mem->getBuffer();
+    auto p_int = static_cast<int64_t *>(mem->getBuffer());
     LogHelper::i("memory daemon init number is: %" PRId64, *p_int);
 
     *p_int += 1;

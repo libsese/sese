@@ -23,7 +23,7 @@ using sstr::SStringBuilder;
 SStringBuilder::SStringBuilder(const SStringBuilder &builder) {
     _cap = builder._cap;
     _size = builder._size;
-    _data = (uint32_t *) malloc(_cap * sizeof(uint32_t));
+    _data = static_cast<uint32_t *>(malloc(_cap * sizeof(uint32_t)));
     memcpy(_data, builder._data, (_size + 1) * sizeof(uint32_t));
 }
 
@@ -38,7 +38,7 @@ SStringBuilder::SStringBuilder(SStringBuilder &&builder) noexcept {
 }
 
 SStringBuilder::SStringBuilder(size_t buffer_size) {
-    _data = (uint32_t *) malloc(buffer_size * sizeof(uint32_t));
+    _data = static_cast<uint32_t *>(malloc(buffer_size * sizeof(uint32_t)));
     _cap = buffer_size;
 }
 
@@ -81,7 +81,7 @@ void SStringBuilder::append(const char *str) {
     auto index = 0;
     for (auto i = 0; i < count; i++) {
         auto n = sstr::getSizeFromUTF8Char(str[index]);
-        _data[_size + i] = (uint32_t) sstr::getUnicodeCharFromUTF8Char(n, str + index);
+        _data[_size + i] = static_cast<uint32_t>(sstr::getUnicodeCharFromUTF8Char(n, str + index));
         index += n;
     }
 
@@ -101,7 +101,7 @@ void SStringBuilder::append(const SStringView &str) {
     auto index = 0;
     for (auto i = 0; i < count; i++) {
         auto n = sstr::getSizeFromUTF8Char(p[index]);
-        _data[_size + i] = (uint32_t) sstr::getUnicodeCharFromUTF8Char(n, p + index);
+        _data[_size + i] = static_cast<uint32_t>(sstr::getUnicodeCharFromUTF8Char(n, p + index));
         index += n;
     }
 
@@ -110,7 +110,7 @@ void SStringBuilder::append(const SStringView &str) {
 
 bool SStringBuilder::reserve(size_t size) {
     if (size > _cap) {
-        auto new_data = (uint32_t *) malloc(size * sizeof(uint32_t));
+        auto new_data = static_cast<uint32_t *>(malloc(size * sizeof(uint32_t)));
         memcpy(new_data, _data, _size * sizeof(uint32_t));
         free(_data);
         _data = new_data;
@@ -178,7 +178,7 @@ SChar SStringBuilder::at(size_t index) const {
 }
 
 SString SStringBuilder::toString() const {
-    return SString::fromSChars((SChar *) _data, _size);
+    return SString::fromSChars(reinterpret_cast<SChar *>(_data), _size);
 }
 
 int32_t SStringBuilder::find(const char *str) const {
@@ -192,9 +192,10 @@ int32_t SStringBuilder::find(const SStringView &str) const {
 }
 
 void SStringBuilder::set(size_t index, SChar ch) {
-    if (index + 1 > _size) return;
+    if (index + 1 > _size)
+        return;
 
-    _data[index] = (uint32_t) ch;
+    _data[index] = static_cast<uint32_t>(ch);
 }
 
 void SStringBuilder::remove(size_t index) {
@@ -244,7 +245,7 @@ void SStringBuilder::insert(size_t index, SChar ch) {
 
     RightShiftElement(_data, _size, index, 1);
 
-    _data[index] = (uint32_t) ch;
+    _data[index] = static_cast<uint32_t>(ch);
     _size++;
 }
 
@@ -261,7 +262,7 @@ void SStringBuilder::insert(size_t index, const char *u8str) {
     }
     RightShiftElement(_data, _size, index, len);
     for (size_t i = 0; i < len; i++) {
-        _data[index + i] = (uint32_t) chars[i];
+        _data[index + i] = static_cast<uint32_t>(chars[i]);
     }
     _size = new_size;
 }
@@ -278,7 +279,7 @@ void SStringBuilder::insert(size_t index, const SStringView &str) {
     }
     RightShiftElement(_data, _size, index, len);
     for (size_t i = 0; i < len; i++) {
-        _data[index + i] = (uint32_t) chars[i];
+        _data[index + i] = static_cast<uint32_t>(chars[i]);
     }
     _size = new_size;
 }
@@ -304,7 +305,7 @@ void SStringBuilder::replace(size_t begin, size_t len, const char *u8str) {
 
     // 直接替换
     for (size_t i = 0; i < char_size; i++) {
-        _data[begin + i] = (uint32_t) chars[i];
+        _data[begin + i] = static_cast<uint32_t>(chars[i]);
     }
     _size = new_size;
 }
@@ -329,7 +330,7 @@ void SStringBuilder::replace(size_t begin, size_t len, const SStringView &str) {
 
     // 直接替换
     for (size_t i = 0; i < char_size; i++) {
-        _data[begin + i] = (uint32_t) chars[i];
+        _data[begin + i] = static_cast<uint32_t>(chars[i]);
     }
     _size = new_size;
 }

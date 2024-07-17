@@ -35,7 +35,7 @@ IPv6Address::IPv6Address() noexcept {
 
 IPv6Address::IPv6Address(const sockaddr_in6 &address) noexcept : address(address) {}
 
-IPv6Address::IPv6Address(uint8_t *address, uint16_t port) {
+IPv6Address::IPv6Address(const uint8_t *address, uint16_t port) {
     this->address.sin6_family = AF_INET6;
     //    if (Environment::isLittleEndian()) {
     //        this->address.sin6_port = ByteSwap16(port);

@@ -82,9 +82,9 @@ void Logger::removeGlobalLoggerAppender(const AbstractAppender::Ptr &appender) n
 }
 
 void Logger::dump(const void *buffer, size_t length) noexcept {
-    builtInAppender->dump((const char *) buffer, length);
+    builtInAppender->dump(static_cast<const char *>(buffer), length);
     for (auto &appender: appenderVector) {
-        appender->dump((const char *) buffer, length);
+        appender->dump(static_cast<const char *>(buffer), length);
     }
 }
 

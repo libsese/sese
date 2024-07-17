@@ -333,7 +333,7 @@ size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
     const auto PREFIX = static_cast<uint8_t>(std::pow(2, 7) - 1);
     uint8_t buf;
     if (index < PREFIX) {
-        buf = 0b1000'0000 | (((uint8_t) index) & 0b0111'1111);
+        buf = 0b1000'0000 | (static_cast<uint8_t>(index) & 0b0111'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -355,7 +355,7 @@ size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
     const auto PREFIX = static_cast<uint8_t>(std::pow(2, 6) - 1);
     uint8_t buf;
     if (index < PREFIX) {
-        buf = 0b0100'0000 | (((uint8_t) index) & 0b0011'1111);
+        buf = 0b0100'0000 | (static_cast<uint8_t>(index) & 0b0011'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -369,7 +369,7 @@ size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
             index = index / 128;
             size += 1;
         }
-        buf = (uint8_t) index;
+        buf = static_cast<uint8_t>(index);
         dest->write(&buf, 1);
         size += 1;
         return size;
@@ -380,7 +380,7 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
     const auto PREFIX = static_cast<uint8_t>(std::pow(2, 4) - 1);
     uint8_t buf;
     if (index < PREFIX) {
-        buf = 0b0000'0000 | (((uint8_t) index) & 0b0000'1111);
+        buf = 0b0000'0000 | (static_cast<uint8_t>(index) & 0b0000'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -394,7 +394,7 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
             index = index / 128;
             size += 1;
         }
-        buf = (uint8_t) index;
+        buf = static_cast<uint8_t>(index);
         dest->write(&buf, 1);
         size += 1;
         return size;
@@ -405,7 +405,7 @@ size_t HPackUtil::encodeIndexCase3(OutputStream *dest, size_t index) noexcept {
     const auto PREFIX = static_cast<uint8_t>(std::pow(2, 4) - 1);
     uint8_t buf;
     if (index < PREFIX) {
-        buf = 0b0001'0000 | (((uint8_t) index) & 0b0000'1111);
+        buf = 0b0001'0000 | (static_cast<uint8_t>(index) & 0b0000'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -419,7 +419,7 @@ size_t HPackUtil::encodeIndexCase3(OutputStream *dest, size_t index) noexcept {
             index = index / 128;
             size += 1;
         }
-        buf = (uint8_t) index;
+        buf = static_cast<uint8_t>(index);
         dest->write(&buf, 1);
         size += 1;
         return size;
@@ -434,7 +434,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
         uint8_t buf;
         auto code = encoder.encode(str);
         if (code.size() < PREFIX) {
-            buf = 0b1000'0000 | ((uint8_t) code.size());
+            buf = 0b1000'0000 | static_cast<uint8_t>(code.size());
             dest->write(&buf, 1);
             dest->write(code.data(), code.size());
             return 1 + code.size();
@@ -460,7 +460,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
         /// 不需要 Huffman 压缩
         uint8_t buf;
         if (str.size() < PREFIX) {
-            buf = 0b0000'0000 | ((uint8_t) str.size());
+            buf = 0b0000'0000 | static_cast<uint8_t>(str.size());
             dest->write(&buf, 1);
             dest->write(str.data(), str.size());
             return 1 + str.size();
@@ -476,7 +476,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
                 i = i / 128;
                 size += 1;
             }
-            buf = (uint8_t) i;
+            buf = static_cast<uint8_t>(i);
             dest->write(&buf, 1);
             size += 1;
             dest->write(str.data(), str.size());
