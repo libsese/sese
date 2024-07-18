@@ -60,13 +60,16 @@ bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
     req->set("connection", "keep-alive");
     cookies = std::make_shared<CookieMap>();
     req->setCookies(cookies);
-
+    reset();
     return true;
 }
 
 bool AsioHttpClient::request() {
-    // 判断 body
-    if (req->getBody().getLength() != 0) {
+    // 处理内容长度
+    char *end;
+    if (expect_total) {
+        req->set("content-length", std::to_string(expect_total));
+    } else {
         req->set("content-length", std::to_string(req->getBody().getLength()));
     }
 
@@ -79,6 +82,7 @@ bool AsioHttpClient::request() {
     }
     while (!HttpUtil::sendRequest(this, req.get())) {
         if (times > 1) {
+            reset();
             return false;
         }
 
@@ -86,55 +90,53 @@ bool AsioHttpClient::request() {
         asio::ip::tcp::endpoint endpoint(convert(address), address->getPort());
         code = socket.connect(endpoint, code);
         if (code) {
+            reset();
             return false;
         }
 
         if (ssl) {
             code = sslSocket.handshake(asio::ssl::stream_base::client, code);
             if (code) {
+                reset();
                 return false;
             }
         }
     }
 
-    // 判断 body
-    if (req->getBody().getLength() != 0) {
-        while (true) {
-            char buffer[MTU_VALUE];
-            auto len = req->getBody().peek(buffer, MTU_VALUE);
-            if (len == 0) {
-                break;
-            }
-            auto wrote = this->write(buffer, len);
-            if (wrote <= 0) {
-                return false;
-            }
-            req->getBody().trunc(wrote);
+    // 判断如何读取 body
+    if (expect_total && read_callback) {
+        if (!writeBodyByCallback()) {
+            reset();
+            return false;
+        }
+    } else if (expect_total) {
+        if (!writeBodyByData()) {
+            reset();
+            return false;
+        }
+    } else if (req->getBody().getLength()) {
+        if (!writeBodyByAuto()) {
+            reset();
+            return false;
         }
     }
 
     auto response_status = HttpUtil::recvResponse(this, resp.get());
     if (!response_status) {
+        reset();
         return false;
     }
 
-    // 判断 body
-    char *end;
+    // 判断如何写入 body
     auto expect = std::strtol(resp->get("content-length", "0").c_str(), &end, 10);
     if (expect > 0) {
-        size_t real = 0;
-        while (true) {
-            if (real >= expect) {
-                break;
-            }
-            char buffer[MTU_VALUE];
-            auto need = std::min<size_t>(expect - real, MTU_VALUE);
-            auto read = this->read(buffer, need);
-            if (read <= 0) {
-                return false;
-            }
-            resp->getBody().write(buffer, read);
-            real += read;
+        if (write_callback && !readBodyByCallback(expect)) {
+            reset();
+            return false;
+        }
+        if (!readBodyByData(expect)) {
+            reset();
+            return false;
         }
     }
 
@@ -153,8 +155,101 @@ bool AsioHttpClient::request() {
         DEST->add(item.second);
     }
 
+    reset();
     return true;
 }
+
+bool AsioHttpClient::writeBodyByCallback() {
+    size_t real = 0;
+    while (true) {
+        if (real >= expect_total) {
+            return true;
+        }
+        auto need = std::min<size_t>(expect_total - real, MTU_VALUE);
+        char buffer[MTU_VALUE];
+        auto len = read_callback(buffer, need);
+        if (len <= 0) {
+            return false;
+        }
+        auto wrote = this->write(buffer, len);
+        if (len != wrote) {
+            return false;
+        }
+        real += wrote;
+    }
+}
+
+bool AsioHttpClient::writeBodyByData() {
+    size_t real = 0;
+    while (true) {
+        if (real >= expect_total) {
+            return true;
+        }
+        auto need = std::min<size_t>(expect_total - real, MTU_VALUE);
+        char buffer[MTU_VALUE];
+        auto len = read_data->peek(buffer, need);
+        auto wrote = this->write(buffer, len);
+        if (wrote <= 0) {
+            return false;
+        }
+        read_data->trunc(wrote);
+        real += wrote;
+    }
+}
+
+bool AsioHttpClient::writeBodyByAuto() {
+    while (true) {
+        char buffer[MTU_VALUE];
+        auto len = req->getBody().peek(buffer, MTU_VALUE);
+        if (len == 0) {
+            return true;
+        }
+        auto wrote = this->write(buffer, len);
+        if (wrote <= 0) {
+            return false;
+        }
+        req->getBody().trunc(wrote);
+    }
+}
+
+bool AsioHttpClient::readBodyByCallback(size_t expect) {
+    size_t real = 0;
+    while (true) {
+        if (real >= expect) {
+            return true;
+        }
+        char buffer[MTU_VALUE];
+        auto need = std::min<size_t>(expect - real, MTU_VALUE);
+        auto read = this->read(buffer, need);
+        if (read <= 0) {
+            return false;
+        }
+        if (read != write_callback(buffer, read)) {
+            return false;
+        }
+        real += read;
+    }
+}
+
+bool AsioHttpClient::readBodyByData(size_t expect) {
+    size_t real = 0;
+    while (true) {
+        if (real >= expect) {
+            return true;
+        }
+        char buffer[MTU_VALUE];
+        auto need = std::min<size_t>(expect - real, MTU_VALUE);
+        auto read = this->read(buffer, need);
+        if (read <= 0) {
+            return false;
+        }
+        if (read != write_data->write(buffer, read)) {
+            return false;
+        }
+        real += read;
+    }
+}
+
 
 int64_t AsioHttpClient::read(void *buf, size_t len) {
     size_t read;

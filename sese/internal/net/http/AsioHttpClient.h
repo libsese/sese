@@ -34,6 +34,14 @@ public:
 
     std::string getLastErrorString() override;
 
+private:
+    bool writeBodyByCallback();
+    bool writeBodyByData();
+    bool writeBodyByAuto();
+
+    bool readBodyByCallback(size_t expect);
+    bool readBodyByData(size_t expect);
+
 protected:
     sese::net::IPAddress::Ptr address = nullptr;
     sese::net::http::CookieMap::Ptr cookies = nullptr;

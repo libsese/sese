@@ -9,6 +9,7 @@
 #include "sese/service/TimerableService_V2.h"
 #include "sese/service/http/HttpServer_V3.h"
 #include "sese/security/SSLContextBuilder.h"
+#include "sese/io/ConsoleOutputStream.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
@@ -147,9 +148,37 @@ public:
         req->setType(RequestType::POST);
         auto dict = sese::Value::Dict().set("name", "kaoru").set("pwd", "10086");
         sese::Json::streamify(&req->getBody(), dict);
+        auto console = std::make_unique<sese::io::ConsoleOutputStream>();
+        client->setWriteData(console.get());
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 200);
-        EXPECT_EQ(client->getResponse()->getBody().getLength(), 2);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
+
+    static void file(bool ssl, uint16_t port) {
+        using namespace sese::net::http;
+        auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/www/sese/test/Data/data.ini"));
+        ASSERT_NOT_NULL(client);
+        auto console = std::make_unique<sese::io::ConsoleOutputStream>();
+        client->setWriteData(console.get());
+        ASSERT_TRUE(client->request()) << client->getLastError();
+        EXPECT_EQ(client->getResponse()->getCode(), 200);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
+
+    static void range(bool ssl, uint16_t port) {
+        using namespace sese::net::http;
+        auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/www/sese/test/Data/data.ini"));
+        ASSERT_NOT_NULL(client);
+        auto console = std::make_unique<sese::io::ConsoleOutputStream>();
+        client->setWriteData(console.get());
+        client->getRequest()->set("range", "bytes=2-16");
+        ASSERT_TRUE(client->request()) << client->getLastError();
+        EXPECT_EQ(client->getResponse()->getCode(), 206);
         for (auto &&[key, value]: *client->getResponse()) {
             SESE_INFO("%s: %s", key.c_str(), value.c_str());
         }
@@ -182,9 +211,13 @@ TEST_F(TestHttpServerV3, Form) {
 }
 
 TEST_F(TestHttpServerV3, File) {
+    file(true, ssl_port);
+    file(false, port);
 }
 
 TEST_F(TestHttpServerV3, Range) {
+    range(true, ssl_port);
+    range(false, port);
 }
 
 #pragma endregion
