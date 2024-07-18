@@ -65,6 +65,11 @@ bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
 }
 
 bool AsioHttpClient::request() {
+    // 判断 body
+    if (req->getBody().getLength() != 0) {
+        req->set("content-length", std::to_string(req->getBody().getLength()));
+    }
+
     // 允许重连一次
     int times = 0;
     if (first) {
@@ -92,9 +97,45 @@ bool AsioHttpClient::request() {
         }
     }
 
+    // 判断 body
+    if (req->getBody().getLength() != 0) {
+        while (true) {
+            char buffer[MTU_VALUE];
+            auto len = req->getBody().peek(buffer, MTU_VALUE);
+            if (len == 0) {
+                break;
+            }
+            auto wrote = this->write(buffer, len);
+            if (wrote <= 0) {
+                return false;
+            }
+            req->getBody().trunc(wrote);
+        }
+    }
+
     auto response_status = HttpUtil::recvResponse(this, resp.get());
     if (!response_status) {
         return false;
+    }
+
+    // 判断 body
+    char *end;
+    auto expect = std::strtol(resp->get("content-length", "0").c_str(), &end, 10);
+    if (expect > 0) {
+        size_t real = 0;
+        while (true) {
+            if (real >= expect) {
+                break;
+            }
+            char buffer[MTU_VALUE];
+            auto need = std::min<size_t>(expect - real, MTU_VALUE);
+            auto read = this->read(buffer, need);
+            if (read <= 0) {
+                return false;
+            }
+            resp->getBody().write(buffer, read);
+            real += read;
+        }
     }
 
     const auto CONNECTION_VALUE = resp->get("connection", "close");
