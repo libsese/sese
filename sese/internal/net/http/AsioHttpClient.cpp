@@ -129,7 +129,7 @@ bool AsioHttpClient::request() {
 
     // 判断如何写入 body
     auto expect = std::strtol(resp->get("content-length", "0").c_str(), &end, 10);
-    if (expect > 0) {
+    if (req->getType() != RequestType::HEAD && expect > 0) {
         if (write_callback && !readBodyByCallback(expect)) {
             reset();
             return false;
