@@ -62,7 +62,8 @@ var annotated_dup =
       [ "internal", "namespacesese_1_1internal.html", [
         [ "net", "namespacesese_1_1internal_1_1net.html", [
           [ "http", "namespacesese_1_1internal_1_1net_1_1http.html", [
-            [ "AsioHttpClient", "classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html", "classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client" ]
+            [ "HttpClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl" ],
+            [ "HttpSSLClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl" ]
           ] ]
         ] ],
         [ "service", "namespacesese_1_1internal_1_1service.html", [

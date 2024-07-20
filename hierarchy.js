@@ -208,7 +208,9 @@ var hierarchy =
       [ "sese::iocp::IOBuf", "classsese_1_1iocp_1_1_i_o_buf.html", null ],
       [ "sese::iocp::v1::Context", "classsese_1_1iocp_1_1v1_1_1_context.html", null ],
       [ "sese::net::http::Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", [
-        [ "sese::internal::net::http::AsioHttpClient", "classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html", null ]
+        [ "sese::internal::net::http::HttpClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html", [
+          [ "sese::internal::net::http::HttpSSLClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html", null ]
+        ] ]
       ] ],
       [ "sese::res::ResourceStream", "classsese_1_1res_1_1_resource_stream.html", null ]
     ] ],

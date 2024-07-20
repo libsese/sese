@@ -14,6 +14,5 @@ var searchData=
   ['archivewriter_11',['ArchiveWriter',['../classsese_1_1archive_1_1_archive_writer.html',1,'sese::archive']]],
   ['argparser_12',['ArgParser',['../classsese_1_1_arg_parser.html',1,'sese']]],
   ['arraydata_13',['arraydata',['../classsese_1_1json_1_1_array_data.html',1,'sese::json::ArrayData'],['../classsese_1_1yaml_1_1_array_data.html',1,'sese::yaml::ArrayData']]],
-  ['asiohttpclient_14',['AsioHttpClient',['../classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html',1,'sese::internal::net::http']]],
-  ['asynclogger_15',['AsyncLogger',['../classsese_1_1record_1_1_async_logger.html',1,'sese::record']]]
+  ['asynclogger_14',['AsyncLogger',['../classsese_1_1record_1_1_async_logger.html',1,'sese::record']]]
 ];

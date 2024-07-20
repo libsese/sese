@@ -156,7 +156,7 @@ $(document).ready(function(){initNavTree('_date_time_8h_source.html',''); initRe
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html">   30</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> {</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">   32</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">Ptr</a> = std::unique_ptr&lt;DateTime&gt;;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
@@ -218,35 +218,34 @@ $(document).ready(function(){initNavTree('_date_time_8h_source.html',''); initRe
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
 </div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">namespace </span>text::overload {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keyword">template</span>&lt;&gt;</div>
-<div class="foldopen" id="foldopen00098" data-start="{" data-end="};">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html">   98</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;<a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a>&gt; {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1">   99</a></span>        std::string datetime_pattern = <span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01">  101</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01">parse</a>(<span class="keyword">const</span> std::string &amp;pattern){</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            datetime_pattern = pattern;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">template</span>&lt;&gt;</div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="};">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html">   97</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">text::overload::Formatter</a>&lt;<a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a>&gt; {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1">   98</a></span>    std::string datetime_pattern = <span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01">  100</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01">parse</a>(<span class="keyword">const</span> std::string &amp;pattern) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        datetime_pattern = pattern;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
 </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d">  106</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d">format</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, <span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> &amp;datetime)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">DateTimeFormatter::format</a>(datetime, datetime_pattern);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d">  105</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d">format</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, <span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> &amp;datetime)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">DateTimeFormatter::format</a>(datetime, datetime_pattern);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
 </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    };</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>};</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>} <span class="comment">// namespace sese</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_date_time_8h.html">DateTime.h</a></li>
-    <li class="footer">生成于 2024年 七月 14日 星期日 14:40:30 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 20日 星期六 14:33:26 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

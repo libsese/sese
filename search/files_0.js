@@ -26,11 +26,9 @@ var searchData=
   ['archivewriter_2eh_23',['ArchiveWriter.h',['../_archive_writer_8h.html',1,'']]],
   ['argparser_2ecpp_24',['ArgParser.cpp',['../_arg_parser_8cpp.html',1,'']]],
   ['argparser_2eh_25',['ArgParser.h',['../_arg_parser_8h.html',1,'']]],
-  ['asiohttpclient_2ecpp_26',['AsioHttpClient.cpp',['../_asio_http_client_8cpp.html',1,'']]],
-  ['asiohttpclient_2eh_27',['AsioHttpClient.h',['../_asio_http_client_8h.html',1,'']]],
-  ['asioipconvert_2eh_28',['AsioIPConvert.h',['../_asio_i_p_convert_8h.html',1,'']]],
-  ['asiosslcontextconvert_2eh_29',['AsioSSLContextConvert.h',['../_asio_s_s_l_context_convert_8h.html',1,'']]],
-  ['async_2eh_30',['Async.h',['../_async_8h.html',1,'']]],
-  ['asynclogger_2ecpp_31',['AsyncLogger.cpp',['../_async_logger_8cpp.html',1,'']]],
-  ['asynclogger_2eh_32',['AsyncLogger.h',['../_async_logger_8h.html',1,'']]]
+  ['asioipconvert_2eh_26',['AsioIPConvert.h',['../_asio_i_p_convert_8h.html',1,'']]],
+  ['asiosslcontextconvert_2eh_27',['AsioSSLContextConvert.h',['../_asio_s_s_l_context_convert_8h.html',1,'']]],
+  ['async_2eh_28',['Async.h',['../_async_8h.html',1,'']]],
+  ['asynclogger_2ecpp_29',['AsyncLogger.cpp',['../_async_logger_8cpp.html',1,'']]],
+  ['asynclogger_2eh_30',['AsyncLogger.h',['../_async_logger_8h.html',1,'']]]
 ];

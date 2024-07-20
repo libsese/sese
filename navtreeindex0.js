@@ -64,9 +64,6 @@ var NAVTREEINDEX0 =
 "_arg_parser_8cpp.html":[7,0,0,22,0],
 "_arg_parser_8h.html":[7,0,0,22,1],
 "_arg_parser_8h_source.html":[7,0,0,22,1],
-"_asio_http_client_8cpp.html":[7,0,0,9,1,0,0],
-"_asio_http_client_8h.html":[7,0,0,9,1,0,1],
-"_asio_http_client_8h_source.html":[7,0,0,9,1,0,1],
 "_asio_i_p_convert_8h.html":[7,0,0,9,1,1],
 "_asio_i_p_convert_8h.html#af1db21106bdd2952c72ab8fcd2f2e2a2":[7,0,0,9,1,1,0],
 "_asio_i_p_convert_8h_source.html":[7,0,0,9,1,1],
@@ -196,8 +193,8 @@ var NAVTREEINDEX0 =
 "_compressor_8h.html":[7,0,0,5,3],
 "_compressor_8h_source.html":[7,0,0,5,3],
 "_config_8cpp.html":[7,0,0,0,8],
-"_config_8cpp.html#a1be1c76ad0e1849c133c2000a34a176b":[7,0,0,0,8,0],
 "_config_8cpp.html#a1be1c76ad0e1849c133c2000a34a176b":[7,0,0,0,8,1],
+"_config_8cpp.html#a1be1c76ad0e1849c133c2000a34a176b":[7,0,0,0,8,0],
 "_config_8h.html":[7,0,0,23],
 "_config_8h.html#a00e27115f7638a8221d9300bd6f762fd":[7,0,0,23,21],
 "_config_8h.html#a0e21d82d505114db680929151bbcd4b5":[7,0,0,23,9],
@@ -249,5 +246,8 @@ var NAVTREEINDEX0 =
 "_controller_8h.html#a7eaeb37d052ecaa4a1e25d0ccc71a867":[7,0,0,12,1,2,3],
 "_controller_8h_source.html":[7,0,0,12,1,2],
 "_cookie_8cpp.html":[7,0,0,12,1,3],
-"_cookie_8h.html":[7,0,0,12,1,4]
+"_cookie_8h.html":[7,0,0,12,1,4],
+"_cookie_8h_source.html":[7,0,0,12,1,4],
+"_cookie_map_8cpp.html":[7,0,0,12,1,5],
+"_cookie_map_8h.html":[7,0,0,12,1,6]
 };

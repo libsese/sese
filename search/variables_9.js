@@ -8,7 +8,7 @@ var searchData=
   ['integer_5faffinity_5fset_5',['INTEGER_AFFINITY_SET',['../classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5aa6a72bc44db0b00ddcf933768d14f0',1,'sese::db::impl::SqlitePreparedStatementImpl']]],
   ['io_5fbuffer_6',['io_buffer',['../structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad627814257f1f33e0ccd0ac1c5896d8a',1,'sese::internal::service::http::v3::HttpSSLConnectionImpl']]],
   ['io_5fcontext_7',['io_context',['../classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html#a886aba1ccff46cba13ff16d370fb51af',1,'sese::internal::service::http::v3::HttpServiceImpl']]],
-  ['iocontext_8',['ioContext',['../classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a16b701a2a9ac944f30fb74f4e08d7c35',1,'sese::internal::net::http::AsioHttpClient']]],
+  ['iocontext_8',['ioContext',['../classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2bc841df5273e84f0388be1fdc5ec4ff',1,'sese::internal::net::http::HttpClientImpl']]],
   ['iocp_5fwsabuf_5fsize_9',['IOCP_WSABUF_SIZE',['../_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41',1,'Config.h']]],
   ['iocpfd_10',['iocpFd',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc',1,'sese::_windows::iocp::v1::NativeIOCPServer']]],
   ['ipv4addresses_11',['ipv4Addresses',['../structsese_1_1system_1_1_network_interface.html#afc6eae1990f64176f8fde55bc9e40847',1,'sese::system::NetworkInterface']]],
