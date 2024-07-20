@@ -35,6 +35,8 @@ public:
     std::string getLastErrorString() override;
 
 private:
+    bool writeHeader(io::ByteBuilder &builder);
+
     bool writeBodyByCallback();
     bool writeBodyByData();
     bool writeBodyByAuto();

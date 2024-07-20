@@ -2,7 +2,11 @@
 #include "sese/net/http/HttpUtil.h"
 #include "sese/internal/net/AsioIPConvert.h"
 #include "sese/internal/net/http/AsioHttpClient.h"
+
+#include "sese/io/ByteBuffer.h"
+#include "sese/io/ByteBuilder.h"
 #include "sese/util/Util.h"
+
 
 using namespace sese::net::http;
 using namespace sese::internal::net::http;
@@ -80,7 +84,9 @@ bool AsioHttpClient::request() {
     } else {
         first = false;
     }
-    while (!HttpUtil::sendRequest(this, req.get())) {
+    io::ByteBuilder bytes;
+    HttpUtil::sendRequest(&bytes, req.get());
+    while (!writeHeader(bytes)) {
         if (times > 1) {
             reset();
             return false;
@@ -158,6 +164,23 @@ bool AsioHttpClient::request() {
     reset();
     return true;
 }
+
+bool AsioHttpClient::writeHeader(io::ByteBuilder &builder){
+    builder.resetPos();
+    while(true) {
+        char buffer[MTU_VALUE];
+        auto len = builder.peek(buffer, MTU_VALUE);
+        if (len == 0) {
+            return true;
+        }
+        auto wrote = this->write(buffer, len);
+        if (wrote <= 0) {
+            return false;
+        }
+        builder.trunc(wrote);
+    }
+}
+
 
 bool AsioHttpClient::writeBodyByCallback() {
     size_t real = 0;
