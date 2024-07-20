@@ -10,7 +10,7 @@
 namespace sese::res {
 
 /// 静态资源
-class  Resource {
+class Resource { // GCOVR_EXCL_LINE
 public:
     using Ptr = std::shared_ptr<Resource>;
 

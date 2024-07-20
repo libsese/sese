@@ -27,13 +27,13 @@ sese::net::dns::DnsServer::Ptr sese::net::dns::DnsServer::create(const sese::net
         // }
         uint8_t buffer[4];
         sese::net::inetPton(AF_INET, item.second.c_str(), buffer);
-        ptr->hostIPv4Map[item.first] = std::string((const char *) buffer, 4);
+        ptr->hostIPv4Map[item.first] = std::string(reinterpret_cast<const char *>(buffer), 4);
     }
 
     for (auto &item: config->hostIPv6Map) {
         uint8_t buffer[16];
         sese::net::inetPton(AF_INET6, item.second.c_str(), buffer);
-        ptr->hostIPv6Map[item.first] = std::string((const char *) buffer, 16);
+        ptr->hostIPv6Map[item.first] = std::string(reinterpret_cast<const char *>(buffer), 16);
     }
 
     return ptr;
@@ -82,8 +82,8 @@ void sese::net::dns::DnsServer::loop() noexcept {
             continue;
         }
 
-        auto input = sese::io::InputBufferWrapper((const char *) buffer + 12, len - 12);
-        auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
+        auto input = sese::io::InputBufferWrapper(reinterpret_cast<const char *>(buffer) + 12, len - 12);
+        auto output = sese::io::OutputBufferWrapper(reinterpret_cast<char *>(buffer) + 12, sizeof(buffer) - 12);
 
         FrameHeaderInfo info;
         DnsSession session;
@@ -103,7 +103,7 @@ void sese::net::dns::DnsServer::loop() noexcept {
                     uint16_t offset = q.getOffset();
                     offset |= 0b1100'0000'0000'0000;
                     offset = ToBigEndian16(offset);
-                    std::string name = {(const char *) &offset, 2};
+                    std::string name = {reinterpret_cast<const char *>(&offset), 2};
                     session.getAnswers().emplace_back(
                             name,
                             SESE_DNS_QR_TYPE_A,
@@ -123,7 +123,7 @@ void sese::net::dns::DnsServer::loop() noexcept {
                     uint16_t offset = q.getOffset();
                     offset |= 0b1100'0000'0000'0000;
                     offset = ToBigEndian16(offset);
-                    std::string name = {(const char *) &offset, 2};
+                    std::string name = {reinterpret_cast<const char *>(&offset), 2};
                     session.getAnswers().emplace_back(
                             name,
                             SESE_DNS_QR_TYPE_AAAA,

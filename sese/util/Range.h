@@ -11,7 +11,7 @@
 namespace sese {
 
 /// \brief 区间类
-/// \tparam Type 值类型
+/// \tparam TYPE 值类型
 template<class TYPE>
 class Range {
 public:

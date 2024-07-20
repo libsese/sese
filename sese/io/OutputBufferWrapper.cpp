@@ -24,11 +24,11 @@ int64_t sese::io::OutputBufferWrapper::write(const void *buf, size_t length) {
     } else if (remain >= length) {
         memcpy(buffer + len, buf, length);
         len += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         memcpy(buffer + len, buf, remain);
         len = cap;
-        return (int64_t) remain;
+        return static_cast<int64_t>(remain);
     }
 }
 

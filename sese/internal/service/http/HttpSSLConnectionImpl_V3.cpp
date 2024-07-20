@@ -94,9 +94,10 @@ void HttpSSLConnectionImpl::readBody() {
             return;
         }
         conn->node->size = bytes_transferred;
-        conn->io_buffer.push(std::move(conn->node));
         conn->real_length += conn->node->size;
-        streamMove(&conn->request.getBody(), &conn->io_buffer, conn->node->size);
+        auto node_size = conn->node->size;
+        conn->io_buffer.push(std::move(conn->node));
+        streamMove(&conn->request.getBody(), &conn->io_buffer, node_size);
         if (conn->real_length >= conn->expect_length) {
             // 理论上 real_length 不可能大于 expect_length，此处预防万一
             conn->io_buffer.clear();

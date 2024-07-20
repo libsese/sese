@@ -402,7 +402,7 @@ void NativeIOCPServer::eventThreadProc() {
                 continue;
             }
 
-            auto ssl = (SSL *) p_wrapper->ctx.ssl;
+            auto ssl = static_cast<SSL *>(p_wrapper->ctx.ssl);
             if (ssl) {
                 SSL_set_connect_state(ssl);
                 // GCOVR_EXCL_START

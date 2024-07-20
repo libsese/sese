@@ -7,7 +7,7 @@
 #include "sese/security/evp/SM3Context.h"
 #include "sese/util/MemoryViewer.h"
 
-std::string sese::security::MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool is_cap) noexcept {
+std::string sese::security::    MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool is_cap) noexcept {
     switch (type) {
         // case Type::MD4: {
         //     auto str = std::unique_ptr<char[]>(new char[MD4_DIGEST_LENGTH * 2 + 1]);
@@ -84,7 +84,7 @@ void sese::security::MessageDigest::digestMD5(char *str, InputStream *input, boo
     }
     context.final();
 
-    auto result = (uint8_t *) context.getResult();
+    auto result = static_cast<uint8_t *>(context.getResult());
     std::div_t div_rt;
     for (int i = 0; i < context.getLength(); ++i) {
         div_rt = std::div(result[i], 0x10);
@@ -103,7 +103,7 @@ void sese::security::MessageDigest::digestSH1(char *str, InputStream *input, boo
     }
     context.final();
 
-    auto result = (uint8_t *) context.getResult();
+    auto result = static_cast<uint8_t *>(context.getResult());
     std::div_t div_rt;
     for (int i = 0; i < context.getLength(); ++i) {
         div_rt = std::div(result[i], 0x10);
@@ -151,7 +151,7 @@ void sese::security::MessageDigest::digestSHA256(char *str, InputStream *input, 
     }
     context.final();
 
-    auto result = (uint8_t *) context.getResult();
+    auto result = static_cast<uint8_t *>(context.getResult());
     std::div_t div_rt;
     for (int i = 0; i < context.getLength(); ++i) {
         div_rt = std::div(result[i], 0x10);
@@ -170,7 +170,7 @@ void sese::security::MessageDigest::digestSHA384(char *str, InputStream *input, 
     }
     context.final();
 
-    auto result = (uint8_t *) context.getResult();
+    auto result = static_cast<uint8_t *>(context.getResult());
     std::div_t div_rt;
     for (int i = 0; i < context.getLength(); ++i) {
         div_rt = std::div(result[i], 0x10);
@@ -189,7 +189,7 @@ void sese::security::MessageDigest::digestSHA512(char *str, InputStream *input, 
     }
     context.final();
 
-    auto result = (uint8_t *) context.getResult();
+    auto result = static_cast<uint8_t *>(context.getResult());
     std::div_t div_rt;
     for (int i = 0; i < context.getLength(); ++i) {
         div_rt = std::div(result[i], 0x10);

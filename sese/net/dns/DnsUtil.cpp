@@ -103,7 +103,7 @@ void sese::net::dns::DnsUtil::encodeQueries(OutputStream *output, std::vector<Qu
     for (auto &item: vector) {
         auto v = text::StringBuilder::split(item.getName(), ".");
         for (auto &i: v) {
-            auto l = (uint8_t) i.length();
+            auto l = static_cast<uint8_t>(i.length());
             output->write(&l, 1);
             output->write(i.c_str(), i.length());
         }
@@ -122,7 +122,7 @@ void sese::net::dns::DnsUtil::encodeAnswers(OutputStream *output, std::vector<An
     for (auto &item: vector) {
         auto v = text::StringBuilder::split(item.getName(), ".");
         for (auto &i: v) {
-            auto l = (uint8_t) i.length();
+            auto l = static_cast<uint8_t>(i.length());
             output->write(&l, 1);
             output->write(i.c_str(), i.length());
         }
@@ -161,7 +161,7 @@ bool sese::net::dns::DnsUtil::decodeDomain(InputStream *input, std::string &doma
         } else if (((l & 0b1100'0000) >> 6) == 3) {
             // 当前分段使用压缩
             uint16_t index;
-            auto p_index = (uint8_t *) &index;
+            auto p_index = reinterpret_cast<uint8_t *>(&index);
             p_index[0] = (0b0011'1111 & l);
             ASSERT_READ(&l, 1);
             p_index[1] = l;
@@ -227,7 +227,7 @@ bool sese::net::dns::DnsUtil::decodeAnswers(size_t acount, InputStream *input, s
 
         uint8_t data[128];
         ASSERT_READ(data, length);
-        auto str = std::string((const char *) data, length);
+        auto str = std::string(reinterpret_cast<const char *>(data), length);
         vector.emplace_back(domain, type, class_, time, length, str);
 
         acount -= 1;

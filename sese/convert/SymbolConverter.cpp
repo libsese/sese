@@ -34,6 +34,10 @@ std::string sese::SymbolConverter::decodeUnixClassName(const std::type_info *typ
     return builder.toString();
 }
 
+// GCOVR_EXCL_START
+
 std::string sese::SymbolConverter::decodeMSVCClassName(const std::type_info *type) noexcept {
     return type->name() + 6;
 }
+
+// GCOVR_EXCL_STOP

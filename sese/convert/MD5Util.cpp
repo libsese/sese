@@ -78,7 +78,7 @@ std::unique_ptr<char[]> MD5Util::encode(InputStream *input, bool is_cap) noexcep
 }
 
 void MD5Util::transform(uint32_t *result, uint8_t *buffer) noexcept {
-    auto *x = (uint32_t *) buffer;
+    auto *x = reinterpret_cast<uint32_t *>(buffer);
     uint32_t a = result[0];
     uint32_t b = result[1];
     uint32_t c = result[2];

@@ -37,7 +37,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     session.getQueries().emplace_back(domain, expect_type, SESE_DNS_QR_CLASS_IN, 0);
 
     uint8_t buffer[DNS_PACKAGE_SIZE];
-    auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
+    auto output = sese::io::OutputBufferWrapper(reinterpret_cast<char *>(buffer) + 12, sizeof(buffer) - 12);
 
     DnsUtil::encodeFrameHeaderInfo(buffer, info);
     DnsUtil::encodeQueries(&output, session.getQueries());
@@ -45,7 +45,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     socket.send(buffer, 12 + output.getLength(), server, 0);
 
     auto len = socket.recv(buffer, sizeof(buffer), server, 0);
-    auto input = sese::io::InputBufferWrapper((const char *) buffer + 12, len - 12);
+    auto input = sese::io::InputBufferWrapper(reinterpret_cast<const char *>(buffer) + 12, len - 12);
 
     session.getQueries().clear();
     DnsUtil::decodeFrameHeaderInfo(buffer, info);
@@ -55,16 +55,16 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     }
 
     DnsUtil::decodeQueries(info.questions, &input, session.getQueries());
-    DnsUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers(), (const char *) buffer);
+    DnsUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers(), reinterpret_cast<const char *>(buffer));
 
     for (auto &item: session.getAnswers()) {
         if (expect_type == item.getType()) {
             if (family == AF_INET) {
-                auto data = (const uint32_t *) item.getData().c_str();
+                auto data = reinterpret_cast<const uint32_t *>(item.getData().c_str());
                 uint32_t addr = FromBigEndian32(*data);
                 return std::make_shared<sese::net::IPv4Address>(addr, 0);
             } else {
-                auto data = (uint8_t *) item.getData().c_str();
+                auto data = reinterpret_cast<const uint8_t *>(item.getData().c_str());
                 return std::make_shared<sese::net::IPv6Address>(data, 0);
             }
         }

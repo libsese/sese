@@ -1,4 +1,4 @@
-/// \file AsioHttpClient.h
+/// \file HttpClientImpl.h
 /// \brief 基于ASIO实现的HTTP/1.1客户端
 /// \author kaoru
 /// \date 2024年04月10日
@@ -16,13 +16,11 @@
 namespace sese::internal::net::http {
 
 /// \brief 基于ASIO实现的HTTP/1.1客户端
-class AsioHttpClient : public sese::net::http::Requestable {
+class HttpClientImpl : public sese::net::http::Requestable {
 public:
-    AsioHttpClient();
+    HttpClientImpl(const sese::net::IPAddress::Ptr &addr, sese::net::http::Request::Ptr req);
 
-    ~AsioHttpClient() override;
-
-    bool init(const std::string &url, const std::string &proxy) override;
+    ~HttpClientImpl() override;
 
     bool request() override;
 
@@ -35,16 +33,25 @@ public:
     std::string getLastErrorString() override;
 
 protected:
-    sese::net::IPAddress::Ptr address = nullptr;
-    sese::net::http::CookieMap::Ptr cookies = nullptr;
+    virtual bool handshake();
+    virtual bool shutdown();
+
+    bool writeHeader(io::ByteBuilder &builder);
+
+    bool writeBodyByCallback();
+    bool writeBodyByData();
+    bool writeBodyByAuto();
+
+    bool readBodyByCallback(size_t expect);
+    bool readBodyByData(size_t expect);
+
+    sese::net::IPAddress::Ptr address;
+    sese::net::http::CookieMap::Ptr cookies;
 
     asio::error_code code{};
     asio::io_context ioContext;
     asio::ip::tcp::socket socket;
 
-    bool ssl = false;
     bool first = true;
-    asio::ssl::context sslContext;
-    asio::ssl::stream<asio::ip::tcp::socket &> sslSocket;
 };
-} // namespace sese::net::http
+} // namespace sese::internal::net::http

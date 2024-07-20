@@ -16,11 +16,11 @@ sese::security::evp::SHA256Context::~SHA256Context() noexcept {
 }
 
 void sese::security::evp::SHA256Context::update(const void *buffer, size_t len) noexcept {
-    CryptHashData(this->hHash, (const BYTE *) buffer, (DWORD) len, 0);
+    CryptHashData(this->hHash, static_cast<const BYTE *>(buffer), static_cast<DWORD>(len), 0);
 }
 
 void sese::security::evp::SHA256Context::final() noexcept {
-    CryptGetHashParam(this->hHash, HP_HASHVAL, (BYTE *) this->result, (DWORD *) &length, 0);
+    CryptGetHashParam(this->hHash, HP_HASHVAL, (BYTE *) this->result, reinterpret_cast<DWORD *>(&length), 0);
 }
 
 void *sese::security::evp::SHA256Context::getResult() noexcept {

@@ -24,18 +24,18 @@ int sese::net::Socket::connect(socket_t socket, const sockaddr *addr, socklen_t 
 #include <cassert>
 
 int sese::net::Socket::shutdown(sese::socket_t socket, sese::net::Socket::ShutdownMode mode) noexcept {
-    auto how = (int) mode;
+    auto how = static_cast<int>(mode);
     return ::shutdown(socket, how);
 }
 
 #ifdef SESE_PLATFORM_WINDOWS
 
 int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int flags) noexcept {
-    return ::recv(socket, (char *) buffer, (int) len, flags);
+    return ::recv(socket, static_cast<char *>(buffer), static_cast<int>(len), flags);
 }
 
 int64_t sese::net::Socket::write(socket_t socket, const void *buffer, size_t len, int flags) noexcept {
-    return ::send(socket, (const char *) buffer, (int) len, flags);
+    return ::send(socket, static_cast<const char *>(buffer), static_cast<int>(len), flags);
 }
 
 int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
@@ -58,7 +58,7 @@ std::string sese::net::getNetworkErrorString(int error) noexcept {
             nullptr,
             error,
             MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
-            (LPTSTR) &msg,
+            reinterpret_cast<LPTSTR>(&msg),
             0,
             nullptr
     );

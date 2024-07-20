@@ -23,7 +23,7 @@ int64_t impl::MariaDriverInstanceImpl::executeUpdate(const char *sql) noexcept {
     if (0 != mysql_query(conn, sql)) {
         return -1;
     }
-    return (int64_t) mysql_affected_rows(conn);
+    return static_cast<long long>(mysql_affected_rows(conn));
 }
 
 PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char *sql) noexcept {
@@ -31,7 +31,7 @@ PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char
     if (stmt == nullptr) return nullptr;
 
     size_t len = strlen(sql);
-    if (mysql_stmt_prepare(stmt, sql, (unsigned long) len)) return nullptr;
+    if (mysql_stmt_prepare(stmt, sql, static_cast<unsigned long>(len))) return nullptr;
 
     // 此处需要手动计算 '?' 个数
     size_t count = 0;
@@ -46,7 +46,7 @@ PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char
 }
 
 int impl::MariaDriverInstanceImpl::getLastError() const noexcept {
-    return (int) mysql_errno(conn);
+    return static_cast<int>(mysql_errno(conn));
 }
 
 const char *impl::MariaDriverInstanceImpl::getLastErrorMessage() const noexcept {
@@ -56,9 +56,9 @@ const char *impl::MariaDriverInstanceImpl::getLastErrorMessage() const noexcept 
 bool impl::MariaDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
     int temp;
     if (enable) {
-        temp = (unsigned char) mysql_autocommit(conn, 1);
+        temp = static_cast<unsigned char>(mysql_autocommit(conn, 1));
     } else {
-        temp = (unsigned char) mysql_autocommit(conn, 0);
+        temp = static_cast<unsigned char>(mysql_autocommit(conn, 0));
     }
     return temp == 0;
 }
@@ -76,17 +76,17 @@ bool impl::MariaDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
 }
 
 bool impl::MariaDriverInstanceImpl::commit() noexcept {
-    int comm = (unsigned char) mysql_commit(conn);
+    int comm = static_cast<unsigned char>(mysql_commit(conn));
     return comm == 0;
 }
 
 bool impl::MariaDriverInstanceImpl::rollback() noexcept {
-    int back = (unsigned char) mysql_rollback(conn);
+    int back = static_cast<unsigned char>(mysql_rollback(conn));
     return back == 0;
 }
 
 bool impl::MariaDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
-    id = (int64_t) mysql_insert_id(conn);
+    id = static_cast<int64_t>(mysql_insert_id(conn));
     if (id) {
         return true;
     } else {

@@ -15,7 +15,7 @@ char MemoryViewer::toChar(unsigned char ch, bool is_cap) noexcept {
 }
 
 void MemoryViewer::peer(OutputStream *output, void *position, size_t size, bool is_cap) noexcept {
-    auto *p = (uint8_t *) position;
+    auto *p = static_cast<uint8_t *>(position);
     for (auto i = 0; i < size; i++) {
         char word[3]{0, 0, ' '};
         word[0] = toChar(*(p + i + 0) / 0x10, is_cap);

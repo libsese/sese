@@ -1,12 +1,9 @@
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/internal/service/http/HttpServiceImpl_V3.h>
 #include <sese/internal/net/AsioIPConvert.h>
 #include <sese/internal/net/AsioSSLContextConvert.h>
 #include <sese/net/http/HttpUtil.h>
 #include <sese/io/FakeStream.h>
 #include <sese/Util.h>
-#include <sese/record/Marco.h>
 
 using namespace sese::internal::service::http::v3;
 
@@ -36,7 +33,10 @@ void HttpConnectionImpl::readHeader() {
             }
             conn->parse_buffer.freeCapacity();
             conn->expect_length = toInteger(conn->request.get("content-length", "0"));
-            conn->real_length = sese::streamMove(&conn->request.getBody(), &stream, conn->expect_length);
+            conn->real_length = 0;
+            if (conn->asio_dynamic_buffer.size()) {
+                conn->real_length = streamMove(&conn->request.getBody(), &stream, conn->asio_dynamic_buffer.size());
+            }
 
             if (conn->real_length < conn->expect_length) {
                 conn->readBody();
@@ -50,7 +50,7 @@ void HttpConnectionImpl::readHeader() {
 }
 
 void HttpConnectionImpl::readBody() {
-    asio::async_read(this->socket, this->asio_dynamic_buffer, [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
+    asio::async_read(this->socket, this->asio_dynamic_buffer, asio::transfer_at_least(1), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
             conn->disponse();
@@ -110,7 +110,7 @@ void HttpConnectionImpl::writeHeader() {
             if (conn->ranges.size() == 1) {
                 // 单区间文件
                 conn->expect_length = conn->range_iterator->len;
-                if(conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
+                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
                     conn->disponse();
                     return;
                 }

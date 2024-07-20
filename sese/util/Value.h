@@ -247,29 +247,27 @@ public:
     bool operator!=(const Value &rhs) const;
 
     void toString(text::StringBuilder &string_builder, size_t level) const noexcept;
-private:
 
+private:
     std::variant<Null, bool, Integer, double, String, Blob, List, Dict> data;
 };
 
-namespace text::overload {
-    template<>
-    struct Formatter<Value> {
-        size_t level = 4;
+template<>
+struct text::overload::Formatter<Value> {
+    size_t level = 4;
 
-        bool parse(const std::string &args) {
-            char *end;
-            level = static_cast<size_t>(std::strtol(args.c_str(), &end, 10));
-            if (level == 0) {
-                return false;
-            }
-            return true;
+    bool parse(const std::string &args) {
+        char *end;
+        level = static_cast<size_t>(std::strtol(args.c_str(), &end, 10));
+        if (level == 0) {
+            return false;
         }
+        return true;
+    }
 
-        void format(FmtCtx &ctx, Value &value) const {
-            value.toString(ctx.builder, level);
-        }
-    };
-} // namespace text::overload
+    void format(FmtCtx &ctx, Value &value) const {
+        value.toString(ctx.builder, level);
+    }
+};
 
 } // namespace sese

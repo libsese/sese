@@ -10,7 +10,7 @@ SharedMemory::Ptr SharedMemory::create(const char *name, size_t size) noexcept {
             nullptr,
             PAGE_READWRITE,
             0,
-            (DWORD) size,
+            static_cast<DWORD>(size),
             name
     );
 

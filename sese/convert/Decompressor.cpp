@@ -3,7 +3,7 @@
 
 sese::Decompressor::Decompressor(sese::CompressionType type, size_t buffer_size) {
     stream = new z_stream;
-    auto stm = (z_stream *) stream;
+    auto stm = static_cast<z_stream *>(stream);
     stm->zalloc = nullptr;
     stm->zfree = nullptr;
     stm->opaque = nullptr;
@@ -15,30 +15,30 @@ sese::Decompressor::Decompressor(sese::CompressionType type, size_t buffer_size)
     cap = buffer_size;
     buffer = new unsigned char[buffer_size];
 
-    inflateInit2(stm, MAX_WBITS + (int) type);
+    inflateInit2(stm, MAX_WBITS + static_cast<int>(type));
 }
 
 sese::Decompressor::~Decompressor() {
     delete[] buffer; // GCOVR_EXCL_LINE
 
-    auto stm = (z_stream *) stream;
+    auto stm = static_cast<z_stream *>(stream);
     ::inflateEnd(stm);
     delete stm; // GCOVR_EXCL_LINE
     stream = nullptr;
 }
 
 void sese::Decompressor::input(const void *input, unsigned int input_len) {
-    auto stm = (z_stream *) stream;
-    stm->avail_in = (unsigned int) input_len;
-    stm->next_in = (unsigned char *) input;
-    stm->avail_out = (unsigned int) cap;
+    auto stm = static_cast<z_stream *>(stream);
+    stm->avail_in = static_cast<unsigned int>(input_len);
+    stm->next_in = const_cast<unsigned char *>(static_cast<const unsigned char *>(input));
+    stm->avail_out = static_cast<unsigned int>(cap);
     stm->next_out = (unsigned char *) buffer;
 }
 
 // 此处逻辑不需要我们关心
 // GCOVR_EXCL_START
 int sese::Decompressor::inflate(OutputStream *out) {
-    auto stm = (z_stream *) stream;
+    auto stm = static_cast<z_stream *>(stream);
     // 输出 buffer 未能完全输出，继续输出
     if (length != 0) {
         auto last = length - read;
@@ -51,7 +51,7 @@ int sese::Decompressor::inflate(OutputStream *out) {
             length = 0;
             read = 0;
 
-            stm->avail_out = (unsigned int) cap;
+            stm->avail_out = static_cast<unsigned int>(cap);
             stm->next_out = buffer;
         }
     }
@@ -63,7 +63,7 @@ int sese::Decompressor::inflate(OutputStream *out) {
         if (ret == Z_STREAM_ERROR)
             return Z_STREAM_ERROR;
 
-        auto wrote = (int) cap - stm->avail_out;
+        auto wrote = static_cast<int>(cap) - stm->avail_out;
         auto real_wrote = out->write(buffer, wrote);
         if (wrote != real_wrote) {
             // 输出 buffer 未能全部输出
@@ -71,7 +71,7 @@ int sese::Decompressor::inflate(OutputStream *out) {
             read = real_wrote;
             return Z_BUF_ERROR;
         } else {
-            stm->avail_out = (unsigned int) cap;
+            stm->avail_out = static_cast<unsigned int>(cap);
             stm->next_out = buffer;
         }
     } while (ret != Z_STREAM_END);
@@ -82,17 +82,17 @@ int sese::Decompressor::inflate(OutputStream *out) {
 int sese::Decompressor::reset() {
     length = 0;
     read = 0;
-    auto stm = (z_stream *) stream;
+    auto stm = static_cast<z_stream *>(stream);
     return inflateReset(stm);
 }
 // GCOVR_EXCL_STOP
 
 size_t sese::Decompressor::getTotalIn() const {
-    auto stm = (z_stream *) stream;
+    auto stm = static_cast<z_stream *>(stream);
     return stm->total_in;
 }
 
 size_t sese::Decompressor::getTotalOut() const {
-    auto stm = (z_stream *) stream;
+    auto stm = static_cast<z_stream *>(stream);
     return stm->total_out - length + read;
 }

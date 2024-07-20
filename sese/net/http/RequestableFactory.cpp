@@ -1,13 +1,41 @@
 #include "sese/net/http/RequestableFactory.h"
-#include "sese/internal/net/http/AsioHttpClient.h"
+#include "sese/net/http/RequestParser.h"
+#include "sese/internal/net/http/HttpClientImpl.h"
+#include "sese/internal/net/http/HttpSSLClientImpl.h"
 
 using namespace sese::net::http;
 
 std::unique_ptr<Requestable> RequestableFactory::createHttpRequest(const std::string &url, const std::string &proxy) {
-    auto rt = std::make_unique<internal::net::http::AsioHttpClient>();
-    if (rt->init(url, proxy)) {
-        return rt;
-    } else {
-        return nullptr;
+    bool ssl;
+    auto url_result = RequestParser::parse(url);
+    IPAddress::Ptr address;
+    // 不方便CI测试
+    // GCOVR_EXCL_START
+    if (!proxy.empty()) {
+        auto proxy_result = RequestParser::parse(proxy);
+        if (proxy_result.address == nullptr) {
+            return nullptr;
+        }
+        url_result.request->setUrl(url);
+        url_result.request->set("via:", proxy);
+        url_result.request->set("proxy-connection", "keep-alive");
+        address = std::move(proxy_result.address);
+        ssl = strcmpDoNotCase("https", proxy_result.url.getProtocol().c_str());
     }
+    // GCOVR_EXCL_STOP
+    else {
+        if (url_result.address == nullptr) {
+            return nullptr;
+        }
+        address = std::move(url_result.address);
+        ssl = strcmpDoNotCase("https", url_result.url.getProtocol().c_str());
+    }
+
+    url_result.request->set("user-agent", "sese-httpclient/1.0");
+    url_result.request->set("connection", "keep-alive");
+
+    if (ssl) {
+        return std::make_unique<internal::net::http::HttpSSLClientImpl>(address, std::move(url_result.request));
+    }
+    return std::make_unique<internal::net::http::HttpClientImpl>(address, std::move(url_result.request));
 }

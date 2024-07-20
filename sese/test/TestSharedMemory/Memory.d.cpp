@@ -21,10 +21,10 @@ int main(int argc, char **argv) {
         helper.info("create success");
     }
 
-    auto random = (int64_t) std::random_device()();
+    auto random = static_cast<int64_t>(std::random_device()());
     helper.info("select random number: %lld", random);
     auto buffer = mem->getBuffer();
-    auto p_int = (int64_t *) buffer;
+    auto p_int = static_cast<int64_t *>(buffer);
     *p_int = random;
 
     while (true) {

@@ -18,8 +18,8 @@ sese::Exception::Exception(const char *message)
     stackInfo = new system::StackInfo(16, offset);
 }
 
- sese::Exception::~Exception() {
-    delete stackInfo;
+sese::Exception::~Exception() {
+    delete stackInfo; // GCOVR_EXCL_LINE
 }
 
 std::string sese::Exception::buildStacktrace() {

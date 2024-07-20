@@ -34,28 +34,28 @@ int64_t BufferedInputStream::read(void *buf, size_t length) {
     if (length <= this->cap) {
         if (this->len - this->pos >= length) {
             // 字节数足够 - 不需要预读取
-            memcpy(buf, (char *) this->buffer + this->pos, length);
+            memcpy(buf, static_cast<char *>(this->buffer) + this->pos, length);
             pos += length;
-            return (int64_t) length;
+            return static_cast<int64_t>(length);
         } else {
             // 字节数不足 - 需要预读取
             size_t total = this->len - this->pos;
-            memcpy(buf, (char *) this->buffer + this->pos, total);
+            memcpy(buf, static_cast<char *>(this->buffer) + this->pos, total);
             pos += total;
             if (0 != preRead()) {
                 if (this->len - this->pos >= length - total) {
                     // 字节数足够
-                    memcpy((char *) buf + total, this->buffer, length - total);
+                    memcpy(static_cast<char *>(buf) + total, this->buffer, length - total);
                     pos = length - total;
                     total = length;
                 } else {
                     // 字节数不足，且无法继续读取
-                    memcpy((char *) buf + total, this->buffer, this->len - this->pos);
+                    memcpy(static_cast<char *>(buf) + total, this->buffer, this->len - this->pos);
                     pos = this->len - this->pos;
                     total += this->len - this->pos;
                 }
             }
-            return (int64_t) total;
+            return static_cast<int64_t>(total);
         }
     } else {
         // 先处理已有缓存
@@ -64,15 +64,14 @@ int64_t BufferedInputStream::read(void *buf, size_t length) {
         this->len = 0;
         this->pos = 0;
         // 操作裸流
-        size_t read;
         while (true) {
-            read = source->read((char *) buf + total, (length - total) >= 1024 ? 1024 : length - total);
-            total += (int64_t) read;
+            size_t read = source->read(static_cast<char *>(buf) + total, (length - total) >= 1024 ? 1024 : length - total);
+            total += static_cast<int64_t>(read);
             // 无可再读
             if (read <= 0) break;
             // 完成目标
             if (total == length) break;
         }
-        return (int64_t) total;
+        return static_cast<int64_t>(total);
     }
 }

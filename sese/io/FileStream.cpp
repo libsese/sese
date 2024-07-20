@@ -74,17 +74,21 @@ FileStream::Ptr FileStream::createWithPath(const system::Path &path, const char 
 
 int64_t FileStream::peek(void *buffer, size_t length) {
     auto len = this->read(buffer, length);
+    // GCOVR_EXCL_START
     if (auto rt = this->setSeek(-len, Seek::CUR)) {
         return rt;
     }
+    // GCOVR_EXCL_STOP
     return len;
 }
 
 int64_t FileStream::trunc(size_t length) {
     auto old_pos = ftell(file);
-    if(auto rt = this->setSeek(static_cast<int64_t>(length), Seek::CUR)) {
+    // GCOVR_EXCL_START
+    if (auto rt = this->setSeek(static_cast<int64_t>(length), Seek::CUR)) {
         return rt;
     }
+    // GCOVR_EXCL_STOP
     return ftell(file) - old_pos;
 }
 

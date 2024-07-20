@@ -27,7 +27,7 @@ namespace sese {
 /**
  * @brief 日期时间类
  */
-class  DateTime {
+class DateTime {
 public:
     using Ptr = std::unique_ptr<DateTime>;
 
@@ -93,19 +93,18 @@ private:
     uint64_t timestamp = 0;
 };
 
-namespace text::overload {
-    template<>
-    struct Formatter<DateTime> {
-        std::string datetime_pattern = "yyyy-MM-dd HH:mm:ss";
+template<>
+struct text::overload::Formatter<DateTime> {
+    std::string datetime_pattern = "yyyy-MM-dd HH:mm:ss";
 
-        bool parse(const std::string &pattern){
-            datetime_pattern = pattern;
-            return true;
-        }
+    bool parse(const std::string &pattern) {
+        datetime_pattern = pattern;
+        return true;
+    }
 
-        void format(FmtCtx &ctx, const DateTime &datetime) const {
-            ctx.builder << DateTimeFormatter::format(datetime, datetime_pattern);
-        }
-    };
-}
+    void format(FmtCtx &ctx, const DateTime &datetime) const {
+        ctx.builder << DateTimeFormatter::format(datetime, datetime_pattern);
+    }
+};
+
 } // namespace sese

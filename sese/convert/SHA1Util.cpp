@@ -211,12 +211,12 @@ void SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
 // GCOVR_EXCL_START
 inline char toChar(unsigned char ch, bool is_cap) {
     if (ch >= 0 && ch <= 9) {
-        return (char) (ch + 48);
+        return static_cast<char>(ch + 48);
     } else {
         if (is_cap) {
-            return (char) (ch + 55);
+            return static_cast<char>(ch + 55);
         } else {
-            return (char) (ch + 87);
+            return static_cast<char>(ch + 87);
         }
     }
 }

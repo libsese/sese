@@ -25,38 +25,38 @@ impl::SqliteStmtResultSetImpl::SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexc
 }
 
 int32_t impl::SqliteStmtResultSetImpl::getInteger(size_t index) const noexcept {
-    auto p = (const char *) sqlite3_column_text(stmt, (int) index);
+    auto p = reinterpret_cast<const char *>(sqlite3_column_text(stmt, static_cast<int>(index)));
     char *end;
     return std::strtol(p, &end, 10);
 }
 
 std::string_view impl::SqliteStmtResultSetImpl::getString(size_t index) const noexcept {
-    auto p = (const char *) sqlite3_column_text(stmt, (int) index);
-    return {p};
+    auto p = reinterpret_cast<const char *>(sqlite3_column_text(stmt, static_cast<int>(index)));
+    return std::string_view(p);
 }
 
 double impl::SqliteStmtResultSetImpl::getDouble(size_t index) const noexcept {
-    auto p = (const char *) sqlite3_column_text(stmt, (int) index);
+    auto p = reinterpret_cast<const char *>(sqlite3_column_text(stmt, static_cast<int>(index)));
     char *end;
     return std::strtod(p, &end);
 }
 
 float impl::SqliteStmtResultSetImpl::getFloat(size_t index) const noexcept {
-    auto p = (const char *) sqlite3_column_text(stmt, (int) index);
+    auto p = reinterpret_cast<const char *>(sqlite3_column_text(stmt, static_cast<int>(index)));
     char *end;
     return std::strtof(p, &end);
 }
 
 int64_t impl::SqliteStmtResultSetImpl::getLong(size_t index) const noexcept {
-    auto p = (const char *) sqlite3_column_text(stmt, (int) index);
+    auto p = reinterpret_cast<const char *>(sqlite3_column_text(stmt, static_cast<int>(index)));
     char *end;
     return std::strtoll(p, &end, 10);
 }
 std::optional<sese::DateTime> impl::SqliteStmtResultSetImpl::getDateTime(size_t index) const noexcept {
-    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", (const char *) sqlite3_column_text(stmt, (int) index));
+    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", reinterpret_cast<const char *>(sqlite3_column_text(stmt, static_cast<int>(index))));
     return rt;
 }
 bool impl::SqliteStmtResultSetImpl::isNull(size_t index) const noexcept {
-    if (sqlite3_column_type(stmt, (int) index) == SQLITE_NULL) return true;
+    if (sqlite3_column_type(stmt, static_cast<int>(index)) == SQLITE_NULL) return true;
     return false;
 }

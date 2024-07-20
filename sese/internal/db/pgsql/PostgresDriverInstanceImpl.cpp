@@ -8,7 +8,7 @@ impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl(PGconn *conn) noexc
     this->conn = conn;
     auto status = PQstatus(conn);
     if (status != CONNECTION_OK) {
-        error = (int) status;
+        error = static_cast<int>(status);
     } else {
         error = 0;
     }
@@ -30,12 +30,12 @@ ResultSet::Ptr impl::PostgresDriverInstanceImpl::executeQuery(const char *sql) n
     }
     result = PQexec(conn, sql);
     if (result == nullptr) {
-        error = (int) PQstatus(conn);
+        error = static_cast<int>(PQstatus(conn));
         return nullptr;
     }
     auto status = PQresultStatus(result);
     if (status != PGRES_TUPLES_OK) {
-        error = (int) status;
+        error = static_cast<int>(status);
         return nullptr;
     } else {
         auto rt = std::make_unique<PostgresResultSetImpl>(result);
@@ -56,10 +56,10 @@ int64_t impl::PostgresDriverInstanceImpl::executeUpdate(const char *sql) noexcep
     }
     auto status = PQresultStatus(result);
     if (status != PGRES_COMMAND_OK) {
-        error = (int) status;
+        error = static_cast<int>(status);
         return -1;
     } else {
-        auto rt = (int64_t) PQcmdTuples(result);
+        auto rt = reinterpret_cast<int64_t>(PQcmdTuples(result));
         error = 0;
         PQclear(result);
         result = nullptr;
@@ -132,7 +132,7 @@ bool impl::PostgresDriverInstanceImpl::commit() noexcept {
 
     auto status = PQresultStatus(result);
     if (status != PGRES_COMMAND_OK) {
-        error = (int) status;
+        error = static_cast<int>(status);
         return false;
     } else {
         error = 0;
@@ -156,7 +156,7 @@ bool impl::PostgresDriverInstanceImpl::rollback() noexcept {
 
     auto status = PQresultStatus(result);
     if (status != PGRES_COMMAND_OK) {
-        error = (int) status;
+        error = static_cast<int>(status);
         return false;
     } else {
         error = 0;
@@ -182,7 +182,7 @@ bool impl::PostgresDriverInstanceImpl::begin() noexcept {
     auto status = PQresultStatus(result);
 
     if (status != PGRES_COMMAND_OK) {
-        error = (int) status;
+        error = static_cast<int>(status);
         return false;
     } else {
         error = 0;

@@ -53,7 +53,7 @@ void sese::event::WSAEventLoop::dispatch(uint32_t timeout) {
             if (enum_event.iErrorCode[FD_ACCEPT_BIT] == 0) {
                 SOCKET client = accept(sockets[i], nullptr, nullptr);
                 if (-1 != client) {
-                    onAccept((int) client);
+                    onAccept(static_cast<int>(client));
                 }
             } else if (enum_event.iErrorCode[FD_ACCEPT_BIT] != 0 && events[i]->events & EVENT_ERROR) {
                 onError(events[i]);

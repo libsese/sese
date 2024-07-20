@@ -144,7 +144,7 @@ bool HttpUtil::recvResponse(InputStream *source, ResponseHeader *response) noexc
     }
 
     // status code
-    response->setCode((uint16_t) _atoi64(first_lines[1].c_str()));
+    response->setCode(static_cast<uint16_t>(_atoi64(first_lines[1].c_str())));
 
     // keys & values
     if (!recvHeader(source, builder, response, true)) return false;
