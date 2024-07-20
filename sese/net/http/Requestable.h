@@ -22,12 +22,6 @@ public:
 
     ~Requestable() override = default;
 
-    /// 初始化函数
-    /// \param url 服务地址，支持 https/http
-    /// \param proxy 代理地址，支持 https/http，为空则不使用代理
-    /// \return 初始化结果
-    virtual bool init(const std::string &url, const std::string &proxy) = 0;
-
     /// 执行请求
     /// \return 请求状态
     virtual bool request() = 0;

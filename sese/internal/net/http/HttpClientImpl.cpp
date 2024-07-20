@@ -1,74 +1,40 @@
-#include "sese/net/http/RequestParser.h"
 #include "sese/net/http/HttpUtil.h"
+#include "sese/internal/net/http/HttpClientImpl.h"
 #include "sese/internal/net/AsioIPConvert.h"
-#include "sese/internal/net/http/AsioHttpClient.h"
-
-#include "sese/io/ByteBuffer.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/util/Util.h"
-
 
 using namespace sese::net::http;
 using namespace sese::internal::net::http;
 
-AsioHttpClient::AsioHttpClient()
+HttpClientImpl::HttpClientImpl(const sese::net::IPAddress::Ptr &addr, sese::net::http::Request::Ptr req)
     : ioContext(),
-      socket(ioContext),
-      sslContext(asio::ssl::context::tlsv12),
-      sslSocket(socket, sslContext) {
+      socket(ioContext) {
+    address = addr;
+    this->req = std::move(req);
+    cookies = std::make_shared<CookieMap>();
+    this->req->setCookies(cookies);
+    resp = std::make_unique<Response>();
+    reset();
 }
 
-AsioHttpClient::~AsioHttpClient() {
+HttpClientImpl::~HttpClientImpl() {
     socket.close();
 }
 
 // GCOVR_EXCL_START
 
-int AsioHttpClient::getLastError() {
+int HttpClientImpl::getLastError() {
     return code.value();
 }
 
-std::string AsioHttpClient::getLastErrorString() {
+std::string HttpClientImpl::getLastErrorString() {
     return code.message();
 }
 
 // GCOVR_EXCL_STOP
 
-bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
-    auto url_result = RequestParser::parse(url);
-    req = std::move(url_result.request);
-    // 不方便CI测试
-    // GCOVR_EXCL_START
-    if (!proxy.empty()) {
-        auto proxy_result = RequestParser::parse(proxy);
-        if (proxy_result.address == nullptr) {
-            return false;
-        }
-        req->setUrl(url);
-        req->set("via:", proxy);
-        req->set("proxy-connection", "keep-alive");
-        address = std::move(proxy_result.address);
-        ssl = strcmpDoNotCase("https", proxy_result.url.getProtocol().c_str());
-    }
-    // GCOVR_EXCL_STOP
-    else {
-        if (url_result.address == nullptr) {
-            return false;
-        }
-        address = std::move(url_result.address);
-        ssl = strcmpDoNotCase("https", url_result.url.getProtocol().c_str());
-    }
-
-    resp = std::make_unique<Response>();
-    req->set("user-agent", "sese-httpclient/1.0");
-    req->set("connection", "keep-alive");
-    cookies = std::make_shared<CookieMap>();
-    req->setCookies(cookies);
-    reset();
-    return true;
-}
-
-bool AsioHttpClient::request() {
+bool HttpClientImpl::request() {
     // 处理内容长度
     char *end;
     if (expect_total) {
@@ -100,12 +66,9 @@ bool AsioHttpClient::request() {
             return false;
         }
 
-        if (ssl) {
-            code = sslSocket.handshake(asio::ssl::stream_base::client, code);
-            if (code) {
-                reset();
-                return false;
-            }
+        if (!handshake()) {
+            reset();
+            return false;
         }
     }
 
@@ -149,9 +112,7 @@ bool AsioHttpClient::request() {
     const auto CONNECTION_VALUE = resp->get("connection", "close");
     if (strcmpDoNotCase("close", CONNECTION_VALUE.c_str())) {
         first = true;
-        if (ssl) {
-            code = sslSocket.shutdown(code);
-        }
+        shutdown();
         socket.close();
     }
 
@@ -165,9 +126,17 @@ bool AsioHttpClient::request() {
     return true;
 }
 
-bool AsioHttpClient::writeHeader(io::ByteBuilder &builder){
+bool HttpClientImpl::handshake() {
+    return true;
+}
+
+bool HttpClientImpl::shutdown() {
+    return true;
+}
+
+bool HttpClientImpl::writeHeader(io::ByteBuilder &builder) {
     builder.resetPos();
-    while(true) {
+    while (true) {
         char buffer[MTU_VALUE];
         auto len = builder.peek(buffer, MTU_VALUE);
         if (len == 0) {
@@ -181,8 +150,7 @@ bool AsioHttpClient::writeHeader(io::ByteBuilder &builder){
     }
 }
 
-
-bool AsioHttpClient::writeBodyByCallback() {
+bool HttpClientImpl::writeBodyByCallback() {
     size_t real = 0;
     while (true) {
         if (real >= expect_total) {
@@ -202,7 +170,7 @@ bool AsioHttpClient::writeBodyByCallback() {
     }
 }
 
-bool AsioHttpClient::writeBodyByData() {
+bool HttpClientImpl::writeBodyByData() {
     size_t real = 0;
     while (true) {
         if (real >= expect_total) {
@@ -220,7 +188,7 @@ bool AsioHttpClient::writeBodyByData() {
     }
 }
 
-bool AsioHttpClient::writeBodyByAuto() {
+bool HttpClientImpl::writeBodyByAuto() {
     while (true) {
         char buffer[MTU_VALUE];
         auto len = req->getBody().peek(buffer, MTU_VALUE);
@@ -235,7 +203,7 @@ bool AsioHttpClient::writeBodyByAuto() {
     }
 }
 
-bool AsioHttpClient::readBodyByCallback(size_t expect) {
+bool HttpClientImpl::readBodyByCallback(size_t expect) {
     size_t real = 0;
     while (true) {
         if (real >= expect) {
@@ -254,7 +222,7 @@ bool AsioHttpClient::readBodyByCallback(size_t expect) {
     }
 }
 
-bool AsioHttpClient::readBodyByData(size_t expect) {
+bool HttpClientImpl::readBodyByData(size_t expect) {
     size_t real = 0;
     while (true) {
         if (real >= expect) {
@@ -273,29 +241,16 @@ bool AsioHttpClient::readBodyByData(size_t expect) {
     }
 }
 
-
-int64_t AsioHttpClient::read(void *buf, size_t len) {
-    size_t read;
-    if (ssl) {
-        read = sslSocket.read_some(asio::buffer(buf, len), code);
-    } else {
-        read = socket.read_some(asio::buffer(buf, len), code);
-    }
-
+int64_t HttpClientImpl::read(void *buf, size_t len) {
+    size_t read = socket.read_some(asio::buffer(buf, len), code);
     if (code) {
         return -1;
     }
     return static_cast<int64_t>(read);
 }
 
-int64_t AsioHttpClient::write(const void *buf, size_t len) {
-    size_t wrote;
-    if (ssl) {
-        wrote = sslSocket.write_some(asio::buffer(buf, len), code);
-    } else {
-        wrote = socket.write_some(asio::buffer(buf, len), code);
-    }
-
+int64_t HttpClientImpl::write(const void *buf, size_t len) {
+    size_t wrote = socket.write_some(asio::buffer(buf, len), code);
     if (code) {
         return -1;
     }
