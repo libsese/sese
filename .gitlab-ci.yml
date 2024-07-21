@@ -69,7 +69,7 @@ gtest:
     - build/linux-release/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
     - sed -i 's|/builds/libsese/sese-core||g' build/test_report.xml
     # make coverage reposts
-    - mkdir -p build/coverage
+    - mkdir -p build/coverage/html
     - gcovr
   coverage: /^\s*lines:\s*\d+.\d+\%/
   artifacts:
