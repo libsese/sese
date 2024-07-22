@@ -144,89 +144,93 @@ $(document).ready(function(){initNavTree('_number_8h_source.html',''); initResiz
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="_util_8h.html">sese/Util.h</a>&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1text_1_1_number.html" title="数字转字符串工具">Number</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_not_instantiable.html" title="不可实例化类">NotInstantiable</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5">   18</a></span>    <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5">Number</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#ae629dc747550bb53f6046c3d305a4ba2">toHex</a>(uint64_t number, <span class="keywordtype">bool</span> upper_case = <span class="keyword">true</span>) noexcept;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#ae629dc747550bb53f6046c3d305a4ba2">toHex</a>(int64_t number, <span class="keywordtype">bool</span> upper_case = true) noexcept;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifdef SESE_PLATFORM_WINDOWS</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma warning(disable: 4146)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1text_1_1_number.html" title="数字转字符串工具">Number</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_not_instantiable.html" title="不可实例化类">NotInstantiable</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5">   22</a></span>    <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5">Number</a>() = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(uint64_t number) noexcept;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#ae629dc747550bb53f6046c3d305a4ba2">toHex</a>(uint64_t number, <span class="keywordtype">bool</span> upper_case = <span class="keyword">true</span>) noexcept;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(int64_t number) noexcept;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#ae629dc747550bb53f6046c3d305a4ba2">toHex</a>(int64_t number, <span class="keywordtype">bool</span> upper_case = true) noexcept;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(uint64_t number) noexcept;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(uint64_t number) noexcept;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(int64_t number) noexcept;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(int64_t number) noexcept;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(<span class="keywordtype">double</span> number, uint16_t placeholder) noexcept;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(uint64_t number) noexcept;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    template&lt;typename T&gt;</div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#a4767b769c483d103ffc34a869d4d076d">   35</a></span>    static <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(<a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> &amp;builder, T number, <span class="keywordtype">int</span> radix, <span class="keywordtype">bool</span> upper_case) noexcept {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (number &lt; 0) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            builder.append(<span class="charliteral">&#39;-&#39;</span>);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            number = -number;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> DIGIT_UP = <span class="stringliteral">&quot;0123456789ABCDEF&quot;</span>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> DIGIT_DOWN = <span class="stringliteral">&quot;0123456789abcdef&quot;</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">const</span> <span class="keyword">auto</span> DIGIT = upper_case ? DIGIT_UP : DIGIT_DOWN;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">do</span> {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordtype">int</span> index = number % radix;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            builder.append(DIGIT[index]);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            number /= radix;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += 1;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        } <span class="keywordflow">while</span> (number &gt; 0);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// 直接反转 builder 中部分内存</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::reverse(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(builder.buf()) + builder.length() - <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(builder.buf()) + builder.length());</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(int64_t number) noexcept;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(<span class="keywordtype">double</span> number, uint16_t placeholder) noexcept;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    template&lt;typename T&gt;</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#a4767b769c483d103ffc34a869d4d076d">   39</a></span>    static <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(<a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> &amp;builder, T number, <span class="keywordtype">int</span> radix, <span class="keywordtype">bool</span> upper_case) noexcept {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (number &lt; 0) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            builder.append(<span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            number = -number;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> DIGIT_UP = <span class="stringliteral">&quot;0123456789ABCDEF&quot;</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> DIGIT_DOWN = <span class="stringliteral">&quot;0123456789abcdef&quot;</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">const</span> <span class="keyword">auto</span> DIGIT = upper_case ? DIGIT_UP : DIGIT_DOWN;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">do</span> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordtype">int</span> index = number % radix;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            builder.append(DIGIT[index]);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            number /= radix;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += 1;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        } <span class="keywordflow">while</span> (number &gt; 0);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#afde02cdb75fa6e8bce01a46f1d525aab">   56</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#afde02cdb75fa6e8bce01a46f1d525aab">toString</a>(<a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> &amp;builder, T number, uint16_t placeholder) <span class="keyword">noexcept</span> {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">auto</span> int_part = <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(number);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">double</span> frac = number - int_part;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">double</span> rounding_factor = std::pow(10, placeholder);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">auto</span> rounded_part = <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(frac * rounding_factor);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(rounded_part) &gt;= rounding_factor) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            int_part += 1;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            rounded_part -= <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(rounding_factor);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(builder, int_part, 10, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">if</span> (placeholder &gt; 0) {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            builder.append(<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">if</span> (rounded_part &lt; 0) {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                rounded_part = -rounded_part;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(builder, rounded_part, 10, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keyword">auto</span> len = <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(rounded_part, 10);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">if</span> (len &lt; placeholder) {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                builder.append(std::string(placeholder - len, <span class="charliteral">&#39;0&#39;</span>));</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="comment">// 直接反转 builder 中部分内存</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::reverse(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(builder.buf()) + builder.length() - <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(builder.buf()) + builder.length());</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
 </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#affa9ca8c466e46c5807462f891519174">toStringWithNoLeadingZeros</a>(<span class="keyword">const</span> std::string &amp;number) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>};</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#afde02cdb75fa6e8bce01a46f1d525aab">   60</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#afde02cdb75fa6e8bce01a46f1d525aab">toString</a>(<a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> &amp;builder, T number, uint16_t placeholder) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">auto</span> int_part = <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(number);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">double</span> frac = number - int_part;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">double</span> rounding_factor = std::pow(10, placeholder);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">auto</span> rounded_part = <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(frac * rounding_factor);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(rounded_part) &gt;= rounding_factor) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            int_part += 1;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            rounded_part -= <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(rounding_factor);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(builder, int_part, 10, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">if</span> (placeholder &gt; 0) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            builder.append(<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">if</span> (rounded_part &lt; 0) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                rounded_part = -rounded_part;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a04d75d5baed1244362cbb20b1ed1706b">toString</a>(builder, rounded_part, 10, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keyword">auto</span> len = <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(rounded_part, 10);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">if</span> (len &lt; placeholder) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                builder.append(std::string(placeholder - len, <span class="charliteral">&#39;0&#39;</span>));</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
 </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>} <span class="comment">// namespace sese::text</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#affa9ca8c466e46c5807462f891519174">toStringWithNoLeadingZeros</a>(<span class="keyword">const</span> std::string &amp;number) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>} <span class="comment">// namespace sese::text</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li><li class="navelem"><a class="el" href="_number_8h.html">Number.h</a></li>
-    <li class="footer">生成于 2024年 七月 22日 星期一 05:32:27 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 22日 星期一 16:07:26 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
