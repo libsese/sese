@@ -11,6 +11,10 @@
 #include <sese/Util.h>
 #include <cmath>
 
+#ifdef SESE_PLATFORM_WINDOWS
+#pragma warning(disable: 4146)
+#endif
+
 namespace sese::text {
 /// 数字转字符串工具
 class Number final : public NotInstantiable {

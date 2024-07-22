@@ -72,6 +72,7 @@ double sese::Random::entropy() const { // NOLINT
 sese::Random::ResultType sese::Random::operator()() {
     auto unit = reinterpret_cast<LongLongSplitter *>(&_seed);
     _seed = (unit->low * MULTIPLIER + ADDEND) & MASK;
+    (void) unit->high;
     return _seed ^ noise();
 }
 
