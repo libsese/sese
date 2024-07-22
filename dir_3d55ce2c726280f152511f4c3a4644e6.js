@@ -1,14 +1,12 @@
 var dir_3d55ce2c726280f152511f4c3a4644e6 =
 [
     [ "archive", "dir_29bb00e9166889c104a5f069c0df53dd.html", "dir_29bb00e9166889c104a5f069c0df53dd" ],
-    [ "benchmark", "dir_2a919d1b492c49f32d10ef8b0b3b4316.html", "dir_2a919d1b492c49f32d10ef8b0b3b4316" ],
     [ "concurrent", "dir_3a3a9f5ebc7ea48a95b523a73b6d596d.html", "dir_3a3a9f5ebc7ea48a95b523a73b6d596d" ],
     [ "config", "dir_5ecdf26e97b02d25bfabe621b34c1b3c.html", "dir_5ecdf26e97b02d25bfabe621b34c1b3c" ],
     [ "container", "dir_56d6314937d8cc68541b78ca6d0f66b7.html", "dir_56d6314937d8cc68541b78ca6d0f66b7" ],
     [ "convert", "dir_8432cd711d83e4d7ec40e70b9a1de33d.html", "dir_8432cd711d83e4d7ec40e70b9a1de33d" ],
     [ "db", "dir_48d20d1d6e6646743c368f7f7c895544.html", "dir_48d20d1d6e6646743c368f7f7c895544" ],
     [ "event", "dir_7c286eea3cfc6a3857c5e9d8ef125036.html", "dir_7c286eea3cfc6a3857c5e9d8ef125036" ],
-    [ "example", "dir_bddbd220af7a32fec9d8072241566272.html", "dir_bddbd220af7a32fec9d8072241566272" ],
     [ "internal", "dir_7d3fb913f6b3b461897efa8818b452ce.html", "dir_7d3fb913f6b3b461897efa8818b452ce" ],
     [ "io", "dir_6a053736b378e458230c774ca529d5b1.html", "dir_6a053736b378e458230c774ca529d5b1" ],
     [ "native", "dir_5a27d73af174e870851ec050345bcb12.html", "dir_5a27d73af174e870851ec050345bcb12" ],

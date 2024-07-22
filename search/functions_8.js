@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i_0',['i',['../classsese_1_1record_1_1_log_helper.html#a41b397d9826760c87401f1e8053b0ba3',1,'sese::record::LogHelper::i()'],['../classsese_1_1_m_d5_util.html#a14d3e2aa7a98e46c829138bd1f7a6b78',1,'sese::MD5Util::I(uint32_t x, uint32_t y, uint32_t z) noexcept']]],
+  ['i_0',['i',['../classsese_1_1_m_d5_util.html#a14d3e2aa7a98e46c829138bd1f7a6b78',1,'sese::MD5Util::I()'],['../classsese_1_1record_1_1_log_helper.html#a41b397d9826760c87401f1e8053b0ba3',1,'sese::record::LogHelper::i()']]],
   ['ii_1',['II',['../classsese_1_1_m_d5_util.html#aa260ad3649b4a24b35f24792220446d7',1,'sese::MD5Util']]],
   ['importcertfile_2',['importCertFile',['../classsese_1_1security_1_1_s_s_l_context.html#acc25ff5fde416f95b93ce58bc134126c',1,'sese::security::SSLContext']]],
   ['importprivatekeyfile_3',['importPrivateKeyFile',['../classsese_1_1security_1_1_s_s_l_context.html#aa14ef51827206585088235025cf6dc5c',1,'sese::security::SSLContext']]],
@@ -25,7 +25,7 @@ var searchData=
   ['ipcchannel_22',['IPCChannel',['../classsese_1_1system_1_1_i_p_c_channel.html#afcbff13159feaf4f49762a27c7d85900',1,'sese::system::IPCChannel']]],
   ['ipv4address_23',['ipv4address',['../classsese_1_1net_1_1_i_pv4_address.html#a723d7bf4623b6bcf849bfd7089e2124a',1,'sese::net::IPv4Address::IPv4Address(uint32_t address=INADDR_ANY, uint16_t port=0)'],['../classsese_1_1net_1_1_i_pv4_address.html#a2e86f72f749c4210b6e922a476bb19b9',1,'sese::net::IPv4Address::IPv4Address(const sockaddr_in &amp;address)']]],
   ['ipv6address_24',['ipv6address',['../classsese_1_1net_1_1_i_pv6_address.html#a355d386d6fb5b6768db9b0a17f73c8ac',1,'sese::net::IPv6Address::IPv6Address(const sockaddr_in6 &amp;address) noexcept'],['../classsese_1_1net_1_1_i_pv6_address.html#afb61206131d0f131c10d778f4b2aa011',1,'sese::net::IPv6Address::IPv6Address() noexcept'],['../classsese_1_1net_1_1_i_pv6_address.html#a759e32ca14061d9f33fe9014d954be28',1,'sese::net::IPv6Address::IPv6Address(const uint8_t *address, uint16_t port=0)']]],
-  ['is_5falign_25',['is_align',['../class_mock_format_option2.html#a312dc5603cbcd64b4e088b5055c8d83d',1,'MockFormatOption2::is_align()'],['../structsese_1_1text_1_1_format_option.html#a0ec664ceb3771ae45b9a1c6562703bfb',1,'sese::text::FormatOption::is_align()']]],
+  ['is_5falign_25',['is_align',['../structsese_1_1text_1_1_format_option.html#a0ec664ceb3771ae45b9a1c6562703bfb',1,'sese::text::FormatOption']]],
   ['isactivereleasemode_26',['isactivereleasemode',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#afc0b25984bddb17011a914707b62ef8b',1,'sese::_windows::iocp::v1::NativeIOCPServer::isActiveReleaseMode()'],['../classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2a7e9c595ad9e21ea36ee22375f1b804',1,'sese::iocp::v1::IOCPServer::isActiveReleaseMode()']]],
   ['isblob_27',['isBlob',['../classsese_1_1_value.html#a6aeaecd8a88780be1ab09b06374dd5e2',1,'sese::Value']]],
   ['isbool_28',['isBool',['../classsese_1_1_value.html#a25dd9800211ebfcae3a9d5da18344d9d',1,'sese::Value']]],

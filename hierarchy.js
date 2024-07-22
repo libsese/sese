@@ -140,10 +140,7 @@ var hierarchy =
     [ "sese::system::FileNotifier", "classsese_1_1system_1_1_file_notifier.html", null ],
     [ "sese::system::FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", null ],
     [ "sese::text::FmtCtx", "structsese_1_1text_1_1_fmt_ctx.html", null ],
-    [ "sese::text::FormatOption", "structsese_1_1text_1_1_format_option.html", [
-      [ "MockFormatOption1", "class_mock_format_option1.html", null ],
-      [ "MockFormatOption2", "class_mock_format_option2.html", null ]
-    ] ],
+    [ "sese::text::FormatOption", "structsese_1_1text_1_1_format_option.html", null ],
     [ "sese::text::overload::Formatter< VALUE, ENABLE >", "structsese_1_1text_1_1overload_1_1_formatter.html", null ],
     [ "sese::text::overload::Formatter< const char * >", "structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html", null ],
     [ "sese::text::overload::Formatter< DateTime >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html", null ],
@@ -216,9 +213,7 @@ var hierarchy =
     ] ],
     [ "sese::io::InputStreamReader", "classsese_1_1io_1_1_input_stream_reader.html", null ],
     [ "sese::iocp::IOBufNode", "structsese_1_1iocp_1_1_i_o_buf_node.html", null ],
-    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", [
-      [ "MyIOCPServer", "class_my_i_o_c_p_server.html", null ]
-    ] ],
+    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", null ],
     [ "sese::system::IPCChannel", "classsese_1_1system_1_1_i_p_c_channel.html", null ],
     [ "sese::Range< TYPE >::Iterator", "classsese_1_1_range_1_1_iterator.html", null ],
     [ "sstr::SStringView::Iterator", "classsstr_1_1_s_string_view_1_1_iterator.html", null ],

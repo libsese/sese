@@ -18,7 +18,7 @@ var searchData=
   ['logger_15',['Logger',['../classsese_1_1record_1_1_logger.html#aef18cfc8276c633ee70cd95834845a74',1,'sese::record::Logger']]],
   ['loggerinitiatetask_16',['LoggerInitiateTask',['../classsese_1_1record_1_1_logger_initiate_task.html#a1e9bf5883d8fc8a30bdd9d39e4ee7fa3',1,'sese::record::LoggerInitiateTask']]],
   ['loghelper_17',['LogHelper',['../classsese_1_1record_1_1_log_helper.html#ab961c52d3a50c96a317a1465855f7bef',1,'sese::record::LogHelper']]],
-  ['lookup_18',['lookup',['../classsese_1_1net_1_1_address_pool.html#a272f8e12a5f02920ca123b97d03b8363',1,'sese::net::AddressPool::lookup()'],['../classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391',1,'sese::net::Address::lookUp(std::vector&lt; Address::Ptr &gt; &amp;result, const std::string &amp;host, int family=AF_INET, int type=0, int protocol=0)']]],
+  ['lookup_18',['lookup',['../classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391',1,'sese::net::Address::lookUp()'],['../classsese_1_1net_1_1_address_pool.html#a272f8e12a5f02920ca123b97d03b8363',1,'sese::net::AddressPool::lookup()']]],
   ['lookupany_19',['lookUpAny',['../classsese_1_1net_1_1_address.html#a544254bd48f66c88cf02abd86d778ffc',1,'sese::net::Address']]],
   ['loop_20',['loop',['../classsese_1_1net_1_1dns_1_1_dns_server.html#a883776b402352e227d976d91adb42462',1,'sese::net::dns::DnsServer::loop()'],['../classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068',1,'sese::record::AsyncLogger::loop()'],['../classsese_1_1_timer.html#a75a57d5cceb945740dd4b818fffea052',1,'sese::Timer::loop()']]],
   ['loopnonblocking_21',['loopNonblocking',['../classsese_1_1system_1_1_file_notifier.html#a9da0fd7e668a72e2b96d24f4e756b0c5',1,'sese::system::FileNotifier']]]
