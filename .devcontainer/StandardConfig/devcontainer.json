@@ -1,7 +1,8 @@
 {
-  "name": "Standard config",
+  "name": "StandardConfig",
   "build": {
-    "dockerfile": "dockerfile"
+    "context": "../../",
+    "dockerfile": "../../docker/ubuntu-x64.dockerfile"
   },
   "customizations": {
     "vscode": {

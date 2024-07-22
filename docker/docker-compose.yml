@@ -11,7 +11,7 @@ services:
     ports:
       - '127.0.0.1:18806:3306'
     volumes:
-      - ./scripts/mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
+      - ../scripts/mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
   postgresql:
     image: postgres
     environment:
@@ -20,4 +20,4 @@ services:
     ports:
       - '127.0.0.1:18080:5432'
     volumes:
-      - ./scripts/postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro
+      - ../scripts/postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro

@@ -80,10 +80,10 @@ where ninja
 docker run --privileged --rm tonistiigi/binfmt --install arm64
 ```
 
-[ubuntu-arm64.dockerfile](./ubuntu-arm64.dockerfile) 提供了基于 ARM64 Ubuntu 的基础运行环境（不包括数据库软件），可以使用 docker 直接构建镜像。
+[ubuntu-arm64.dockerfile](./docker/ubuntu-arm64.dockerfile) 提供了基于 ARM64 Ubuntu 的基础运行环境（不包括数据库软件），可以使用 docker 直接构建镜像。
 
 ```bash
-docker build -f ubuntu-arm64.dockerfile .
+docker build -f docker/ubuntu-arm64.dockerfile .
 ```
 
 使用此镜像可以完整构建并运行相关测试用例。

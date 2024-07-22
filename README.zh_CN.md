@@ -244,7 +244,7 @@ https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.g
 - 直接使用 docker-compose.yml
 
 ```bash
-docker-compose up -d
+docker-compose -f ./docker/docker-compose.yml up -d
 sqlite3 build/db_test.db < scripts/sqlite_dump.sql
 ```
 

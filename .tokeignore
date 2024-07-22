@@ -2,6 +2,7 @@
 /.gitlab
 /.vscode
 /.idea
+/docker
 /docs
 /package
 /scripts
@@ -13,13 +14,11 @@
 /build-*
 /cmake-build-*
 
-dockerfile
 LICENSE
 NOTICE
 requirements.txt
 *.md
 *.json
-*.dockerfile
 *.cfg
 *.yml
 *.svg
