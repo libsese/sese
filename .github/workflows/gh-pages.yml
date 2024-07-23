@@ -17,9 +17,12 @@ jobs:
         uses: actions/checkout@v4.1.2
 
       - name: Build docs
-        uses: mattnotmitt/doxygen-action@v1.9.8
+        uses: SHIINASAMA/roxy@1.0
         with:
-          doxyfile-path: docs/Doxyfile
+          DOXYGEN_CONTEXT: '/github/workspace/sese'
+          DOXYFILE: 'docs/Doxyfile'
+          PROJECT_PATH: '/github/workspace/sese'
+          OUTPUT_PATH: '/github/workspace/sese/build/html'
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
