@@ -1,4 +1,4 @@
-# 关于加解密功能
+# 加解密功能
 
 散列摘要算法可以使用例如 MD5Context、SHA256Context、SM3Context 等基于 Context 实现的统一接口。
 
