@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::io::OutputStream类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1io_1_1_output_stream.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1io_1_1_output_stream.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,7 +141,7 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_output_stream.html
 <div class="contents">
 
 <p>流式输出接口类  
- <a href="classsese_1_1io_1_1_output_stream.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_output_stream_8h_source.html">OutputStream.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -160,14 +166,14 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_output_stream.html
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a4446385dc8f0d3431a03fda5165a4b3a" id="r_a4446385dc8f0d3431a03fda5165a4b3a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">Ptr</a></td></tr>
+<tr class="memitem:a4446385dc8f0d3431a03fda5165a4b3a" id="r_a4446385dc8f0d3431a03fda5165a4b3a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4446385dc8f0d3431a03fda5165a4b3a">Ptr</a></td></tr>
 <tr class="separator:a4446385dc8f0d3431a03fda5165a4b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
+<tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
 <tr class="separator:ae464ac2ec10447e7096b5bcca08bad54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06fe04b1817a72f19f9ca4102be038dc" id="r_a06fe04b1817a72f19f9ca4102be038dc"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a> (const void *buffer, size_t length)=0</td></tr>
+<tr class="memitem:a06fe04b1817a72f19f9ca4102be038dc" id="r_a06fe04b1817a72f19f9ca4102be038dc"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06fe04b1817a72f19f9ca4102be038dc">write</a> (const void *buffer, size_t length)=0</td></tr>
 <tr class="separator:a06fe04b1817a72f19f9ca4102be038dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -180,7 +186,7 @@ Public 成员函数</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a>&gt; <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">sese::io::OutputStream::Ptr</a></td>
+          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a>&gt; <a class="el" href="#a4446385dc8f0d3431a03fda5165a4b3a">sese::io::OutputStream::Ptr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -200,7 +206,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">virtual sese::io::OutputStream::~OutputStream </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -226,19 +232,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">virtual int64_t sese::io::OutputStream::write </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -248,9 +247,9 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">sese::internal::net::http::HttpClientImpl</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a4bbfd3daa4fbeb435d652f7bac84b514">sese::net::http::Requestable</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">sese::io::AbstractByteBuffer</a>, <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2c1cd42014e19737f09b98c9a198f9dd">sese::io::ByteBuffer</a>, <a class="el" href="classsese_1_1archive_1_1_archive_output_stream.html#a38450754a861419bb81d632d051da0a4">sese::archive::ArchiveOutputStream</a>, <a class="el" href="classsese_1_1_g_zip_file_output_stream.html#a8c39cfd8a811b1349a21e7dd840b6317">sese::GZipFileOutputStream</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aafbeac66c5fbf43c33b2a8861a5b51d2">sese::internal::net::http::HttpSSLClientImpl</a>, <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">sese::io::AbstractFixedBuffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_output_stream.html#abc34f60c2e90c1e5fb3859506226eb18">sese::io::BufferedOutputStream</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">sese::io::BufferedStream</a>, <a class="el" href="classsese_1_1io_1_1_console_output_stream.html#af0689770607d92e3dd53590726658ed4">sese::io::ConsoleOutputStream</a>, <a class="el" href="classsese_1_1io_1_1_fake_stream.html#ae494319ffe2da6a4d9519808e19ddc02">sese::io::FakeStream&lt; T &gt;</a>, <a class="el" href="classsese_1_1io_1_1_std_output_stream_wrapper.html#acbc1a72bbed4e3563bb4ad88c5d21f5e">sese::io::StdOutputStreamWrapper</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#ac5f16a5108e129882c519710bf23fd2b">sese::io::FileStream</a>, <a class="el" href="classsese_1_1io_1_1_fixed_buffer.html#a6d1069c88a272e9ca5a2f5f3510797f6">sese::io::FixedBuffer</a>, <a class="el" href="classsese_1_1io_1_1_null_output_stream.html#a82f90968287d29ff9a53af8f0903d71d">sese::io::NullOutputStream</a>, <a class="el" href="classsese_1_1io_1_1_output_buffer_wrapper.html#a7ffb22eed841a0e039a52b73fc9211ae">sese::io::OutputBufferWrapper</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#aadd2c79b75c32b5541740be20580d398">sese::_windows::iocp::v1::NativeContext</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a9974bcf56d53b3ef69581580531ce159">sese::net::Socket</a>, <a class="el" href="classsese_1_1security_1_1_security_socket.html#acf22bdcfb5f0fcc698d0d251d1a3e45f">sese::security::SecuritySocket</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a5312e84786b661ac3ad98400bb597635">sese::iocp::v1::Context</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#aadd2c79b75c32b5541740be20580d398">sese::_windows::iocp::v1::NativeContext</a>, <a class="el" href="classsese_1_1archive_1_1_archive_output_stream.html#a38450754a861419bb81d632d051da0a4">sese::archive::ArchiveOutputStream</a>, <a class="el" href="classsese_1_1_g_zip_file_output_stream.html#a8c39cfd8a811b1349a21e7dd840b6317">sese::GZipFileOutputStream</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">sese::internal::net::http::HttpClientImpl</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aafbeac66c5fbf43c33b2a8861a5b51d2">sese::internal::net::http::HttpSSLClientImpl</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">sese::io::AbstractByteBuffer</a>, <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">sese::io::AbstractFixedBuffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_output_stream.html#abc34f60c2e90c1e5fb3859506226eb18">sese::io::BufferedOutputStream</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">sese::io::BufferedStream</a>, <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2c1cd42014e19737f09b98c9a198f9dd">sese::io::ByteBuffer</a>, <a class="el" href="classsese_1_1io_1_1_console_output_stream.html#af0689770607d92e3dd53590726658ed4">sese::io::ConsoleOutputStream</a>, <a class="el" href="classsese_1_1io_1_1_fake_stream.html#ae494319ffe2da6a4d9519808e19ddc02">sese::io::FakeStream&lt; T &gt;</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#ac5f16a5108e129882c519710bf23fd2b">sese::io::FileStream</a>, <a class="el" href="classsese_1_1io_1_1_fixed_buffer.html#a6d1069c88a272e9ca5a2f5f3510797f6">sese::io::FixedBuffer</a>, <a class="el" href="classsese_1_1io_1_1_null_output_stream.html#a82f90968287d29ff9a53af8f0903d71d">sese::io::NullOutputStream</a>, <a class="el" href="classsese_1_1io_1_1_output_buffer_wrapper.html#a7ffb22eed841a0e039a52b73fc9211ae">sese::io::OutputBufferWrapper</a>, <a class="el" href="classsese_1_1io_1_1_std_output_stream_wrapper.html#acbc1a72bbed4e3563bb4ad88c5d21f5e">sese::io::StdOutputStreamWrapper</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a5312e84786b661ac3ad98400bb597635">sese::iocp::v1::Context</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a4bbfd3daa4fbeb435d652f7bac84b514">sese::net::http::Requestable</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a9974bcf56d53b3ef69581580531ce159">sese::net::Socket</a> , 以及 <a class="el" href="classsese_1_1security_1_1_security_socket.html#acf22bdcfb5f0fcc698d0d251d1a3e45f">sese::security::SecuritySocket</a> 内被实现.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_percent_converter.html#a01974b8044e0fec7a83b0b6f97074b74">sese::PercentConverter::decode()</a>, <a class="el" href="classsese_1_1_base64_converter.html#a4f72417e949f1ee426c92d3705ff065f">sese::Base64Converter::decode()</a>, <a class="el" href="classsese_1_1_compressor.html#ac285dd8f592ee7bf474275402437b536">sese::Compressor::deflate()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a5ca9d6288128b6d6ff672d973f6fd329">sese::PercentConverter::encode()</a>, <a class="el" href="classsese_1_1_base64_converter.html#a04bc047bade46a36e58478ebb1091d17">sese::Base64Converter::encode()</a>, <a class="el" href="classsese_1_1_decompressor.html#a211890d7a081a70b6d2076c98eb9d52f">sese::Decompressor::inflate()</a>, <a class="el" href="_output_util_8h.html#ab90d47f3d9bb644bef55eaf22333ccb4">operator&lt;&lt;()</a>, <a class="el" href="classsese_1_1_exception.html#a408bab5a11108356ebcf51b36ed6cdf6">sese::Exception::printStacktrace()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">sese::internal::net::http::HttpClientImpl::readBodyByData()</a>, <a class="el" href="classsese_1_1_json.html#a50ca8cdbc1e39cfb5dffaa0df846ed2b">sese::Json::streamifyArray()</a>, <a class="el" href="classsese_1_1_yaml.html#ac286a726617735d595cd944810eb01ac">sese::Yaml::streamifyArray()</a>, <a class="el" href="classsese_1_1_json.html#ad971c93e5674776b9d25fe6bfc301cd0">sese::Json::streamifyBasic()</a>, <a class="el" href="classsese_1_1_json.html#a9dab53ab84ca850e0eb6a6474d9deaa8">sese::Json::streamifyObject()</a>, <a class="el" href="classsese_1_1_yaml.html#ab24858ad10ecb46c3d5696027b0ec9ab">sese::Yaml::streamifyObject()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">sese::archive::ArchiveWriter::writeCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_base64_converter.html#a4f72417e949f1ee426c92d3705ff065f">sese::Base64Converter::decode()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a01974b8044e0fec7a83b0b6f97074b74">sese::PercentConverter::decode()</a>, <a class="el" href="classsese_1_1_compressor.html#ac285dd8f592ee7bf474275402437b536">sese::Compressor::deflate()</a>, <a class="el" href="classsese_1_1_base64_converter.html#a04bc047bade46a36e58478ebb1091d17">sese::Base64Converter::encode()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a5ca9d6288128b6d6ff672d973f6fd329">sese::PercentConverter::encode()</a>, <a class="el" href="classsese_1_1_decompressor.html#a211890d7a081a70b6d2076c98eb9d52f">sese::Decompressor::inflate()</a>, <a class="el" href="_output_util_8h.html#ab90d47f3d9bb644bef55eaf22333ccb4">operator&lt;&lt;()</a>, <a class="el" href="classsese_1_1_exception.html#a408bab5a11108356ebcf51b36ed6cdf6">sese::Exception::printStacktrace()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">sese::internal::net::http::HttpClientImpl::readBodyByData()</a>, <a class="el" href="classsese_1_1_json.html#a50ca8cdbc1e39cfb5dffaa0df846ed2b">sese::Json::streamifyArray()</a>, <a class="el" href="classsese_1_1_yaml.html#ac286a726617735d595cd944810eb01ac">sese::Yaml::streamifyArray()</a>, <a class="el" href="classsese_1_1_json.html#ad971c93e5674776b9d25fe6bfc301cd0">sese::Json::streamifyBasic()</a>, <a class="el" href="classsese_1_1_json.html#a9dab53ab84ca850e0eb6a6474d9deaa8">sese::Json::streamifyObject()</a>, <a class="el" href="classsese_1_1_yaml.html#ab24858ad10ecb46c3d5696027b0ec9ab">sese::Yaml::streamifyObject()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">sese::archive::ArchiveWriter::writeCallback()</a>.</p>
 
 </div>
 </div>
@@ -263,7 +262,7 @@ Public 成员函数</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

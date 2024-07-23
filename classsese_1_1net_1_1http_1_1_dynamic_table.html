@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::net::http::DynamicTable类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_dynamic_table.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1net_1_1http_1_1_dynamic_table.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,45 +142,45 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_dynamic_t
 <div class="contents">
 
 <p>HTTP2 动态表  
- <a href="classsese_1_1net_1_1http_1_1_dynamic_table.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_dynamic_table_8h_source.html">DynamicTable.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a582c8cc18db8461a0aaa2b665b3845d8" id="r_a582c8cc18db8461a0aaa2b665b3845d8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a582c8cc18db8461a0aaa2b665b3845d8">Header</a> = std::pair&lt; std::string, std::string &gt;</td></tr>
+<tr class="memitem:a582c8cc18db8461a0aaa2b665b3845d8" id="r_a582c8cc18db8461a0aaa2b665b3845d8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a582c8cc18db8461a0aaa2b665b3845d8">Header</a> = std::pair&lt;std::string, std::string&gt;</td></tr>
 <tr class="separator:a582c8cc18db8461a0aaa2b665b3845d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a4ba60125a6e88dd7375e7e297c9044b8" id="r_a4ba60125a6e88dd7375e7e297c9044b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ba60125a6e88dd7375e7e297c9044b8">DynamicTable</a> (size_t <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a52b7da8459ba662e0516a73e52759da2">max</a>=4096) noexcept</td></tr>
+<tr class="memitem:a4ba60125a6e88dd7375e7e297c9044b8" id="r_a4ba60125a6e88dd7375e7e297c9044b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ba60125a6e88dd7375e7e297c9044b8">DynamicTable</a> (size_t <a class="el" href="#a52b7da8459ba662e0516a73e52759da2">max</a>=4096) noexcept</td></tr>
 <tr class="separator:a4ba60125a6e88dd7375e7e297c9044b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11c34830a7109b898450825c313f9f4f" id="r_a11c34830a7109b898450825c313f9f4f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a11c34830a7109b898450825c313f9f4f">~DynamicTable</a> () noexcept=default</td></tr>
+<tr class="memitem:a11c34830a7109b898450825c313f9f4f" id="r_a11c34830a7109b898450825c313f9f4f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11c34830a7109b898450825c313f9f4f">~DynamicTable</a> () noexcept=default</td></tr>
 <tr class="separator:a11c34830a7109b898450825c313f9f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad41ab607763633a97912ee566721cbbf" id="r_ad41ab607763633a97912ee566721cbbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ad41ab607763633a97912ee566721cbbf">resize</a> (size_t <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a52b7da8459ba662e0516a73e52759da2">max</a>) noexcept</td></tr>
+<tr class="memitem:ad41ab607763633a97912ee566721cbbf" id="r_ad41ab607763633a97912ee566721cbbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad41ab607763633a97912ee566721cbbf">resize</a> (size_t <a class="el" href="#a52b7da8459ba662e0516a73e52759da2">max</a>) noexcept</td></tr>
 <tr class="separator:ad41ab607763633a97912ee566721cbbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36517ec6e63c24a42b9303826d56c77b" id="r_a36517ec6e63c24a42b9303826d56c77b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a36517ec6e63c24a42b9303826d56c77b">getMaxSize</a> () const noexcept</td></tr>
+<tr class="memitem:a36517ec6e63c24a42b9303826d56c77b" id="r_a36517ec6e63c24a42b9303826d56c77b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36517ec6e63c24a42b9303826d56c77b">getMaxSize</a> () const noexcept</td></tr>
 <tr class="separator:a36517ec6e63c24a42b9303826d56c77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26755c836d7f7657dac6779065d86d13" id="r_a26755c836d7f7657dac6779065d86d13"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a26755c836d7f7657dac6779065d86d13">getCount</a> () const noexcept</td></tr>
+<tr class="memitem:a26755c836d7f7657dac6779065d86d13" id="r_a26755c836d7f7657dac6779065d86d13"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26755c836d7f7657dac6779065d86d13">getCount</a> () const noexcept</td></tr>
 <tr class="separator:a26755c836d7f7657dac6779065d86d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98caf979d9fa00d9a3b2aca5c9d56d44" id="r_a98caf979d9fa00d9a3b2aca5c9d56d44"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a98caf979d9fa00d9a3b2aca5c9d56d44">getSize</a> () const noexcept</td></tr>
+<tr class="memitem:a98caf979d9fa00d9a3b2aca5c9d56d44" id="r_a98caf979d9fa00d9a3b2aca5c9d56d44"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98caf979d9fa00d9a3b2aca5c9d56d44">getSize</a> () const noexcept</td></tr>
 <tr class="separator:a98caf979d9fa00d9a3b2aca5c9d56d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec2ed9ad7682b7fb180af23ce4fc4e0" id="r_a4ec2ed9ad7682b7fb180af23ce4fc4e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">set</a> (const std::string &amp;key, const std::string &amp;value) noexcept</td></tr>
+<tr class="memitem:a4ec2ed9ad7682b7fb180af23ce4fc4e0" id="r_a4ec2ed9ad7682b7fb180af23ce4fc4e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ec2ed9ad7682b7fb180af23ce4fc4e0">set</a> (const std::string &amp;key, const std::string &amp;value) noexcept</td></tr>
 <tr class="separator:a4ec2ed9ad7682b7fb180af23ce4fc4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c4fbb878d5d52107782453a71aae250" id="r_a6c4fbb878d5d52107782453a71aae250"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a582c8cc18db8461a0aaa2b665b3845d8">Header</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a6c4fbb878d5d52107782453a71aae250">get</a> (size_t index) const noexcept</td></tr>
+<tr class="memitem:a6c4fbb878d5d52107782453a71aae250" id="r_a6c4fbb878d5d52107782453a71aae250"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="#a582c8cc18db8461a0aaa2b665b3845d8">Header</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c4fbb878d5d52107782453a71aae250">get</a> (size_t index) const noexcept</td></tr>
 <tr class="separator:a6c4fbb878d5d52107782453a71aae250"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa50708ff4124f32ce8251b4020fc5821" id="r_aa50708ff4124f32ce8251b4020fc5821"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a> () const</td></tr>
+<tr class="memitem:aa50708ff4124f32ce8251b4020fc5821" id="r_aa50708ff4124f32ce8251b4020fc5821"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa50708ff4124f32ce8251b4020fc5821">begin</a> () const</td></tr>
 <tr class="separator:aa50708ff4124f32ce8251b4020fc5821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd06d130817f8c232df8e93e24074de7" id="r_acd06d130817f8c232df8e93e24074de7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a> () const</td></tr>
+<tr class="memitem:acd06d130817f8c232df8e93e24074de7" id="r_acd06d130817f8c232df8e93e24074de7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd06d130817f8c232df8e93e24074de7">end</a> () const</td></tr>
 <tr class="separator:acd06d130817f8c232df8e93e24074de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a52b7da8459ba662e0516a73e52759da2" id="r_a52b7da8459ba662e0516a73e52759da2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a52b7da8459ba662e0516a73e52759da2">max</a></td></tr>
+<tr class="memitem:a52b7da8459ba662e0516a73e52759da2" id="r_a52b7da8459ba662e0516a73e52759da2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52b7da8459ba662e0516a73e52759da2">max</a></td></tr>
 <tr class="separator:a52b7da8459ba662e0516a73e52759da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae88072e5b3a3e666b96c0fec6b8fcace" id="r_ae88072e5b3a3e666b96c0fec6b8fcace"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ae88072e5b3a3e666b96c0fec6b8fcace">size</a> = 0</td></tr>
+<tr class="memitem:ae88072e5b3a3e666b96c0fec6b8fcace" id="r_ae88072e5b3a3e666b96c0fec6b8fcace"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae88072e5b3a3e666b96c0fec6b8fcace">size</a> = 0</td></tr>
 <tr class="separator:ae88072e5b3a3e666b96c0fec6b8fcace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1ecbd1da3b5a626caf34124ad96985b" id="r_ab1ecbd1da3b5a626caf34124ad96985b"><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a582c8cc18db8461a0aaa2b665b3845d8">Header</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ab1ecbd1da3b5a626caf34124ad96985b">queue</a></td></tr>
+<tr class="memitem:ab1ecbd1da3b5a626caf34124ad96985b" id="r_ab1ecbd1da3b5a626caf34124ad96985b"><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="#a582c8cc18db8461a0aaa2b665b3845d8">Header</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1ecbd1da3b5a626caf34124ad96985b">queue</a></td></tr>
 <tr class="separator:ab1ecbd1da3b5a626caf34124ad96985b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -187,7 +193,7 @@ Protected 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a582c8cc18db8461a0aaa2b665b3845d8">sese::net::http::DynamicTable::Header</a> =  std::pair&lt;std::string, std::string&gt;</td>
+          <td class="memname">using <a class="el" href="#a582c8cc18db8461a0aaa2b665b3845d8">sese::net::http::DynamicTable::Header</a> = std::pair&lt;std::string, std::string&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -207,8 +213,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">DynamicTable::DynamicTable </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>max</em> = <code>4096</code></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>max</em></span><span class="paramdefsep"> = </span><span class="paramdefval">4096</span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -233,7 +238,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual sese::net::http::DynamicTable::~DynamicTable </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -259,18 +264,18 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">auto sese::net::http::DynamicTable::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ab1ecbd1da3b5a626caf34124ad96985b">queue</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab1ecbd1da3b5a626caf34124ad96985b">queue</a>.</p>
 
 </div>
 </div>
@@ -286,18 +291,18 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">auto sese::net::http::DynamicTable::end </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ab1ecbd1da3b5a626caf34124ad96985b">queue</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab1ecbd1da3b5a626caf34124ad96985b">queue</a>.</p>
 
 </div>
 </div>
@@ -311,16 +316,15 @@ Protected 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a582c8cc18db8461a0aaa2b665b3845d8">DynamicTable::Header</a> &gt; DynamicTable::get </td>
+          <td class="memname">std::optional&lt; <a class="el" href="#a582c8cc18db8461a0aaa2b665b3845d8">DynamicTable::Header</a> &gt; DynamicTable::get </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -341,18 +345,18 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">size_t sese::net::http::DynamicTable::getCount </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ab1ecbd1da3b5a626caf34124ad96985b">queue</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab1ecbd1da3b5a626caf34124ad96985b">queue</a>.</p>
 
 </div>
 </div>
@@ -368,18 +372,18 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">size_t sese::net::http::DynamicTable::getMaxSize </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a52b7da8459ba662e0516a73e52759da2">max</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a52b7da8459ba662e0516a73e52759da2">max</a>.</p>
 
 </div>
 </div>
@@ -395,18 +399,18 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">size_t sese::net::http::DynamicTable::getSize </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#ae88072e5b3a3e666b96c0fec6b8fcace">size</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ae88072e5b3a3e666b96c0fec6b8fcace">size</a>.</p>
 
 </div>
 </div>
@@ -422,8 +426,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void DynamicTable::resize </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>max</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>max</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -450,19 +453,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool DynamicTable::set </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -497,7 +493,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a36517ec6e63c24a42b9303826d56c77b">getMaxSize()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a36517ec6e63c24a42b9303826d56c77b">getMaxSize()</a>.</p>
 
 </div>
 </div>
@@ -511,7 +507,7 @@ Protected 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::deque&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a582c8cc18db8461a0aaa2b665b3845d8">Header</a>&gt; sese::net::http::DynamicTable::queue</td>
+          <td class="memname">std::deque&lt;<a class="el" href="#a582c8cc18db8461a0aaa2b665b3845d8">Header</a>&gt; sese::net::http::DynamicTable::queue</td>
         </tr>
       </table>
   </td>
@@ -521,7 +517,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a26755c836d7f7657dac6779065d86d13">getCount()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#aa50708ff4124f32ce8251b4020fc5821">begin()</a>, <a class="el" href="#acd06d130817f8c232df8e93e24074de7">end()</a> , 以及 <a class="el" href="#a26755c836d7f7657dac6779065d86d13">getCount()</a>.</p>
 
 </div>
 </div>
@@ -545,7 +541,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a98caf979d9fa00d9a3b2aca5c9d56d44">getSize()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a98caf979d9fa00d9a3b2aca5c9d56d44">getSize()</a>.</p>
 
 </div>
 </div>
@@ -559,7 +555,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

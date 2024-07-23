@@ -1,7 +1,7 @@
 var classsese_1_1concurrent_1_1_object_pool =
 [
     [ "ObjectPtr", "classsese_1_1concurrent_1_1_object_pool.html#aaafb3da537caf7980c3baef0bcca1d70", null ],
-    [ "Ptr", "classsese_1_1concurrent_1_1_object_pool.html#ab6ac278fb69f3e34b26634a7398e0cbf", null ],
+    [ "Ptr", "classsese_1_1concurrent_1_1_object_pool.html#a8033cf72bc74805a977a8c8776a4bc71", null ],
     [ "~ObjectPool", "classsese_1_1concurrent_1_1_object_pool.html#a8f8d75e00d44ff9c4d902d5f3b095732", null ],
     [ "ObjectPool", "classsese_1_1concurrent_1_1_object_pool.html#a81e3dd67099d7c3d64a8eda1139b3b5f", null ],
     [ "borrow", "classsese_1_1concurrent_1_1_object_pool.html#a10e99ec151c0acdfd1a7dbcf18ebd951", null ],

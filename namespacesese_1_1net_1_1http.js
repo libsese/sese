@@ -24,8 +24,8 @@ var namespacesese_1_1net_1_1http =
     [ "Url", "classsese_1_1net_1_1http_1_1_url.html", "classsese_1_1net_1_1http_1_1_url" ],
     [ "bits_t", "namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4", null ],
     [ "header_t", "namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14", null ],
-    [ "HuffmanDecoder", "namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190", null ],
-    [ "HuffmanEncoder", "namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63", null ],
+    [ "HuffmanDecoder", "namespacesese_1_1net_1_1http.html#a78baeb0ea2f7ae66da3529d3ba6b51ec", null ],
+    [ "HuffmanEncoder", "namespacesese_1_1net_1_1http.html#ad0af380e2cf908eac82ff9bd729d076f", null ],
     [ "HttpVersion", "namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8", [
       [ "VERSION_1_1", "namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7", null ],
       [ "VERSION_2", "namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8a718bd52cc92714b62a24cb681e3dd69e", null ],

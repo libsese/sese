@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::iocp::v1::IOCPServer类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -139,106 +145,106 @@ $(document).ready(function(){initNavTree('classsese_1_1iocp_1_1v1_1_1_i_o_c_p_se
 <div class="contents">
 
 <p>基于 sese-event 的完成端口服务器  
- <a href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:abceea41909927b7ddd32f3787b40acc4" id="r_abceea41909927b7ddd32f3787b40acc4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> = std::function&lt; void(<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&gt;</td></tr>
+<tr class="memitem:abceea41909927b7ddd32f3787b40acc4" id="r_abceea41909927b7ddd32f3787b40acc4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> = std::function&lt;void(<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&gt;</td></tr>
 <tr class="separator:abceea41909927b7ddd32f3787b40acc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a29720fc3d902d5fefec65ed748f581c0" id="r_a29720fc3d902d5fefec65ed748f581c0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a29720fc3d902d5fefec65ed748f581c0">~IOCPServer</a> ()=default</td></tr>
+<tr class="memitem:a29720fc3d902d5fefec65ed748f581c0" id="r_a29720fc3d902d5fefec65ed748f581c0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29720fc3d902d5fefec65ed748f581c0">~IOCPServer</a> ()=default</td></tr>
 <tr class="separator:a29720fc3d902d5fefec65ed748f581c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89390f6b46a51913edf19312df4d797d" id="r_a89390f6b46a51913edf19312df4d797d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a89390f6b46a51913edf19312df4d797d">IOCPServer</a> ()</td></tr>
+<tr class="memitem:a89390f6b46a51913edf19312df4d797d" id="r_a89390f6b46a51913edf19312df4d797d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89390f6b46a51913edf19312df4d797d">IOCPServer</a> ()</td></tr>
 <tr class="separator:a89390f6b46a51913edf19312df4d797d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3316941a7b54c825f6b7792ab3f27b4" id="r_ad3316941a7b54c825f6b7792ab3f27b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ad3316941a7b54c825f6b7792ab3f27b4">init</a> ()</td></tr>
+<tr class="memitem:ad3316941a7b54c825f6b7792ab3f27b4" id="r_ad3316941a7b54c825f6b7792ab3f27b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3316941a7b54c825f6b7792ab3f27b4">init</a> ()</td></tr>
 <tr class="separator:ad3316941a7b54c825f6b7792ab3f27b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe265af21499c32168c00f5dd9a87d1a" id="r_afe265af21499c32168c00f5dd9a87d1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afe265af21499c32168c00f5dd9a87d1a">shutdown</a> ()</td></tr>
+<tr class="memitem:afe265af21499c32168c00f5dd9a87d1a" id="r_afe265af21499c32168c00f5dd9a87d1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe265af21499c32168c00f5dd9a87d1a">shutdown</a> ()</td></tr>
 <tr class="separator:afe265af21499c32168c00f5dd9a87d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4836500c678aae0a24a7433152706503" id="r_a4836500c678aae0a24a7433152706503"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">postConnect</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;to, const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;cli_ctx, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>=nullptr)</td></tr>
+<tr class="memitem:a4836500c678aae0a24a7433152706503" id="r_a4836500c678aae0a24a7433152706503"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4836500c678aae0a24a7433152706503">postConnect</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;to, const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;cli_ctx, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>=nullptr)</td></tr>
 <tr class="separator:a4836500c678aae0a24a7433152706503"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4a0e2fae503e52c1ab90b8e5a644e2b" id="r_ab4a0e2fae503e52c1ab90b8e5a644e2b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab4a0e2fae503e52c1ab90b8e5a644e2b">onAcceptCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:ab4a0e2fae503e52c1ab90b8e5a644e2b" id="r_ab4a0e2fae503e52c1ab90b8e5a644e2b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4a0e2fae503e52c1ab90b8e5a644e2b">onAcceptCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:ab4a0e2fae503e52c1ab90b8e5a644e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5e63ccd4912309e4871fc5c8ed46f3c" id="r_ab5e63ccd4912309e4871fc5c8ed46f3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab5e63ccd4912309e4871fc5c8ed46f3c">onPreRead</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:ab5e63ccd4912309e4871fc5c8ed46f3c" id="r_ab5e63ccd4912309e4871fc5c8ed46f3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5e63ccd4912309e4871fc5c8ed46f3c">onPreRead</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:ab5e63ccd4912309e4871fc5c8ed46f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08a5ca1d58d7445ecdd027cd5f12b788" id="r_a08a5ca1d58d7445ecdd027cd5f12b788"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a08a5ca1d58d7445ecdd027cd5f12b788">onReadCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a08a5ca1d58d7445ecdd027cd5f12b788" id="r_a08a5ca1d58d7445ecdd027cd5f12b788"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08a5ca1d58d7445ecdd027cd5f12b788">onReadCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a08a5ca1d58d7445ecdd027cd5f12b788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a082b53a83bf77c7545c943e3dce97487" id="r_a082b53a83bf77c7545c943e3dce97487"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a082b53a83bf77c7545c943e3dce97487">onWriteCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a082b53a83bf77c7545c943e3dce97487" id="r_a082b53a83bf77c7545c943e3dce97487"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a082b53a83bf77c7545c943e3dce97487">onWriteCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a082b53a83bf77c7545c943e3dce97487"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a138c236d9be67089880c03294bcc2694" id="r_a138c236d9be67089880c03294bcc2694"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a138c236d9be67089880c03294bcc2694">onTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a138c236d9be67089880c03294bcc2694" id="r_a138c236d9be67089880c03294bcc2694"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a138c236d9be67089880c03294bcc2694">onTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a138c236d9be67089880c03294bcc2694"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b80c4c7e10a993d45f158ccde0d0a9a" id="r_a6b80c4c7e10a993d45f158ccde0d0a9a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a6b80c4c7e10a993d45f158ccde0d0a9a" id="r_a6b80c4c7e10a993d45f158ccde0d0a9a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a6b80c4c7e10a993d45f158ccde0d0a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8575f93c9e0beb35d62006cadf14b6c0" id="r_a8575f93c9e0beb35d62006cadf14b6c0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8575f93c9e0beb35d62006cadf14b6c0">onConnected</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a8575f93c9e0beb35d62006cadf14b6c0" id="r_a8575f93c9e0beb35d62006cadf14b6c0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8575f93c9e0beb35d62006cadf14b6c0">onConnected</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a8575f93c9e0beb35d62006cadf14b6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2" id="r_a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2">onAlpnGet</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)</td></tr>
+<tr class="memitem:a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2" id="r_a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2">onAlpnGet</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)</td></tr>
 <tr class="separator:a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6cbe8ea828cba53e593037905cb4d94" id="r_ae6cbe8ea828cba53e593037905cb4d94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ae6cbe8ea828cba53e593037905cb4d94">onAlpnSelect</a> (const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)</td></tr>
+<tr class="memitem:ae6cbe8ea828cba53e593037905cb4d94" id="r_ae6cbe8ea828cba53e593037905cb4d94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6cbe8ea828cba53e593037905cb4d94">onAlpnSelect</a> (const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)</td></tr>
 <tr class="separator:ae6cbe8ea828cba53e593037905cb4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf077bf2b22f2282ece08432e66b2bef" id="r_abf077bf2b22f2282ece08432e66b2bef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abf077bf2b22f2282ece08432e66b2bef">setAddress</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;addr)</td></tr>
+<tr class="memitem:abf077bf2b22f2282ece08432e66b2bef" id="r_abf077bf2b22f2282ece08432e66b2bef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf077bf2b22f2282ece08432e66b2bef">setAddress</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;addr)</td></tr>
 <tr class="separator:abf077bf2b22f2282ece08432e66b2bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6423868f07d0e9e6d9a9b2fd6216a441" id="r_a6423868f07d0e9e6d9a9b2fd6216a441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6423868f07d0e9e6d9a9b2fd6216a441">setThreads</a> (size_t threads)</td></tr>
+<tr class="memitem:a6423868f07d0e9e6d9a9b2fd6216a441" id="r_a6423868f07d0e9e6d9a9b2fd6216a441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6423868f07d0e9e6d9a9b2fd6216a441">setThreads</a> (size_t threads)</td></tr>
 <tr class="separator:a6423868f07d0e9e6d9a9b2fd6216a441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa792d0151f4855fbb29ab9dadd64539" id="r_aaa792d0151f4855fbb29ab9dadd64539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa792d0151f4855fbb29ab9dadd64539">setServCtx</a> (const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;ctx)</td></tr>
+<tr class="memitem:aaa792d0151f4855fbb29ab9dadd64539" id="r_aaa792d0151f4855fbb29ab9dadd64539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa792d0151f4855fbb29ab9dadd64539">setServCtx</a> (const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;ctx)</td></tr>
 <tr class="separator:aaa792d0151f4855fbb29ab9dadd64539"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee49e8321f6c05c304f292b79c51de42" id="r_aee49e8321f6c05c304f292b79c51de42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aee49e8321f6c05c304f292b79c51de42">setServProtos</a> (const std::string &amp;protos)</td></tr>
+<tr class="memitem:aee49e8321f6c05c304f292b79c51de42" id="r_aee49e8321f6c05c304f292b79c51de42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee49e8321f6c05c304f292b79c51de42">setServProtos</a> (const std::string &amp;protos)</td></tr>
 <tr class="separator:aee49e8321f6c05c304f292b79c51de42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a515e1af4fbc2402662f8a69e838fed13" id="r_a515e1af4fbc2402662f8a69e838fed13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a515e1af4fbc2402662f8a69e838fed13">setClientProtos</a> (const std::string &amp;protos)</td></tr>
+<tr class="memitem:a515e1af4fbc2402662f8a69e838fed13" id="r_a515e1af4fbc2402662f8a69e838fed13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a515e1af4fbc2402662f8a69e838fed13">setClientProtos</a> (const std::string &amp;protos)</td></tr>
 <tr class="separator:a515e1af4fbc2402662f8a69e838fed13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3cfc6d15a511adce3cf3cb4d1c98227" id="r_af3cfc6d15a511adce3cf3cb4d1c98227"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af3cfc6d15a511adce3cf3cb4d1c98227">setDeleteContextCallback</a> (const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="memitem:af3cfc6d15a511adce3cf3cb4d1c98227" id="r_af3cfc6d15a511adce3cf3cb4d1c98227"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3cfc6d15a511adce3cf3cb4d1c98227">setDeleteContextCallback</a> (const <a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
 <tr class="separator:af3cfc6d15a511adce3cf3cb4d1c98227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab89582b6b046b7982bea6b421ca3586d" id="r_ab89582b6b046b7982bea6b421ca3586d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a> () const</td></tr>
+<tr class="memitem:ab89582b6b046b7982bea6b421ca3586d" id="r_ab89582b6b046b7982bea6b421ca3586d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a> () const</td></tr>
 <tr class="separator:ab89582b6b046b7982bea6b421ca3586d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ead208f10d6d12527207b0ecf522df7" id="r_a5ead208f10d6d12527207b0ecf522df7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a5ead208f10d6d12527207b0ecf522df7">getDeleteContextCallback</a> () const</td></tr>
+<tr class="memitem:a5ead208f10d6d12527207b0ecf522df7" id="r_a5ead208f10d6d12527207b0ecf522df7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ead208f10d6d12527207b0ecf522df7">getDeleteContextCallback</a> () const</td></tr>
 <tr class="separator:a5ead208f10d6d12527207b0ecf522df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a7e9c595ad9e21ea36ee22375f1b804" id="r_a2a7e9c595ad9e21ea36ee22375f1b804"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2a7e9c595ad9e21ea36ee22375f1b804">isActiveReleaseMode</a> () const</td></tr>
+<tr class="memitem:a2a7e9c595ad9e21ea36ee22375f1b804" id="r_a2a7e9c595ad9e21ea36ee22375f1b804"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a7e9c595ad9e21ea36ee22375f1b804">isActiveReleaseMode</a> () const</td></tr>
 <tr class="separator:a2a7e9c595ad9e21ea36ee22375f1b804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade78267f341f9f77e67ced9151da0ddc" id="r_ade78267f341f9f77e67ced9151da0ddc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ade78267f341f9f77e67ced9151da0ddc">setAcceptTimeout</a> (uint32_t seconds)</td></tr>
+<tr class="memitem:ade78267f341f9f77e67ced9151da0ddc" id="r_ade78267f341f9f77e67ced9151da0ddc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade78267f341f9f77e67ced9151da0ddc">setAcceptTimeout</a> (uint32_t seconds)</td></tr>
 <tr class="separator:ade78267f341f9f77e67ced9151da0ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab95082119b2be374c1c536ac7b886fba" id="r_ab95082119b2be374c1c536ac7b886fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab95082119b2be374c1c536ac7b886fba">setDispatchTimeout</a> (uint32_t seconds)</td></tr>
+<tr class="memitem:ab95082119b2be374c1c536ac7b886fba" id="r_ab95082119b2be374c1c536ac7b886fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab95082119b2be374c1c536ac7b886fba">setDispatchTimeout</a> (uint32_t seconds)</td></tr>
 <tr class="separator:ab95082119b2be374c1c536ac7b886fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a12779ad88ec076ae7d6ea0d8bddc74b7" id="r_a12779ad88ec076ae7d6ea0d8bddc74b7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a12779ad88ec076ae7d6ea0d8bddc74b7">postRead</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a12779ad88ec076ae7d6ea0d8bddc74b7" id="r_a12779ad88ec076ae7d6ea0d8bddc74b7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12779ad88ec076ae7d6ea0d8bddc74b7">postRead</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a12779ad88ec076ae7d6ea0d8bddc74b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa6c7e929e59e5ed8797792c5a450afd" id="r_aaa6c7e929e59e5ed8797792c5a450afd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">postWrite</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:aaa6c7e929e59e5ed8797792c5a450afd" id="r_aaa6c7e929e59e5ed8797792c5a450afd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa6c7e929e59e5ed8797792c5a450afd">postWrite</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:aaa6c7e929e59e5ed8797792c5a450afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8c4fa20f0c800a3bd246211fdfe355d" id="r_af8c4fa20f0c800a3bd246211fdfe355d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af8c4fa20f0c800a3bd246211fdfe355d">postClose</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:af8c4fa20f0c800a3bd246211fdfe355d" id="r_af8c4fa20f0c800a3bd246211fdfe355d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8c4fa20f0c800a3bd246211fdfe355d">postClose</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:af8c4fa20f0c800a3bd246211fdfe355d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbcbd23b89822a275eec7339642f070d" id="r_afbcbd23b89822a275eec7339642f070d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d">setTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx, int64_t seconds)</td></tr>
+<tr class="memitem:afbcbd23b89822a275eec7339642f070d" id="r_afbcbd23b89822a275eec7339642f070d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbcbd23b89822a275eec7339642f070d">setTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx, int64_t seconds)</td></tr>
 <tr class="separator:afbcbd23b89822a275eec7339642f070d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7269da27822e4cbb8491a9a392347435" id="r_a7269da27822e4cbb8491a9a392347435"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a7269da27822e4cbb8491a9a392347435">cancelTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a7269da27822e4cbb8491a9a392347435" id="r_a7269da27822e4cbb8491a9a392347435"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7269da27822e4cbb8491a9a392347435">cancelTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a7269da27822e4cbb8491a9a392347435"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadb1d016ef3f4cf8a90fcb5d73ca817c" id="r_aadb1d016ef3f4cf8a90fcb5d73ca817c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *)</td></tr>
+<tr class="memitem:aadb1d016ef3f4cf8a90fcb5d73ca817c" id="r_aadb1d016ef3f4cf8a90fcb5d73ca817c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *)</td></tr>
 <tr class="separator:aadb1d016ef3f4cf8a90fcb5d73ca817c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
-<tr class="memitem:a789bad8334e213582b3fed967bec1825" id="r_a789bad8334e213582b3fed967bec1825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback</a> (int fd, sese::event::EventLoop *event_loop, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="memitem:a789bad8334e213582b3fed967bec1825" id="r_a789bad8334e213582b3fed967bec1825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a789bad8334e213582b3fed967bec1825">preConnectCallback</a> (int fd, sese::event::EventLoop *event_loop, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a789bad8334e213582b3fed967bec1825"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3864b63158dd1adf141270f67b72288b" id="r_a3864b63158dd1adf141270f67b72288b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a3864b63158dd1adf141270f67b72288b">setActiveReleaseMode</a> (bool enable)</td></tr>
+<tr class="memitem:a3864b63158dd1adf141270f67b72288b" id="r_a3864b63158dd1adf141270f67b72288b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3864b63158dd1adf141270f67b72288b">setActiveReleaseMode</a> (bool enable)</td></tr>
 <tr class="separator:a3864b63158dd1adf141270f67b72288b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:aae0070684e7fe68c3e7a974252b6cace" id="r_aae0070684e7fe68c3e7a974252b6cace"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a> = <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a></td></tr>
+<tr class="memitem:aae0070684e7fe68c3e7a974252b6cace" id="r_aae0070684e7fe68c3e7a974252b6cace"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a> = <a class="el" href="#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a></td></tr>
 <tr class="separator:aae0070684e7fe68c3e7a974252b6cace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2cad79d0e8b978796944c225a12b411" id="r_ac2cad79d0e8b978796944c225a12b411"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">sslCtx</a> {}</td></tr>
+<tr class="memitem:ac2cad79d0e8b978796944c225a12b411" id="r_ac2cad79d0e8b978796944c225a12b411"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2cad79d0e8b978796944c225a12b411">sslCtx</a> {}</td></tr>
 <tr class="separator:ac2cad79d0e8b978796944c225a12b411"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6359cbad20371331335166d51543da6" id="r_ab6359cbad20371331335166d51543da6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a> {}</td></tr>
+<tr class="memitem:ab6359cbad20371331335166d51543da6" id="r_ab6359cbad20371331335166d51543da6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6359cbad20371331335166d51543da6">servProtos</a> {}</td></tr>
 <tr class="separator:ab6359cbad20371331335166d51543da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac98426c2c3a34fc6490bd5ac362f2932" id="r_ac98426c2c3a34fc6490bd5ac362f2932"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a> {}</td></tr>
+<tr class="memitem:ac98426c2c3a34fc6490bd5ac362f2932" id="r_ac98426c2c3a34fc6490bd5ac362f2932"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a> {}</td></tr>
 <tr class="separator:ac98426c2c3a34fc6490bd5ac362f2932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83b699d05ec462b9e582944fb2627bde" id="r_a83b699d05ec462b9e582944fb2627bde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1_user_balance_loader.html">service::UserBalanceLoader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a></td></tr>
+<tr class="memitem:a83b699d05ec462b9e582944fb2627bde" id="r_a83b699d05ec462b9e582944fb2627bde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1_user_balance_loader.html">service::UserBalanceLoader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a></td></tr>
 <tr class="separator:a83b699d05ec462b9e582944fb2627bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:a8d9755083e0c8a8d7fe1e69bfcc64301" id="r_a8d9755083e0c8a8d7fe1e69bfcc64301"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8d9755083e0c8a8d7fe1e69bfcc64301">activeReleaseMode</a> = true</td></tr>
+<tr class="memitem:a8d9755083e0c8a8d7fe1e69bfcc64301" id="r_a8d9755083e0c8a8d7fe1e69bfcc64301"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d9755083e0c8a8d7fe1e69bfcc64301">activeReleaseMode</a> = true</td></tr>
 <tr class="separator:a8d9755083e0c8a8d7fe1e69bfcc64301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -251,7 +257,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">sese::iocp::v1::IOCPServer::DeleteContextCallback</a> =  std::function&lt;void(<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&gt;</td>
+          <td class="memname">using <a class="el" href="#abceea41909927b7ddd32f3787b40acc4">sese::iocp::v1::IOCPServer::DeleteContextCallback</a> = std::function&lt;void(<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -271,7 +277,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual sese::iocp::v1::IOCPServer::~IOCPServer </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -293,13 +299,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">IOCPServer::IOCPServer </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback()</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a972a287ec76049fa63041aba30e0f0d7">sese::service::UserBalanceLoader::setOnDispatchedCallbackFunction()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="#a789bad8334e213582b3fed967bec1825">preConnectCallback()</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a972a287ec76049fa63041aba30e0f0d7">sese::service::UserBalanceLoader::setOnDispatchedCallbackFunction()</a>.</p>
 
 </div>
 </div>
@@ -316,8 +322,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::cancelTimeout </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -348,21 +353,21 @@ Private 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp; sese::iocp::v1::IOCPServer::getDeleteContextCallback </td>
+          <td class="memname">const <a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp; sese::iocp::v1::IOCPServer::getDeleteContextCallback </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>获取当前服务的操作上下文销毁回调函数 </p><dl class="section return"><dt>返回</dt><dd>回调函数 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ae8c20b27594710cd3350072139ea43f2">sese::iocp::v1::IOCPService::releaseContext()</a>.</p>
 
@@ -380,19 +385,19 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp; sese::iocp::v1::IOCPServer::getServCtx </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>获取当前服务器监听 SSL 上下文 </p><dl class="section return"><dt>返回</dt><dd>SSL 上下文 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">sslCtx</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ac2cad79d0e8b978796944c225a12b411">sslCtx</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7a0a275897c1afb2e6c474381cf5ce0a">sese::iocp::v1::IOCPService::IOCPService()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1f07a9b926c03da44d3cd957f93e1ee3">sese::iocp::v1::IOCPService::onAccept()</a>.</p>
 
@@ -407,14 +412,14 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">bool IOCPServer::init </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>初始化并启动服务器 </p><dl class="section return"><dt>返回</dt><dd>初始化结果 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a8c59ee3a3802a9c955bd0c549c297a37">sese::service::UserBalanceLoader::init()</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a3f20c2881ad37470ee13ee769b883c3f">sese::service::UserBalanceLoader::start()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a8c59ee3a3802a9c955bd0c549c297a37">sese::service::UserBalanceLoader::init()</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a3f20c2881ad37470ee13ee769b883c3f">sese::service::UserBalanceLoader::start()</a>.</p>
 
 </div>
 </div>
@@ -430,19 +435,19 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">bool sese::iocp::v1::IOCPServer::isActiveReleaseMode </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>获取主动释放模式状态 </p><dl class="section return"><dt>返回</dt><dd>主动释放模式状态 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8d9755083e0c8a8d7fe1e69bfcc64301">activeReleaseMode</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a8d9755083e0c8a8d7fe1e69bfcc64301">activeReleaseMode</a>.</p>
 
 </div>
 </div>
@@ -458,8 +463,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onAcceptCompleted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -492,25 +496,17 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onAlpnGet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>in_length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>in_length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -541,31 +537,22 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int IOCPServer::onAlpnSelect </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t **&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
+          <td class="paramtype">const uint8_t **</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>out_length</em>, </td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out_length</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>in_length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>in_length</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -580,7 +567,7 @@ Private 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>ALPN 状态码 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a>.</p>
+<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="#ab6359cbad20371331335166d51543da6">servProtos</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a72fbe3e2473223c4ca4b3e7c40c1b6b8">sese::iocp::v1::IOCPService::alpnCallbackFunction()</a>.</p>
 
@@ -598,8 +585,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onConnected </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -632,8 +618,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">static void sese::iocp::v1::IOCPServer::onDeleteContext </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -659,8 +644,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onPreConnect </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -677,7 +661,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a789bad8334e213582b3fed967bec1825">preConnectCallback()</a>.</p>
 
 </div>
 </div>
@@ -693,8 +677,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onPreRead </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -727,8 +710,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onReadCompleted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -761,8 +743,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onTimeout </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -795,8 +776,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::iocp::v1::IOCPServer::onWriteCompleted </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -829,8 +809,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::postClose </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -860,25 +839,17 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::postConnect </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>to</em>, </td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>to</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>cli_ctx</em>, </td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cli_ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>data</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -891,7 +862,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>, <a class="el" href="_d_e_s_8cpp.html#a5bde6d2a1cd4fa3f21d8754ba58ccc8d">CTX</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a4d22f3419c59cf92700950ab127f6356">sese::service::UserBalanceLoader::dispatchSocket()</a>, <a class="el" href="native_2win_2_config_8h.html#a6c045d5be06e715cc335784a7320714e">EINPROGRESS</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a1499153fb548e27578c60838b90d933f">sese::iocp::v1::Context::fd</a>, <a class="el" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209">sese::net::getNetworkError()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>, <a class="el" href="#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>, <a class="el" href="_d_e_s_8cpp.html#a5bde6d2a1cd4fa3f21d8754ba58ccc8d">CTX</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a4d22f3419c59cf92700950ab127f6356">sese::service::UserBalanceLoader::dispatchSocket()</a>, <a class="el" href="native_2win_2_config_8h.html#a6c045d5be06e715cc335784a7320714e">EINPROGRESS</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a1499153fb548e27578c60838b90d933f">sese::iocp::v1::Context::fd</a>, <a class="el" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209">sese::net::getNetworkError()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket()</a>.</p>
 
 </div>
 </div>
@@ -907,8 +878,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::postRead </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -941,8 +911,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::postWrite </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -961,7 +930,7 @@ Private 属性</h2></td></tr>
 
 <p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ae3bcb1f4a80ec851ad9cf82d97026acc">sese::iocp::v1::Context::client</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">sese::iocp::v1::IOCPService::postWrite()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a789bad8334e213582b3fed967bec1825">preConnectCallback()</a>.</p>
 
 </div>
 </div>
@@ -977,25 +946,17 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::preConnectCallback </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">sese::event::EventLoop *&#160;</td>
-          <td class="paramname"><em>event_loop</em>, </td>
+          <td class="paramtype">sese::event::EventLoop *</td>          <td class="paramname"><span class="paramname"><em>event_loop</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1005,9 +966,9 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ae3bcb1f4a80ec851ad9cf82d97026acc">sese::iocp::v1::Context::client</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">postWrite()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ae3bcb1f4a80ec851ad9cf82d97026acc">sese::iocp::v1::Context::client</a>, <a class="el" href="#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect()</a> , 以及 <a class="el" href="#aaa6c7e929e59e5ed8797792c5a450afd">postWrite()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a89390f6b46a51913edf19312df4d797d">IOCPServer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a89390f6b46a51913edf19312df4d797d">IOCPServer()</a>.</p>
 
 </div>
 </div>
@@ -1023,8 +984,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setAcceptTimeout </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>seconds</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>seconds</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1041,7 +1001,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#ac767d1fc18fe6b0f5e76f83e4519d5b7">sese::service::UserBalanceLoader::setAcceptTimeout()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#ac767d1fc18fe6b0f5e76f83e4519d5b7">sese::service::UserBalanceLoader::setAcceptTimeout()</a>.</p>
 
 </div>
 </div>
@@ -1057,8 +1017,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setActiveReleaseMode </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1075,7 +1034,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8d9755083e0c8a8d7fe1e69bfcc64301">activeReleaseMode</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a8d9755083e0c8a8d7fe1e69bfcc64301">activeReleaseMode</a>.</p>
 
 </div>
 </div>
@@ -1091,8 +1050,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setAddress </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1109,7 +1067,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#aacd17a04291183817dae1c04fb9f6246">sese::service::UserBalanceLoader::setAddress()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#aacd17a04291183817dae1c04fb9f6246">sese::service::UserBalanceLoader::setAddress()</a>.</p>
 
 </div>
 </div>
@@ -1125,8 +1083,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setClientProtos </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>protos</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>protos</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1143,7 +1100,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>.</p>
 
 </div>
 </div>
@@ -1159,8 +1116,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setDeleteContextCallback </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;&#160;</td>
-          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1177,7 +1133,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a>.</p>
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a> , 以及 <a class="el" href="#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a>.</p>
 
 </div>
 </div>
@@ -1193,8 +1149,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setDispatchTimeout </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>seconds</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>seconds</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1211,7 +1166,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#ae5751cbce412a803b7d1906c8be57e5f">sese::service::UserBalanceLoader::setDispatchTimeout()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#ae5751cbce412a803b7d1906c8be57e5f">sese::service::UserBalanceLoader::setDispatchTimeout()</a>.</p>
 
 </div>
 </div>
@@ -1227,8 +1182,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setServCtx </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1245,7 +1199,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">sslCtx</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ac2cad79d0e8b978796944c225a12b411">sslCtx</a>.</p>
 
 </div>
 </div>
@@ -1261,8 +1215,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setServProtos </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>protos</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>protos</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1279,7 +1232,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab6359cbad20371331335166d51543da6">servProtos</a>.</p>
 
 </div>
 </div>
@@ -1295,8 +1248,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::iocp::v1::IOCPServer::setThreads </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>threads</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>threads</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1313,7 +1265,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a80244b04a60e3a9bc0b4030b03f001ad">sese::service::UserBalanceLoader::setThreads()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a80244b04a60e3a9bc0b4030b03f001ad">sese::service::UserBalanceLoader::setThreads()</a>.</p>
 
 </div>
 </div>
@@ -1329,19 +1281,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::setTimeout </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>seconds</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int64_t</td>          <td class="paramname"><span class="paramname"><em>seconds</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1371,14 +1316,14 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void IOCPServer::shutdown </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>终止工作线程、释放系统资源并结束服务器 </p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a98af987660a89b01bea93bfc6a87d147">sese::service::UserBalanceLoader::stop()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a> , 以及 <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a98af987660a89b01bea93bfc6a87d147">sese::service::UserBalanceLoader::stop()</a>.</p>
 
 </div>
 </div>
@@ -1403,7 +1348,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2a7e9c595ad9e21ea36ee22375f1b804">isActiveReleaseMode()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a3864b63158dd1adf141270f67b72288b">setActiveReleaseMode()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a2a7e9c595ad9e21ea36ee22375f1b804">isActiveReleaseMode()</a> , 以及 <a class="el" href="#a3864b63158dd1adf141270f67b72288b">setActiveReleaseMode()</a>.</p>
 
 </div>
 </div>
@@ -1427,7 +1372,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ad3316941a7b54c825f6b7792ab3f27b4">init()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a89390f6b46a51913edf19312df4d797d">IOCPServer()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">postConnect()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ade78267f341f9f77e67ced9151da0ddc">setAcceptTimeout()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abf077bf2b22f2282ece08432e66b2bef">setAddress()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab95082119b2be374c1c536ac7b886fba">setDispatchTimeout()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6423868f07d0e9e6d9a9b2fd6216a441">setThreads()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afe265af21499c32168c00f5dd9a87d1a">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ad3316941a7b54c825f6b7792ab3f27b4">init()</a>, <a class="el" href="#a89390f6b46a51913edf19312df4d797d">IOCPServer()</a>, <a class="el" href="#a4836500c678aae0a24a7433152706503">postConnect()</a>, <a class="el" href="#ade78267f341f9f77e67ced9151da0ddc">setAcceptTimeout()</a>, <a class="el" href="#abf077bf2b22f2282ece08432e66b2bef">setAddress()</a>, <a class="el" href="#ab95082119b2be374c1c536ac7b886fba">setDispatchTimeout()</a>, <a class="el" href="#a6423868f07d0e9e6d9a9b2fd6216a441">setThreads()</a> , 以及 <a class="el" href="#afe265af21499c32168c00f5dd9a87d1a">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -1451,7 +1396,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">postConnect()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a515e1af4fbc2402662f8a69e838fed13">setClientProtos()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4836500c678aae0a24a7433152706503">postConnect()</a> , 以及 <a class="el" href="#a515e1af4fbc2402662f8a69e838fed13">setClientProtos()</a>.</p>
 
 </div>
 </div>
@@ -1465,7 +1410,7 @@ Private 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> sese::iocp::v1::IOCPServer::deleteContextCallback = <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a></td>
+          <td class="memname"><a class="el" href="#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> sese::iocp::v1::IOCPServer::deleteContextCallback = <a class="el" href="#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a></td>
         </tr>
       </table>
   </td>
@@ -1475,7 +1420,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a5ead208f10d6d12527207b0ecf522df7">getDeleteContextCallback()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af3cfc6d15a511adce3cf3cb4d1c98227">setDeleteContextCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a5ead208f10d6d12527207b0ecf522df7">getDeleteContextCallback()</a> , 以及 <a class="el" href="#af3cfc6d15a511adce3cf3cb4d1c98227">setDeleteContextCallback()</a>.</p>
 
 </div>
 </div>
@@ -1499,7 +1444,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ae6cbe8ea828cba53e593037905cb4d94">onAlpnSelect()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aee49e8321f6c05c304f292b79c51de42">setServProtos()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ae6cbe8ea828cba53e593037905cb4d94">onAlpnSelect()</a> , 以及 <a class="el" href="#aee49e8321f6c05c304f292b79c51de42">setServProtos()</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1468,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa792d0151f4855fbb29ab9dadd64539">setServCtx()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ab89582b6b046b7982bea6b421ca3586d">getServCtx()</a> , 以及 <a class="el" href="#aaa792d0151f4855fbb29ab9dadd64539">setServCtx()</a>.</p>
 
 </div>
 </div>
@@ -1537,7 +1482,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1iocp.html">iocp</a></li><li class="navelem"><a class="el" href="namespacesese_1_1iocp_1_1v1.html">v1</a></li><li class="navelem"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html">IOCPServer</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

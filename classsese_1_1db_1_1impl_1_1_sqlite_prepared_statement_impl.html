@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::db::impl::SqlitePreparedStatementImpl类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,7 +143,7 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_sqlite_pre
 <div class="contents">
 
 <p>SQLite 预处理语句实现  
- <a href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -152,83 +158,83 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_sqlite_pre
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ae3c5486c7b4032981dc05396a8a0e62f" id="r_ae3c5486c7b4032981dc05396a8a0e62f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ae3c5486c7b4032981dc05396a8a0e62f">SqlitePreparedStatementImpl</a> (sqlite3_stmt *<a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, size_t <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>) noexcept</td></tr>
+<tr class="memitem:ae3c5486c7b4032981dc05396a8a0e62f" id="r_ae3c5486c7b4032981dc05396a8a0e62f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3c5486c7b4032981dc05396a8a0e62f">SqlitePreparedStatementImpl</a> (sqlite3_stmt *<a class="el" href="#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, size_t <a class="el" href="#a66b0475c7b28f8869707293c0cbccd7b">count</a>) noexcept</td></tr>
 <tr class="separator:ae3c5486c7b4032981dc05396a8a0e62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4935f04e9f4656e0b8f4ffc1b9d2edd" id="r_ad4935f04e9f4656e0b8f4ffc1b9d2edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad4935f04e9f4656e0b8f4ffc1b9d2edd">~SqlitePreparedStatementImpl</a> () noexcept override</td></tr>
+<tr class="memitem:ad4935f04e9f4656e0b8f4ffc1b9d2edd" id="r_ad4935f04e9f4656e0b8f4ffc1b9d2edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4935f04e9f4656e0b8f4ffc1b9d2edd">~SqlitePreparedStatementImpl</a> () noexcept override</td></tr>
 <tr class="separator:ad4935f04e9f4656e0b8f4ffc1b9d2edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd220f1f5900accc809eb6fded73a734" id="r_abd220f1f5900accc809eb6fded73a734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#abd220f1f5900accc809eb6fded73a734">executeQuery</a> () noexcept override</td></tr>
+<tr class="memitem:abd220f1f5900accc809eb6fded73a734" id="r_abd220f1f5900accc809eb6fded73a734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd220f1f5900accc809eb6fded73a734">executeQuery</a> () noexcept override</td></tr>
 <tr class="memdesc:abd220f1f5900accc809eb6fded73a734"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行查询  <br /></td></tr>
 <tr class="separator:abd220f1f5900accc809eb6fded73a734"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a506cb42853c52291b599fdb97eaaaeb3" id="r_a506cb42853c52291b599fdb97eaaaeb3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a506cb42853c52291b599fdb97eaaaeb3">executeUpdate</a> () noexcept override</td></tr>
+<tr class="memitem:a506cb42853c52291b599fdb97eaaaeb3" id="r_a506cb42853c52291b599fdb97eaaaeb3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a506cb42853c52291b599fdb97eaaaeb3">executeUpdate</a> () noexcept override</td></tr>
 <tr class="memdesc:a506cb42853c52291b599fdb97eaaaeb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行更新  <br /></td></tr>
 <tr class="separator:a506cb42853c52291b599fdb97eaaaeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f310b45eacbdab13a8018ed0bd2473" id="r_a96f310b45eacbdab13a8018ed0bd2473"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a96f310b45eacbdab13a8018ed0bd2473">setDouble</a> (uint32_t index, const double &amp;value) noexcept override</td></tr>
+<tr class="memitem:a96f310b45eacbdab13a8018ed0bd2473" id="r_a96f310b45eacbdab13a8018ed0bd2473"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96f310b45eacbdab13a8018ed0bd2473">setDouble</a> (uint32_t index, const double &amp;value) noexcept override</td></tr>
 <tr class="memdesc:a96f310b45eacbdab13a8018ed0bd2473"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置双精度浮点值  <br /></td></tr>
 <tr class="separator:a96f310b45eacbdab13a8018ed0bd2473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b896515d62d327b7e4e9a1a4105b7c7" id="r_a0b896515d62d327b7e4e9a1a4105b7c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a0b896515d62d327b7e4e9a1a4105b7c7">setFloat</a> (uint32_t index, const float &amp;value) noexcept override</td></tr>
+<tr class="memitem:a0b896515d62d327b7e4e9a1a4105b7c7" id="r_a0b896515d62d327b7e4e9a1a4105b7c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b896515d62d327b7e4e9a1a4105b7c7">setFloat</a> (uint32_t index, const float &amp;value) noexcept override</td></tr>
 <tr class="memdesc:a0b896515d62d327b7e4e9a1a4105b7c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置单精度浮点值  <br /></td></tr>
 <tr class="separator:a0b896515d62d327b7e4e9a1a4105b7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecfa52f2db218a691b022f0227e62f96" id="r_aecfa52f2db218a691b022f0227e62f96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aecfa52f2db218a691b022f0227e62f96">setLong</a> (uint32_t index, const int64_t &amp;value) noexcept override</td></tr>
+<tr class="memitem:aecfa52f2db218a691b022f0227e62f96" id="r_aecfa52f2db218a691b022f0227e62f96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecfa52f2db218a691b022f0227e62f96">setLong</a> (uint32_t index, const int64_t &amp;value) noexcept override</td></tr>
 <tr class="memdesc:aecfa52f2db218a691b022f0227e62f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置长整型值  <br /></td></tr>
 <tr class="separator:aecfa52f2db218a691b022f0227e62f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44e992bf21d0aea4f1ba63b61d3e6147" id="r_a44e992bf21d0aea4f1ba63b61d3e6147"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a44e992bf21d0aea4f1ba63b61d3e6147">setInteger</a> (uint32_t index, const int32_t &amp;value) noexcept override</td></tr>
+<tr class="memitem:a44e992bf21d0aea4f1ba63b61d3e6147" id="r_a44e992bf21d0aea4f1ba63b61d3e6147"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44e992bf21d0aea4f1ba63b61d3e6147">setInteger</a> (uint32_t index, const int32_t &amp;value) noexcept override</td></tr>
 <tr class="memdesc:a44e992bf21d0aea4f1ba63b61d3e6147"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置整型值  <br /></td></tr>
 <tr class="separator:a44e992bf21d0aea4f1ba63b61d3e6147"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fb2e549730359c0285d2fe12ff53a15" id="r_a0fb2e549730359c0285d2fe12ff53a15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a0fb2e549730359c0285d2fe12ff53a15">setText</a> (uint32_t index, const char *value) noexcept override</td></tr>
+<tr class="memitem:a0fb2e549730359c0285d2fe12ff53a15" id="r_a0fb2e549730359c0285d2fe12ff53a15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb2e549730359c0285d2fe12ff53a15">setText</a> (uint32_t index, const char *value) noexcept override</td></tr>
 <tr class="memdesc:a0fb2e549730359c0285d2fe12ff53a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置文本值  <br /></td></tr>
 <tr class="separator:a0fb2e549730359c0285d2fe12ff53a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e20d1486565fa4455a0edd2b30f76d" id="r_ab3e20d1486565fa4455a0edd2b30f76d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab3e20d1486565fa4455a0edd2b30f76d">setNull</a> (uint32_t index) noexcept override</td></tr>
+<tr class="memitem:ab3e20d1486565fa4455a0edd2b30f76d" id="r_ab3e20d1486565fa4455a0edd2b30f76d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3e20d1486565fa4455a0edd2b30f76d">setNull</a> (uint32_t index) noexcept override</td></tr>
 <tr class="memdesc:ab3e20d1486565fa4455a0edd2b30f76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 NULL  <br /></td></tr>
 <tr class="separator:ab3e20d1486565fa4455a0edd2b30f76d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd" id="r_a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5dd88b5ce4e8f5516cc2db1c9a8c1dcd">setDateTime</a> (uint32_t index, const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;value) noexcept override</td></tr>
+<tr class="memitem:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd" id="r_a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dd88b5ce4e8f5516cc2db1c9a8c1dcd">setDateTime</a> (uint32_t index, const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;value) noexcept override</td></tr>
 <tr class="memdesc:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 dateTime  <br /></td></tr>
 <tr class="separator:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa78ce823b71dee85b7e25c4f6955e449" id="r_aa78ce823b71dee85b7e25c4f6955e449"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aa78ce823b71dee85b7e25c4f6955e449">getColumnType</a> (uint32_t index, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;type) noexcept override</td></tr>
+<tr class="memitem:aa78ce823b71dee85b7e25c4f6955e449" id="r_aa78ce823b71dee85b7e25c4f6955e449"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa78ce823b71dee85b7e25c4f6955e449">getColumnType</a> (uint32_t index, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;type) noexcept override</td></tr>
 <tr class="memdesc:aa78ce823b71dee85b7e25c4f6955e449"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列类型  <br /></td></tr>
 <tr class="separator:aa78ce823b71dee85b7e25c4f6955e449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96e35118f7c3e2a686a24318d7997ec8" id="r_a96e35118f7c3e2a686a24318d7997ec8"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a96e35118f7c3e2a686a24318d7997ec8">getColumnSize</a> (uint32_t index) noexcept override</td></tr>
+<tr class="memitem:a96e35118f7c3e2a686a24318d7997ec8" id="r_a96e35118f7c3e2a686a24318d7997ec8"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96e35118f7c3e2a686a24318d7997ec8">getColumnSize</a> (uint32_t index) noexcept override</td></tr>
 <tr class="memdesc:a96e35118f7c3e2a686a24318d7997ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节  <br /></td></tr>
 <tr class="separator:a96e35118f7c3e2a686a24318d7997ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a877a6137e73d7368e07c6e86c6da22f8" id="r_a877a6137e73d7368e07c6e86c6da22f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a877a6137e73d7368e07c6e86c6da22f8">getLastError</a> () const noexcept override</td></tr>
+<tr class="memitem:a877a6137e73d7368e07c6e86c6da22f8" id="r_a877a6137e73d7368e07c6e86c6da22f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a877a6137e73d7368e07c6e86c6da22f8">getLastError</a> () const noexcept override</td></tr>
 <tr class="separator:a877a6137e73d7368e07c6e86c6da22f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7b64869de0f9a5160956ea57cc70977" id="r_ab7b64869de0f9a5160956ea57cc70977"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab7b64869de0f9a5160956ea57cc70977">getLastErrorMessage</a> () const noexcept override</td></tr>
+<tr class="memitem:ab7b64869de0f9a5160956ea57cc70977" id="r_ab7b64869de0f9a5160956ea57cc70977"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7b64869de0f9a5160956ea57cc70977">getLastErrorMessage</a> () const noexcept override</td></tr>
 <tr class="separator:ab7b64869de0f9a5160956ea57cc70977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
 <tr class="memitem:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement" id="r_a33a127fdb8b9d6b07c7c046f19fd3935"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a33a127fdb8b9d6b07c7c046f19fd3935">~PreparedStatement</a> () noexcept=default</td></tr>
 <tr class="memdesc:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
 <tr class="separator:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 静态 Protected 成员函数</h2></td></tr>
-<tr class="memitem:aae592e6ccfc854711f1b8f34f1d57ff3" id="r_aae592e6ccfc854711f1b8f34f1d57ff3"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aae592e6ccfc854711f1b8f34f1d57ff3">splitBefore</a> (const std::string &amp;str)</td></tr>
+<tr class="memitem:aae592e6ccfc854711f1b8f34f1d57ff3" id="r_aae592e6ccfc854711f1b8f34f1d57ff3"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae592e6ccfc854711f1b8f34f1d57ff3">splitBefore</a> (const std::string &amp;str)</td></tr>
 <tr class="separator:aae592e6ccfc854711f1b8f34f1d57ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a3d72b880e75274f8f0d318aa70c5e63f" id="r_a3d72b880e75274f8f0d318aa70c5e63f"><td class="memItemLeft" align="right" valign="top">sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a></td></tr>
+<tr class="memitem:a3d72b880e75274f8f0d318aa70c5e63f" id="r_a3d72b880e75274f8f0d318aa70c5e63f"><td class="memItemLeft" align="right" valign="top">sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a></td></tr>
 <tr class="separator:a3d72b880e75274f8f0d318aa70c5e63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad14b6c93f4ca2547d70ba5bf135266ce" id="r_ad14b6c93f4ca2547d70ba5bf135266ce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = false</td></tr>
+<tr class="memitem:ad14b6c93f4ca2547d70ba5bf135266ce" id="r_ad14b6c93f4ca2547d70ba5bf135266ce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = false</td></tr>
 <tr class="separator:ad14b6c93f4ca2547d70ba5bf135266ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3c42f2c379dad7a635220f7f2ad1c1b" id="r_af3c42f2c379dad7a635220f7f2ad1c1b"><td class="memItemLeft" align="right" valign="top">bool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a></td></tr>
+<tr class="memitem:af3c42f2c379dad7a635220f7f2ad1c1b" id="r_af3c42f2c379dad7a635220f7f2ad1c1b"><td class="memItemLeft" align="right" valign="top">bool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a></td></tr>
 <tr class="separator:af3c42f2c379dad7a635220f7f2ad1c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66b0475c7b28f8869707293c0cbccd7b" id="r_a66b0475c7b28f8869707293c0cbccd7b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a> = 0</td></tr>
+<tr class="memitem:a66b0475c7b28f8869707293c0cbccd7b" id="r_a66b0475c7b28f8869707293c0cbccd7b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66b0475c7b28f8869707293c0cbccd7b">count</a> = 0</td></tr>
 <tr class="separator:a66b0475c7b28f8869707293c0cbccd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a3ab1b0b1283b2a8b0dd8956e062792" id="r_a2a3ab1b0b1283b2a8b0dd8956e062792"><td class="memItemLeft" align="right" valign="top">void **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a></td></tr>
+<tr class="memitem:a2a3ab1b0b1283b2a8b0dd8956e062792" id="r_a2a3ab1b0b1283b2a8b0dd8956e062792"><td class="memItemLeft" align="right" valign="top">void **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a></td></tr>
 <tr class="separator:a2a3ab1b0b1283b2a8b0dd8956e062792"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 静态 Protected 属性</h2></td></tr>
-<tr class="memitem:a5aa6a72bc44db0b00ddcf933768d14f0" id="r_a5aa6a72bc44db0b00ddcf933768d14f0"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5aa6a72bc44db0b00ddcf933768d14f0">INTEGER_AFFINITY_SET</a> []</td></tr>
+<tr class="memitem:a5aa6a72bc44db0b00ddcf933768d14f0" id="r_a5aa6a72bc44db0b00ddcf933768d14f0"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5aa6a72bc44db0b00ddcf933768d14f0">INTEGER_AFFINITY_SET</a> []</td></tr>
 <tr class="separator:a5aa6a72bc44db0b00ddcf933768d14f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30074c39469af3ead1e97dc2133d0575" id="r_a30074c39469af3ead1e97dc2133d0575"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a30074c39469af3ead1e97dc2133d0575">TEXT_AFFINITY_SET</a> []</td></tr>
+<tr class="memitem:a30074c39469af3ead1e97dc2133d0575" id="r_a30074c39469af3ead1e97dc2133d0575"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30074c39469af3ead1e97dc2133d0575">TEXT_AFFINITY_SET</a> []</td></tr>
 <tr class="separator:a30074c39469af3ead1e97dc2133d0575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e446174bbc99d0db92032c2bb1d240a" id="r_a6e446174bbc99d0db92032c2bb1d240a"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a6e446174bbc99d0db92032c2bb1d240a">REAL_AFFINITY_SET</a> []</td></tr>
+<tr class="memitem:a6e446174bbc99d0db92032c2bb1d240a" id="r_a6e446174bbc99d0db92032c2bb1d240a"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e446174bbc99d0db92032c2bb1d240a">REAL_AFFINITY_SET</a> []</td></tr>
 <tr class="separator:a6e446174bbc99d0db92032c2bb1d240a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
-<tr class="inherit_header pub_types_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
-<tr class="memitem:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement" id="r_aa679cb5888117ad6604066899ac893e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a> &gt;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
+<tr class="memitem:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement" id="r_aa679cb5888117ad6604066899ac893e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a>&gt;</td></tr>
 <tr class="separator:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -246,19 +252,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl </td>
           <td>(</td>
-          <td class="paramtype">sqlite3_stmt *&#160;</td>
-          <td class="paramname"><em>stmt</em>, </td>
+          <td class="paramtype">sqlite3_stmt *</td>          <td class="paramname"><span class="paramname"><em>stmt</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -284,7 +283,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -312,7 +311,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> impl::SqlitePreparedStatementImpl::executeQuery </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -348,7 +347,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t impl::SqlitePreparedStatementImpl::executeUpdate </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -384,8 +383,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t impl::SqlitePreparedStatementImpl::getColumnSize </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -421,19 +419,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::getColumnType </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -471,13 +462,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int impl::SqlitePreparedStatementImpl::getLastError </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -499,13 +490,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">const char * impl::SqlitePreparedStatementImpl::getLastErrorMessage </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -527,19 +518,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setDateTime </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -577,19 +561,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setDouble </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const double &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const double &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -627,19 +604,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setFloat </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const float &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -677,19 +647,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setInteger </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int32_t &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const int32_t &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -727,19 +690,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setLong </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int64_t &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const int64_t &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -777,8 +733,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setNull </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -816,19 +771,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::SqlitePreparedStatementImpl::setText </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -866,8 +814,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">std::string impl::SqlitePreparedStatementImpl::splitBefore </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1096,7 +1043,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db_1_1impl.html">impl</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html">SqlitePreparedStatementImpl</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

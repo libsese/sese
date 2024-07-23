@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sstr::SString类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsstr_1_1_s_string.html',''); initResizable(); });
+$(function(){initNavTree('classsstr_1_1_s_string.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,7 +143,7 @@ $(document).ready(function(){initNavTree('classsstr_1_1_s_string.html',''); init
 <div class="contents">
 
 <p>字符串  
- <a href="classsstr_1_1_s_string.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_s_string_8h_source.html">SString.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -152,34 +158,34 @@ $(document).ready(function(){initNavTree('classsstr_1_1_s_string.html',''); init
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a4cfd2093a225495aa123a61979c4e121" id="r_a4cfd2093a225495aa123a61979c4e121"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a4cfd2093a225495aa123a61979c4e121">SString</a> () noexcept</td></tr>
+<tr class="memitem:a4cfd2093a225495aa123a61979c4e121" id="r_a4cfd2093a225495aa123a61979c4e121"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cfd2093a225495aa123a61979c4e121">SString</a> () noexcept</td></tr>
 <tr class="separator:a4cfd2093a225495aa123a61979c4e121"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6628b4c701dd935d7c4e06cb5742f1a6" id="r_a6628b4c701dd935d7c4e06cb5742f1a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a6628b4c701dd935d7c4e06cb5742f1a6">SString</a> (const char *str, size_t <a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>)</td></tr>
+<tr class="memitem:a6628b4c701dd935d7c4e06cb5742f1a6" id="r_a6628b4c701dd935d7c4e06cb5742f1a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6628b4c701dd935d7c4e06cb5742f1a6">SString</a> (const char *str, size_t <a class="el" href="#a13effdf2279053e156e195b3f16f00a3">size</a>)</td></tr>
 <tr class="separator:a6628b4c701dd935d7c4e06cb5742f1a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3abd3465189ecb8d6774bbd077713335" id="r_a3abd3465189ecb8d6774bbd077713335"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a3abd3465189ecb8d6774bbd077713335">SString</a> (const <a class="el" href="classsstr_1_1_s_string.html">SString</a> &amp;s_string) noexcept</td></tr>
+<tr class="memitem:a3abd3465189ecb8d6774bbd077713335" id="r_a3abd3465189ecb8d6774bbd077713335"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3abd3465189ecb8d6774bbd077713335">SString</a> (const <a class="el" href="classsstr_1_1_s_string.html">SString</a> &amp;s_string) noexcept</td></tr>
 <tr class="separator:a3abd3465189ecb8d6774bbd077713335"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dc7f1d53f50e26c0ef391314fae29bd" id="r_a0dc7f1d53f50e26c0ef391314fae29bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a0dc7f1d53f50e26c0ef391314fae29bd">SString</a> (<a class="el" href="classsstr_1_1_s_string.html">SString</a> &amp;&amp;s_string) noexcept</td></tr>
+<tr class="memitem:a0dc7f1d53f50e26c0ef391314fae29bd" id="r_a0dc7f1d53f50e26c0ef391314fae29bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dc7f1d53f50e26c0ef391314fae29bd">SString</a> (<a class="el" href="classsstr_1_1_s_string.html">SString</a> &amp;&amp;s_string) noexcept</td></tr>
 <tr class="separator:a0dc7f1d53f50e26c0ef391314fae29bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda210e7953804de77fe4101dec86ab6" id="r_acda210e7953804de77fe4101dec86ab6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#acda210e7953804de77fe4101dec86ab6">~SString</a> () noexcept override</td></tr>
+<tr class="memitem:acda210e7953804de77fe4101dec86ab6" id="r_acda210e7953804de77fe4101dec86ab6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acda210e7953804de77fe4101dec86ab6">~SString</a> () noexcept override</td></tr>
 <tr class="separator:acda210e7953804de77fe4101dec86ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c99de58091476ca74d7628bf52b9fb4" id="r_a4c99de58091476ca74d7628bf52b9fb4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a4c99de58091476ca74d7628bf52b9fb4">cap</a> () const</td></tr>
+<tr class="memitem:a4c99de58091476ca74d7628bf52b9fb4" id="r_a4c99de58091476ca74d7628bf52b9fb4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c99de58091476ca74d7628bf52b9fb4">cap</a> () const</td></tr>
 <tr class="separator:a4c99de58091476ca74d7628bf52b9fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13effdf2279053e156e195b3f16f00a3" id="r_a13effdf2279053e156e195b3f16f00a3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a> () const override</td></tr>
+<tr class="memitem:a13effdf2279053e156e195b3f16f00a3" id="r_a13effdf2279053e156e195b3f16f00a3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13effdf2279053e156e195b3f16f00a3">size</a> () const override</td></tr>
 <tr class="separator:a13effdf2279053e156e195b3f16f00a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd691e8d7f10cee850ebd2c682a88539" id="r_abd691e8d7f10cee850ebd2c682a88539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539">toLower</a> ()</td></tr>
+<tr class="memitem:abd691e8d7f10cee850ebd2c682a88539" id="r_abd691e8d7f10cee850ebd2c682a88539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd691e8d7f10cee850ebd2c682a88539">toLower</a> ()</td></tr>
 <tr class="memdesc:abd691e8d7f10cee850ebd2c682a88539"><td class="mdescLeft">&#160;</td><td class="mdescRight">将字符串转换为全小写的形式  <br /></td></tr>
 <tr class="separator:abd691e8d7f10cee850ebd2c682a88539"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c3aa5332dc6802cdae68ea376338a6f" id="r_a0c3aa5332dc6802cdae68ea376338a6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a0c3aa5332dc6802cdae68ea376338a6f">toUpper</a> ()</td></tr>
+<tr class="memitem:a0c3aa5332dc6802cdae68ea376338a6f" id="r_a0c3aa5332dc6802cdae68ea376338a6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c3aa5332dc6802cdae68ea376338a6f">toUpper</a> ()</td></tr>
 <tr class="memdesc:a0c3aa5332dc6802cdae68ea376338a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">将字符串转换为全大写的形式  <br /></td></tr>
 <tr class="separator:a0c3aa5332dc6802cdae68ea376338a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa693ea845ed4823b8ba702f1fe73ace" id="r_afa693ea845ed4823b8ba702f1fe73ace"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#afa693ea845ed4823b8ba702f1fe73ace">data</a> ()</td></tr>
+<tr class="memitem:afa693ea845ed4823b8ba702f1fe73ace" id="r_afa693ea845ed4823b8ba702f1fe73ace"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa693ea845ed4823b8ba702f1fe73ace">data</a> ()</td></tr>
 <tr class="memdesc:afa693ea845ed4823b8ba702f1fe73ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 data 指针  <br /></td></tr>
 <tr class="separator:afa693ea845ed4823b8ba702f1fe73ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab76e3388ee0d07522eb94b1248baa14" id="r_aab76e3388ee0d07522eb94b1248baa14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#aab76e3388ee0d07522eb94b1248baa14">operator+=</a> (const <a class="el" href="classsstr_1_1_s_string_view.html">SStringView</a> &amp;str)</td></tr>
+<tr class="memitem:aab76e3388ee0d07522eb94b1248baa14" id="r_aab76e3388ee0d07522eb94b1248baa14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab76e3388ee0d07522eb94b1248baa14">operator+=</a> (const <a class="el" href="classsstr_1_1_s_string_view.html">SStringView</a> &amp;str)</td></tr>
 <tr class="separator:aab76e3388ee0d07522eb94b1248baa14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1840682413835a6700cd062d2c76f139" id="r_a1840682413835a6700cd062d2c76f139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a1840682413835a6700cd062d2c76f139">operator+=</a> (const char *u8str)</td></tr>
+<tr class="memitem:a1840682413835a6700cd062d2c76f139" id="r_a1840682413835a6700cd062d2c76f139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1840682413835a6700cd062d2c76f139">operator+=</a> (const char *u8str)</td></tr>
 <tr class="separator:a1840682413835a6700cd062d2c76f139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsstr_1_1_s_string_view"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsstr_1_1_s_string_view')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsstr_1_1_s_string_view.html">sstr::SStringView</a></td></tr>
+<tr class="inherit_header pub_methods_classsstr_1_1_s_string_view"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsstr_1_1_s_string_view')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsstr_1_1_s_string_view.html">sstr::SStringView</a></td></tr>
 <tr class="memitem:a111c7d006dd8e4d61e63f2b1c0da4d7f inherit pub_methods_classsstr_1_1_s_string_view" id="r_a111c7d006dd8e4d61e63f2b1c0da4d7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string_view.html#a111c7d006dd8e4d61e63f2b1c0da4d7f">SStringView</a> () noexcept=default</td></tr>
 <tr class="separator:a111c7d006dd8e4d61e63f2b1c0da4d7f inherit pub_methods_classsstr_1_1_s_string_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac68ea4919af1aa9bf3be1690d0579a3 inherit pub_methods_classsstr_1_1_s_string_view" id="r_aac68ea4919af1aa9bf3be1690d0579a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string_view.html#aac68ea4919af1aa9bf3be1690d0579a3">SStringView</a> (const char *u8str) noexcept</td></tr>
@@ -272,20 +278,20 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a0c227110c46d97e06b8e5d578cfc757f" id="r_a0c227110c46d97e06b8e5d578cfc757f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a0c227110c46d97e06b8e5d578cfc757f">fromSChars</a> (<a class="el" href="structsstr_1_1_s_char.html">SChar</a> ch[], size_t <a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>)</td></tr>
+<tr class="memitem:a0c227110c46d97e06b8e5d578cfc757f" id="r_a0c227110c46d97e06b8e5d578cfc757f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c227110c46d97e06b8e5d578cfc757f">fromSChars</a> (<a class="el" href="structsstr_1_1_s_char.html">SChar</a> ch[], size_t <a class="el" href="#a13effdf2279053e156e195b3f16f00a3">size</a>)</td></tr>
 <tr class="separator:a0c227110c46d97e06b8e5d578cfc757f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a111f6208164e6a0104ec897707d2de" id="r_a2a111f6208164e6a0104ec897707d2de"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a2a111f6208164e6a0104ec897707d2de">fromSChars</a> (std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;chars)</td></tr>
+<tr class="memitem:a2a111f6208164e6a0104ec897707d2de" id="r_a2a111f6208164e6a0104ec897707d2de"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a111f6208164e6a0104ec897707d2de">fromSChars</a> (std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;chars)</td></tr>
 <tr class="separator:a2a111f6208164e6a0104ec897707d2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a665e3d2b50a3be6d87cdac902d4a99e1" id="r_a665e3d2b50a3be6d87cdac902d4a99e1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a665e3d2b50a3be6d87cdac902d4a99e1">fromUTF8</a> (const char *str)</td></tr>
+<tr class="memitem:a665e3d2b50a3be6d87cdac902d4a99e1" id="r_a665e3d2b50a3be6d87cdac902d4a99e1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a665e3d2b50a3be6d87cdac902d4a99e1">fromUTF8</a> (const char *str)</td></tr>
 <tr class="separator:a665e3d2b50a3be6d87cdac902d4a99e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaa9c53aa5e179e22cf692366e339dbc" id="r_abaa9c53aa5e179e22cf692366e339dbc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#abaa9c53aa5e179e22cf692366e339dbc">fromUCS2LE</a> (const wchar_t *str)</td></tr>
+<tr class="memitem:abaa9c53aa5e179e22cf692366e339dbc" id="r_abaa9c53aa5e179e22cf692366e339dbc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsstr_1_1_s_string.html">SString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaa9c53aa5e179e22cf692366e339dbc">fromUCS2LE</a> (const wchar_t *str)</td></tr>
 <tr class="separator:abaa9c53aa5e179e22cf692366e339dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a7c5689dba4fc067252bf61ffa560d73c" id="r_a7c5689dba4fc067252bf61ffa560d73c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = 0</td></tr>
+<tr class="memitem:a7c5689dba4fc067252bf61ffa560d73c" id="r_a7c5689dba4fc067252bf61ffa560d73c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = 0</td></tr>
 <tr class="separator:a7c5689dba4fc067252bf61ffa560d73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classsstr_1_1_s_string_view"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classsstr_1_1_s_string_view')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsstr_1_1_s_string_view.html">sstr::SStringView</a></td></tr>
+<tr class="inherit_header pro_attribs_classsstr_1_1_s_string_view"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classsstr_1_1_s_string_view')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsstr_1_1_s_string_view.html">sstr::SStringView</a></td></tr>
 <tr class="memitem:a4be022e2ea5bbc98e34fcd29a1f6aff9 inherit pro_attribs_classsstr_1_1_s_string_view" id="r_a4be022e2ea5bbc98e34fcd29a1f6aff9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = nullptr</td></tr>
 <tr class="separator:a4be022e2ea5bbc98e34fcd29a1f6aff9 inherit pro_attribs_classsstr_1_1_s_string_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad33ed2f9acc5a4810346839bcde4f599 inherit pro_attribs_classsstr_1_1_s_string_view" id="r_ad33ed2f9acc5a4810346839bcde4f599"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = 0</td></tr>
@@ -293,7 +299,7 @@ Protected 属性</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
-<tr class="memitem:a382b56f56d7d9dd8041d71e1b81184ce" id="r_a382b56f56d7d9dd8041d71e1b81184ce"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce">SStringView</a></td></tr>
+<tr class="memitem:a382b56f56d7d9dd8041d71e1b81184ce" id="r_a382b56f56d7d9dd8041d71e1b81184ce"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a382b56f56d7d9dd8041d71e1b81184ce">SStringView</a></td></tr>
 <tr class="separator:a382b56f56d7d9dd8041d71e1b81184ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -311,7 +317,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">sstr::SString::SString </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -333,24 +339,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">SString::SString </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> , 以及 <a class="el" href="#a13effdf2279053e156e195b3f16f00a3">size()</a>.</p>
 
 </div>
 </div>
@@ -366,8 +365,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">SString::SString </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsstr_1_1_s_string.html">SString</a> &amp;&#160;</td>
-          <td class="paramname"><em>s_string</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classsstr_1_1_s_string.html">SString</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s_string</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -394,8 +392,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">SString::SString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsstr_1_1_s_string.html">sstr::SString</a> &amp;&amp;&#160;</td>
-          <td class="paramname"><em>s_string</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsstr_1_1_s_string.html">sstr::SString</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>s_string</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -422,7 +419,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">sstr::SString::~SString </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -443,18 +440,26 @@ Protected 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t SString::cap </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>获取缓存区容量 </p><dl class="section return"><dt>返回</dt><dd>缓冲区容量 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>.</p>
 
 </div>
 </div>
@@ -467,14 +472,14 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">char * sstr::SString::data </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>获取 data 指针 </p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000011">弃用:</a></b></dt><dd>通常不应该使用该函数 </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000011">弃用</a></b></dt><dd>通常不应该使用该函数 </dd></dl>
 
 </div>
 </div>
@@ -490,19 +495,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsstr_1_1_s_string.html">SString</a> SString::fromSChars </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsstr_1_1_s_char.html">SChar</a>&#160;</td>
-          <td class="paramname"><em>ch</em>[], </td>
+          <td class="paramtype"><a class="el" href="structsstr_1_1_s_char.html">SChar</a></td>          <td class="paramname"><span class="paramname"><em>ch</em></span>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -512,7 +510,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a> , 以及 <a class="el" href="#a13effdf2279053e156e195b3f16f00a3">size()</a>.</p>
 
 </div>
 </div>
@@ -528,8 +526,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsstr_1_1_s_string.html">SString</a> SString::fromSChars </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>chars</em></td><td>)</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>chars</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -540,7 +537,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a> , 以及 <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a> , 以及 <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a>.</p>
 
 </div>
 </div>
@@ -556,8 +553,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsstr_1_1_s_string.html">SString</a> SString::fromUCS2LE </td>
           <td>(</td>
-          <td class="paramtype">const wchar_t *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">const wchar_t *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -568,7 +564,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp.html#a9427b6bc7a0fd1c817d87d4d359fe1e4">getUTF8SizeFromWChat()</a> , 以及 <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp.html#a9427b6bc7a0fd1c817d87d4d359fe1e4">getUTF8SizeFromWChat()</a> , 以及 <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a>.</p>
 
 </div>
 </div>
@@ -584,8 +580,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsstr_1_1_s_string.html">SString</a> SString::fromUTF8 </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -596,7 +591,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> , 以及 <a class="el" href="namespacesstr.html#a7b2563ea10e30c6ebc4d4e071ebd7c2d">sstr::getByteLengthFromUTF8String()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> , 以及 <a class="el" href="namespacesstr.html#a7b2563ea10e30c6ebc4d4e071ebd7c2d">sstr::getByteLengthFromUTF8String()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#adcf5893628660a32df09d75d7d3cbbb9">sstr::SStringView::split()</a>.</p>
 
@@ -611,14 +606,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void SString::operator+= </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>u8str</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>u8str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>.</p>
 
 </div>
 </div>
@@ -631,14 +625,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void SString::operator+= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsstr_1_1_s_string_view.html">SStringView</a> &amp;&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classsstr_1_1_s_string_view.html">SStringView</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a5b521606b27523db565edc87e8f7e24f">sstr::SStringView::data()</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">sstr::SStringView::size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a5b521606b27523db565edc87e8f7e24f">sstr::SStringView::data()</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">sstr::SStringView::size()</a>.</p>
 
 </div>
 </div>
@@ -654,13 +647,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">size_t SString::size </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -670,7 +663,7 @@ Protected 属性</h2></td></tr>
 
 <p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#a0c227110c46d97e06b8e5d578cfc757f">fromSChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a6628b4c701dd935d7c4e06cb5742f1a6">SString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a0c227110c46d97e06b8e5d578cfc757f">fromSChars()</a> , 以及 <a class="el" href="#a6628b4c701dd935d7c4e06cb5742f1a6">SString()</a>.</p>
 
 </div>
 </div>
@@ -683,7 +676,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void SString::toLower </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -691,9 +684,9 @@ Protected 属性</h2></td></tr>
 
 <p>将字符串转换为全小写的形式 </p>
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539">toLower()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a> , 以及 <a class="el" href="#abd691e8d7f10cee850ebd2c682a88539">toLower()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539">toLower()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#abd691e8d7f10cee850ebd2c682a88539">toLower()</a>.</p>
 
 </div>
 </div>
@@ -706,7 +699,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void SString::toUpper </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -714,13 +707,13 @@ Protected 属性</h2></td></tr>
 
 <p>将字符串转换为全大写的形式 </p>
 
-<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a0c3aa5332dc6802cdae68ea376338a6f">toUpper()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a> , 以及 <a class="el" href="#a0c3aa5332dc6802cdae68ea376338a6f">toUpper()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#a0c3aa5332dc6802cdae68ea376338a6f">toUpper()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a0c3aa5332dc6802cdae68ea376338a6f">toUpper()</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">友元及相关函数文档</h2>
+<h2 class="groupheader">友元及相关符号说明</h2>
 <a id="a382b56f56d7d9dd8041d71e1b81184ce" name="a382b56f56d7d9dd8041d71e1b81184ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a382b56f56d7d9dd8041d71e1b81184ce">&#9670;&#160;</a></span>SStringView</h2>
 
@@ -764,7 +757,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#a7080a92af8d8ad1a48f15aaddfe70880">sstr::SStringView::append()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#affab8fc705cbe6653bbbc0358b08c7bc">sstr::SStringView::append()</a>, <a class="el" href="classsstr_1_1_s_string.html#a4c99de58091476ca74d7628bf52b9fb4">cap()</a>, <a class="el" href="classsstr_1_1_s_string.html#a0c227110c46d97e06b8e5d578cfc757f">fromSChars()</a>, <a class="el" href="classsstr_1_1_s_string.html#a2a111f6208164e6a0104ec897707d2de">fromSChars()</a>, <a class="el" href="classsstr_1_1_s_string.html#abaa9c53aa5e179e22cf692366e339dbc">fromUCS2LE()</a>, <a class="el" href="classsstr_1_1_s_string.html#a665e3d2b50a3be6d87cdac902d4a99e1">fromUTF8()</a>, <a class="el" href="classsstr_1_1_s_string.html#a1840682413835a6700cd062d2c76f139">operator+=()</a>, <a class="el" href="classsstr_1_1_s_string.html#aab76e3388ee0d07522eb94b1248baa14">operator+=()</a>, <a class="el" href="classsstr_1_1_s_string.html#a6628b4c701dd935d7c4e06cb5742f1a6">SString()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#af0b2fbdd659342ea63c9a3f7d00873be">sstr::SStringView::substring()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617">sstr::SStringView::substring()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#a7080a92af8d8ad1a48f15aaddfe70880">sstr::SStringView::append()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#affab8fc705cbe6653bbbc0358b08c7bc">sstr::SStringView::append()</a>, <a class="el" href="#a4c99de58091476ca74d7628bf52b9fb4">cap()</a>, <a class="el" href="#a0c227110c46d97e06b8e5d578cfc757f">fromSChars()</a>, <a class="el" href="#a2a111f6208164e6a0104ec897707d2de">fromSChars()</a>, <a class="el" href="#abaa9c53aa5e179e22cf692366e339dbc">fromUCS2LE()</a>, <a class="el" href="#a665e3d2b50a3be6d87cdac902d4a99e1">fromUTF8()</a>, <a class="el" href="#a1840682413835a6700cd062d2c76f139">operator+=()</a>, <a class="el" href="#aab76e3388ee0d07522eb94b1248baa14">operator+=()</a>, <a class="el" href="#a6628b4c701dd935d7c4e06cb5742f1a6">SString()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#af0b2fbdd659342ea63c9a3f7d00873be">sstr::SStringView::substring()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617">sstr::SStringView::substring()</a>.</p>
 
 </div>
 </div>
@@ -778,7 +771,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesstr.html">sstr</a></li><li class="navelem"><a class="el" href="classsstr_1_1_s_string.html">SString</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:54:00 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

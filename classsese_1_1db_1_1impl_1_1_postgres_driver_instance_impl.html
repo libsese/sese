@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::db::impl::PostgresDriverInstanceImpl类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,7 +141,7 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_postgres_d
 <div class="contents">
 
 <p>PSQL 驱动实现  
- <a href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -150,52 +156,52 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_postgres_d
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:aeccfcd09601af4ea4582f1d50a2eb8aa" id="r_aeccfcd09601af4ea4582f1d50a2eb8aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#aeccfcd09601af4ea4582f1d50a2eb8aa">PostgresDriverInstanceImpl</a> (PGconn *<a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>) noexcept</td></tr>
+<tr class="memitem:aeccfcd09601af4ea4582f1d50a2eb8aa" id="r_aeccfcd09601af4ea4582f1d50a2eb8aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeccfcd09601af4ea4582f1d50a2eb8aa">PostgresDriverInstanceImpl</a> (PGconn *<a class="el" href="#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>) noexcept</td></tr>
 <tr class="separator:aeccfcd09601af4ea4582f1d50a2eb8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46968c4869e49c8da513065ff7c1cef6" id="r_a46968c4869e49c8da513065ff7c1cef6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl</a> () noexcept override</td></tr>
+<tr class="memitem:a46968c4869e49c8da513065ff7c1cef6" id="r_a46968c4869e49c8da513065ff7c1cef6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl</a> () noexcept override</td></tr>
 <tr class="separator:a46968c4869e49c8da513065ff7c1cef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a181c0123c4c931b7b625b387e93f902f" id="r_a181c0123c4c931b7b625b387e93f902f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a181c0123c4c931b7b625b387e93f902f">executeQuery</a> (const char *sql) noexcept override</td></tr>
+<tr class="memitem:a181c0123c4c931b7b625b387e93f902f" id="r_a181c0123c4c931b7b625b387e93f902f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a181c0123c4c931b7b625b387e93f902f">executeQuery</a> (const char *sql) noexcept override</td></tr>
 <tr class="separator:a181c0123c4c931b7b625b387e93f902f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fd50e96e5344d77073cde88878694ea" id="r_a6fd50e96e5344d77073cde88878694ea"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a6fd50e96e5344d77073cde88878694ea">executeUpdate</a> (const char *sql) noexcept override</td></tr>
+<tr class="memitem:a6fd50e96e5344d77073cde88878694ea" id="r_a6fd50e96e5344d77073cde88878694ea"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fd50e96e5344d77073cde88878694ea">executeUpdate</a> (const char *sql) noexcept override</td></tr>
 <tr class="separator:a6fd50e96e5344d77073cde88878694ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a295b90d971b4fbf7197390303d137dc3" id="r_a295b90d971b4fbf7197390303d137dc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a295b90d971b4fbf7197390303d137dc3">createStatement</a> (const char *sql) noexcept override</td></tr>
+<tr class="memitem:a295b90d971b4fbf7197390303d137dc3" id="r_a295b90d971b4fbf7197390303d137dc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a295b90d971b4fbf7197390303d137dc3">createStatement</a> (const char *sql) noexcept override</td></tr>
 <tr class="separator:a295b90d971b4fbf7197390303d137dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88cf873afff7222731ba2e26e7108a97" id="r_a88cf873afff7222731ba2e26e7108a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a88cf873afff7222731ba2e26e7108a97">getLastError</a> () const noexcept override</td></tr>
+<tr class="memitem:a88cf873afff7222731ba2e26e7108a97" id="r_a88cf873afff7222731ba2e26e7108a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88cf873afff7222731ba2e26e7108a97">getLastError</a> () const noexcept override</td></tr>
 <tr class="separator:a88cf873afff7222731ba2e26e7108a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f545197ac7ed8bdbb761725f6992e9c" id="r_a4f545197ac7ed8bdbb761725f6992e9c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4f545197ac7ed8bdbb761725f6992e9c">getLastErrorMessage</a> () const noexcept override</td></tr>
+<tr class="memitem:a4f545197ac7ed8bdbb761725f6992e9c" id="r_a4f545197ac7ed8bdbb761725f6992e9c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f545197ac7ed8bdbb761725f6992e9c">getLastErrorMessage</a> () const noexcept override</td></tr>
 <tr class="separator:a4f545197ac7ed8bdbb761725f6992e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7065a54c00e0df73d56319d8fd650d28" id="r_a7065a54c00e0df73d56319d8fd650d28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a7065a54c00e0df73d56319d8fd650d28">setAutoCommit</a> (bool enable) noexcept override</td></tr>
+<tr class="memitem:a7065a54c00e0df73d56319d8fd650d28" id="r_a7065a54c00e0df73d56319d8fd650d28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7065a54c00e0df73d56319d8fd650d28">setAutoCommit</a> (bool enable) noexcept override</td></tr>
 <tr class="separator:a7065a54c00e0df73d56319d8fd650d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3086c1dd5820d502ca4e062ecb45009b" id="r_a3086c1dd5820d502ca4e062ecb45009b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a3086c1dd5820d502ca4e062ecb45009b">getAutoCommit</a> (bool &amp;status) noexcept override</td></tr>
+<tr class="memitem:a3086c1dd5820d502ca4e062ecb45009b" id="r_a3086c1dd5820d502ca4e062ecb45009b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3086c1dd5820d502ca4e062ecb45009b">getAutoCommit</a> (bool &amp;status) noexcept override</td></tr>
 <tr class="separator:a3086c1dd5820d502ca4e062ecb45009b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98a8584958e4176bb33e29cdc11210f2" id="r_a98a8584958e4176bb33e29cdc11210f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">begin</a> () noexcept override</td></tr>
+<tr class="memitem:a98a8584958e4176bb33e29cdc11210f2" id="r_a98a8584958e4176bb33e29cdc11210f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98a8584958e4176bb33e29cdc11210f2">begin</a> () noexcept override</td></tr>
 <tr class="separator:a98a8584958e4176bb33e29cdc11210f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e0d160da5d784f9a761567d0ffdf055" id="r_a4e0d160da5d784f9a761567d0ffdf055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4e0d160da5d784f9a761567d0ffdf055">commit</a> () noexcept override</td></tr>
+<tr class="memitem:a4e0d160da5d784f9a761567d0ffdf055" id="r_a4e0d160da5d784f9a761567d0ffdf055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e0d160da5d784f9a761567d0ffdf055">commit</a> () noexcept override</td></tr>
 <tr class="separator:a4e0d160da5d784f9a761567d0ffdf055"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f8e79b375c352637a439cc250f5f5e3" id="r_a1f8e79b375c352637a439cc250f5f5e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a1f8e79b375c352637a439cc250f5f5e3">rollback</a> () noexcept override</td></tr>
+<tr class="memitem:a1f8e79b375c352637a439cc250f5f5e3" id="r_a1f8e79b375c352637a439cc250f5f5e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f8e79b375c352637a439cc250f5f5e3">rollback</a> () noexcept override</td></tr>
 <tr class="separator:a1f8e79b375c352637a439cc250f5f5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4c1a9977a0e4799a7e4bbb0dcf4530f" id="r_aa4c1a9977a0e4799a7e4bbb0dcf4530f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#aa4c1a9977a0e4799a7e4bbb0dcf4530f">getInsertId</a> (int64_t &amp;id) const noexcept override</td></tr>
+<tr class="memitem:aa4c1a9977a0e4799a7e4bbb0dcf4530f" id="r_aa4c1a9977a0e4799a7e4bbb0dcf4530f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4c1a9977a0e4799a7e4bbb0dcf4530f">getInsertId</a> (int64_t &amp;id) const noexcept override</td></tr>
 <tr class="separator:aa4c1a9977a0e4799a7e4bbb0dcf4530f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
 <tr class="memitem:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance" id="r_a15de255cbeae6dbbeb2710390df97238"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a15de255cbeae6dbbeb2710390df97238">~DriverInstance</a> () noexcept=default</td></tr>
 <tr class="memdesc:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
 <tr class="separator:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:ad996ecbc1f79d80e4fc4d7a0e994330c" id="r_ad996ecbc1f79d80e4fc4d7a0e994330c"><td class="memItemLeft" align="right" valign="top">PGconn *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a></td></tr>
+<tr class="memitem:ad996ecbc1f79d80e4fc4d7a0e994330c" id="r_ad996ecbc1f79d80e4fc4d7a0e994330c"><td class="memItemLeft" align="right" valign="top">PGconn *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a></td></tr>
 <tr class="separator:ad996ecbc1f79d80e4fc4d7a0e994330c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dc88be3870a8bc521aa0a97bcf3605a" id="r_a4dc88be3870a8bc521aa0a97bcf3605a"><td class="memItemLeft" align="right" valign="top">PGresult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a></td></tr>
+<tr class="memitem:a4dc88be3870a8bc521aa0a97bcf3605a" id="r_a4dc88be3870a8bc521aa0a97bcf3605a"><td class="memItemLeft" align="right" valign="top">PGresult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc88be3870a8bc521aa0a97bcf3605a">result</a></td></tr>
 <tr class="separator:a4dc88be3870a8bc521aa0a97bcf3605a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae47578dcc7047ac51923ff828ca9fc5b" id="r_ae47578dcc7047ac51923ff828ca9fc5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0</td></tr>
+<tr class="memitem:ae47578dcc7047ac51923ff828ca9fc5b" id="r_ae47578dcc7047ac51923ff828ca9fc5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0</td></tr>
 <tr class="separator:ae47578dcc7047ac51923ff828ca9fc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7fdcbcc46e97342f66703cc4992e68c" id="r_af7fdcbcc46e97342f66703cc4992e68c"><td class="memItemLeft" align="right" valign="top">std::random_device&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#af7fdcbcc46e97342f66703cc4992e68c">rd</a> {}</td></tr>
+<tr class="memitem:af7fdcbcc46e97342f66703cc4992e68c" id="r_af7fdcbcc46e97342f66703cc4992e68c"><td class="memItemLeft" align="right" valign="top">std::random_device&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7fdcbcc46e97342f66703cc4992e68c">rd</a> {}</td></tr>
 <tr class="separator:af7fdcbcc46e97342f66703cc4992e68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
-<tr class="inherit_header pub_types_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
-<tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a> &gt;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
+<tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a>&gt;</td></tr>
 <tr class="separator:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -213,8 +219,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl </td>
           <td>(</td>
-          <td class="paramtype">PGconn *&#160;</td>
-          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td class="paramtype">PGconn *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -239,7 +244,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">impl::PostgresDriverInstanceImpl::~PostgresDriverInstanceImpl </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -250,7 +255,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a> , 以及 <a class="el" href="#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>.</p>
 
 </div>
 </div>
@@ -267,13 +272,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::PostgresDriverInstanceImpl::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -295,13 +300,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::PostgresDriverInstanceImpl::commit </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -328,8 +333,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a> impl::PostgresDriverInstanceImpl::createStatement </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sql</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -371,8 +375,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> impl::PostgresDriverInstanceImpl::executeQuery </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sql</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -412,8 +415,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t impl::PostgresDriverInstanceImpl::executeUpdate </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sql</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -453,14 +455,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::PostgresDriverInstanceImpl::getAutoCommit </td>
           <td>(</td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
+          <td class="paramtype">bool &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -488,14 +489,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::PostgresDriverInstanceImpl::getInsertId </td>
           <td>(</td>
-          <td class="paramtype">int64_t &amp;&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramtype">int64_t &amp;</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -523,13 +523,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int impl::PostgresDriverInstanceImpl::getLastError </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -551,13 +551,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">const char * impl::PostgresDriverInstanceImpl::getLastErrorMessage </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -579,13 +579,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::PostgresDriverInstanceImpl::rollback </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -612,20 +612,19 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::PostgresDriverInstanceImpl::setAutoCommit </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>设置事务自动提交 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">begin()</a> 开启事务 </dd>
+<p>设置事务自动提交 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 <a class="el" href="#a98a8584958e4176bb33e29cdc11210f2">begin()</a> 开启事务 </dd>
 <dd>
-因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">begin()</a> 开启事务 </dd></dl>
+因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 <a class="el" href="#a98a8584958e4176bb33e29cdc11210f2">begin()</a> 开启事务 </dd></dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">enable</td><td>设置自动提交 </td></tr>
@@ -664,7 +663,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl()</a>.</p>
 
 </div>
 </div>
@@ -732,7 +731,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl()</a>.</p>
 
 </div>
 </div>
@@ -746,7 +745,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db_1_1impl.html">impl</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html">PostgresDriverInstanceImpl</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::Bitset32结构体 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structsese_1_1_bitset32.html',''); initResizable(); });
+$(function(){initNavTree('structsese_1_1_bitset32.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,62 +141,62 @@ $(document).ready(function(){initNavTree('structsese_1_1_bitset32.html',''); ini
 <div class="contents">
 
 <p>endian 无关的 32 位  
- <a href="structsese_1_1_bitset32.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab604ec2340487f494abf1a620a8f66a2" id="r_ab604ec2340487f494abf1a620a8f66a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#ab604ec2340487f494abf1a620a8f66a2">Bitset32</a> ()=default</td></tr>
+<tr class="memitem:ab604ec2340487f494abf1a620a8f66a2" id="r_ab604ec2340487f494abf1a620a8f66a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab604ec2340487f494abf1a620a8f66a2">Bitset32</a> ()=default</td></tr>
 <tr class="separator:ab604ec2340487f494abf1a620a8f66a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af19c4ea6348f299f9e8e0a4b0a87f65d" id="r_af19c4ea6348f299f9e8e0a4b0a87f65d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#af19c4ea6348f299f9e8e0a4b0a87f65d">Bitset32</a> (uint32_t value)</td></tr>
+<tr class="memitem:af19c4ea6348f299f9e8e0a4b0a87f65d" id="r_af19c4ea6348f299f9e8e0a4b0a87f65d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af19c4ea6348f299f9e8e0a4b0a87f65d">Bitset32</a> (uint32_t value)</td></tr>
 <tr class="separator:af19c4ea6348f299f9e8e0a4b0a87f65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d7e8c9afba89a5d5f0a7fc234820dbb" id="r_a4d7e8c9afba89a5d5f0a7fc234820dbb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32</a> (uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3)</td></tr>
+<tr class="memitem:a4d7e8c9afba89a5d5f0a7fc234820dbb" id="r_a4d7e8c9afba89a5d5f0a7fc234820dbb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32</a> (uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3)</td></tr>
 <tr class="separator:a4d7e8c9afba89a5d5f0a7fc234820dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2f277d15668656317018a4897c481f2" id="r_af2f277d15668656317018a4897c481f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#af2f277d15668656317018a4897c481f2">set</a> (uint32_t value)</td></tr>
+<tr class="memitem:af2f277d15668656317018a4897c481f2" id="r_af2f277d15668656317018a4897c481f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2f277d15668656317018a4897c481f2">set</a> (uint32_t value)</td></tr>
 <tr class="separator:af2f277d15668656317018a4897c481f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d794f2c85d5de0c37d70be7c833e590" id="r_a6d794f2c85d5de0c37d70be7c833e590"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a6d794f2c85d5de0c37d70be7c833e590">get</a> ()</td></tr>
+<tr class="memitem:a6d794f2c85d5de0c37d70be7c833e590" id="r_a6d794f2c85d5de0c37d70be7c833e590"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d794f2c85d5de0c37d70be7c833e590">get</a> ()</td></tr>
 <tr class="separator:a6d794f2c85d5de0c37d70be7c833e590"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a866d3df21a084f8ae8c3050dadbdf93f" id="r_a866d3df21a084f8ae8c3050dadbdf93f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3</a> () const noexcept</td></tr>
+<tr class="memitem:a866d3df21a084f8ae8c3050dadbdf93f" id="r_a866d3df21a084f8ae8c3050dadbdf93f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3</a> () const noexcept</td></tr>
 <tr class="separator:a866d3df21a084f8ae8c3050dadbdf93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e564202030cc300e1630e4221f1bfe2" id="r_a3e564202030cc300e1630e4221f1bfe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a3e564202030cc300e1630e4221f1bfe2">rightShift10</a> () const noexcept</td></tr>
+<tr class="memitem:a3e564202030cc300e1630e4221f1bfe2" id="r_a3e564202030cc300e1630e4221f1bfe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e564202030cc300e1630e4221f1bfe2">rightShift10</a> () const noexcept</td></tr>
 <tr class="separator:a3e564202030cc300e1630e4221f1bfe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f54aec446b137e6539cae9f527f10ce" id="r_a2f54aec446b137e6539cae9f527f10ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a2f54aec446b137e6539cae9f527f10ce">rightRotate2</a> () const noexcept</td></tr>
+<tr class="memitem:a2f54aec446b137e6539cae9f527f10ce" id="r_a2f54aec446b137e6539cae9f527f10ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f54aec446b137e6539cae9f527f10ce">rightRotate2</a> () const noexcept</td></tr>
 <tr class="separator:a2f54aec446b137e6539cae9f527f10ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e326028a72d2be3ae7d0bd6ef7ed987" id="r_a5e326028a72d2be3ae7d0bd6ef7ed987"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6</a> () const noexcept</td></tr>
+<tr class="memitem:a5e326028a72d2be3ae7d0bd6ef7ed987" id="r_a5e326028a72d2be3ae7d0bd6ef7ed987"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6</a> () const noexcept</td></tr>
 <tr class="separator:a5e326028a72d2be3ae7d0bd6ef7ed987"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a3479671509ac749fbe8be1c935e601" id="r_a6a3479671509ac749fbe8be1c935e601"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a6a3479671509ac749fbe8be1c935e601">rightRotate7</a> () const noexcept</td></tr>
+<tr class="memitem:a6a3479671509ac749fbe8be1c935e601" id="r_a6a3479671509ac749fbe8be1c935e601"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a3479671509ac749fbe8be1c935e601">rightRotate7</a> () const noexcept</td></tr>
 <tr class="separator:a6a3479671509ac749fbe8be1c935e601"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e63fffa85e36fb5c6d22d18616b2e8f" id="r_a6e63fffa85e36fb5c6d22d18616b2e8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11</a> () const noexcept</td></tr>
+<tr class="memitem:a6e63fffa85e36fb5c6d22d18616b2e8f" id="r_a6e63fffa85e36fb5c6d22d18616b2e8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11</a> () const noexcept</td></tr>
 <tr class="separator:a6e63fffa85e36fb5c6d22d18616b2e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4094d696a33b37e3914c4c079e1b84c" id="r_ae4094d696a33b37e3914c4c079e1b84c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13</a> () const noexcept</td></tr>
+<tr class="memitem:ae4094d696a33b37e3914c4c079e1b84c" id="r_ae4094d696a33b37e3914c4c079e1b84c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13</a> () const noexcept</td></tr>
 <tr class="separator:ae4094d696a33b37e3914c4c079e1b84c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae8b2b0e3ed94a2efd1f6a2d20e007c3" id="r_aae8b2b0e3ed94a2efd1f6a2d20e007c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17</a> () const noexcept</td></tr>
+<tr class="memitem:aae8b2b0e3ed94a2efd1f6a2d20e007c3" id="r_aae8b2b0e3ed94a2efd1f6a2d20e007c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17</a> () const noexcept</td></tr>
 <tr class="separator:aae8b2b0e3ed94a2efd1f6a2d20e007c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30e4806dfa49ae8749c7c38f30f8bea7" id="r_a30e4806dfa49ae8749c7c38f30f8bea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18</a> () const noexcept</td></tr>
+<tr class="memitem:a30e4806dfa49ae8749c7c38f30f8bea7" id="r_a30e4806dfa49ae8749c7c38f30f8bea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18</a> () const noexcept</td></tr>
 <tr class="separator:a30e4806dfa49ae8749c7c38f30f8bea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaa4efd5454b9f254284ef9aff26e584" id="r_adaa4efd5454b9f254284ef9aff26e584"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#adaa4efd5454b9f254284ef9aff26e584">rightRotate19</a> () noexcept</td></tr>
+<tr class="memitem:adaa4efd5454b9f254284ef9aff26e584" id="r_adaa4efd5454b9f254284ef9aff26e584"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adaa4efd5454b9f254284ef9aff26e584">rightRotate19</a> () noexcept</td></tr>
 <tr class="separator:adaa4efd5454b9f254284ef9aff26e584"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa124a99cc5061e742addd3ec08b299d5" id="r_aa124a99cc5061e742addd3ec08b299d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#aa124a99cc5061e742addd3ec08b299d5">rightRotate22</a> () noexcept</td></tr>
+<tr class="memitem:aa124a99cc5061e742addd3ec08b299d5" id="r_aa124a99cc5061e742addd3ec08b299d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa124a99cc5061e742addd3ec08b299d5">rightRotate22</a> () noexcept</td></tr>
 <tr class="separator:aa124a99cc5061e742addd3ec08b299d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5766538ce3f6b3d223909e1315eb4949" id="r_a5766538ce3f6b3d223909e1315eb4949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a5766538ce3f6b3d223909e1315eb4949">rightRotate25</a> () noexcept</td></tr>
+<tr class="memitem:a5766538ce3f6b3d223909e1315eb4949" id="r_a5766538ce3f6b3d223909e1315eb4949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5766538ce3f6b3d223909e1315eb4949">rightRotate25</a> () noexcept</td></tr>
 <tr class="separator:a5766538ce3f6b3d223909e1315eb4949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7996e2d9bf87fcd7c4cdf640cf70954" id="r_ad7996e2d9bf87fcd7c4cdf640cf70954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;</a> (const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;bit32) const</td></tr>
+<tr class="memitem:ad7996e2d9bf87fcd7c4cdf640cf70954" id="r_ad7996e2d9bf87fcd7c4cdf640cf70954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;</a> (const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;bit32) const</td></tr>
 <tr class="separator:ad7996e2d9bf87fcd7c4cdf640cf70954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a648b168c0f76550915bc4e1cf5122cca" id="r_a648b168c0f76550915bc4e1cf5122cca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a648b168c0f76550915bc4e1cf5122cca">operator^</a> (const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;bit32) const</td></tr>
+<tr class="memitem:a648b168c0f76550915bc4e1cf5122cca" id="r_a648b168c0f76550915bc4e1cf5122cca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a648b168c0f76550915bc4e1cf5122cca">operator^</a> (const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;bit32) const</td></tr>
 <tr class="separator:a648b168c0f76550915bc4e1cf5122cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab05bc1c399d5b9904aac4c95ab2ca436" id="r_ab05bc1c399d5b9904aac4c95ab2ca436"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#ab05bc1c399d5b9904aac4c95ab2ca436">operator+</a> (const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;bit32) const</td></tr>
+<tr class="memitem:ab05bc1c399d5b9904aac4c95ab2ca436" id="r_ab05bc1c399d5b9904aac4c95ab2ca436"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab05bc1c399d5b9904aac4c95ab2ca436">operator+</a> (const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;bit32) const</td></tr>
 <tr class="separator:ab05bc1c399d5b9904aac4c95ab2ca436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a267d9a18c824d66b8ba1cf6d8ac6c4a7" id="r_a267d9a18c824d66b8ba1cf6d8ac6c4a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a267d9a18c824d66b8ba1cf6d8ac6c4a7">operator~</a> () const</td></tr>
+<tr class="memitem:a267d9a18c824d66b8ba1cf6d8ac6c4a7" id="r_a267d9a18c824d66b8ba1cf6d8ac6c4a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a267d9a18c824d66b8ba1cf6d8ac6c4a7">operator~</a> () const</td></tr>
 <tr class="separator:a267d9a18c824d66b8ba1cf6d8ac6c4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:aed96a3b9aab25b282bd9f61f3cdc1219" id="r_aed96a3b9aab25b282bd9f61f3cdc1219"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a> {}</td></tr>
+<tr class="memitem:aed96a3b9aab25b282bd9f61f3cdc1219" id="r_aed96a3b9aab25b282bd9f61f3cdc1219"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a> {}</td></tr>
 <tr class="separator:aed96a3b9aab25b282bd9f61f3cdc1219"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0ff18ebf2da64624fde63c36e188fc3" id="r_ad0ff18ebf2da64624fde63c36e188fc3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a> {}</td></tr>
+<tr class="memitem:ad0ff18ebf2da64624fde63c36e188fc3" id="r_ad0ff18ebf2da64624fde63c36e188fc3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a> {}</td></tr>
 <tr class="separator:ad0ff18ebf2da64624fde63c36e188fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a585ae258b921f267c297cb1698761cd4" id="r_a585ae258b921f267c297cb1698761cd4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a> {}</td></tr>
+<tr class="memitem:a585ae258b921f267c297cb1698761cd4" id="r_a585ae258b921f267c297cb1698761cd4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a> {}</td></tr>
 <tr class="separator:a585ae258b921f267c297cb1698761cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6660e042679ae6de406f7903690f85d" id="r_ab6660e042679ae6de406f7903690f85d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> {}</td></tr>
+<tr class="memitem:ab6660e042679ae6de406f7903690f85d" id="r_ab6660e042679ae6de406f7903690f85d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> {}</td></tr>
 <tr class="separator:ab6660e042679ae6de406f7903690f85d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -208,7 +214,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::Bitset32::Bitset32 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -233,8 +239,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::Bitset32::Bitset32 </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -261,31 +266,22 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::Bitset32::Bitset32 </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>b0</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b0</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>b1</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b1</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>b2</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b2</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>b3</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b3</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -295,7 +291,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
 
 </div>
 </div>
@@ -312,7 +308,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">uint32_t sese::Bitset32::get </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -339,8 +335,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::operator&amp; </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;&#160;</td>
-          <td class="paramname"><em>bit32</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>bit32</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -351,7 +346,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
 
 </div>
 </div>
@@ -367,8 +362,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::operator+ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;&#160;</td>
-          <td class="paramname"><em>bit32</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>bit32</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -395,8 +389,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::operator^ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;&#160;</td>
-          <td class="paramname"><em>bit32</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>bit32</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -407,7 +400,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
 
 </div>
 </div>
@@ -423,7 +416,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::operator~ </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -434,7 +427,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>.</p>
 
 </div>
 </div>
@@ -450,7 +443,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate11 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -461,7 +454,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -477,7 +470,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate13 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -488,7 +481,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -504,7 +497,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate17 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -515,7 +508,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2b63a255f2b5b31f6cec788bb576cfe3">sese::SHA256Util::structure()</a>.</p>
 
@@ -533,7 +526,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate18 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -544,7 +537,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2b63a255f2b5b31f6cec788bb576cfe3">sese::SHA256Util::structure()</a>.</p>
 
@@ -562,7 +555,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate19 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -573,7 +566,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2b63a255f2b5b31f6cec788bb576cfe3">sese::SHA256Util::structure()</a>.</p>
 
@@ -591,7 +584,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate2 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -602,7 +595,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -618,7 +611,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate22 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -629,7 +622,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -645,7 +638,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate25 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -656,7 +649,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -672,7 +665,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate6 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -683,7 +676,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -699,7 +692,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightRotate7 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -710,7 +703,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>, <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2b63a255f2b5b31f6cec788bb576cfe3">sese::SHA256Util::structure()</a>.</p>
 
@@ -728,7 +721,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightShift10 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -739,7 +732,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a> , 以及 <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2b63a255f2b5b31f6cec788bb576cfe3">sese::SHA256Util::structure()</a>.</p>
 
@@ -757,7 +750,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a> sese::Bitset32::rightShift3 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -768,7 +761,7 @@ Public 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1_bitset32.html#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="structsese_1_1_bitset32.html#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="structsese_1_1_bitset32.html#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aed96a3b9aab25b282bd9f61f3cdc1219">byte0</a>, <a class="el" href="#ad0ff18ebf2da64624fde63c36e188fc3">byte1</a>, <a class="el" href="#a585ae258b921f267c297cb1698761cd4">byte2</a> , 以及 <a class="el" href="#ab6660e042679ae6de406f7903690f85d">byte3</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2b63a255f2b5b31f6cec788bb576cfe3">sese::SHA256Util::structure()</a>.</p>
 
@@ -786,8 +779,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::Bitset32::set </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -815,7 +807,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1_bitset32.html#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="structsese_1_1_bitset32.html#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="structsese_1_1_bitset32.html#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="structsese_1_1_bitset32.html#a267d9a18c824d66b8ba1cf6d8ac6c4a7">operator~()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="structsese_1_1_bitset32.html#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="structsese_1_1_bitset32.html#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="structsese_1_1_bitset32.html#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="structsese_1_1_bitset32.html#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="structsese_1_1_bitset32.html#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="structsese_1_1_bitset32.html#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a>, <a class="el" href="structsese_1_1_bitset32.html#a3e564202030cc300e1630e4221f1bfe2">rightShift10()</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="#a267d9a18c824d66b8ba1cf6d8ac6c4a7">operator~()</a>, <a class="el" href="#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a>, <a class="el" href="#a3e564202030cc300e1630e4221f1bfe2">rightShift10()</a> , 以及 <a class="el" href="#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
 
 </div>
 </div>
@@ -831,7 +823,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1_bitset32.html#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="structsese_1_1_bitset32.html#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="structsese_1_1_bitset32.html#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="structsese_1_1_bitset32.html#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="structsese_1_1_bitset32.html#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="structsese_1_1_bitset32.html#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="structsese_1_1_bitset32.html#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="structsese_1_1_bitset32.html#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="structsese_1_1_bitset32.html#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a>, <a class="el" href="structsese_1_1_bitset32.html#a3e564202030cc300e1630e4221f1bfe2">rightShift10()</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a>, <a class="el" href="#a3e564202030cc300e1630e4221f1bfe2">rightShift10()</a> , 以及 <a class="el" href="#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
 
 </div>
 </div>
@@ -847,7 +839,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1_bitset32.html#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="structsese_1_1_bitset32.html#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="structsese_1_1_bitset32.html#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="structsese_1_1_bitset32.html#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="structsese_1_1_bitset32.html#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="structsese_1_1_bitset32.html#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="structsese_1_1_bitset32.html#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="structsese_1_1_bitset32.html#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="structsese_1_1_bitset32.html#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a>, <a class="el" href="structsese_1_1_bitset32.html#a3e564202030cc300e1630e4221f1bfe2">rightShift10()</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a>, <a class="el" href="#a3e564202030cc300e1630e4221f1bfe2">rightShift10()</a> , 以及 <a class="el" href="#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
 
 </div>
 </div>
@@ -863,7 +855,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1_bitset32.html#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="structsese_1_1_bitset32.html#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="structsese_1_1_bitset32.html#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="structsese_1_1_bitset32.html#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="structsese_1_1_bitset32.html#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="structsese_1_1_bitset32.html#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="structsese_1_1_bitset32.html#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="structsese_1_1_bitset32.html#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="structsese_1_1_bitset32.html#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="structsese_1_1_bitset32.html#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4d7e8c9afba89a5d5f0a7fc234820dbb">Bitset32()</a>, <a class="el" href="#ad7996e2d9bf87fcd7c4cdf640cf70954">operator&amp;()</a>, <a class="el" href="#a648b168c0f76550915bc4e1cf5122cca">operator^()</a>, <a class="el" href="#a6e63fffa85e36fb5c6d22d18616b2e8f">rightRotate11()</a>, <a class="el" href="#ae4094d696a33b37e3914c4c079e1b84c">rightRotate13()</a>, <a class="el" href="#aae8b2b0e3ed94a2efd1f6a2d20e007c3">rightRotate17()</a>, <a class="el" href="#a30e4806dfa49ae8749c7c38f30f8bea7">rightRotate18()</a>, <a class="el" href="#adaa4efd5454b9f254284ef9aff26e584">rightRotate19()</a>, <a class="el" href="#a2f54aec446b137e6539cae9f527f10ce">rightRotate2()</a>, <a class="el" href="#aa124a99cc5061e742addd3ec08b299d5">rightRotate22()</a>, <a class="el" href="#a5766538ce3f6b3d223909e1315eb4949">rightRotate25()</a>, <a class="el" href="#a5e326028a72d2be3ae7d0bd6ef7ed987">rightRotate6()</a>, <a class="el" href="#a6a3479671509ac749fbe8be1c935e601">rightRotate7()</a> , 以及 <a class="el" href="#a866d3df21a084f8ae8c3050dadbdf93f">rightShift3()</a>.</p>
 
 </div>
 </div>
@@ -876,7 +868,7 @@ Public 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="structsese_1_1_bitset32.html">Bitset32</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

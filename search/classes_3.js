@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['data',['../classsese_1_1json_1_1_data.html',1,'sese::json::Data'],['../classsese_1_1yaml_1_1_data.html',1,'sese::yaml::Data']]],
+  ['data_0',['Data',['../classsese_1_1json_1_1_data.html',1,'sese::json::Data'],['../classsese_1_1yaml_1_1_data.html',1,'sese::yaml::Data']]],
   ['datetime_1',['DateTime',['../classsese_1_1_date_time.html',1,'sese']]],
   ['datetimeformatter_2',['DateTimeFormatter',['../classsese_1_1text_1_1_date_time_formatter.html',1,'sese::text']]],
   ['datetimeparser_3',['DateTimeParser',['../classsese_1_1text_1_1_date_time_parser.html',1,'sese::text']]],

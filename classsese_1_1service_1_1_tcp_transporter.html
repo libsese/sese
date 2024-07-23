@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::service::TcpTransporter类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1service_1_1_tcp_transporter.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1service_1_1_tcp_transporter.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -138,7 +144,7 @@ $(document).ready(function(){initNavTree('classsese_1_1service_1_1_tcp_transport
 <div class="contents">
 
 <p>TCP 传输器  
- <a href="classsese_1_1service_1_1_tcp_transporter.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -153,11 +159,11 @@ $(document).ready(function(){initNavTree('classsese_1_1service_1_1_tcp_transport
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a16d4f5c4966e162880a4e0c1ab861c5f" id="r_a16d4f5c4966e162880a4e0c1ab861c5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a16d4f5c4966e162880a4e0c1ab861c5f">TcpTransporter</a> (<a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> *transporter_config) noexcept</td></tr>
+<tr class="memitem:a16d4f5c4966e162880a4e0c1ab861c5f" id="r_a16d4f5c4966e162880a4e0c1ab861c5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16d4f5c4966e162880a4e0c1ab861c5f">TcpTransporter</a> (<a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> *transporter_config) noexcept</td></tr>
 <tr class="separator:a16d4f5c4966e162880a4e0c1ab861c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac46125bb19158d79bd7031d3780c5a67" id="r_ac46125bb19158d79bd7031d3780c5a67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ac46125bb19158d79bd7031d3780c5a67">~TcpTransporter</a> () override</td></tr>
+<tr class="memitem:ac46125bb19158d79bd7031d3780c5a67" id="r_ac46125bb19158d79bd7031d3780c5a67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac46125bb19158d79bd7031d3780c5a67">~TcpTransporter</a> () override</td></tr>
 <tr class="separator:ac46125bb19158d79bd7031d3780c5a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1service_1_1v1_1_1_timerable_service.html">sese::service::v1::TimerableService</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1service_1_1v1_1_1_timerable_service.html">sese::service::v1::TimerableService</a></td></tr>
 <tr class="memitem:acd2e91fef6697b2bbb85bc3375011f5a inherit pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service" id="r_acd2e91fef6697b2bbb85bc3375011f5a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#acd2e91fef6697b2bbb85bc3375011f5a">~TimerableService</a> () override</td></tr>
 <tr class="separator:acd2e91fef6697b2bbb85bc3375011f5a inherit pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa54832bae85ac3ceb5eee7b2bdee69b0 inherit pub_methods_classsese_1_1service_1_1v1_1_1_timerable_service" id="r_aa54832bae85ac3ceb5eee7b2bdee69b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#aa54832bae85ac3ceb5eee7b2bdee69b0">init</a> () override</td></tr>
@@ -177,50 +183,50 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
-<tr class="memitem:a1a5218b7fda70144049d2355eb066306" id="r_a1a5218b7fda70144049d2355eb066306"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a1a5218b7fda70144049d2355eb066306">onAccept</a> (int fd) override</td></tr>
+<tr class="memitem:a1a5218b7fda70144049d2355eb066306" id="r_a1a5218b7fda70144049d2355eb066306"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a5218b7fda70144049d2355eb066306">onAccept</a> (int fd) override</td></tr>
 <tr class="separator:a1a5218b7fda70144049d2355eb066306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adab0fb9618e0c2dc050f6e9ea9e13614" id="r_adab0fb9618e0c2dc050f6e9ea9e13614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">onRead</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) override</td></tr>
+<tr class="memitem:adab0fb9618e0c2dc050f6e9ea9e13614" id="r_adab0fb9618e0c2dc050f6e9ea9e13614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adab0fb9618e0c2dc050f6e9ea9e13614">onRead</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) override</td></tr>
 <tr class="separator:adab0fb9618e0c2dc050f6e9ea9e13614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7da3d97000b234f7f37bef4b0b4df2c" id="r_ae7da3d97000b234f7f37bef4b0b4df2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">onWrite</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) override</td></tr>
+<tr class="memitem:ae7da3d97000b234f7f37bef4b0b4df2c" id="r_ae7da3d97000b234f7f37bef4b0b4df2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7da3d97000b234f7f37bef4b0b4df2c">onWrite</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) override</td></tr>
 <tr class="separator:ae7da3d97000b234f7f37bef4b0b4df2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a226bb6841eb265244cbb21301e62fa29" id="r_a226bb6841eb265244cbb21301e62fa29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a226bb6841eb265244cbb21301e62fa29">onClose</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) override</td></tr>
+<tr class="memitem:a226bb6841eb265244cbb21301e62fa29" id="r_a226bb6841eb265244cbb21301e62fa29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a226bb6841eb265244cbb21301e62fa29">onClose</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) override</td></tr>
 <tr class="separator:a226bb6841eb265244cbb21301e62fa29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c92ef2ae5ba9d7607da1b9fcbe2c746" id="r_a0c92ef2ae5ba9d7607da1b9fcbe2c746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a0c92ef2ae5ba9d7607da1b9fcbe2c746">onTimeout</a> (<a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">v1::TimeoutEvent</a> *timeout_event) override</td></tr>
+<tr class="memitem:a0c92ef2ae5ba9d7607da1b9fcbe2c746" id="r_a0c92ef2ae5ba9d7607da1b9fcbe2c746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c92ef2ae5ba9d7607da1b9fcbe2c746">onTimeout</a> (<a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">v1::TimeoutEvent</a> *timeout_event) override</td></tr>
 <tr class="separator:a0c92ef2ae5ba9d7607da1b9fcbe2c746"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38629b14334cb02196e034a7bd5fb4e2" id="r_a38629b14334cb02196e034a7bd5fb4e2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a38629b14334cb02196e034a7bd5fb4e2">postRead</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)</td></tr>
+<tr class="memitem:a38629b14334cb02196e034a7bd5fb4e2" id="r_a38629b14334cb02196e034a7bd5fb4e2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38629b14334cb02196e034a7bd5fb4e2">postRead</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)</td></tr>
 <tr class="separator:a38629b14334cb02196e034a7bd5fb4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af250ed213d80a28d8c14d7e5f92d3d12" id="r_af250ed213d80a28d8c14d7e5f92d3d12"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#af250ed213d80a28d8c14d7e5f92d3d12">postWrite</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)</td></tr>
+<tr class="memitem:af250ed213d80a28d8c14d7e5f92d3d12" id="r_af250ed213d80a28d8c14d7e5f92d3d12"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af250ed213d80a28d8c14d7e5f92d3d12">postWrite</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)</td></tr>
 <tr class="separator:af250ed213d80a28d8c14d7e5f92d3d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345a1ddfa073bc5ca1d21e308dad95cc" id="r_a345a1ddfa073bc5ca1d21e308dad95cc"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a345a1ddfa073bc5ca1d21e308dad95cc">onProcAlpnSelect</a> (const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)=0</td></tr>
+<tr class="memitem:a345a1ddfa073bc5ca1d21e308dad95cc" id="r_a345a1ddfa073bc5ca1d21e308dad95cc"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345a1ddfa073bc5ca1d21e308dad95cc">onProcAlpnSelect</a> (const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)=0</td></tr>
 <tr class="separator:a345a1ddfa073bc5ca1d21e308dad95cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a333abef283f0a651c11e2e9b24bd30f3" id="r_a333abef283f0a651c11e2e9b24bd30f3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a333abef283f0a651c11e2e9b24bd30f3">onProcAlpnGet</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)=0</td></tr>
+<tr class="memitem:a333abef283f0a651c11e2e9b24bd30f3" id="r_a333abef283f0a651c11e2e9b24bd30f3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a333abef283f0a651c11e2e9b24bd30f3">onProcAlpnGet</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)=0</td></tr>
 <tr class="separator:a333abef283f0a651c11e2e9b24bd30f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b323549b9447f7f0a5a07f8f32403d5" id="r_a9b323549b9447f7f0a5a07f8f32403d5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a9b323549b9447f7f0a5a07f8f32403d5">onProcHandle</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)=0</td></tr>
+<tr class="memitem:a9b323549b9447f7f0a5a07f8f32403d5" id="r_a9b323549b9447f7f0a5a07f8f32403d5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b323549b9447f7f0a5a07f8f32403d5">onProcHandle</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)=0</td></tr>
 <tr class="separator:a9b323549b9447f7f0a5a07f8f32403d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e942f663e6dd6d2fe8e28ea9701b5ce" id="r_a3e942f663e6dd6d2fe8e28ea9701b5ce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a3e942f663e6dd6d2fe8e28ea9701b5ce">onProcClose</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)=0</td></tr>
+<tr class="memitem:a3e942f663e6dd6d2fe8e28ea9701b5ce" id="r_a3e942f663e6dd6d2fe8e28ea9701b5ce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e942f663e6dd6d2fe8e28ea9701b5ce">onProcClose</a> (<a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn)=0</td></tr>
 <tr class="separator:a3e942f663e6dd6d2fe8e28ea9701b5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afae04864c64aae1d5ab1c6abbe99e128" id="r_afae04864c64aae1d5ab1c6abbe99e128"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#afae04864c64aae1d5ab1c6abbe99e128">createEventEx</a> (int fd, unsigned int events, <a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn) noexcept</td></tr>
+<tr class="memitem:afae04864c64aae1d5ab1c6abbe99e128" id="r_afae04864c64aae1d5ab1c6abbe99e128"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afae04864c64aae1d5ab1c6abbe99e128">createEventEx</a> (int fd, unsigned int events, <a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *conn) noexcept</td></tr>
 <tr class="separator:afae04864c64aae1d5ab1c6abbe99e128"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4385edcdd37f6ee8ba9c3b6e9b61317" id="r_ab4385edcdd37f6ee8ba9c3b6e9b61317"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ab4385edcdd37f6ee8ba9c3b6e9b61317">freeEventEx</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) noexcept</td></tr>
+<tr class="memitem:ab4385edcdd37f6ee8ba9c3b6e9b61317" id="r_ab4385edcdd37f6ee8ba9c3b6e9b61317"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4385edcdd37f6ee8ba9c3b6e9b61317">freeEventEx</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *event) noexcept</td></tr>
 <tr class="separator:ab4385edcdd37f6ee8ba9c3b6e9b61317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 静态 Protected 成员函数</h2></td></tr>
-<tr class="memitem:a585d1388dc25c7b80ac32134208657d8" id="r_a585d1388dc25c7b80ac32134208657d8"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a585d1388dc25c7b80ac32134208657d8">read</a> (int fd, void *buffer, size_t len, void *ssl) noexcept</td></tr>
+<tr class="memitem:a585d1388dc25c7b80ac32134208657d8" id="r_a585d1388dc25c7b80ac32134208657d8"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a585d1388dc25c7b80ac32134208657d8">read</a> (int fd, void *buffer, size_t len, void *ssl) noexcept</td></tr>
 <tr class="separator:a585d1388dc25c7b80ac32134208657d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55776a387f6be2faf72f958dbc371a83" id="r_a55776a387f6be2faf72f958dbc371a83"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a55776a387f6be2faf72f958dbc371a83">write</a> (int fd, const void *buffer, size_t len, void *ssl) noexcept</td></tr>
+<tr class="memitem:a55776a387f6be2faf72f958dbc371a83" id="r_a55776a387f6be2faf72f958dbc371a83"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55776a387f6be2faf72f958dbc371a83">write</a> (int fd, const void *buffer, size_t len, void *ssl) noexcept</td></tr>
 <tr class="separator:a55776a387f6be2faf72f958dbc371a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a2dcd6a400d9dad4045a879a88799534e" id="r_a2dcd6a400d9dad4045a879a88799534e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a2dcd6a400d9dad4045a879a88799534e">config</a> = nullptr</td></tr>
+<tr class="memitem:a2dcd6a400d9dad4045a879a88799534e" id="r_a2dcd6a400d9dad4045a879a88799534e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dcd6a400d9dad4045a879a88799534e">config</a> = nullptr</td></tr>
 <tr class="separator:a2dcd6a400d9dad4045a879a88799534e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0873011dd186080051c34f176acc1a0" id="r_ad0873011dd186080051c34f176acc1a0"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ad0873011dd186080051c34f176acc1a0">eventMap</a></td></tr>
+<tr class="memitem:ad0873011dd186080051c34f176acc1a0" id="r_ad0873011dd186080051c34f176acc1a0"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0873011dd186080051c34f176acc1a0">eventMap</a></td></tr>
 <tr class="separator:ad0873011dd186080051c34f176acc1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静态 Private 成员函数</h2></td></tr>
-<tr class="memitem:a60f02abdb15fee3d2a65be2f9ccb8b01" id="r_a60f02abdb15fee3d2a65be2f9ccb8b01"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a60f02abdb15fee3d2a65be2f9ccb8b01">alpnCallbackFunction</a> (void *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a> *transporter)</td></tr>
+<tr class="memitem:a60f02abdb15fee3d2a65be2f9ccb8b01" id="r_a60f02abdb15fee3d2a65be2f9ccb8b01"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60f02abdb15fee3d2a65be2f9ccb8b01">alpnCallbackFunction</a> (void *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a> *transporter)</td></tr>
 <tr class="separator:a60f02abdb15fee3d2a65be2f9ccb8b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -238,8 +244,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::service::TcpTransporter::TcpTransporter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> *&#160;</td>
-          <td class="paramname"><em>transporter_config</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> *</td>          <td class="paramname"><span class="paramname"><em>transporter_config</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -264,7 +269,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::service::TcpTransporter::~TcpTransporter </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -292,43 +297,32 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int sese::service::TcpTransporter::alpnCallbackFunction </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ssl</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>ssl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t **&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
+          <td class="paramtype">const uint8_t **</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>out_length</em>, </td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out_length</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>in_length</em>, </td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>in_length</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a> *&#160;</td>
-          <td class="paramname"><em>transporter</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a> *</td>          <td class="paramname"><span class="paramname"><em>transporter</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -338,7 +332,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a345a1ddfa073bc5ca1d21e308dad95cc">onProcAlpnSelect()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="#a345a1ddfa073bc5ca1d21e308dad95cc">onProcAlpnSelect()</a>.</p>
 
 </div>
 </div>
@@ -354,25 +348,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structsese_1_1event_1_1_base_event.html">sese::event::BaseEvent</a> * sese::service::TcpTransporter::createEventEx </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>events</em>, </td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>events</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *&#160;</td>
-          <td class="paramname"><em>conn</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -396,8 +382,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::freeEventEx </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -422,8 +407,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::onAccept </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -450,8 +434,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::onClose </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -479,25 +462,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::service::TcpTransporter::onProcAlpnGet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *&#160;</td>
-          <td class="paramname"><em>conn</em>, </td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>in_length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>in_length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -521,31 +496,22 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual int sese::service::TcpTransporter::onProcAlpnSelect </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t **&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
+          <td class="paramtype">const uint8_t **</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>out_length</em>, </td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>out_length</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>in_length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>in_length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -555,7 +521,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a60f02abdb15fee3d2a65be2f9ccb8b01">alpnCallbackFunction()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a60f02abdb15fee3d2a65be2f9ccb8b01">alpnCallbackFunction()</a>.</p>
 
 </div>
 </div>
@@ -571,8 +537,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::service::TcpTransporter::onProcClose </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *&#160;</td>
-          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -597,8 +562,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::service::TcpTransporter::onProcHandle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *&#160;</td>
-          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -623,8 +587,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::onRead </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -651,8 +614,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::onTimeout </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">v1::TimeoutEvent</a> *&#160;</td>
-          <td class="paramname"><em>timeout_event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">v1::TimeoutEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>timeout_event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -687,8 +649,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::onWrite </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -715,8 +676,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::postRead </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *&#160;</td>
-          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -743,8 +703,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::service::TcpTransporter::postWrite </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *&#160;</td>
-          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -771,31 +730,22 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::service::TcpTransporter::read </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ssl</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>ssl</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -821,31 +771,22 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::service::TcpTransporter::write </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ssl</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>ssl</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -914,7 +855,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

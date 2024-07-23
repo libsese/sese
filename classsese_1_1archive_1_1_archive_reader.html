@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::archive::ArchiveReader类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1archive_1_1_archive_reader.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1archive_1_1_archive_reader.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,51 +143,51 @@ $(document).ready(function(){initNavTree('classsese_1_1archive_1_1_archive_reade
 <div class="contents">
 
 <p>存档读取器  
- <a href="classsese_1_1archive_1_1_archive_reader.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:aa4f2e5ea664acf052e4d1f6339353686" id="r_aa4f2e5ea664acf052e4d1f6339353686"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> = std::function&lt; bool(const std::filesystem::path &amp;base_path, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>, size_t readable)&gt;</td></tr>
+<tr class="memitem:aa4f2e5ea664acf052e4d1f6339353686" id="r_aa4f2e5ea664acf052e4d1f6339353686"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> = std::function&lt;bool(const std::filesystem::path &amp;base_path, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="#a88f8af69ac034ae28393e4f211c8c92a">input</a>, size_t readable)&gt;</td></tr>
 <tr class="memdesc:aa4f2e5ea664acf052e4d1f6339353686"><td class="mdescLeft">&#160;</td><td class="mdescRight">解压回调函数  <br /></td></tr>
 <tr class="separator:aa4f2e5ea664acf052e4d1f6339353686"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a59d7e42511a80e3d6b1156c6cf1c8a97" id="r_a59d7e42511a80e3d6b1156c6cf1c8a97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a59d7e42511a80e3d6b1156c6cf1c8a97">ArchiveReader</a> (<a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>)</td></tr>
+<tr class="memitem:a59d7e42511a80e3d6b1156c6cf1c8a97" id="r_a59d7e42511a80e3d6b1156c6cf1c8a97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59d7e42511a80e3d6b1156c6cf1c8a97">ArchiveReader</a> (<a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="#a88f8af69ac034ae28393e4f211c8c92a">input</a>)</td></tr>
 <tr class="separator:a59d7e42511a80e3d6b1156c6cf1c8a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae5aae96cbf7c1978554cee78096eeac" id="r_aae5aae96cbf7c1978554cee78096eeac"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aae5aae96cbf7c1978554cee78096eeac">~ArchiveReader</a> ()</td></tr>
+<tr class="memitem:aae5aae96cbf7c1978554cee78096eeac" id="r_aae5aae96cbf7c1978554cee78096eeac"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae5aae96cbf7c1978554cee78096eeac">~ArchiveReader</a> ()</td></tr>
 <tr class="separator:aae5aae96cbf7c1978554cee78096eeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fb6a8d58fb642ac7f6ef8b7a53c847f" id="r_a1fb6a8d58fb642ac7f6ef8b7a53c847f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a1fb6a8d58fb642ac7f6ef8b7a53c847f">setPassword</a> (const std::string &amp;pwd) const</td></tr>
+<tr class="memitem:a1fb6a8d58fb642ac7f6ef8b7a53c847f" id="r_a1fb6a8d58fb642ac7f6ef8b7a53c847f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fb6a8d58fb642ac7f6ef8b7a53c847f">setPassword</a> (const std::string &amp;pwd) const</td></tr>
 <tr class="separator:a1fb6a8d58fb642ac7f6ef8b7a53c847f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d3e0871fc0eb317f495f6bf077f3bbc" id="r_a0d3e0871fc0eb317f495f6bf077f3bbc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a0d3e0871fc0eb317f495f6bf077f3bbc">setOptions</a> (const std::string &amp;opt) const</td></tr>
+<tr class="memitem:a0d3e0871fc0eb317f495f6bf077f3bbc" id="r_a0d3e0871fc0eb317f495f6bf077f3bbc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d3e0871fc0eb317f495f6bf077f3bbc">setOptions</a> (const std::string &amp;opt) const</td></tr>
 <tr class="separator:a0d3e0871fc0eb317f495f6bf077f3bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8d92c9cafb69b7e4fd17d55edfc728a" id="r_af8d92c9cafb69b7e4fd17d55edfc728a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">extract</a> (const <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="memitem:af8d92c9cafb69b7e4fd17d55edfc728a" id="r_af8d92c9cafb69b7e4fd17d55edfc728a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8d92c9cafb69b7e4fd17d55edfc728a">extract</a> (const <a class="el" href="#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
 <tr class="separator:af8d92c9cafb69b7e4fd17d55edfc728a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a0c3642582325c24a4d06452a9eba83" id="r_a8a0c3642582325c24a4d06452a9eba83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a8a0c3642582325c24a4d06452a9eba83">getError</a> () const</td></tr>
+<tr class="memitem:a8a0c3642582325c24a4d06452a9eba83" id="r_a8a0c3642582325c24a4d06452a9eba83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a0c3642582325c24a4d06452a9eba83">getError</a> () const</td></tr>
 <tr class="separator:a8a0c3642582325c24a4d06452a9eba83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f2d853d75a00583ed5ff995ef1b853" id="r_a84f2d853d75a00583ed5ff995ef1b853"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a84f2d853d75a00583ed5ff995ef1b853">getErrorString</a> () const</td></tr>
+<tr class="memitem:a84f2d853d75a00583ed5ff995ef1b853" id="r_a84f2d853d75a00583ed5ff995ef1b853"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84f2d853d75a00583ed5ff995ef1b853">getErrorString</a> () const</td></tr>
 <tr class="separator:a84f2d853d75a00583ed5ff995ef1b853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a69fb1284e6826a2d91bbcd8cefa21351" id="r_a69fb1284e6826a2d91bbcd8cefa21351"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a69fb1284e6826a2d91bbcd8cefa21351">extract</a> (const std::filesystem::path &amp;src_path, const std::filesystem::path &amp;dest_path, const std::string &amp;pwd={})</td></tr>
+<tr class="memitem:a69fb1284e6826a2d91bbcd8cefa21351" id="r_a69fb1284e6826a2d91bbcd8cefa21351"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69fb1284e6826a2d91bbcd8cefa21351">extract</a> (const std::filesystem::path &amp;src_path, const std::filesystem::path &amp;dest_path, const std::string &amp;pwd={})</td></tr>
 <tr class="separator:a69fb1284e6826a2d91bbcd8cefa21351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa722ee18d5a995bb6261205eb7c81726" id="r_aa722ee18d5a995bb6261205eb7c81726"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa722ee18d5a995bb6261205eb7c81726">openCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this)</td></tr>
+<tr class="memitem:aa722ee18d5a995bb6261205eb7c81726" id="r_aa722ee18d5a995bb6261205eb7c81726"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa722ee18d5a995bb6261205eb7c81726">openCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this)</td></tr>
 <tr class="separator:aa722ee18d5a995bb6261205eb7c81726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f5284d50f16126bdac2cb4ebcfc2e30" id="r_a3f5284d50f16126bdac2cb4ebcfc2e30"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this, const void **<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>)</td></tr>
+<tr class="memitem:a3f5284d50f16126bdac2cb4ebcfc2e30" id="r_a3f5284d50f16126bdac2cb4ebcfc2e30"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this, const void **<a class="el" href="#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>)</td></tr>
 <tr class="separator:a3f5284d50f16126bdac2cb4ebcfc2e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf5b6bd2c0a70fd7741be3831d79cd9" id="r_aebf5b6bd2c0a70fd7741be3831d79cd9"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aebf5b6bd2c0a70fd7741be3831d79cd9">closeCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this)</td></tr>
+<tr class="memitem:aebf5b6bd2c0a70fd7741be3831d79cd9" id="r_aebf5b6bd2c0a70fd7741be3831d79cd9"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebf5b6bd2c0a70fd7741be3831d79cd9">closeCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this)</td></tr>
 <tr class="separator:aebf5b6bd2c0a70fd7741be3831d79cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:ab2c0cb8902190bf47a3538e3524c6270" id="r_ab2c0cb8902190bf47a3538e3524c6270"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a> [4096] {}</td></tr>
+<tr class="memitem:ab2c0cb8902190bf47a3538e3524c6270" id="r_ab2c0cb8902190bf47a3538e3524c6270"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2c0cb8902190bf47a3538e3524c6270">buffer</a> [4096] {}</td></tr>
 <tr class="separator:ab2c0cb8902190bf47a3538e3524c6270"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01f332149b785bb80a4eb745465393e5" id="r_a01f332149b785bb80a4eb745465393e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a> {}</td></tr>
+<tr class="memitem:a01f332149b785bb80a4eb745465393e5" id="r_a01f332149b785bb80a4eb745465393e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01f332149b785bb80a4eb745465393e5">archive</a> {}</td></tr>
 <tr class="separator:a01f332149b785bb80a4eb745465393e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88f8af69ac034ae28393e4f211c8c92a" id="r_a88f8af69ac034ae28393e4f211c8c92a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a> {}</td></tr>
+<tr class="memitem:a88f8af69ac034ae28393e4f211c8c92a" id="r_a88f8af69ac034ae28393e4f211c8c92a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88f8af69ac034ae28393e4f211c8c92a">input</a> {}</td></tr>
 <tr class="separator:a88f8af69ac034ae28393e4f211c8c92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -194,7 +200,7 @@ Protected 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">sese::archive::ArchiveReader::ExtractCallback</a> =  std::function&lt;bool(const std::filesystem::path &amp;base_path, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>, size_t readable)&gt;</td>
+          <td class="memname">using <a class="el" href="#aa4f2e5ea664acf052e4d1f6339353686">sese::archive::ArchiveReader::ExtractCallback</a> = std::function&lt;bool(const std::filesystem::path &amp;base_path, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="#a88f8af69ac034ae28393e4f211c8c92a">input</a>, size_t readable)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -216,8 +222,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">ArchiveReader::ArchiveReader </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -248,7 +253,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">ArchiveReader::~ArchiveReader </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -276,19 +281,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveReader::closeCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -311,8 +309,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveReader::extract </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> &amp;&#160;</td>
-          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -325,7 +322,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>解压是否成功 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a>, <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a>, <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#a169b8d889176e8cf8d8667d40a4e16b9">sese::archive::Config::fromValue()</a>, <a class="el" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open()</a>, <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a01f332149b785bb80a4eb745465393e5">archive</a>, <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a>, <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#a169b8d889176e8cf8d8667d40a4e16b9">sese::archive::Config::fromValue()</a>, <a class="el" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open()</a>, <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -341,25 +338,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveReader::extract </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>src_path</em>, </td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>src_path</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>dest_path</em>, </td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>dest_path</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>pwd</em> = <code>{}</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pwd</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -378,7 +367,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a>, <a class="el" href="_file_stream_8h.html#a4d6775de7d3b7fb06e32c0ce22980e5a">BINARY_WRITE_CREATE_TRUNC</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a> , 以及 <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="#a01f332149b785bb80a4eb745465393e5">archive</a>, <a class="el" href="_file_stream_8h.html#a4d6775de7d3b7fb06e32c0ce22980e5a">BINARY_WRITE_CREATE_TRUNC</a>, <a class="el" href="#ab2c0cb8902190bf47a3538e3524c6270">buffer</a> , 以及 <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a>.</p>
 
 </div>
 </div>
@@ -387,14 +376,22 @@ Protected 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int ArchiveReader::getError </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>获取当前错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
 
@@ -407,14 +404,22 @@ Protected 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char * ArchiveReader::getErrorString </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>获取当前错误字符串 </p><dl class="section return"><dt>返回</dt><dd>错误字符串 </dd></dl>
 
@@ -434,19 +439,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveReader::openCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -472,25 +470,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t ArchiveReader::readCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void **&#160;</td>
-          <td class="paramname"><em>buffer</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const void **</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -500,7 +490,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a> , 以及 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>, <a class="el" href="#a88f8af69ac034ae28393e4f211c8c92a">input</a> , 以及 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a>.</p>
 
@@ -511,15 +501,22 @@ Protected 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int ArchiveReader::setOptions </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>opt</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>opt</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>为当前的存档设置 libarchive 选项 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
@@ -538,15 +535,22 @@ Protected 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int ArchiveReader::setPassword </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>pwd</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pwd</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>为当前读取的文档设置使用的密码 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
@@ -581,7 +585,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">extract()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a69fb1284e6826a2d91bbcd8cefa21351">extract()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#af8d92c9cafb69b7e4fd17d55edfc728a">extract()</a> , 以及 <a class="el" href="#a69fb1284e6826a2d91bbcd8cefa21351">extract()</a>.</p>
 
 </div>
 </div>
@@ -605,7 +609,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a69fb1284e6826a2d91bbcd8cefa21351">extract()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a69fb1284e6826a2d91bbcd8cefa21351">extract()</a> , 以及 <a class="el" href="#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback()</a>.</p>
 
 </div>
 </div>
@@ -629,7 +633,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback()</a>.</p>
 
 </div>
 </div>
@@ -643,7 +647,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1archive.html">archive</a></li><li class="navelem"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

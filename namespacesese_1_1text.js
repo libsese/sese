@@ -10,9 +10,9 @@ var namespacesese_1_1text =
     [ "StringBuffer", "classsese_1_1text_1_1_string_buffer.html", "classsese_1_1text_1_1_string_buffer" ],
     [ "StringBuilder", "classsese_1_1text_1_1_string_builder.html", "classsese_1_1text_1_1_string_builder" ],
     [ "TextReader", "classsese_1_1text_1_1_text_reader.html", "classsese_1_1text_1_1_text_reader" ],
-    [ "Char", "namespacesese_1_1text.html#ae168a91fb563248de38d6b8694f1ba5e", null ],
-    [ "String", "namespacesese_1_1text.html#a59ec2dd8b3e31671748756873801e69a", null ],
-    [ "StringView", "namespacesese_1_1text.html#a0367c112b4808cefb1e1e4128f429a2e", null ],
+    [ "Char", "namespacesese_1_1text.html#a6f6b35be6f6f3a115e9f39298b723be1", null ],
+    [ "String", "namespacesese_1_1text.html#a5a590ae4a27190b9b0e18fa6eeb4fa02", null ],
+    [ "StringView", "namespacesese_1_1text.html#ab823060b68afa9c1de4ed91a22565f1a", null ],
     [ "Align", "namespacesese_1_1text.html#a79b0b85354dab3a79b1a52c938db3e6d", [
       [ "LEFT", "namespacesese_1_1text.html#a79b0b85354dab3a79b1a52c938db3e6da684d325a7303f52e64011467ff5c5758", null ],
       [ "CENTER", "namespacesese_1_1text.html#a79b0b85354dab3a79b1a52c938db3e6dac397289ee45877be0cd49811fe245b4e", null ],

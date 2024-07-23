@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::plugin::Module类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1plugin_1_1_module.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1plugin_1_1_module.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -138,52 +144,52 @@ $(document).ready(function(){initNavTree('classsese_1_1plugin_1_1_module.html','
 <div class="contents">
 
 <p>插件模块对象  
- <a href="classsese_1_1plugin_1_1_module.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_module_8h_source.html">Module.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a5c08802318bd5b30acf5c0cc5ac1910d" id="r_a5c08802318bd5b30acf5c0cc5ac1910d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a> &gt;</td></tr>
+<tr class="memitem:a5c08802318bd5b30acf5c0cc5ac1910d" id="r_a5c08802318bd5b30acf5c0cc5ac1910d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c08802318bd5b30acf5c0cc5ac1910d">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a>&gt;</td></tr>
 <tr class="separator:a5c08802318bd5b30acf5c0cc5ac1910d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aced41657850343e22238a6213e8aa9b5" id="r_aced41657850343e22238a6213e8aa9b5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#aced41657850343e22238a6213e8aa9b5">LibraryObject</a> = <a class="el" href="classsese_1_1system_1_1_library_object.html">sese::system::LibraryObject</a></td></tr>
+<tr class="memitem:aced41657850343e22238a6213e8aa9b5" id="r_aced41657850343e22238a6213e8aa9b5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aced41657850343e22238a6213e8aa9b5">LibraryObject</a> = <a class="el" href="classsese_1_1system_1_1_library_object.html">sese::system::LibraryObject</a></td></tr>
 <tr class="separator:aced41657850343e22238a6213e8aa9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab8fddd74a398d4ce2d20607455ab69ef" id="r_ab8fddd74a398d4ce2d20607455ab69ef"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ab8fddd74a398d4ce2d20607455ab69ef">getName</a> () noexcept</td></tr>
+<tr class="memitem:ab8fddd74a398d4ce2d20607455ab69ef" id="r_ab8fddd74a398d4ce2d20607455ab69ef"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8fddd74a398d4ce2d20607455ab69ef">getName</a> () noexcept</td></tr>
 <tr class="separator:ab8fddd74a398d4ce2d20607455ab69ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a389e9c01fcc6c3fed93808cbb0d59856" id="r_a389e9c01fcc6c3fed93808cbb0d59856"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a389e9c01fcc6c3fed93808cbb0d59856">getVersion</a> () noexcept</td></tr>
+<tr class="memitem:a389e9c01fcc6c3fed93808cbb0d59856" id="r_a389e9c01fcc6c3fed93808cbb0d59856"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a389e9c01fcc6c3fed93808cbb0d59856">getVersion</a> () noexcept</td></tr>
 <tr class="separator:a389e9c01fcc6c3fed93808cbb0d59856"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaa42a7fe4e90fc7cd3b2a564c615e8b" id="r_aaaa42a7fe4e90fc7cd3b2a564c615e8b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#aaaa42a7fe4e90fc7cd3b2a564c615e8b">getDescription</a> () noexcept</td></tr>
+<tr class="memitem:aaaa42a7fe4e90fc7cd3b2a564c615e8b" id="r_aaaa42a7fe4e90fc7cd3b2a564c615e8b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaa42a7fe4e90fc7cd3b2a564c615e8b">getDescription</a> () noexcept</td></tr>
 <tr class="separator:aaaa42a7fe4e90fc7cd3b2a564c615e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11eccde7cae4a1515afab972db9888c8" id="r_a11eccde7cae4a1515afab972db9888c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1plugin_1_1_base_class.html#a876321d4cdec391a945e7246c671b791">BaseClass::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a11eccde7cae4a1515afab972db9888c8">createClass</a> (const std::string &amp;id) noexcept</td></tr>
+<tr class="memitem:a11eccde7cae4a1515afab972db9888c8" id="r_a11eccde7cae4a1515afab972db9888c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1plugin_1_1_base_class.html#a876321d4cdec391a945e7246c671b791">BaseClass::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11eccde7cae4a1515afab972db9888c8">createClass</a> (const std::string &amp;id) noexcept</td></tr>
 <tr class="separator:a11eccde7cae4a1515afab972db9888c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae99d2b2cf5fff8ef4ffe4625ea9cbf7a" id="r_ae99d2b2cf5fff8ef4ffe4625ea9cbf7a"><td class="memTemplParams" colspan="2">template&lt;typename TYPE &gt; </td></tr>
-<tr class="memitem:ae99d2b2cf5fff8ef4ffe4625ea9cbf7a"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ae99d2b2cf5fff8ef4ffe4625ea9cbf7a">createClassAs</a> (const std::string &amp;name)</td></tr>
+<tr class="memitem:ae99d2b2cf5fff8ef4ffe4625ea9cbf7a"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae99d2b2cf5fff8ef4ffe4625ea9cbf7a">createClassAs</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:ae99d2b2cf5fff8ef4ffe4625ea9cbf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af81e95d21825fb5b3bf3ae2ab343eb54" id="r_af81e95d21825fb5b3bf3ae2ab343eb54"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#a0e296ae42d51eb60b1e8c4ed750a940c">ClassFactory::RegisterInfoMapType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#af81e95d21825fb5b3bf3ae2ab343eb54">getRegisterClassInfo</a> () noexcept</td></tr>
+<tr class="memitem:af81e95d21825fb5b3bf3ae2ab343eb54" id="r_af81e95d21825fb5b3bf3ae2ab343eb54"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#a0e296ae42d51eb60b1e8c4ed750a940c">ClassFactory::RegisterInfoMapType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af81e95d21825fb5b3bf3ae2ab343eb54">getRegisterClassInfo</a> () noexcept</td></tr>
 <tr class="separator:af81e95d21825fb5b3bf3ae2ab343eb54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:ade4890f5fd1edd520cb4d9eb23caf31c" id="r_ade4890f5fd1edd520cb4d9eb23caf31c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">Module::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">open</a> (const std::string &amp;path) noexcept</td></tr>
+<tr class="memitem:ade4890f5fd1edd520cb4d9eb23caf31c" id="r_ade4890f5fd1edd520cb4d9eb23caf31c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a5c08802318bd5b30acf5c0cc5ac1910d">Module::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade4890f5fd1edd520cb4d9eb23caf31c">open</a> (const std::string &amp;path) noexcept</td></tr>
 <tr class="separator:ade4890f5fd1edd520cb4d9eb23caf31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fac6b3716ecdfe5aa5e1036871cfbb9" id="r_a4fac6b3716ecdfe5aa5e1036871cfbb9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">Module::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a4fac6b3716ecdfe5aa5e1036871cfbb9">openWithPath</a> (const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;path) noexcept</td></tr>
+<tr class="memitem:a4fac6b3716ecdfe5aa5e1036871cfbb9" id="r_a4fac6b3716ecdfe5aa5e1036871cfbb9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a5c08802318bd5b30acf5c0cc5ac1910d">Module::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fac6b3716ecdfe5aa5e1036871cfbb9">openWithPath</a> (const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;path) noexcept</td></tr>
 <tr class="separator:a4fac6b3716ecdfe5aa5e1036871cfbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private 成员函数</h2></td></tr>
-<tr class="memitem:ad38fbc1e9bb58cef9dd820eb927fff35" id="r_ad38fbc1e9bb58cef9dd820eb927fff35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ad38fbc1e9bb58cef9dd820eb927fff35">Module</a> ()=default</td></tr>
+<tr class="memitem:ad38fbc1e9bb58cef9dd820eb927fff35" id="r_ad38fbc1e9bb58cef9dd820eb927fff35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad38fbc1e9bb58cef9dd820eb927fff35">Module</a> ()=default</td></tr>
 <tr class="separator:ad38fbc1e9bb58cef9dd820eb927fff35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:a6b91a67fbcdf1d9181c4c3248e61160b" id="r_a6b91a67fbcdf1d9181c4c3248e61160b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a6b91a67fbcdf1d9181c4c3248e61160b">object</a> = nullptr</td></tr>
+<tr class="memitem:a6b91a67fbcdf1d9181c4c3248e61160b" id="r_a6b91a67fbcdf1d9181c4c3248e61160b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b91a67fbcdf1d9181c4c3248e61160b">object</a> = nullptr</td></tr>
 <tr class="separator:a6b91a67fbcdf1d9181c4c3248e61160b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c483646c070aef2844e09f97702cb75" id="r_a4c483646c070aef2844e09f97702cb75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1plugin_1_1_module_info.html">ModuleInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a4c483646c070aef2844e09f97702cb75">info</a> = nullptr</td></tr>
+<tr class="memitem:a4c483646c070aef2844e09f97702cb75" id="r_a4c483646c070aef2844e09f97702cb75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1plugin_1_1_module_info.html">ModuleInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c483646c070aef2844e09f97702cb75">info</a> = nullptr</td></tr>
 <tr class="separator:a4c483646c070aef2844e09f97702cb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37b1499aad5d188d2fc2ee4806afd71e" id="r_a37b1499aad5d188d2fc2ee4806afd71e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1plugin_1_1_class_factory.html">ClassFactory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a37b1499aad5d188d2fc2ee4806afd71e">factory</a> = nullptr</td></tr>
+<tr class="memitem:a37b1499aad5d188d2fc2ee4806afd71e" id="r_a37b1499aad5d188d2fc2ee4806afd71e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1plugin_1_1_class_factory.html">ClassFactory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37b1499aad5d188d2fc2ee4806afd71e">factory</a> = nullptr</td></tr>
 <tr class="separator:a37b1499aad5d188d2fc2ee4806afd71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -196,7 +202,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1plugin_1_1_module.html#aced41657850343e22238a6213e8aa9b5">sese::plugin::Module::LibraryObject</a> =  <a class="el" href="classsese_1_1system_1_1_library_object.html">sese::system::LibraryObject</a></td>
+          <td class="memname">using <a class="el" href="#aced41657850343e22238a6213e8aa9b5">sese::plugin::Module::LibraryObject</a> = <a class="el" href="classsese_1_1system_1_1_library_object.html">sese::system::LibraryObject</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -210,7 +216,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -230,7 +236,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::plugin::Module::Module </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -256,8 +262,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1plugin_1_1_base_class.html#a876321d4cdec391a945e7246c671b791">sese::plugin::BaseClass::Ptr</a> sese::plugin::Module::createClass </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -280,7 +285,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1plugin_1_1_module.html#ae99d2b2cf5fff8ef4ffe4625ea9cbf7a">createClassAs()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ae99d2b2cf5fff8ef4ffe4625ea9cbf7a">createClassAs()</a>.</p>
 
 </div>
 </div>
@@ -298,8 +303,7 @@ template&lt;typename TYPE &gt; </div>
         <tr>
           <td class="memname">std::shared_ptr&lt; TYPE &gt; sese::plugin::Module::createClassAs </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -328,7 +332,7 @@ template&lt;typename TYPE &gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1plugin_1_1_module.html#a11eccde7cae4a1515afab972db9888c8">createClass()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a11eccde7cae4a1515afab972db9888c8">createClass()</a>.</p>
 
 </div>
 </div>
@@ -344,7 +348,7 @@ template&lt;typename TYPE &gt; </div>
         <tr>
           <td class="memname">const char * sese::plugin::Module::getDescription </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -370,7 +374,7 @@ template&lt;typename TYPE &gt; </div>
         <tr>
           <td class="memname">const char * sese::plugin::Module::getName </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -382,7 +386,7 @@ template&lt;typename TYPE &gt; </div>
 </div><div class="memdoc">
 <p>获取模块名称 </p><dl class="section return"><dt>返回</dt><dd>模块名称 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1plugin_1_1_module.html#a4c483646c070aef2844e09f97702cb75">info</a> , 以及 <a class="el" href="structsese_1_1plugin_1_1_module_info.html#a0a9b2dbf1caba495d8a3d7d7c10482bb">sese::plugin::ModuleInfo::moduleName</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a4c483646c070aef2844e09f97702cb75">info</a> , 以及 <a class="el" href="structsese_1_1plugin_1_1_module_info.html#a0a9b2dbf1caba495d8a3d7d7c10482bb">sese::plugin::ModuleInfo::moduleName</a>.</p>
 
 </div>
 </div>
@@ -398,7 +402,7 @@ template&lt;typename TYPE &gt; </div>
         <tr>
           <td class="memname">const <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#a0e296ae42d51eb60b1e8c4ed750a940c">sese::plugin::ClassFactory::RegisterInfoMapType</a> &amp; sese::plugin::Module::getRegisterClassInfo </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -424,7 +428,7 @@ template&lt;typename TYPE &gt; </div>
         <tr>
           <td class="memname">const char * sese::plugin::Module::getVersion </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -448,10 +452,9 @@ template&lt;typename TYPE &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> sese::plugin::Module::open </td>
+          <td class="memname"><a class="el" href="#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> sese::plugin::Module::open </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -476,7 +479,7 @@ template&lt;typename TYPE &gt; </div>
 
 <p class="reference">引用了 <a class="el" href="plugin_2_marco_8h.html#a0a9f726ae8d56b3e38540e4bb6d15a09">GET_CLASS_FACTORY_FUNC_NAME</a>, <a class="el" href="plugin_2_marco_8h.html#a9e611c9fd9a5288b48c3f81d6b684a6b">GET_MODULE_INFO_FUNC_NAME</a>, <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a> , 以及 <a class="el" href="_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637">STR2</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1plugin_1_1_module.html#a4fac6b3716ecdfe5aa5e1036871cfbb9">openWithPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4fac6b3716ecdfe5aa5e1036871cfbb9">openWithPath()</a>.</p>
 
 </div>
 </div>
@@ -490,10 +493,9 @@ template&lt;typename TYPE &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> sese::plugin::Module::openWithPath </td>
+          <td class="memname"><a class="el" href="#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> sese::plugin::Module::openWithPath </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -516,7 +518,7 @@ template&lt;typename TYPE &gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">open()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ade4890f5fd1edd520cb4d9eb23caf31c">open()</a>.</p>
 
 </div>
 </div>
@@ -563,7 +565,7 @@ template&lt;typename TYPE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1plugin_1_1_module.html#ab8fddd74a398d4ce2d20607455ab69ef">getName()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ab8fddd74a398d4ce2d20607455ab69ef">getName()</a>.</p>
 
 </div>
 </div>
@@ -599,7 +601,7 @@ template&lt;typename TYPE &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1plugin.html">plugin</a></li><li class="navelem"><a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -22,5 +22,5 @@ var searchData=
   ['goaway_5frefused_5fstream_19',['GOAWAY_REFUSED_STREAM',['../namespacesese_1_1net_1_1http.html#a40b2e7b6393076fa7cd672ca055b8632',1,'sese::net::http']]],
   ['goaway_5fsettings_5ftimeout_20',['GOAWAY_SETTINGS_TIMEOUT',['../namespacesese_1_1net_1_1http.html#a0e3c4b66773ad2fdceba5ab625538d2f',1,'sese::net::http']]],
   ['goaway_5fstream_5fclosed_21',['GOAWAY_STREAM_CLOSED',['../namespacesese_1_1net_1_1http.html#a38c5f575045f38ea6b257692bbbd0ab8',1,'sese::net::http']]],
-  ['gzfile_22',['gzfile',['../classsese_1_1_g_zip_file_output_stream.html#a51f623e78156e325f4da9a05457bb1b2',1,'sese::GZipFileOutputStream::gzFile'],['../classsese_1_1_g_zip_file_input_stream.html#a702573f3273c48ad22a023bb48dea0f5',1,'sese::GZipFileInputStream::gzFile']]]
+  ['gzfile_22',['gzFile',['../classsese_1_1_g_zip_file_input_stream.html#a702573f3273c48ad22a023bb48dea0f5',1,'sese::GZipFileInputStream::gzFile'],['../classsese_1_1_g_zip_file_output_stream.html#a51f623e78156e325f4da9a05457bb1b2',1,'sese::GZipFileOutputStream::gzFile']]]
 ];

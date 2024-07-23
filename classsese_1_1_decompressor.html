@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::Decompressor类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1_decompressor.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1_decompressor.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,48 +142,48 @@ $(document).ready(function(){initNavTree('classsese_1_1_decompressor.html',''); 
 <div class="contents">
 
 <p>解压器  
- <a href="classsese_1_1_decompressor.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_decompressor_8h_source.html">Decompressor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a68a2f513fcc982cedcef66fdd42be35a" id="r_a68a2f513fcc982cedcef66fdd42be35a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a68a2f513fcc982cedcef66fdd42be35a">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="memitem:a68a2f513fcc982cedcef66fdd42be35a" id="r_a68a2f513fcc982cedcef66fdd42be35a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68a2f513fcc982cedcef66fdd42be35a">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="separator:a68a2f513fcc982cedcef66fdd42be35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ac19a21884e764ecdebd6b528e90cc1b1" id="r_ac19a21884e764ecdebd6b528e90cc1b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor</a> (<a class="el" href="namespacesese.html#aa6accca2ea5668728773fdfa2b44ce85">CompressionType</a> type, size_t buffer_size=<a class="el" href="_config_8h.html#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a>)</td></tr>
+<tr class="memitem:ac19a21884e764ecdebd6b528e90cc1b1" id="r_ac19a21884e764ecdebd6b528e90cc1b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor</a> (<a class="el" href="namespacesese.html#aa6accca2ea5668728773fdfa2b44ce85">CompressionType</a> type, size_t buffer_size=<a class="el" href="_config_8h.html#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a>)</td></tr>
 <tr class="separator:ac19a21884e764ecdebd6b528e90cc1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a991f185be0bb687f113985403d8006e4" id="r_a991f185be0bb687f113985403d8006e4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a991f185be0bb687f113985403d8006e4">~Decompressor</a> ()</td></tr>
+<tr class="memitem:a991f185be0bb687f113985403d8006e4" id="r_a991f185be0bb687f113985403d8006e4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a991f185be0bb687f113985403d8006e4">~Decompressor</a> ()</td></tr>
 <tr class="memdesc:a991f185be0bb687f113985403d8006e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">释放资源  <br /></td></tr>
 <tr class="separator:a991f185be0bb687f113985403d8006e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdac9051eef8e8bf0369450d1118a50f" id="r_afdac9051eef8e8bf0369450d1118a50f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#afdac9051eef8e8bf0369450d1118a50f">input</a> (const void *input, unsigned int input_size)</td></tr>
+<tr class="memitem:afdac9051eef8e8bf0369450d1118a50f" id="r_afdac9051eef8e8bf0369450d1118a50f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdac9051eef8e8bf0369450d1118a50f">input</a> (const void *input, unsigned int input_size)</td></tr>
 <tr class="separator:afdac9051eef8e8bf0369450d1118a50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a211890d7a081a70b6d2076c98eb9d52f" id="r_a211890d7a081a70b6d2076c98eb9d52f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a211890d7a081a70b6d2076c98eb9d52f">inflate</a> (<a class="el" href="classsese_1_1_decompressor.html#a68a2f513fcc982cedcef66fdd42be35a">OutputStream</a> *out)</td></tr>
+<tr class="memitem:a211890d7a081a70b6d2076c98eb9d52f" id="r_a211890d7a081a70b6d2076c98eb9d52f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a211890d7a081a70b6d2076c98eb9d52f">inflate</a> (<a class="el" href="#a68a2f513fcc982cedcef66fdd42be35a">OutputStream</a> *out)</td></tr>
 <tr class="separator:a211890d7a081a70b6d2076c98eb9d52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6536b3e4ffc3695f9c9da0e58754d514" id="r_a6536b3e4ffc3695f9c9da0e58754d514"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a6536b3e4ffc3695f9c9da0e58754d514">reset</a> ()</td></tr>
+<tr class="memitem:a6536b3e4ffc3695f9c9da0e58754d514" id="r_a6536b3e4ffc3695f9c9da0e58754d514"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6536b3e4ffc3695f9c9da0e58754d514">reset</a> ()</td></tr>
 <tr class="memdesc:a6536b3e4ffc3695f9c9da0e58754d514"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置 z_stream 对象  <br /></td></tr>
 <tr class="separator:a6536b3e4ffc3695f9c9da0e58754d514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5fc4eb6d6fab057343cfde966d637d3" id="r_ae5fc4eb6d6fab057343cfde966d637d3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#ae5fc4eb6d6fab057343cfde966d637d3">getTotalIn</a> () const</td></tr>
+<tr class="memitem:ae5fc4eb6d6fab057343cfde966d637d3" id="r_ae5fc4eb6d6fab057343cfde966d637d3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5fc4eb6d6fab057343cfde966d637d3">getTotalIn</a> () const</td></tr>
 <tr class="separator:ae5fc4eb6d6fab057343cfde966d637d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a303923ac7635e218382bb269b318c8e4" id="r_a303923ac7635e218382bb269b318c8e4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a303923ac7635e218382bb269b318c8e4">getTotalOut</a> () const</td></tr>
+<tr class="memitem:a303923ac7635e218382bb269b318c8e4" id="r_a303923ac7635e218382bb269b318c8e4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a303923ac7635e218382bb269b318c8e4">getTotalOut</a> () const</td></tr>
 <tr class="separator:a303923ac7635e218382bb269b318c8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:aabe2fcb56c03183a1e8099efcebadbad" id="r_aabe2fcb56c03183a1e8099efcebadbad"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#aabe2fcb56c03183a1e8099efcebadbad">stream</a></td></tr>
+<tr class="memitem:aabe2fcb56c03183a1e8099efcebadbad" id="r_aabe2fcb56c03183a1e8099efcebadbad"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabe2fcb56c03183a1e8099efcebadbad">stream</a></td></tr>
 <tr class="separator:aabe2fcb56c03183a1e8099efcebadbad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaf65d76875157b56b1cb5ec3cbdf14b" id="r_afaf65d76875157b56b1cb5ec3cbdf14b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#afaf65d76875157b56b1cb5ec3cbdf14b">cap</a> = 0</td></tr>
+<tr class="memitem:afaf65d76875157b56b1cb5ec3cbdf14b" id="r_afaf65d76875157b56b1cb5ec3cbdf14b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaf65d76875157b56b1cb5ec3cbdf14b">cap</a> = 0</td></tr>
 <tr class="memdesc:afaf65d76875157b56b1cb5ec3cbdf14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示 buffer 分配空间大小  <br /></td></tr>
 <tr class="separator:afaf65d76875157b56b1cb5ec3cbdf14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5577d960c697d655e404b7880d75e0dd" id="r_a5577d960c697d655e404b7880d75e0dd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a5577d960c697d655e404b7880d75e0dd">length</a> = 0</td></tr>
+<tr class="memitem:a5577d960c697d655e404b7880d75e0dd" id="r_a5577d960c697d655e404b7880d75e0dd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5577d960c697d655e404b7880d75e0dd">length</a> = 0</td></tr>
 <tr class="memdesc:a5577d960c697d655e404b7880d75e0dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示 buffer 填充大小  <br /></td></tr>
 <tr class="separator:a5577d960c697d655e404b7880d75e0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4850a2b36ac3c808505ca2fb1c8726a8" id="r_a4850a2b36ac3c808505ca2fb1c8726a8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a4850a2b36ac3c808505ca2fb1c8726a8">read</a> = 0</td></tr>
+<tr class="memitem:a4850a2b36ac3c808505ca2fb1c8726a8" id="r_a4850a2b36ac3c808505ca2fb1c8726a8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4850a2b36ac3c808505ca2fb1c8726a8">read</a> = 0</td></tr>
 <tr class="memdesc:a4850a2b36ac3c808505ca2fb1c8726a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示 buffer 已读部分  <br /></td></tr>
 <tr class="separator:a4850a2b36ac3c808505ca2fb1c8726a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57b47abb10e8d4dee47e750664e72578" id="r_a57b47abb10e8d4dee47e750664e72578"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a57b47abb10e8d4dee47e750664e72578">buffer</a></td></tr>
+<tr class="memitem:a57b47abb10e8d4dee47e750664e72578" id="r_a57b47abb10e8d4dee47e750664e72578"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57b47abb10e8d4dee47e750664e72578">buffer</a></td></tr>
 <tr class="memdesc:a57b47abb10e8d4dee47e750664e72578"><td class="mdescLeft">&#160;</td><td class="mdescRight">内部缓存 buffer  <br /></td></tr>
 <tr class="separator:a57b47abb10e8d4dee47e750664e72578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -191,7 +197,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1_decompressor.html#a68a2f513fcc982cedcef66fdd42be35a">sese::Decompressor::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td>
+          <td class="memname">using <a class="el" href="#a68a2f513fcc982cedcef66fdd42be35a">sese::Decompressor::OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -211,19 +217,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::Decompressor::Decompressor </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacesese.html#aa6accca2ea5668728773fdfa2b44ce85">sese::CompressionType</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
+          <td class="paramtype"><a class="el" href="namespacesese.html#aa6accca2ea5668728773fdfa2b44ce85">sese::CompressionType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>buffer_size</em> = <code><a class="el" href="_config_8h.html#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="_config_8h.html#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -240,7 +239,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_decompressor.html#a57b47abb10e8d4dee47e750664e72578">buffer</a>, <a class="el" href="classsese_1_1_decompressor.html#afaf65d76875157b56b1cb5ec3cbdf14b">cap</a> , 以及 <a class="el" href="classsese_1_1_decompressor.html#aabe2fcb56c03183a1e8099efcebadbad">stream</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a57b47abb10e8d4dee47e750664e72578">buffer</a>, <a class="el" href="#afaf65d76875157b56b1cb5ec3cbdf14b">cap</a> , 以及 <a class="el" href="#aabe2fcb56c03183a1e8099efcebadbad">stream</a>.</p>
 
 </div>
 </div>
@@ -256,7 +255,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::Decompressor::~Decompressor </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -277,14 +276,22 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t sese::Decompressor::getTotalIn </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>当前已处理输入缓存大小 </p><dl class="section return"><dt>返回</dt><dd>缓存大小 </dd></dl>
 
@@ -295,14 +302,22 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t sese::Decompressor::getTotalOut </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>当前已处理输出缓存大小 </p><dl class="section return"><dt>返回</dt><dd>缓存大小 </dd></dl>
 
@@ -319,8 +334,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int sese::Decompressor::inflate </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_decompressor.html#a68a2f513fcc982cedcef66fdd42be35a">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>out</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a68a2f513fcc982cedcef66fdd42be35a">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -353,19 +367,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::Decompressor::input </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>input_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>input_size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -388,7 +395,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int sese::Decompressor::reset </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -423,7 +430,7 @@ Private 属性</h2></td></tr>
 
 <p>内部缓存 buffer </p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
 
 </div>
 </div>
@@ -449,7 +456,7 @@ Private 属性</h2></td></tr>
 
 <p>表示 buffer 分配空间大小 </p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
 
 </div>
 </div>
@@ -521,7 +528,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
 
 </div>
 </div>
@@ -535,7 +542,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_decompressor.html">Decompressor</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

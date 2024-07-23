@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::net::IPv6Address类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1net_1_1_i_pv6_address.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1net_1_1_i_pv6_address.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,7 +143,7 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1_i_pv6_address.htm
 <div class="contents">
 
 <p>IPv6 地址类  
- <a href="classsese_1_1net_1_1_i_pv6_address.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_i_pv6_address_8h_source.html">IPv6Address.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -153,59 +159,59 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1_i_pv6_address.htm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a14e285e55c6f777c7b39b64c4837d281" id="r_a14e285e55c6f777c7b39b64c4837d281"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html">IPv6Address</a> &gt;</td></tr>
+<tr class="memitem:a14e285e55c6f777c7b39b64c4837d281" id="r_a14e285e55c6f777c7b39b64c4837d281"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1_i_pv6_address.html">IPv6Address</a>&gt;</td></tr>
 <tr class="separator:a14e285e55c6f777c7b39b64c4837d281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1net_1_1_i_p_address"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1net_1_1_i_p_address')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1_i_p_address.html">sese::net::IPAddress</a></td></tr>
-<tr class="memitem:ade090a38545f6d26aa5ab6490eedd11e inherit pub_types_classsese_1_1net_1_1_i_p_address" id="r_ade090a38545f6d26aa5ab6490eedd11e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1net_1_1_i_p_address.html">IPAddress</a> &gt;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1net_1_1_i_p_address"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1net_1_1_i_p_address')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1_i_p_address.html">sese::net::IPAddress</a></td></tr>
+<tr class="memitem:ade090a38545f6d26aa5ab6490eedd11e inherit pub_types_classsese_1_1net_1_1_i_p_address" id="r_ade090a38545f6d26aa5ab6490eedd11e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1_i_p_address.html">IPAddress</a>&gt;</td></tr>
 <tr class="separator:ade090a38545f6d26aa5ab6490eedd11e inherit pub_types_classsese_1_1net_1_1_i_p_address"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1net_1_1_address"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1net_1_1_address')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
-<tr class="memitem:a5df9be83e1eed77cb1368a28e7f340fe inherit pub_types_classsese_1_1net_1_1_address" id="r_a5df9be83e1eed77cb1368a28e7f340fe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1net_1_1_address.html">Address</a> &gt;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1net_1_1_address"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1net_1_1_address')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
+<tr class="memitem:a5df9be83e1eed77cb1368a28e7f340fe inherit pub_types_classsese_1_1net_1_1_address" id="r_a5df9be83e1eed77cb1368a28e7f340fe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1_address.html">Address</a>&gt;</td></tr>
 <tr class="separator:a5df9be83e1eed77cb1368a28e7f340fe inherit pub_types_classsese_1_1net_1_1_address"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:afb61206131d0f131c10d778f4b2aa011" id="r_afb61206131d0f131c10d778f4b2aa011"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#afb61206131d0f131c10d778f4b2aa011">IPv6Address</a> () noexcept</td></tr>
+<tr class="memitem:afb61206131d0f131c10d778f4b2aa011" id="r_afb61206131d0f131c10d778f4b2aa011"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb61206131d0f131c10d778f4b2aa011">IPv6Address</a> () noexcept</td></tr>
 <tr class="separator:afb61206131d0f131c10d778f4b2aa011"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a355d386d6fb5b6768db9b0a17f73c8ac" id="r_a355d386d6fb5b6768db9b0a17f73c8ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a355d386d6fb5b6768db9b0a17f73c8ac">IPv6Address</a> (const sockaddr_in6 &amp;<a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>) noexcept</td></tr>
+<tr class="memitem:a355d386d6fb5b6768db9b0a17f73c8ac" id="r_a355d386d6fb5b6768db9b0a17f73c8ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a355d386d6fb5b6768db9b0a17f73c8ac">IPv6Address</a> (const sockaddr_in6 &amp;<a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>) noexcept</td></tr>
 <tr class="separator:a355d386d6fb5b6768db9b0a17f73c8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a759e32ca14061d9f33fe9014d954be28" id="r_a759e32ca14061d9f33fe9014d954be28"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a759e32ca14061d9f33fe9014d954be28">IPv6Address</a> (const uint8_t *<a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>, uint16_t port=0)</td></tr>
+<tr class="memitem:a759e32ca14061d9f33fe9014d954be28" id="r_a759e32ca14061d9f33fe9014d954be28"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a759e32ca14061d9f33fe9014d954be28">IPv6Address</a> (const uint8_t *<a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>, uint16_t port=0)</td></tr>
 <tr class="separator:a759e32ca14061d9f33fe9014d954be28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66c61cf6f1edae575257fbb1cce0758a" id="r_a66c61cf6f1edae575257fbb1cce0758a"><td class="memItemLeft" align="right" valign="top">sockaddr *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a66c61cf6f1edae575257fbb1cce0758a">getRawAddress</a> () const noexcept override</td></tr>
+<tr class="memitem:a66c61cf6f1edae575257fbb1cce0758a" id="r_a66c61cf6f1edae575257fbb1cce0758a"><td class="memItemLeft" align="right" valign="top">sockaddr *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66c61cf6f1edae575257fbb1cce0758a">getRawAddress</a> () const noexcept override</td></tr>
 <tr class="separator:a66c61cf6f1edae575257fbb1cce0758a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca89d3d61693c1fc2ae51e29b3e17008" id="r_aca89d3d61693c1fc2ae51e29b3e17008"><td class="memItemLeft" align="right" valign="top">socklen_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aca89d3d61693c1fc2ae51e29b3e17008">getRawAddressLength</a> () const noexcept override</td></tr>
+<tr class="memitem:aca89d3d61693c1fc2ae51e29b3e17008" id="r_aca89d3d61693c1fc2ae51e29b3e17008"><td class="memItemLeft" align="right" valign="top">socklen_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca89d3d61693c1fc2ae51e29b3e17008">getRawAddressLength</a> () const noexcept override</td></tr>
 <tr class="separator:aca89d3d61693c1fc2ae51e29b3e17008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0970f57bfd389d7f77e7016e8a881836" id="r_a0970f57bfd389d7f77e7016e8a881836"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a0970f57bfd389d7f77e7016e8a881836">getAddress</a> () const noexcept override</td></tr>
+<tr class="memitem:a0970f57bfd389d7f77e7016e8a881836" id="r_a0970f57bfd389d7f77e7016e8a881836"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0970f57bfd389d7f77e7016e8a881836">getAddress</a> () const noexcept override</td></tr>
 <tr class="separator:a0970f57bfd389d7f77e7016e8a881836"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad699fb0c130c3467266e4262b0006ddd" id="r_ad699fb0c130c3467266e4262b0006ddd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#ad699fb0c130c3467266e4262b0006ddd">getBroadcastAddress</a> (uint32_t prefix_len) const noexcept override</td></tr>
+<tr class="memitem:ad699fb0c130c3467266e4262b0006ddd" id="r_ad699fb0c130c3467266e4262b0006ddd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad699fb0c130c3467266e4262b0006ddd">getBroadcastAddress</a> (uint32_t prefix_len) const noexcept override</td></tr>
 <tr class="separator:ad699fb0c130c3467266e4262b0006ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad54c10ddf093cb16ead4692806a9be14" id="r_ad54c10ddf093cb16ead4692806a9be14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#ad54c10ddf093cb16ead4692806a9be14">getNetworkAddress</a> (uint32_t prefix_len) const noexcept override</td></tr>
+<tr class="memitem:ad54c10ddf093cb16ead4692806a9be14" id="r_ad54c10ddf093cb16ead4692806a9be14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad54c10ddf093cb16ead4692806a9be14">getNetworkAddress</a> (uint32_t prefix_len) const noexcept override</td></tr>
 <tr class="separator:ad54c10ddf093cb16ead4692806a9be14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fbf651d3fe2e928d48e93c584b6fde0" id="r_a4fbf651d3fe2e928d48e93c584b6fde0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a4fbf651d3fe2e928d48e93c584b6fde0">getSubnetMask</a> (uint32_t prefix_len) const noexcept override</td></tr>
+<tr class="memitem:a4fbf651d3fe2e928d48e93c584b6fde0" id="r_a4fbf651d3fe2e928d48e93c584b6fde0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fbf651d3fe2e928d48e93c584b6fde0">getSubnetMask</a> (uint32_t prefix_len) const noexcept override</td></tr>
 <tr class="separator:a4fbf651d3fe2e928d48e93c584b6fde0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a93367d61de89ca59bb8917fabd5a01" id="r_a9a93367d61de89ca59bb8917fabd5a01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a9a93367d61de89ca59bb8917fabd5a01">setPort</a> (uint16_t port) noexcept override</td></tr>
+<tr class="memitem:a9a93367d61de89ca59bb8917fabd5a01" id="r_a9a93367d61de89ca59bb8917fabd5a01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a93367d61de89ca59bb8917fabd5a01">setPort</a> (uint16_t port) noexcept override</td></tr>
 <tr class="separator:a9a93367d61de89ca59bb8917fabd5a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45126deeabb0a290a68efa73f97fb9ab" id="r_a45126deeabb0a290a68efa73f97fb9ab"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">getPort</a> () const noexcept override</td></tr>
+<tr class="memitem:a45126deeabb0a290a68efa73f97fb9ab" id="r_a45126deeabb0a290a68efa73f97fb9ab"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45126deeabb0a290a68efa73f97fb9ab">getPort</a> () const noexcept override</td></tr>
 <tr class="separator:a45126deeabb0a290a68efa73f97fb9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2e2a05590ff81799f9c958281f54ef7" id="r_af2e2a05590ff81799f9c958281f54ef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7">setFamily</a> (uint16_t family) noexcept override</td></tr>
+<tr class="memitem:af2e2a05590ff81799f9c958281f54ef7" id="r_af2e2a05590ff81799f9c958281f54ef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2e2a05590ff81799f9c958281f54ef7">setFamily</a> (uint16_t family) noexcept override</td></tr>
 <tr class="separator:af2e2a05590ff81799f9c958281f54ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af269c184ff714b50ae3cf53189f3c5f7" id="r_af269c184ff714b50ae3cf53189f3c5f7"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#af269c184ff714b50ae3cf53189f3c5f7">getFamily</a> () noexcept override</td></tr>
+<tr class="memitem:af269c184ff714b50ae3cf53189f3c5f7" id="r_af269c184ff714b50ae3cf53189f3c5f7"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af269c184ff714b50ae3cf53189f3c5f7">getFamily</a> () noexcept override</td></tr>
 <tr class="separator:af269c184ff714b50ae3cf53189f3c5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1net_1_1_address"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1net_1_1_address')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1net_1_1_address"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1net_1_1_address')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
 <tr class="memitem:a76d0ebcf62b63cf428c4370ee25e10e5 inherit pub_methods_classsese_1_1net_1_1_address" id="r_a76d0ebcf62b63cf428c4370ee25e10e5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address.html#a76d0ebcf62b63cf428c4370ee25e10e5">~Address</a> ()=default</td></tr>
 <tr class="separator:a76d0ebcf62b63cf428c4370ee25e10e5 inherit pub_methods_classsese_1_1net_1_1_address"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a7ea87741b7c2d6c81fbeb09b5600abc2" id="r_a7ea87741b7c2d6c81fbeb09b5600abc2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a7ea87741b7c2d6c81fbeb09b5600abc2">create</a> (const char *<a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>, uint16_t port)</td></tr>
+<tr class="memitem:a7ea87741b7c2d6c81fbeb09b5600abc2" id="r_a7ea87741b7c2d6c81fbeb09b5600abc2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ea87741b7c2d6c81fbeb09b5600abc2">create</a> (const char *<a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>, uint16_t port)</td></tr>
 <tr class="separator:a7ea87741b7c2d6c81fbeb09b5600abc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef9fb6ee50d8e9d32b3ddea12977a99c" id="r_aef9fb6ee50d8e9d32b3ddea12977a99c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aef9fb6ee50d8e9d32b3ddea12977a99c">localhost</a> (uint16_t port=0)</td></tr>
+<tr class="memitem:aef9fb6ee50d8e9d32b3ddea12977a99c" id="r_aef9fb6ee50d8e9d32b3ddea12977a99c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef9fb6ee50d8e9d32b3ddea12977a99c">localhost</a> (uint16_t port=0)</td></tr>
 <tr class="separator:aef9fb6ee50d8e9d32b3ddea12977a99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadade551d372c187e88f09419a57235b" id="r_aadade551d372c187e88f09419a57235b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aadade551d372c187e88f09419a57235b">any</a> (uint16_t port=0)</td></tr>
+<tr class="memitem:aadade551d372c187e88f09419a57235b" id="r_aadade551d372c187e88f09419a57235b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadade551d372c187e88f09419a57235b">any</a> (uint16_t port=0)</td></tr>
 <tr class="separator:aadade551d372c187e88f09419a57235b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_static_methods_classsese_1_1net_1_1_i_p_address"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classsese_1_1net_1_1_i_p_address')"><img src="closed.png" alt="-"/>&#160;静态 Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_i_p_address.html">sese::net::IPAddress</a></td></tr>
+<tr class="inherit_header pub_static_methods_classsese_1_1net_1_1_i_p_address"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classsese_1_1net_1_1_i_p_address')"><img src="closed.png" alt="-"/>&#160;静态 Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_i_p_address.html">sese::net::IPAddress</a></td></tr>
 <tr class="memitem:a3a3333efc217a358ccbb9afeedac2b26 inherit pub_static_methods_classsese_1_1net_1_1_i_p_address" id="r_a3a3333efc217a358ccbb9afeedac2b26"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#a3a3333efc217a358ccbb9afeedac2b26">create</a> (const char *address, uint16_t port=0)</td></tr>
 <tr class="separator:a3a3333efc217a358ccbb9afeedac2b26 inherit pub_static_methods_classsese_1_1net_1_1_i_p_address"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_static_methods_classsese_1_1net_1_1_address"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classsese_1_1net_1_1_address')"><img src="closed.png" alt="-"/>&#160;静态 Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
+<tr class="inherit_header pub_static_methods_classsese_1_1net_1_1_address"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classsese_1_1net_1_1_address')"><img src="closed.png" alt="-"/>&#160;静态 Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
 <tr class="memitem:abfc97bb3bb4df0dc597442b6b19ce8a6 inherit pub_static_methods_classsese_1_1net_1_1_address" id="r_abfc97bb3bb4df0dc597442b6b19ce8a6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address.html#abfc97bb3bb4df0dc597442b6b19ce8a6">create</a> (const sockaddr *address, socklen_t address_len)</td></tr>
 <tr class="separator:abfc97bb3bb4df0dc597442b6b19ce8a6 inherit pub_static_methods_classsese_1_1net_1_1_address"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b9b1edae56e8ff707324ac13e207391 inherit pub_static_methods_classsese_1_1net_1_1_address" id="r_a7b9b1edae56e8ff707324ac13e207391"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391">lookUp</a> (std::vector&lt; <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> &gt; &amp;result, const std::string &amp;host, int family=AF_INET, int type=0, int protocol=0)</td></tr>
@@ -215,7 +221,7 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:a95a023c56b51fd029983282d6502b5f4" id="r_a95a023c56b51fd029983282d6502b5f4"><td class="memItemLeft" align="right" valign="top">sockaddr_in6&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a> {0}</td></tr>
+<tr class="memitem:a95a023c56b51fd029983282d6502b5f4" id="r_a95a023c56b51fd029983282d6502b5f4"><td class="memItemLeft" align="right" valign="top">sockaddr_in6&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a> {0}</td></tr>
 <tr class="separator:a95a023c56b51fd029983282d6502b5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -228,7 +234,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">sese::net::IPv6Address::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1_i_pv6_address.html">IPv6Address</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">sese::net::IPv6Address::Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1_i_pv6_address.html">IPv6Address</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -248,7 +254,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">IPv6Address::IPv6Address </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -259,7 +265,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
 
 </div>
 </div>
@@ -275,8 +281,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">IPv6Address::IPv6Address </td>
           <td>(</td>
-          <td class="paramtype">const sockaddr_in6 &amp;&#160;</td>
-          <td class="paramname"><em>address</em></td><td>)</td>
+          <td class="paramtype">const sockaddr_in6 &amp;</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -301,19 +306,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">IPv6Address::IPv6Address </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>port</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -323,7 +321,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
 
 </div>
 </div>
@@ -338,10 +336,9 @@ Private 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a> IPv6Address::any </td>
+          <td class="memname"><a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a> IPv6Address::any </td>
           <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>port</em> = <code>0</code></td><td>)</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -352,7 +349,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a7ea87741b7c2d6c81fbeb09b5600abc2">create()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7ea87741b7c2d6c81fbeb09b5600abc2">create()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">sese::_windows::iocp::v1::NativeIOCPServer::postConnect()</a>.</p>
 
@@ -368,21 +365,14 @@ Private 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a> IPv6Address::create </td>
+          <td class="memname"><a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a> IPv6Address::create </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>port</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -392,9 +382,9 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>, <a class="el" href="namespacesese_1_1net.html#a5b0f21f5acccf3fe7b53f40cfea956e2">sese::net::inetPton()</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>, <a class="el" href="namespacesese_1_1net.html#a5b0f21f5acccf3fe7b53f40cfea956e2">sese::net::inetPton()</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aadade551d372c187e88f09419a57235b">any()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aef9fb6ee50d8e9d32b3ddea12977a99c">localhost()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#aadade551d372c187e88f09419a57235b">any()</a> , 以及 <a class="el" href="#aef9fb6ee50d8e9d32b3ddea12977a99c">localhost()</a>.</p>
 
 </div>
 </div>
@@ -410,20 +400,20 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">std::string IPv6Address::getAddress </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_address.html#af6f9435b1bc5e1e711e9fbfd59efd1a4">sese::net::Address</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
 
 </div>
 </div>
@@ -439,19 +429,20 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> IPv6Address::getBroadcastAddress </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>prefix_len</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>prefix_len</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ae5ee5f49793a3af0fea5b0370450eea3">sese::net::IPAddress</a>.</p>
+
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1net.html#aadb993107c74058a8930de8946d00b7f">sese::net::CreateMask()</a>.</p>
 
 </div>
 </div>
@@ -467,7 +458,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">uint16_t sese::net::IPv6Address::getFamily </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -480,7 +471,7 @@ Private 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_i_p_address.html#a1281248539b7300fcc328d72f77f620e">sese::net::IPAddress</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
 
 </div>
 </div>
@@ -496,19 +487,20 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> IPv6Address::getNetworkAddress </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>prefix_len</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>prefix_len</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_i_p_address.html#abff7e6a57b791195b179ea42baa60657">sese::net::IPAddress</a>.</p>
+
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1net.html#aadb993107c74058a8930de8946d00b7f">sese::net::CreateMask()</a>.</p>
 
 </div>
 </div>
@@ -524,20 +516,20 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">uint16_t sese::net::IPv6Address::getPort </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_i_p_address.html#a17cab6c18fc504d529ff9ef067c87e9c">sese::net::IPAddress</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a> , 以及 <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a> , 以及 <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a>.</p>
 
 </div>
 </div>
@@ -553,20 +545,20 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sockaddr * IPv6Address::getRawAddress </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_address.html#a5edba12b0c3dc8f0990715cfd838d6d5">sese::net::Address</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
 
 </div>
 </div>
@@ -582,20 +574,20 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">socklen_t IPv6Address::getRawAddressLength </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_address.html#a2854fc966fe96e9a32084873502823c1">sese::net::Address</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
 
 </div>
 </div>
@@ -611,14 +603,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> IPv6Address::getSubnetMask </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>prefix_len</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>prefix_len</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -637,10 +628,9 @@ Private 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a> IPv6Address::localhost </td>
+          <td class="memname"><a class="el" href="#a14e285e55c6f777c7b39b64c4837d281">IPv6Address::Ptr</a> IPv6Address::localhost </td>
           <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>port</em> = <code>0</code></td><td>)</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -651,7 +641,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a7ea87741b7c2d6c81fbeb09b5600abc2">create()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7ea87741b7c2d6c81fbeb09b5600abc2">create()</a>.</p>
 
 </div>
 </div>
@@ -667,8 +657,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::IPv6Address::setFamily </td>
           <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>family</em></td><td>)</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>family</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -681,7 +670,7 @@ Private 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1_i_p_address.html#af5a4bffae61318af60a28f7dddc0e5b3">sese::net::IPAddress</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a95a023c56b51fd029983282d6502b5f4">address</a>.</p>
 
 </div>
 </div>
@@ -697,8 +686,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::IPv6Address::setPort </td>
           <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -736,7 +724,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a7ea87741b7c2d6c81fbeb09b5600abc2">create()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a0970f57bfd389d7f77e7016e8a881836">getAddress()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#af269c184ff714b50ae3cf53189f3c5f7">getFamily()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">getPort()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a66c61cf6f1edae575257fbb1cce0758a">getRawAddress()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aca89d3d61693c1fc2ae51e29b3e17008">getRawAddressLength()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#afb61206131d0f131c10d778f4b2aa011">IPv6Address()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a759e32ca14061d9f33fe9014d954be28">IPv6Address()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7">setFamily()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7ea87741b7c2d6c81fbeb09b5600abc2">create()</a>, <a class="el" href="#a0970f57bfd389d7f77e7016e8a881836">getAddress()</a>, <a class="el" href="#af269c184ff714b50ae3cf53189f3c5f7">getFamily()</a>, <a class="el" href="#a45126deeabb0a290a68efa73f97fb9ab">getPort()</a>, <a class="el" href="#a66c61cf6f1edae575257fbb1cce0758a">getRawAddress()</a>, <a class="el" href="#aca89d3d61693c1fc2ae51e29b3e17008">getRawAddressLength()</a>, <a class="el" href="#afb61206131d0f131c10d778f4b2aa011">IPv6Address()</a>, <a class="el" href="#a759e32ca14061d9f33fe9014d954be28">IPv6Address()</a> , 以及 <a class="el" href="#af2e2a05590ff81799f9c958281f54ef7">setFamily()</a>.</p>
 
 </div>
 </div>
@@ -750,7 +738,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1_i_pv6_address.html">IPv6Address</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

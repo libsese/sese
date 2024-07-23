@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::net::http::HPackUtil类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_h_pack_util.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1net_1_1http_1_1_h_pack_util.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -138,7 +144,7 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_h_pack_ut
 <div class="contents">
 
 <p>HPACK 解压缩工具类  
- <a href="classsese_1_1net_1_1http_1_1_h_pack_util.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_h_pack_util_8h_source.html">HPackUtil.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -153,18 +159,18 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_h_pack_ut
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:ae1148e75ad8148c291c6efb9df37dd40" id="r_ae1148e75ad8148c291c6efb9df37dd40"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
+<tr class="memitem:ae1148e75ad8148c291c6efb9df37dd40" id="r_ae1148e75ad8148c291c6efb9df37dd40"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
 <tr class="memdesc:ae1148e75ad8148c291c6efb9df37dd40"><td class="mdescLeft">&#160;</td><td class="mdescRight">工具指定输入流  <br /></td></tr>
 <tr class="separator:ae1148e75ad8148c291c6efb9df37dd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add2a79eadc72a4a87dac7a6502040501" id="r_add2a79eadc72a4a87dac7a6502040501"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
+<tr class="memitem:add2a79eadc72a4a87dac7a6502040501" id="r_add2a79eadc72a4a87dac7a6502040501"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
 <tr class="memdesc:add2a79eadc72a4a87dac7a6502040501"><td class="mdescLeft">&#160;</td><td class="mdescRight">工具指定输出流  <br /></td></tr>
 <tr class="separator:add2a79eadc72a4a87dac7a6502040501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a46b16bd981ae9a246c56ccbdf57954e1" id="r_a46b16bd981ae9a246c56ccbdf57954e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a46b16bd981ae9a246c56ccbdf57954e1">HPackUtil</a> ()=delete</td></tr>
+<tr class="memitem:a46b16bd981ae9a246c56ccbdf57954e1" id="r_a46b16bd981ae9a246c56ccbdf57954e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46b16bd981ae9a246c56ccbdf57954e1">HPackUtil</a> ()=delete</td></tr>
 <tr class="separator:a46b16bd981ae9a246c56ccbdf57954e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
 <tr class="memitem:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable" id="r_a56cae6201f07d769ffc3d05c749c7937"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#a56cae6201f07d769ffc3d05c749c7937">NotInstantiable</a> ()=delete</td></tr>
 <tr class="separator:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable" id="r_ae0447de63059ff64d0e8becf5637297a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ae0447de63059ff64d0e8becf5637297a">~NotInstantiable</a> ()=default</td></tr>
@@ -176,35 +182,35 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab645a4008c3ba572c5ccf88052a7e712" id="r_ab645a4008c3ba572c5ccf88052a7e712"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ab645a4008c3ba572c5ccf88052a7e712">decode</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, size_t content_length, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;header) noexcept</td></tr>
+<tr class="memitem:ab645a4008c3ba572c5ccf88052a7e712" id="r_ab645a4008c3ba572c5ccf88052a7e712"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab645a4008c3ba572c5ccf88052a7e712">decode</a> (<a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, size_t content_length, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;header) noexcept</td></tr>
 <tr class="separator:ab645a4008c3ba572c5ccf88052a7e712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9323debee57166cc235a9ca963d3c4f2" id="r_a9323debee57166cc235a9ca963d3c4f2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9323debee57166cc235a9ca963d3c4f2">encode</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;once_header, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;indexed_header) noexcept</td></tr>
+<tr class="memitem:a9323debee57166cc235a9ca963d3c4f2" id="r_a9323debee57166cc235a9ca963d3c4f2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9323debee57166cc235a9ca963d3c4f2">encode</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;once_header, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;indexed_header) noexcept</td></tr>
 <tr class="separator:a9323debee57166cc235a9ca963d3c4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静态 Private 成员函数</h2></td></tr>
-<tr class="memitem:a9138653a43fc83d0d65917826354c349" id="r_a9138653a43fc83d0d65917826354c349"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9138653a43fc83d0d65917826354c349">decodeInteger</a> (uint8_t &amp;buf, <a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, uint32_t &amp;dest, uint8_t n) noexcept</td></tr>
+<tr class="memitem:a9138653a43fc83d0d65917826354c349" id="r_a9138653a43fc83d0d65917826354c349"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9138653a43fc83d0d65917826354c349">decodeInteger</a> (uint8_t &amp;buf, <a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, uint32_t &amp;dest, uint8_t n) noexcept</td></tr>
 <tr class="separator:a9138653a43fc83d0d65917826354c349"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f44672d43fab3ac549f64c682860ae" id="r_a42f44672d43fab3ac549f64c682860ae"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a42f44672d43fab3ac549f64c682860ae">decodeString</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, std::string &amp;dest) noexcept</td></tr>
+<tr class="memitem:a42f44672d43fab3ac549f64c682860ae" id="r_a42f44672d43fab3ac549f64c682860ae"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42f44672d43fab3ac549f64c682860ae">decodeString</a> (<a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, std::string &amp;dest) noexcept</td></tr>
 <tr class="separator:a42f44672d43fab3ac549f64c682860ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eec6c216dc5bcaa23ad057507075a8f" id="r_a9eec6c216dc5bcaa23ad057507075a8f"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9eec6c216dc5bcaa23ad057507075a8f">encodeIndexCase0</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="memitem:a9eec6c216dc5bcaa23ad057507075a8f" id="r_a9eec6c216dc5bcaa23ad057507075a8f"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eec6c216dc5bcaa23ad057507075a8f">encodeIndexCase0</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
 <tr class="separator:a9eec6c216dc5bcaa23ad057507075a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85db0f683a0b148cfa45ba5cf4c8c659" id="r_a85db0f683a0b148cfa45ba5cf4c8c659"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a85db0f683a0b148cfa45ba5cf4c8c659">encodeIndexCase1</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="memitem:a85db0f683a0b148cfa45ba5cf4c8c659" id="r_a85db0f683a0b148cfa45ba5cf4c8c659"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85db0f683a0b148cfa45ba5cf4c8c659">encodeIndexCase1</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
 <tr class="separator:a85db0f683a0b148cfa45ba5cf4c8c659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08030d0b5d7b49606780979ce59d80c2" id="r_a08030d0b5d7b49606780979ce59d80c2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a08030d0b5d7b49606780979ce59d80c2">encodeIndexCase2</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="memitem:a08030d0b5d7b49606780979ce59d80c2" id="r_a08030d0b5d7b49606780979ce59d80c2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08030d0b5d7b49606780979ce59d80c2">encodeIndexCase2</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
 <tr class="separator:a08030d0b5d7b49606780979ce59d80c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab86c89506c433430ba3cc6cfaa6d1e51" id="r_ab86c89506c433430ba3cc6cfaa6d1e51"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ab86c89506c433430ba3cc6cfaa6d1e51">encodeIndexCase3</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="memitem:ab86c89506c433430ba3cc6cfaa6d1e51" id="r_ab86c89506c433430ba3cc6cfaa6d1e51"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab86c89506c433430ba3cc6cfaa6d1e51">encodeIndexCase3</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
 <tr class="separator:ab86c89506c433430ba3cc6cfaa6d1e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af47118bf81bfd307c614a19cd924a69a" id="r_af47118bf81bfd307c614a19cd924a69a"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#af47118bf81bfd307c614a19cd924a69a">encodeString</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, const std::string &amp;str) noexcept</td></tr>
+<tr class="memitem:af47118bf81bfd307c614a19cd924a69a" id="r_af47118bf81bfd307c614a19cd924a69a"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af47118bf81bfd307c614a19cd924a69a">encodeString</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, const std::string &amp;str) noexcept</td></tr>
 <tr class="separator:af47118bf81bfd307c614a19cd924a69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98dc16490271859f0260bd6d51b19564" id="r_a98dc16490271859f0260bd6d51b19564"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a98dc16490271859f0260bd6d51b19564">buildCookieString</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie) noexcept</td></tr>
+<tr class="memitem:a98dc16490271859f0260bd6d51b19564" id="r_a98dc16490271859f0260bd6d51b19564"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98dc16490271859f0260bd6d51b19564">buildCookieString</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie) noexcept</td></tr>
 <tr class="separator:a98dc16490271859f0260bd6d51b19564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静态 Private 属性</h2></td></tr>
-<tr class="memitem:ab664faeaf4e254ba194e645671fb292f" id="r_ab664faeaf4e254ba194e645671fb292f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190">HuffmanDecoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ab664faeaf4e254ba194e645671fb292f">decoder</a> {}</td></tr>
+<tr class="memitem:ab664faeaf4e254ba194e645671fb292f" id="r_ab664faeaf4e254ba194e645671fb292f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#a78baeb0ea2f7ae66da3529d3ba6b51ec">HuffmanDecoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab664faeaf4e254ba194e645671fb292f">decoder</a> {}</td></tr>
 <tr class="separator:ab664faeaf4e254ba194e645671fb292f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87c844834b5d3070e9c82f7399c2481f" id="r_a87c844834b5d3070e9c82f7399c2481f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63">HuffmanEncoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a87c844834b5d3070e9c82f7399c2481f">encoder</a> {}</td></tr>
+<tr class="memitem:a87c844834b5d3070e9c82f7399c2481f" id="r_a87c844834b5d3070e9c82f7399c2481f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#ad0af380e2cf908eac82ff9bd729d076f">HuffmanEncoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87c844834b5d3070e9c82f7399c2481f">encoder</a> {}</td></tr>
 <tr class="separator:a87c844834b5d3070e9c82f7399c2481f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -217,7 +223,7 @@ Public 成员函数</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">sese::net::http::HPackUtil::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
+          <td class="memname">using <a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">sese::net::http::HPackUtil::InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -233,7 +239,7 @@ Public 成员函数</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">sese::net::http::HPackUtil::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
+          <td class="memname">using <a class="el" href="#add2a79eadc72a4a87dac7a6502040501">sese::net::http::HPackUtil::OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -255,7 +261,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">sese::net::http::HPackUtil::HPackUtil </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -281,8 +287,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">std::string HPackUtil::buildCookieString </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>cookie</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cookie</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -309,31 +314,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">bool HPackUtil::decode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
+          <td class="paramtype"><a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>content_length</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>content_length</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;&#160;</td>
-          <td class="paramname"><em>header</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>header</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -372,31 +368,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">int HPackUtil::decodeInteger </td>
           <td>(</td>
-          <td class="paramtype">uint8_t &amp;&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
+          <td class="paramtype"><a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t &amp;&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype">uint32_t &amp;</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -420,19 +407,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">int HPackUtil::decodeString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
+          <td class="paramtype"><a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>dest</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -456,31 +436,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">size_t HPackUtil::encode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;&#160;</td>
-          <td class="paramname"><em>once_header</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>once_header</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;&#160;</td>
-          <td class="paramname"><em>indexed_header</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>indexed_header</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -528,19 +499,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">size_t HPackUtil::encodeIndexCase0 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -566,19 +530,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">size_t HPackUtil::encodeIndexCase1 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -604,19 +561,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">size_t HPackUtil::encodeIndexCase2 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -642,19 +592,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">size_t HPackUtil::encodeIndexCase3 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -680,19 +623,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">size_t HPackUtil::encodeString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
+          <td class="paramtype"><a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -719,7 +655,7 @@ Public 成员函数</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190">HuffmanDecoder</a> HPackUtil::decoder {}</td>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a78baeb0ea2f7ae66da3529d3ba6b51ec">HuffmanDecoder</a> HPackUtil::decoder {}</td>
         </tr>
       </table>
   </td>
@@ -741,7 +677,7 @@ Public 成员函数</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63">HuffmanEncoder</a> HPackUtil::encoder {}</td>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#ad0af380e2cf908eac82ff9bd729d076f">HuffmanEncoder</a> HPackUtil::encoder {}</td>
         </tr>
       </table>
   </td>
@@ -763,7 +699,7 @@ Public 成员函数</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html">HPackUtil</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

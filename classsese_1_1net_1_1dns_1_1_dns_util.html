@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::net::dns::DnsUtil类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1net_1_1dns_1_1_dns_util.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1net_1_1dns_1_1_dns_util.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,39 +142,39 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1dns_1_1_dns_util.h
 <div class="contents">
 
 <p>DNS 帧编码解码工具  
- <a href="classsese_1_1net_1_1dns_1_1_dns_util.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_dns_util_8h_source.html">DnsUtil.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a2702c509de38e78a842e0f7a780f5db4" id="r_a2702c509de38e78a842e0f7a780f5db4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
+<tr class="memitem:a2702c509de38e78a842e0f7a780f5db4" id="r_a2702c509de38e78a842e0f7a780f5db4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
 <tr class="separator:a2702c509de38e78a842e0f7a780f5db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50ceaf21c27f001fe59391855d5c5062" id="r_a50ceaf21c27f001fe59391855d5c5062"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
+<tr class="memitem:a50ceaf21c27f001fe59391855d5c5062" id="r_a50ceaf21c27f001fe59391855d5c5062"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
 <tr class="separator:a50ceaf21c27f001fe59391855d5c5062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:aa6636db5c606085fa2bcffc1635421c3" id="r_aa6636db5c606085fa2bcffc1635421c3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa6636db5c606085fa2bcffc1635421c3">decodeFrameHeaderInfo</a> (const uint8_t *buf, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">sese::net::dns::FrameHeaderInfo</a> &amp;info) noexcept</td></tr>
+<tr class="memitem:aa6636db5c606085fa2bcffc1635421c3" id="r_aa6636db5c606085fa2bcffc1635421c3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6636db5c606085fa2bcffc1635421c3">decodeFrameHeaderInfo</a> (const uint8_t *buf, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">sese::net::dns::FrameHeaderInfo</a> &amp;info) noexcept</td></tr>
 <tr class="separator:aa6636db5c606085fa2bcffc1635421c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a367743fd6779474801d15ff974f45757" id="r_a367743fd6779474801d15ff974f45757"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a367743fd6779474801d15ff974f45757">encodeFrameHeaderInfo</a> (uint8_t *buf, const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">FrameHeaderInfo</a> &amp;info) noexcept</td></tr>
+<tr class="memitem:a367743fd6779474801d15ff974f45757" id="r_a367743fd6779474801d15ff974f45757"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a367743fd6779474801d15ff974f45757">encodeFrameHeaderInfo</a> (uint8_t *buf, const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">FrameHeaderInfo</a> &amp;info) noexcept</td></tr>
 <tr class="separator:a367743fd6779474801d15ff974f45757"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c069f5dcaf9a74fee799a3cc80e538" id="r_aa8c069f5dcaf9a74fee799a3cc80e538"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa8c069f5dcaf9a74fee799a3cc80e538">decodeQueries</a> (size_t qcount, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *input, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;vector) noexcept</td></tr>
+<tr class="memitem:aa8c069f5dcaf9a74fee799a3cc80e538" id="r_aa8c069f5dcaf9a74fee799a3cc80e538"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c069f5dcaf9a74fee799a3cc80e538">decodeQueries</a> (size_t qcount, <a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *input, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;vector) noexcept</td></tr>
 <tr class="separator:aa8c069f5dcaf9a74fee799a3cc80e538"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bac75c285b23644dca072f259f99b68" id="r_a5bac75c285b23644dca072f259f99b68"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a5bac75c285b23644dca072f259f99b68">decodeAnswers</a> (size_t acount, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *input, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;vector, const char *buffer) noexcept</td></tr>
+<tr class="memitem:a5bac75c285b23644dca072f259f99b68" id="r_a5bac75c285b23644dca072f259f99b68"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bac75c285b23644dca072f259f99b68">decodeAnswers</a> (size_t acount, <a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *input, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;vector, const char *buffer) noexcept</td></tr>
 <tr class="separator:a5bac75c285b23644dca072f259f99b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe31fc0e9517fe82cf184b76f7f57ea4" id="r_abe31fc0e9517fe82cf184b76f7f57ea4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#abe31fc0e9517fe82cf184b76f7f57ea4">encodeQueries</a> (<a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *output, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;vector) noexcept</td></tr>
+<tr class="memitem:abe31fc0e9517fe82cf184b76f7f57ea4" id="r_abe31fc0e9517fe82cf184b76f7f57ea4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe31fc0e9517fe82cf184b76f7f57ea4">encodeQueries</a> (<a class="el" href="#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *output, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;vector) noexcept</td></tr>
 <tr class="separator:abe31fc0e9517fe82cf184b76f7f57ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61018c045781d729733a176daed9aaf" id="r_ae61018c045781d729733a176daed9aaf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#ae61018c045781d729733a176daed9aaf">encodeAnswers</a> (<a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *output, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;vector) noexcept</td></tr>
+<tr class="memitem:ae61018c045781d729733a176daed9aaf" id="r_ae61018c045781d729733a176daed9aaf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae61018c045781d729733a176daed9aaf">encodeAnswers</a> (<a class="el" href="#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *output, std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;vector) noexcept</td></tr>
 <tr class="separator:ae61018c045781d729733a176daed9aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc7b45a9a3d44a8b4484d733dffeb95f" id="r_acc7b45a9a3d44a8b4484d733dffeb95f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#acc7b45a9a3d44a8b4484d733dffeb95f">decodeDomain</a> (<a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *input, std::string &amp;domain, const char *buffer, size_t level, bool &amp;finsh) noexcept</td></tr>
+<tr class="memitem:acc7b45a9a3d44a8b4484d733dffeb95f" id="r_acc7b45a9a3d44a8b4484d733dffeb95f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7b45a9a3d44a8b4484d733dffeb95f">decodeDomain</a> (<a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *input, std::string &amp;domain, const char *buffer, size_t level, bool &amp;finsh) noexcept</td></tr>
 <tr class="separator:acc7b45a9a3d44a8b4484d733dffeb95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静态 Private 成员函数</h2></td></tr>
-<tr class="memitem:a4ad2ff54ea65fb3c925bf045ffa563aa" id="r_a4ad2ff54ea65fb3c925bf045ffa563aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a4ad2ff54ea65fb3c925bf045ffa563aa">decodeFrameFlagsInfo</a> (const uint8_t *buf, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">sese::net::dns::FrameFlagsInfo</a> &amp;info) noexcept</td></tr>
+<tr class="memitem:a4ad2ff54ea65fb3c925bf045ffa563aa" id="r_a4ad2ff54ea65fb3c925bf045ffa563aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ad2ff54ea65fb3c925bf045ffa563aa">decodeFrameFlagsInfo</a> (const uint8_t *buf, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">sese::net::dns::FrameFlagsInfo</a> &amp;info) noexcept</td></tr>
 <tr class="separator:a4ad2ff54ea65fb3c925bf045ffa563aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1141c96b96f0f5d3db526278b3131254" id="r_a1141c96b96f0f5d3db526278b3131254"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a1141c96b96f0f5d3db526278b3131254">encodeFrameFlagsInfo</a> (uint8_t *buf, const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">FrameFlagsInfo</a> &amp;info) noexcept</td></tr>
+<tr class="memitem:a1141c96b96f0f5d3db526278b3131254" id="r_a1141c96b96f0f5d3db526278b3131254"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1141c96b96f0f5d3db526278b3131254">encodeFrameFlagsInfo</a> (uint8_t *buf, const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">FrameFlagsInfo</a> &amp;info) noexcept</td></tr>
 <tr class="separator:a1141c96b96f0f5d3db526278b3131254"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -181,7 +187,7 @@ Public 类型</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">sese::net::dns::DnsUtil::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
+          <td class="memname">using <a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">sese::net::dns::DnsUtil::InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -195,7 +201,7 @@ Public 类型</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a50ceaf21c27f001fe59391855d5c5062">sese::net::dns::DnsUtil::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
+          <td class="memname">using <a class="el" href="#a50ceaf21c27f001fe59391855d5c5062">sese::net::dns::DnsUtil::OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -215,31 +221,22 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">bool sese::net::dns::DnsUtil::decodeAnswers </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>acount</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>acount</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
+          <td class="paramtype"><a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vector</em>, </td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vector</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>buffer</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -275,37 +272,27 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">bool sese::net::dns::DnsUtil::decodeDomain </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
+          <td class="paramtype"><a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>domain</em>, </td>
+          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>domain</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>level</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>finsh</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool &amp;</td>          <td class="paramname"><span class="paramname"><em>finsh</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -326,9 +313,9 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>成功与否 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="_dns_util_8cpp.html#a8c2efc604bcbecd9dd699c5a57116dc9">ASSERT_READ</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#acc7b45a9a3d44a8b4484d733dffeb95f">decodeDomain()</a>, <a class="el" href="_config_8h.html#adef322795de1e9ca964d542350bb1167">DNS_PACKAGE_SIZE</a>, <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_dns_util_8cpp.html#a8c2efc604bcbecd9dd699c5a57116dc9">ASSERT_READ</a>, <a class="el" href="#acc7b45a9a3d44a8b4484d733dffeb95f">decodeDomain()</a>, <a class="el" href="_config_8h.html#adef322795de1e9ca964d542350bb1167">DNS_PACKAGE_SIZE</a>, <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#acc7b45a9a3d44a8b4484d733dffeb95f">decodeDomain()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#acc7b45a9a3d44a8b4484d733dffeb95f">decodeDomain()</a>.</p>
 
 </div>
 </div>
@@ -344,19 +331,12 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::dns::DnsUtil::decodeFrameFlagsInfo </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">sese::net::dns::FrameFlagsInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>info</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">sese::net::dns::FrameFlagsInfo</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>info</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -380,19 +360,12 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::dns::DnsUtil::decodeFrameHeaderInfo </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">sese::net::dns::FrameHeaderInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>info</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">sese::net::dns::FrameHeaderInfo</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>info</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -425,25 +398,17 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">bool sese::net::dns::DnsUtil::decodeQueries </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>qcount</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>qcount</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
+          <td class="paramtype"><a class="el" href="#a2702c509de38e78a842e0f7a780f5db4">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vector</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vector</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -480,19 +445,12 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::dns::DnsUtil::encodeAnswers </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vector</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_answer.html">Answer</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vector</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -527,19 +485,12 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::dns::DnsUtil::encodeFrameFlagsInfo </td>
           <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">FrameFlagsInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>info</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">FrameFlagsInfo</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>info</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -563,19 +514,12 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::dns::DnsUtil::encodeFrameHeaderInfo </td>
           <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">FrameHeaderInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>info</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">FrameHeaderInfo</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>info</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -608,19 +552,12 @@ Public 类型</h2></td></tr>
         <tr>
           <td class="memname">void sese::net::dns::DnsUtil::encodeQueries </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a50ceaf21c27f001fe59391855d5c5062">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vector</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classsese_1_1net_1_1dns_1_1_query.html">Query</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vector</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -653,7 +590,7 @@ Public 类型</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1dns.html">dns</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html">DnsUtil</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

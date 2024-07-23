@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::net::http::Cookie类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_cookie.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1net_1_1http_1_1_cookie.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,73 +142,73 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_cookie.ht
 <div class="contents">
 
 <p><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> 类  
- <a href="classsese_1_1net_1_1http_1_1_cookie.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_cookie_8h_source.html">Cookie.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a7ddde7eaaac809975f7061475f3bbcbe" id="r_a7ddde7eaaac809975f7061475f3bbcbe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html">Cookie</a> &gt;</td></tr>
+<tr class="memitem:a7ddde7eaaac809975f7061475f3bbcbe" id="r_a7ddde7eaaac809975f7061475f3bbcbe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ddde7eaaac809975f7061475f3bbcbe">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html">Cookie</a>&gt;</td></tr>
 <tr class="separator:a7ddde7eaaac809975f7061475f3bbcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a355e0680be631c26b662744409b3f8d7" id="r_a355e0680be631c26b662744409b3f8d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a355e0680be631c26b662744409b3f8d7">Cookie</a> (const std::string &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a596b3792a41e99890403f1c7b8419647">name</a>) noexcept</td></tr>
+<tr class="memitem:a355e0680be631c26b662744409b3f8d7" id="r_a355e0680be631c26b662744409b3f8d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a355e0680be631c26b662744409b3f8d7">Cookie</a> (const std::string &amp;<a class="el" href="#a596b3792a41e99890403f1c7b8419647">name</a>) noexcept</td></tr>
 <tr class="separator:a355e0680be631c26b662744409b3f8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09c0300cedf79f2e530f57e982dbe894" id="r_a09c0300cedf79f2e530f57e982dbe894"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a09c0300cedf79f2e530f57e982dbe894">Cookie</a> (const std::string &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a596b3792a41e99890403f1c7b8419647">name</a>, const std::string &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>) noexcept</td></tr>
+<tr class="memitem:a09c0300cedf79f2e530f57e982dbe894" id="r_a09c0300cedf79f2e530f57e982dbe894"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09c0300cedf79f2e530f57e982dbe894">Cookie</a> (const std::string &amp;<a class="el" href="#a596b3792a41e99890403f1c7b8419647">name</a>, const std::string &amp;<a class="el" href="#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>) noexcept</td></tr>
 <tr class="separator:a09c0300cedf79f2e530f57e982dbe894"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb2963e6bc124de8624c10044f453195" id="r_abb2963e6bc124de8624c10044f453195"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#abb2963e6bc124de8624c10044f453195">expired</a> (uint64_t now) const</td></tr>
+<tr class="memitem:abb2963e6bc124de8624c10044f453195" id="r_abb2963e6bc124de8624c10044f453195"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb2963e6bc124de8624c10044f453195">expired</a> (uint64_t now) const</td></tr>
 <tr class="separator:abb2963e6bc124de8624c10044f453195"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9750d287c09231ff7718c8c6637383a" id="r_ab9750d287c09231ff7718c8c6637383a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ab9750d287c09231ff7718c8c6637383a">isSecure</a> () const</td></tr>
+<tr class="memitem:ab9750d287c09231ff7718c8c6637383a" id="r_ab9750d287c09231ff7718c8c6637383a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9750d287c09231ff7718c8c6637383a">isSecure</a> () const</td></tr>
 <tr class="separator:ab9750d287c09231ff7718c8c6637383a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae66d1e0cb62fb0e69cd48f5973a2d6b" id="r_aae66d1e0cb62fb0e69cd48f5973a2d6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#aae66d1e0cb62fb0e69cd48f5973a2d6b">setSecure</a> (bool <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a>)</td></tr>
+<tr class="memitem:aae66d1e0cb62fb0e69cd48f5973a2d6b" id="r_aae66d1e0cb62fb0e69cd48f5973a2d6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae66d1e0cb62fb0e69cd48f5973a2d6b">setSecure</a> (bool <a class="el" href="#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a>)</td></tr>
 <tr class="separator:aae66d1e0cb62fb0e69cd48f5973a2d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a828e6bbf3bde9afb2c661847fbfc2ef7" id="r_a828e6bbf3bde9afb2c661847fbfc2ef7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a828e6bbf3bde9afb2c661847fbfc2ef7">isHttpOnly</a> () const</td></tr>
+<tr class="memitem:a828e6bbf3bde9afb2c661847fbfc2ef7" id="r_a828e6bbf3bde9afb2c661847fbfc2ef7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a828e6bbf3bde9afb2c661847fbfc2ef7">isHttpOnly</a> () const</td></tr>
 <tr class="separator:a828e6bbf3bde9afb2c661847fbfc2ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea7a5a4d15f2913d69ed0ca57345c09c" id="r_aea7a5a4d15f2913d69ed0ca57345c09c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#aea7a5a4d15f2913d69ed0ca57345c09c">setHttpOnly</a> (bool http_only)</td></tr>
+<tr class="memitem:aea7a5a4d15f2913d69ed0ca57345c09c" id="r_aea7a5a4d15f2913d69ed0ca57345c09c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea7a5a4d15f2913d69ed0ca57345c09c">setHttpOnly</a> (bool http_only)</td></tr>
 <tr class="separator:aea7a5a4d15f2913d69ed0ca57345c09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c204ffaba11ee32bdc9dd8382f85a24" id="r_a5c204ffaba11ee32bdc9dd8382f85a24"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a5c204ffaba11ee32bdc9dd8382f85a24">getMaxAge</a> () const</td></tr>
+<tr class="memitem:a5c204ffaba11ee32bdc9dd8382f85a24" id="r_a5c204ffaba11ee32bdc9dd8382f85a24"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c204ffaba11ee32bdc9dd8382f85a24">getMaxAge</a> () const</td></tr>
 <tr class="separator:a5c204ffaba11ee32bdc9dd8382f85a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7908c566525d49b8c3629e07a23a3163" id="r_a7908c566525d49b8c3629e07a23a3163"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7908c566525d49b8c3629e07a23a3163">setMaxAge</a> (uint64_t max_age)</td></tr>
+<tr class="memitem:a7908c566525d49b8c3629e07a23a3163" id="r_a7908c566525d49b8c3629e07a23a3163"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7908c566525d49b8c3629e07a23a3163">setMaxAge</a> (uint64_t max_age)</td></tr>
 <tr class="separator:a7908c566525d49b8c3629e07a23a3163"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7548151a2af8f8640f5ac4ffb947e715" id="r_a7548151a2af8f8640f5ac4ffb947e715"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7548151a2af8f8640f5ac4ffb947e715">getExpires</a> () const</td></tr>
+<tr class="memitem:a7548151a2af8f8640f5ac4ffb947e715" id="r_a7548151a2af8f8640f5ac4ffb947e715"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7548151a2af8f8640f5ac4ffb947e715">getExpires</a> () const</td></tr>
 <tr class="separator:a7548151a2af8f8640f5ac4ffb947e715"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81d0f27c1b1ac36f53c29edb6913b08d" id="r_a81d0f27c1b1ac36f53c29edb6913b08d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a81d0f27c1b1ac36f53c29edb6913b08d">setExpires</a> (uint64_t <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b">expires</a>)</td></tr>
+<tr class="memitem:a81d0f27c1b1ac36f53c29edb6913b08d" id="r_a81d0f27c1b1ac36f53c29edb6913b08d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81d0f27c1b1ac36f53c29edb6913b08d">setExpires</a> (uint64_t <a class="el" href="#a500f5a31d6fdef665c61037b58b86a7b">expires</a>)</td></tr>
 <tr class="separator:a81d0f27c1b1ac36f53c29edb6913b08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af892fa0fc298f515ec24c9ebe94f5501" id="r_af892fa0fc298f515ec24c9ebe94f5501"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#af892fa0fc298f515ec24c9ebe94f5501">getName</a> () const</td></tr>
+<tr class="memitem:af892fa0fc298f515ec24c9ebe94f5501" id="r_af892fa0fc298f515ec24c9ebe94f5501"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af892fa0fc298f515ec24c9ebe94f5501">getName</a> () const</td></tr>
 <tr class="separator:af892fa0fc298f515ec24c9ebe94f5501"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a249b1a0beeffa23e5f2d69be052ddeb2" id="r_a249b1a0beeffa23e5f2d69be052ddeb2"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a249b1a0beeffa23e5f2d69be052ddeb2">getValue</a> () const</td></tr>
+<tr class="memitem:a249b1a0beeffa23e5f2d69be052ddeb2" id="r_a249b1a0beeffa23e5f2d69be052ddeb2"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a249b1a0beeffa23e5f2d69be052ddeb2">getValue</a> () const</td></tr>
 <tr class="separator:a249b1a0beeffa23e5f2d69be052ddeb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4015fe4114a91950881d3d0740772e5e" id="r_a4015fe4114a91950881d3d0740772e5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a4015fe4114a91950881d3d0740772e5e">setValue</a> (const std::string &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>)</td></tr>
+<tr class="memitem:a4015fe4114a91950881d3d0740772e5e" id="r_a4015fe4114a91950881d3d0740772e5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4015fe4114a91950881d3d0740772e5e">setValue</a> (const std::string &amp;<a class="el" href="#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>)</td></tr>
 <tr class="separator:a4015fe4114a91950881d3d0740772e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5af40b990582d10ae68f2e030034e3d7" id="r_a5af40b990582d10ae68f2e030034e3d7"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a5af40b990582d10ae68f2e030034e3d7">getDomain</a> () const</td></tr>
+<tr class="memitem:a5af40b990582d10ae68f2e030034e3d7" id="r_a5af40b990582d10ae68f2e030034e3d7"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5af40b990582d10ae68f2e030034e3d7">getDomain</a> () const</td></tr>
 <tr class="separator:a5af40b990582d10ae68f2e030034e3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace20b523307f89c71a2464c569fb5dbf" id="r_ace20b523307f89c71a2464c569fb5dbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ace20b523307f89c71a2464c569fb5dbf">setDomain</a> (const std::string &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e">domain</a>)</td></tr>
+<tr class="memitem:ace20b523307f89c71a2464c569fb5dbf" id="r_ace20b523307f89c71a2464c569fb5dbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace20b523307f89c71a2464c569fb5dbf">setDomain</a> (const std::string &amp;<a class="el" href="#ab2ba5f123f17a3db2c300c32ee74689e">domain</a>)</td></tr>
 <tr class="separator:ace20b523307f89c71a2464c569fb5dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1cb7618016274d14c1811b4043773d7" id="r_af1cb7618016274d14c1811b4043773d7"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#af1cb7618016274d14c1811b4043773d7">getPath</a> () const</td></tr>
+<tr class="memitem:af1cb7618016274d14c1811b4043773d7" id="r_af1cb7618016274d14c1811b4043773d7"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1cb7618016274d14c1811b4043773d7">getPath</a> () const</td></tr>
 <tr class="separator:af1cb7618016274d14c1811b4043773d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20cf3a19cb45dfcbee53e1ad8646adf1" id="r_a20cf3a19cb45dfcbee53e1ad8646adf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a20cf3a19cb45dfcbee53e1ad8646adf1">setPath</a> (const std::string &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ad03881ed1b737fc88293c4f54a8ff369">path</a>)</td></tr>
+<tr class="memitem:a20cf3a19cb45dfcbee53e1ad8646adf1" id="r_a20cf3a19cb45dfcbee53e1ad8646adf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20cf3a19cb45dfcbee53e1ad8646adf1">setPath</a> (const std::string &amp;<a class="el" href="#ad03881ed1b737fc88293c4f54a8ff369">path</a>)</td></tr>
 <tr class="separator:a20cf3a19cb45dfcbee53e1ad8646adf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11039f50ed10026932af9650bc7513c1" id="r_a11039f50ed10026932af9650bc7513c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a11039f50ed10026932af9650bc7513c1">updateExpiresFrom</a> (uint64_t now)</td></tr>
+<tr class="memitem:a11039f50ed10026932af9650bc7513c1" id="r_a11039f50ed10026932af9650bc7513c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11039f50ed10026932af9650bc7513c1">updateExpiresFrom</a> (uint64_t now)</td></tr>
 <tr class="separator:a11039f50ed10026932af9650bc7513c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:a3da54e655eeb9c9ddbd9900dfbd89693" id="r_a3da54e655eeb9c9ddbd9900dfbd89693"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a> = false</td></tr>
+<tr class="memitem:a3da54e655eeb9c9ddbd9900dfbd89693" id="r_a3da54e655eeb9c9ddbd9900dfbd89693"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a> = false</td></tr>
 <tr class="separator:a3da54e655eeb9c9ddbd9900dfbd89693"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74914ce504293cc039cfde225a8a7de4" id="r_a74914ce504293cc039cfde225a8a7de4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a74914ce504293cc039cfde225a8a7de4">httpOnly</a> = false</td></tr>
+<tr class="memitem:a74914ce504293cc039cfde225a8a7de4" id="r_a74914ce504293cc039cfde225a8a7de4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74914ce504293cc039cfde225a8a7de4">httpOnly</a> = false</td></tr>
 <tr class="separator:a74914ce504293cc039cfde225a8a7de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6991a73625f3f7787e995da8e56416a5" id="r_a6991a73625f3f7787e995da8e56416a5"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a6991a73625f3f7787e995da8e56416a5">maxAge</a> = 0</td></tr>
+<tr class="memitem:a6991a73625f3f7787e995da8e56416a5" id="r_a6991a73625f3f7787e995da8e56416a5"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6991a73625f3f7787e995da8e56416a5">maxAge</a> = 0</td></tr>
 <tr class="separator:a6991a73625f3f7787e995da8e56416a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a500f5a31d6fdef665c61037b58b86a7b" id="r_a500f5a31d6fdef665c61037b58b86a7b"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b">expires</a> = 0</td></tr>
+<tr class="memitem:a500f5a31d6fdef665c61037b58b86a7b" id="r_a500f5a31d6fdef665c61037b58b86a7b"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a500f5a31d6fdef665c61037b58b86a7b">expires</a> = 0</td></tr>
 <tr class="separator:a500f5a31d6fdef665c61037b58b86a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a596b3792a41e99890403f1c7b8419647" id="r_a596b3792a41e99890403f1c7b8419647"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a596b3792a41e99890403f1c7b8419647">name</a></td></tr>
+<tr class="memitem:a596b3792a41e99890403f1c7b8419647" id="r_a596b3792a41e99890403f1c7b8419647"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a596b3792a41e99890403f1c7b8419647">name</a></td></tr>
 <tr class="separator:a596b3792a41e99890403f1c7b8419647"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c5c1c9b06c45b8247cdbc7cfa9556d6" id="r_a7c5c1c9b06c45b8247cdbc7cfa9556d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a></td></tr>
+<tr class="memitem:a7c5c1c9b06c45b8247cdbc7cfa9556d6" id="r_a7c5c1c9b06c45b8247cdbc7cfa9556d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a></td></tr>
 <tr class="separator:a7c5c1c9b06c45b8247cdbc7cfa9556d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2ba5f123f17a3db2c300c32ee74689e" id="r_ab2ba5f123f17a3db2c300c32ee74689e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e">domain</a></td></tr>
+<tr class="memitem:ab2ba5f123f17a3db2c300c32ee74689e" id="r_ab2ba5f123f17a3db2c300c32ee74689e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2ba5f123f17a3db2c300c32ee74689e">domain</a></td></tr>
 <tr class="separator:ab2ba5f123f17a3db2c300c32ee74689e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad03881ed1b737fc88293c4f54a8ff369" id="r_ad03881ed1b737fc88293c4f54a8ff369"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ad03881ed1b737fc88293c4f54a8ff369">path</a></td></tr>
+<tr class="memitem:ad03881ed1b737fc88293c4f54a8ff369" id="r_ad03881ed1b737fc88293c4f54a8ff369"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad03881ed1b737fc88293c4f54a8ff369">path</a></td></tr>
 <tr class="separator:ad03881ed1b737fc88293c4f54a8ff369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -215,7 +221,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">sese::net::http::Cookie::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html">Cookie</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#a7ddde7eaaac809975f7061475f3bbcbe">sese::net::http::Cookie::Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html">Cookie</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -235,8 +241,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">Cookie::Cookie </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -261,19 +266,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">Cookie::Cookie </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -291,18 +289,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Cookie::expired </td>
           <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>now</em></td><td>)</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>now</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b">expires</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a500f5a31d6fdef665c61037b58b86a7b">expires</a>.</p>
 
 </div>
 </div>
@@ -311,17 +316,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; Cookie::getDomain </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e">domain</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab2ba5f123f17a3db2c300c32ee74689e">domain</a>.</p>
 
 </div>
 </div>
@@ -330,17 +343,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint64_t Cookie::getExpires </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b">expires</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a500f5a31d6fdef665c61037b58b86a7b">expires</a>.</p>
 
 </div>
 </div>
@@ -349,17 +370,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint64_t Cookie::getMaxAge </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a6991a73625f3f7787e995da8e56416a5">maxAge</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a6991a73625f3f7787e995da8e56416a5">maxAge</a>.</p>
 
 </div>
 </div>
@@ -368,17 +397,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; Cookie::getName </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a596b3792a41e99890403f1c7b8419647">name</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a596b3792a41e99890403f1c7b8419647">name</a>.</p>
 
 </div>
 </div>
@@ -387,17 +424,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; Cookie::getPath </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ad03881ed1b737fc88293c4f54a8ff369">path</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ad03881ed1b737fc88293c4f54a8ff369">path</a>.</p>
 
 </div>
 </div>
@@ -406,17 +451,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; Cookie::getValue </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>.</p>
 
 </div>
 </div>
@@ -425,17 +478,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Cookie::isHttpOnly </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a74914ce504293cc039cfde225a8a7de4">httpOnly</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a74914ce504293cc039cfde225a8a7de4">httpOnly</a>.</p>
 
 </div>
 </div>
@@ -444,17 +505,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Cookie::isSecure </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a>.</p>
 
 </div>
 </div>
@@ -467,14 +536,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setDomain </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>domain</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>domain</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e">domain</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab2ba5f123f17a3db2c300c32ee74689e">domain</a>.</p>
 
 </div>
 </div>
@@ -487,14 +555,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setExpires </td>
           <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>expires</em></td><td>)</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>expires</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b">expires</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a500f5a31d6fdef665c61037b58b86a7b">expires</a>.</p>
 
 </div>
 </div>
@@ -507,14 +574,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setHttpOnly </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>http_only</em></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>http_only</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a74914ce504293cc039cfde225a8a7de4">httpOnly</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a74914ce504293cc039cfde225a8a7de4">httpOnly</a>.</p>
 
 </div>
 </div>
@@ -527,14 +593,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setMaxAge </td>
           <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>max_age</em></td><td>)</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>max_age</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a6991a73625f3f7787e995da8e56416a5">maxAge</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a6991a73625f3f7787e995da8e56416a5">maxAge</a>.</p>
 
 </div>
 </div>
@@ -547,14 +612,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setPath </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ad03881ed1b737fc88293c4f54a8ff369">path</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ad03881ed1b737fc88293c4f54a8ff369">path</a>.</p>
 
 </div>
 </div>
@@ -567,14 +631,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setSecure </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>secure</em></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>secure</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a3da54e655eeb9c9ddbd9900dfbd89693">secure</a>.</p>
 
 </div>
 </div>
@@ -587,14 +650,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::setValue </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7c5c1c9b06c45b8247cdbc7cfa9556d6">value</a>.</p>
 
 </div>
 </div>
@@ -607,14 +669,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void Cookie::updateExpiresFrom </td>
           <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>now</em></td><td>)</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>now</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b">expires</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a6991a73625f3f7787e995da8e56416a5">maxAge</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a500f5a31d6fdef665c61037b58b86a7b">expires</a> , 以及 <a class="el" href="#a6991a73625f3f7787e995da8e56416a5">maxAge</a>.</p>
 
 </div>
 </div>
@@ -639,7 +700,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a5af40b990582d10ae68f2e030034e3d7">getDomain()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ace20b523307f89c71a2464c569fb5dbf">setDomain()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a5af40b990582d10ae68f2e030034e3d7">getDomain()</a> , 以及 <a class="el" href="#ace20b523307f89c71a2464c569fb5dbf">setDomain()</a>.</p>
 
 </div>
 </div>
@@ -663,7 +724,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#abb2963e6bc124de8624c10044f453195">expired()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7548151a2af8f8640f5ac4ffb947e715">getExpires()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a81d0f27c1b1ac36f53c29edb6913b08d">setExpires()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a11039f50ed10026932af9650bc7513c1">updateExpiresFrom()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#abb2963e6bc124de8624c10044f453195">expired()</a>, <a class="el" href="#a7548151a2af8f8640f5ac4ffb947e715">getExpires()</a>, <a class="el" href="#a81d0f27c1b1ac36f53c29edb6913b08d">setExpires()</a> , 以及 <a class="el" href="#a11039f50ed10026932af9650bc7513c1">updateExpiresFrom()</a>.</p>
 
 </div>
 </div>
@@ -687,7 +748,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a828e6bbf3bde9afb2c661847fbfc2ef7">isHttpOnly()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#aea7a5a4d15f2913d69ed0ca57345c09c">setHttpOnly()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a828e6bbf3bde9afb2c661847fbfc2ef7">isHttpOnly()</a> , 以及 <a class="el" href="#aea7a5a4d15f2913d69ed0ca57345c09c">setHttpOnly()</a>.</p>
 
 </div>
 </div>
@@ -711,7 +772,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a5c204ffaba11ee32bdc9dd8382f85a24">getMaxAge()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7908c566525d49b8c3629e07a23a3163">setMaxAge()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a11039f50ed10026932af9650bc7513c1">updateExpiresFrom()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a5c204ffaba11ee32bdc9dd8382f85a24">getMaxAge()</a>, <a class="el" href="#a7908c566525d49b8c3629e07a23a3163">setMaxAge()</a> , 以及 <a class="el" href="#a11039f50ed10026932af9650bc7513c1">updateExpiresFrom()</a>.</p>
 
 </div>
 </div>
@@ -735,7 +796,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#af892fa0fc298f515ec24c9ebe94f5501">getName()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#af892fa0fc298f515ec24c9ebe94f5501">getName()</a>.</p>
 
 </div>
 </div>
@@ -759,7 +820,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#af1cb7618016274d14c1811b4043773d7">getPath()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a20cf3a19cb45dfcbee53e1ad8646adf1">setPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#af1cb7618016274d14c1811b4043773d7">getPath()</a> , 以及 <a class="el" href="#a20cf3a19cb45dfcbee53e1ad8646adf1">setPath()</a>.</p>
 
 </div>
 </div>
@@ -783,7 +844,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#ab9750d287c09231ff7718c8c6637383a">isSecure()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#aae66d1e0cb62fb0e69cd48f5973a2d6b">setSecure()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ab9750d287c09231ff7718c8c6637383a">isSecure()</a> , 以及 <a class="el" href="#aae66d1e0cb62fb0e69cd48f5973a2d6b">setSecure()</a>.</p>
 
 </div>
 </div>
@@ -807,7 +868,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a249b1a0beeffa23e5f2d69be052ddeb2">getValue()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a4015fe4114a91950881d3d0740772e5e">setValue()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a249b1a0beeffa23e5f2d69be052ddeb2">getValue()</a> , 以及 <a class="el" href="#a4015fe4114a91950881d3d0740772e5e">setValue()</a>.</p>
 
 </div>
 </div>
@@ -821,7 +882,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html">Cookie</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

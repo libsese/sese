@@ -6,5 +6,5 @@ var searchData=
   ['delete_3',['DELETE',['../namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a32f68a60cef40faedbc6af20298c1a1e',1,'sese::net::http']]],
   ['dict_4',['DICT',['../classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e',1,'sese::Value']]],
   ['dir_5',['DIR',['../classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590',1,'sese::archive::Config']]],
-  ['double_6',['double',['../classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229',1,'sese::Value::DOUBLE'],['../namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeafd3e4ece78a7d422280d5ed379482229',1,'sese::db::DOUBLE']]]
+  ['double_6',['DOUBLE',['../classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229',1,'sese::Value::DOUBLE'],['../namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeafd3e4ece78a7d422280d5ed379482229',1,'sese::db::DOUBLE']]]
 ];

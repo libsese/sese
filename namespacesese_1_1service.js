@@ -10,8 +10,8 @@ var namespacesese_1_1service =
     [ "TcpTransporter", "classsese_1_1service_1_1_tcp_transporter.html", "classsese_1_1service_1_1_tcp_transporter" ],
     [ "TcpTransporterConfig", "structsese_1_1service_1_1_tcp_transporter_config.html", "structsese_1_1service_1_1_tcp_transporter_config" ],
     [ "UserBalanceLoader", "classsese_1_1service_1_1_user_balance_loader.html", "classsese_1_1service_1_1_user_balance_loader" ],
-    [ "BalanceLoader", "namespacesese_1_1service.html#a0d7f8d545cd282a6461e63fcfb01adf3", null ],
-    [ "Service", "namespacesese_1_1service.html#a00b6a5fbcaad82b4df411c94c6c3d73c", null ],
+    [ "BalanceLoader", "namespacesese_1_1service.html#a32a5ce5b1c88d9613447496e6cf9853f", null ],
+    [ "Service", "namespacesese_1_1service.html#acf34ca12a9e976e6390f07c2cd7110df", null ],
     [ "TimeoutEvent", "namespacesese_1_1service.html#a5773522c8d62f1cb26ed9b03db79c379", null ],
     [ "TimerableService", "namespacesese_1_1service.html#aaa17d2d411e4387cbb04f55511ff993d", null ]
 ];

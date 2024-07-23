@@ -1,7 +1,7 @@
 var classsese_1_1_yaml =
 [
     [ "Tokens", "classsese_1_1_yaml.html#a6c704fc7e0bda10aef45da6f7f079acc", null ],
-    [ "TokensQueue", "classsese_1_1_yaml.html#a551947dcb677e5bef0cb19733993f9bc", null ],
+    [ "TokensQueue", "classsese_1_1_yaml.html#a1ccb75977a6d860dbd53326987424720", null ],
     [ "parse", "classsese_1_1_yaml.html#a7169e079338c40568498b4dfa4db3e93", null ],
     [ "parseArray", "classsese_1_1_yaml.html#ab720cea47a5be8c478bec54e68c5e354", null ],
     [ "parseObject", "classsese_1_1_yaml.html#a8a29c2165e43cc3a3f49a15b0b475da0", null ],

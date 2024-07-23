@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::ThreadPool类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1_thread_pool.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1_thread_pool.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,7 +143,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_thread_pool.html',''); i
 <div class="contents">
 
 <p>线程池类  
- <a href="classsese_1_1_thread_pool.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -158,37 +164,37 @@ $(document).ready(function(){initNavTree('classsese_1_1_thread_pool.html',''); i
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:acab6965077f045f388217c64e032479b" id="r_acab6965077f045f388217c64e032479b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#acab6965077f045f388217c64e032479b">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> &gt;</td></tr>
+<tr class="memitem:acab6965077f045f388217c64e032479b" id="r_acab6965077f045f388217c64e032479b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acab6965077f045f388217c64e032479b">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a>&gt;</td></tr>
 <tr class="separator:acab6965077f045f388217c64e032479b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:aa23e3306f0d6732e6641d68d7e3e0b9c" id="r_aa23e3306f0d6732e6641d68d7e3e0b9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool</a> (std::string thread_pool_name=<a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a>, size_t <a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>=4)</td></tr>
+<tr class="memitem:aa23e3306f0d6732e6641d68d7e3e0b9c" id="r_aa23e3306f0d6732e6641d68d7e3e0b9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool</a> (std::string thread_pool_name=<a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a>, size_t <a class="el" href="#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>=4)</td></tr>
 <tr class="separator:aa23e3306f0d6732e6641d68d7e3e0b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a773801f1d002420c53dc134cde32e2b2" id="r_a773801f1d002420c53dc134cde32e2b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a773801f1d002420c53dc134cde32e2b2">~ThreadPool</a> () override</td></tr>
+<tr class="memitem:a773801f1d002420c53dc134cde32e2b2" id="r_a773801f1d002420c53dc134cde32e2b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a773801f1d002420c53dc134cde32e2b2">~ThreadPool</a> () override</td></tr>
 <tr class="separator:a773801f1d002420c53dc134cde32e2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadee48e5e9248d6dabc53dc7db24f8cd" id="r_aadee48e5e9248d6dabc53dc7db24f8cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask</a> (const std::function&lt; void()&gt; &amp;task)</td></tr>
+<tr class="memitem:aadee48e5e9248d6dabc53dc7db24f8cd" id="r_aadee48e5e9248d6dabc53dc7db24f8cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadee48e5e9248d6dabc53dc7db24f8cd">postTask</a> (const std::function&lt; void()&gt; &amp;task)</td></tr>
 <tr class="separator:aadee48e5e9248d6dabc53dc7db24f8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ea9b4866d3dd366f5f287627bf4c318" id="r_a6ea9b4866d3dd366f5f287627bf4c318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a6ea9b4866d3dd366f5f287627bf4c318">postTask</a> (const std::vector&lt; std::function&lt; void()&gt; &gt; &amp;tasks)</td></tr>
+<tr class="memitem:a6ea9b4866d3dd366f5f287627bf4c318" id="r_a6ea9b4866d3dd366f5f287627bf4c318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ea9b4866d3dd366f5f287627bf4c318">postTask</a> (const std::vector&lt; std::function&lt; void()&gt; &gt; &amp;tasks)</td></tr>
 <tr class="separator:a6ea9b4866d3dd366f5f287627bf4c318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ea4548199bfb8c35aa92fa6797f3acd" id="r_a1ea4548199bfb8c35aa92fa6797f3acd"><td class="memTemplParams" colspan="2">template&lt;typename FUNCTION , typename... ARGS&gt; </td></tr>
-<tr class="memitem:a1ea4548199bfb8c35aa92fa6797f3acd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a1ea4548199bfb8c35aa92fa6797f3acd">postTaskEx</a> (FUNCTION &amp;&amp;<a class="el" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a>, ARGS &amp;&amp;...args)</td></tr>
+<tr class="memitem:a1ea4548199bfb8c35aa92fa6797f3acd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1ea4548199bfb8c35aa92fa6797f3acd">postTaskEx</a> (FUNCTION &amp;&amp;<a class="el" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a>, ARGS &amp;&amp;...args)</td></tr>
 <tr class="separator:a1ea4548199bfb8c35aa92fa6797f3acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a024e526d148b9b1c3cafccdc42f044cc" id="r_a024e526d148b9b1c3cafccdc42f044cc"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
-<tr class="memitem:a024e526d148b9b1c3cafccdc42f044cc"><td class="memTemplItemLeft" align="right" valign="top">std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a024e526d148b9b1c3cafccdc42f044cc">postTask</a> (const std::function&lt; RETURN_TYPE()&gt; &amp;tasks)</td></tr>
+<tr class="memitem:a024e526d148b9b1c3cafccdc42f044cc"><td class="memTemplItemLeft" align="right" valign="top">std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a024e526d148b9b1c3cafccdc42f044cc">postTask</a> (const std::function&lt; RETURN_TYPE()&gt; &amp;tasks)</td></tr>
 <tr class="separator:a024e526d148b9b1c3cafccdc42f044cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad60b449591fbe1e86cb7c8afc896b437" id="r_ad60b449591fbe1e86cb7c8afc896b437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown</a> ()</td></tr>
+<tr class="memitem:ad60b449591fbe1e86cb7c8afc896b437" id="r_ad60b449591fbe1e86cb7c8afc896b437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad60b449591fbe1e86cb7c8afc896b437">shutdown</a> ()</td></tr>
 <tr class="memdesc:ad60b449591fbe1e86cb7c8afc896b437"><td class="mdescLeft">&#160;</td><td class="mdescRight">关闭当前线程池并阻塞至子线程退出  <br /></td></tr>
 <tr class="separator:ad60b449591fbe1e86cb7c8afc896b437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91bb13b6c676612dfabba4e6b65329f7" id="r_a91bb13b6c676612dfabba4e6b65329f7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a91bb13b6c676612dfabba4e6b65329f7">size</a> () noexcept</td></tr>
+<tr class="memitem:a91bb13b6c676612dfabba4e6b65329f7" id="r_a91bb13b6c676612dfabba4e6b65329f7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91bb13b6c676612dfabba4e6b65329f7">size</a> () noexcept</td></tr>
 <tr class="separator:a91bb13b6c676612dfabba4e6b65329f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89126914685345c7e3a297f9ac1e3e46" id="r_a89126914685345c7e3a297f9ac1e3e46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a89126914685345c7e3a297f9ac1e3e46">empty</a> () noexcept</td></tr>
+<tr class="memitem:a89126914685345c7e3a297f9ac1e3e46" id="r_a89126914685345c7e3a297f9ac1e3e46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89126914685345c7e3a297f9ac1e3e46">empty</a> () noexcept</td></tr>
 <tr class="separator:a89126914685345c7e3a297f9ac1e3e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26dc2666e1e7828b6ed05de924479c43" id="r_a26dc2666e1e7828b6ed05de924479c43"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a26dc2666e1e7828b6ed05de924479c43">getName</a> () const</td></tr>
+<tr class="memitem:a26dc2666e1e7828b6ed05de924479c43" id="r_a26dc2666e1e7828b6ed05de924479c43"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26dc2666e1e7828b6ed05de924479c43">getName</a> () const</td></tr>
 <tr class="separator:a26dc2666e1e7828b6ed05de924479c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff7870797445ca12fe0632605bf685a4" id="r_aff7870797445ca12fe0632605bf685a4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aff7870797445ca12fe0632605bf685a4">getThreads</a> () const</td></tr>
+<tr class="memitem:aff7870797445ca12fe0632605bf685a4" id="r_aff7870797445ca12fe0632605bf685a4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff7870797445ca12fe0632605bf685a4">getThreads</a> () const</td></tr>
 <tr class="separator:aff7870797445ca12fe0632605bf685a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1_noncopyable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_noncopyable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_noncopyable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1_noncopyable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td></tr>
 <tr class="memitem:a9617504ed3c5dd90a447dc77738dc591 inherit pub_methods_classsese_1_1_noncopyable" id="r_a9617504ed3c5dd90a447dc77738dc591"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a9617504ed3c5dd90a447dc77738dc591">Noncopyable</a> ()=default</td></tr>
 <tr class="separator:a9617504ed3c5dd90a447dc77738dc591 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45e87fb882cec8e6e33a080cfe9e8e98 inherit pub_methods_classsese_1_1_noncopyable" id="r_a45e87fb882cec8e6e33a080cfe9e8e98"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a45e87fb882cec8e6e33a080cfe9e8e98">~Noncopyable</a> ()=default</td></tr>
@@ -202,13 +208,13 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:aa5be4192c6a172b82dae5a266c12690f" id="r_aa5be4192c6a172b82dae5a266c12690f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa5be4192c6a172b82dae5a266c12690f">name</a></td></tr>
+<tr class="memitem:aa5be4192c6a172b82dae5a266c12690f" id="r_aa5be4192c6a172b82dae5a266c12690f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5be4192c6a172b82dae5a266c12690f">name</a></td></tr>
 <tr class="separator:aa5be4192c6a172b82dae5a266c12690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa88fa0145dadaebe4ec54aa566cd46d2" id="r_aa88fa0145dadaebe4ec54aa566cd46d2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a> = 0</td></tr>
+<tr class="memitem:aa88fa0145dadaebe4ec54aa566cd46d2" id="r_aa88fa0145dadaebe4ec54aa566cd46d2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a> = 0</td></tr>
 <tr class="separator:aa88fa0145dadaebe4ec54aa566cd46d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a748643eac74490a895ce79a3c0bf410e" id="r_a748643eac74490a895ce79a3c0bf410e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classsese_1_1_thread.html">Thread</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a></td></tr>
+<tr class="memitem:a748643eac74490a895ce79a3c0bf410e" id="r_a748643eac74490a895ce79a3c0bf410e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classsese_1_1_thread.html">Thread</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a748643eac74490a895ce79a3c0bf410e">threadGroup</a></td></tr>
 <tr class="separator:a748643eac74490a895ce79a3c0bf410e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73637e4c326342f1308d703bb6701ed7" id="r_a73637e4c326342f1308d703bb6701ed7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structsese_1_1_thread_pool_1_1_runtime_data.html">RuntimeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a></td></tr>
+<tr class="memitem:a73637e4c326342f1308d703bb6701ed7" id="r_a73637e4c326342f1308d703bb6701ed7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structsese_1_1_thread_pool_1_1_runtime_data.html">RuntimeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a></td></tr>
 <tr class="separator:a73637e4c326342f1308d703bb6701ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -221,7 +227,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1_thread_pool.html#acab6965077f045f388217c64e032479b">sese::ThreadPool::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#acab6965077f045f388217c64e032479b">sese::ThreadPool::Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -241,19 +247,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::ThreadPool::ThreadPool </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>thread_pool_name</em> = <code><a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a></code>, </td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>thread_pool_name</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>threads</em> = <code>4</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>threads</em></span><span class="paramdefsep"> = </span><span class="paramdefval">4</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -270,7 +269,7 @@ Private 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>, <a class="el" href="classsese_1_1_thread_pool.html#aa5be4192c6a172b82dae5a266c12690f">name</a>, <a class="el" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a>, <a class="el" href="#aa5be4192c6a172b82dae5a266c12690f">name</a>, <a class="el" href="#a748643eac74490a895ce79a3c0bf410e">threadGroup</a> , 以及 <a class="el" href="#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>.</p>
 
 </div>
 </div>
@@ -286,7 +285,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::ThreadPool::~ThreadPool </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -297,7 +296,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a> , 以及 <a class="el" href="#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -314,18 +313,18 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">bool sese::ThreadPool::empty </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
 
 </div>
 </div>
@@ -341,18 +340,18 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">const std::string &amp; sese::ThreadPool::getName </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#aa5be4192c6a172b82dae5a266c12690f">name</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aa5be4192c6a172b82dae5a266c12690f">name</a>.</p>
 
 </div>
 </div>
@@ -368,18 +367,18 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">size_t sese::ThreadPool::getThreads </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>.</p>
 
 </div>
 </div>
@@ -394,8 +393,7 @@ template&lt;class RETURN_TYPE &gt; </div>
         <tr>
           <td class="memname">std::shared_future&lt; RETURN_TYPE &gt; sese::ThreadPool::postTask </td>
           <td>(</td>
-          <td class="paramtype">const std::function&lt; RETURN_TYPE()&gt; &amp;&#160;</td>
-          <td class="paramname"><em>tasks</em></td><td>)</td>
+          <td class="paramtype">const std::function&lt; RETURN_TYPE()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tasks</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -415,7 +413,7 @@ template&lt;class RETURN_TYPE &gt; </div>
 <dl class="section return"><dt>返回</dt><dd>std::shared_future 对象 </dd></dl>
 <p>注意： 由于 std::packaged_task 属于不可拷贝对象， 并且 std::function 会对参数类型进行擦除，导致 std::move 也无法作用于不可拷贝对象， 所以此处选择了使用 std::shared_ptr 对 std::packaged_task 进行封装</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>.</p>
 
 </div>
 </div>
@@ -428,8 +426,7 @@ template&lt;class RETURN_TYPE &gt; </div>
         <tr>
           <td class="memname">void sese::ThreadPool::postTask </td>
           <td>(</td>
-          <td class="paramtype">const std::function&lt; void()&gt; &amp;&#160;</td>
-          <td class="paramname"><em>task</em></td><td>)</td>
+          <td class="paramtype">const std::function&lt; void()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>task</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -441,9 +438,9 @@ template&lt;class RETURN_TYPE &gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="namespacesese.html#a6a6da68e9dbdc9dd32902487bde06506">sese::async()</a>, <a class="el" href="classsese_1_1_thread_pool.html#a024e526d148b9b1c3cafccdc42f044cc">postTask()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#a1ea4548199bfb8c35aa92fa6797f3acd">postTaskEx()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="namespacesese.html#a6a6da68e9dbdc9dd32902487bde06506">sese::async()</a>, <a class="el" href="#a024e526d148b9b1c3cafccdc42f044cc">postTask()</a> , 以及 <a class="el" href="#a1ea4548199bfb8c35aa92fa6797f3acd">postTaskEx()</a>.</p>
 
 </div>
 </div>
@@ -456,8 +453,7 @@ template&lt;class RETURN_TYPE &gt; </div>
         <tr>
           <td class="memname">void sese::ThreadPool::postTask </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::function&lt; void()&gt; &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tasks</em></td><td>)</td>
+          <td class="paramtype">const std::vector&lt; std::function&lt; void()&gt; &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tasks</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -469,7 +465,7 @@ template&lt;class RETURN_TYPE &gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
 
 </div>
 </div>
@@ -487,19 +483,12 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
         <tr>
           <td class="memname">void sese::ThreadPool::postTaskEx </td>
           <td>(</td>
-          <td class="paramtype">FUNCTION &amp;&amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
+          <td class="paramtype">FUNCTION &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ARGS &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">ARGS &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -523,7 +512,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a> , 以及 <a class="el" href="#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>.</p>
 
 </div>
 </div>
@@ -536,7 +525,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
         <tr>
           <td class="memname">void sese::ThreadPool::shutdown </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -544,9 +533,9 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 
 <p>关闭当前线程池并阻塞至子线程退出 </p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a> , 以及 <a class="el" href="#a748643eac74490a895ce79a3c0bf410e">threadGroup</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#a773801f1d002420c53dc134cde32e2b2">~ThreadPool()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a773801f1d002420c53dc134cde32e2b2">~ThreadPool()</a>.</p>
 
 </div>
 </div>
@@ -562,18 +551,18 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
         <tr>
           <td class="memname">size_t sese::ThreadPool::size </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
 
 </div>
 </div>
@@ -598,7 +587,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#a89126914685345c7e3a297f9ac1e3e46">empty()</a>, <a class="el" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>, <a class="el" href="classsese_1_1_thread_pool.html#a6ea9b4866d3dd366f5f287627bf4c318">postTask()</a>, <a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a>, <a class="el" href="classsese_1_1_thread_pool.html#a91bb13b6c676612dfabba4e6b65329f7">size()</a>, <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#a773801f1d002420c53dc134cde32e2b2">~ThreadPool()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a89126914685345c7e3a297f9ac1e3e46">empty()</a>, <a class="el" href="#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>, <a class="el" href="#a6ea9b4866d3dd366f5f287627bf4c318">postTask()</a>, <a class="el" href="#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a>, <a class="el" href="#a91bb13b6c676612dfabba4e6b65329f7">size()</a>, <a class="el" href="#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a> , 以及 <a class="el" href="#a773801f1d002420c53dc134cde32e2b2">~ThreadPool()</a>.</p>
 
 </div>
 </div>
@@ -622,7 +611,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#a26dc2666e1e7828b6ed05de924479c43">getName()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a26dc2666e1e7828b6ed05de924479c43">getName()</a> , 以及 <a class="el" href="#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
 
 </div>
 </div>
@@ -646,7 +635,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a> , 以及 <a class="el" href="#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
 
 </div>
 </div>
@@ -670,7 +659,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#aff7870797445ca12fe0632605bf685a4">getThreads()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#aff7870797445ca12fe0632605bf685a4">getThreads()</a> , 以及 <a class="el" href="#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
 
 </div>
 </div>
@@ -684,7 +673,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

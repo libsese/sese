@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::event::BaseEventLoop类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1event_1_1_base_event_loop.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1event_1_1_base_event_loop.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,7 +141,7 @@ $(document).ready(function(){initNavTree('classsese_1_1event_1_1_base_event_loop
 <div class="contents">
 
 <p>基础网络事件循环接口  
- <a href="classsese_1_1event_1_1_base_event_loop.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_base_event_loop_8h_source.html">BaseEventLoop.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -152,34 +158,34 @@ $(document).ready(function(){initNavTree('classsese_1_1event_1_1_base_event_loop
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a377d38f5f4c3386967c7e4a791d5810f" id="r_a377d38f5f4c3386967c7e4a791d5810f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a377d38f5f4c3386967c7e4a791d5810f">init</a> ()=0</td></tr>
+<tr class="memitem:a377d38f5f4c3386967c7e4a791d5810f" id="r_a377d38f5f4c3386967c7e4a791d5810f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a377d38f5f4c3386967c7e4a791d5810f">init</a> ()=0</td></tr>
 <tr class="separator:a377d38f5f4c3386967c7e4a791d5810f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60614a322dd2715e94dfe0f89eac8eb9" id="r_a60614a322dd2715e94dfe0f89eac8eb9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60614a322dd2715e94dfe0f89eac8eb9">~BaseEventLoop</a> ()=default</td></tr>
+<tr class="memitem:a60614a322dd2715e94dfe0f89eac8eb9" id="r_a60614a322dd2715e94dfe0f89eac8eb9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60614a322dd2715e94dfe0f89eac8eb9">~BaseEventLoop</a> ()=default</td></tr>
 <tr class="separator:a60614a322dd2715e94dfe0f89eac8eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc96fd81d204831200614e2d5a0c0d39" id="r_acc96fd81d204831200614e2d5a0c0d39"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#acc96fd81d204831200614e2d5a0c0d39">dispatch</a> (uint32_t timeout)=0</td></tr>
+<tr class="memitem:acc96fd81d204831200614e2d5a0c0d39" id="r_acc96fd81d204831200614e2d5a0c0d39"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc96fd81d204831200614e2d5a0c0d39">dispatch</a> (uint32_t timeout)=0</td></tr>
 <tr class="separator:acc96fd81d204831200614e2d5a0c0d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add63e0b4d354df6a4e44ec523b7990a4" id="r_add63e0b4d354df6a4e44ec523b7990a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#add63e0b4d354df6a4e44ec523b7990a4">onAccept</a> (int fd)=0</td></tr>
+<tr class="memitem:add63e0b4d354df6a4e44ec523b7990a4" id="r_add63e0b4d354df6a4e44ec523b7990a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add63e0b4d354df6a4e44ec523b7990a4">onAccept</a> (int fd)=0</td></tr>
 <tr class="separator:add63e0b4d354df6a4e44ec523b7990a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d8eb8bc4458845aa52598233e64ef4" id="r_a60d8eb8bc4458845aa52598233e64ef4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60d8eb8bc4458845aa52598233e64ef4">onRead</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="memitem:a60d8eb8bc4458845aa52598233e64ef4" id="r_a60d8eb8bc4458845aa52598233e64ef4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60d8eb8bc4458845aa52598233e64ef4">onRead</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
 <tr class="separator:a60d8eb8bc4458845aa52598233e64ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01e4f8ce45d64a7eaf01386a594b256c" id="r_a01e4f8ce45d64a7eaf01386a594b256c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a01e4f8ce45d64a7eaf01386a594b256c">onWrite</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="memitem:a01e4f8ce45d64a7eaf01386a594b256c" id="r_a01e4f8ce45d64a7eaf01386a594b256c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01e4f8ce45d64a7eaf01386a594b256c">onWrite</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
 <tr class="separator:a01e4f8ce45d64a7eaf01386a594b256c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4015c16ccbbbdb70fc573522d626850" id="r_ae4015c16ccbbbdb70fc573522d626850"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ae4015c16ccbbbdb70fc573522d626850">onError</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="memitem:ae4015c16ccbbbdb70fc573522d626850" id="r_ae4015c16ccbbbdb70fc573522d626850"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4015c16ccbbbdb70fc573522d626850">onError</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
 <tr class="separator:ae4015c16ccbbbdb70fc573522d626850"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af024aaaa988ba9e8363eb97fe8fc19f4" id="r_af024aaaa988ba9e8363eb97fe8fc19f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4">onClose</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="memitem:af024aaaa988ba9e8363eb97fe8fc19f4" id="r_af024aaaa988ba9e8363eb97fe8fc19f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af024aaaa988ba9e8363eb97fe8fc19f4">onClose</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
 <tr class="separator:af024aaaa988ba9e8363eb97fe8fc19f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb4c42e9e5ce9307b3a6f586bea524a2" id="r_aeb4c42e9e5ce9307b3a6f586bea524a2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2">createEvent</a> (int fd, unsigned int events, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)=0</td></tr>
+<tr class="memitem:aeb4c42e9e5ce9307b3a6f586bea524a2" id="r_aeb4c42e9e5ce9307b3a6f586bea524a2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb4c42e9e5ce9307b3a6f586bea524a2">createEvent</a> (int fd, unsigned int events, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)=0</td></tr>
 <tr class="separator:aeb4c42e9e5ce9307b3a6f586bea524a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad437b12929edb2660a01fd3fa57e2d93" id="r_ad437b12929edb2660a01fd3fa57e2d93"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ad437b12929edb2660a01fd3fa57e2d93">freeEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="memitem:ad437b12929edb2660a01fd3fa57e2d93" id="r_ad437b12929edb2660a01fd3fa57e2d93"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad437b12929edb2660a01fd3fa57e2d93">freeEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
 <tr class="separator:ad437b12929edb2660a01fd3fa57e2d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9948fa27a1d36040ad5b3a54909496eb" id="r_a9948fa27a1d36040ad5b3a54909496eb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a9948fa27a1d36040ad5b3a54909496eb">setEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="memitem:a9948fa27a1d36040ad5b3a54909496eb" id="r_a9948fa27a1d36040ad5b3a54909496eb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9948fa27a1d36040ad5b3a54909496eb">setEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
 <tr class="separator:a9948fa27a1d36040ad5b3a54909496eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4caa4a768bb29bd3f394505575f6cb0e" id="r_a4caa4a768bb29bd3f394505575f6cb0e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4caa4a768bb29bd3f394505575f6cb0e">setListenFd</a> (int fd)=0</td></tr>
+<tr class="memitem:a4caa4a768bb29bd3f394505575f6cb0e" id="r_a4caa4a768bb29bd3f394505575f6cb0e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4caa4a768bb29bd3f394505575f6cb0e">setListenFd</a> (int fd)=0</td></tr>
 <tr class="separator:a4caa4a768bb29bd3f394505575f6cb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a4abdb066697382d81267982d8e5961f2" id="r_a4abdb066697382d81267982d8e5961f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2">handleClose</a> = true</td></tr>
+<tr class="memitem:a4abdb066697382d81267982d8e5961f2" id="r_a4abdb066697382d81267982d8e5961f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4abdb066697382d81267982d8e5961f2">handleClose</a> = true</td></tr>
 <tr class="memdesc:a4abdb066697382d81267982d8e5961f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">指示当前循环是否处理关闭事件  <br /></td></tr>
 <tr class="separator:a4abdb066697382d81267982d8e5961f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -198,7 +204,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual sese::event::BaseEventLoop::~BaseEventLoop </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -224,25 +230,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> * sese::event::BaseEventLoop::createEvent </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>events</em>, </td>
+          <td class="paramtype">unsigned int</td>          <td class="paramname"><span class="paramname"><em>events</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -252,7 +250,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#aa66c5b7c2705cc6d96241b3d2b0bfd75">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a5edea23ed9eacb74c977e0769b671dce">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#aa66c5b7c2705cc6d96241b3d2b0bfd75">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a5edea23ed9eacb74c977e0769b671dce">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -268,8 +266,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::dispatch </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -280,7 +277,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a502d065bd7bb1b9e3435920ea32780b8">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a7f3be34660b6ea8a6cd3697ff996f454">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3b9bfd5e0ef2ca43badf2ffb931f64d4">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a7f3be34660b6ea8a6cd3697ff996f454">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a502d065bd7bb1b9e3435920ea32780b8">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3b9bfd5e0ef2ca43badf2ffb931f64d4">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -296,8 +293,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::freeEvent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -308,7 +304,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#ab5fdb1234b323303e65d0b0b0fc60c32">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa0df844b1a306e982edf7fe3fae77336">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#ab5fdb1234b323303e65d0b0b0fc60c32">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa0df844b1a306e982edf7fe3fae77336">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -324,7 +320,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual bool sese::event::BaseEventLoop::init </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -335,7 +331,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -351,8 +347,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::onAccept </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -363,7 +358,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0aa500bd522880edc44b9dde136b06e2">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2032e39346a140e336bf2d2593c1f974">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a58093f821d12b7bbe4d3eb04aa1866b6">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2032e39346a140e336bf2d2593c1f974">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0aa500bd522880edc44b9dde136b06e2">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a58093f821d12b7bbe4d3eb04aa1866b6">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -379,8 +374,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::onClose </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -391,7 +385,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#abcd26aec053b3ad04d8a81ce8a9ea0ba">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ac60ba2f1b704ec4b7f4aaea345fc53ed">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#abcd26aec053b3ad04d8a81ce8a9ea0ba">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ac60ba2f1b704ec4b7f4aaea345fc53ed">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -407,8 +401,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::onError </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -419,7 +412,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0ac244f6dcce8e289bafd403a2e37e3a">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a41c3fe62bc9245514152defd7be5d3d6">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a122e5ee5259f479909084c04830a8599">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a41c3fe62bc9245514152defd7be5d3d6">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0ac244f6dcce8e289bafd403a2e37e3a">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a122e5ee5259f479909084c04830a8599">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -435,8 +428,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::onRead </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -447,7 +439,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a2de90f7983850a647a82815382260afe">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abad97ea60c1f02a6aa24411ed147a49e">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa6063e67778ce5a957f7559f15198ef5">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abad97ea60c1f02a6aa24411ed147a49e">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a2de90f7983850a647a82815382260afe">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa6063e67778ce5a957f7559f15198ef5">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -463,8 +455,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::onWrite </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -475,7 +466,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a4cc2d76401559700a5764b031534a88d">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ad7710a4650fc365648f90e9ddc025682">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a7621b97224b03b80b0797ce38011bafd">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ad7710a4650fc365648f90e9ddc025682">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a4cc2d76401559700a5764b031534a88d">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a7621b97224b03b80b0797ce38011bafd">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -491,8 +482,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual bool sese::event::BaseEventLoop::setEvent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -503,7 +493,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#abb115bf9e27c0e1998fa9256f416146f">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#abb115bf9e27c0e1998fa9256f416146f">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -519,8 +509,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual void sese::event::BaseEventLoop::setListenFd </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>fd</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -531,7 +520,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a09c3191027fe394d396bfad9d33b5b19">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abf0ad36d87ab5d5ef0e396f1cb207569">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39c1469a509bafccf7503901c44a132b">sese::event::WSAEventLoop</a> 内被实现.</p>
+<p>在 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abf0ad36d87ab5d5ef0e396f1cb207569">sese::event::EpollEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a09c3191027fe394d396bfad9d33b5b19">sese::event::KqueueEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39c1469a509bafccf7503901c44a132b">sese::event::WSAEventLoop</a> 内被实现.</p>
 
 </div>
 </div>
@@ -569,7 +558,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1event.html">event</a></li><li class="navelem"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html">BaseEventLoop</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

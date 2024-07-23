@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::security::SecuritySocket类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1security_1_1_security_socket.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1security_1_1_security_socket.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,7 +142,7 @@ $(document).ready(function(){initNavTree('classsese_1_1security_1_1_security_soc
 <div class="contents">
 
 <p>安全套接字  
- <a href="classsese_1_1security_1_1_security_socket.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_security_socket_8h_source.html">SecuritySocket.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -156,11 +162,11 @@ $(document).ready(function(){initNavTree('classsese_1_1security_1_1_security_soc
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a04e22e76356d022e48e291314723f0c4" id="r_a04e22e76356d022e48e291314723f0c4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a04e22e76356d022e48e291314723f0c4">Socket</a> = <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
+<tr class="memitem:a04e22e76356d022e48e291314723f0c4" id="r_a04e22e76356d022e48e291314723f0c4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04e22e76356d022e48e291314723f0c4">Socket</a> = <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
 <tr class="separator:a04e22e76356d022e48e291314723f0c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab301ae45397401f41a438a5816a36a74" id="r_ab301ae45397401f41a438a5816a36a74"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#ab301ae45397401f41a438a5816a36a74">Address</a> = <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
+<tr class="memitem:ab301ae45397401f41a438a5816a36a74" id="r_ab301ae45397401f41a438a5816a36a74"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab301ae45397401f41a438a5816a36a74">Address</a> = <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td></tr>
 <tr class="separator:ab301ae45397401f41a438a5816a36a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1net_1_1_socket"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1net_1_1_socket')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1net_1_1_socket"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1net_1_1_socket')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
 <tr class="memitem:a0c21e2e21cf7e9de3db55d4b96411dd1 inherit pub_types_classsese_1_1net_1_1_socket" id="r_a0c21e2e21cf7e9de3db55d4b96411dd1"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a0c21e2e21cf7e9de3db55d4b96411dd1">Type</a> { <a class="el" href="classsese_1_1net_1_1_socket.html#a0c21e2e21cf7e9de3db55d4b96411dd1ab136ef5f6a01d816991fe3cf7a6ac763">TCP</a> = SOCK_STREAM
 , <a class="el" href="classsese_1_1net_1_1_socket.html#a0c21e2e21cf7e9de3db55d4b96411dd1af5ef036b4d8b630721e51fe23489fbc9">UDP</a> = SOCK_DGRAM
  }</td></tr>
@@ -177,45 +183,45 @@ Public 类型</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:adcb403ccd7ca44367873003c10766d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">断开模式  <a href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">更多...</a><br /></td></tr>
 <tr class="separator:adcb403ccd7ca44367873003c10766d23 inherit pub_types_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe92801bf78f643132de579dfc854a3f inherit pub_types_classsese_1_1net_1_1_socket" id="r_afe92801bf78f643132de579dfc854a3f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1net_1_1_socket.html">Socket</a> &gt;</td></tr>
+<tr class="memitem:afe92801bf78f643132de579dfc854a3f inherit pub_types_classsese_1_1net_1_1_socket" id="r_afe92801bf78f643132de579dfc854a3f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1_socket.html">Socket</a>&gt;</td></tr>
 <tr class="separator:afe92801bf78f643132de579dfc854a3f inherit pub_types_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_stream.html">sese::io::Stream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_stream.html">sese::io::Stream</a></td></tr>
 <tr class="memitem:a95a28ebc9d768d0533d7d29a498a461e inherit pub_types_classsese_1_1io_1_1_stream" id="r_a95a28ebc9d768d0533d7d29a498a461e"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_stream.html">Stream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Ptr</a></td></tr>
 <tr class="separator:a95a28ebc9d768d0533d7d29a498a461e inherit pub_types_classsese_1_1io_1_1_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
 <tr class="memitem:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream" id="r_a0452a75dd0ee9345d78e9d14c1b7cb78"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_input_stream.html">InputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">Ptr</a></td></tr>
 <tr class="separator:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="memitem:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream" id="r_a4446385dc8f0d3431a03fda5165a4b3a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">Ptr</a></td></tr>
 <tr class="separator:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
 <tr class="memitem:a419bfa8f7e6094f2176165bc1a85fa2a inherit pub_types_classsese_1_1io_1_1_peekable_stream" id="r_a419bfa8f7e6094f2176165bc1a85fa2a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">PeekableStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a419bfa8f7e6094f2176165bc1a85fa2a">Ptr</a></td></tr>
 <tr class="separator:a419bfa8f7e6094f2176165bc1a85fa2a inherit pub_types_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a8afbae19bd962705bd73e6522a586acd" id="r_a8afbae19bd962705bd73e6522a586acd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a8afbae19bd962705bd73e6522a586acd">SecuritySocket</a> (std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt; <a class="el" href="classsese_1_1security_1_1_security_socket.html#a67ddfaa51a0451b4f815e038db7de72b">context</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a> family, int32_t flags) noexcept</td></tr>
+<tr class="memitem:a8afbae19bd962705bd73e6522a586acd" id="r_a8afbae19bd962705bd73e6522a586acd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8afbae19bd962705bd73e6522a586acd">SecuritySocket</a> (std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt; <a class="el" href="#a67ddfaa51a0451b4f815e038db7de72b">context</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a> family, int32_t flags) noexcept</td></tr>
 <tr class="separator:a8afbae19bd962705bd73e6522a586acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a196c9fc19f5c3d17e57e813e389ba3c1" id="r_a196c9fc19f5c3d17e57e813e389ba3c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a196c9fc19f5c3d17e57e813e389ba3c1">SecuritySocket</a> (std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt; <a class="el" href="classsese_1_1security_1_1_security_socket.html#a67ddfaa51a0451b4f815e038db7de72b">context</a>, void *<a class="el" href="classsese_1_1security_1_1_security_socket.html#ab6e76b128ea46e817a2f3309b566d601">ssl</a>, <a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> fd) noexcept</td></tr>
+<tr class="memitem:a196c9fc19f5c3d17e57e813e389ba3c1" id="r_a196c9fc19f5c3d17e57e813e389ba3c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a196c9fc19f5c3d17e57e813e389ba3c1">SecuritySocket</a> (std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt; <a class="el" href="#a67ddfaa51a0451b4f815e038db7de72b">context</a>, void *<a class="el" href="#ab6e76b128ea46e817a2f3309b566d601">ssl</a>, <a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> fd) noexcept</td></tr>
 <tr class="separator:a196c9fc19f5c3d17e57e813e389ba3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a889f7e6f3952506bb42b5b87cfe99fb8" id="r_a889f7e6f3952506bb42b5b87cfe99fb8"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a889f7e6f3952506bb42b5b87cfe99fb8">connect</a> (<a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> <a class="el" href="classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592">address</a>) noexcept override</td></tr>
+<tr class="memitem:a889f7e6f3952506bb42b5b87cfe99fb8" id="r_a889f7e6f3952506bb42b5b87cfe99fb8"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a889f7e6f3952506bb42b5b87cfe99fb8">connect</a> (<a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> <a class="el" href="classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592">address</a>) noexcept override</td></tr>
 <tr class="separator:a889f7e6f3952506bb42b5b87cfe99fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2a5d0b9a701384239ad120890456abd" id="r_ae2a5d0b9a701384239ad120890456abd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#ae2a5d0b9a701384239ad120890456abd">accept</a> () const override</td></tr>
+<tr class="memitem:ae2a5d0b9a701384239ad120890456abd" id="r_ae2a5d0b9a701384239ad120890456abd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2a5d0b9a701384239ad120890456abd">accept</a> () const override</td></tr>
 <tr class="separator:ae2a5d0b9a701384239ad120890456abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68406980c4110b14663cd3c7a2aafbdc" id="r_a68406980c4110b14663cd3c7a2aafbdc"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a68406980c4110b14663cd3c7a2aafbdc">shutdown</a> (<a class="el" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a> mode) const override</td></tr>
+<tr class="memitem:a68406980c4110b14663cd3c7a2aafbdc" id="r_a68406980c4110b14663cd3c7a2aafbdc"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68406980c4110b14663cd3c7a2aafbdc">shutdown</a> (<a class="el" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a> mode) const override</td></tr>
 <tr class="separator:a68406980c4110b14663cd3c7a2aafbdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d1d541081a06ff7a552bb6dd62db3d" id="r_ac5d1d541081a06ff7a552bb6dd62db3d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#ac5d1d541081a06ff7a552bb6dd62db3d">read</a> (void *buffer, size_t length) override</td></tr>
+<tr class="memitem:ac5d1d541081a06ff7a552bb6dd62db3d" id="r_ac5d1d541081a06ff7a552bb6dd62db3d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5d1d541081a06ff7a552bb6dd62db3d">read</a> (void *buffer, size_t length) override</td></tr>
 <tr class="separator:ac5d1d541081a06ff7a552bb6dd62db3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf22bdcfb5f0fcc698d0d251d1a3e45f" id="r_acf22bdcfb5f0fcc698d0d251d1a3e45f"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#acf22bdcfb5f0fcc698d0d251d1a3e45f">write</a> (const void *buffer, size_t length) override</td></tr>
+<tr class="memitem:acf22bdcfb5f0fcc698d0d251d1a3e45f" id="r_acf22bdcfb5f0fcc698d0d251d1a3e45f"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf22bdcfb5f0fcc698d0d251d1a3e45f">write</a> (const void *buffer, size_t length) override</td></tr>
 <tr class="separator:acf22bdcfb5f0fcc698d0d251d1a3e45f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7b2d3ec55cca7c018bc3ecedb1b2540" id="r_ad7b2d3ec55cca7c018bc3ecedb1b2540"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#ad7b2d3ec55cca7c018bc3ecedb1b2540">close</a> () override</td></tr>
+<tr class="memitem:ad7b2d3ec55cca7c018bc3ecedb1b2540" id="r_ad7b2d3ec55cca7c018bc3ecedb1b2540"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7b2d3ec55cca7c018bc3ecedb1b2540">close</a> () override</td></tr>
 <tr class="separator:ad7b2d3ec55cca7c018bc3ecedb1b2540"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6175d65a4f91aeeb77be4f5889fe102f" id="r_a6175d65a4f91aeeb77be4f5889fe102f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a6175d65a4f91aeeb77be4f5889fe102f">getSSL</a> () const</td></tr>
+<tr class="memitem:a6175d65a4f91aeeb77be4f5889fe102f" id="r_a6175d65a4f91aeeb77be4f5889fe102f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6175d65a4f91aeeb77be4f5889fe102f">getSSL</a> () const</td></tr>
 <tr class="separator:a6175d65a4f91aeeb77be4f5889fe102f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1net_1_1_socket"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1net_1_1_socket')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1net_1_1_socket"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1net_1_1_socket')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
 <tr class="memitem:a61e8f911e754b0f4b82337ad34978c81 inherit pub_methods_classsese_1_1net_1_1_socket" id="r_a61e8f911e754b0f4b82337ad34978c81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a61e8f911e754b0f4b82337ad34978c81">Socket</a> (<a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Family</a> family, <a class="el" href="classsese_1_1net_1_1_socket.html#a0c21e2e21cf7e9de3db55d4b96411dd1">Type</a> type, int32_t protocol=IPPROTO_IP) noexcept</td></tr>
 <tr class="separator:a61e8f911e754b0f4b82337ad34978c81 inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51de2fc34605472199caf270b48894fe inherit pub_methods_classsese_1_1net_1_1_socket" id="r_a51de2fc34605472199caf270b48894fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a51de2fc34605472199caf270b48894fe">Socket</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#aab922556f11f5ce15182fcbb236b6187">handle</a>, <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> <a class="el" href="classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592">address</a>) noexcept</td></tr>
+<tr class="memitem:a51de2fc34605472199caf270b48894fe inherit pub_methods_classsese_1_1net_1_1_socket" id="r_a51de2fc34605472199caf270b48894fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a51de2fc34605472199caf270b48894fe">Socket</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#aab922556f11f5ce15182fcbb236b6187">handle</a>, <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> <a class="el" href="classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592">address</a>) noexcept</td></tr>
 <tr class="separator:a51de2fc34605472199caf270b48894fe inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa933f0914d99522c857b30f64c9ce32 inherit pub_methods_classsese_1_1net_1_1_socket" id="r_afa933f0914d99522c857b30f64c9ce32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#afa933f0914d99522c857b30f64c9ce32">~Socket</a> () noexcept override</td></tr>
 <tr class="separator:afa933f0914d99522c857b30f64c9ce32 inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,52 +269,52 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a836af4eb9f87904424f97aba9dee4e92 inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae228da9881d194cf8129d094e0ff95a0 inherit pub_methods_classsese_1_1net_1_1_socket" id="r_ae228da9881d194cf8129d094e0ff95a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">close</a> () override</td></tr>
 <tr class="separator:ae228da9881d194cf8129d094e0ff95a0 inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfe9740dcd39545cc0532fead1e8e390 inherit pub_methods_classsese_1_1net_1_1_socket" id="r_acfe9740dcd39545cc0532fead1e8e390"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#acfe9740dcd39545cc0532fead1e8e390">getRawSocket</a> () const</td></tr>
+<tr class="memitem:acfe9740dcd39545cc0532fead1e8e390 inherit pub_methods_classsese_1_1net_1_1_socket" id="r_acfe9740dcd39545cc0532fead1e8e390"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#acfe9740dcd39545cc0532fead1e8e390">getRawSocket</a> () const</td></tr>
 <tr class="separator:acfe9740dcd39545cc0532fead1e8e390 inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1668a11950ebff22dbd6195b080e6226 inherit pub_methods_classsese_1_1net_1_1_socket" id="r_a1668a11950ebff22dbd6195b080e6226"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a1668a11950ebff22dbd6195b080e6226">getAddress</a> () const</td></tr>
 <tr class="separator:a1668a11950ebff22dbd6195b080e6226 inherit pub_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
 <tr class="memitem:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream" id="r_acc4179962d8ad6f886cf4d85642823a3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#acc4179962d8ad6f886cf4d85642823a3">~InputStream</a> () noexcept=default</td></tr>
 <tr class="separator:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
 <tr class="separator:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
 <tr class="memitem:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream" id="r_aeb71ca5a92ba6b49caae5489458f5fd1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#aeb71ca5a92ba6b49caae5489458f5fd1">~PeekableStream</a> ()=default</td></tr>
 <tr class="separator:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_closeable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_closeable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_closeable.html">sese::io::Closeable</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_closeable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_closeable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_closeable.html">sese::io::Closeable</a></td></tr>
 <tr class="memitem:aaeea09c38b375412904b051d5b418a52 inherit pub_methods_classsese_1_1io_1_1_closeable" id="r_aaeea09c38b375412904b051d5b418a52"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_closeable.html#aaeea09c38b375412904b051d5b418a52">~Closeable</a> ()=default</td></tr>
 <tr class="separator:aaeea09c38b375412904b051d5b418a52 inherit pub_methods_classsese_1_1io_1_1_closeable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:a67ddfaa51a0451b4f815e038db7de72b" id="r_a67ddfaa51a0451b4f815e038db7de72b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#a67ddfaa51a0451b4f815e038db7de72b">context</a></td></tr>
+<tr class="memitem:a67ddfaa51a0451b4f815e038db7de72b" id="r_a67ddfaa51a0451b4f815e038db7de72b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67ddfaa51a0451b4f815e038db7de72b">context</a></td></tr>
 <tr class="separator:a67ddfaa51a0451b4f815e038db7de72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6e76b128ea46e817a2f3309b566d601" id="r_ab6e76b128ea46e817a2f3309b566d601"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_security_socket.html#ab6e76b128ea46e817a2f3309b566d601">ssl</a> = nullptr</td></tr>
+<tr class="memitem:ab6e76b128ea46e817a2f3309b566d601" id="r_ab6e76b128ea46e817a2f3309b566d601"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6e76b128ea46e817a2f3309b566d601">ssl</a> = nullptr</td></tr>
 <tr class="separator:ab6e76b128ea46e817a2f3309b566d601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
-<tr class="inherit_header pub_static_methods_classsese_1_1net_1_1_socket"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classsese_1_1net_1_1_socket')"><img src="closed.png" alt="-"/>&#160;静态 Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
-<tr class="memitem:a5ca3fdc2185fc9a55ebe3313926e8da6 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a5ca3fdc2185fc9a55ebe3313926e8da6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a> (int family, int type, int protocol) noexcept</td></tr>
+<tr class="inherit_header pub_static_methods_classsese_1_1net_1_1_socket"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classsese_1_1net_1_1_socket')"><img src="closed.png" alt="-"/>&#160;静态 Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
+<tr class="memitem:a5ca3fdc2185fc9a55ebe3313926e8da6 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a5ca3fdc2185fc9a55ebe3313926e8da6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a> (int family, int type, int protocol) noexcept</td></tr>
 <tr class="separator:a5ca3fdc2185fc9a55ebe3313926e8da6 inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4364fbce086662c327a496c628b1ae3 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_af4364fbce086662c327a496c628b1ae3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#af4364fbce086662c327a496c628b1ae3">bind</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, const sockaddr *addr, socklen_t addr_len) noexcept</td></tr>
+<tr class="memitem:af4364fbce086662c327a496c628b1ae3 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_af4364fbce086662c327a496c628b1ae3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#af4364fbce086662c327a496c628b1ae3">bind</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, const sockaddr *addr, socklen_t addr_len) noexcept</td></tr>
 <tr class="separator:af4364fbce086662c327a496c628b1ae3 inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad256931fec34a4729e937a0a3f232baa inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_ad256931fec34a4729e937a0a3f232baa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#ad256931fec34a4729e937a0a3f232baa">accept</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, sockaddr *addr=nullptr, socklen_t *len=nullptr) noexcept</td></tr>
+<tr class="memitem:ad256931fec34a4729e937a0a3f232baa inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_ad256931fec34a4729e937a0a3f232baa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#ad256931fec34a4729e937a0a3f232baa">accept</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, sockaddr *addr=nullptr, socklen_t *len=nullptr) noexcept</td></tr>
 <tr class="separator:ad256931fec34a4729e937a0a3f232baa inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fdda94a72da40485e106020fcb95a6b inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a5fdda94a72da40485e106020fcb95a6b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a5fdda94a72da40485e106020fcb95a6b">connect</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, const sockaddr *addr, socklen_t addr_len) noexcept</td></tr>
+<tr class="memitem:a5fdda94a72da40485e106020fcb95a6b inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a5fdda94a72da40485e106020fcb95a6b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a5fdda94a72da40485e106020fcb95a6b">connect</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, const sockaddr *addr, socklen_t addr_len) noexcept</td></tr>
 <tr class="separator:a5fdda94a72da40485e106020fcb95a6b inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc41a82500397a23b1b111d4d64f5e12 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_afc41a82500397a23b1b111d4d64f5e12"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#afc41a82500397a23b1b111d4d64f5e12">write</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, const void *buffer, size_t len, int flags) noexcept</td></tr>
+<tr class="memitem:afc41a82500397a23b1b111d4d64f5e12 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_afc41a82500397a23b1b111d4d64f5e12"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#afc41a82500397a23b1b111d4d64f5e12">write</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, const void *buffer, size_t len, int flags) noexcept</td></tr>
 <tr class="separator:afc41a82500397a23b1b111d4d64f5e12 inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d3a3ad14a955f59800936caf8cd3bee inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a2d3a3ad14a955f59800936caf8cd3bee"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a2d3a3ad14a955f59800936caf8cd3bee">read</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, void *buffer, size_t len, int flags) noexcept</td></tr>
+<tr class="memitem:a2d3a3ad14a955f59800936caf8cd3bee inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a2d3a3ad14a955f59800936caf8cd3bee"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a2d3a3ad14a955f59800936caf8cd3bee">read</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, void *buffer, size_t len, int flags) noexcept</td></tr>
 <tr class="separator:a2d3a3ad14a955f59800936caf8cd3bee inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04e1d3a2f0a27c60b56a1be45bd1491a inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a04e1d3a2f0a27c60b56a1be45bd1491a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a04e1d3a2f0a27c60b56a1be45bd1491a">listen</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, int backlog) noexcept</td></tr>
+<tr class="memitem:a04e1d3a2f0a27c60b56a1be45bd1491a inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a04e1d3a2f0a27c60b56a1be45bd1491a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a04e1d3a2f0a27c60b56a1be45bd1491a">listen</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, int backlog) noexcept</td></tr>
 <tr class="separator:a04e1d3a2f0a27c60b56a1be45bd1491a inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3bc1e112a4f396701189a39d88fb6c6 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_af3bc1e112a4f396701189a39d88fb6c6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#af3bc1e112a4f396701189a39d88fb6c6">setNonblocking</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>) noexcept</td></tr>
+<tr class="memitem:af3bc1e112a4f396701189a39d88fb6c6 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_af3bc1e112a4f396701189a39d88fb6c6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#af3bc1e112a4f396701189a39d88fb6c6">setNonblocking</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>) noexcept</td></tr>
 <tr class="separator:af3bc1e112a4f396701189a39d88fb6c6 inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39ef6f7cfb09604181a82d890232a778 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a39ef6f7cfb09604181a82d890232a778"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a39ef6f7cfb09604181a82d890232a778">close</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>) noexcept</td></tr>
+<tr class="memitem:a39ef6f7cfb09604181a82d890232a778 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a39ef6f7cfb09604181a82d890232a778"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a39ef6f7cfb09604181a82d890232a778">close</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>) noexcept</td></tr>
 <tr class="separator:a39ef6f7cfb09604181a82d890232a778 inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a191bfead353ec043fe3ae9fd908767a5 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a191bfead353ec043fe3ae9fd908767a5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a191bfead353ec043fe3ae9fd908767a5">shutdown</a> (<a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a> mode) noexcept</td></tr>
+<tr class="memitem:a191bfead353ec043fe3ae9fd908767a5 inherit pub_static_methods_classsese_1_1net_1_1_socket" id="r_a191bfead353ec043fe3ae9fd908767a5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_socket.html#a191bfead353ec043fe3ae9fd908767a5">shutdown</a> (<a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a> <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">socket</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a> mode) noexcept</td></tr>
 <tr class="separator:a191bfead353ec043fe3ae9fd908767a5 inherit pub_static_methods_classsese_1_1net_1_1_socket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -321,7 +327,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1security_1_1_security_socket.html#ab301ae45397401f41a438a5816a36a74">sese::security::SecuritySocket::Address</a> =  <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td>
+          <td class="memname">using <a class="el" href="#ab301ae45397401f41a438a5816a36a74">sese::security::SecuritySocket::Address</a> = <a class="el" href="classsese_1_1net_1_1_address.html">sese::net::Address</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -335,7 +341,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1security_1_1_security_socket.html#a04e22e76356d022e48e291314723f0c4">sese::security::SecuritySocket::Socket</a> =  <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td>
+          <td class="memname">using <a class="el" href="#a04e22e76356d022e48e291314723f0c4">sese::security::SecuritySocket::Socket</a> = <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -355,25 +361,17 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::security::SecuritySocket::SecuritySocket </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a>&#160;</td>
-          <td class="paramname"><em>family</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a></td>          <td class="paramname"><span class="paramname"><em>family</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>flags</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>flags</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -397,25 +395,17 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::security::SecuritySocket::SecuritySocket </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>context</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ssl</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>ssl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b">socket_t</a>&#160;</td>
-          <td class="paramname"><em>fd</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="namespacesese.html#a78c80b7cdb2c1136beab98a0566b27c7">socket_t</a></td>          <td class="paramname"><span class="paramname"><em>fd</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -440,22 +430,22 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">sese::net::Socket::Ptr</a> sese::security::SecuritySocket::accept </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>重载 <a class="el" href="classsese_1_1net_1_1_socket.html#ac3e0595afbf0687b8a4e36b7dee8186b">sese::net::Socket</a> .</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_security_socket.html#ae2a5d0b9a701384239ad120890456abd">accept()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a>, <a class="el" href="classsese_1_1security_1_1_security_socket.html#a67ddfaa51a0451b4f815e038db7de72b">context</a> , 以及 <a class="el" href="classsese_1_1net_1_1_socket.html#acfe9740dcd39545cc0532fead1e8e390">sese::net::Socket::getRawSocket()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ae2a5d0b9a701384239ad120890456abd">accept()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a>, <a class="el" href="#a67ddfaa51a0451b4f815e038db7de72b">context</a> , 以及 <a class="el" href="classsese_1_1net_1_1_socket.html#acfe9740dcd39545cc0532fead1e8e390">sese::net::Socket::getRawSocket()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_security_socket.html#ae2a5d0b9a701384239ad120890456abd">accept()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ae2a5d0b9a701384239ad120890456abd">accept()</a>.</p>
 
 </div>
 </div>
@@ -471,7 +461,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::security::SecuritySocket::close </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -498,8 +488,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int32_t sese::security::SecuritySocket::connect </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a>&#160;</td>
-          <td class="paramname"><em>address</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a></td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -528,18 +517,18 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void * sese::security::SecuritySocket::getSSL </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_security_socket.html#ab6e76b128ea46e817a2f3309b566d601">ssl</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ab6e76b128ea46e817a2f3309b566d601">ssl</a>.</p>
 
 </div>
 </div>
@@ -555,19 +544,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::security::SecuritySocket::read </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -593,14 +575,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int32_t sese::security::SecuritySocket::shutdown </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a>&#160;</td>
-          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -621,19 +602,12 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::security::SecuritySocket::write </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -668,7 +642,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_security_socket.html#ae2a5d0b9a701384239ad120890456abd">accept()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ae2a5d0b9a701384239ad120890456abd">accept()</a>.</p>
 
 </div>
 </div>
@@ -692,7 +666,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_security_socket.html#a6175d65a4f91aeeb77be4f5889fe102f">getSSL()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a6175d65a4f91aeeb77be4f5889fe102f">getSSL()</a>.</p>
 
 </div>
 </div>
@@ -706,7 +680,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1security.html">security</a></li><li class="navelem"><a class="el" href="classsese_1_1security_1_1_security_socket.html">SecuritySocket</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

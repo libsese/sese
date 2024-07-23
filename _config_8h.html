@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese/Config.h 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('_config_8h.html',''); initResizable(); });
+$(function(){initNavTree('_config_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -141,100 +147,100 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;<a class="el" href="_memory_8h_source.html">sese/util/Memory.h</a>&gt;</code><br />
 </div>
-<p><a href="_config_8h_source.html">浏览源代码.</a></p>
+<p><a href="_config_8h_source.html">浏览该文件的源代码.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:a44687c95fe4c1780e8565f66e363333d" id="r_a44687c95fe4c1780e8565f66e363333d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></td></tr>
+<tr class="memitem:a44687c95fe4c1780e8565f66e363333d" id="r_a44687c95fe4c1780e8565f66e363333d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></td></tr>
 <tr class="separator:a44687c95fe4c1780e8565f66e363333d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab27c127789db87432e7599922a923a43" id="r_ab27c127789db87432e7599922a923a43"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ab27c127789db87432e7599922a923a43">SESE_STD_WRAPPER</a>(name,  member)&#160;&#160;&#160;    [[nodiscard]] auto name() const { return member.name(); }</td></tr>
+<tr class="memitem:ab27c127789db87432e7599922a923a43" id="r_ab27c127789db87432e7599922a923a43"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab27c127789db87432e7599922a923a43">SESE_STD_WRAPPER</a>(name,  member)&#160;&#160;&#160;    [[nodiscard]] auto name() const { return member.name(); }</td></tr>
 <tr class="separator:ab27c127789db87432e7599922a923a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a898d83d1482652c4ca1ec065b99530bc" id="r_a898d83d1482652c4ca1ec065b99530bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a898d83d1482652c4ca1ec065b99530bc">SESE_DEPRECATED</a>&#160;&#160;&#160;[[deprecated]]</td></tr>
+<tr class="memitem:a898d83d1482652c4ca1ec065b99530bc" id="r_a898d83d1482652c4ca1ec065b99530bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a898d83d1482652c4ca1ec065b99530bc">SESE_DEPRECATED</a>&#160;&#160;&#160;[[deprecated]]</td></tr>
 <tr class="separator:a898d83d1482652c4ca1ec065b99530bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fd5c825cc88add91412ac8478347028" id="r_a3fd5c825cc88add91412ac8478347028"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a3fd5c825cc88add91412ac8478347028">SESE_DEPRECATED_WITH</a>(x)&#160;&#160;&#160;[[deprecated(x)]]</td></tr>
+<tr class="memitem:a3fd5c825cc88add91412ac8478347028" id="r_a3fd5c825cc88add91412ac8478347028"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fd5c825cc88add91412ac8478347028">SESE_DEPRECATED_WITH</a>(x)&#160;&#160;&#160;[[deprecated(x)]]</td></tr>
 <tr class="separator:a3fd5c825cc88add91412ac8478347028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
-<tr class="memitem:acd688e6011699d40edbaf750db54e486" id="r_acd688e6011699d40edbaf750db54e486"><td class="memItemLeft" align="right" valign="top">static constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a> = 8</td></tr>
+<tr class="memitem:acd688e6011699d40edbaf750db54e486" id="r_acd688e6011699d40edbaf750db54e486"><td class="memItemLeft" align="right" valign="top">static constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a> = 8</td></tr>
 <tr class="memdesc:acd688e6011699d40edbaf750db54e486"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认时区  <br /></td></tr>
 <tr class="separator:acd688e6011699d40edbaf750db54e486"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dc10f54768fb0ad0aa23e7984ccecee" id="r_a8dc10f54768fb0ad0aa23e7984ccecee"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a> = &quot;UTCz yyyy-MM-dd HH:mm:ss.ff&quot;</td></tr>
+<tr class="memitem:a8dc10f54768fb0ad0aa23e7984ccecee" id="r_a8dc10f54768fb0ad0aa23e7984ccecee"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a> = &quot;UTCz yyyy-MM-dd HH:mm:ss.ff&quot;</td></tr>
 <tr class="memdesc:a8dc10f54768fb0ad0aa23e7984ccecee"><td class="mdescLeft">&#160;</td><td class="mdescRight">世界协调时匹配格式  <br /></td></tr>
 <tr class="separator:a8dc10f54768fb0ad0aa23e7984ccecee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a359537d4f46f2734aafef400b273e6f9" id="r_a359537d4f46f2734aafef400b273e6f9"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a359537d4f46f2734aafef400b273e6f9">TIME_GREENWICH_MEAN_PATTERN</a> = &quot;ddd, dd MMM yyyy HH:mm:ss %G%M%T&quot;</td></tr>
+<tr class="memitem:a359537d4f46f2734aafef400b273e6f9" id="r_a359537d4f46f2734aafef400b273e6f9"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a359537d4f46f2734aafef400b273e6f9">TIME_GREENWICH_MEAN_PATTERN</a> = &quot;ddd, dd MMM yyyy HH:mm:ss %G%M%T&quot;</td></tr>
 <tr class="memdesc:a359537d4f46f2734aafef400b273e6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">格林威治时间匹配格式  <br /></td></tr>
 <tr class="separator:a359537d4f46f2734aafef400b273e6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8af0f60d6ae6bf12d7a4d09a013c8114" id="r_a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a> = &quot;yyyy-MM-dd%THH:mm:ss.ff%Z&quot;</td></tr>
+<tr class="memitem:a8af0f60d6ae6bf12d7a4d09a013c8114" id="r_a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a> = &quot;yyyy-MM-dd%THH:mm:ss.ff%Z&quot;</td></tr>
 <tr class="memdesc:a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="mdescLeft">&#160;</td><td class="mdescRight">短格式  <br /></td></tr>
 <tr class="separator:a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90db45f62473ce7d863efe0cb8657554" id="r_a90db45f62473ce7d863efe0cb8657554"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a90db45f62473ce7d863efe0cb8657554">STRING_BUFFER_SIZE_FACTOR</a> = 1024</td></tr>
+<tr class="memitem:a90db45f62473ce7d863efe0cb8657554" id="r_a90db45f62473ce7d863efe0cb8657554"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90db45f62473ce7d863efe0cb8657554">STRING_BUFFER_SIZE_FACTOR</a> = 1024</td></tr>
 <tr class="memdesc:a90db45f62473ce7d863efe0cb8657554"><td class="mdescLeft">&#160;</td><td class="mdescRight">String Buffer 单元因子  <br /></td></tr>
 <tr class="separator:a90db45f62473ce7d863efe0cb8657554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a458adb17a4c034322d679335e6e92b42" id="r_a458adb17a4c034322d679335e6e92b42"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a458adb17a4c034322d679335e6e92b42">SPACE_CHARS</a> = &quot; \n\r\t\v\b&quot;</td></tr>
+<tr class="memitem:a458adb17a4c034322d679335e6e92b42" id="r_a458adb17a4c034322d679335e6e92b42"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a458adb17a4c034322d679335e6e92b42">SPACE_CHARS</a> = &quot; \n\r\t\v\b&quot;</td></tr>
 <tr class="memdesc:a458adb17a4c034322d679335e6e92b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">空格字符  <br /></td></tr>
 <tr class="separator:a458adb17a4c034322d679335e6e92b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab089f2f84905b37270a010c9a4db19f8" id="r_ab089f2f84905b37270a010c9a4db19f8"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a> = &quot;UNKNOWN&quot;</td></tr>
+<tr class="memitem:ab089f2f84905b37270a010c9a4db19f8" id="r_ab089f2f84905b37270a010c9a4db19f8"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a> = &quot;UNKNOWN&quot;</td></tr>
 <tr class="memdesc:ab089f2f84905b37270a010c9a4db19f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认线程名称  <br /></td></tr>
 <tr class="separator:ab089f2f84905b37270a010c9a4db19f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92eb13d59bd6439d544fc9cfebd46f16" id="r_a92eb13d59bd6439d544fc9cfebd46f16"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a92eb13d59bd6439d544fc9cfebd46f16">THREAD_MAIN_NAME</a> = &quot;Main&quot;</td></tr>
+<tr class="memitem:a92eb13d59bd6439d544fc9cfebd46f16" id="r_a92eb13d59bd6439d544fc9cfebd46f16"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92eb13d59bd6439d544fc9cfebd46f16">THREAD_MAIN_NAME</a> = &quot;Main&quot;</td></tr>
 <tr class="memdesc:a92eb13d59bd6439d544fc9cfebd46f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">主线程名称  <br /></td></tr>
 <tr class="separator:a92eb13d59bd6439d544fc9cfebd46f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95a7c28cbc65060bfab837a0c4b807fe" id="r_a95a7c28cbc65060bfab837a0c4b807fe"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a95a7c28cbc65060bfab837a0c4b807fe">RECORD_OUTPUT_BUFFER</a> = 4096</td></tr>
+<tr class="memitem:a95a7c28cbc65060bfab837a0c4b807fe" id="r_a95a7c28cbc65060bfab837a0c4b807fe"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95a7c28cbc65060bfab837a0c4b807fe">RECORD_OUTPUT_BUFFER</a> = 4096</td></tr>
 <tr class="memdesc:a95a7c28cbc65060bfab837a0c4b807fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志输出缓存区大小  <br /></td></tr>
 <tr class="separator:a95a7c28cbc65060bfab837a0c4b807fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a918196882543718e47e34dc36505a3c8" id="r_a918196882543718e47e34dc36505a3c8"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a918196882543718e47e34dc36505a3c8">RECORD_DEFAULT_TIME_PATTERN</a> = <a class="el" href="_config_8h.html#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a></td></tr>
+<tr class="memitem:a918196882543718e47e34dc36505a3c8" id="r_a918196882543718e47e34dc36505a3c8"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a918196882543718e47e34dc36505a3c8">RECORD_DEFAULT_TIME_PATTERN</a> = <a class="el" href="#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a></td></tr>
 <tr class="memdesc:a918196882543718e47e34dc36505a3c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志格式化器时间匹配格式  <br /></td></tr>
 <tr class="separator:a918196882543718e47e34dc36505a3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18e8810da29cad8d58e6e2a29225ff91" id="r_a18e8810da29cad8d58e6e2a29225ff91"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a18e8810da29cad8d58e6e2a29225ff91">RECORD_DEFAULT_TEXT_PATTERN</a> = &quot;c lv fn:li tn:th&gt; m\n&quot;</td></tr>
+<tr class="memitem:a18e8810da29cad8d58e6e2a29225ff91" id="r_a18e8810da29cad8d58e6e2a29225ff91"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18e8810da29cad8d58e6e2a29225ff91">RECORD_DEFAULT_TEXT_PATTERN</a> = &quot;c lv fn:li tn:th&gt; m\n&quot;</td></tr>
 <tr class="memdesc:a18e8810da29cad8d58e6e2a29225ff91"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志格式化器匹配格式  <br /></td></tr>
 <tr class="separator:a18e8810da29cad8d58e6e2a29225ff91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1047874c1ad993ee6286a6ab9bad583" id="r_ae1047874c1ad993ee6286a6ab9bad583"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ae1047874c1ad993ee6286a6ab9bad583">RECORD_DEFAULT_FILE_TIME_PATTERN</a> = &quot;yyyyMMdd HHmmssff&quot;</td></tr>
+<tr class="memitem:ae1047874c1ad993ee6286a6ab9bad583" id="r_ae1047874c1ad993ee6286a6ab9bad583"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1047874c1ad993ee6286a6ab9bad583">RECORD_DEFAULT_FILE_TIME_PATTERN</a> = &quot;yyyyMMdd HHmmssff&quot;</td></tr>
 <tr class="memdesc:ae1047874c1ad993ee6286a6ab9bad583"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志输出文件名称匹配模式  <br /></td></tr>
 <tr class="separator:ae1047874c1ad993ee6286a6ab9bad583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4757270b8b743210ed490b8646c8d025" id="r_a4757270b8b743210ed490b8646c8d025"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a> = 4096</td></tr>
+<tr class="memitem:a4757270b8b743210ed490b8646c8d025" id="r_a4757270b8b743210ed490b8646c8d025"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a> = 4096</td></tr>
 <tr class="memdesc:a4757270b8b743210ed490b8646c8d025"><td class="mdescLeft">&#160;</td><td class="mdescRight">异步日志器缓冲区大小  <br /></td></tr>
 <tr class="separator:a4757270b8b743210ed490b8646c8d025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00e27115f7638a8221d9300bd6f762fd" id="r_a00e27115f7638a8221d9300bd6f762fd"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a> = 1024</td></tr>
+<tr class="memitem:a00e27115f7638a8221d9300bd6f762fd" id="r_a00e27115f7638a8221d9300bd6f762fd"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a> = 1024</td></tr>
 <tr class="memdesc:a00e27115f7638a8221d9300bd6f762fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">字节流缓冲区单元因子  <br /></td></tr>
 <tr class="separator:a00e27115f7638a8221d9300bd6f762fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e03e9d108a8a30998dacb83c26c97d5" id="r_a5e03e9d108a8a30998dacb83c26c97d5"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a5e03e9d108a8a30998dacb83c26c97d5">ENABLE_TEST</a> = false</td></tr>
+<tr class="memitem:a5e03e9d108a8a30998dacb83c26c97d5" id="r_a5e03e9d108a8a30998dacb83c26c97d5"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e03e9d108a8a30998dacb83c26c97d5">ENABLE_TEST</a> = false</td></tr>
 <tr class="memdesc:a5e03e9d108a8a30998dacb83c26c97d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否启用调试模式  <br /></td></tr>
 <tr class="separator:a5e03e9d108a8a30998dacb83c26c97d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af40f802fbf31e13f96e693a19dca7ba9" id="r_af40f802fbf31e13f96e693a19dca7ba9"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#af40f802fbf31e13f96e693a19dca7ba9">TIMER_WHEEL_NUMBER</a> = 30</td></tr>
+<tr class="memitem:af40f802fbf31e13f96e693a19dca7ba9" id="r_af40f802fbf31e13f96e693a19dca7ba9"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af40f802fbf31e13f96e693a19dca7ba9">TIMER_WHEEL_NUMBER</a> = 30</td></tr>
 <tr class="memdesc:af40f802fbf31e13f96e693a19dca7ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">定时器时间轮轮片数  <br /></td></tr>
 <tr class="separator:af40f802fbf31e13f96e693a19dca7ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a185dfe7b05d53adb161853987fe050d7" id="r_a185dfe7b05d53adb161853987fe050d7"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a185dfe7b05d53adb161853987fe050d7">SERVER_DEFAULT_THREADS</a> = 4</td></tr>
+<tr class="memitem:a185dfe7b05d53adb161853987fe050d7" id="r_a185dfe7b05d53adb161853987fe050d7"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a185dfe7b05d53adb161853987fe050d7">SERVER_DEFAULT_THREADS</a> = 4</td></tr>
 <tr class="memdesc:a185dfe7b05d53adb161853987fe050d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP Server 默认线程池大小  <br /></td></tr>
 <tr class="separator:a185dfe7b05d53adb161853987fe050d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e0a7344b00b23ee0fffaa898e55e55d" id="r_a7e0a7344b00b23ee0fffaa898e55e55d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a7e0a7344b00b23ee0fffaa898e55e55d">SERVER_MAX_CONNECTION</a> = 511</td></tr>
+<tr class="memitem:a7e0a7344b00b23ee0fffaa898e55e55d" id="r_a7e0a7344b00b23ee0fffaa898e55e55d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e0a7344b00b23ee0fffaa898e55e55d">SERVER_MAX_CONNECTION</a> = 511</td></tr>
 <tr class="memdesc:a7e0a7344b00b23ee0fffaa898e55e55d"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP Server 默认监听队列大小  <br /></td></tr>
 <tr class="separator:a7e0a7344b00b23ee0fffaa898e55e55d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3c02989bbce8adec5980eba1bbb3886" id="r_aa3c02989bbce8adec5980eba1bbb3886"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#aa3c02989bbce8adec5980eba1bbb3886">SERVER_KEEP_ALIVE_DURATION</a> = 10</td></tr>
+<tr class="memitem:aa3c02989bbce8adec5980eba1bbb3886" id="r_aa3c02989bbce8adec5980eba1bbb3886"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3c02989bbce8adec5980eba1bbb3886">SERVER_KEEP_ALIVE_DURATION</a> = 10</td></tr>
 <tr class="memdesc:aa3c02989bbce8adec5980eba1bbb3886"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP Server Keep-Alive 时长  <br /></td></tr>
 <tr class="separator:aa3c02989bbce8adec5980eba1bbb3886"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8975062b5f92fa4f939bb91bb525082c" id="r_a8975062b5f92fa4f939bb91bb525082c"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a8975062b5f92fa4f939bb91bb525082c">HTTP_MAX_SINGLE_LINE</a> = 1023</td></tr>
+<tr class="memitem:a8975062b5f92fa4f939bb91bb525082c" id="r_a8975062b5f92fa4f939bb91bb525082c"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8975062b5f92fa4f939bb91bb525082c">HTTP_MAX_SINGLE_LINE</a> = 1023</td></tr>
 <tr class="memdesc:a8975062b5f92fa4f939bb91bb525082c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http Util 单行最大大小  <br /></td></tr>
 <tr class="separator:a8975062b5f92fa4f939bb91bb525082c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e21d82d505114db680929151bbcd4b5" id="r_a0e21d82d505114db680929151bbcd4b5"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a0e21d82d505114db680929151bbcd4b5">HTTPD_NAME</a> = &quot;sese::service::HttpServer&quot;</td></tr>
+<tr class="memitem:a0e21d82d505114db680929151bbcd4b5" id="r_a0e21d82d505114db680929151bbcd4b5"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e21d82d505114db680929151bbcd4b5">HTTPD_NAME</a> = &quot;sese::service::HttpServer&quot;</td></tr>
 <tr class="memdesc:a0e21d82d505114db680929151bbcd4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http Server 名称  <br /></td></tr>
 <tr class="separator:a0e21d82d505114db680929151bbcd4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb8c55611777ef0e29d5baef2008408e" id="r_afb8c55611777ef0e29d5baef2008408e"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#afb8c55611777ef0e29d5baef2008408e">HTTPD_BOUNDARY</a> = &quot;000000SESE0BOUNDARY000000&quot;</td></tr>
+<tr class="memitem:afb8c55611777ef0e29d5baef2008408e" id="r_afb8c55611777ef0e29d5baef2008408e"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb8c55611777ef0e29d5baef2008408e">HTTPD_BOUNDARY</a> = &quot;000000SESE0BOUNDARY000000&quot;</td></tr>
 <tr class="memdesc:afb8c55611777ef0e29d5baef2008408e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http 多段请求 boundary  <br /></td></tr>
 <tr class="separator:afb8c55611777ef0e29d5baef2008408e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d41e75e57d426eef7c0ec3e29f238d0" id="r_a5d41e75e57d426eef7c0ec3e29f238d0"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a5d41e75e57d426eef7c0ec3e29f238d0">HTTP_CLIENT_NAME</a> = &quot;sese::net::http::HttpClient&quot;</td></tr>
+<tr class="memitem:a5d41e75e57d426eef7c0ec3e29f238d0" id="r_a5d41e75e57d426eef7c0ec3e29f238d0"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d41e75e57d426eef7c0ec3e29f238d0">HTTP_CLIENT_NAME</a> = &quot;sese::net::http::HttpClient&quot;</td></tr>
 <tr class="memdesc:a5d41e75e57d426eef7c0ec3e29f238d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http Client 名称  <br /></td></tr>
 <tr class="separator:a5d41e75e57d426eef7c0ec3e29f238d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52b97793edafc2646f38746198ef65c0" id="r_a52b97793edafc2646f38746198ef65c0"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a> = 1024 * 16</td></tr>
+<tr class="memitem:a52b97793edafc2646f38746198ef65c0" id="r_a52b97793edafc2646f38746198ef65c0"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a> = 1024 * 16</td></tr>
 <tr class="memdesc:a52b97793edafc2646f38746198ef65c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compressor Chunk 默认大小  <br /></td></tr>
 <tr class="separator:a52b97793edafc2646f38746198ef65c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf8067721b6ba44fb6636944db3ca41" id="r_a4cf8067721b6ba44fb6636944db3ca41"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41">IOCP_WSABUF_SIZE</a> = 65535</td></tr>
+<tr class="memitem:a4cf8067721b6ba44fb6636944db3ca41" id="r_a4cf8067721b6ba44fb6636944db3ca41"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cf8067721b6ba44fb6636944db3ca41">IOCP_WSABUF_SIZE</a> = 65535</td></tr>
 <tr class="memdesc:a4cf8067721b6ba44fb6636944db3ca41"><td class="mdescLeft">&#160;</td><td class="mdescRight">IOCP 投递的 Recv 事件时携带的 WSABUF 大小  <br /></td></tr>
 <tr class="separator:a4cf8067721b6ba44fb6636944db3ca41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbaebe720282dc95c47f1b50c906f48f" id="r_abbaebe720282dc95c47f1b50c906f48f"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a> = 1472</td></tr>
+<tr class="memitem:abbaebe720282dc95c47f1b50c906f48f" id="r_abbaebe720282dc95c47f1b50c906f48f"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a> = 1472</td></tr>
 <tr class="memdesc:abbaebe720282dc95c47f1b50c906f48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">框架默认 MTU 值  <br /></td></tr>
 <tr class="separator:abbaebe720282dc95c47f1b50c906f48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adef322795de1e9ca964d542350bb1167" id="r_adef322795de1e9ca964d542350bb1167"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#adef322795de1e9ca964d542350bb1167">DNS_PACKAGE_SIZE</a> = 512</td></tr>
+<tr class="memitem:adef322795de1e9ca964d542350bb1167" id="r_adef322795de1e9ca964d542350bb1167"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adef322795de1e9ca964d542350bb1167">DNS_PACKAGE_SIZE</a> = 512</td></tr>
 <tr class="memdesc:adef322795de1e9ca964d542350bb1167"><td class="mdescLeft">&#160;</td><td class="mdescRight">框架 DNS 数据包大小  <br /></td></tr>
 <tr class="separator:adef322795de1e9ca964d542350bb1167"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -266,12 +272,13 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
         <tr>
           <td class="memname">#define SESE_DEPRECATED_WITH</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
           <td>&#160;&#160;&#160;[[deprecated(x)]]</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="namespacesstr.html#a8131275f3d943451dc451c56d5f2834f">sstr::SESE_DEPRECATED_WITH()</a>.</p>
 
 </div>
 </div>
@@ -302,19 +309,12 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
         <tr>
           <td class="memname">#define SESE_STD_WRAPPER</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">name, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">member&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    [[nodiscard]] auto name() const { return member.name(); }</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>member</em></span>&#160;)&#160;&#160;&#160;    [[nodiscard]] auto name() const { return member.name(); }</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -332,7 +332,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t DNS_PACKAGE_SIZE = 512</td>
+          <td class="memname">size_t DNS_PACKAGE_SIZE = 512</td>
         </tr>
       </table>
   </td>
@@ -358,7 +358,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool ENABLE_TEST = false</td>
+          <td class="memname">bool ENABLE_TEST = false</td>
         </tr>
       </table>
   </td>
@@ -382,7 +382,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* HTTP_CLIENT_NAME = &quot;sese::net::http::HttpClient&quot;</td>
+          <td class="memname">const char* HTTP_CLIENT_NAME = &quot;sese::net::http::HttpClient&quot;</td>
         </tr>
       </table>
   </td>
@@ -406,7 +406,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t HTTP_MAX_SINGLE_LINE = 1023</td>
+          <td class="memname">size_t HTTP_MAX_SINGLE_LINE = 1023</td>
         </tr>
       </table>
   </td>
@@ -432,7 +432,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* HTTPD_BOUNDARY = &quot;000000SESE0BOUNDARY000000&quot;</td>
+          <td class="memname">const char* HTTPD_BOUNDARY = &quot;000000SESE0BOUNDARY000000&quot;</td>
         </tr>
       </table>
   </td>
@@ -458,7 +458,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* HTTPD_NAME = &quot;sese::service::HttpServer&quot;</td>
+          <td class="memname">const char* HTTPD_NAME = &quot;sese::service::HttpServer&quot;</td>
         </tr>
       </table>
   </td>
@@ -482,7 +482,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t IOCP_WSABUF_SIZE = 65535</td>
+          <td class="memname">size_t IOCP_WSABUF_SIZE = 65535</td>
         </tr>
       </table>
   </td>
@@ -508,7 +508,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t MTU_VALUE = 1472</td>
+          <td class="memname">size_t MTU_VALUE = 1472</td>
         </tr>
       </table>
   </td>
@@ -520,7 +520,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
 
 <p>框架默认 MTU 值 </p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1a5d92ae190393f09cdfe96efd4cea65">sese::iocp::v1::IOCPService::onRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad0519f866dc177f428b862e6e79fc8a0">sese::internal::service::http::v3::HttpSSLConnectionImpl::readBody()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa6a125b00beae0720705b5b08739acfb">sese::internal::net::http::HttpClientImpl::readBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">sese::internal::net::http::HttpClientImpl::readBodyByData()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#a8fdb51c180574ca1bdc0c4e208e7eb27">sese::internal::service::http::v3::HttpSSLConnectionImpl::readHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html#af64e55596905e19741c17e35a121e407">sese::internal::service::http::v3::HttpConnectionImpl::writeBody()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#a9a52dd6e2a15931aaa2ac249a96f4d25">sese::internal::service::http::v3::HttpSSLConnectionImpl::writeBody()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#accbd2a4487776aaa97c282ba0119f769">sese::internal::net::http::HttpClientImpl::writeBodyByAuto()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#af8fbfb0fd29aadc8505929e57283ea6e">sese::internal::net::http::HttpClientImpl::writeBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2f933f16ccbec45a23430a65f340a360">sese::internal::net::http::HttpClientImpl::writeBodyByData()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html#a9dc21bcfde81823e7ceece999fb4cf32">sese::internal::service::http::v3::HttpConnectionImpl::writeHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad68b3b37c5576d9b45cce24eedfe0966">sese::internal::service::http::v3::HttpSSLConnectionImpl::writeHeader()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a187e72ca83c3a020e3d7c73acbba6042">sese::internal::net::http::HttpClientImpl::writeHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a2a7802092fa3e4848cff731e42e6e20c">sese::internal::service::http::v3::HttpConnection::writeRanges()</a> , 以及 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a03a8566914ff123555332011953546cf">sese::internal::service::http::v3::HttpConnection::writeSingleRange()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1a5d92ae190393f09cdfe96efd4cea65">sese::iocp::v1::IOCPService::onRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad0519f866dc177f428b862e6e79fc8a0">sese::internal::service::http::v3::HttpSSLConnectionImpl::readBody()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa6a125b00beae0720705b5b08739acfb">sese::internal::net::http::HttpClientImpl::readBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">sese::internal::net::http::HttpClientImpl::readBodyByData()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#a8fdb51c180574ca1bdc0c4e208e7eb27">sese::internal::service::http::v3::HttpSSLConnectionImpl::readHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html#af64e55596905e19741c17e35a121e407">sese::internal::service::http::v3::HttpConnectionImpl::writeBody()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#a9a52dd6e2a15931aaa2ac249a96f4d25">sese::internal::service::http::v3::HttpSSLConnectionImpl::writeBody()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#accbd2a4487776aaa97c282ba0119f769">sese::internal::net::http::HttpClientImpl::writeBodyByAuto()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#af8fbfb0fd29aadc8505929e57283ea6e">sese::internal::net::http::HttpClientImpl::writeBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2f933f16ccbec45a23430a65f340a360">sese::internal::net::http::HttpClientImpl::writeBodyByData()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a187e72ca83c3a020e3d7c73acbba6042">sese::internal::net::http::HttpClientImpl::writeHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html#a9dc21bcfde81823e7ceece999fb4cf32">sese::internal::service::http::v3::HttpConnectionImpl::writeHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad68b3b37c5576d9b45cce24eedfe0966">sese::internal::service::http::v3::HttpSSLConnectionImpl::writeHeader()</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a2a7802092fa3e4848cff731e42e6e20c">sese::internal::service::http::v3::HttpConnection::writeRanges()</a> , 以及 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a03a8566914ff123555332011953546cf">sese::internal::service::http::v3::HttpConnection::writeSingleRange()</a>.</p>
 
 </div>
 </div>
@@ -534,7 +534,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const size_t RECORD_BUFFER_SIZE = 4096</td>
+          <td class="memname">const size_t RECORD_BUFFER_SIZE = 4096</td>
         </tr>
       </table>
   </td>
@@ -560,7 +560,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* RECORD_DEFAULT_FILE_TIME_PATTERN = &quot;yyyyMMdd HHmmssff&quot;</td>
+          <td class="memname">const char* RECORD_DEFAULT_FILE_TIME_PATTERN = &quot;yyyyMMdd HHmmssff&quot;</td>
         </tr>
       </table>
   </td>
@@ -586,7 +586,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* RECORD_DEFAULT_TEXT_PATTERN = &quot;c lv fn:li tn:th&gt; m\n&quot;</td>
+          <td class="memname">const char* RECORD_DEFAULT_TEXT_PATTERN = &quot;c lv fn:li tn:th&gt; m\n&quot;</td>
         </tr>
       </table>
   </td>
@@ -610,7 +610,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* RECORD_DEFAULT_TIME_PATTERN = <a class="el" href="_config_8h.html#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a></td>
+          <td class="memname">const char* RECORD_DEFAULT_TIME_PATTERN = <a class="el" href="#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a></td>
         </tr>
       </table>
   </td>
@@ -634,7 +634,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t RECORD_OUTPUT_BUFFER = 4096</td>
+          <td class="memname">size_t RECORD_OUTPUT_BUFFER = 4096</td>
         </tr>
       </table>
   </td>
@@ -660,7 +660,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t SERVER_DEFAULT_THREADS = 4</td>
+          <td class="memname">size_t SERVER_DEFAULT_THREADS = 4</td>
         </tr>
       </table>
   </td>
@@ -684,7 +684,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t SERVER_KEEP_ALIVE_DURATION = 10</td>
+          <td class="memname">size_t SERVER_KEEP_ALIVE_DURATION = 10</td>
         </tr>
       </table>
   </td>
@@ -708,7 +708,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t SERVER_MAX_CONNECTION = 511</td>
+          <td class="memname">size_t SERVER_MAX_CONNECTION = 511</td>
         </tr>
       </table>
   </td>
@@ -732,7 +732,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* SPACE_CHARS = &quot; \n\r\t\v\b&quot;</td>
+          <td class="memname">const char* SPACE_CHARS = &quot; \n\r\t\v\b&quot;</td>
         </tr>
       </table>
   </td>
@@ -758,7 +758,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024</td>
+          <td class="memname">const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024</td>
         </tr>
       </table>
   </td>
@@ -784,7 +784,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t STRING_BUFFER_SIZE_FACTOR = 1024</td>
+          <td class="memname">size_t STRING_BUFFER_SIZE_FACTOR = 1024</td>
         </tr>
       </table>
   </td>
@@ -810,7 +810,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* THREAD_DEFAULT_NAME = &quot;UNKNOWN&quot;</td>
+          <td class="memname">const char* THREAD_DEFAULT_NAME = &quot;UNKNOWN&quot;</td>
         </tr>
       </table>
   </td>
@@ -836,7 +836,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* THREAD_MAIN_NAME = &quot;Main&quot;</td>
+          <td class="memname">const char* THREAD_MAIN_NAME = &quot;Main&quot;</td>
         </tr>
       </table>
   </td>
@@ -862,7 +862,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* TIME_DEFAULT_PATTERN = &quot;UTCz yyyy-MM-dd HH:mm:ss.ff&quot;</td>
+          <td class="memname">const char* TIME_DEFAULT_PATTERN = &quot;UTCz yyyy-MM-dd HH:mm:ss.ff&quot;</td>
         </tr>
       </table>
   </td>
@@ -886,7 +886,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr int32_t TIME_DEFAULT_ZONE = 8</td>
+          <td class="memname">int32_t TIME_DEFAULT_ZONE = 8</td>
         </tr>
       </table>
   </td>
@@ -910,7 +910,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* TIME_GREENWICH_MEAN_PATTERN = &quot;ddd, dd MMM yyyy HH:mm:ss %G%M%T&quot;</td>
+          <td class="memname">const char* TIME_GREENWICH_MEAN_PATTERN = &quot;ddd, dd MMM yyyy HH:mm:ss %G%M%T&quot;</td>
         </tr>
       </table>
   </td>
@@ -936,7 +936,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const char* TIME_SHORT_PATTERN = &quot;yyyy-MM-dd%THH:mm:ss.ff%Z&quot;</td>
+          <td class="memname">const char* TIME_SHORT_PATTERN = &quot;yyyy-MM-dd%THH:mm:ss.ff%Z&quot;</td>
         </tr>
       </table>
   </td>
@@ -960,7 +960,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t TIMER_WHEEL_NUMBER = 30</td>
+          <td class="memname">size_t TIMER_WHEEL_NUMBER = 30</td>
         </tr>
       </table>
   </td>
@@ -984,7 +984,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t ZLIB_CHUNK_SIZE = 1024 * 16</td>
+          <td class="memname">size_t ZLIB_CHUNK_SIZE = 1024 * 16</td>
         </tr>
       </table>
   </td>
@@ -1004,7 +1004,7 @@ $(document).ready(function(){initNavTree('_config_8h.html',''); initResizable();
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="_config_8h.html">Config.h</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:54 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

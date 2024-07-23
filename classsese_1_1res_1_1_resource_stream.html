@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::res::ResourceStream类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1res_1_1_resource_stream.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1res_1_1_resource_stream.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,7 +142,7 @@ $(document).ready(function(){initNavTree('classsese_1_1res_1_1_resource_stream.h
 <div class="contents">
 
 <p>静态资源流  
- <a href="classsese_1_1res_1_1_resource_stream.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_resource_stream_8h_source.html">ResourceStream.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -152,47 +158,47 @@ $(document).ready(function(){initNavTree('classsese_1_1res_1_1_resource_stream.h
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:af6df4a62cf172ddd9b42fd1fb26adf70" id="r_af6df4a62cf172ddd9b42fd1fb26adf70"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#af6df4a62cf172ddd9b42fd1fb26adf70">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1res_1_1_resource_stream.html">ResourceStream</a> &gt;</td></tr>
+<tr class="memitem:af6df4a62cf172ddd9b42fd1fb26adf70" id="r_af6df4a62cf172ddd9b42fd1fb26adf70"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6df4a62cf172ddd9b42fd1fb26adf70">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1res_1_1_resource_stream.html">ResourceStream</a>&gt;</td></tr>
 <tr class="separator:af6df4a62cf172ddd9b42fd1fb26adf70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
 <tr class="memitem:a419bfa8f7e6094f2176165bc1a85fa2a inherit pub_types_classsese_1_1io_1_1_peekable_stream" id="r_a419bfa8f7e6094f2176165bc1a85fa2a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">PeekableStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a419bfa8f7e6094f2176165bc1a85fa2a">Ptr</a></td></tr>
 <tr class="separator:a419bfa8f7e6094f2176165bc1a85fa2a inherit pub_types_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
 <tr class="memitem:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream" id="r_a0452a75dd0ee9345d78e9d14c1b7cb78"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_input_stream.html">InputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">Ptr</a></td></tr>
 <tr class="separator:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:adbeeec9537ee424f5610d97d57405f01" id="r_adbeeec9537ee424f5610d97d57405f01"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#adbeeec9537ee424f5610d97d57405f01">ResourceStream</a> (const void *<a class="el" href="classsese_1_1res_1_1_resource_stream.html#aae363ff5076487b50cc4091c6dc25f61">buf</a>, size_t <a class="el" href="classsese_1_1res_1_1_resource_stream.html#a2e2b0f75487c02437904b61b82497f79">size</a>)</td></tr>
+<tr class="memitem:adbeeec9537ee424f5610d97d57405f01" id="r_adbeeec9537ee424f5610d97d57405f01"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbeeec9537ee424f5610d97d57405f01">ResourceStream</a> (const void *<a class="el" href="#aae363ff5076487b50cc4091c6dc25f61">buf</a>, size_t <a class="el" href="#a2e2b0f75487c02437904b61b82497f79">size</a>)</td></tr>
 <tr class="separator:adbeeec9537ee424f5610d97d57405f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a816c63adf0b07dad865d580309543cbf" id="r_a816c63adf0b07dad865d580309543cbf"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a816c63adf0b07dad865d580309543cbf">read</a> (void *buffer, size_t length) override</td></tr>
+<tr class="memitem:a816c63adf0b07dad865d580309543cbf" id="r_a816c63adf0b07dad865d580309543cbf"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816c63adf0b07dad865d580309543cbf">read</a> (void *buffer, size_t length) override</td></tr>
 <tr class="separator:a816c63adf0b07dad865d580309543cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b6d15b62816e6607916d780b9657c76" id="r_a7b6d15b62816e6607916d780b9657c76"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a7b6d15b62816e6607916d780b9657c76">peek</a> (void *buffer, size_t length) override</td></tr>
+<tr class="memitem:a7b6d15b62816e6607916d780b9657c76" id="r_a7b6d15b62816e6607916d780b9657c76"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b6d15b62816e6607916d780b9657c76">peek</a> (void *buffer, size_t length) override</td></tr>
 <tr class="separator:a7b6d15b62816e6607916d780b9657c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf1b5c2c4b002ea22301f343ba725a4d" id="r_adf1b5c2c4b002ea22301f343ba725a4d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#adf1b5c2c4b002ea22301f343ba725a4d">trunc</a> (size_t length) override</td></tr>
+<tr class="memitem:adf1b5c2c4b002ea22301f343ba725a4d" id="r_adf1b5c2c4b002ea22301f343ba725a4d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf1b5c2c4b002ea22301f343ba725a4d">trunc</a> (size_t length) override</td></tr>
 <tr class="separator:adf1b5c2c4b002ea22301f343ba725a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cf2739e4030f89d804d4d0a8d707b10" id="r_a3cf2739e4030f89d804d4d0a8d707b10"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a3cf2739e4030f89d804d4d0a8d707b10">getSeek</a> () const</td></tr>
+<tr class="memitem:a3cf2739e4030f89d804d4d0a8d707b10" id="r_a3cf2739e4030f89d804d4d0a8d707b10"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cf2739e4030f89d804d4d0a8d707b10">getSeek</a> () const</td></tr>
 <tr class="separator:a3cf2739e4030f89d804d4d0a8d707b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d0beea508a2e7d9ba66825fdc240e9e" id="r_a8d0beea508a2e7d9ba66825fdc240e9e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a8d0beea508a2e7d9ba66825fdc240e9e">setSeek</a> (int64_t offset, <a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">io::Seek</a> seek)</td></tr>
+<tr class="memitem:a8d0beea508a2e7d9ba66825fdc240e9e" id="r_a8d0beea508a2e7d9ba66825fdc240e9e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d0beea508a2e7d9ba66825fdc240e9e">setSeek</a> (int64_t offset, <a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">io::Seek</a> seek)</td></tr>
 <tr class="separator:a8d0beea508a2e7d9ba66825fdc240e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07cbfa30342d0192947a0ed196990d02" id="r_a07cbfa30342d0192947a0ed196990d02"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a07cbfa30342d0192947a0ed196990d02">setSeek</a> (int64_t offset, int32_t whence)</td></tr>
+<tr class="memitem:a07cbfa30342d0192947a0ed196990d02" id="r_a07cbfa30342d0192947a0ed196990d02"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07cbfa30342d0192947a0ed196990d02">setSeek</a> (int64_t offset, int32_t whence)</td></tr>
 <tr class="separator:a07cbfa30342d0192947a0ed196990d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add7cef54b9ed535f2c5db98677bb14b8" id="r_add7cef54b9ed535f2c5db98677bb14b8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#add7cef54b9ed535f2c5db98677bb14b8">getSize</a> () const</td></tr>
+<tr class="memitem:add7cef54b9ed535f2c5db98677bb14b8" id="r_add7cef54b9ed535f2c5db98677bb14b8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add7cef54b9ed535f2c5db98677bb14b8">getSize</a> () const</td></tr>
 <tr class="separator:add7cef54b9ed535f2c5db98677bb14b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
 <tr class="memitem:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream" id="r_aeb71ca5a92ba6b49caae5489458f5fd1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#aeb71ca5a92ba6b49caae5489458f5fd1">~PeekableStream</a> ()=default</td></tr>
 <tr class="separator:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
 <tr class="memitem:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream" id="r_acc4179962d8ad6f886cf4d85642823a3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#acc4179962d8ad6f886cf4d85642823a3">~InputStream</a> () noexcept=default</td></tr>
 <tr class="separator:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:aae363ff5076487b50cc4091c6dc25f61" id="r_aae363ff5076487b50cc4091c6dc25f61"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#aae363ff5076487b50cc4091c6dc25f61">buf</a> {}</td></tr>
+<tr class="memitem:aae363ff5076487b50cc4091c6dc25f61" id="r_aae363ff5076487b50cc4091c6dc25f61"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae363ff5076487b50cc4091c6dc25f61">buf</a> {}</td></tr>
 <tr class="separator:aae363ff5076487b50cc4091c6dc25f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2b0f75487c02437904b61b82497f79" id="r_a2e2b0f75487c02437904b61b82497f79"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a2e2b0f75487c02437904b61b82497f79">size</a> {}</td></tr>
+<tr class="memitem:a2e2b0f75487c02437904b61b82497f79" id="r_a2e2b0f75487c02437904b61b82497f79"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e2b0f75487c02437904b61b82497f79">size</a> {}</td></tr>
 <tr class="separator:a2e2b0f75487c02437904b61b82497f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a861190898164fed75a9a3fa948c2a5e0" id="r_a861190898164fed75a9a3fa948c2a5e0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1res_1_1_resource_stream.html#a861190898164fed75a9a3fa948c2a5e0">pos</a> {}</td></tr>
+<tr class="memitem:a861190898164fed75a9a3fa948c2a5e0" id="r_a861190898164fed75a9a3fa948c2a5e0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a861190898164fed75a9a3fa948c2a5e0">pos</a> {}</td></tr>
 <tr class="separator:a861190898164fed75a9a3fa948c2a5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -205,7 +211,7 @@ Protected 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1res_1_1_resource_stream.html#af6df4a62cf172ddd9b42fd1fb26adf70">sese::res::ResourceStream::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1res_1_1_resource_stream.html">ResourceStream</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#af6df4a62cf172ddd9b42fd1fb26adf70">sese::res::ResourceStream::Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1res_1_1_resource_stream.html">ResourceStream</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -222,19 +228,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::res::ResourceStream::ResourceStream </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -247,14 +246,22 @@ Protected 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int64_t sese::res::ResourceStream::getSeek </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -271,18 +278,18 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">size_t sese::res::ResourceStream::getSize </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1res_1_1_resource_stream.html#a2e2b0f75487c02437904b61b82497f79">size</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a2e2b0f75487c02437904b61b82497f79">size</a>.</p>
 
 </div>
 </div>
@@ -298,19 +305,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::res::ResourceStream::peek </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -346,19 +346,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::res::ResourceStream::read </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -383,19 +376,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int32_t sese::res::ResourceStream::setSeek </td>
           <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
+          <td class="paramtype">int64_t</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>whence</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>whence</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -413,19 +399,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int32_t sese::res::ResourceStream::setSeek </td>
           <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
+          <td class="paramtype">int64_t</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">io::Seek</a>&#160;</td>
-          <td class="paramname"><em>seek</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">io::Seek</a></td>          <td class="paramname"><span class="paramname"><em>seek</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -444,8 +423,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t sese::res::ResourceStream::trunc </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>length</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -534,7 +512,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1res_1_1_resource_stream.html#add7cef54b9ed535f2c5db98677bb14b8">getSize()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#add7cef54b9ed535f2c5db98677bb14b8">getSize()</a>.</p>
 
 </div>
 </div>
@@ -548,7 +526,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1res.html">res</a></li><li class="navelem"><a class="el" href="classsese_1_1res_1_1_resource_stream.html">ResourceStream</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

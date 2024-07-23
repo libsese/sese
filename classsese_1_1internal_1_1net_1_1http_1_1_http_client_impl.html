@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::internal::net::http::HttpClientImpl类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,7 +142,7 @@ $(document).ready(function(){initNavTree('classsese_1_1internal_1_1net_1_1http_1
 <div class="contents">
 
 <p>基于ASIO实现的HTTP/1.1客户端  
- <a href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_http_client_impl_8h_source.html">HttpClientImpl.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -154,21 +160,21 @@ $(document).ready(function(){initNavTree('classsese_1_1internal_1_1net_1_1http_1
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a90ca9fee51b6e8ae8d5ec073e4e0d25a" id="r_a90ca9fee51b6e8ae8d5ec073e4e0d25a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a90ca9fee51b6e8ae8d5ec073e4e0d25a">HttpClientImpl</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr, <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">sese::net::http::Request::Ptr</a> <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>)</td></tr>
+<tr class="memitem:a90ca9fee51b6e8ae8d5ec073e4e0d25a" id="r_a90ca9fee51b6e8ae8d5ec073e4e0d25a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90ca9fee51b6e8ae8d5ec073e4e0d25a">HttpClientImpl</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr, <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">sese::net::http::Request::Ptr</a> <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>)</td></tr>
 <tr class="separator:a90ca9fee51b6e8ae8d5ec073e4e0d25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa37ed939ff6a44aba513f4555192a623" id="r_aa37ed939ff6a44aba513f4555192a623"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa37ed939ff6a44aba513f4555192a623">~HttpClientImpl</a> () override</td></tr>
+<tr class="memitem:aa37ed939ff6a44aba513f4555192a623" id="r_aa37ed939ff6a44aba513f4555192a623"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa37ed939ff6a44aba513f4555192a623">~HttpClientImpl</a> () override</td></tr>
 <tr class="separator:aa37ed939ff6a44aba513f4555192a623"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b11b790aa2ee8bf18b6b038e4b6e7c7" id="r_a7b11b790aa2ee8bf18b6b038e4b6e7c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request</a> () override</td></tr>
+<tr class="memitem:a7b11b790aa2ee8bf18b6b038e4b6e7c7" id="r_a7b11b790aa2ee8bf18b6b038e4b6e7c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request</a> () override</td></tr>
 <tr class="separator:a7b11b790aa2ee8bf18b6b038e4b6e7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a553c35e7fa37b5ff5ee4708050156ec3" id="r_a553c35e7fa37b5ff5ee4708050156ec3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read</a> (void *buf, size_t len) override</td></tr>
+<tr class="memitem:a553c35e7fa37b5ff5ee4708050156ec3" id="r_a553c35e7fa37b5ff5ee4708050156ec3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read</a> (void *buf, size_t len) override</td></tr>
 <tr class="separator:a553c35e7fa37b5ff5ee4708050156ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89dc9d3963f80eba587cf02a2dae52d3" id="r_a89dc9d3963f80eba587cf02a2dae52d3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write</a> (const void *buf, size_t len) override</td></tr>
+<tr class="memitem:a89dc9d3963f80eba587cf02a2dae52d3" id="r_a89dc9d3963f80eba587cf02a2dae52d3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write</a> (const void *buf, size_t len) override</td></tr>
 <tr class="separator:a89dc9d3963f80eba587cf02a2dae52d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14e1dd51ee088d68669b3548a8c0c93b" id="r_a14e1dd51ee088d68669b3548a8c0c93b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a14e1dd51ee088d68669b3548a8c0c93b">getLastError</a> () override</td></tr>
+<tr class="memitem:a14e1dd51ee088d68669b3548a8c0c93b" id="r_a14e1dd51ee088d68669b3548a8c0c93b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14e1dd51ee088d68669b3548a8c0c93b">getLastError</a> () override</td></tr>
 <tr class="separator:a14e1dd51ee088d68669b3548a8c0c93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa99c437fb7b5de5f450eb1e37fffb8e3" id="r_aa99c437fb7b5de5f450eb1e37fffb8e3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa99c437fb7b5de5f450eb1e37fffb8e3">getLastErrorString</a> () override</td></tr>
+<tr class="memitem:aa99c437fb7b5de5f450eb1e37fffb8e3" id="r_aa99c437fb7b5de5f450eb1e37fffb8e3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa99c437fb7b5de5f450eb1e37fffb8e3">getLastErrorString</a> () override</td></tr>
 <tr class="separator:aa99c437fb7b5de5f450eb1e37fffb8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1net_1_1http_1_1_requestable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1net_1_1http_1_1_requestable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html">sese::net::http::Requestable</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1net_1_1http_1_1_requestable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1net_1_1http_1_1_requestable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html">sese::net::http::Requestable</a></td></tr>
 <tr class="memitem:ad0ff7745cc428ba199d41f670274af69 inherit pub_methods_classsese_1_1net_1_1http_1_1_requestable" id="r_ad0ff7745cc428ba199d41f670274af69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#ad0ff7745cc428ba199d41f670274af69">~Requestable</a> () override=default</td></tr>
 <tr class="separator:ad0ff7745cc428ba199d41f670274af69 inherit pub_methods_classsese_1_1net_1_1http_1_1_requestable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2079c6b3809081013e68a39fe159b5f1 inherit pub_methods_classsese_1_1net_1_1http_1_1_requestable" id="r_a2079c6b3809081013e68a39fe159b5f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Request::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2079c6b3809081013e68a39fe159b5f1">getRequest</a> ()</td></tr>
@@ -186,47 +192,47 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:adaebcfacb30d7d4c7182353105b12c14 inherit pub_methods_classsese_1_1net_1_1http_1_1_requestable" id="r_adaebcfacb30d7d4c7182353105b12c14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#adaebcfacb30d7d4c7182353105b12c14">reset</a> ()</td></tr>
 <tr class="memdesc:adaebcfacb30d7d4c7182353105b12c14 inherit pub_methods_classsese_1_1net_1_1http_1_1_requestable"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置 body 相关设置  <br /></td></tr>
 <tr class="separator:adaebcfacb30d7d4c7182353105b12c14 inherit pub_methods_classsese_1_1net_1_1http_1_1_requestable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
 <tr class="memitem:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream" id="r_acc4179962d8ad6f886cf4d85642823a3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#acc4179962d8ad6f886cf4d85642823a3">~InputStream</a> () noexcept=default</td></tr>
 <tr class="separator:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
 <tr class="separator:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
-<tr class="memitem:a88bee966802713313e9e3a93b082b1c0" id="r_a88bee966802713313e9e3a93b082b1c0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a88bee966802713313e9e3a93b082b1c0">handshake</a> ()</td></tr>
+<tr class="memitem:a88bee966802713313e9e3a93b082b1c0" id="r_a88bee966802713313e9e3a93b082b1c0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88bee966802713313e9e3a93b082b1c0">handshake</a> ()</td></tr>
 <tr class="separator:a88bee966802713313e9e3a93b082b1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fcf11046da3f454c27a1dc81f3eadb9" id="r_a9fcf11046da3f454c27a1dc81f3eadb9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a9fcf11046da3f454c27a1dc81f3eadb9">shutdown</a> ()</td></tr>
+<tr class="memitem:a9fcf11046da3f454c27a1dc81f3eadb9" id="r_a9fcf11046da3f454c27a1dc81f3eadb9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fcf11046da3f454c27a1dc81f3eadb9">shutdown</a> ()</td></tr>
 <tr class="separator:a9fcf11046da3f454c27a1dc81f3eadb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a187e72ca83c3a020e3d7c73acbba6042" id="r_a187e72ca83c3a020e3d7c73acbba6042"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a187e72ca83c3a020e3d7c73acbba6042">writeHeader</a> (<a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> &amp;builder)</td></tr>
+<tr class="memitem:a187e72ca83c3a020e3d7c73acbba6042" id="r_a187e72ca83c3a020e3d7c73acbba6042"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a187e72ca83c3a020e3d7c73acbba6042">writeHeader</a> (<a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> &amp;builder)</td></tr>
 <tr class="separator:a187e72ca83c3a020e3d7c73acbba6042"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8fbfb0fd29aadc8505929e57283ea6e" id="r_af8fbfb0fd29aadc8505929e57283ea6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#af8fbfb0fd29aadc8505929e57283ea6e">writeBodyByCallback</a> ()</td></tr>
+<tr class="memitem:af8fbfb0fd29aadc8505929e57283ea6e" id="r_af8fbfb0fd29aadc8505929e57283ea6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8fbfb0fd29aadc8505929e57283ea6e">writeBodyByCallback</a> ()</td></tr>
 <tr class="separator:af8fbfb0fd29aadc8505929e57283ea6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f933f16ccbec45a23430a65f340a360" id="r_a2f933f16ccbec45a23430a65f340a360"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2f933f16ccbec45a23430a65f340a360">writeBodyByData</a> ()</td></tr>
+<tr class="memitem:a2f933f16ccbec45a23430a65f340a360" id="r_a2f933f16ccbec45a23430a65f340a360"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f933f16ccbec45a23430a65f340a360">writeBodyByData</a> ()</td></tr>
 <tr class="separator:a2f933f16ccbec45a23430a65f340a360"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accbd2a4487776aaa97c282ba0119f769" id="r_accbd2a4487776aaa97c282ba0119f769"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#accbd2a4487776aaa97c282ba0119f769">writeBodyByAuto</a> ()</td></tr>
+<tr class="memitem:accbd2a4487776aaa97c282ba0119f769" id="r_accbd2a4487776aaa97c282ba0119f769"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accbd2a4487776aaa97c282ba0119f769">writeBodyByAuto</a> ()</td></tr>
 <tr class="separator:accbd2a4487776aaa97c282ba0119f769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6a125b00beae0720705b5b08739acfb" id="r_aa6a125b00beae0720705b5b08739acfb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa6a125b00beae0720705b5b08739acfb">readBodyByCallback</a> (size_t expect)</td></tr>
+<tr class="memitem:aa6a125b00beae0720705b5b08739acfb" id="r_aa6a125b00beae0720705b5b08739acfb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6a125b00beae0720705b5b08739acfb">readBodyByCallback</a> (size_t expect)</td></tr>
 <tr class="separator:aa6a125b00beae0720705b5b08739acfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a119ef6d1f0b6f6d030aa750f55fde3f5" id="r_a119ef6d1f0b6f6d030aa750f55fde3f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">readBodyByData</a> (size_t expect)</td></tr>
+<tr class="memitem:a119ef6d1f0b6f6d030aa750f55fde3f5" id="r_a119ef6d1f0b6f6d030aa750f55fde3f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a119ef6d1f0b6f6d030aa750f55fde3f5">readBodyByData</a> (size_t expect)</td></tr>
 <tr class="separator:a119ef6d1f0b6f6d030aa750f55fde3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a771ef990dfb4afc1949b8fe961090ce3" id="r_a771ef990dfb4afc1949b8fe961090ce3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a771ef990dfb4afc1949b8fe961090ce3">address</a></td></tr>
+<tr class="memitem:a771ef990dfb4afc1949b8fe961090ce3" id="r_a771ef990dfb4afc1949b8fe961090ce3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a771ef990dfb4afc1949b8fe961090ce3">address</a></td></tr>
 <tr class="separator:a771ef990dfb4afc1949b8fe961090ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cc2fb16d39b6bec224d24f1594f5179" id="r_a6cc2fb16d39b6bec224d24f1594f5179"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">sese::net::http::CookieMap::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a6cc2fb16d39b6bec224d24f1594f5179">cookies</a></td></tr>
+<tr class="memitem:a6cc2fb16d39b6bec224d24f1594f5179" id="r_a6cc2fb16d39b6bec224d24f1594f5179"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">sese::net::http::CookieMap::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cc2fb16d39b6bec224d24f1594f5179">cookies</a></td></tr>
 <tr class="separator:a6cc2fb16d39b6bec224d24f1594f5179"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b72f9458370f256358c3142df5cbb3d" id="r_a7b72f9458370f256358c3142df5cbb3d"><td class="memItemLeft" align="right" valign="top">asio::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b72f9458370f256358c3142df5cbb3d">code</a> {}</td></tr>
+<tr class="memitem:a7b72f9458370f256358c3142df5cbb3d" id="r_a7b72f9458370f256358c3142df5cbb3d"><td class="memItemLeft" align="right" valign="top">asio::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b72f9458370f256358c3142df5cbb3d">code</a> {}</td></tr>
 <tr class="separator:a7b72f9458370f256358c3142df5cbb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bc841df5273e84f0388be1fdc5ec4ff" id="r_a2bc841df5273e84f0388be1fdc5ec4ff"><td class="memItemLeft" align="right" valign="top">asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2bc841df5273e84f0388be1fdc5ec4ff">ioContext</a></td></tr>
+<tr class="memitem:a2bc841df5273e84f0388be1fdc5ec4ff" id="r_a2bc841df5273e84f0388be1fdc5ec4ff"><td class="memItemLeft" align="right" valign="top">asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bc841df5273e84f0388be1fdc5ec4ff">ioContext</a></td></tr>
 <tr class="separator:a2bc841df5273e84f0388be1fdc5ec4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbf6919713109d2c4c6385dbca082dba" id="r_acbf6919713109d2c4c6385dbca082dba"><td class="memItemLeft" align="right" valign="top">asio::ip::tcp::socket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">socket</a></td></tr>
+<tr class="memitem:acbf6919713109d2c4c6385dbca082dba" id="r_acbf6919713109d2c4c6385dbca082dba"><td class="memItemLeft" align="right" valign="top">asio::ip::tcp::socket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbf6919713109d2c4c6385dbca082dba">socket</a></td></tr>
 <tr class="separator:acbf6919713109d2c4c6385dbca082dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acba740632047bcb7113204f317dd76d7" id="r_acba740632047bcb7113204f317dd76d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acba740632047bcb7113204f317dd76d7">first</a> = true</td></tr>
+<tr class="memitem:acba740632047bcb7113204f317dd76d7" id="r_acba740632047bcb7113204f317dd76d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba740632047bcb7113204f317dd76d7">first</a> = true</td></tr>
 <tr class="separator:acba740632047bcb7113204f317dd76d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classsese_1_1net_1_1http_1_1_requestable"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classsese_1_1net_1_1http_1_1_requestable')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html">sese::net::http::Requestable</a></td></tr>
+<tr class="inherit_header pro_attribs_classsese_1_1net_1_1http_1_1_requestable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classsese_1_1net_1_1http_1_1_requestable')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html">sese::net::http::Requestable</a></td></tr>
 <tr class="memitem:a9382a081a27b0d3a7629b6a40a12ae63 inherit pro_attribs_classsese_1_1net_1_1http_1_1_requestable" id="r_a9382a081a27b0d3a7629b6a40a12ae63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Request::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a> = nullptr</td></tr>
 <tr class="separator:a9382a081a27b0d3a7629b6a40a12ae63 inherit pro_attribs_classsese_1_1net_1_1http_1_1_requestable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a6b7aea54248db4c20715cb2eba8103 inherit pro_attribs_classsese_1_1net_1_1http_1_1_requestable" id="r_a2a6b7aea54248db4c20715cb2eba8103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html#aec7112810fa62f546e506783b0444fb6">Response::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a> = nullptr</td></tr>
@@ -244,15 +250,15 @@ Protected 属性</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
-<tr class="inherit_header pub_types_classsese_1_1net_1_1http_1_1_requestable"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1net_1_1http_1_1_requestable')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html">sese::net::http::Requestable</a></td></tr>
-<tr class="memitem:a450a68db4e9da01849e23527915371ae inherit pub_types_classsese_1_1net_1_1http_1_1_requestable" id="r_a450a68db4e9da01849e23527915371ae"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a450a68db4e9da01849e23527915371ae">WriteCallback</a> = std::function&lt; int64_t(const void *, size_t)&gt;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1net_1_1http_1_1_requestable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1net_1_1http_1_1_requestable')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html">sese::net::http::Requestable</a></td></tr>
+<tr class="memitem:a450a68db4e9da01849e23527915371ae inherit pub_types_classsese_1_1net_1_1http_1_1_requestable" id="r_a450a68db4e9da01849e23527915371ae"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a450a68db4e9da01849e23527915371ae">WriteCallback</a> = std::function&lt;int64_t(const void *, size_t)&gt;</td></tr>
 <tr class="separator:a450a68db4e9da01849e23527915371ae inherit pub_types_classsese_1_1net_1_1http_1_1_requestable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac924c18f52ef46acb96af72700d97b55 inherit pub_types_classsese_1_1net_1_1http_1_1_requestable" id="r_ac924c18f52ef46acb96af72700d97b55"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#ac924c18f52ef46acb96af72700d97b55">ReadCallback</a> = std::function&lt; int64_t(void *, size_t)&gt;</td></tr>
+<tr class="memitem:ac924c18f52ef46acb96af72700d97b55 inherit pub_types_classsese_1_1net_1_1http_1_1_requestable" id="r_ac924c18f52ef46acb96af72700d97b55"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#ac924c18f52ef46acb96af72700d97b55">ReadCallback</a> = std::function&lt;int64_t(void *, size_t)&gt;</td></tr>
 <tr class="separator:ac924c18f52ef46acb96af72700d97b55 inherit pub_types_classsese_1_1net_1_1http_1_1_requestable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
 <tr class="memitem:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream" id="r_a0452a75dd0ee9345d78e9d14c1b7cb78"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_input_stream.html">InputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">Ptr</a></td></tr>
 <tr class="separator:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="memitem:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream" id="r_a4446385dc8f0d3431a03fda5165a4b3a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">Ptr</a></td></tr>
 <tr class="separator:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -268,24 +274,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">HttpClientImpl::HttpClientImpl </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>addr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">sese::net::http::Request::Ptr</a>&#160;</td>
-          <td class="paramname"><em>req</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">sese::net::http::Request::Ptr</a></td>          <td class="paramname"><span class="paramname"><em>req</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a771ef990dfb4afc1949b8fe961090ce3">address</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a6cc2fb16d39b6bec224d24f1594f5179">cookies</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#adaebcfacb30d7d4c7182353105b12c14">sese::net::http::Requestable::reset()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">sese::net::http::Requestable::resp</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a771ef990dfb4afc1949b8fe961090ce3">address</a>, <a class="el" href="#a6cc2fb16d39b6bec224d24f1594f5179">cookies</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#adaebcfacb30d7d4c7182353105b12c14">sese::net::http::Requestable::reset()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">sese::net::http::Requestable::resp</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aa175360bd9ffa572f85b39304028a16b">sese::net::http::Header::setCookies()</a>.</p>
 
 </div>
 </div>
@@ -301,7 +300,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">HttpClientImpl::~HttpClientImpl </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -312,7 +311,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">socket</a>.</p>
+<p class="reference">引用了 <a class="el" href="#acbf6919713109d2c4c6385dbca082dba">socket</a>.</p>
 
 </div>
 </div>
@@ -329,7 +328,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int HttpClientImpl::getLastError </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -343,7 +342,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a34454423576336abc23ff1ea13e2c39b">sese::net::http::Requestable</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b72f9458370f256358c3142df5cbb3d">code</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7b72f9458370f256358c3142df5cbb3d">code</a>.</p>
 
 </div>
 </div>
@@ -359,7 +358,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">std::string HttpClientImpl::getLastErrorString </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -373,7 +372,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#aa6bfcde26859d5e40528357bc6a90229">sese::net::http::Requestable</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b72f9458370f256358c3142df5cbb3d">code</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7b72f9458370f256358c3142df5cbb3d">code</a>.</p>
 
 </div>
 </div>
@@ -389,7 +388,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::handshake </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -402,7 +401,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aa3a4b66ce6c6ff7fdc9358116c650845">sese::internal::net::http::HttpSSLClientImpl</a> 重载.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aa3a4b66ce6c6ff7fdc9358116c650845">sese::internal::net::http::HttpSSLClientImpl::handshake()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aa3a4b66ce6c6ff7fdc9358116c650845">sese::internal::net::http::HttpSSLClientImpl::handshake()</a> , 以及 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -418,19 +417,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t HttpClientImpl::read </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -444,9 +436,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#a71816ffcbac4cac0aaf0889d9bfd831d">sese::internal::net::http::HttpSSLClientImpl</a> 重载.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b72f9458370f256358c3142df5cbb3d">code</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">socket</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7b72f9458370f256358c3142df5cbb3d">code</a>, <a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read()</a> , 以及 <a class="el" href="#acbf6919713109d2c4c6385dbca082dba">socket</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa6a125b00beae0720705b5b08739acfb">readBodyByCallback()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">readBodyByData()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="#aa6a125b00beae0720705b5b08739acfb">readBodyByCallback()</a> , 以及 <a class="el" href="#a119ef6d1f0b6f6d030aa750f55fde3f5">readBodyByData()</a>.</p>
 
 </div>
 </div>
@@ -462,8 +454,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::readBodyByCallback </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>expect</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>expect</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -474,9 +465,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a399873161ebb9e4275a8f7ff003d6a48">sese::net::http::Requestable::write_callback</a>.</p>
+<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a399873161ebb9e4275a8f7ff003d6a48">sese::net::http::Requestable::write_callback</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -492,8 +483,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::readBodyByData </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>expect</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>expect</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -504,9 +494,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a0da56d25623f438dca4f4f4fe094fc5d">sese::net::http::Requestable::write_data</a>.</p>
+<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a0da56d25623f438dca4f4f4fe094fc5d">sese::net::http::Requestable::write_data</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -522,7 +512,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::request </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -536,7 +526,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a512ba1b20798b86137573b056a716ae3">sese::net::http::Requestable</a>.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a771ef990dfb4afc1949b8fe961090ce3">address</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b72f9458370f256358c3142df5cbb3d">code</a>, <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a7264730a0acc43e998b3d83bf71bb5e0">sese::net::http::Requestable::expect_total</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acba740632047bcb7113204f317dd76d7">first</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a88bee966802713313e9e3a93b082b1c0">handshake()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a57cdfb1c98c2ec51a2f0e094a9248921">sese::net::http::Requestable::read_callback</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa6a125b00beae0720705b5b08739acfb">readBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a119ef6d1f0b6f6d030aa750f55fde3f5">readBodyByData()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#adaebcfacb30d7d4c7182353105b12c14">sese::net::http::Requestable::reset()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">sese::net::http::Requestable::resp</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#abf1c72f1b44582756c202b6709fe65f5">sese::net::http::HttpUtil::sendRequest()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a9fcf11046da3f454c27a1dc81f3eadb9">shutdown()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">socket</a>, <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a399873161ebb9e4275a8f7ff003d6a48">sese::net::http::Requestable::write_callback</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#accbd2a4487776aaa97c282ba0119f769">writeBodyByAuto()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#af8fbfb0fd29aadc8505929e57283ea6e">writeBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2f933f16ccbec45a23430a65f340a360">writeBodyByData()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a187e72ca83c3a020e3d7c73acbba6042">writeHeader()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#aa1fe0c9e9a5bfc86bf1671b57922369f">sese::net::http::CookieMap::add()</a>, <a class="el" href="#a771ef990dfb4afc1949b8fe961090ce3">address</a>, <a class="el" href="#a7b72f9458370f256358c3142df5cbb3d">code</a>, <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a7264730a0acc43e998b3d83bf71bb5e0">sese::net::http::Requestable::expect_total</a>, <a class="el" href="#acba740632047bcb7113204f317dd76d7">first</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61">sese::net::http::Header::get()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">sese::net::http::Request::getBody()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a72bcf08f22a546bae75d7a582e9d83fc">sese::net::http::Header::getCookies()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">sese::io::AbstractByteBuffer::getLength()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#ae3fd43f0bae6eb2124d4d800ef3912d1">sese::net::http::RequestHeader::getType()</a>, <a class="el" href="#a88bee966802713313e9e3a93b082b1c0">handshake()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a57cdfb1c98c2ec51a2f0e094a9248921">sese::net::http::Requestable::read_callback</a>, <a class="el" href="#aa6a125b00beae0720705b5b08739acfb">readBodyByCallback()</a>, <a class="el" href="#a119ef6d1f0b6f6d030aa750f55fde3f5">readBodyByData()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#adaebcfacb30d7d4c7182353105b12c14">sese::net::http::Requestable::reset()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">sese::net::http::Requestable::resp</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#abf1c72f1b44582756c202b6709fe65f5">sese::net::http::HttpUtil::sendRequest()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a7db37c82bd6015aa16055b0896842ab6">sese::net::http::Header::set()</a>, <a class="el" href="#a9fcf11046da3f454c27a1dc81f3eadb9">shutdown()</a>, <a class="el" href="#acbf6919713109d2c4c6385dbca082dba">socket</a>, <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a399873161ebb9e4275a8f7ff003d6a48">sese::net::http::Requestable::write_callback</a>, <a class="el" href="#accbd2a4487776aaa97c282ba0119f769">writeBodyByAuto()</a>, <a class="el" href="#af8fbfb0fd29aadc8505929e57283ea6e">writeBodyByCallback()</a>, <a class="el" href="#a2f933f16ccbec45a23430a65f340a360">writeBodyByData()</a> , 以及 <a class="el" href="#a187e72ca83c3a020e3d7c73acbba6042">writeHeader()</a>.</p>
 
 </div>
 </div>
@@ -552,7 +542,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::shutdown </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -565,7 +555,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aab29316fd600e9215f198427e13192f2">sese::internal::net::http::HttpSSLClientImpl</a> 重载.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -581,19 +571,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t HttpClientImpl::write </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -607,9 +590,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aafbeac66c5fbf43c33b2a8861a5b51d2">sese::internal::net::http::HttpSSLClientImpl</a> 重载.</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b72f9458370f256358c3142df5cbb3d">code</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">socket</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a7b72f9458370f256358c3142df5cbb3d">code</a> , 以及 <a class="el" href="#acbf6919713109d2c4c6385dbca082dba">socket</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#accbd2a4487776aaa97c282ba0119f769">writeBodyByAuto()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#af8fbfb0fd29aadc8505929e57283ea6e">writeBodyByCallback()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2f933f16ccbec45a23430a65f340a360">writeBodyByData()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a187e72ca83c3a020e3d7c73acbba6042">writeHeader()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#accbd2a4487776aaa97c282ba0119f769">writeBodyByAuto()</a>, <a class="el" href="#af8fbfb0fd29aadc8505929e57283ea6e">writeBodyByCallback()</a>, <a class="el" href="#a2f933f16ccbec45a23430a65f340a360">writeBodyByData()</a> , 以及 <a class="el" href="#a187e72ca83c3a020e3d7c73acbba6042">writeHeader()</a>.</p>
 
 </div>
 </div>
@@ -625,7 +608,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::writeBodyByAuto </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -636,9 +619,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">sese::net::http::Request::getBody()</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">sese::io::AbstractByteBuffer::peek()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">sese::io::AbstractByteBuffer::trunc()</a> , 以及 <a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -654,7 +637,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::writeBodyByCallback </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -665,9 +648,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a7264730a0acc43e998b3d83bf71bb5e0">sese::net::http::Requestable::expect_total</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a57cdfb1c98c2ec51a2f0e094a9248921">sese::net::http::Requestable::read_callback</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a7264730a0acc43e998b3d83bf71bb5e0">sese::net::http::Requestable::expect_total</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a57cdfb1c98c2ec51a2f0e094a9248921">sese::net::http::Requestable::read_callback</a> , 以及 <a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -683,7 +666,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::writeBodyByData </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -694,9 +677,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a7264730a0acc43e998b3d83bf71bb5e0">sese::net::http::Requestable::expect_total</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a628ee255e598043189b2ac0e4e319193">sese::io::PeekableStream::peek()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a40b02540d898cea1abf97eb6e712d083">sese::net::http::Requestable::read_data</a>, <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#ae7eaaf3b47b873769e0a0249b06588ad">sese::io::PeekableStream::trunc()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a7264730a0acc43e998b3d83bf71bb5e0">sese::net::http::Requestable::expect_total</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a628ee255e598043189b2ac0e4e319193">sese::io::PeekableStream::peek()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a40b02540d898cea1abf97eb6e712d083">sese::net::http::Requestable::read_data</a>, <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#ae7eaaf3b47b873769e0a0249b06588ad">sese::io::PeekableStream::trunc()</a> , 以及 <a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -712,8 +695,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool HttpClientImpl::writeHeader </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> &amp;&#160;</td>
-          <td class="paramname"><em>builder</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>builder</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -724,9 +706,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">sese::io::AbstractByteBuffer::peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">sese::io::AbstractByteBuffer::resetPos()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">sese::io::AbstractByteBuffer::trunc()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">sese::io::AbstractByteBuffer::peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">sese::io::AbstractByteBuffer::resetPos()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">sese::io::AbstractByteBuffer::trunc()</a> , 以及 <a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -751,7 +733,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a90ca9fee51b6e8ae8d5ec073e4e0d25a">HttpClientImpl()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a90ca9fee51b6e8ae8d5ec073e4e0d25a">HttpClientImpl()</a> , 以及 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -775,7 +757,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a14e1dd51ee088d68669b3548a8c0c93b">getLastError()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa99c437fb7b5de5f450eb1e37fffb8e3">getLastErrorString()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aa3a4b66ce6c6ff7fdc9358116c650845">sese::internal::net::http::HttpSSLClientImpl::handshake()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#a71816ffcbac4cac0aaf0889d9bfd831d">sese::internal::net::http::HttpSSLClientImpl::read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aab29316fd600e9215f198427e13192f2">sese::internal::net::http::HttpSSLClientImpl::shutdown()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aafbeac66c5fbf43c33b2a8861a5b51d2">sese::internal::net::http::HttpSSLClientImpl::write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a14e1dd51ee088d68669b3548a8c0c93b">getLastError()</a>, <a class="el" href="#aa99c437fb7b5de5f450eb1e37fffb8e3">getLastErrorString()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aa3a4b66ce6c6ff7fdc9358116c650845">sese::internal::net::http::HttpSSLClientImpl::handshake()</a>, <a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#a71816ffcbac4cac0aaf0889d9bfd831d">sese::internal::net::http::HttpSSLClientImpl::read()</a>, <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aab29316fd600e9215f198427e13192f2">sese::internal::net::http::HttpSSLClientImpl::shutdown()</a>, <a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#aafbeac66c5fbf43c33b2a8861a5b51d2">sese::internal::net::http::HttpSSLClientImpl::write()</a>.</p>
 
 </div>
 </div>
@@ -799,7 +781,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a90ca9fee51b6e8ae8d5ec073e4e0d25a">HttpClientImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a90ca9fee51b6e8ae8d5ec073e4e0d25a">HttpClientImpl()</a>.</p>
 
 </div>
 </div>
@@ -823,7 +805,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>.</p>
 
 </div>
 </div>
@@ -869,7 +851,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a89dc9d3963f80eba587cf02a2dae52d3">write()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#aa37ed939ff6a44aba513f4555192a623">~HttpClientImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a553c35e7fa37b5ff5ee4708050156ec3">read()</a>, <a class="el" href="#a7b11b790aa2ee8bf18b6b038e4b6e7c7">request()</a>, <a class="el" href="#a89dc9d3963f80eba587cf02a2dae52d3">write()</a> , 以及 <a class="el" href="#aa37ed939ff6a44aba513f4555192a623">~HttpClientImpl()</a>.</p>
 
 </div>
 </div>
@@ -883,7 +865,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html">HttpClientImpl</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

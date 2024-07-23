@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::event::BaseEvent结构体 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structsese_1_1event_1_1_base_event.html',''); initResizable(); });
+$(function(){initNavTree('structsese_1_1event_1_1_base_event.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,7 +141,7 @@ $(document).ready(function(){initNavTree('structsese_1_1event_1_1_base_event.htm
 <div class="contents">
 
 <p>网络事件基类  
- <a href="structsese_1_1event_1_1_base_event.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_base_event_8h_source.html">BaseEvent.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -152,16 +158,16 @@ $(document).ready(function(){initNavTree('structsese_1_1event_1_1_base_event.htm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a87392d84d67b3dcb100d6212a124e6b1" id="r_a87392d84d67b3dcb100d6212a124e6b1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1event_1_1_base_event.html#a87392d84d67b3dcb100d6212a124e6b1">~BaseEvent</a> ()=default</td></tr>
+<tr class="memitem:a87392d84d67b3dcb100d6212a124e6b1" id="r_a87392d84d67b3dcb100d6212a124e6b1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87392d84d67b3dcb100d6212a124e6b1">~BaseEvent</a> ()=default</td></tr>
 <tr class="separator:a87392d84d67b3dcb100d6212a124e6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:ab34b208eace687cd3639dd8c5bd63853" id="r_ab34b208eace687cd3639dd8c5bd63853"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">fd</a> {0}</td></tr>
+<tr class="memitem:ab34b208eace687cd3639dd8c5bd63853" id="r_ab34b208eace687cd3639dd8c5bd63853"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab34b208eace687cd3639dd8c5bd63853">fd</a> {0}</td></tr>
 <tr class="separator:ab34b208eace687cd3639dd8c5bd63853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0071f3d29e99a7e8ff0bd81f39e2c755" id="r_a0071f3d29e99a7e8ff0bd81f39e2c755"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> {<a class="el" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>}</td></tr>
+<tr class="memitem:a0071f3d29e99a7e8ff0bd81f39e2c755" id="r_a0071f3d29e99a7e8ff0bd81f39e2c755"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> {<a class="el" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>}</td></tr>
 <tr class="separator:a0071f3d29e99a7e8ff0bd81f39e2c755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92bc8ba91ea1f7528ee8784d5346972c" id="r_a92bc8ba91ea1f7528ee8784d5346972c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a> {nullptr}</td></tr>
+<tr class="memitem:a92bc8ba91ea1f7528ee8784d5346972c" id="r_a92bc8ba91ea1f7528ee8784d5346972c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92bc8ba91ea1f7528ee8784d5346972c">data</a> {nullptr}</td></tr>
 <tr class="separator:a92bc8ba91ea1f7528ee8784d5346972c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -179,7 +185,7 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="memname">virtual sese::event::BaseEvent::~BaseEvent </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -221,7 +227,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop::init()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">sese::iocp::v1::IOCPService::postRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a38629b14334cb02196e034a7bd5fb4e2">sese::service::TcpTransporter::postRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">sese::iocp::v1::IOCPService::postWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#af250ed213d80a28d8c14d7e5f92d3d12">sese::service::TcpTransporter::postWrite()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop::setEvent()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop::setEvent()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop::init()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">sese::iocp::v1::IOCPService::postRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a38629b14334cb02196e034a7bd5fb4e2">sese::service::TcpTransporter::postRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">sese::iocp::v1::IOCPService::postWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#af250ed213d80a28d8c14d7e5f92d3d12">sese::service::TcpTransporter::postWrite()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop::setEvent()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop::setEvent()</a>.</p>
 
 </div>
 </div>
@@ -237,7 +243,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#aa66c5b7c2705cc6d96241b3d2b0bfd75">sese::event::KqueueEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">sese::event::EpollEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a5edea23ed9eacb74c977e0769b671dce">sese::event::WSAEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">sese::event::EpollEventLoop::freeEvent()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa0df844b1a306e982edf7fe3fae77336">sese::event::WSAEventLoop::freeEvent()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop::init()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a226bb6841eb265244cbb21301e62fa29">sese::service::TcpTransporter::onClose()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop::setEvent()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop::setEvent()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">sese::event::EpollEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#aa66c5b7c2705cc6d96241b3d2b0bfd75">sese::event::KqueueEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a5edea23ed9eacb74c977e0769b671dce">sese::event::WSAEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">sese::event::EpollEventLoop::freeEvent()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa0df844b1a306e982edf7fe3fae77336">sese::event::WSAEventLoop::freeEvent()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop::init()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a226bb6841eb265244cbb21301e62fa29">sese::service::TcpTransporter::onClose()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop::setEvent()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop::setEvent()</a>.</p>
 
 </div>
 </div>
@@ -250,7 +256,7 @@ Public 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1event.html">event</a></li><li class="navelem"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

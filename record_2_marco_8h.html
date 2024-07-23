@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese/record/Marco.h 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResizable(); });
+$(function(){initNavTree('record_2_marco_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -139,35 +145,35 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
 <code>#include &lt;<a class="el" href="text_2_util_8h_source.html">sese/text/Util.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&gt;</code><br />
 </div>
-<p><a href="record_2_marco_8h_source.html">浏览源代码.</a></p>
+<p><a href="record_2_marco_8h_source.html">浏览该文件的源代码.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
-<tr class="memitem:ae78e46049906a7a818c610f188ad9a5a" id="r_ae78e46049906a7a818c610f188ad9a5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(point_to_logger,  level,  format, ...)</td></tr>
+<tr class="memitem:ae78e46049906a7a818c610f188ad9a5a" id="r_ae78e46049906a7a818c610f188ad9a5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(point_to_logger,  level,  format, ...)</td></tr>
 <tr class="separator:ae78e46049906a7a818c610f188ad9a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d3aba7849a0f5e4e2c98304c4639a8" id="r_af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(point_to_logger,  buffer,  length)</td></tr>
+<tr class="memitem:af1d3aba7849a0f5e4e2c98304c4639a8" id="r_af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(point_to_logger,  buffer,  length)</td></tr>
 <tr class="separator:af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a738f59797003131a3d51f95cc24f7e37" id="r_a738f59797003131a3d51f95cc24f7e37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(point_to_logger,  <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td></tr>
+<tr class="memitem:a738f59797003131a3d51f95cc24f7e37" id="r_a738f59797003131a3d51f95cc24f7e37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(point_to_logger,  <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td></tr>
 <tr class="separator:a738f59797003131a3d51f95cc24f7e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c7b9b055051419896c49a59292b4521" id="r_a9c7b9b055051419896c49a59292b4521"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a9c7b9b055051419896c49a59292b4521">__SESE_DEBUG</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="memitem:a9c7b9b055051419896c49a59292b4521" id="r_a9c7b9b055051419896c49a59292b4521"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c7b9b055051419896c49a59292b4521">__SESE_DEBUG</a>(sese_tmp_logger,  format, ...)</td></tr>
 <tr class="separator:a9c7b9b055051419896c49a59292b4521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82fca32f4aa42f273fb9688b4b638d9e" id="r_a82fca32f4aa42f273fb9688b4b638d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a82fca32f4aa42f273fb9688b4b638d9e">__SESE_INFO</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="memitem:a82fca32f4aa42f273fb9688b4b638d9e" id="r_a82fca32f4aa42f273fb9688b4b638d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82fca32f4aa42f273fb9688b4b638d9e">__SESE_INFO</a>(sese_tmp_logger,  format, ...)</td></tr>
 <tr class="separator:a82fca32f4aa42f273fb9688b4b638d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99f403c0a68d0fc39e18498ff540d4f1" id="r_a99f403c0a68d0fc39e18498ff540d4f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a99f403c0a68d0fc39e18498ff540d4f1">__SESE_WARN</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="memitem:a99f403c0a68d0fc39e18498ff540d4f1" id="r_a99f403c0a68d0fc39e18498ff540d4f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99f403c0a68d0fc39e18498ff540d4f1">__SESE_WARN</a>(sese_tmp_logger,  format, ...)</td></tr>
 <tr class="separator:a99f403c0a68d0fc39e18498ff540d4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad79c45edd21c8ef28caef8540772334b" id="r_ad79c45edd21c8ef28caef8540772334b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ad79c45edd21c8ef28caef8540772334b">__SESE_ERROR</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="memitem:ad79c45edd21c8ef28caef8540772334b" id="r_ad79c45edd21c8ef28caef8540772334b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad79c45edd21c8ef28caef8540772334b">__SESE_ERROR</a>(sese_tmp_logger,  format, ...)</td></tr>
 <tr class="separator:ad79c45edd21c8ef28caef8540772334b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae23dce9adff7d55a14a54cb5411d7667" id="r_ae23dce9adff7d55a14a54cb5411d7667"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae23dce9adff7d55a14a54cb5411d7667">SESE_RAW</a>(buffer,  length)&#160;&#160;&#160;    <a class="el" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), buffer, length)</td></tr>
+<tr class="memitem:ae23dce9adff7d55a14a54cb5411d7667" id="r_ae23dce9adff7d55a14a54cb5411d7667"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae23dce9adff7d55a14a54cb5411d7667">SESE_RAW</a>(buffer,  length)&#160;&#160;&#160;    <a class="el" href="#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), buffer, length)</td></tr>
 <tr class="separator:ae23dce9adff7d55a14a54cb5411d7667"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77b7117d61063ae74e9498af412bb101" id="r_a77b7117d61063ae74e9498af412bb101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a77b7117d61063ae74e9498af412bb101">SESE_EXCEPT</a>(<a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;<a class="el" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td></tr>
+<tr class="memitem:a77b7117d61063ae74e9498af412bb101" id="r_a77b7117d61063ae74e9498af412bb101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b7117d61063ae74e9498af412bb101">SESE_EXCEPT</a>(<a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;<a class="el" href="#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td></tr>
 <tr class="separator:a77b7117d61063ae74e9498af412bb101"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a964cda869f112de222e00400f1e3dc79" id="r_a964cda869f112de222e00400f1e3dc79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a964cda869f112de222e00400f1e3dc79">SESE_DEBUG</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:a964cda869f112de222e00400f1e3dc79" id="r_a964cda869f112de222e00400f1e3dc79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a964cda869f112de222e00400f1e3dc79">SESE_DEBUG</a>(sese_tmp_format, ...)</td></tr>
 <tr class="separator:a964cda869f112de222e00400f1e3dc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee0f4393a326979982219d142aa9d067" id="r_aee0f4393a326979982219d142aa9d067"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:aee0f4393a326979982219d142aa9d067" id="r_aee0f4393a326979982219d142aa9d067"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(sese_tmp_format, ...)</td></tr>
 <tr class="separator:aee0f4393a326979982219d142aa9d067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a08c4c287ebe371abb3fa9d4a9712fa" id="r_a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:a7a08c4c287ebe371abb3fa9d4a9712fa" id="r_a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(sese_tmp_format, ...)</td></tr>
 <tr class="separator:a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1238b2e7ea6758c6e7bab5310024ed7" id="r_ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:ae1238b2e7ea6758c6e7bab5310024ed7" id="r_ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(sese_tmp_format, ...)</td></tr>
 <tr class="separator:ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -185,29 +191,21 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_DEBUG</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>, format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>, format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -221,29 +219,21 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_ERROR</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">sese::record::Level::ERR</a>, format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">sese::record::Level::ERR</a>, format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -257,19 +247,12 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_EXCEPT</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">point_to_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>point_to_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a></em></span>&#160;)&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -285,29 +268,21 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_INFO</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>, format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>, format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -321,31 +296,22 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_LOG</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">point_to_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>point_to_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">level, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -375,25 +341,17 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_RAW</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">point_to_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>point_to_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">buffer, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">length&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -411,29 +369,21 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define __SESE_WARN</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_logger, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">sese::record::Level::WARN</a>, format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">sese::record::Level::WARN</a>, format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -447,23 +397,16 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define SESE_DEBUG</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -477,23 +420,16 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define SESE_ERROR</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">sese::record::Level::ERR</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">sese::record::Level::ERR</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -507,9 +443,8 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define SESE_EXCEPT</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a></em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -525,23 +460,16 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define SESE_INFO</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -555,19 +483,12 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define SESE_RAW</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">buffer, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">length&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    <a class="el" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), buffer, length)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)&#160;&#160;&#160;    <a class="el" href="#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), buffer, length)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -583,23 +504,16 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         <tr>
           <td class="memname">#define SESE_WARN</td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">sese_tmp_format, </td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_format</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">sese::record::Level::WARN</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">sese::record::Level::WARN</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
 <div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
 </div><!-- fragment -->
 </div>
@@ -610,7 +524,7 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="record_2_marco_8h.html">Marco.h</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:54 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

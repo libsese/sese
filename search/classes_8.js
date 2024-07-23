@@ -18,5 +18,5 @@ var searchData=
   ['is_5fiterable_15',['is_iterable',['../structsese_1_1is__iterable.html',1,'sese']]],
   ['is_5fpair_16',['is_pair',['../structsese_1_1is__pair.html',1,'sese']]],
   ['is_5fpair_3c_20std_3a_3apair_3c_20t1_2c_20t2_20_3e_20_3e_17',['is_pair&lt; std::pair&lt; T1, T2 &gt; &gt;',['../structsese_1_1is__pair_3_01std_1_1pair_3_01_t1_00_01_t2_01_4_01_4.html',1,'sese']]],
-  ['iterator_18',['iterator',['../classsese_1_1_range_1_1_iterator.html',1,'sese::Range&lt; TYPE &gt;::Iterator'],['../classsstr_1_1_s_string_view_1_1_iterator.html',1,'sstr::SStringView::Iterator']]]
+  ['iterator_18',['Iterator',['../classsese_1_1_range_1_1_iterator.html',1,'sese::Range&lt; TYPE &gt;::Iterator'],['../classsstr_1_1_s_string_view_1_1_iterator.html',1,'sstr::SStringView::Iterator']]]
 ];

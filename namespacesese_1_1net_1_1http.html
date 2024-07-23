@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::net::http 命名空间参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html',''); initResizable(); });
+$(function(){initNavTree('namespacesese_1_1net_1_1http.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -206,121 +212,121 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr class="memitem:a7e37b487fa33960ae0d06310ff3cde14" id="r_a7e37b487fa33960ae0d06310ff3cde14"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; const std::string, const std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a></td></tr>
+<tr class="memitem:a7e37b487fa33960ae0d06310ff3cde14" id="r_a7e37b487fa33960ae0d06310ff3cde14"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; const std::string, const std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a></td></tr>
 <tr class="separator:a7e37b487fa33960ae0d06310ff3cde14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92a85a877bfbede2a0fe32ac5b7a2dc4" id="r_a92a85a877bfbede2a0fe32ac5b7a2dc4"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a></td></tr>
+<tr class="memitem:a92a85a877bfbede2a0fe32ac5b7a2dc4" id="r_a92a85a877bfbede2a0fe32ac5b7a2dc4"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a></td></tr>
 <tr class="separator:a92a85a877bfbede2a0fe32ac5b7a2dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8541a42c533f0b8f1119d560a17b3d63" id="r_a8541a42c533f0b8f1119d560a17b3d63"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63">HuffmanEncoder</a> = <a class="el" href="classsese_1_1net_1_1http_1_1huffman__encoder__t.html">huffman_encoder_t</a></td></tr>
-<tr class="separator:a8541a42c533f0b8f1119d560a17b3d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e08e353faf1a6c281acffee20472190" id="r_a9e08e353faf1a6c281acffee20472190"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190">HuffmanDecoder</a> = <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html">huffman_tree_t</a></td></tr>
-<tr class="separator:a9e08e353faf1a6c281acffee20472190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0af380e2cf908eac82ff9bd729d076f" id="r_ad0af380e2cf908eac82ff9bd729d076f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0af380e2cf908eac82ff9bd729d076f">HuffmanEncoder</a> = <a class="el" href="classsese_1_1net_1_1http_1_1huffman__encoder__t.html">huffman_encoder_t</a></td></tr>
+<tr class="separator:ad0af380e2cf908eac82ff9bd729d076f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78baeb0ea2f7ae66da3529d3ba6b51ec" id="r_a78baeb0ea2f7ae66da3529d3ba6b51ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78baeb0ea2f7ae66da3529d3ba6b51ec">HuffmanDecoder</a> = <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html">huffman_tree_t</a></td></tr>
+<tr class="separator:a78baeb0ea2f7ae66da3529d3ba6b51ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 枚举</h2></td></tr>
-<tr class="memitem:a9df7ed57ad433459820817a6381ec1b8" id="r_a9df7ed57ad433459820817a6381ec1b8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a> { <a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7">VERSION_1_1</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8a718bd52cc92714b62a24cb681e3dd69e">VERSION_2</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8aa8becbfb24b71846118a5584b60ca8de">VERSION_UNKNOWN</a>
+<tr class="memitem:a9df7ed57ad433459820817a6381ec1b8" id="r_a9df7ed57ad433459820817a6381ec1b8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a> { <a class="el" href="#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7">VERSION_1_1</a>
+, <a class="el" href="#a9df7ed57ad433459820817a6381ec1b8a718bd52cc92714b62a24cb681e3dd69e">VERSION_2</a>
+, <a class="el" href="#a9df7ed57ad433459820817a6381ec1b8aa8becbfb24b71846118a5584b60ca8de">VERSION_UNKNOWN</a>
  }</td></tr>
-<tr class="memdesc:a9df7ed57ad433459820817a6381ec1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP 版本  <a href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">更多...</a><br /></td></tr>
+<tr class="memdesc:a9df7ed57ad433459820817a6381ec1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP 版本  <a href="#a9df7ed57ad433459820817a6381ec1b8">更多...</a><br /></td></tr>
 <tr class="separator:a9df7ed57ad433459820817a6381ec1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c34f00a2c16ad06f8e39d863a3d325" id="r_a20c34f00a2c16ad06f8e39d863a3d325"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a> { <br />
-&#160;&#160;<a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a164dd62adb30ca051b5289672a572f9b">OPTIONS</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a7528035a93ee69cedb1dbddb2f0bfcc8">GET</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325aa02439ec229d8be0e74b0c1602392310">POST</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325ae15e216fc1c639f787b1231ecdfa1bf8">HEAD</a>
+<tr class="memitem:a20c34f00a2c16ad06f8e39d863a3d325" id="r_a20c34f00a2c16ad06f8e39d863a3d325"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a> { <br />
+&#160;&#160;<a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325a164dd62adb30ca051b5289672a572f9b">OPTIONS</a>
+, <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325a7528035a93ee69cedb1dbddb2f0bfcc8">GET</a>
+, <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325aa02439ec229d8be0e74b0c1602392310">POST</a>
+, <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325ae15e216fc1c639f787b1231ecdfa1bf8">HEAD</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a3e75383a5992a6d15fb81e872e46e256">PUT</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a32f68a60cef40faedbc6af20298c1a1e">DELETE</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a2d3e4144aa384b18849ab9a8abad74d6">TRACE</a>
-, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325ab57e2519e26151feacdbe52076bc39ec">CONNECT</a>
+&#160;&#160;<a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325a3e75383a5992a6d15fb81e872e46e256">PUT</a>
+, <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325a32f68a60cef40faedbc6af20298c1a1e">DELETE</a>
+, <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325a2d3e4144aa384b18849ab9a8abad74d6">TRACE</a>
+, <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325ab57e2519e26151feacdbe52076bc39ec">CONNECT</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325aabcd763234591e04a9520ea0d0e29b43">ANOTHER</a>
+&#160;&#160;<a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325aabcd763234591e04a9520ea0d0e29b43">ANOTHER</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a20c34f00a2c16ad06f8e39d863a3d325"><td class="mdescLeft">&#160;</td><td class="mdescRight">请求类型  <a href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">更多...</a><br /></td></tr>
+<tr class="memdesc:a20c34f00a2c16ad06f8e39d863a3d325"><td class="mdescLeft">&#160;</td><td class="mdescRight">请求类型  <a href="#a20c34f00a2c16ad06f8e39d863a3d325">更多...</a><br /></td></tr>
 <tr class="separator:a20c34f00a2c16ad06f8e39d863a3d325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
-<tr class="memitem:a0e4b92b0c04d9f6cc3f8186f513edb8d" id="r_a0e4b92b0c04d9f6cc3f8186f513edb8d"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; <a class="el" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>, 62 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a></td></tr>
+<tr class="memitem:a0e4b92b0c04d9f6cc3f8186f513edb8d" id="r_a0e4b92b0c04d9f6cc3f8186f513edb8d"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; <a class="el" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>, 62 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a></td></tr>
 <tr class="separator:a0e4b92b0c04d9f6cc3f8186f513edb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ac945648e80cdf9e3e17bcf28677d0" id="r_a01ac945648e80cdf9e3e17bcf28677d0"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; <a class="el" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a>, 257 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a01ac945648e80cdf9e3e17bcf28677d0">HUFFMAN_TABLE</a></td></tr>
+<tr class="memitem:a01ac945648e80cdf9e3e17bcf28677d0" id="r_a01ac945648e80cdf9e3e17bcf28677d0"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; <a class="el" href="#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a>, 257 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01ac945648e80cdf9e3e17bcf28677d0">HUFFMAN_TABLE</a></td></tr>
 <tr class="separator:a01ac945648e80cdf9e3e17bcf28677d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac158cd78427951f2f85f5b5541337ba5" id="r_ac158cd78427951f2f85f5b5541337ba5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ac158cd78427951f2f85f5b5541337ba5">FRAME_FLAG_END_STREAM</a> = 0x1</td></tr>
+<tr class="memitem:ac158cd78427951f2f85f5b5541337ba5" id="r_ac158cd78427951f2f85f5b5541337ba5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac158cd78427951f2f85f5b5541337ba5">FRAME_FLAG_END_STREAM</a> = 0x1</td></tr>
 <tr class="separator:ac158cd78427951f2f85f5b5541337ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e19141c8991badde80d903933b5263a" id="r_a5e19141c8991badde80d903933b5263a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a5e19141c8991badde80d903933b5263a">FRAME_FLAG_END_HEADERS</a> = 0x4</td></tr>
+<tr class="memitem:a5e19141c8991badde80d903933b5263a" id="r_a5e19141c8991badde80d903933b5263a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e19141c8991badde80d903933b5263a">FRAME_FLAG_END_HEADERS</a> = 0x4</td></tr>
 <tr class="separator:a5e19141c8991badde80d903933b5263a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93c6c380e8679a05a1e2af8e134b48a5" id="r_a93c6c380e8679a05a1e2af8e134b48a5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a93c6c380e8679a05a1e2af8e134b48a5">FRAME_FLAG_PADDED</a> = 0x8</td></tr>
+<tr class="memitem:a93c6c380e8679a05a1e2af8e134b48a5" id="r_a93c6c380e8679a05a1e2af8e134b48a5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93c6c380e8679a05a1e2af8e134b48a5">FRAME_FLAG_PADDED</a> = 0x8</td></tr>
 <tr class="separator:a93c6c380e8679a05a1e2af8e134b48a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3d27a6629d5656d7ae5d2c310a810fa" id="r_ac3d27a6629d5656d7ae5d2c310a810fa"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ac3d27a6629d5656d7ae5d2c310a810fa">FRAME_FLAG_PRIORITY</a> = 0x20</td></tr>
+<tr class="memitem:ac3d27a6629d5656d7ae5d2c310a810fa" id="r_ac3d27a6629d5656d7ae5d2c310a810fa"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d27a6629d5656d7ae5d2c310a810fa">FRAME_FLAG_PRIORITY</a> = 0x20</td></tr>
 <tr class="separator:ac3d27a6629d5656d7ae5d2c310a810fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd6181764a93ad82164b1cbf58a3a13a" id="r_acd6181764a93ad82164b1cbf58a3a13a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#acd6181764a93ad82164b1cbf58a3a13a">FRAME_TYPE_DATA</a> = 0x0</td></tr>
+<tr class="memitem:acd6181764a93ad82164b1cbf58a3a13a" id="r_acd6181764a93ad82164b1cbf58a3a13a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd6181764a93ad82164b1cbf58a3a13a">FRAME_TYPE_DATA</a> = 0x0</td></tr>
 <tr class="separator:acd6181764a93ad82164b1cbf58a3a13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05de23272d037c89009416dd3c657643" id="r_a05de23272d037c89009416dd3c657643"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a05de23272d037c89009416dd3c657643">FRAME_TYPE_HEADERS</a> = 0x1</td></tr>
+<tr class="memitem:a05de23272d037c89009416dd3c657643" id="r_a05de23272d037c89009416dd3c657643"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05de23272d037c89009416dd3c657643">FRAME_TYPE_HEADERS</a> = 0x1</td></tr>
 <tr class="separator:a05de23272d037c89009416dd3c657643"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a266c49b82ecec72dbdd5e51a614fd3ff" id="r_a266c49b82ecec72dbdd5e51a614fd3ff"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a266c49b82ecec72dbdd5e51a614fd3ff">FRAME_TYPE_PRIORITY</a> = 0x2</td></tr>
+<tr class="memitem:a266c49b82ecec72dbdd5e51a614fd3ff" id="r_a266c49b82ecec72dbdd5e51a614fd3ff"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a266c49b82ecec72dbdd5e51a614fd3ff">FRAME_TYPE_PRIORITY</a> = 0x2</td></tr>
 <tr class="separator:a266c49b82ecec72dbdd5e51a614fd3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3ee44e9bc4b1c2ba520e55b24e63069" id="r_ac3ee44e9bc4b1c2ba520e55b24e63069"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ac3ee44e9bc4b1c2ba520e55b24e63069">FRAME_TYPE_RST_STREAM</a> = 0x3</td></tr>
+<tr class="memitem:ac3ee44e9bc4b1c2ba520e55b24e63069" id="r_ac3ee44e9bc4b1c2ba520e55b24e63069"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3ee44e9bc4b1c2ba520e55b24e63069">FRAME_TYPE_RST_STREAM</a> = 0x3</td></tr>
 <tr class="separator:ac3ee44e9bc4b1c2ba520e55b24e63069"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a009b755f2bc65cd71f4cf92ad881fb97" id="r_a009b755f2bc65cd71f4cf92ad881fb97"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a009b755f2bc65cd71f4cf92ad881fb97">FRAME_TYPE_SETTINGS</a> = 0x4</td></tr>
+<tr class="memitem:a009b755f2bc65cd71f4cf92ad881fb97" id="r_a009b755f2bc65cd71f4cf92ad881fb97"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a009b755f2bc65cd71f4cf92ad881fb97">FRAME_TYPE_SETTINGS</a> = 0x4</td></tr>
 <tr class="separator:a009b755f2bc65cd71f4cf92ad881fb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea347e0dfeb042175c8be6ba30774b97" id="r_aea347e0dfeb042175c8be6ba30774b97"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aea347e0dfeb042175c8be6ba30774b97">FRAME_TYPE_PUSH_PROMISE</a> = 0x5</td></tr>
+<tr class="memitem:aea347e0dfeb042175c8be6ba30774b97" id="r_aea347e0dfeb042175c8be6ba30774b97"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea347e0dfeb042175c8be6ba30774b97">FRAME_TYPE_PUSH_PROMISE</a> = 0x5</td></tr>
 <tr class="separator:aea347e0dfeb042175c8be6ba30774b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c7ee014fa8462634dc7e80c6181b3a" id="r_aa8c7ee014fa8462634dc7e80c6181b3a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aa8c7ee014fa8462634dc7e80c6181b3a">FRAME_TYPE_PING</a> = 0x6</td></tr>
+<tr class="memitem:aa8c7ee014fa8462634dc7e80c6181b3a" id="r_aa8c7ee014fa8462634dc7e80c6181b3a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c7ee014fa8462634dc7e80c6181b3a">FRAME_TYPE_PING</a> = 0x6</td></tr>
 <tr class="separator:aa8c7ee014fa8462634dc7e80c6181b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85cf6282bd2c0008b445012c722386fb" id="r_a85cf6282bd2c0008b445012c722386fb"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a85cf6282bd2c0008b445012c722386fb">FRAME_TYPE_GOAWAY</a> = 0x7</td></tr>
+<tr class="memitem:a85cf6282bd2c0008b445012c722386fb" id="r_a85cf6282bd2c0008b445012c722386fb"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85cf6282bd2c0008b445012c722386fb">FRAME_TYPE_GOAWAY</a> = 0x7</td></tr>
 <tr class="separator:a85cf6282bd2c0008b445012c722386fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab425c0da8cac859a3ff5375052d0cdb9" id="r_ab425c0da8cac859a3ff5375052d0cdb9"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ab425c0da8cac859a3ff5375052d0cdb9">FRAME_TYPE_WINDOW_UPDATE</a> = 0x8</td></tr>
+<tr class="memitem:ab425c0da8cac859a3ff5375052d0cdb9" id="r_ab425c0da8cac859a3ff5375052d0cdb9"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab425c0da8cac859a3ff5375052d0cdb9">FRAME_TYPE_WINDOW_UPDATE</a> = 0x8</td></tr>
 <tr class="separator:ab425c0da8cac859a3ff5375052d0cdb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2a01ab689fdad89795db1f536b5e502" id="r_ab2a01ab689fdad89795db1f536b5e502"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ab2a01ab689fdad89795db1f536b5e502">FRAME_TYPE_CONTINUATION</a> = 0x9</td></tr>
+<tr class="memitem:ab2a01ab689fdad89795db1f536b5e502" id="r_ab2a01ab689fdad89795db1f536b5e502"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2a01ab689fdad89795db1f536b5e502">FRAME_TYPE_CONTINUATION</a> = 0x9</td></tr>
 <tr class="separator:ab2a01ab689fdad89795db1f536b5e502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa331fedb2a18cfb4ec7b9dbebe238266" id="r_aa331fedb2a18cfb4ec7b9dbebe238266"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aa331fedb2a18cfb4ec7b9dbebe238266">FRAME_TYPE_ALTSVC</a> = 0xa</td></tr>
+<tr class="memitem:aa331fedb2a18cfb4ec7b9dbebe238266" id="r_aa331fedb2a18cfb4ec7b9dbebe238266"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa331fedb2a18cfb4ec7b9dbebe238266">FRAME_TYPE_ALTSVC</a> = 0xa</td></tr>
 <tr class="separator:aa331fedb2a18cfb4ec7b9dbebe238266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a693d3247a5d618268f5f238754035310" id="r_a693d3247a5d618268f5f238754035310"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a693d3247a5d618268f5f238754035310">FRAME_TYPE_ORIGIN</a> = 0xc</td></tr>
+<tr class="memitem:a693d3247a5d618268f5f238754035310" id="r_a693d3247a5d618268f5f238754035310"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a693d3247a5d618268f5f238754035310">FRAME_TYPE_ORIGIN</a> = 0xc</td></tr>
 <tr class="separator:a693d3247a5d618268f5f238754035310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba1964c9ffac292edea20fe171985933" id="r_aba1964c9ffac292edea20fe171985933"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aba1964c9ffac292edea20fe171985933">GOAWAY_NO_ERROR</a> = 0x0</td></tr>
+<tr class="memitem:aba1964c9ffac292edea20fe171985933" id="r_aba1964c9ffac292edea20fe171985933"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba1964c9ffac292edea20fe171985933">GOAWAY_NO_ERROR</a> = 0x0</td></tr>
 <tr class="separator:aba1964c9ffac292edea20fe171985933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fec464fb0fa4244578be41f5ec0589d" id="r_a2fec464fb0fa4244578be41f5ec0589d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a2fec464fb0fa4244578be41f5ec0589d">GOAWAY_PROTOCOL_ERROR</a> = 0x1</td></tr>
+<tr class="memitem:a2fec464fb0fa4244578be41f5ec0589d" id="r_a2fec464fb0fa4244578be41f5ec0589d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fec464fb0fa4244578be41f5ec0589d">GOAWAY_PROTOCOL_ERROR</a> = 0x1</td></tr>
 <tr class="separator:a2fec464fb0fa4244578be41f5ec0589d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba7a147d1e7057fcc5f303f9f86e350a" id="r_aba7a147d1e7057fcc5f303f9f86e350a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aba7a147d1e7057fcc5f303f9f86e350a">GOAWAY_INTERNAL_ERROR</a> = 0x2</td></tr>
+<tr class="memitem:aba7a147d1e7057fcc5f303f9f86e350a" id="r_aba7a147d1e7057fcc5f303f9f86e350a"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba7a147d1e7057fcc5f303f9f86e350a">GOAWAY_INTERNAL_ERROR</a> = 0x2</td></tr>
 <tr class="separator:aba7a147d1e7057fcc5f303f9f86e350a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d1ecf9e860acc89195f29ff1d2b3d54" id="r_a5d1ecf9e860acc89195f29ff1d2b3d54"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a5d1ecf9e860acc89195f29ff1d2b3d54">GOAWAY_FLOW_CONTROL_ERROR</a> = 0x3</td></tr>
+<tr class="memitem:a5d1ecf9e860acc89195f29ff1d2b3d54" id="r_a5d1ecf9e860acc89195f29ff1d2b3d54"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d1ecf9e860acc89195f29ff1d2b3d54">GOAWAY_FLOW_CONTROL_ERROR</a> = 0x3</td></tr>
 <tr class="separator:a5d1ecf9e860acc89195f29ff1d2b3d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e3c4b66773ad2fdceba5ab625538d2f" id="r_a0e3c4b66773ad2fdceba5ab625538d2f"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a0e3c4b66773ad2fdceba5ab625538d2f">GOAWAY_SETTINGS_TIMEOUT</a> = 0x4</td></tr>
+<tr class="memitem:a0e3c4b66773ad2fdceba5ab625538d2f" id="r_a0e3c4b66773ad2fdceba5ab625538d2f"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e3c4b66773ad2fdceba5ab625538d2f">GOAWAY_SETTINGS_TIMEOUT</a> = 0x4</td></tr>
 <tr class="separator:a0e3c4b66773ad2fdceba5ab625538d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38c5f575045f38ea6b257692bbbd0ab8" id="r_a38c5f575045f38ea6b257692bbbd0ab8"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a38c5f575045f38ea6b257692bbbd0ab8">GOAWAY_STREAM_CLOSED</a> = 0x5</td></tr>
+<tr class="memitem:a38c5f575045f38ea6b257692bbbd0ab8" id="r_a38c5f575045f38ea6b257692bbbd0ab8"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38c5f575045f38ea6b257692bbbd0ab8">GOAWAY_STREAM_CLOSED</a> = 0x5</td></tr>
 <tr class="separator:a38c5f575045f38ea6b257692bbbd0ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4732ec5ef4aed67feb9715063563225" id="r_ab4732ec5ef4aed67feb9715063563225"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ab4732ec5ef4aed67feb9715063563225">GOAWAY_FRAME_SIZE_ERROR</a> = 0x6</td></tr>
+<tr class="memitem:ab4732ec5ef4aed67feb9715063563225" id="r_ab4732ec5ef4aed67feb9715063563225"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4732ec5ef4aed67feb9715063563225">GOAWAY_FRAME_SIZE_ERROR</a> = 0x6</td></tr>
 <tr class="separator:ab4732ec5ef4aed67feb9715063563225"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40b2e7b6393076fa7cd672ca055b8632" id="r_a40b2e7b6393076fa7cd672ca055b8632"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a40b2e7b6393076fa7cd672ca055b8632">GOAWAY_REFUSED_STREAM</a> = 0x7</td></tr>
+<tr class="memitem:a40b2e7b6393076fa7cd672ca055b8632" id="r_a40b2e7b6393076fa7cd672ca055b8632"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40b2e7b6393076fa7cd672ca055b8632">GOAWAY_REFUSED_STREAM</a> = 0x7</td></tr>
 <tr class="separator:a40b2e7b6393076fa7cd672ca055b8632"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8267ca5791ec9f31201e116beac83b05" id="r_a8267ca5791ec9f31201e116beac83b05"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a8267ca5791ec9f31201e116beac83b05">GOAWAY_CANCEL</a> = 0x8</td></tr>
+<tr class="memitem:a8267ca5791ec9f31201e116beac83b05" id="r_a8267ca5791ec9f31201e116beac83b05"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8267ca5791ec9f31201e116beac83b05">GOAWAY_CANCEL</a> = 0x8</td></tr>
 <tr class="separator:a8267ca5791ec9f31201e116beac83b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2228f88be35c6e17df30b1b5742dc521" id="r_a2228f88be35c6e17df30b1b5742dc521"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a2228f88be35c6e17df30b1b5742dc521">GOAWAY_COMPRESSION_ERROR</a> = 0x9</td></tr>
+<tr class="memitem:a2228f88be35c6e17df30b1b5742dc521" id="r_a2228f88be35c6e17df30b1b5742dc521"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2228f88be35c6e17df30b1b5742dc521">GOAWAY_COMPRESSION_ERROR</a> = 0x9</td></tr>
 <tr class="separator:a2228f88be35c6e17df30b1b5742dc521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66a84aa74a8257f03503656365b00fe5" id="r_a66a84aa74a8257f03503656365b00fe5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a66a84aa74a8257f03503656365b00fe5">GOAWAY_CONNECT_ERROR</a> = 0xa</td></tr>
+<tr class="memitem:a66a84aa74a8257f03503656365b00fe5" id="r_a66a84aa74a8257f03503656365b00fe5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66a84aa74a8257f03503656365b00fe5">GOAWAY_CONNECT_ERROR</a> = 0xa</td></tr>
 <tr class="separator:a66a84aa74a8257f03503656365b00fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5091eba87c2bfe1506ca2b9eed219acf" id="r_a5091eba87c2bfe1506ca2b9eed219acf"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a5091eba87c2bfe1506ca2b9eed219acf">GOAWAY_ENHANCE_YOUR_CALM</a> = 0xb</td></tr>
+<tr class="memitem:a5091eba87c2bfe1506ca2b9eed219acf" id="r_a5091eba87c2bfe1506ca2b9eed219acf"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5091eba87c2bfe1506ca2b9eed219acf">GOAWAY_ENHANCE_YOUR_CALM</a> = 0xb</td></tr>
 <tr class="separator:a5091eba87c2bfe1506ca2b9eed219acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27c9e6c7338c0f4e33c55153e7c7d41e" id="r_a27c9e6c7338c0f4e33c55153e7c7d41e"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a27c9e6c7338c0f4e33c55153e7c7d41e">GOAWAY_INADEQUATE_SECURITY</a> = 0xc</td></tr>
+<tr class="memitem:a27c9e6c7338c0f4e33c55153e7c7d41e" id="r_a27c9e6c7338c0f4e33c55153e7c7d41e"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27c9e6c7338c0f4e33c55153e7c7d41e">GOAWAY_INADEQUATE_SECURITY</a> = 0xc</td></tr>
 <tr class="separator:a27c9e6c7338c0f4e33c55153e7c7d41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6745fe88cd529a4ee8ac6dbfdf99933" id="r_ab6745fe88cd529a4ee8ac6dbfdf99933"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ab6745fe88cd529a4ee8ac6dbfdf99933">GOAWAY_HTTP_1_1_REQUIRED</a> = 0xd</td></tr>
+<tr class="memitem:ab6745fe88cd529a4ee8ac6dbfdf99933" id="r_ab6745fe88cd529a4ee8ac6dbfdf99933"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6745fe88cd529a4ee8ac6dbfdf99933">GOAWAY_HTTP_1_1_REQUIRED</a> = 0xd</td></tr>
 <tr class="separator:ab6745fe88cd529a4ee8ac6dbfdf99933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c56a87a40a108085cb6d49dd84cd962" id="r_a1c56a87a40a108085cb6d49dd84cd962"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a1c56a87a40a108085cb6d49dd84cd962">SETTINGS_HEADER_TABLE_SIZE</a> = 0x1</td></tr>
+<tr class="memitem:a1c56a87a40a108085cb6d49dd84cd962" id="r_a1c56a87a40a108085cb6d49dd84cd962"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c56a87a40a108085cb6d49dd84cd962">SETTINGS_HEADER_TABLE_SIZE</a> = 0x1</td></tr>
 <tr class="separator:a1c56a87a40a108085cb6d49dd84cd962"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45601d0deaf19137ab027549da60aae0" id="r_a45601d0deaf19137ab027549da60aae0"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a45601d0deaf19137ab027549da60aae0">SETTINGS_ENABLE_PUSH</a> = 0x2</td></tr>
+<tr class="memitem:a45601d0deaf19137ab027549da60aae0" id="r_a45601d0deaf19137ab027549da60aae0"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45601d0deaf19137ab027549da60aae0">SETTINGS_ENABLE_PUSH</a> = 0x2</td></tr>
 <tr class="separator:a45601d0deaf19137ab027549da60aae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a325bbc1ed39ead28cf98964c6a32a3f7" id="r_a325bbc1ed39ead28cf98964c6a32a3f7"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a325bbc1ed39ead28cf98964c6a32a3f7">SETTINGS_MAX_CONCURRENT_STREAMS</a> = 0x3</td></tr>
+<tr class="memitem:a325bbc1ed39ead28cf98964c6a32a3f7" id="r_a325bbc1ed39ead28cf98964c6a32a3f7"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a325bbc1ed39ead28cf98964c6a32a3f7">SETTINGS_MAX_CONCURRENT_STREAMS</a> = 0x3</td></tr>
 <tr class="separator:a325bbc1ed39ead28cf98964c6a32a3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0047c0341e45bfbdb6844cb269061c1" id="r_aa0047c0341e45bfbdb6844cb269061c1"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aa0047c0341e45bfbdb6844cb269061c1">SETTINGS_INITIAL_WINDOW_SIZE</a> = 0x4</td></tr>
+<tr class="memitem:aa0047c0341e45bfbdb6844cb269061c1" id="r_aa0047c0341e45bfbdb6844cb269061c1"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0047c0341e45bfbdb6844cb269061c1">SETTINGS_INITIAL_WINDOW_SIZE</a> = 0x4</td></tr>
 <tr class="separator:aa0047c0341e45bfbdb6844cb269061c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace2705ee9088efa0a37238b8ea38a5d6" id="r_ace2705ee9088efa0a37238b8ea38a5d6"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#ace2705ee9088efa0a37238b8ea38a5d6">SETTINGS_MAX_FRAME_SIZE</a> = 0x5</td></tr>
+<tr class="memitem:ace2705ee9088efa0a37238b8ea38a5d6" id="r_ace2705ee9088efa0a37238b8ea38a5d6"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace2705ee9088efa0a37238b8ea38a5d6">SETTINGS_MAX_FRAME_SIZE</a> = 0x5</td></tr>
 <tr class="separator:ace2705ee9088efa0a37238b8ea38a5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea47f52a1835243b80c9fe85363014a5" id="r_aea47f52a1835243b80c9fe85363014a5"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#aea47f52a1835243b80c9fe85363014a5">SETTINGS_MAX_HEADER_LIST_SIZE</a> = 0x6</td></tr>
+<tr class="memitem:aea47f52a1835243b80c9fe85363014a5" id="r_aea47f52a1835243b80c9fe85363014a5"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea47f52a1835243b80c9fe85363014a5">SETTINGS_MAX_HEADER_LIST_SIZE</a> = 0x6</td></tr>
 <tr class="separator:aea47f52a1835243b80c9fe85363014a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb539430c3a3eea985636bdc34e39d1d" id="r_abb539430c3a3eea985636bdc34e39d1d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#abb539430c3a3eea985636bdc34e39d1d">SETTINGS_FLAGS_ACK</a> = 0x1</td></tr>
+<tr class="memitem:abb539430c3a3eea985636bdc34e39d1d" id="r_abb539430c3a3eea985636bdc34e39d1d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb539430c3a3eea985636bdc34e39d1d">SETTINGS_FLAGS_ACK</a> = 0x1</td></tr>
 <tr class="separator:abb539430c3a3eea985636bdc34e39d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e6794b3a7e441b889b9f13780b22bfa" id="r_a2e6794b3a7e441b889b9f13780b22bfa"><td class="memItemLeft" align="right" valign="top">static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a2e6794b3a7e441b889b9f13780b22bfa">MAGIC_STRING</a> {&quot;PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n&quot;}</td></tr>
+<tr class="memitem:a2e6794b3a7e441b889b9f13780b22bfa" id="r_a2e6794b3a7e441b889b9f13780b22bfa"><td class="memItemLeft" align="right" valign="top">static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e6794b3a7e441b889b9f13780b22bfa">MAGIC_STRING</a> {&quot;PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n&quot;}</td></tr>
 <tr class="separator:a2e6794b3a7e441b889b9f13780b22bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">类型定义说明</h2>
@@ -331,7 +337,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;bool&gt; <a class="el" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">sese::net::http::bits_t</a></td>
+          <td class="memname">typedef std::vector&lt;bool&gt; <a class="el" href="#a92a85a877bfbede2a0fe32ac5b7a2dc4">sese::net::http::bits_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -345,35 +351,35 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::pair&lt;const std::string, const std::string&gt; <a class="el" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">sese::net::http::header_t</a></td>
+          <td class="memname">typedef std::pair&lt;const std::string, const std::string&gt; <a class="el" href="#a7e37b487fa33960ae0d06310ff3cde14">sese::net::http::header_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9e08e353faf1a6c281acffee20472190" name="a9e08e353faf1a6c281acffee20472190"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e08e353faf1a6c281acffee20472190">&#9670;&#160;</a></span>HuffmanDecoder</h2>
+<a id="a78baeb0ea2f7ae66da3529d3ba6b51ec" name="a78baeb0ea2f7ae66da3529d3ba6b51ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78baeb0ea2f7ae66da3529d3ba6b51ec">&#9670;&#160;</a></span>HuffmanDecoder</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190">sese::net::http::HuffmanDecoder</a> = typedef <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html">huffman_tree_t</a></td>
+          <td class="memname">using <a class="el" href="#a78baeb0ea2f7ae66da3529d3ba6b51ec">sese::net::http::HuffmanDecoder</a> = <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html">huffman_tree_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a8541a42c533f0b8f1119d560a17b3d63" name="a8541a42c533f0b8f1119d560a17b3d63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8541a42c533f0b8f1119d560a17b3d63">&#9670;&#160;</a></span>HuffmanEncoder</h2>
+<a id="ad0af380e2cf908eac82ff9bd729d076f" name="ad0af380e2cf908eac82ff9bd729d076f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0af380e2cf908eac82ff9bd729d076f">&#9670;&#160;</a></span>HuffmanEncoder</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63">sese::net::http::HuffmanEncoder</a> = typedef <a class="el" href="classsese_1_1net_1_1http_1_1huffman__encoder__t.html">huffman_encoder_t</a></td>
+          <td class="memname">using <a class="el" href="#ad0af380e2cf908eac82ff9bd729d076f">sese::net::http::HuffmanEncoder</a> = <a class="el" href="classsese_1_1net_1_1http_1_1huffman__encoder__t.html">huffman_encoder_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -391,7 +397,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">sese::net::http::HttpVersion</a></td>
+          <td class="memname">enum class <a class="el" href="#a9df7ed57ad433459820817a6381ec1b8">sese::net::http::HttpVersion</a></td>
         </tr>
       </table>
   </td>
@@ -420,7 +426,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">sese::net::http::RequestType</a></td>
+          <td class="memname">enum class <a class="el" href="#a20c34f00a2c16ad06f8e39d863a3d325">sese::net::http::RequestType</a></td>
         </tr>
       </table>
   </td>
@@ -456,7 +462,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_FLAG_END_HEADERS = 0x4</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_FLAG_END_HEADERS = 0x4</td>
         </tr>
       </table>
   </td>
@@ -478,7 +484,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_FLAG_END_STREAM = 0x1</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_FLAG_END_STREAM = 0x1</td>
         </tr>
       </table>
   </td>
@@ -500,7 +506,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_FLAG_PADDED = 0x8</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_FLAG_PADDED = 0x8</td>
         </tr>
       </table>
   </td>
@@ -522,7 +528,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_FLAG_PRIORITY = 0x20</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_FLAG_PRIORITY = 0x20</td>
         </tr>
       </table>
   </td>
@@ -544,7 +550,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_ALTSVC = 0xa</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_ALTSVC = 0xa</td>
         </tr>
       </table>
   </td>
@@ -566,7 +572,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_CONTINUATION = 0x9</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_CONTINUATION = 0x9</td>
         </tr>
       </table>
   </td>
@@ -588,7 +594,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_DATA = 0x0</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_DATA = 0x0</td>
         </tr>
       </table>
   </td>
@@ -610,7 +616,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_GOAWAY = 0x7</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_GOAWAY = 0x7</td>
         </tr>
       </table>
   </td>
@@ -632,7 +638,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_HEADERS = 0x1</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_HEADERS = 0x1</td>
         </tr>
       </table>
   </td>
@@ -654,7 +660,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_ORIGIN = 0xc</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_ORIGIN = 0xc</td>
         </tr>
       </table>
   </td>
@@ -676,7 +682,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_PING = 0x6</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_PING = 0x6</td>
         </tr>
       </table>
   </td>
@@ -698,7 +704,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_PRIORITY = 0x2</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_PRIORITY = 0x2</td>
         </tr>
       </table>
   </td>
@@ -720,7 +726,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_PUSH_PROMISE = 0x5</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_PUSH_PROMISE = 0x5</td>
         </tr>
       </table>
   </td>
@@ -742,7 +748,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_RST_STREAM = 0x3</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_RST_STREAM = 0x3</td>
         </tr>
       </table>
   </td>
@@ -764,7 +770,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_SETTINGS = 0x4</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_SETTINGS = 0x4</td>
         </tr>
       </table>
   </td>
@@ -786,7 +792,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::FRAME_TYPE_WINDOW_UPDATE = 0x8</td>
+          <td class="memname">uint8_t sese::net::http::FRAME_TYPE_WINDOW_UPDATE = 0x8</td>
         </tr>
       </table>
   </td>
@@ -808,7 +814,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_CANCEL = 0x8</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_CANCEL = 0x8</td>
         </tr>
       </table>
   </td>
@@ -830,7 +836,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_COMPRESSION_ERROR = 0x9</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_COMPRESSION_ERROR = 0x9</td>
         </tr>
       </table>
   </td>
@@ -852,7 +858,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_CONNECT_ERROR = 0xa</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_CONNECT_ERROR = 0xa</td>
         </tr>
       </table>
   </td>
@@ -874,7 +880,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_ENHANCE_YOUR_CALM = 0xb</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_ENHANCE_YOUR_CALM = 0xb</td>
         </tr>
       </table>
   </td>
@@ -896,7 +902,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_FLOW_CONTROL_ERROR = 0x3</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_FLOW_CONTROL_ERROR = 0x3</td>
         </tr>
       </table>
   </td>
@@ -918,7 +924,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_FRAME_SIZE_ERROR = 0x6</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_FRAME_SIZE_ERROR = 0x6</td>
         </tr>
       </table>
   </td>
@@ -940,7 +946,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_HTTP_1_1_REQUIRED = 0xd</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_HTTP_1_1_REQUIRED = 0xd</td>
         </tr>
       </table>
   </td>
@@ -962,7 +968,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_INADEQUATE_SECURITY = 0xc</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_INADEQUATE_SECURITY = 0xc</td>
         </tr>
       </table>
   </td>
@@ -984,7 +990,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_INTERNAL_ERROR = 0x2</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_INTERNAL_ERROR = 0x2</td>
         </tr>
       </table>
   </td>
@@ -1006,7 +1012,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_NO_ERROR = 0x0</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_NO_ERROR = 0x0</td>
         </tr>
       </table>
   </td>
@@ -1028,7 +1034,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_PROTOCOL_ERROR = 0x1</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_PROTOCOL_ERROR = 0x1</td>
         </tr>
       </table>
   </td>
@@ -1050,7 +1056,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_REFUSED_STREAM = 0x7</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_REFUSED_STREAM = 0x7</td>
         </tr>
       </table>
   </td>
@@ -1072,7 +1078,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_SETTINGS_TIMEOUT = 0x4</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_SETTINGS_TIMEOUT = 0x4</td>
         </tr>
       </table>
   </td>
@@ -1094,7 +1100,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::GOAWAY_STREAM_CLOSED = 0x5</td>
+          <td class="memname">uint8_t sese::net::http::GOAWAY_STREAM_CLOSED = 0x5</td>
         </tr>
       </table>
   </td>
@@ -1116,7 +1122,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::array&lt;<a class="el" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a>, 257&gt; sese::net::http::HUFFMAN_TABLE</td>
+          <td class="memname">const std::array&lt;<a class="el" href="#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a>, 257&gt; sese::net::http::HUFFMAN_TABLE</td>
         </tr>
       </table>
   </td>
@@ -1140,7 +1146,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::string_view sese::net::http::MAGIC_STRING {&quot;PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n&quot;}</td>
+          <td class="memname">std::string_view sese::net::http::MAGIC_STRING {&quot;PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n&quot;}</td>
         </tr>
       </table>
   </td>
@@ -1162,7 +1168,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::array&lt;<a class="el" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>, 62&gt; sese::net::http::PREDEFINED_HEADERS</td>
+          <td class="memname">const std::array&lt;<a class="el" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>, 62&gt; sese::net::http::PREDEFINED_HEADERS</td>
         </tr>
       </table>
   </td>
@@ -1172,27 +1178,27 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
 </table>
 </div><div class="memdoc">
 <b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">        {<a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;INVALIDINDEX&quot;</span>, <span class="stringliteral">&quot;INVALIDINDEX&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:authority&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:method&quot;</span>, <span class="stringliteral">&quot;GET&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:method&quot;</span>, <span class="stringliteral">&quot;POST&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:path&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:path&quot;</span>, <span class="stringliteral">&quot;/index.html&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:scheme&quot;</span>, <span class="stringliteral">&quot;http&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:scheme&quot;</span>, <span class="stringliteral">&quot;https&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;200&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;204&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;206&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;304&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;400&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;404&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;500&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-charset&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-encoding&quot;</span>, <span class="stringliteral">&quot;gzip, deflate&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-language&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-ranges&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;access-control-allow-origin&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;age&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;allow&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;authorization&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;cache-control&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-disposition&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-encoding&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-language&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-length&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-location&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-range&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-type&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;cookie&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;date&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;etag&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;expect&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;expires&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;from&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;host&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-match&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-modified-since&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-none-match&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-range&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-unmodified-since&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;last-modified&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;link&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;location&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;max-forwards&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;proxy-authenticate&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;proxy-authorization&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;range&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;referer&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;refresh&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;retry-after&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;server&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;set-cookie&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;strict-transport-security&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;transfer-encoding&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;user-agent&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;vary&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line">         <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;via&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;www-authenticate&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)}</div>
+<div class="line">        {<a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;INVALIDINDEX&quot;</span>, <span class="stringliteral">&quot;INVALIDINDEX&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:authority&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:method&quot;</span>, <span class="stringliteral">&quot;GET&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:method&quot;</span>, <span class="stringliteral">&quot;POST&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:path&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:path&quot;</span>, <span class="stringliteral">&quot;/index.html&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:scheme&quot;</span>, <span class="stringliteral">&quot;http&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:scheme&quot;</span>, <span class="stringliteral">&quot;https&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;200&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;204&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;206&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;304&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;400&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;404&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;:status&quot;</span>, <span class="stringliteral">&quot;500&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-charset&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-encoding&quot;</span>, <span class="stringliteral">&quot;gzip, deflate&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-language&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept-ranges&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;accept&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;access-control-allow-origin&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;age&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;allow&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;authorization&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;cache-control&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-disposition&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-encoding&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-language&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-length&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-location&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-range&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;content-type&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;cookie&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;date&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;etag&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;expect&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;expires&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;from&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;host&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-match&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-modified-since&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-none-match&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-range&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;if-unmodified-since&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;last-modified&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;link&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;location&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;max-forwards&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;proxy-authenticate&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;proxy-authorization&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;range&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;referer&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;refresh&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;retry-after&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;server&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;set-cookie&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;strict-transport-security&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;transfer-encoding&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;user-agent&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;vary&quot;</span>, <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line">         <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;via&quot;</span>, <span class="stringliteral">&quot;&quot;</span>), <a class="code hl_typedef" href="#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>(<span class="stringliteral">&quot;www-authenticate&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9323debee57166cc235a9ca963d3c4f2">sese::net::http::HPackUtil::encode()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a6c4fbb878d5d52107782453a71aae250">sese::net::http::DynamicTable::get()</a>.</p>
@@ -1209,7 +1215,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t sese::net::http::SETTINGS_ENABLE_PUSH = 0x2</td>
+          <td class="memname">uint16_t sese::net::http::SETTINGS_ENABLE_PUSH = 0x2</td>
         </tr>
       </table>
   </td>
@@ -1231,7 +1237,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t sese::net::http::SETTINGS_FLAGS_ACK = 0x1</td>
+          <td class="memname">uint8_t sese::net::http::SETTINGS_FLAGS_ACK = 0x1</td>
         </tr>
       </table>
   </td>
@@ -1253,7 +1259,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t sese::net::http::SETTINGS_HEADER_TABLE_SIZE = 0x1</td>
+          <td class="memname">uint16_t sese::net::http::SETTINGS_HEADER_TABLE_SIZE = 0x1</td>
         </tr>
       </table>
   </td>
@@ -1275,7 +1281,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t sese::net::http::SETTINGS_INITIAL_WINDOW_SIZE = 0x4</td>
+          <td class="memname">uint16_t sese::net::http::SETTINGS_INITIAL_WINDOW_SIZE = 0x4</td>
         </tr>
       </table>
   </td>
@@ -1297,7 +1303,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t sese::net::http::SETTINGS_MAX_CONCURRENT_STREAMS = 0x3</td>
+          <td class="memname">uint16_t sese::net::http::SETTINGS_MAX_CONCURRENT_STREAMS = 0x3</td>
         </tr>
       </table>
   </td>
@@ -1319,7 +1325,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t sese::net::http::SETTINGS_MAX_FRAME_SIZE = 0x5</td>
+          <td class="memname">uint16_t sese::net::http::SETTINGS_MAX_FRAME_SIZE = 0x5</td>
         </tr>
       </table>
   </td>
@@ -1341,7 +1347,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t sese::net::http::SETTINGS_MAX_HEADER_LIST_SIZE = 0x6</td>
+          <td class="memname">uint16_t sese::net::http::SETTINGS_MAX_HEADER_LIST_SIZE = 0x6</td>
         </tr>
       </table>
   </td>
@@ -1359,7 +1365,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net_1_1http.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -10,7 +10,7 @@ var searchData=
   ['decoder_7',['decoder',['../classsese_1_1net_1_1http_1_1_h_pack_util.html#ab664faeaf4e254ba194e645671fb292f',1,'sese::net::http::HPackUtil']]],
   ['defaultsection_8',['defaultSection',['../classsese_1_1_config_object.html#a969fe4ef5931418f740bb1d5129b0099',1,'sese::ConfigObject']]],
   ['defsection_9',['defSection',['../structsese_1_1ini_1_1_ini_config.html#a374aebb29255c673aca53d7f470ecd60',1,'sese::ini::IniConfig']]],
-  ['deletecontextcallback_10',['deletecontextcallback',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3',1,'sese::_windows::iocp::v1::NativeIOCPServer::deleteContextCallback'],['../classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace',1,'sese::iocp::v1::IOCPServer::deleteContextCallback']]],
+  ['deletecontextcallback_10',['deleteContextCallback',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3',1,'sese::_windows::iocp::v1::NativeIOCPServer::deleteContextCallback'],['../classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace',1,'sese::iocp::v1::IOCPServer::deleteContextCallback']]],
   ['description_11',['description',['../structsese_1_1plugin_1_1_module_info.html#a052106f3fb0d1a61bcfe3dfdfda97b9d',1,'sese::plugin::ModuleInfo']]],
   ['dest_12',['dest',['../classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d',1,'sese::CSVWriter']]],
   ['dev_13',['dev',['../classsese_1_1_random_util.html#ae91da30efbc15ea66f386d89ec929650',1,'sese::RandomUtil']]],

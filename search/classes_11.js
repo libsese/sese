@@ -2,7 +2,7 @@ var searchData=
 [
   ['randominputstream_0',['RandomInputStream',['../classsese_1_1io_1_1_random_input_stream.html',1,'sese::io']]],
   ['randomutil_1',['RandomUtil',['../classsese_1_1_random_util.html',1,'sese']]],
-  ['range_2',['range',['../structsese_1_1net_1_1http_1_1_range.html',1,'sese::net::http::Range'],['../classsese_1_1_range.html',1,'sese::Range&lt; TYPE &gt;']]],
+  ['range_2',['Range',['../structsese_1_1net_1_1http_1_1_range.html',1,'sese::net::http::Range'],['../classsese_1_1_range.html',1,'sese::Range&lt; TYPE &gt;']]],
   ['registerinfo_3',['RegisterInfo',['../structsese_1_1plugin_1_1_class_factory_1_1_register_info.html',1,'sese::plugin::ClassFactory']]],
   ['request_4',['Request',['../classsese_1_1net_1_1http_1_1_request.html',1,'sese::net::http']]],
   ['requestable_5',['Requestable',['../classsese_1_1net_1_1http_1_1_requestable.html',1,'sese::net::http']]],
@@ -19,5 +19,5 @@ var searchData=
   ['reusablesocket_16',['ReusableSocket',['../classsese_1_1net_1_1_reusable_socket.html',1,'sese::net']]],
   ['reverseiterator_17',['ReverseIterator',['../classsese_1_1_range_1_1_reverse_iterator.html',1,'sese::Range']]],
   ['ringqueue_18',['RingQueue',['../classsese_1_1_ring_queue.html',1,'sese']]],
-  ['runtimedata_19',['runtimedata',['../structsese_1_1_thread_1_1_runtime_data.html',1,'sese::Thread::RuntimeData'],['../structsese_1_1_thread_pool_1_1_runtime_data.html',1,'sese::ThreadPool::RuntimeData']]]
+  ['runtimedata_19',['RuntimeData',['../structsese_1_1_thread_1_1_runtime_data.html',1,'sese::Thread::RuntimeData'],['../structsese_1_1_thread_pool_1_1_runtime_data.html',1,'sese::ThreadPool::RuntimeData']]]
 ];

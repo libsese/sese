@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::MemoryViewer类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1_memory_viewer.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1_memory_viewer.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,7 +142,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_memory_viewer.html','');
 <div class="contents">
 
 <p>内存视图工具  
- <a href="classsese_1_1_memory_viewer.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_memory_viewer_8h_source.html">MemoryViewer.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -151,15 +157,15 @@ $(document).ready(function(){initNavTree('classsese_1_1_memory_viewer.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a46d5591a8f5b79a821a7a42d94065260" id="r_a46d5591a8f5b79a821a7a42d94065260"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="memitem:a46d5591a8f5b79a821a7a42d94065260" id="r_a46d5591a8f5b79a821a7a42d94065260"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="memdesc:a46d5591a8f5b79a821a7a42d94065260"><td class="mdescLeft">&#160;</td><td class="mdescRight">工具所使用输出流  <br /></td></tr>
 <tr class="separator:a46d5591a8f5b79a821a7a42d94065260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a1ac75bd2777201f475a174319ec7feb5" id="r_a1ac75bd2777201f475a174319ec7feb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a1ac75bd2777201f475a174319ec7feb5">MemoryViewer</a> ()=delete</td></tr>
+<tr class="memitem:a1ac75bd2777201f475a174319ec7feb5" id="r_a1ac75bd2777201f475a174319ec7feb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ac75bd2777201f475a174319ec7feb5">MemoryViewer</a> ()=delete</td></tr>
 <tr class="separator:a1ac75bd2777201f475a174319ec7feb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
 <tr class="memitem:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable" id="r_a56cae6201f07d769ffc3d05c749c7937"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#a56cae6201f07d769ffc3d05c749c7937">NotInstantiable</a> ()=delete</td></tr>
 <tr class="separator:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable" id="r_ae0447de63059ff64d0e8becf5637297a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ae0447de63059ff64d0e8becf5637297a">~NotInstantiable</a> ()=default</td></tr>
@@ -171,31 +177,31 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a30a7c99d4ba32b28b31a02da05bcb8a3" id="r_a30a7c99d4ba32b28b31a02da05bcb8a3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3">peer</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a30a7c99d4ba32b28b31a02da05bcb8a3" id="r_a30a7c99d4ba32b28b31a02da05bcb8a3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30a7c99d4ba32b28b31a02da05bcb8a3">peer</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a30a7c99d4ba32b28b31a02da05bcb8a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取内存视图  <br /></td></tr>
 <tr class="separator:a30a7c99d4ba32b28b31a02da05bcb8a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9508c6fb4f5df2476436608acf14890f" id="r_a9508c6fb4f5df2476436608acf14890f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a9508c6fb4f5df2476436608acf14890f">peer8</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a9508c6fb4f5df2476436608acf14890f" id="r_a9508c6fb4f5df2476436608acf14890f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9508c6fb4f5df2476436608acf14890f">peer8</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a9508c6fb4f5df2476436608acf14890f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 8 bits 内存视图  <br /></td></tr>
 <tr class="separator:a9508c6fb4f5df2476436608acf14890f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a368c41ec7bccf633a59c3229ace7a384" id="r_a368c41ec7bccf633a59c3229ace7a384"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a368c41ec7bccf633a59c3229ace7a384">peer16</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a368c41ec7bccf633a59c3229ace7a384" id="r_a368c41ec7bccf633a59c3229ace7a384"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a368c41ec7bccf633a59c3229ace7a384">peer16</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a368c41ec7bccf633a59c3229ace7a384"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 16 bits 内存视图  <br /></td></tr>
 <tr class="separator:a368c41ec7bccf633a59c3229ace7a384"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c40be7589063bdd1ce130c48dc21aac" id="r_a9c40be7589063bdd1ce130c48dc21aac"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a9c40be7589063bdd1ce130c48dc21aac">peer16</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a> type, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a9c40be7589063bdd1ce130c48dc21aac" id="r_a9c40be7589063bdd1ce130c48dc21aac"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c40be7589063bdd1ce130c48dc21aac">peer16</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a> type, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a9c40be7589063bdd1ce130c48dc21aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 16 bits 内存视图  <br /></td></tr>
 <tr class="separator:a9c40be7589063bdd1ce130c48dc21aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a470b95a25b7b4f63e52d507cb98da3a0" id="r_a470b95a25b7b4f63e52d507cb98da3a0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a470b95a25b7b4f63e52d507cb98da3a0">peer32</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a470b95a25b7b4f63e52d507cb98da3a0" id="r_a470b95a25b7b4f63e52d507cb98da3a0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a470b95a25b7b4f63e52d507cb98da3a0">peer32</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a470b95a25b7b4f63e52d507cb98da3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 32 bits 内存视图  <br /></td></tr>
 <tr class="separator:a470b95a25b7b4f63e52d507cb98da3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e6702382c5c72d8912609ca4cdc7763" id="r_a9e6702382c5c72d8912609ca4cdc7763"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a9e6702382c5c72d8912609ca4cdc7763">peer32</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a> type, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a9e6702382c5c72d8912609ca4cdc7763" id="r_a9e6702382c5c72d8912609ca4cdc7763"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e6702382c5c72d8912609ca4cdc7763">peer32</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a> type, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a9e6702382c5c72d8912609ca4cdc7763"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 32 bits 内存视图  <br /></td></tr>
 <tr class="separator:a9e6702382c5c72d8912609ca4cdc7763"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d8c16d84a663eac89271686f3b66328" id="r_a2d8c16d84a663eac89271686f3b66328"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a2d8c16d84a663eac89271686f3b66328">peer64</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a2d8c16d84a663eac89271686f3b66328" id="r_a2d8c16d84a663eac89271686f3b66328"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d8c16d84a663eac89271686f3b66328">peer64</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a2d8c16d84a663eac89271686f3b66328"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 64 bits 内存视图  <br /></td></tr>
 <tr class="separator:a2d8c16d84a663eac89271686f3b66328"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d65029773b91755ffb7d7a1c8844dd4" id="r_a6d65029773b91755ffb7d7a1c8844dd4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#a6d65029773b91755ffb7d7a1c8844dd4">peer64</a> (<a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a> type, bool is_cap=true) noexcept</td></tr>
+<tr class="memitem:a6d65029773b91755ffb7d7a1c8844dd4" id="r_a6d65029773b91755ffb7d7a1c8844dd4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d65029773b91755ffb7d7a1c8844dd4">peer64</a> (<a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *output, void *position, <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a> type, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a6d65029773b91755ffb7d7a1c8844dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取 64 bits 内存视图  <br /></td></tr>
 <tr class="separator:a6d65029773b91755ffb7d7a1c8844dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea12bcd5f6ef3df72aaf5b1cca82804f" id="r_aea12bcd5f6ef3df72aaf5b1cca82804f"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_memory_viewer.html#aea12bcd5f6ef3df72aaf5b1cca82804f">toChar</a> (unsigned char ch, bool is_cap) noexcept</td></tr>
+<tr class="memitem:aea12bcd5f6ef3df72aaf5b1cca82804f" id="r_aea12bcd5f6ef3df72aaf5b1cca82804f"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea12bcd5f6ef3df72aaf5b1cca82804f">toChar</a> (unsigned char ch, bool is_cap) noexcept</td></tr>
 <tr class="separator:aea12bcd5f6ef3df72aaf5b1cca82804f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -208,7 +214,7 @@ Public 成员函数</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">sese::MemoryViewer::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td>
+          <td class="memname">using <a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">sese::MemoryViewer::OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -230,7 +236,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">sese::MemoryViewer::MemoryViewer </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -256,31 +262,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -317,25 +314,17 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer16 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -369,31 +358,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer16 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
+          <td class="paramtype"><a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -430,25 +410,17 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer32 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -482,31 +454,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer32 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
+          <td class="paramtype"><a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -543,25 +506,17 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer64 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -595,31 +550,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer64 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
+          <td class="paramtype"><a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb">EndianType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -656,25 +602,17 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void MemoryViewer::peer8 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em>, </td>
+          <td class="paramtype"><a class="el" href="#a46d5591a8f5b79a821a7a42d94065260">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -708,19 +646,12 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">char MemoryViewer::toChar </td>
           <td>(</td>
-          <td class="paramtype">unsigned char&#160;</td>
-          <td class="paramname"><em>ch</em>, </td>
+          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>ch</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_cap</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_cap</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -744,7 +675,7 @@ Public 成员函数</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_memory_viewer.html">MemoryViewer</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

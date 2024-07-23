@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: 类成员</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('functions_s.html',''); initResizable(); });
+$(function(){initNavTree('functions_s.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -158,8 +164,8 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>self&#160;:&#160;<a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a04228f5cabf990747d31b90c9b03e883">sese::_windows::iocp::v1::NativeContext</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a584648c33fde47d8e0f7c356291f0e14">sese::iocp::v1::Context</a></li>
 <li>selfId&#160;:&#160;<a class="el" href="classsese_1_1_uuid.html#a3230954506af4dd10458dcd02d97c8ed">sese::Uuid</a></li>
 <li>sem_name&#160;:&#160;<a class="el" href="classsese_1_1system_1_1_semaphore.html#a4b243aa3a38a2b466226b3ac3f07c934">sese::system::Semaphore</a></li>
-<li>semaphore&#160;:&#160;<a class="el" href="classsese_1_1system_1_1_i_p_c_channel.html#a7ecdf68d908a799c89ddae9965a2a30e">sese::system::IPCChannel</a>, <a class="el" href="classsese_1_1system_1_1_semaphore.html#a974c72be440826550e988b3faf6fba31">sese::system::Semaphore</a></li>
 <li>Semaphore()&#160;:&#160;<a class="el" href="classsese_1_1system_1_1_semaphore.html#a0ec43dfb93e93a5b1e9e58ecba8a1e6d">sese::system::Semaphore</a></li>
+<li>semaphore&#160;:&#160;<a class="el" href="classsese_1_1system_1_1_i_p_c_channel.html#a7ecdf68d908a799c89ddae9965a2a30e">sese::system::IPCChannel</a>, <a class="el" href="classsese_1_1system_1_1_semaphore.html#a974c72be440826550e988b3faf6fba31">sese::system::Semaphore</a></li>
 <li>send&#160;:&#160;<a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#aec66d87189ce9409175342a0c16de39a">sese::_windows::iocp::v1::NativeContext</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a2eaab4523b14f50335985b20c69dddf7">sese::iocp::v1::Context</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a33ab56c779daa9c3eb07b43f3ade0784">sese::net::Socket</a></li>
 <li>send_buffer&#160;:&#160;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a7b845067006632447e22a58554f3a6a7">sese::internal::service::http::v3::HttpConnection</a></li>
 <li>sendCookie()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a9d699917edea7b1f76c651d81059ea37">sese::net::http::HttpUtil</a></li>
@@ -172,14 +178,14 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>serializeObject()&#160;:&#160;<a class="el" href="classsese_1_1json_1_1_json_util.html#ad59c031eb35f9d37a1e345db5db767fe">sese::json::JsonUtil</a>, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aab2daeda7e5a901a59e8a8a793f56d1b">sese::yaml::YamlUtil</a></li>
 <li>serv_name&#160;:&#160;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a784a051a9a501708919bbfe9c913fadb">sese::service::http::v3::HttpService</a></li>
 <li>servCtx&#160;:&#160;<a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html#a0f9556b04485f0493a62e37be0ae51bb">sese::service::TcpTransporterConfig</a></li>
-<li>service&#160;:&#160;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#af4f6fe2003ecb5d1fb7922122fdded22">sese::internal::service::http::v3::HttpConnection</a></li>
 <li>Service()&#160;:&#160;<a class="el" href="classsese_1_1service_1_1_service.html#a81d7c4652df52b1f8f3e6b28fe6dad60">sese::service::Service</a></li>
+<li>service&#160;:&#160;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#af4f6fe2003ecb5d1fb7922122fdded22">sese::internal::service::http::v3::HttpConnection</a></li>
 <li>services&#160;:&#160;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a1d5b1684618ad2d1bcdc4984887dc9d6">sese::service::http::v3::HttpServer</a></li>
-<li>Servlet()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#afebc9ee98d74472749d6b23d5ced9267">sese::net::http::Servlet</a></li>
+<li>Servlet()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#a935522e6a634ff245830a2148507f127">sese::net::http::Servlet</a></li>
 <li>ServletMap&#160;:&#160;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">sese::service::http::v3::HttpService</a></li>
 <li>servlets&#160;:&#160;<a class="el" href="classsese_1_1net_1_1http_1_1_controller.html#a2ccdbea2d867316696933f6349ec0c69">sese::net::http::Controller</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a90f4ce101942bc898799157d5ab30d50">sese::service::http::v3::HttpServer</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d">sese::service::http::v3::HttpService</a></li>
 <li>servProtos&#160;:&#160;<a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a">sese::_windows::iocp::v1::NativeIOCPServer</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">sese::iocp::v1::IOCPServer</a></li>
-<li>set()&#160;:&#160;<a class="el" href="structsese_1_1_bitset32.html#af2f277d15668656317018a4897c481f2">sese::Bitset32</a>, <a class="el" href="classsese_1_1json_1_1_object_data.html#a0c3e90f1a12d1304a2b2e7d5dbb22a4c">sese::json::ObjectData</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">sese::net::http::DynamicTable</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a7db37c82bd6015aa16055b0896842ab6">sese::net::http::Header</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header_builder.html#abc9d08e9ee4ee8c4567fe8f930912287">sese::net::http::HeaderBuilder</a>, <a class="el" href="classsese_1_1_value_1_1_dict.html#aa5a74acdc2a1f3662586156995a985d4">sese::Value::Dict</a>, <a class="el" href="classsese_1_1yaml_1_1_object_data.html#a3e5b2ee30f5890d9390d7ad7a9707929">sese::yaml::ObjectData</a></li>
+<li>set()&#160;:&#160;<a class="el" href="structsese_1_1_bitset32.html#af2f277d15668656317018a4897c481f2">sese::Bitset32</a>, <a class="el" href="classsese_1_1json_1_1_object_data.html#a0c3e90f1a12d1304a2b2e7d5dbb22a4c">sese::json::ObjectData</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">sese::net::http::DynamicTable</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a7db37c82bd6015aa16055b0896842ab6">sese::net::http::Header</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_header_builder.html#abc9d08e9ee4ee8c4567fe8f930912287">sese::net::http::HeaderBuilder</a>, <a class="el" href="classsese_1_1_value_1_1_dict.html#a7ec52533bc34723e25c5aa1d42f51830">sese::Value::Dict</a>, <a class="el" href="classsese_1_1yaml_1_1_object_data.html#a3e5b2ee30f5890d9390d7ad7a9707929">sese::yaml::ObjectData</a></li>
 <li>setAcceptTimeout()&#160;:&#160;<a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ade78267f341f9f77e67ced9151da0ddc">sese::iocp::v1::IOCPServer</a>, <a class="el" href="classsese_1_1service_1_1_system_balance_loader.html#ad4aa64c1df4fcd62677c4f5848f8782b">sese::service::SystemBalanceLoader</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#ac767d1fc18fe6b0f5e76f83e4519d5b7">sese::service::UserBalanceLoader</a></li>
 <li>setActiveReleaseMode()&#160;:&#160;<a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a749df226e4535fe4d7749032f69afc54">sese::_windows::iocp::v1::NativeIOCPServer</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a3864b63158dd1adf141270f67b72288b">sese::iocp::v1::IOCPServer</a></li>
 <li>setAddress()&#160;:&#160;<a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#afe32d52c201924c4dec059efb93e8592">sese::_windows::iocp::v1::NativeIOCPServer</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abf077bf2b22f2282ece08432e66b2bef">sese::iocp::v1::IOCPServer</a>, <a class="el" href="classsese_1_1service_1_1_system_balance_loader.html#a3af413c7441cfb9139fb36e27aaba49f">sese::service::SystemBalanceLoader</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#aacd17a04291183817dae1c04fb9f6246">sese::service::UserBalanceLoader</a></li>
@@ -284,11 +290,8 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>sleepTimestamp&#160;:&#160;<a class="el" href="classsese_1_1_timer_task.html#ad100f0fcce6a371302314fe51845d840">sese::TimerTask</a></li>
 <li>slots&#160;:&#160;<a class="el" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">sese::TimeWheel</a></li>
 <li>SM3Context()&#160;:&#160;<a class="el" href="classsese_1_1security_1_1evp_1_1_s_m3_context.html#a2f99457b21c3112bfc59bdd560a6c5aa">sese::security::evp::SM3Context</a></li>
-<li>socket&#160;:&#160;<a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">sese::internal::net::http::HttpClientImpl</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#aff852c59115fa91de6c8f6a7bd3b112f">sese::internal::service::http::v3::HttpConnection</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">sese::net::dns::DnsServer</a></li>
-<li>Socket()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1_socket.html#a61e8f911e754b0f4b82337ad34978c81">sese::net::Socket</a></li>
-<li>socket()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket</a></li>
-<li>Socket&#160;:&#160;<a class="el" href="classsese_1_1security_1_1_security_socket.html#a04e22e76356d022e48e291314723f0c4">sese::security::SecuritySocket</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#ad875ff38eb4dd6994ef35f61f5e8ec0a">sese::security::SSLContext</a></li>
-<li>socket&#160;:&#160;<a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a4adb99431445eb3896a2e584f13cd885">sese::service::UserBalanceLoader</a></li>
+<li>Socket()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1_socket.html#a61e8f911e754b0f4b82337ad34978c81">sese::net::Socket</a>, <a class="el" href="classsese_1_1security_1_1_security_socket.html#a04e22e76356d022e48e291314723f0c4">sese::security::SecuritySocket</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#ad875ff38eb4dd6994ef35f61f5e8ec0a">sese::security::SSLContext</a></li>
+<li>socket&#160;:&#160;<a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#acbf6919713109d2c4c6385dbca082dba">sese::internal::net::http::HttpClientImpl</a>, <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#aff852c59115fa91de6c8f6a7bd3b112f">sese::internal::service::http::v3::HttpConnection</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">sese::net::dns::DnsServer</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a4adb99431445eb3896a2e584f13cd885">sese::service::UserBalanceLoader</a></li>
 <li>socketQueue&#160;:&#160;<a class="el" href="classsese_1_1service_1_1_master_event_loop.html#a9a1946e7dc25b47c40116cf230c92796">sese::service::MasterEventLoop</a></li>
 <li>sockets&#160;:&#160;<a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sese::event::WSAEventLoop</a></li>
 <li>socketVector&#160;:&#160;<a class="el" href="classsese_1_1service_1_1_system_balance_loader.html#a65fdaf26d9f95703e1915f1a31f780b7">sese::service::SystemBalanceLoader</a></li>
@@ -307,16 +310,16 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>SSL4Client()&#160;:&#160;<a class="el" href="classsese_1_1security_1_1_s_s_l_context_builder.html#a3663175075266e274700941e55757b29">sese::security::SSLContextBuilder</a></li>
 <li>SSL4Server()&#160;:&#160;<a class="el" href="classsese_1_1security_1_1_s_s_l_context_builder.html#ae13b8b0fcee42d3e59623a54a30c1f96">sese::security::SSLContextBuilder</a></li>
 <li>ssl_context&#160;:&#160;<a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html#a46e5d63b110668a25084866ae8bba80f">sese::internal::service::http::v3::HttpServiceImpl</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a7f365fa32d16c4aabbcb843650f5a358">sese::service::http::v3::HttpService</a></li>
-<li>sslContext&#160;:&#160;<a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#a90f62df626c5ee278cc23805aa6b28ec">sese::internal::net::http::HttpSSLClientImpl</a></li>
 <li>SSLContext()&#160;:&#160;<a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#ade74f5f64b6db5b63bc9e1c2f8f79458">sese::security::SSLContext</a></li>
+<li>sslContext&#160;:&#160;<a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#a90f62df626c5ee278cc23805aa6b28ec">sese::internal::net::http::HttpSSLClientImpl</a></li>
 <li>SSLContextBuilder()&#160;:&#160;<a class="el" href="classsese_1_1security_1_1_s_s_l_context_builder.html#a8b4b4be3ab9dbb67422fb8f7a74bad1d">sese::security::SSLContextBuilder</a></li>
 <li>SSLContextPtr&#160;:&#160;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ae6a8fe7f09c462f43ab85e48456fbf63">sese::service::http::v3::HttpService</a></li>
 <li>sslCtx&#160;:&#160;<a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sese::_windows::iocp::v1::NativeIOCPServer</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">sese::iocp::v1::IOCPServer</a></li>
 <li>sslSocket&#160;:&#160;<a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#a7987cbd161bf4e260ded3e5efa4a1235">sese::internal::net::http::HttpSSLClientImpl</a></li>
-<li>SString()&#160;:&#160;<a class="el" href="classsstr_1_1_s_string.html#a0dc7f1d53f50e26c0ef391314fae29bd">sstr::SString</a></li>
+<li>SString()&#160;:&#160;<a class="el" href="classsstr_1_1_s_string.html#a4cfd2093a225495aa123a61979c4e121">sstr::SString</a></li>
 <li>SStringView&#160;:&#160;<a class="el" href="classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce">sstr::SString</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a111c7d006dd8e4d61e63f2b1c0da4d7f">sstr::SStringView</a></li>
-<li>stackInfo&#160;:&#160;<a class="el" href="classsese_1_1_exception.html#aa59fe6bb74db1f109e3981b9c74b4011">sese::Exception</a></li>
 <li>StackInfo()&#160;:&#160;<a class="el" href="classsese_1_1system_1_1_stack_info.html#ad9cc4873d96eea9eea934551896efaf7">sese::system::StackInfo</a></li>
+<li>stackInfo&#160;:&#160;<a class="el" href="classsese_1_1_exception.html#aa59fe6bb74db1f109e3981b9c74b4011">sese::Exception</a></li>
 <li>stacks&#160;:&#160;<a class="el" href="classsese_1_1system_1_1_stack_info.html#a624bb62222b07dbc1d9485c145eb608d">sese::system::StackInfo</a></li>
 <li>start()&#160;:&#160;<a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a06d46dd34ed2f7c2d2e0a2ac1658f5f8">sese::net::dns::DnsServer</a>, <a class="el" href="classsese_1_1service_1_1_system_balance_loader.html#ab825c21dcbc6b647f95b1a51106e886b">sese::service::SystemBalanceLoader</a>, <a class="el" href="classsese_1_1service_1_1_user_balance_loader.html#a3f20c2881ad37470ee13ee769b883c3f">sese::service::UserBalanceLoader</a>, <a class="el" href="classsese_1_1_thread.html#a59219703ab2a15f57118c21ee4188b9a">sese::Thread</a></li>
 <li>startsWith()&#160;:&#160;<a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#af338f81b424c1f5cfa24ce0297372613">sese::text::AbstractStringBuffer</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#aad03bdd67f5c4dde2499842c5ebf5256">sese::text::StringBuffer</a>, <a class="el" href="classsstr_1_1_s_string_view.html#aabce8df3ec4e2e31b08dee16f946e115">sstr::SStringView</a></li>
@@ -353,7 +356,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:54:00 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

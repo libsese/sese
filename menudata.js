@@ -198,7 +198,7 @@ var menudata={children:[
 {text:"w",url:"functions_type.html#index_w"}]},
 {text:"枚举",url:"functions_enum.html"},
 {text:"枚举值",url:"functions_eval.html"},
-{text:"相关函数",url:"functions_rela.html"}]}]},
+{text:"相关符号",url:"functions_rela.html"}]}]},
 {text:"文件",url:"files.html",children:[
 {text:"文件列表",url:"files.html"},
 {text:"文件成员",url:"globals.html",children:[

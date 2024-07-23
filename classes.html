@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: 类索引</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classes.html',''); initResizable(); });
+$(function(){initNavTree('classes.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -190,7 +196,7 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
 <dd><a class="el" href="structsstr_1_1_s_char.html">SChar</a> (<a class="el" href="namespacesstr.html">sstr</a>)</dd><dd><a class="el" href="structsese_1_1_config_object_1_1_section.html">ConfigObject::Section</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1_security_init_task.html">SecurityInitTask</a> (<a class="el" href="namespacesese_1_1security.html">sese::security</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1_security_socket.html">SecuritySocket</a> (<a class="el" href="namespacesese_1_1security.html">sese::security</a>)</dd><dd><a class="el" href="classsese_1_1system_1_1_semaphore.html">Semaphore</a> (<a class="el" href="namespacesese_1_1system.html">sese::system</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1_service.html">Service</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html">Servlet</a> (<a class="el" href="namespacesese_1_1net_1_1http.html">sese::net::http</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a1_context.html">SHA1Context</a> (<a class="el" href="namespacesese_1_1security_1_1evp.html">sese::security::evp</a>)</dd><dd><a class="el" href="structsese_1_1_s_h_a1_context.html">SHA1Context</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_s_h_a1_util.html">SHA1Util</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a256_context.html">SHA256Context</a> (<a class="el" href="namespacesese_1_1security_1_1evp.html">sese::security::evp</a>)</dd><dd><a class="el" href="classsese_1_1_s_h_a256_util.html">SHA256Util</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a384_context.html">SHA384Context</a> (<a class="el" href="namespacesese_1_1security_1_1evp.html">sese::security::evp</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html">SHA512Context</a> (<a class="el" href="namespacesese_1_1security_1_1evp.html">sese::security::evp</a>)</dd><dd><a class="el" href="classsese_1_1system_1_1_shared_memory.html">SharedMemory</a> (<a class="el" href="namespacesese_1_1system.html">sese::system</a>)</dd><dd><a class="el" href="classsese_1_1record_1_1_simple_formatter.html">SimpleFormatter</a> (<a class="el" href="namespacesese_1_1record.html">sese::record</a>)</dd><dd><a class="el" href="classsese_1_1_singleton.html">Singleton</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_singleton_ptr.html">SingletonPtr</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1evp_1_1_s_m3_context.html">SM3Context</a> (<a class="el" href="namespacesese_1_1security_1_1evp.html">sese::security::evp</a>)</dd><dd><a class="el" href="classsese_1_1net_1_1_socket.html">Socket</a> (<a class="el" href="namespacesese_1_1net.html">sese::net</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1_user_balance_loader_1_1_socket_status.html">UserBalanceLoader::SocketStatus</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1_spin_lock.html">SpinLock</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html">SqliteDriverInstanceImpl</a> (<a class="el" href="namespacesese_1_1db_1_1impl.html">sese::db::impl</a>)</dd><dd><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html">SqlitePreparedStatementImpl</a> (<a class="el" href="namespacesese_1_1db_1_1impl.html">sese::db::impl</a>)</dd><dd><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html">SqliteResultSetImpl</a> (<a class="el" href="namespacesese_1_1db_1_1impl.html">sese::db::impl</a>)</dd><dd><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html">SqliteStmtResultSetImpl</a> (<a class="el" href="namespacesese_1_1db_1_1impl.html">sese::db::impl</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> (<a class="el" href="namespacesese_1_1security.html">sese::security</a>)</dd><dd><a class="el" href="classsese_1_1security_1_1_s_s_l_context_builder.html">SSLContextBuilder</a> (<a class="el" href="namespacesese_1_1security.html">sese::security</a>)</dd><dd><a class="el" href="classsstr_1_1_s_string.html">SString</a> (<a class="el" href="namespacesstr.html">sstr</a>)</dd><dd><a class="el" href="classsstr_1_1_s_string_view.html">SStringView</a> (<a class="el" href="namespacesstr.html">sstr</a>)</dd><dd><a class="el" href="classsese_1_1system_1_1_stack_info.html">StackInfo</a> (<a class="el" href="namespacesese_1_1system.html">sese::system</a>)</dd><dd><a class="el" href="classsese_1_1io_1_1_std_input_stream_wrapper.html">StdInputStreamWrapper</a> (<a class="el" href="namespacesese_1_1io.html">sese::io</a>)</dd><dd><a class="el" href="classsese_1_1io_1_1_std_output_stream_wrapper.html">StdOutputStreamWrapper</a> (<a class="el" href="namespacesese_1_1io.html">sese::io</a>)</dd><dd><a class="el" href="classsese_1_1_stop_watch.html">StopWatch</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1_str_case_map_comparer.html">StrCaseMapComparer</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1_str_case_unordered_map_comparer.html">StrCaseUnorderedMapComparer</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1_str_cmp.html">StrCmp</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1_str_cmp_i.html">StrCmpI</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1io_1_1_stream.html">Stream</a> (<a class="el" href="namespacesese_1_1io.html">sese::io</a>)</dd><dd><a class="el" href="classsese_1_1text_1_1_string_buffer.html">StringBuffer</a> (<a class="el" href="namespacesese_1_1text.html">sese::text</a>)</dd><dd><a class="el" href="classsese_1_1text_1_1_string_builder.html">StringBuilder</a> (<a class="el" href="namespacesese_1_1text.html">sese::text</a>)</dd><dd><a class="el" href="structsese_1_1system_1_1_sub_stack_info.html">SubStackInfo</a> (<a class="el" href="namespacesese_1_1system.html">sese::system</a>)</dd><dd><a class="el" href="classsese_1_1_symbol_converter.html">SymbolConverter</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1_system_balance_loader.html">SystemBalanceLoader</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_T" name="letter_T">T</a></dt>
-<dd><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1text_1_1_text_reader.html">TextReader</a> (<a class="el" href="namespacesese_1_1text.html">sese::text</a>)</dd><dd><a class="el" href="classsese_1_1_thread.html">Thread</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_thread_initiate_task.html">ThreadInitiateTask</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1v2_1_1_timeout_event.html">TimeoutEvent</a> (<a class="el" href="namespacesese_1_1service_1_1v2.html">sese::service::v2</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">TimeoutEvent</a> (<a class="el" href="namespacesese_1_1service_1_1v1.html">sese::service::v1</a>)</dd><dd><a class="el" href="structsese_1_1_timeout_event_slot.html">TimeoutEventSlot</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_timer.html">Timer</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1v1_1_1_timerable_service.html">TimerableService</a> (<a class="el" href="namespacesese_1_1service_1_1v1.html">sese::service::v1</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html">TimerableService</a> (<a class="el" href="namespacesese_1_1service_1_1v2.html">sese::service::v2</a>)</dd><dd><a class="el" href="classsese_1_1_timer_task.html">TimerTask</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_timestamp_handler.html">TimestampHandler</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_time_wheel.html">TimeWheel</a> (<a class="el" href="namespacesese.html">sese</a>)</dd></dl>
+<dd><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1_tcp_transporter.html">TcpTransporter</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1_tcp_transporter_config.html">TcpTransporterConfig</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1text_1_1_text_reader.html">TextReader</a> (<a class="el" href="namespacesese_1_1text.html">sese::text</a>)</dd><dd><a class="el" href="classsese_1_1_thread.html">Thread</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_thread_initiate_task.html">ThreadInitiateTask</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">TimeoutEvent</a> (<a class="el" href="namespacesese_1_1service_1_1v1.html">sese::service::v1</a>)</dd><dd><a class="el" href="structsese_1_1service_1_1v2_1_1_timeout_event.html">TimeoutEvent</a> (<a class="el" href="namespacesese_1_1service_1_1v2.html">sese::service::v2</a>)</dd><dd><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="structsese_1_1_timeout_event_slot.html">TimeoutEventSlot</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_timer.html">Timer</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1v1_1_1_timerable_service.html">TimerableService</a> (<a class="el" href="namespacesese_1_1service_1_1v1.html">sese::service::v1</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html">TimerableService</a> (<a class="el" href="namespacesese_1_1service_1_1v2.html">sese::service::v2</a>)</dd><dd><a class="el" href="classsese_1_1_timer_task.html">TimerTask</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_timestamp_handler.html">TimestampHandler</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_time_wheel.html">TimeWheel</a> (<a class="el" href="namespacesese.html">sese</a>)</dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_U" name="letter_U">U</a></dt>
 <dd><a class="el" href="classsese_1_1_uni_reader.html">UniReader</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_unix_exception.html">UnixException</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1net_1_1http_1_1_url.html">Url</a> (<a class="el" href="namespacesese_1_1net_1_1http.html">sese::net::http</a>)</dd><dd><a class="el" href="classsese_1_1service_1_1_user_balance_loader.html">UserBalanceLoader</a> (<a class="el" href="namespacesese_1_1service.html">sese::service</a>)</dd><dd><a class="el" href="classsese_1_1_uuid.html">Uuid</a> (<a class="el" href="namespacesese.html">sese</a>)</dd><dd><a class="el" href="classsese_1_1_uuid_builder.html">UuidBuilder</a> (<a class="el" href="namespacesese.html">sese</a>)</dd></dl>
@@ -212,7 +218,7 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:54:00 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

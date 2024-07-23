@@ -6,7 +6,7 @@ var searchData=
   ['baseeventconvert_3',['BaseEventConvert',['../classsese_1_1event_1_1_base_event_convert.html',1,'sese::event']]],
   ['baseeventloop_4',['BaseEventLoop',['../classsese_1_1event_1_1_base_event_loop.html',1,'sese::event']]],
   ['basestreamreader_5',['BaseStreamReader',['../classsese_1_1io_1_1_base_stream_reader.html',1,'sese::io']]],
-  ['basicdata_6',['basicdata',['../classsese_1_1json_1_1_basic_data.html',1,'sese::json::BasicData'],['../classsese_1_1yaml_1_1_basic_data.html',1,'sese::yaml::BasicData']]],
+  ['basicdata_6',['BasicData',['../classsese_1_1json_1_1_basic_data.html',1,'sese::json::BasicData'],['../classsese_1_1yaml_1_1_basic_data.html',1,'sese::yaml::BasicData']]],
   ['bimap_7',['Bimap',['../classsese_1_1_bimap.html',1,'sese']]],
   ['bitset32_8',['Bitset32',['../structsese_1_1_bitset32.html',1,'sese']]],
   ['blockappender_9',['BlockAppender',['../classsese_1_1record_1_1_block_appender.html',1,'sese::record']]],

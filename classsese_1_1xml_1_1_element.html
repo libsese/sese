@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::xml::Element类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1xml_1_1_element.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1xml_1_1_element.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,54 +143,54 @@ $(document).ready(function(){initNavTree('classsese_1_1xml_1_1_element.html','')
 <div class="contents">
 
 <p>XML 元素对象  
- <a href="classsese_1_1xml_1_1_element.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a2dce7b69c82656fbf6557d044f6cd67d" id="r_a2dce7b69c82656fbf6557d044f6cd67d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1xml_1_1_element.html">Element</a> &gt;</td></tr>
+<tr class="memitem:a2dce7b69c82656fbf6557d044f6cd67d" id="r_a2dce7b69c82656fbf6557d044f6cd67d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dce7b69c82656fbf6557d044f6cd67d">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1xml_1_1_element.html">Element</a>&gt;</td></tr>
 <tr class="separator:a2dce7b69c82656fbf6557d044f6cd67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bef345d8cb6de6613aa48eb483d2379" id="r_a0bef345d8cb6de6613aa48eb483d2379"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> = std::map&lt; std::string, std::string &gt;</td></tr>
+<tr class="memitem:a0bef345d8cb6de6613aa48eb483d2379" id="r_a0bef345d8cb6de6613aa48eb483d2379"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> = std::map&lt;std::string, std::string&gt;</td></tr>
 <tr class="separator:a0bef345d8cb6de6613aa48eb483d2379"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a57dbdb4446a027a6662f2824f7218" id="r_a09a57dbdb4446a027a6662f2824f7218"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a> = std::vector&lt; <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &gt;</td></tr>
+<tr class="memitem:a09a57dbdb4446a027a6662f2824f7218" id="r_a09a57dbdb4446a027a6662f2824f7218"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09a57dbdb4446a027a6662f2824f7218">SubType</a> = std::vector&lt;<a class="el" href="#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a>&gt;</td></tr>
 <tr class="separator:a09a57dbdb4446a027a6662f2824f7218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ad0e436955e43cafca6f1d61ac2942767" id="r_ad0e436955e43cafca6f1d61ac2942767"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#ad0e436955e43cafca6f1d61ac2942767">Element</a> (const std::string &amp;<a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>)</td></tr>
+<tr class="memitem:ad0e436955e43cafca6f1d61ac2942767" id="r_ad0e436955e43cafca6f1d61ac2942767"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0e436955e43cafca6f1d61ac2942767">Element</a> (const std::string &amp;<a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>)</td></tr>
 <tr class="separator:ad0e436955e43cafca6f1d61ac2942767"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d786e82d8b8fd9ace03d4a741f84cc5" id="r_a8d786e82d8b8fd9ace03d4a741f84cc5"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a8d786e82d8b8fd9ace03d4a741f84cc5">getName</a> () const</td></tr>
+<tr class="memitem:a8d786e82d8b8fd9ace03d4a741f84cc5" id="r_a8d786e82d8b8fd9ace03d4a741f84cc5"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d786e82d8b8fd9ace03d4a741f84cc5">getName</a> () const</td></tr>
 <tr class="separator:a8d786e82d8b8fd9ace03d4a741f84cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a415adc939795fb40dc719aba14f9f68d" id="r_a415adc939795fb40dc719aba14f9f68d"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a415adc939795fb40dc719aba14f9f68d">getValue</a> () const</td></tr>
+<tr class="memitem:a415adc939795fb40dc719aba14f9f68d" id="r_a415adc939795fb40dc719aba14f9f68d"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a415adc939795fb40dc719aba14f9f68d">getValue</a> () const</td></tr>
 <tr class="separator:a415adc939795fb40dc719aba14f9f68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e00787e9911845f3d139afbb89b7e6" id="r_ad3e00787e9911845f3d139afbb89b7e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#ad3e00787e9911845f3d139afbb89b7e6">setValue</a> (std::string var)</td></tr>
+<tr class="memitem:ad3e00787e9911845f3d139afbb89b7e6" id="r_ad3e00787e9911845f3d139afbb89b7e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3e00787e9911845f3d139afbb89b7e6">setValue</a> (std::string var)</td></tr>
 <tr class="separator:ad3e00787e9911845f3d139afbb89b7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec237e06d69b55fb22fb4ff54affbab8" id="r_aec237e06d69b55fb22fb4ff54affbab8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#aec237e06d69b55fb22fb4ff54affbab8">getAttributes</a> () const</td></tr>
+<tr class="memitem:aec237e06d69b55fb22fb4ff54affbab8" id="r_aec237e06d69b55fb22fb4ff54affbab8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec237e06d69b55fb22fb4ff54affbab8">getAttributes</a> () const</td></tr>
 <tr class="separator:aec237e06d69b55fb22fb4ff54affbab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90c801eef93312b2b20d1feb2f1438f0" id="r_a90c801eef93312b2b20d1feb2f1438f0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a90c801eef93312b2b20d1feb2f1438f0">getElements</a> () const</td></tr>
+<tr class="memitem:a90c801eef93312b2b20d1feb2f1438f0" id="r_a90c801eef93312b2b20d1feb2f1438f0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="#a09a57dbdb4446a027a6662f2824f7218">SubType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90c801eef93312b2b20d1feb2f1438f0">getElements</a> () const</td></tr>
 <tr class="separator:a90c801eef93312b2b20d1feb2f1438f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8e2112cacd14c7adab6f45f48c32d50" id="r_ae8e2112cacd14c7adab6f45f48c32d50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#ae8e2112cacd14c7adab6f45f48c32d50">addElement</a> (const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;element)</td></tr>
+<tr class="memitem:ae8e2112cacd14c7adab6f45f48c32d50" id="r_ae8e2112cacd14c7adab6f45f48c32d50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e2112cacd14c7adab6f45f48c32d50">addElement</a> (const <a class="el" href="#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;element)</td></tr>
 <tr class="separator:ae8e2112cacd14c7adab6f45f48c32d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a725ab6f2384bdbd84f922eedef886dd1" id="r_a725ab6f2384bdbd84f922eedef886dd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a725ab6f2384bdbd84f922eedef886dd1">setAttribute</a> (const std::string &amp;<a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>, const std::string &amp;<a class="el" href="classsese_1_1xml_1_1_element.html#afadba7620a1e16bd40169cc5e38911fb">value</a>)</td></tr>
+<tr class="memitem:a725ab6f2384bdbd84f922eedef886dd1" id="r_a725ab6f2384bdbd84f922eedef886dd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a725ab6f2384bdbd84f922eedef886dd1">setAttribute</a> (const std::string &amp;<a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>, const std::string &amp;<a class="el" href="#afadba7620a1e16bd40169cc5e38911fb">value</a>)</td></tr>
 <tr class="separator:a725ab6f2384bdbd84f922eedef886dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4326eabdf8a0ced3af75f67f608f40b6" id="r_a4326eabdf8a0ced3af75f67f608f40b6"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute</a> (const std::string &amp;<a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>, const std::string &amp;default_value) const</td></tr>
+<tr class="memitem:a4326eabdf8a0ced3af75f67f608f40b6" id="r_a4326eabdf8a0ced3af75f67f608f40b6"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute</a> (const std::string &amp;<a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>, const std::string &amp;default_value) const</td></tr>
 <tr class="separator:a4326eabdf8a0ced3af75f67f608f40b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25d1cd141bcdd67e6a6b64a17fae942a" id="r_a25d1cd141bcdd67e6a6b64a17fae942a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute</a> (const std::string &amp;<a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>)</td></tr>
+<tr class="memitem:a25d1cd141bcdd67e6a6b64a17fae942a" id="r_a25d1cd141bcdd67e6a6b64a17fae942a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute</a> (const std::string &amp;<a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>)</td></tr>
 <tr class="separator:a25d1cd141bcdd67e6a6b64a17fae942a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:a11c84c92f6b1612d517426f766fa1a3f" id="r_a11c84c92f6b1612d517426f766fa1a3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f">elements</a></td></tr>
+<tr class="memitem:a11c84c92f6b1612d517426f766fa1a3f" id="r_a11c84c92f6b1612d517426f766fa1a3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a09a57dbdb4446a027a6662f2824f7218">SubType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11c84c92f6b1612d517426f766fa1a3f">elements</a></td></tr>
 <tr class="separator:a11c84c92f6b1612d517426f766fa1a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
-<tr class="memitem:a56d106618211d33b08b52e844dae2953" id="r_a56d106618211d33b08b52e844dae2953"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a></td></tr>
+<tr class="memitem:a56d106618211d33b08b52e844dae2953" id="r_a56d106618211d33b08b52e844dae2953"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a></td></tr>
 <tr class="separator:a56d106618211d33b08b52e844dae2953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afadba7620a1e16bd40169cc5e38911fb" id="r_afadba7620a1e16bd40169cc5e38911fb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#afadba7620a1e16bd40169cc5e38911fb">value</a></td></tr>
+<tr class="memitem:afadba7620a1e16bd40169cc5e38911fb" id="r_afadba7620a1e16bd40169cc5e38911fb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afadba7620a1e16bd40169cc5e38911fb">value</a></td></tr>
 <tr class="separator:afadba7620a1e16bd40169cc5e38911fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b6e633573c5987fe587f907ab0b70f3" id="r_a0b6e633573c5987fe587f907ab0b70f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3">attributes</a></td></tr>
+<tr class="memitem:a0b6e633573c5987fe587f907ab0b70f3" id="r_a0b6e633573c5987fe587f907ab0b70f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b6e633573c5987fe587f907ab0b70f3">attributes</a></td></tr>
 <tr class="separator:a0b6e633573c5987fe587f907ab0b70f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -197,7 +203,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">sese::xml::Element::AttrType</a> =  std::map&lt;std::string, std::string&gt;</td>
+          <td class="memname">using <a class="el" href="#a0bef345d8cb6de6613aa48eb483d2379">sese::xml::Element::AttrType</a> = std::map&lt;std::string, std::string&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -211,7 +217,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">sese::xml::Element::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1xml_1_1_element.html">Element</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#a2dce7b69c82656fbf6557d044f6cd67d">sese::xml::Element::Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1xml_1_1_element.html">Element</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -225,7 +231,7 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">sese::xml::Element::SubType</a> =  std::vector&lt;<a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a>&gt;</td>
+          <td class="memname">using <a class="el" href="#a09a57dbdb4446a027a6662f2824f7218">sese::xml::Element::SubType</a> = std::vector&lt;<a class="el" href="#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -245,8 +251,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">sese::xml::Element::Element </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -257,7 +262,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>.</p>
 
 </div>
 </div>
@@ -271,14 +276,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::xml::Element::addElement </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>element</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>element</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f">elements</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a11c84c92f6b1612d517426f766fa1a3f">elements</a>.</p>
 
 </div>
 </div>
@@ -287,28 +291,29 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; sese::xml::Element::getAttribute </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>default_value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>default_value</em></span>&#160;) const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3">attributes</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a0b6e633573c5987fe587f907ab0b70f3">attributes</a> , 以及 <a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>.</p>
 
 </div>
 </div>
@@ -317,17 +322,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">Element::AttrType</a> &amp; sese::xml::Element::getAttributes </td>
+          <td class="memname">const <a class="el" href="#a0bef345d8cb6de6613aa48eb483d2379">Element::AttrType</a> &amp; sese::xml::Element::getAttributes </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3">attributes</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a0b6e633573c5987fe587f907ab0b70f3">attributes</a>.</p>
 
 </div>
 </div>
@@ -336,17 +349,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">Element::SubType</a> &amp; sese::xml::Element::getElements </td>
+          <td class="memname">const <a class="el" href="#a09a57dbdb4446a027a6662f2824f7218">Element::SubType</a> &amp; sese::xml::Element::getElements </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f">elements</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a11c84c92f6b1612d517426f766fa1a3f">elements</a>.</p>
 
 </div>
 </div>
@@ -355,17 +376,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; sese::xml::Element::getName </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>.</p>
 
 </div>
 </div>
@@ -374,17 +403,25 @@ Private 属性</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::string &amp; sese::xml::Element::getValue </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#afadba7620a1e16bd40169cc5e38911fb">value</a>.</p>
+<p class="reference">引用了 <a class="el" href="#afadba7620a1e16bd40169cc5e38911fb">value</a>.</p>
 
 </div>
 </div>
@@ -397,14 +434,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::xml::Element::removeAttribute </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3">attributes</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a0b6e633573c5987fe587f907ab0b70f3">attributes</a> , 以及 <a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a>.</p>
 
 </div>
 </div>
@@ -417,24 +453,17 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::xml::Element::setAttribute </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3">attributes</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953">name</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#afadba7620a1e16bd40169cc5e38911fb">value</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a0b6e633573c5987fe587f907ab0b70f3">attributes</a>, <a class="el" href="#a56d106618211d33b08b52e844dae2953">name</a> , 以及 <a class="el" href="#afadba7620a1e16bd40169cc5e38911fb">value</a>.</p>
 
 </div>
 </div>
@@ -447,14 +476,13 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="memname">void sese::xml::Element::setValue </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>var</em></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>var</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1xml_1_1_element.html#afadba7620a1e16bd40169cc5e38911fb">value</a>.</p>
+<p class="reference">引用了 <a class="el" href="#afadba7620a1e16bd40169cc5e38911fb">value</a>.</p>
 
 </div>
 </div>
@@ -469,7 +497,7 @@ Private 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> sese::xml::Element::attributes</td>
+          <td class="memname"><a class="el" href="#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> sese::xml::Element::attributes</td>
         </tr>
       </table>
   </td>
@@ -479,7 +507,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1xml_1_1_element.html#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute()</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#aec237e06d69b55fb22fb4ff54affbab8">getAttributes()</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute()</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#a725ab6f2384bdbd84f922eedef886dd1">setAttribute()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute()</a>, <a class="el" href="#aec237e06d69b55fb22fb4ff54affbab8">getAttributes()</a>, <a class="el" href="#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute()</a> , 以及 <a class="el" href="#a725ab6f2384bdbd84f922eedef886dd1">setAttribute()</a>.</p>
 
 </div>
 </div>
@@ -490,12 +518,12 @@ Private 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a> sese::xml::Element::elements</td>
+          <td class="memname"><a class="el" href="#a09a57dbdb4446a027a6662f2824f7218">SubType</a> sese::xml::Element::elements</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1xml_1_1_element.html#ae8e2112cacd14c7adab6f45f48c32d50">addElement()</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#a90c801eef93312b2b20d1feb2f1438f0">getElements()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ae8e2112cacd14c7adab6f45f48c32d50">addElement()</a> , 以及 <a class="el" href="#a90c801eef93312b2b20d1feb2f1438f0">getElements()</a>.</p>
 
 </div>
 </div>
@@ -519,7 +547,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1xml_1_1_element.html#ad0e436955e43cafca6f1d61ac2942767">Element()</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute()</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#a8d786e82d8b8fd9ace03d4a741f84cc5">getName()</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute()</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#a725ab6f2384bdbd84f922eedef886dd1">setAttribute()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#ad0e436955e43cafca6f1d61ac2942767">Element()</a>, <a class="el" href="#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute()</a>, <a class="el" href="#a8d786e82d8b8fd9ace03d4a741f84cc5">getName()</a>, <a class="el" href="#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute()</a> , 以及 <a class="el" href="#a725ab6f2384bdbd84f922eedef886dd1">setAttribute()</a>.</p>
 
 </div>
 </div>
@@ -543,7 +571,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1xml_1_1_element.html#a415adc939795fb40dc719aba14f9f68d">getValue()</a>, <a class="el" href="classsese_1_1xml_1_1_element.html#a725ab6f2384bdbd84f922eedef886dd1">setAttribute()</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_element.html#ad3e00787e9911845f3d139afbb89b7e6">setValue()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a415adc939795fb40dc719aba14f9f68d">getValue()</a>, <a class="el" href="#a725ab6f2384bdbd84f922eedef886dd1">setAttribute()</a> , 以及 <a class="el" href="#ad3e00787e9911845f3d139afbb89b7e6">setValue()</a>.</p>
 
 </div>
 </div>
@@ -557,7 +585,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1xml.html">xml</a></li><li class="navelem"><a class="el" href="classsese_1_1xml_1_1_element.html">Element</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:54:00 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

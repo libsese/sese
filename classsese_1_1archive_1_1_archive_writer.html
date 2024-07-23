@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::archive::ArchiveWriter类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1archive_1_1_archive_writer.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1archive_1_1_archive_writer.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -136,97 +142,97 @@ $(document).ready(function(){initNavTree('classsese_1_1archive_1_1_archive_write
 <div class="contents">
 
 <p>存档写入器  
- <a href="classsese_1_1archive_1_1_archive_writer.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_archive_writer_8h_source.html">ArchiveWriter.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a2b5cbec849c3ea0bd84458b093382a1f" id="r_a2b5cbec849c3ea0bd84458b093382a1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2b5cbec849c3ea0bd84458b093382a1f">ArchiveWriter</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>)</td></tr>
+<tr class="memitem:a2b5cbec849c3ea0bd84458b093382a1f" id="r_a2b5cbec849c3ea0bd84458b093382a1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b5cbec849c3ea0bd84458b093382a1f">ArchiveWriter</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *<a class="el" href="#a971fe4665920bb548bffc07c8e7b9f15">output</a>)</td></tr>
 <tr class="separator:a2b5cbec849c3ea0bd84458b093382a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9320bba5452da9be07bc447e72ea57d5" id="r_a9320bba5452da9be07bc447e72ea57d5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a9320bba5452da9be07bc447e72ea57d5">~ArchiveWriter</a> ()</td></tr>
+<tr class="memitem:a9320bba5452da9be07bc447e72ea57d5" id="r_a9320bba5452da9be07bc447e72ea57d5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9320bba5452da9be07bc447e72ea57d5">~ArchiveWriter</a> ()</td></tr>
 <tr class="separator:a9320bba5452da9be07bc447e72ea57d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83200e972edc232433d763448d7df371" id="r_a83200e972edc232433d763448d7df371"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a83200e972edc232433d763448d7df371">setFilterGZip</a> ()</td></tr>
+<tr class="memitem:a83200e972edc232433d763448d7df371" id="r_a83200e972edc232433d763448d7df371"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83200e972edc232433d763448d7df371">setFilterGZip</a> ()</td></tr>
 <tr class="separator:a83200e972edc232433d763448d7df371"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89225e4a0e3887df933e99d0eb6cfca4" id="r_a89225e4a0e3887df933e99d0eb6cfca4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a89225e4a0e3887df933e99d0eb6cfca4">setFilterBZip2</a> ()</td></tr>
+<tr class="memitem:a89225e4a0e3887df933e99d0eb6cfca4" id="r_a89225e4a0e3887df933e99d0eb6cfca4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89225e4a0e3887df933e99d0eb6cfca4">setFilterBZip2</a> ()</td></tr>
 <tr class="separator:a89225e4a0e3887df933e99d0eb6cfca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f255a4b0bb4ac81250e41a3a5462c4f" id="r_a5f255a4b0bb4ac81250e41a3a5462c4f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a5f255a4b0bb4ac81250e41a3a5462c4f">setFilterLZ4</a> ()</td></tr>
+<tr class="memitem:a5f255a4b0bb4ac81250e41a3a5462c4f" id="r_a5f255a4b0bb4ac81250e41a3a5462c4f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f255a4b0bb4ac81250e41a3a5462c4f">setFilterLZ4</a> ()</td></tr>
 <tr class="separator:a5f255a4b0bb4ac81250e41a3a5462c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27a664927eefbe053d5ce0657b9b9a84" id="r_a27a664927eefbe053d5ce0657b9b9a84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a27a664927eefbe053d5ce0657b9b9a84">setFilterLZip</a> ()</td></tr>
+<tr class="memitem:a27a664927eefbe053d5ce0657b9b9a84" id="r_a27a664927eefbe053d5ce0657b9b9a84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27a664927eefbe053d5ce0657b9b9a84">setFilterLZip</a> ()</td></tr>
 <tr class="separator:a27a664927eefbe053d5ce0657b9b9a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9891523ee81f093acda11a32be9e9b34" id="r_a9891523ee81f093acda11a32be9e9b34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a9891523ee81f093acda11a32be9e9b34">setFilterZstd</a> ()</td></tr>
+<tr class="memitem:a9891523ee81f093acda11a32be9e9b34" id="r_a9891523ee81f093acda11a32be9e9b34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9891523ee81f093acda11a32be9e9b34">setFilterZstd</a> ()</td></tr>
 <tr class="separator:a9891523ee81f093acda11a32be9e9b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a202f3e084ffc644c37b53ff026dab502" id="r_a202f3e084ffc644c37b53ff026dab502"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a202f3e084ffc644c37b53ff026dab502">setFilterXZ</a> ()</td></tr>
+<tr class="memitem:a202f3e084ffc644c37b53ff026dab502" id="r_a202f3e084ffc644c37b53ff026dab502"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a202f3e084ffc644c37b53ff026dab502">setFilterXZ</a> ()</td></tr>
 <tr class="separator:a202f3e084ffc644c37b53ff026dab502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc6118f7607be6d040c5aaa8595a498d" id="r_acc6118f7607be6d040c5aaa8595a498d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acc6118f7607be6d040c5aaa8595a498d">setFilterLzma</a> ()</td></tr>
+<tr class="memitem:acc6118f7607be6d040c5aaa8595a498d" id="r_acc6118f7607be6d040c5aaa8595a498d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc6118f7607be6d040c5aaa8595a498d">setFilterLzma</a> ()</td></tr>
 <tr class="separator:acc6118f7607be6d040c5aaa8595a498d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f911af012384fd67388b47a7487adcb" id="r_a1f911af012384fd67388b47a7487adcb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a1f911af012384fd67388b47a7487adcb">setFilterLzop</a> ()</td></tr>
+<tr class="memitem:a1f911af012384fd67388b47a7487adcb" id="r_a1f911af012384fd67388b47a7487adcb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f911af012384fd67388b47a7487adcb">setFilterLzop</a> ()</td></tr>
 <tr class="separator:a1f911af012384fd67388b47a7487adcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac303577c62dd4f08ae5e6926d82b0072" id="r_ac303577c62dd4f08ae5e6926d82b0072"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ac303577c62dd4f08ae5e6926d82b0072">setFilterGRZip</a> ()</td></tr>
+<tr class="memitem:ac303577c62dd4f08ae5e6926d82b0072" id="r_ac303577c62dd4f08ae5e6926d82b0072"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac303577c62dd4f08ae5e6926d82b0072">setFilterGRZip</a> ()</td></tr>
 <tr class="separator:ac303577c62dd4f08ae5e6926d82b0072"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74d0c978b345c6a4940838c19c0b24b7" id="r_a74d0c978b345c6a4940838c19c0b24b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a74d0c978b345c6a4940838c19c0b24b7">setFilterLRZip</a> ()</td></tr>
+<tr class="memitem:a74d0c978b345c6a4940838c19c0b24b7" id="r_a74d0c978b345c6a4940838c19c0b24b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74d0c978b345c6a4940838c19c0b24b7">setFilterLRZip</a> ()</td></tr>
 <tr class="separator:a74d0c978b345c6a4940838c19c0b24b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a172d09d545b7cbded88a0de7ce0eba3f" id="r_a172d09d545b7cbded88a0de7ce0eba3f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a172d09d545b7cbded88a0de7ce0eba3f">setFilterNone</a> ()</td></tr>
+<tr class="memitem:a172d09d545b7cbded88a0de7ce0eba3f" id="r_a172d09d545b7cbded88a0de7ce0eba3f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a172d09d545b7cbded88a0de7ce0eba3f">setFilterNone</a> ()</td></tr>
 <tr class="separator:a172d09d545b7cbded88a0de7ce0eba3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a295a7cf93d3edb9a8d011717cbba4ab5" id="r_a295a7cf93d3edb9a8d011717cbba4ab5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a295a7cf93d3edb9a8d011717cbba4ab5">setFormatXar</a> ()</td></tr>
+<tr class="memitem:a295a7cf93d3edb9a8d011717cbba4ab5" id="r_a295a7cf93d3edb9a8d011717cbba4ab5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a295a7cf93d3edb9a8d011717cbba4ab5">setFormatXar</a> ()</td></tr>
 <tr class="separator:a295a7cf93d3edb9a8d011717cbba4ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c33a01a93548fdc14fc9ad8be0ce046" id="r_a7c33a01a93548fdc14fc9ad8be0ce046"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a7c33a01a93548fdc14fc9ad8be0ce046">setFormatTar</a> ()</td></tr>
+<tr class="memitem:a7c33a01a93548fdc14fc9ad8be0ce046" id="r_a7c33a01a93548fdc14fc9ad8be0ce046"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c33a01a93548fdc14fc9ad8be0ce046">setFormatTar</a> ()</td></tr>
 <tr class="separator:a7c33a01a93548fdc14fc9ad8be0ce046"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5110ee1217a29c1dfd959aa0ad8fc4f9" id="r_a5110ee1217a29c1dfd959aa0ad8fc4f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a5110ee1217a29c1dfd959aa0ad8fc4f9">setFormatZip</a> ()</td></tr>
+<tr class="memitem:a5110ee1217a29c1dfd959aa0ad8fc4f9" id="r_a5110ee1217a29c1dfd959aa0ad8fc4f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5110ee1217a29c1dfd959aa0ad8fc4f9">setFormatZip</a> ()</td></tr>
 <tr class="separator:a5110ee1217a29c1dfd959aa0ad8fc4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d436ebddcae5f11bc3b16825e9793c6" id="r_a6d436ebddcae5f11bc3b16825e9793c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a6d436ebddcae5f11bc3b16825e9793c6">setFormat7z</a> ()</td></tr>
+<tr class="memitem:a6d436ebddcae5f11bc3b16825e9793c6" id="r_a6d436ebddcae5f11bc3b16825e9793c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d436ebddcae5f11bc3b16825e9793c6">setFormat7z</a> ()</td></tr>
 <tr class="separator:a6d436ebddcae5f11bc3b16825e9793c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99119818346f73f464bcbdd1f4e8e55f" id="r_a99119818346f73f464bcbdd1f4e8e55f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a99119818346f73f464bcbdd1f4e8e55f">setFormatISO</a> ()</td></tr>
+<tr class="memitem:a99119818346f73f464bcbdd1f4e8e55f" id="r_a99119818346f73f464bcbdd1f4e8e55f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99119818346f73f464bcbdd1f4e8e55f">setFormatISO</a> ()</td></tr>
 <tr class="separator:a99119818346f73f464bcbdd1f4e8e55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa46f4d0838eb9a89ac1b24c8efcd8613" id="r_aa46f4d0838eb9a89ac1b24c8efcd8613"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#aa46f4d0838eb9a89ac1b24c8efcd8613">setPassword</a> (const std::string &amp;pwd)</td></tr>
+<tr class="memitem:aa46f4d0838eb9a89ac1b24c8efcd8613" id="r_aa46f4d0838eb9a89ac1b24c8efcd8613"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa46f4d0838eb9a89ac1b24c8efcd8613">setPassword</a> (const std::string &amp;pwd)</td></tr>
 <tr class="separator:aa46f4d0838eb9a89ac1b24c8efcd8613"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89730c3c2cb5a49f172e815c9bfb1a62" id="r_a89730c3c2cb5a49f172e815c9bfb1a62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a89730c3c2cb5a49f172e815c9bfb1a62">setOptions</a> (const std::string &amp;opt)</td></tr>
+<tr class="memitem:a89730c3c2cb5a49f172e815c9bfb1a62" id="r_a89730c3c2cb5a49f172e815c9bfb1a62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89730c3c2cb5a49f172e815c9bfb1a62">setOptions</a> (const std::string &amp;opt)</td></tr>
 <tr class="separator:a89730c3c2cb5a49f172e815c9bfb1a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21a44fb26f61d8e311820ea469fd470f" id="r_a21a44fb26f61d8e311820ea469fd470f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a21a44fb26f61d8e311820ea469fd470f">getError</a> ()</td></tr>
+<tr class="memitem:a21a44fb26f61d8e311820ea469fd470f" id="r_a21a44fb26f61d8e311820ea469fd470f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21a44fb26f61d8e311820ea469fd470f">getError</a> ()</td></tr>
 <tr class="separator:a21a44fb26f61d8e311820ea469fd470f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d745d24f41ab83aba689eb1be018f53" id="r_a3d745d24f41ab83aba689eb1be018f53"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3d745d24f41ab83aba689eb1be018f53">getErrorString</a> ()</td></tr>
+<tr class="memitem:a3d745d24f41ab83aba689eb1be018f53" id="r_a3d745d24f41ab83aba689eb1be018f53"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d745d24f41ab83aba689eb1be018f53">getErrorString</a> ()</td></tr>
 <tr class="separator:a3d745d24f41ab83aba689eb1be018f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e6fb3ac807b2693a6a6750dbe8c12ab" id="r_a3e6fb3ac807b2693a6a6750dbe8c12ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3e6fb3ac807b2693a6a6750dbe8c12ab">begin</a> ()</td></tr>
+<tr class="memitem:a3e6fb3ac807b2693a6a6750dbe8c12ab" id="r_a3e6fb3ac807b2693a6a6750dbe8c12ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e6fb3ac807b2693a6a6750dbe8c12ab">begin</a> ()</td></tr>
 <tr class="separator:a3e6fb3ac807b2693a6a6750dbe8c12ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae412d35bb5963bbd07b903b7fed7ddc3" id="r_ae412d35bb5963bbd07b903b7fed7ddc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ae412d35bb5963bbd07b903b7fed7ddc3">done</a> ()</td></tr>
+<tr class="memitem:ae412d35bb5963bbd07b903b7fed7ddc3" id="r_ae412d35bb5963bbd07b903b7fed7ddc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae412d35bb5963bbd07b903b7fed7ddc3">done</a> ()</td></tr>
 <tr class="separator:ae412d35bb5963bbd07b903b7fed7ddc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a538197c8eac8dc63cfaa36f21290d7fa" id="r_a538197c8eac8dc63cfaa36f21290d7fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a538197c8eac8dc63cfaa36f21290d7fa">addPath</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="memitem:a538197c8eac8dc63cfaa36f21290d7fa" id="r_a538197c8eac8dc63cfaa36f21290d7fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a538197c8eac8dc63cfaa36f21290d7fa">addPath</a> (const std::filesystem::path &amp;path)</td></tr>
 <tr class="separator:a538197c8eac8dc63cfaa36f21290d7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e0ad3ef7eb83a342e02cfa7a263ed9a" id="r_a2e0ad3ef7eb83a342e02cfa7a263ed9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath</a> (const std::filesystem::path &amp;base, const std::filesystem::path &amp;path)</td></tr>
+<tr class="memitem:a2e0ad3ef7eb83a342e02cfa7a263ed9a" id="r_a2e0ad3ef7eb83a342e02cfa7a263ed9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath</a> (const std::filesystem::path &amp;base, const std::filesystem::path &amp;path)</td></tr>
 <tr class="separator:a2e0ad3ef7eb83a342e02cfa7a263ed9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a257df0348e14ff0f208cf2ff6199465a" id="r_a257df0348e14ff0f208cf2ff6199465a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile</a> (const std::filesystem::path &amp;file)</td></tr>
+<tr class="memitem:a257df0348e14ff0f208cf2ff6199465a" id="r_a257df0348e14ff0f208cf2ff6199465a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a257df0348e14ff0f208cf2ff6199465a">addFile</a> (const std::filesystem::path &amp;file)</td></tr>
 <tr class="memdesc:a257df0348e14ff0f208cf2ff6199465a"><td class="mdescLeft">&#160;</td><td class="mdescRight">实体操作函数，不推荐使用  <br /></td></tr>
 <tr class="separator:a257df0348e14ff0f208cf2ff6199465a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77b70e9f7ce2ab7a281ff39ad998efde" id="r_a77b70e9f7ce2ab7a281ff39ad998efde"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a77b70e9f7ce2ab7a281ff39ad998efde">addFile</a> (const std::filesystem::path &amp;base, const std::filesystem::path &amp;file)</td></tr>
+<tr class="memitem:a77b70e9f7ce2ab7a281ff39ad998efde" id="r_a77b70e9f7ce2ab7a281ff39ad998efde"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b70e9f7ce2ab7a281ff39ad998efde">addFile</a> (const std::filesystem::path &amp;base, const std::filesystem::path &amp;file)</td></tr>
 <tr class="memdesc:a77b70e9f7ce2ab7a281ff39ad998efde"><td class="mdescLeft">&#160;</td><td class="mdescRight">实体操作函数，不推荐使用  <br /></td></tr>
 <tr class="separator:a77b70e9f7ce2ab7a281ff39ad998efde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade0972a68cd432dca257f796c5109eae" id="r_ade0972a68cd432dca257f796c5109eae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory</a> (const std::filesystem::path &amp;dir)</td></tr>
+<tr class="memitem:ade0972a68cd432dca257f796c5109eae" id="r_ade0972a68cd432dca257f796c5109eae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade0972a68cd432dca257f796c5109eae">addDirectory</a> (const std::filesystem::path &amp;dir)</td></tr>
 <tr class="memdesc:ade0972a68cd432dca257f796c5109eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">实体操作函数，不推荐使用  <br /></td></tr>
 <tr class="separator:ade0972a68cd432dca257f796c5109eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2544625cbe63e6aca28326048d6a2154" id="r_a2544625cbe63e6aca28326048d6a2154"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2544625cbe63e6aca28326048d6a2154">addDirectory</a> (const std::filesystem::path &amp;base, const std::filesystem::path &amp;dir)</td></tr>
+<tr class="memitem:a2544625cbe63e6aca28326048d6a2154" id="r_a2544625cbe63e6aca28326048d6a2154"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2544625cbe63e6aca28326048d6a2154">addDirectory</a> (const std::filesystem::path &amp;base, const std::filesystem::path &amp;dir)</td></tr>
 <tr class="memdesc:a2544625cbe63e6aca28326048d6a2154"><td class="mdescLeft">&#160;</td><td class="mdescRight">实体操作函数，不推荐使用  <br /></td></tr>
 <tr class="separator:a2544625cbe63e6aca28326048d6a2154"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ffbe043e517080ea83e282025795b46" id="r_a0ffbe043e517080ea83e282025795b46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a0ffbe043e517080ea83e282025795b46">addStream</a> (const std::filesystem::path &amp;path, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *input, size_t len)</td></tr>
+<tr class="memitem:a0ffbe043e517080ea83e282025795b46" id="r_a0ffbe043e517080ea83e282025795b46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ffbe043e517080ea83e282025795b46">addStream</a> (const std::filesystem::path &amp;path, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *input, size_t len)</td></tr>
 <tr class="separator:a0ffbe043e517080ea83e282025795b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a0ba5337b6f212c524600c0bde50a54c5" id="r_a0ba5337b6f212c524600c0bde50a54c5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a0ba5337b6f212c524600c0bde50a54c5">openCallback</a> (void *<a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
+<tr class="memitem:a0ba5337b6f212c524600c0bde50a54c5" id="r_a0ba5337b6f212c524600c0bde50a54c5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ba5337b6f212c524600c0bde50a54c5">openCallback</a> (void *<a class="el" href="#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
 <tr class="separator:a0ba5337b6f212c524600c0bde50a54c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cd6fe9dcb60a5e9bbcc1ef388af8d9e" id="r_a3cd6fe9dcb60a5e9bbcc1ef388af8d9e"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">writeCallback</a> (void *<a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this, const void *buffer, size_t len)</td></tr>
+<tr class="memitem:a3cd6fe9dcb60a5e9bbcc1ef388af8d9e" id="r_a3cd6fe9dcb60a5e9bbcc1ef388af8d9e"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">writeCallback</a> (void *<a class="el" href="#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this, const void *buffer, size_t len)</td></tr>
 <tr class="separator:a3cd6fe9dcb60a5e9bbcc1ef388af8d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304d9ae2fa50361b27cbcbd47207e150" id="r_a304d9ae2fa50361b27cbcbd47207e150"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a304d9ae2fa50361b27cbcbd47207e150">closeCallback</a> (void *<a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
+<tr class="memitem:a304d9ae2fa50361b27cbcbd47207e150" id="r_a304d9ae2fa50361b27cbcbd47207e150"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a304d9ae2fa50361b27cbcbd47207e150">closeCallback</a> (void *<a class="el" href="#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
 <tr class="separator:a304d9ae2fa50361b27cbcbd47207e150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55a2521844147b693d324e5327a2752c" id="r_a55a2521844147b693d324e5327a2752c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a55a2521844147b693d324e5327a2752c">freeCallback</a> (void *<a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
+<tr class="memitem:a55a2521844147b693d324e5327a2752c" id="r_a55a2521844147b693d324e5327a2752c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55a2521844147b693d324e5327a2752c">freeCallback</a> (void *<a class="el" href="#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
 <tr class="separator:a55a2521844147b693d324e5327a2752c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af63133e3778385af9d8c3be77c85baa4" id="r_af63133e3778385af9d8c3be77c85baa4"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#af63133e3778385af9d8c3be77c85baa4">passphraseCallback</a> (void *<a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
+<tr class="memitem:af63133e3778385af9d8c3be77c85baa4" id="r_af63133e3778385af9d8c3be77c85baa4"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af63133e3778385af9d8c3be77c85baa4">passphraseCallback</a> (void *<a class="el" href="#acf4d1476971c319c2a7d281b847220bd">archive</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *archive_this)</td></tr>
 <tr class="separator:af63133e3778385af9d8c3be77c85baa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a971fe4665920bb548bffc07c8e7b9f15" id="r_a971fe4665920bb548bffc07c8e7b9f15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a> {}</td></tr>
+<tr class="memitem:a971fe4665920bb548bffc07c8e7b9f15" id="r_a971fe4665920bb548bffc07c8e7b9f15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a971fe4665920bb548bffc07c8e7b9f15">output</a> {}</td></tr>
 <tr class="separator:a971fe4665920bb548bffc07c8e7b9f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf4d1476971c319c2a7d281b847220bd" id="r_acf4d1476971c319c2a7d281b847220bd"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a> {}</td></tr>
+<tr class="memitem:acf4d1476971c319c2a7d281b847220bd" id="r_acf4d1476971c319c2a7d281b847220bd"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf4d1476971c319c2a7d281b847220bd">archive</a> {}</td></tr>
 <tr class="separator:acf4d1476971c319c2a7d281b847220bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -244,8 +250,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">ArchiveWriter::ArchiveWriter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *&#160;</td>
-          <td class="paramname"><em>output</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -278,7 +283,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">ArchiveWriter::~ArchiveWriter </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -303,26 +308,19 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addDirectory </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>base</em>, </td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>dir</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>dir</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a>, <a class="el" href="_file_stream_8h.html#ad689a321125d8b0828cd6569aa902eb4">BINARY_READ_EXISTED</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ade0972a68cd432dca257f796c5109eae">addDirectory()</a>, <a class="el" href="_file_stream_8h.html#ad689a321125d8b0828cd6569aa902eb4">BINARY_READ_EXISTED</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -335,8 +333,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addDirectory </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>dir</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -344,9 +341,9 @@ Protected 属性</h2></td></tr>
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ade0972a68cd432dca257f796c5109eae">addDirectory()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2544625cbe63e6aca28326048d6a2154">addDirectory()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a2544625cbe63e6aca28326048d6a2154">addDirectory()</a>, <a class="el" href="#ade0972a68cd432dca257f796c5109eae">addDirectory()</a> , 以及 <a class="el" href="#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath()</a>.</p>
 
 </div>
 </div>
@@ -359,19 +356,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addFile </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>base</em>, </td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>file</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -391,8 +381,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addFile </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>file</em></td><td>)</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -400,9 +389,9 @@ Protected 属性</h2></td></tr>
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a257df0348e14ff0f208cf2ff6199465a">addFile()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a257df0348e14ff0f208cf2ff6199465a">addFile()</a> , 以及 <a class="el" href="#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath()</a>.</p>
 
 </div>
 </div>
@@ -415,19 +404,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addPath </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>base</em>, </td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>base</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>path</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -440,7 +422,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#ade0972a68cd432dca257f796c5109eae">addDirectory()</a> , 以及 <a class="el" href="#a257df0348e14ff0f208cf2ff6199465a">addFile()</a>.</p>
 
 </div>
 </div>
@@ -453,8 +435,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addPath </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -467,9 +448,9 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a538197c8eac8dc63cfaa36f21290d7fa">addPath()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a538197c8eac8dc63cfaa36f21290d7fa">addPath()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a538197c8eac8dc63cfaa36f21290d7fa">addPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a538197c8eac8dc63cfaa36f21290d7fa">addPath()</a>.</p>
 
 </div>
 </div>
@@ -482,25 +463,17 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::addStream </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -527,14 +500,14 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>开始添加实体 </p><dl class="section return"><dt>返回</dt><dd>操作结果 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>, <a class="el" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>, <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>, <a class="el" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open()</a>, <a class="el" href="#a971fe4665920bb548bffc07c8e7b9f15">output</a>, <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -550,19 +523,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::closeCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>archive</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>archive</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -585,7 +551,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool ArchiveWriter::done </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -608,19 +574,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::freeCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>archive</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>archive</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -643,7 +602,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::getError </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -663,7 +622,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">const char * ArchiveWriter::getErrorString </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -686,19 +645,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::openCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>archive</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>archive</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -724,19 +676,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">const char * ArchiveWriter::passphraseCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>archive</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>archive</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">archive::ArchiveWriter</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">archive::ArchiveWriter</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -759,7 +704,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterBZip2 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -778,7 +723,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterGRZip </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -797,7 +742,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterGZip </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -816,7 +761,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterLRZip </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -835,7 +780,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterLZ4 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -854,7 +799,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterLZip </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -873,7 +818,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterLzma </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -892,7 +837,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterLzop </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -911,7 +856,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterNone </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -930,7 +875,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterXZ </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -949,7 +894,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFilterZstd </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -968,7 +913,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFormat7z </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -987,7 +932,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFormatISO </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1006,7 +951,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFormatTar </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1025,7 +970,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFormatXar </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1044,7 +989,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setFormatZip </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1063,8 +1008,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setOptions </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>opt</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>opt</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1090,8 +1034,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int ArchiveWriter::setPassword </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>pwd</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pwd</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1120,31 +1063,22 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t ArchiveWriter::writeCallback </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>archive</em>, </td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>archive</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *&#160;</td>
-          <td class="paramname"><em>archive_this</em>, </td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a> *</td>          <td class="paramname"><span class="paramname"><em>archive_this</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1154,7 +1088,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a971fe4665920bb548bffc07c8e7b9f15">output</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a>.</p>
 
@@ -1203,7 +1137,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3e6fb3ac807b2693a6a6750dbe8c12ab">begin()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">writeCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a3e6fb3ac807b2693a6a6750dbe8c12ab">begin()</a> , 以及 <a class="el" href="#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">writeCallback()</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1151,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1archive.html">archive</a></li><li class="navelem"><a class="el" href="classsese_1_1archive_1_1_archive_writer.html">ArchiveWriter</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

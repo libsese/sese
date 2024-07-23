@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sese::db::impl::MariaDriverInstanceImpl类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html',''); initResizable(); });
+$(function(){initNavTree('classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,7 +141,7 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_maria_driv
 <div class="contents">
 
 <p>Maria 驱动实现  
- <a href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#details">更多...</a></p>
+ <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_maria_driver_instance_impl_8h_source.html">MariaDriverInstanceImpl.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -150,46 +156,46 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1impl_1_1_maria_driv
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a4adcf72b19d56aee7c6d31a4dd32ba56" id="r_a4adcf72b19d56aee7c6d31a4dd32ba56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a4adcf72b19d56aee7c6d31a4dd32ba56">MariaDriverInstanceImpl</a> (MYSQL *<a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>) noexcept</td></tr>
+<tr class="memitem:a4adcf72b19d56aee7c6d31a4dd32ba56" id="r_a4adcf72b19d56aee7c6d31a4dd32ba56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4adcf72b19d56aee7c6d31a4dd32ba56">MariaDriverInstanceImpl</a> (MYSQL *<a class="el" href="#a49c664ad8d629712451193d1e2ce042a">conn</a>) noexcept</td></tr>
 <tr class="separator:a4adcf72b19d56aee7c6d31a4dd32ba56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48dd5818ccd8246bf8895c9e851cb108" id="r_a48dd5818ccd8246bf8895c9e851cb108"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a48dd5818ccd8246bf8895c9e851cb108">~MariaDriverInstanceImpl</a> () noexcept override</td></tr>
+<tr class="memitem:a48dd5818ccd8246bf8895c9e851cb108" id="r_a48dd5818ccd8246bf8895c9e851cb108"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48dd5818ccd8246bf8895c9e851cb108">~MariaDriverInstanceImpl</a> () noexcept override</td></tr>
 <tr class="separator:a48dd5818ccd8246bf8895c9e851cb108"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef84d356d5b874368588f8f64873d83e" id="r_aef84d356d5b874368588f8f64873d83e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aef84d356d5b874368588f8f64873d83e">executeQuery</a> (const char *sql) noexcept override</td></tr>
+<tr class="memitem:aef84d356d5b874368588f8f64873d83e" id="r_aef84d356d5b874368588f8f64873d83e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef84d356d5b874368588f8f64873d83e">executeQuery</a> (const char *sql) noexcept override</td></tr>
 <tr class="separator:aef84d356d5b874368588f8f64873d83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a481c5f148391f14b57eff9a4c3e14a37" id="r_a481c5f148391f14b57eff9a4c3e14a37"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a481c5f148391f14b57eff9a4c3e14a37">executeUpdate</a> (const char *sql) noexcept override</td></tr>
+<tr class="memitem:a481c5f148391f14b57eff9a4c3e14a37" id="r_a481c5f148391f14b57eff9a4c3e14a37"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a481c5f148391f14b57eff9a4c3e14a37">executeUpdate</a> (const char *sql) noexcept override</td></tr>
 <tr class="separator:a481c5f148391f14b57eff9a4c3e14a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa27f0972fd6d5045cada5f94059c5831" id="r_aa27f0972fd6d5045cada5f94059c5831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aa27f0972fd6d5045cada5f94059c5831">createStatement</a> (const char *sql) noexcept override</td></tr>
+<tr class="memitem:aa27f0972fd6d5045cada5f94059c5831" id="r_aa27f0972fd6d5045cada5f94059c5831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa27f0972fd6d5045cada5f94059c5831">createStatement</a> (const char *sql) noexcept override</td></tr>
 <tr class="separator:aa27f0972fd6d5045cada5f94059c5831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82ad69b66795715b4e9e3b6743e4b3c4" id="r_a82ad69b66795715b4e9e3b6743e4b3c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a82ad69b66795715b4e9e3b6743e4b3c4">getLastError</a> () const noexcept override</td></tr>
+<tr class="memitem:a82ad69b66795715b4e9e3b6743e4b3c4" id="r_a82ad69b66795715b4e9e3b6743e4b3c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82ad69b66795715b4e9e3b6743e4b3c4">getLastError</a> () const noexcept override</td></tr>
 <tr class="separator:a82ad69b66795715b4e9e3b6743e4b3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ebb39d96f13d6ef7bacbf3e777090b3" id="r_a1ebb39d96f13d6ef7bacbf3e777090b3"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a1ebb39d96f13d6ef7bacbf3e777090b3">getLastErrorMessage</a> () const noexcept override</td></tr>
+<tr class="memitem:a1ebb39d96f13d6ef7bacbf3e777090b3" id="r_a1ebb39d96f13d6ef7bacbf3e777090b3"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ebb39d96f13d6ef7bacbf3e777090b3">getLastErrorMessage</a> () const noexcept override</td></tr>
 <tr class="separator:a1ebb39d96f13d6ef7bacbf3e777090b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af54508b9bf4aaa491889711f6665d535" id="r_af54508b9bf4aaa491889711f6665d535"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#af54508b9bf4aaa491889711f6665d535">setAutoCommit</a> (bool enable) noexcept override</td></tr>
+<tr class="memitem:af54508b9bf4aaa491889711f6665d535" id="r_af54508b9bf4aaa491889711f6665d535"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af54508b9bf4aaa491889711f6665d535">setAutoCommit</a> (bool enable) noexcept override</td></tr>
 <tr class="separator:af54508b9bf4aaa491889711f6665d535"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9e3a3880e20c9b738e3b2c0d2c6c162" id="r_ab9e3a3880e20c9b738e3b2c0d2c6c162"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ab9e3a3880e20c9b738e3b2c0d2c6c162">getAutoCommit</a> (bool &amp;status) noexcept override</td></tr>
+<tr class="memitem:ab9e3a3880e20c9b738e3b2c0d2c6c162" id="r_ab9e3a3880e20c9b738e3b2c0d2c6c162"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9e3a3880e20c9b738e3b2c0d2c6c162">getAutoCommit</a> (bool &amp;status) noexcept override</td></tr>
 <tr class="separator:ab9e3a3880e20c9b738e3b2c0d2c6c162"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad18995f1136d428bd29fafc7971b2df7" id="r_ad18995f1136d428bd29fafc7971b2df7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ad18995f1136d428bd29fafc7971b2df7">begin</a> () noexcept override</td></tr>
+<tr class="memitem:ad18995f1136d428bd29fafc7971b2df7" id="r_ad18995f1136d428bd29fafc7971b2df7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad18995f1136d428bd29fafc7971b2df7">begin</a> () noexcept override</td></tr>
 <tr class="separator:ad18995f1136d428bd29fafc7971b2df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b93d5004654cec720b14531461b98ea" id="r_a9b93d5004654cec720b14531461b98ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a9b93d5004654cec720b14531461b98ea">commit</a> () noexcept override</td></tr>
+<tr class="memitem:a9b93d5004654cec720b14531461b98ea" id="r_a9b93d5004654cec720b14531461b98ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b93d5004654cec720b14531461b98ea">commit</a> () noexcept override</td></tr>
 <tr class="separator:a9b93d5004654cec720b14531461b98ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee8504fd5f25ba0e085fae2d66d0e979" id="r_aee8504fd5f25ba0e085fae2d66d0e979"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aee8504fd5f25ba0e085fae2d66d0e979">rollback</a> () noexcept override</td></tr>
+<tr class="memitem:aee8504fd5f25ba0e085fae2d66d0e979" id="r_aee8504fd5f25ba0e085fae2d66d0e979"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee8504fd5f25ba0e085fae2d66d0e979">rollback</a> () noexcept override</td></tr>
 <tr class="separator:aee8504fd5f25ba0e085fae2d66d0e979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09862e4bc73f2aae37b9095f12f0f471" id="r_a09862e4bc73f2aae37b9095f12f0f471"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a09862e4bc73f2aae37b9095f12f0f471">getInsertId</a> (int64_t &amp;id) const noexcept override</td></tr>
+<tr class="memitem:a09862e4bc73f2aae37b9095f12f0f471" id="r_a09862e4bc73f2aae37b9095f12f0f471"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09862e4bc73f2aae37b9095f12f0f471">getInsertId</a> (int64_t &amp;id) const noexcept override</td></tr>
 <tr class="separator:a09862e4bc73f2aae37b9095f12f0f471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
 <tr class="memitem:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance" id="r_a15de255cbeae6dbbeb2710390df97238"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a15de255cbeae6dbbeb2710390df97238">~DriverInstance</a> () noexcept=default</td></tr>
 <tr class="memdesc:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
 <tr class="separator:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
-<tr class="memitem:a49c664ad8d629712451193d1e2ce042a" id="r_a49c664ad8d629712451193d1e2ce042a"><td class="memItemLeft" align="right" valign="top">MYSQL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a></td></tr>
+<tr class="memitem:a49c664ad8d629712451193d1e2ce042a" id="r_a49c664ad8d629712451193d1e2ce042a"><td class="memItemLeft" align="right" valign="top">MYSQL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49c664ad8d629712451193d1e2ce042a">conn</a></td></tr>
 <tr class="separator:a49c664ad8d629712451193d1e2ce042a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
-<tr class="inherit_header pub_types_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
-<tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a> &gt;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
+<tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a>&gt;</td></tr>
 <tr class="separator:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -207,8 +213,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">impl::MariaDriverInstanceImpl::MariaDriverInstanceImpl </td>
           <td>(</td>
-          <td class="paramtype">MYSQL *&#160;</td>
-          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td class="paramtype">MYSQL *</td>          <td class="paramname"><span class="paramname"><em>conn</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -233,7 +238,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">impl::MariaDriverInstanceImpl::~MariaDriverInstanceImpl </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -244,7 +249,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a49c664ad8d629712451193d1e2ce042a">conn</a>.</p>
 
 </div>
 </div>
@@ -261,13 +266,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::MariaDriverInstanceImpl::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -289,13 +294,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::MariaDriverInstanceImpl::commit </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -322,8 +327,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a> impl::MariaDriverInstanceImpl::createStatement </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sql</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -365,8 +369,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> impl::MariaDriverInstanceImpl::executeQuery </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sql</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -406,8 +409,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int64_t impl::MariaDriverInstanceImpl::executeUpdate </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sql</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -447,14 +449,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::MariaDriverInstanceImpl::getAutoCommit </td>
           <td>(</td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
+          <td class="paramtype">bool &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -482,14 +483,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::MariaDriverInstanceImpl::getInsertId </td>
           <td>(</td>
-          <td class="paramtype">int64_t &amp;&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramtype">int64_t &amp;</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -517,13 +517,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">int impl::MariaDriverInstanceImpl::getLastError </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -545,13 +545,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">const char * impl::MariaDriverInstanceImpl::getLastErrorMessage </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -573,13 +573,13 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::MariaDriverInstanceImpl::rollback </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -606,20 +606,19 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="memname">bool impl::MariaDriverInstanceImpl::setAutoCommit </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>设置事务自动提交 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ad18995f1136d428bd29fafc7971b2df7">begin()</a> 开启事务 </dd>
+<p>设置事务自动提交 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 <a class="el" href="#ad18995f1136d428bd29fafc7971b2df7">begin()</a> 开启事务 </dd>
 <dd>
-因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ad18995f1136d428bd29fafc7971b2df7">begin()</a> 开启事务 </dd></dl>
+因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 <a class="el" href="#ad18995f1136d428bd29fafc7971b2df7">begin()</a> 开启事务 </dd></dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">enable</td><td>设置自动提交 </td></tr>
@@ -658,7 +657,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a48dd5818ccd8246bf8895c9e851cb108">~MariaDriverInstanceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a48dd5818ccd8246bf8895c9e851cb108">~MariaDriverInstanceImpl()</a>.</p>
 
 </div>
 </div>
@@ -672,7 +671,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db_1_1impl.html">impl</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html">MariaDriverInstanceImpl</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:53:59 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <!-- BEGIN opengraph metadata -->
 <meta property="og:title" content="Doxygen Awesome" />
@@ -16,9 +16,9 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese</title>
+<title>sese: sstr 命名空间参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
@@ -35,9 +35,10 @@
     DoxygenAwesomeTabs.init()
 </script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,7 +51,7 @@
 </head>
 <body>
 <!-- https://tholman.com/github-corners/ -->
-<a href="https://github.com/libsese/sese-core" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -70,10 +71,15 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.9.8 -->
+<!-- 制作者 Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -81,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -100,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable(); });
+$(function(){initNavTree('namespacesstr.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -148,38 +154,38 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr class="memitem:a2dad52f791160cf761930ec798b693b0" id="r_a2dad52f791160cf761930ec798b693b0"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a2dad52f791160cf761930ec798b693b0">FindFunction</a>) (const char *, const char *)</td></tr>
+<tr class="memitem:a2dad52f791160cf761930ec798b693b0" id="r_a2dad52f791160cf761930ec798b693b0"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dad52f791160cf761930ec798b693b0">FindFunction</a>) (const char *, const char *)</td></tr>
 <tr class="separator:a2dad52f791160cf761930ec798b693b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:addb08b0d19d6f5351ddc559e395aaaa1" id="r_addb08b0d19d6f5351ddc559e395aaaa1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#addb08b0d19d6f5351ddc559e395aaaa1">KMP</a> (const char *str, const char *sub)</td></tr>
+<tr class="memitem:addb08b0d19d6f5351ddc559e395aaaa1" id="r_addb08b0d19d6f5351ddc559e395aaaa1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addb08b0d19d6f5351ddc559e395aaaa1">KMP</a> (const char *str, const char *sub)</td></tr>
 <tr class="separator:addb08b0d19d6f5351ddc559e395aaaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a483b3805f810437b39367e9b9eb78354" id="r_a483b3805f810437b39367e9b9eb78354"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a483b3805f810437b39367e9b9eb78354">BM</a> (const char *str, const char *sub)</td></tr>
+<tr class="memitem:a483b3805f810437b39367e9b9eb78354" id="r_a483b3805f810437b39367e9b9eb78354"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a483b3805f810437b39367e9b9eb78354">BM</a> (const char *str, const char *sub)</td></tr>
 <tr class="separator:a483b3805f810437b39367e9b9eb78354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab42e42004ea3b272fca7a7a0c426192c" id="r_ab42e42004ea3b272fca7a7a0c426192c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#ab42e42004ea3b272fca7a7a0c426192c">BM</a> (const uint32_t *str, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;sub)</td></tr>
+<tr class="memitem:ab42e42004ea3b272fca7a7a0c426192c" id="r_ab42e42004ea3b272fca7a7a0c426192c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab42e42004ea3b272fca7a7a0c426192c">BM</a> (const uint32_t *str, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;sub)</td></tr>
 <tr class="separator:ab42e42004ea3b272fca7a7a0c426192c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76f6f1d44d1aad60f456bd9bd7685056" id="r_a76f6f1d44d1aad60f456bd9bd7685056"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a76f6f1d44d1aad60f456bd9bd7685056">NORMAL</a> (const char *str, const char *sub)</td></tr>
+<tr class="memitem:a76f6f1d44d1aad60f456bd9bd7685056" id="r_a76f6f1d44d1aad60f456bd9bd7685056"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76f6f1d44d1aad60f456bd9bd7685056">NORMAL</a> (const char *str, const char *sub)</td></tr>
 <tr class="separator:a76f6f1d44d1aad60f456bd9bd7685056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac37b1daa78646595e8f9d403ae15251e" id="r_ac37b1daa78646595e8f9d403ae15251e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac37b1daa78646595e8f9d403ae15251e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesstr.html#ac37b1daa78646595e8f9d403ae15251e">LeftShiftElement</a> (T *header, size_t len, size_t begin, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
+<tr class="memitem:ac37b1daa78646595e8f9d403ae15251e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac37b1daa78646595e8f9d403ae15251e">LeftShiftElement</a> (T *header, size_t len, size_t begin, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
 <tr class="separator:ac37b1daa78646595e8f9d403ae15251e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7" id="r_ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesstr.html#ab09c2d6ffdfbc1b70dc7e1e78a3aefc7">RightShiftElement</a> (T *header, size_t len, size_t begin, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
+<tr class="memitem:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab09c2d6ffdfbc1b70dc7e1e78a3aefc7">RightShiftElement</a> (T *header, size_t len, size_t begin, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
 <tr class="separator:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2290d61cc6d0c8dd374a499ff5df6d89" id="r_a2290d61cc6d0c8dd374a499ff5df6d89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsstr_1_1_s_char.html">SChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char</a> (const char *u8char)</td></tr>
+<tr class="memitem:a2290d61cc6d0c8dd374a499ff5df6d89" id="r_a2290d61cc6d0c8dd374a499ff5df6d89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsstr_1_1_s_char.html">SChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char</a> (const char *u8char)</td></tr>
 <tr class="separator:a2290d61cc6d0c8dd374a499ff5df6d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd254492b0387d2d265114a4e0aade10" id="r_acd254492b0387d2d265114a4e0aade10"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#acd254492b0387d2d265114a4e0aade10">getStringLengthFromUTF8String</a> (const char *str)</td></tr>
+<tr class="memitem:acd254492b0387d2d265114a4e0aade10" id="r_acd254492b0387d2d265114a4e0aade10"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd254492b0387d2d265114a4e0aade10">getStringLengthFromUTF8String</a> (const char *str)</td></tr>
 <tr class="separator:acd254492b0387d2d265114a4e0aade10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b2563ea10e30c6ebc4d4e071ebd7c2d" id="r_a7b2563ea10e30c6ebc4d4e071ebd7c2d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a7b2563ea10e30c6ebc4d4e071ebd7c2d">getByteLengthFromUTF8String</a> (const char *str)</td></tr>
+<tr class="memitem:a7b2563ea10e30c6ebc4d4e071ebd7c2d" id="r_a7b2563ea10e30c6ebc4d4e071ebd7c2d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b2563ea10e30c6ebc4d4e071ebd7c2d">getByteLengthFromUTF8String</a> (const char *str)</td></tr>
 <tr class="separator:a7b2563ea10e30c6ebc4d4e071ebd7c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a033291010134d6d14f916b70904cf5f3" id="r_a033291010134d6d14f916b70904cf5f3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char</a> (char ch)</td></tr>
+<tr class="memitem:a033291010134d6d14f916b70904cf5f3" id="r_a033291010134d6d14f916b70904cf5f3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char</a> (char ch)</td></tr>
 <tr class="separator:a033291010134d6d14f916b70904cf5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b0cf9515a690f4c199e218d9d28d7d9" id="r_a4b0cf9515a690f4c199e218d9d28d7d9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a> (<a class="el" href="structsstr_1_1_s_char.html">SChar</a> ch)</td></tr>
+<tr class="memitem:a4b0cf9515a690f4c199e218d9d28d7d9" id="r_a4b0cf9515a690f4c199e218d9d28d7d9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a> (<a class="el" href="structsstr_1_1_s_char.html">SChar</a> ch)</td></tr>
 <tr class="separator:a4b0cf9515a690f4c199e218d9d28d7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f87d98d2b85585199a66b90beba9995" id="r_a1f87d98d2b85585199a66b90beba9995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsstr_1_1_s_char.html">SChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a1f87d98d2b85585199a66b90beba9995">getUnicodeCharFromUTF8Char</a> (char <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, const char *ch)</td></tr>
+<tr class="memitem:a1f87d98d2b85585199a66b90beba9995" id="r_a1f87d98d2b85585199a66b90beba9995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsstr_1_1_s_char.html">SChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f87d98d2b85585199a66b90beba9995">getUnicodeCharFromUTF8Char</a> (char <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, const char *ch)</td></tr>
 <tr class="separator:a1f87d98d2b85585199a66b90beba9995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8131275f3d943451dc451c56d5f2834f" id="r_a8131275f3d943451dc451c56d5f2834f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a8131275f3d943451dc451c56d5f2834f">SESE_DEPRECATED_WITH</a> (&quot;please use sese::text::StringBuilder&quot;) SStringBuilder final</td></tr>
+<tr class="memitem:a8131275f3d943451dc451c56d5f2834f" id="r_a8131275f3d943451dc451c56d5f2834f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8131275f3d943451dc451c56d5f2834f">SESE_DEPRECATED_WITH</a> (&quot;please use sese::text::StringBuilder&quot;) SStringBuilder final</td></tr>
 <tr class="memdesc:a8131275f3d943451dc451c56d5f2834f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsstr_1_1_s_string.html" title="字符串">SString</a> 构造器  <br /></td></tr>
 <tr class="separator:a8131275f3d943451dc451c56d5f2834f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -211,19 +217,12 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">int sstr::BM </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sub</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sub</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -251,25 +250,17 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">int sstr::BM </td>
           <td>(</td>
-          <td class="paramtype">const uint32_t *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramtype">const uint32_t *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>sub</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>sub</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -292,8 +283,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">size_t sstr::getByteLengthFromUTF8String </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -319,8 +309,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">char sstr::getSizeFromUTF8Char </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>ch</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -333,7 +322,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符占位字节数 </dd></dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp.html#a8252847139f3ffb67cc7e1afeeaba632">at()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850">sstr::SStringView::at()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a81a7e16b15c09f1f3a4d4f25716574cc">sstr::SStringView::find()</a>, <a class="el" href="namespacesstr.html#acd254492b0387d2d265114a4e0aade10">getStringLengthFromUTF8String()</a>, <a class="el" href="namespacesstr.html#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>, <a class="el" href="classsese_1_1text_1_1_text_reader.html#a62c6048cdba4db7ecc9f35390284b325">sese::text::TextReader::readLine()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a3046249e69445564aab06f6338ae7a71">sstr::SStringView::reverse()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617">sstr::SStringView::substring()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a48ee9a0785da97bc727220b69e8afabd">sstr::SStringView::toCWString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp.html#a8252847139f3ffb67cc7e1afeeaba632">at()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850">sstr::SStringView::at()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a81a7e16b15c09f1f3a4d4f25716574cc">sstr::SStringView::find()</a>, <a class="el" href="#acd254492b0387d2d265114a4e0aade10">getStringLengthFromUTF8String()</a>, <a class="el" href="#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>, <a class="el" href="classsese_1_1text_1_1_text_reader.html#a62c6048cdba4db7ecc9f35390284b325">sese::text::TextReader::readLine()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a3046249e69445564aab06f6338ae7a71">sstr::SStringView::reverse()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617">sstr::SStringView::substring()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a48ee9a0785da97bc727220b69e8afabd">sstr::SStringView::toCWString()</a>.</p>
 
 </div>
 </div>
@@ -346,8 +335,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">size_t sstr::getStringLengthFromUTF8String </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -360,7 +348,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符串长度 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char()</a>.</p>
 
 </div>
 </div>
@@ -373,19 +361,12 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname"><a class="el" href="structsstr_1_1_s_char.html">SChar</a> sstr::getUnicodeCharFromUTF8Char </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>ch</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>ch</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -400,7 +381,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 
 <p class="reference">引用了 <a class="el" href="_s_string_8cpp.html#a2cf7d1fd6461ba228219b3c034b7919a">null_char</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850">sstr::SStringView::at()</a>, <a class="el" href="namespacesstr.html#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a48ee9a0785da97bc727220b69e8afabd">sstr::SStringView::toCWString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850">sstr::SStringView::at()</a>, <a class="el" href="#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a48ee9a0785da97bc727220b69e8afabd">sstr::SStringView::toCWString()</a>.</p>
 
 </div>
 </div>
@@ -413,8 +394,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname"><a class="el" href="structsstr_1_1_s_char.html">SChar</a> sstr::getUnicodeFromUTF8Char </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>u8char</em></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>u8char</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -427,7 +407,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符代码 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char()</a> , 以及 <a class="el" href="namespacesstr.html#a1f87d98d2b85585199a66b90beba9995">getUnicodeCharFromUTF8Char()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char()</a> , 以及 <a class="el" href="#a1f87d98d2b85585199a66b90beba9995">getUnicodeCharFromUTF8Char()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view_1_1_iterator.html#a5f8620d38529d4be2fb54082da232013">sstr::SStringView::Iterator::Iterator()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view_1_1_iterator.html#abeb82022880cec9a2c15a8b85b037ea2">sstr::SStringView::Iterator::operator++()</a>.</p>
 
@@ -442,8 +422,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">char sstr::getUTF8SizeFromUnicodeChar </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsstr_1_1_s_char.html">SChar</a>&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsstr_1_1_s_char.html">SChar</a></td>          <td class="paramname"><span class="paramname"><em>ch</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -472,19 +451,12 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
         <tr>
           <td class="memname">int sstr::KMP </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sub</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sub</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -512,31 +484,22 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void sstr::LeftShiftElement </td>
           <td>(</td>
-          <td class="paramtype">T *&#160;</td>
-          <td class="paramname"><em>header</em>, </td>
+          <td class="paramtype">T *</td>          <td class="paramname"><span class="paramname"><em>header</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>begin</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>begin</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -578,19 +541,12 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">int sstr::NORMAL </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>sub</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>sub</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -616,31 +572,22 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void sstr::RightShiftElement </td>
           <td>(</td>
-          <td class="paramtype">T *&#160;</td>
-          <td class="paramname"><em>header</em>, </td>
+          <td class="paramtype">T *</td>          <td class="paramname"><span class="paramname"><em>header</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>begin</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>begin</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -682,8 +629,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">class sstr::SESE_DEPRECATED_WITH </td>
           <td>(</td>
-          <td class="paramtype">&quot;please use sese::text::StringBuilder&quot;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">&quot;please use sese::text::StringBuilder&quot;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -709,7 +655,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesstr.html">sstr</a></li>
-    <li class="footer">生成于 2024年 七月 23日 星期二 10:10:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 七月 23日 星期二 14:54:00 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
