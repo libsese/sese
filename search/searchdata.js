@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijklmnopqrstuvwxyz~关列字对弃文构测目示简贡",
+  0: "_abcdefghijklmnopqrstuvwxyz~列加字对弃文构测目示简贡",
   1: "abcdefghijklmnopqrstuvwxy",
   2: "s",
   3: "abcdefghijklmnopqrstuvwxyz",
@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "abcdefghilmnoprstuvwz",
   9: "hinst",
   10: "_abcdefghilmnprstvwx",
-  11: "bs关列字弃目"
+  11: "bs列加字弃目"
 };
 
 var indexSectionNames =

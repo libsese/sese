@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "sese", "index.html", [
     [ "目录说明", "md_sese_2_c_a_t_a_l_o_g.html", null ],
-    [ "关于加解密功能", "md_sese_2security_2evp_2_r_e_a_d_m_e.html", null ],
+    [ "加解密功能", "md_sese_2security_2evp_2_r_e_a_d_m_e.html", null ],
     [ "字符串格式化", "md_sese_2text_2_f_o_r_m_a_t.html", null ],
     [ "弃用列表", "deprecated.html", null ],
     [ "Bug 列表", "bug.html", null ],
