@@ -16,10 +16,8 @@ set(SOURCE_PATH ${CURRENT_BUILDTRESS_DIR}/sese)
 vcpkg_from_github(
         OUT_SOURCE_PATH SOURCE_PATH
         REPO libsese/sese
-        REF "2.2.0"
-        SHA512 6a87cabe6cbd69ab41de85be27ff397c1ae49f95c11151a27e8b9329afe4ff3b580084be53c129e883be50e13fadccb3b6cc1eed833c44ce4f8457dedc71b758
-        PATCHES
-            001-fix-fmt-error.patch
+        REF 7bcd0ac0f18b97a76b1c26b9c44fc49941afd3d5
+        SHA512 c6e7aae3cafa8cb428f95cfc935dff82e5ac51d0a5117edb095bd53a2611f7b84044922d39950baadaae826696409319cf46f34246219b4a48d3ca477e08090a
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
