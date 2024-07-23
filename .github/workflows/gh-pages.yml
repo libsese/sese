@@ -19,10 +19,10 @@ jobs:
       - name: Build docs
         uses: SHIINASAMA/roxy@1.0
         with:
-          DOXYGEN_CONTEXT: '/github/workspace/sese'
+          DOXYGEN_CONTEXT: '/github/workspace'
           DOXYFILE: 'docs/Doxyfile'
-          PROJECT_PATH: '/github/workspace/sese'
-          OUTPUT_PATH: '/github/workspace/sese/build/html'
+          PROJECT_PATH: '/github/workspace'
+          OUTPUT_PATH: '/github/workspace/build/html'
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
