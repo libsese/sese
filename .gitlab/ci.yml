@@ -85,9 +85,14 @@ gtest:
 
 pages:
   stage: deploy
-  image: $CI_REGISTRY/libsese/sese-core:latest
+  image: $CI_REGISTRY/base/roxy
+  variables:
+    PROJECT_PATH: /builds/libsese/sese-core
+    DOXYFILE: docs/Doxyfile
+    RESOURCE_FOLDER: static
+    OUTPUT_FOLDER: build/html
   script:
-    - doxygen docs/Doxyfile
+    - /usr/local/bin/entrypoint.sh
     - mv build/html public
   artifacts:
     paths:
