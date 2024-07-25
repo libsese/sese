@@ -17,12 +17,11 @@ jobs:
         uses: actions/checkout@v4.1.2
 
       - name: Build docs
-        uses: SHIINASAMA/roxy@1.0
+        uses: SHIINASAMA/roxy@1.1
         with:
-          DOXYGEN_CONTEXT: '/github/workspace'
           DOXYFILE: 'docs/Doxyfile'
-          PROJECT_PATH: '/github/workspace'
-          OUTPUT_PATH: '/github/workspace/build/html'
+          RESOURCE_FOLDER: 'static'
+          OUTPUT_FOLDER: 'build/html'
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
