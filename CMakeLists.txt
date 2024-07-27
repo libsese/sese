@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.28)
 
 # CMP0048
 # 用于允许在 Project 字段前添加 SET、OPTION 等字段
@@ -30,7 +30,9 @@ if (WIN32 OR SESE_AUTO_VCPKG)
 endif ()
 
 project(sese VERSION 2.2.1)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 20)
 
 set(SESE_REPO_HASH "UNKNOWN")
 set(SESE_REPO_BRANCH "UNKNOWN")

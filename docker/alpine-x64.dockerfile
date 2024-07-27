@@ -1,6 +1,6 @@
 FROM amd64/alpine:3.20.1
 
-RUN apk add samurai ninja-build autoconf automake gcc g++ cmake
+RUN apk add samurai ninja-build autoconf automake git cmake clang18 clang18-extra-tools
 
 RUN apk add libtool libunwind-dev gtest-dev benchmark-dev sqlite-dev libpq-dev mariadb-connector-c-dev \
     asio-dev openssl-dev libarchive-dev python3 py3-pip

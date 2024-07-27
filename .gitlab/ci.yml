@@ -46,8 +46,8 @@ gtest:
     - cmake
       -G Ninja
       -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
-      -DCMAKE_C_COMPILER=/usr/bin/gcc
-      -DCMAKE_CXX_COMPILER=/usr/bin/g++
+      -DCMAKE_C_COMPILER=/usr/bin/clang-18
+      -DCMAKE_CXX_COMPILER=/usr/bin/clang++-18
       -Bbuild/linux-release
       -DCMAKE_BUILD_TYPE=Release
       -DSESE_BUILD_TEST=ON
