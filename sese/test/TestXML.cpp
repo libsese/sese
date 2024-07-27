@@ -9,7 +9,7 @@
 #include <filesystem>
 
 TEST(TestXML, File) {
-    auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", BINARY_READ_EXISTED);
+    auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", sese::io::FileStream::B_READ);
     auto element = sese::xml::XmlUtil::deserialize(file_steam, 5);
     ASSERT_NE(element, nullptr);
 
@@ -25,7 +25,7 @@ TEST(TestXML, File) {
     sub_element->setAttribute("info", "from serialize");
     element->addElement(sub_element);
 
-    auto save_file_stream = sese::io::FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
+    auto save_file_stream = sese::io::FileStream::create("out.xml", sese::io::FileStream::B_WRITE_TRUNC);
     ASSERT_NE(save_file_stream, nullptr);
     sese::xml::XmlUtil::serialize(element, save_file_stream);
     save_file_stream->close();

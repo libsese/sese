@@ -5,7 +5,6 @@
 #include <sese/service/iocp/IOCPServer.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/record/Marco.h>
-#include <sese/io/OutputUtil.h>
 #include <sese/util/Util.h>
 
 class MyIOCPServer : public sese::iocp::IOCPServer {
@@ -54,7 +53,8 @@ TEST(TestIOCP, Server_0) {
 
     sese::net::Socket socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
     ASSERT_EQ(socket.connect(address), 0);
-    socket << "Hello World";
+    constexpr auto s = "Hello World";
+    socket.write(s, strlen(s));
 
     char buffer[32]{};
     socket.read(buffer, sizeof(buffer));
@@ -83,7 +83,8 @@ TEST(TestIOCP, Server_1) {
     auto client_ctx = sese::security::SSLContextBuilder::SSL4Client();
     auto socket = client_ctx->newSocketPtr(sese::net::Socket::Family::IPv4, 0);
     ASSERT_EQ(socket->connect(address), 0);
-    *socket << "Hello World";
+    constexpr auto s = "Hello World";
+    socket->write(s, strlen(s));
 
     char buffer[32]{};
     socket->read(buffer, sizeof(buffer));

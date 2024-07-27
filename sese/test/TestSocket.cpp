@@ -4,7 +4,6 @@
 #include <sese/net/AddressPool.h>
 #include <sese/record/Marco.h>
 #include <sese/util/Random.h>
-#include "sese/io/OutputUtil.h"
 
 #include <gtest/gtest.h>
 
@@ -16,9 +15,10 @@ GTEST_TEST(TestSocket, Client) {
     auto client = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP, IPPROTO_IP);
     GTEST_ASSERT_EQ(client.connect(address), 0);
 
-    client << "GET / HTTP/1.1\r\n"
-              "Host: bing.com\r\n"
-              "\r\n";
+    constexpr auto s = "GET / HTTP/1.1\r\n"
+                       "Host: bing.com\r\n"
+                       "\r\n";
+    client.write(s, strlen(s));
 
     // char buffer[1024]{};
     // client.read(buffer, sizeof(buffer));
@@ -44,7 +44,8 @@ GTEST_TEST(TestSocket, Server) {
                     FAIL();
                 }
                 SESE_INFO("accepted");
-                *socket << "Hello, Client";
+                constexpr auto s = "Hello, Client";
+                socket->write(s, strlen(s));
                 socket->close();
                 SESE_INFO("close");
             },
@@ -83,7 +84,8 @@ GTEST_TEST(TestSocket, Server_IPv6) {
                     FAIL();
                 }
                 SESE_INFO("accepted");
-                *socket << "Hello, Client";
+                constexpr auto s = "Hello, Client";
+                socket->write(s, strlen(s));
                 socket->close();
                 SESE_INFO("close");
             },

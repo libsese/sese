@@ -19,7 +19,7 @@
 TEST(TestConfig, Config) {
     sese::record::LogHelper log;
 
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.ini", TEXT_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.ini", sese::io::File::T_READ);
     ASSERT_TRUE(file != nullptr);
 
     auto config = sese::ConfigUtil::readFrom(file.get());
@@ -46,7 +46,7 @@ TEST(TestConfig, Config) {
 #endif
 
 TEST(TestConfig, Json) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", TEXT_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::File::T_READ);
     ASSERT_TRUE(file != nullptr);
     auto object = sese::json::JsonUtil::deserialize(file, 3);
     ASSERT_TRUE(object != nullptr);
@@ -62,7 +62,7 @@ TEST(TestConfig, Json) {
 }
 
 TEST(TestConfig, Xml) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", BINARY_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", sese::io::File::B_READ);
     ASSERT_TRUE(file != nullptr);
     auto element = sese::xml::XmlUtil::deserialize(file, 5);
     ASSERT_TRUE(element != nullptr);

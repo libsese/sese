@@ -76,7 +76,7 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
         }
 
         auto filepath = (dest_path / filename).string();
-        const auto FILE = File::create(filepath, BINARY_WRITE_CREATE_TRUNC);
+        const auto FILE = File::create(filepath, io::File::B_WRITE_TRUNC);
         while (exp) {
             char buffer[4096];
             const auto LEN = archive_read_data(a, buffer, std::min<size_t>(exp, 4096));
