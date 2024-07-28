@@ -23,7 +23,8 @@ docker_build_manual:
   image: reg.mikumikumi.xyz/base/kaniko-builder
   when: manual
   variables:
-    BUILD_DOCKERFILE: alpine-x64.dockerfile
+    BUILD_CONTEXT: .
+    BUILD_DOCKERFILE: docker/alpine-x64.dockerfile
   script:
     - build
 
