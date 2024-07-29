@@ -32,25 +32,24 @@ public:
     static constexpr auto B_READ_W = "rb,ccs=utf-8";         // NOLINT
     static constexpr auto B_WRITE_TRUNC_W = "wb,ccs=utf-8";  // NOLINT
     static constexpr auto B_WRITE_APPEND_W = "ab,ccs=utf-8"; // NOLINT
-    static constexpr auto B_APPEND_W = "wb+,ccs=utf-8";      // NOLINT
-    static constexpr auto B_TRUNC_W = "ab+,ccs=utf-8";       // NOLINT
+    static constexpr auto B_TRUNC_W = "wb+,ccs=utf-8";       // NOLINT
+    static constexpr auto B_APPEND_W = "ab+,ccs=utf-8";      // NOLINT
     static constexpr auto T_READ_W = "rt,ccs=utf-8";         // NOLINT
     static constexpr auto T_WRITE_TRUNC_W = "wt,ccs=utf-8";  // NOLINT
     static constexpr auto T_WRITE_APPEND_W = "at,ccs=utf-8"; // NOLINT
-    static constexpr auto T_APPEND_W = "wt+,ccs=utf-8";      // NOLINT
-    static constexpr auto T_TRUNC_W = "at+,ccs=utf-8";       // NOLINT
+    static constexpr auto T_TRUNC_W = "wt+,ccs=utf-8";       // NOLINT
+    static constexpr auto T_APPEND_W = "at+,ccs=utf-8";      // NOLINT
 #endif
     static constexpr auto B_READ = "rb";         // NOLINT
     static constexpr auto B_WRITE_TRUNC = "wb";  // NOLINT
     static constexpr auto B_WRITE_APPEND = "ab"; // NOLINT
-    static constexpr auto B_APPEND = "wb+";      // NOLINT
-    static constexpr auto B_TRUNC = "ab+";       // NOLINT
+    static constexpr auto B_TRUNC = "wb+";       // NOLINT
+    static constexpr auto B_APPEND = "ab+";      // NOLINT
     static constexpr auto T_READ = "rt";         // NOLINT
     static constexpr auto T_WRITE_TRUNC = "wt";  // NOLINT
     static constexpr auto T_WRITE_APPEND = "at"; // NOLINT
-    static constexpr auto T_APPEND = "wt+";      // NOLINT
-    static constexpr auto T_TRUNC = "at+";       // NOLINT
-
+    static constexpr auto T_TRUNC = "wt+";       // NOLINT
+    static constexpr auto T_APPEND = "at+";      // NOLINT
 
     using Ptr = std::shared_ptr<FileStream>;
 

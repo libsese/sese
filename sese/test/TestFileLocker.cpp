@@ -7,7 +7,7 @@
 #include <filesystem>
 
 TEST(TestFileLocker, Lock_1) {
-    auto file = sese::io::File::create("temp.txt", sese::io::File::B_WRITE_TRUNC);
+    auto file = sese::io::File::create("temp.txt", sese::io::File::B_TRUNC);
     ASSERT_NE(file, nullptr);
 
     auto func = [file]() {
@@ -34,7 +34,7 @@ TEST(TestFileLocker, Lock_1) {
 }
 
 TEST(TestFileLocker, Lock_2) {
-    auto file = sese::io::File::create("temp.txt", sese::io::File::B_WRITE_TRUNC);
+    auto file = sese::io::File::create("temp.txt", sese::io::File::B_TRUNC);
     ASSERT_NE(file, nullptr);
 
     auto func = [file]() {
