@@ -13,7 +13,6 @@ TEST(TestFixedBuffer, Write) {
     EXPECT_EQ(len, data0.length());
 
     std::string data1 = "ABCDEFGHIJK";
-    len = buffer.write(data1.c_str(), data1.length());
     len = buffer.write(data1.data(), data1.length());
     EXPECT_EQ(len, size - data0.length());
 }
@@ -32,7 +31,7 @@ TEST(TestFixedBuffer, Read) {
 }
 
 TEST(TestFixedBuffer, Peek) {
-    
+
     auto buffer = sese::io::FixedBuffer(16);
     EXPECT_EQ(buffer.write("ABCDEFGHIJKLMNOP", 16), 16);
 
