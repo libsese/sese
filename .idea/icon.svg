@@ -1,1 +1,42 @@
-../logo.svg
+<svg xmlns="http://www.w3.org/2000/svg"
+     version="1.1"
+     width="256"
+     height="256">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#F16558;stop-opacity:1;"/>
+            <stop offset="60%" style="stop-color:#E96563;stop-opacity:1;"/>
+            <stop offset="100%" style="stop-color:#DC6B6C;stop-opacity:1;"/>
+        </linearGradient>
+
+        <g id="cylinder">
+            <path d="
+        M 0 40
+        a 30,10 0 1,0 60,0
+        M 0 10 L 60 10 60 40 0 40"
+                  fill="url(#grad1)"/>
+            <ellipse cx="30" cy="10" rx="30" ry="10"
+                     style="fill:#FF7D7C"/>
+        </g>
+    </defs>
+    <!-- 背景 -->
+    <rect x="0" y="0" rx="36" ry="36" width="256" height="256"
+          style="fill:#FFFFFF"/>
+    <!-- 左侧面 -->
+    <polygon points="15,74 89,125 89,224 15,166"
+             style="fill:#EA5F53;stroke:#EA5F53"/>
+    <!-- 正面 -->
+    <polygon points="89,125 239,98 239,192 89,224"
+             style="fill:#EB6868;stroke:#EB6868"/>
+    <!-- 顶面 -->
+    <polygon points="15,74 156,48 239,98 89,125"
+             style="fill:#FE7C7B;stroke:#FE7C7B"/>
+
+    <use href="#cylinder" x="37" y="40"/>
+
+    <use href="#cylinder" x="112" y="27"/>
+
+    <use href="#cylinder" x="76" y="65"/>
+
+    <use href="#cylinder" x="154" y="52"/>
+</svg>
