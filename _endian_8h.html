@@ -158,9 +158,9 @@ $(function(){initNavTree('_endian_8h.html',''); initResizable(true); });
 <tr class="separator:a12a98caebf84ec6ccb07da8cf38116f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83069a2dcb8201f582f9c4b7e9a2d360" id="r_a83069a2dcb8201f582f9c4b7e9a2d360"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83069a2dcb8201f582f9c4b7e9a2d360">SESE_LITTLE_ENDIAN</a></td></tr>
 <tr class="separator:a83069a2dcb8201f582f9c4b7e9a2d360"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1252e3c5ff559d127a5ab9483dca4269" id="r_a1252e3c5ff559d127a5ab9483dca4269"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(float) == 4, &quot;Float <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 4 bytes&quot;)</td></tr>
+<tr class="memitem:a1252e3c5ff559d127a5ab9483dca4269" id="r_a1252e3c5ff559d127a5ab9483dca4269"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>&#160;&#160;&#160;static_assert(sizeof(float) == 4, &quot;Float size is not 4 bytes&quot;)</td></tr>
 <tr class="separator:a1252e3c5ff559d127a5ab9483dca4269"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc65a591065360bedcf13bf0b0a984ef" id="r_adc65a591065360bedcf13bf0b0a984ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(double) == 8, &quot;Double <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 8 bytes&quot;)</td></tr>
+<tr class="memitem:adc65a591065360bedcf13bf0b0a984ef" id="r_adc65a591065360bedcf13bf0b0a984ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>&#160;&#160;&#160;static_assert(sizeof(double) == 8, &quot;Double size is not 8 bytes&quot;)</td></tr>
 <tr class="separator:adc65a591065360bedcf13bf0b0a984ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -209,25 +209,25 @@ $(function(){initNavTree('_endian_8h.html',''); initResizable(true); });
 <tr class="memitem:ac1d41b11e64751472086b653eed6cd06"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac1d41b11e64751472086b653eed6cd06">FromLittleEndian64</a> (T t)</td></tr>
 <tr class="separator:ac1d41b11e64751472086b653eed6cd06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a803bdc40a108dfeea9cdab47a093e2dc" id="r_a803bdc40a108dfeea9cdab47a093e2dc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a803bdc40a108dfeea9cdab47a093e2dc"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==2, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a803bdc40a108dfeea9cdab47a093e2dc">ToBigEndian</a> (T t)</td></tr>
+<tr class="memitem:a803bdc40a108dfeea9cdab47a093e2dc"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; sizeof(T)==2, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a803bdc40a108dfeea9cdab47a093e2dc">ToBigEndian</a> (T t)</td></tr>
 <tr class="separator:a803bdc40a108dfeea9cdab47a093e2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aead5e6e935472c50a249833b9e461e07" id="r_aead5e6e935472c50a249833b9e461e07"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aead5e6e935472c50a249833b9e461e07"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==4, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aead5e6e935472c50a249833b9e461e07">ToBigEndian</a> (T t)</td></tr>
+<tr class="memitem:aead5e6e935472c50a249833b9e461e07"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; sizeof(T)==4, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aead5e6e935472c50a249833b9e461e07">ToBigEndian</a> (T t)</td></tr>
 <tr class="separator:aead5e6e935472c50a249833b9e461e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a41e6c1498a29e0bdf72aa5336df7e6" id="r_a3a41e6c1498a29e0bdf72aa5336df7e6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a3a41e6c1498a29e0bdf72aa5336df7e6"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==8, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a3a41e6c1498a29e0bdf72aa5336df7e6">ToBigEndian</a> (T t)</td></tr>
+<tr class="memitem:a3a41e6c1498a29e0bdf72aa5336df7e6"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; sizeof(T)==8, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a3a41e6c1498a29e0bdf72aa5336df7e6">ToBigEndian</a> (T t)</td></tr>
 <tr class="separator:a3a41e6c1498a29e0bdf72aa5336df7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d2df19a0a10bed77f39925313c2a636" id="r_a8d2df19a0a10bed77f39925313c2a636"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a8d2df19a0a10bed77f39925313c2a636"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a> (T t)</td></tr>
 <tr class="separator:a8d2df19a0a10bed77f39925313c2a636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8bbe33d7855273e16e532d279fa1203" id="r_ad8bbe33d7855273e16e532d279fa1203"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad8bbe33d7855273e16e532d279fa1203"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==2, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad8bbe33d7855273e16e532d279fa1203">FromBigEndian</a> (T t)</td></tr>
+<tr class="memitem:ad8bbe33d7855273e16e532d279fa1203"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; sizeof(T)==2, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad8bbe33d7855273e16e532d279fa1203">FromBigEndian</a> (T t)</td></tr>
 <tr class="separator:ad8bbe33d7855273e16e532d279fa1203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfaaf21c165f359e4393f17f32bd7f9e" id="r_abfaaf21c165f359e4393f17f32bd7f9e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:abfaaf21c165f359e4393f17f32bd7f9e"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==4, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abfaaf21c165f359e4393f17f32bd7f9e">FromBigEndian</a> (T t)</td></tr>
+<tr class="memitem:abfaaf21c165f359e4393f17f32bd7f9e"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; sizeof(T)==4, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abfaaf21c165f359e4393f17f32bd7f9e">FromBigEndian</a> (T t)</td></tr>
 <tr class="separator:abfaaf21c165f359e4393f17f32bd7f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a987294bb319fec4a8ea2d322b1c93d8a" id="r_a987294bb319fec4a8ea2d322b1c93d8a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a987294bb319fec4a8ea2d322b1c93d8a"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==8, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a987294bb319fec4a8ea2d322b1c93d8a">FromBigEndian</a> (T t)</td></tr>
+<tr class="memitem:a987294bb319fec4a8ea2d322b1c93d8a"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; sizeof(T)==8, T &gt;::t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a987294bb319fec4a8ea2d322b1c93d8a">FromBigEndian</a> (T t)</td></tr>
 <tr class="separator:a987294bb319fec4a8ea2d322b1c93d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a432168a8b7d59beadb3981b00541d5c3" id="r_a432168a8b7d59beadb3981b00541d5c3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a432168a8b7d59beadb3981b00541d5c3"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a432168a8b7d59beadb3981b00541d5c3">FromLittleEndian</a> (T t)</td></tr>
@@ -269,7 +269,7 @@ $(function(){initNavTree('_endian_8h.html',''); initResizable(true); });
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ASSERT_DOUBLE_SIZE&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(double) == 8, &quot;Double <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 8 bytes&quot;)</td>
+          <td class="memname">#define ASSERT_DOUBLE_SIZE&#160;&#160;&#160;static_assert(sizeof(double) == 8, &quot;Double size is not 8 bytes&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -285,7 +285,7 @@ $(function(){initNavTree('_endian_8h.html',''); initResizable(true); });
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ASSERT_FLOAT_SIZE&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(float) == 4, &quot;Float <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 4 bytes&quot;)</td>
+          <td class="memname">#define ASSERT_FLOAT_SIZE&#160;&#160;&#160;static_assert(sizeof(float) == 4, &quot;Float size is not 4 bytes&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -413,7 +413,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==2, T &gt;::t FromBigEndian </td>
+          <td class="memname">std::enable_if&lt; sizeof(T)==2, T &gt;::t FromBigEndian </td>
           <td>(</td>
           <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
           <td></td>
@@ -442,7 +442,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==4, T &gt;::t FromBigEndian </td>
+          <td class="memname">std::enable_if&lt; sizeof(T)==4, T &gt;::t FromBigEndian </td>
           <td>(</td>
           <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
           <td></td>
@@ -471,7 +471,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==8, T &gt;::t FromBigEndian </td>
+          <td class="memname">std::enable_if&lt; sizeof(T)==8, T &gt;::t FromBigEndian </td>
           <td>(</td>
           <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
           <td></td>
@@ -817,7 +817,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==2, T &gt;::t ToBigEndian </td>
+          <td class="memname">std::enable_if&lt; sizeof(T)==2, T &gt;::t ToBigEndian </td>
           <td>(</td>
           <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
           <td></td>
@@ -846,7 +846,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==4, T &gt;::t ToBigEndian </td>
+          <td class="memname">std::enable_if&lt; sizeof(T)==4, T &gt;::t ToBigEndian </td>
           <td>(</td>
           <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
           <td></td>
@@ -875,7 +875,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt; <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T)==8, T &gt;::t ToBigEndian </td>
+          <td class="memname">std::enable_if&lt; sizeof(T)==8, T &gt;::t ToBigEndian </td>
           <td>(</td>
           <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
           <td></td>
@@ -1223,7 +1223,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_endian_8h.html">Endian.h</a></li>
-    <li class="footer">生成于 2024年 七月 25日 星期四 08:59:08 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 七月 30日 星期二 16:03:46 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

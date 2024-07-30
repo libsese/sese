@@ -170,11 +170,11 @@ $(function(){initNavTree('_ring_queue_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// 入队，队列已满则抛出异常</span></div>
 <div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1_ring_queue.html#ab9d6eab7b7a5bddd2c29ced61ef07930">   39</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1_ring_queue.html#ab9d6eab7b7a5bddd2c29ced61ef07930">push</a>(<span class="keyword">const</span> T &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1_ring_queue.html#ab9d6eab7b7a5bddd2c29ced61ef07930">   39</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1_ring_queue.html#ab9d6eab7b7a5bddd2c29ced61ef07930">push</a>(<span class="keyword">const</span> T &amp;data) {</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_ring_queue.html#a8d1797eee32b1a113c5c7fe01d307cb1">full</a>()) {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;queue is full&quot;</span>);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classsese_1_1_ring_queue.html#acd1dce9ce0e0a81d3aec3e4a9ef4ec19">_data</a>[<a class="code hl_variable" href="classsese_1_1_ring_queue.html#ab2241fe87328bd2c3de8654a1e2e4162">_tail</a>] = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classsese_1_1_ring_queue.html#acd1dce9ce0e0a81d3aec3e4a9ef4ec19">_data</a>[<a class="code hl_variable" href="classsese_1_1_ring_queue.html#ab2241fe87328bd2c3de8654a1e2e4162">_tail</a>] = data;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_variable" href="classsese_1_1_ring_queue.html#ab2241fe87328bd2c3de8654a1e2e4162">_tail</a> = (<a class="code hl_variable" href="classsese_1_1_ring_queue.html#ab2241fe87328bd2c3de8654a1e2e4162">_tail</a> + 1) % N;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_variable" href="classsese_1_1_ring_queue.html#a02431a739caf6efa11fb16c9e62c8ead">_size</a> += 1;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
@@ -215,7 +215,7 @@ $(function(){initNavTree('_ring_queue_8h_source.html',''); initResizable(true); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_56d6314937d8cc68541b78ca6d0f66b7.html">container</a></li><li class="navelem"><a class="el" href="_ring_queue_8h.html">RingQueue.h</a></li>
-    <li class="footer">生成于 2024年 七月 25日 星期四 08:59:07 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 七月 30日 星期二 16:03:45 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
