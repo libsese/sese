@@ -2,6 +2,10 @@ name: windows
 
 on:
   pull_request:
+    paths:
+      - 'sese/**'
+      - 'CMakeLists.txt'
+      - 'vcpkg.json'
   workflow_dispatch:
 
 jobs:

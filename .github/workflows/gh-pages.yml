@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'docs/Doxyfile'
+      - 'sese/**'
+      - 'static/**'
+      - 'README.md'
+      - 'README.zh_CN.md'
   workflow_dispatch:
 
 env:

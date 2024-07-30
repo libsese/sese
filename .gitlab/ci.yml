@@ -14,9 +14,8 @@ docker_build:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes:
-        - docker/alpine-x64.dockerfile
-        - requirements.txt
-      when: always
+        - 'docker/alpine-x64.dockerfile'
+        - 'requirements.txt'
 
 docker_build_manual:
   stage: build
@@ -83,6 +82,11 @@ gtest:
       coverage_report:
         coverage_format: cobertura
         path: build/coverage/coverage.xml
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        - 'sese/**/*'
+        - 'CMakeLists.txt'
 
 pages:
   stage: deploy
@@ -100,4 +104,9 @@ pages:
       - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: always
+      changes:
+        - 'docs/Doxyfile'
+        - 'sese/**'
+        - 'static/**'
+        - 'README.md'
+        - 'README.zh_CN.md'
