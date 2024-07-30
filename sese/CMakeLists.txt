@@ -173,6 +173,7 @@ if (SESE_BUILD_TEST AND WIN32)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
 
     sese_copy_dll_to_binary_path(Core "/sese/test")
+    sese_copy_dll_to_binary_path(Core "/sese/benchmark")
 endif ()
 
 if (SESE_BUILD_EXAMPLE AND WIN32)
