@@ -20,7 +20,7 @@
 This is a cross-platform framework for developing fundamental components,
  used to some extent as a supplement to the standard library.
  It is positioned similarly to `Boost` and `folly` with respect to the standard library.
- The project uses C++ 17 standard and introduces vcpkg as a package manager to help us simplify dependency management issues.
+ The project uses C++ 20 standard and introduces vcpkg as a package manager to help us simplify dependency management issues.
 
 ## Demo
 
