@@ -31,7 +31,6 @@ TEST(TestFixedBuffer, Read) {
 }
 
 TEST(TestFixedBuffer, Peek) {
-
     auto buffer = sese::io::FixedBuffer(16);
     EXPECT_EQ(buffer.write("ABCDEFGHIJKLMNOP", 16), 16);
 
