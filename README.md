@@ -3,9 +3,9 @@
 <img src="static/image/logo.svg" width="128" height="128" alt="logo"/>
 </div>
 <div align="center">
-<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=blue&logo=Apache" alt="license"/>
-<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2017&color=blue&logo=cplusplus" alt="lang"/>
-<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=blue&logo=cmake" alt="buildsystem"/>
+<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=purple&logo=Apache" alt="license"/>
+<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=purple&logo=cplusplus" alt="lang"/>
+<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=purple&logo=cmake" alt="buildsystem"/>
 <br>
 <img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese/badge"/>
 <img alt="Lines of Code" src="https://sloc.xyz/github/libsese/sese/"/>
@@ -20,7 +20,7 @@
 This is a cross-platform framework for developing fundamental components,
  used to some extent as a supplement to the standard library.
  It is positioned similarly to `Boost` and `folly` with respect to the standard library.
- The project uses C++ 17 standard and introduces vcpkg as a package manager to help us simplify dependency management issues.
+ The project uses C++ 20 standard and introduces vcpkg as a package manager to help us simplify dependency management issues.
 
 ## Demo
 

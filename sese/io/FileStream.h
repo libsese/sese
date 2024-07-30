@@ -11,30 +11,6 @@
 #include "sese/io/PeekableStream.h"
 #include "sese/system/Path.h"
 
-#ifdef SESE_PLATFORM_WINDOWS
-#define BINARY_READ_EXISTED_W "rb,ccs=utf-8"
-#define BINARY_WRITE_CREATE_TRUNC_W "wb,ccs=utf-8"
-#define BINARY_WRITE_CREATE_APPEND_W "ab,ccs=utf-8"
-#define BINARY_BOTH_CREATE_TRUNC_W "wb+,ccs=utf-8"
-#define BINARY_BOTH_CREATE_APPEND_W "ab+,ccs=utf-8"
-#define TEXT_READ_EXISTED_W "rt,ccs=utf-8"
-#define TEXT_WRITE_CREATE_TRUNC_W "wt,ccs=utf-8"
-#define TEXT_WRITE_CREATE_APPEND_W "at,ccs=utf-8"
-#define TEXT_BOTH_CREATE_TRUNC_W "wt+,ccs=utf-8"
-#define TEXT_BOTH_CREATE_APPEND_W "at+,ccs=utf-8"
-#endif
-
-#define BINARY_READ_EXISTED "rb"
-#define BINARY_WRITE_CREATE_TRUNC "wb"
-#define BINARY_WRITE_CREATE_APPEND "ab"
-#define BINARY_BOTH_CREATE_TRUNC "wb+"
-#define BINARY_BOTH_CREATE_APPEND "ab+"
-#define TEXT_READ_EXISTED "rt"
-#define TEXT_WRITE_CREATE_TRUNC "wt"
-#define TEXT_WRITE_CREATE_APPEND "at"
-#define TEXT_BOTH_CREATE_TRUNC "wt+"
-#define TEXT_BOTH_CREATE_APPEND "at+"
-
 namespace sese::io {
 
 /// Seek 基址
@@ -53,28 +29,27 @@ enum class Seek {
 class  FileStream final : public Stream, public Closeable, public PeekableStream {
 public:
 #ifdef SESE_PLATFORM_WINDOWS
-    static constexpr const char *B_READ_W = BINARY_READ_EXISTED_W;               // NOLINT
-    static constexpr const char *B_WRITE_TRUNC_W = BINARY_WRITE_CREATE_TRUNC_W;  // NOLINT
-    static constexpr const char *B_WRITE_APPEND_W = BINARY_WRITE_CREATE_TRUNC_W; // NOLINT
-    static constexpr const char *B_APPEND_W = BINARY_BOTH_CREATE_APPEND_W;       // NOLINT
-    static constexpr const char *B_TRUNC_W = BINARY_BOTH_CREATE_TRUNC_W;         // NOLINT
-    static constexpr const char *T_READ_W = TEXT_READ_EXISTED_W;                 // NOLINT
-    static constexpr const char *T_WRITE_TRUNC_W = TEXT_WRITE_CREATE_TRUNC_W;    // NOLINT
-    static constexpr const char *T_WRITE_APPEND_W = TEXT_WRITE_CREATE_TRUNC_W;   // NOLINT
-    static constexpr const char *T_APPEND_W = TEXT_BOTH_CREATE_APPEND_W;         // NOLINT
-    static constexpr const char *T_TRUNC_W = TEXT_BOTH_CREATE_TRUNC_W;           // NOLINT
+    static constexpr auto B_READ_W = "rb,ccs=utf-8";         // NOLINT
+    static constexpr auto B_WRITE_TRUNC_W = "wb,ccs=utf-8";  // NOLINT
+    static constexpr auto B_WRITE_APPEND_W = "ab,ccs=utf-8"; // NOLINT
+    static constexpr auto B_TRUNC_W = "wb+,ccs=utf-8";       // NOLINT
+    static constexpr auto B_APPEND_W = "ab+,ccs=utf-8";      // NOLINT
+    static constexpr auto T_READ_W = "rt,ccs=utf-8";         // NOLINT
+    static constexpr auto T_WRITE_TRUNC_W = "wt,ccs=utf-8";  // NOLINT
+    static constexpr auto T_WRITE_APPEND_W = "at,ccs=utf-8"; // NOLINT
+    static constexpr auto T_TRUNC_W = "wt+,ccs=utf-8";       // NOLINT
+    static constexpr auto T_APPEND_W = "at+,ccs=utf-8";      // NOLINT
 #endif
-    static constexpr const char *B_READ = BINARY_READ_EXISTED;               // NOLINT
-    static constexpr const char *B_WRITE_TRUNC = BINARY_WRITE_CREATE_TRUNC;  // NOLINT
-    static constexpr const char *B_WRITE_APPEND = BINARY_WRITE_CREATE_TRUNC; // NOLINT
-    static constexpr const char *B_APPEND = BINARY_BOTH_CREATE_APPEND;       // NOLINT
-    static constexpr const char *B_TRUNC = BINARY_BOTH_CREATE_TRUNC;         // NOLINT
-    static constexpr const char *T_READ = TEXT_READ_EXISTED;                 // NOLINT
-    static constexpr const char *T_WRITE_TRUNC = TEXT_WRITE_CREATE_TRUNC;    // NOLINT
-    static constexpr const char *T_WRITE_APPEND = TEXT_WRITE_CREATE_TRUNC;   // NOLINT
-    static constexpr const char *T_APPEND = TEXT_BOTH_CREATE_APPEND;         // NOLINT
-    static constexpr const char *T_TRUNC = TEXT_BOTH_CREATE_TRUNC;           // NOLINT
-
+    static constexpr auto B_READ = "rb";         // NOLINT
+    static constexpr auto B_WRITE_TRUNC = "wb";  // NOLINT
+    static constexpr auto B_WRITE_APPEND = "ab"; // NOLINT
+    static constexpr auto B_TRUNC = "wb+";       // NOLINT
+    static constexpr auto B_APPEND = "ab+";      // NOLINT
+    static constexpr auto T_READ = "rt";         // NOLINT
+    static constexpr auto T_WRITE_TRUNC = "wt";  // NOLINT
+    static constexpr auto T_WRITE_APPEND = "at"; // NOLINT
+    static constexpr auto T_TRUNC = "wt+";       // NOLINT
+    static constexpr auto T_APPEND = "at+";      // NOLINT
 
     using Ptr = std::shared_ptr<FileStream>;
 

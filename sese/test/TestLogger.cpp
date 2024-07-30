@@ -52,7 +52,7 @@ TEST(TestLogger, FileAppender) {
         sese::record::LogHelper log;
 
         auto logger = sese::record::getLogger();
-        auto file_stream = sese::io::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);
+        auto file_stream = sese::io::FileStream::create("hello.log", sese::io::FileStream::T_WRITE_TRUNC);
         ASSERT_TRUE(file_stream != nullptr);
         auto file_appender = std::make_shared<sese::record::FileAppender>(file_stream);
         logger->addAppender(file_appender);

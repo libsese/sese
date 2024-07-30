@@ -2,7 +2,6 @@
 
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/net/AddressPool.h>
-#include "sese/io/OutputUtil.h"
 #include <sese/util/Random.h>
 #include <sese/thread/Thread.h>
 #include <sese/record/Marco.h>
@@ -30,9 +29,10 @@ TEST(TestSSL, Client) {
     auto client = context->newSocketPtr(sese::net::Socket::Family::IPv4, IPPROTO_IP);
     ASSERT_EQ(client->connect(address), 0);
 
-    *client << "GET / HTTP/1.1\r\n"
-               "Host: microsoft.com\r\n"
-               "\r\n";
+    constexpr auto s = "GET / HTTP/1.1\r\n"
+                       "Host: microsoft.com\r\n"
+                       "\r\n";
+    client->write(s, strlen(s));
 
     char buffer[1024]{};
     client->read(buffer, sizeof(buffer));
@@ -63,7 +63,8 @@ TEST(TestSSL, Server) {
                     FAIL();
                 }
                 SESE_INFO("accepted");
-                *socket << "Hello, Client";
+                constexpr auto s = "Hello, Client";
+                socket->write(s, strlen(s));
                 socket->close();
                 SESE_INFO("close");
             },

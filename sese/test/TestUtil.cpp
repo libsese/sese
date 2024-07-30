@@ -1,6 +1,5 @@
 #include <sese/util/Util.h>
 #include <sese/io/OutputBufferWrapper.h>
-#include <sese/io/OutputUtil.h>
 #include <sese/text/String.h>
 
 #include <gtest/gtest.h>
@@ -38,25 +37,6 @@ TEST(TestUtil, Misc) {
     auto err = sese::getErrorCode();
     auto str = sese::getErrorString(err);
     puts(str.c_str());
-}
-
-TEST(TestUtil, OutputUtil) {
-    char buf0;
-    auto output0 = sese::io::OutputBufferWrapper(&buf0, 1);
-    output0 << 'A';
-    EXPECT_EQ(buf0, 'A');
-
-    char buf1[16]{};
-    auto output1 = sese::io::OutputBufferWrapper(buf1, sizeof(buf1));
-    auto str = sese::text::String::fromUTF8("你好");
-    output1 << str;
-    EXPECT_EQ(str, sese::text::StringView(buf1));
-
-    char buf2[16]{};
-    auto output2 = sese::io::OutputBufferWrapper(buf2, sizeof(buf2));
-    auto view = sese::text::StringView("こんにちは");
-    output2 << view;
-    EXPECT_EQ(view, sese::text::StringView(buf2));
 }
 
 TEST(TestUtil, ToInt) {

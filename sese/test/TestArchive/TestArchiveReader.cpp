@@ -18,7 +18,7 @@ TEST(TestArchiveReader, Extract_wrong_password) {
 }
 
 TEST(TestArchiveReader, Info) {
-    auto file = File::create(PROJECT_PATH "/sese/test/Data/archive.zip", BINARY_READ_EXISTED);
+    auto file = File::create(PROJECT_PATH "/sese/test/Data/archive.zip", sese::io::FileStream::B_READ);
     ArchiveReader reader(file.get());
     EXPECT_EQ(reader.setPassword("password123"), 0);
     EXPECT_TRUE(reader.extract(
@@ -35,7 +35,7 @@ TEST(TestArchiveReader, Info) {
 }
 
 TEST(TestArchiveReader, Info_wrong_password) {
-    auto file = File::create(PROJECT_PATH "/sese/test/Data/archive.zip", BINARY_READ_EXISTED);
+    auto file = File::create(PROJECT_PATH "/sese/test/Data/archive.zip", sese::io::FileStream::B_READ);
     ArchiveReader reader(file.get());
     EXPECT_EQ(reader.setPassword("wrong password"), 0);
     /// 此处不会出错，能获取到压缩包信息，但理论上无法进行解压

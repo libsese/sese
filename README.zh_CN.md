@@ -3,9 +3,9 @@
 <img src="static/image/logo.svg" width="128" height="128" alt="logo"/>
 </div>
 <div align="center">
-<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=blue&logo=Apache" alt="license"/>
-<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2017&color=blue&logo=cplusplus" alt="lang"/>
-<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=blue&logo=cmake" alt="buildsystem"/>
+<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=purple&logo=Apache" alt="license"/>
+<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=purple&logo=cplusplus" alt="lang"/>
+<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=purple&logo=cmake" alt="buildsystem"/>
 <br>
 <img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese/badge"/>
 <img alt="Lines of Code" src="https://sloc.xyz/github/libsese/sese/"/>
@@ -18,7 +18,7 @@
 ## 简介
 
 这是一个跨平台的、用于基础组件开发的框架，一定程度上作为标准库的补充使用。定位上类似于 `Boost`、`folly` 之于标准库。项目使用
-C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。
+C++ 20 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。
 
 ## 示例
 

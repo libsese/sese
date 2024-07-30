@@ -18,7 +18,7 @@ std::string sese::UniReader::readLine() {
 }
 
 std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &file_name) noexcept {
-    auto file_stream = io::FileStream::create(file_name, TEXT_READ_EXISTED_W);
+    auto file_stream = io::FileStream::create(file_name, io::File::T_READ_W);
     if (!file_stream) {
         return nullptr;
     }

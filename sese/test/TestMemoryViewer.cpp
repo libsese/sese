@@ -2,7 +2,6 @@
 
 #include <sese/util/MemoryViewer.h>
 #include "sese/io/ConsoleOutputStream.h"
-#include "sese/io/OutputUtil.h"
 
 TEST(TestMemoryViewer, Output) {
     int8_t i8 = 20;
@@ -13,24 +12,24 @@ TEST(TestMemoryViewer, Output) {
     sese::io::ConsoleOutputStream output;
 
     sese::MemoryViewer::peer8(&output, &i8, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer16(&output, &i16, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer32(&output, &i32, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer64(&output, &i64, true);
-    output << "\n";
+    output.write("\n", 1);
 
     sese::MemoryViewer::peer16(&output, &i16, EndianType::BIG, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer16(&output, &i16, EndianType::LITTLE, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer32(&output, &i32, EndianType::BIG, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer32(&output, &i32, EndianType::LITTLE, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer64(&output, &i64, EndianType::BIG, true);
-    output << "\n";
+    output.write("\n", 1);
     sese::MemoryViewer::peer64(&output, &i64, EndianType::LITTLE, true);
-    output << "\n";
+    output.write("\n", 1);
 }

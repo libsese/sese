@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     }
 
     std::string src = argv[1];
-    auto src_file = sese::io::File::create(src, BINARY_READ_EXISTED);
+    auto src_file = sese::io::File::create(src, sese::io::File::B_READ);
     if (src_file == nullptr) {
         SESE_ERROR("File %s failed to open", src.c_str());
         return -1;
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     }
 
     auto dest = src + ".yml";
-    auto dest_file = sese::io::File::create(dest, BINARY_WRITE_CREATE_TRUNC);
+    auto dest_file = sese::io::File::create(dest, sese::io::File::B_WRITE_TRUNC);
     if (dest_file == nullptr) {
         SESE_ERROR("File %s failed to open", dest.c_str());
         return -1;

@@ -122,7 +122,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
             goto uni_handle;
         }
 
-        conn->file = io::File::create(filename.string(), BINARY_READ_EXISTED);
+        conn->file = io::File::create(filename.string(), io::File::B_READ);
         if (!conn->file) {
             resp.setCode(500);
             resp.set("content-length", std::to_string(resp.getBody().getLength()));

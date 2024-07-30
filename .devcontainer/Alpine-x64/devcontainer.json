@@ -1,0 +1,7 @@
+{
+  "name": "Alpine-x64",
+  "build": {
+    "context": "../../",
+    "dockerfile": "../../docker/alpine-x64.dockerfile"
+  }
+}

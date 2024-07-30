@@ -1,5 +1,4 @@
 #include "sese/io/FileStream.h"
-#include "sese/io/OutputUtil.h"
 
 #include <gtest/gtest.h>
 
@@ -9,17 +8,17 @@ using sese::io::File;
 using sese::io::FileStream;
 
 TEST(TestFileStream, Open) {
-    ASSERT_EQ(sese::io::FileStream::create("undef.txt", TEXT_READ_EXISTED), nullptr);
+    ASSERT_EQ(sese::io::FileStream::create("undef.txt", sese::io::File::T_READ), nullptr);
 }
 
 TEST(TestFileStream, Seek) {
     auto file = FileStream::create("temp1.txt", File::B_TRUNC);
     ASSERT_NE(file, nullptr);
-    ASSERT_EQ(file << std::string_view("Helle"), 5);
+    ASSERT_EQ(file->write("Helle", 5), 5);
     ASSERT_EQ(file->getSeek(), 5);
     ASSERT_EQ(file->setSeek(-1, SEEK_CUR), 0);
     ASSERT_EQ(file->getSeek(), 4);
-    ASSERT_EQ(file << std::string_view("o, World"), 8);
+    ASSERT_EQ(file->write("o, World", 8), 8);
     ASSERT_EQ(file->flush(), 0);
 
     char buffer[16]{};

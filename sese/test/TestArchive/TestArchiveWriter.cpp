@@ -9,7 +9,7 @@ using sese::io::InputBufferWrapper;
 using sese::archive::ArchiveWriter;
 
 TEST(TestArchiveWriter, GlobFile) {
-    auto file = File::create(PROJECT_BINARY_PATH "/glob.tar.gz", BINARY_WRITE_CREATE_TRUNC);
+    auto file = File::create(PROJECT_BINARY_PATH "/glob.tar.gz", File::B_TRUNC);
     ArchiveWriter writer(file.get());
     writer.setFormatTar();
     writer.setFilterGZip();
@@ -23,7 +23,7 @@ TEST(TestArchiveWriter, GlobFile) {
 }
 
 TEST(TestArchiveWriter, Stream) {
-    auto file = File::create(PROJECT_BINARY_PATH "/stream.tar.gz", BINARY_WRITE_CREATE_TRUNC);
+    auto file = File::create(PROJECT_BINARY_PATH "/stream.tar.gz", File::B_TRUNC);
     ArchiveWriter writer(file.get());
     writer.setFormatTar();
     writer.setFilterGZip();
@@ -37,7 +37,7 @@ TEST(TestArchiveWriter, Stream) {
         EXPECT_TRUE(writer.addStream("Hello.txt", &buf, buf.getCapacity()));
     }
     {
-        auto lists = File::create(PROJECT_PATH "/CMakeLists.txt", BINARY_READ_EXISTED);
+        auto lists = File::create(PROJECT_PATH "/CMakeLists.txt", sese::io::File::B_READ);
         EXPECT_TRUE(writer.addStream("CMakeLists.txt", lists.get(),
                                      std::filesystem::file_size(PROJECT_PATH "/CMakeLists.txt")));
         lists->close();
@@ -48,7 +48,7 @@ TEST(TestArchiveWriter, Stream) {
 }
 
 TEST(TestArchiveWriter, Password) {
-    auto file = File::create(PROJECT_BINARY_PATH "/password.zip", BINARY_WRITE_CREATE_TRUNC);
+    auto file = File::create(PROJECT_BINARY_PATH "/password.zip", File::B_TRUNC);
     ArchiveWriter writer(file.get());
     writer.setFormatZip();
     // 此选项在 vcpkg 导入的 libarchive 中不受支持，参考链接

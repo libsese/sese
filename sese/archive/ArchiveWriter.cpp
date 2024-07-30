@@ -192,7 +192,7 @@ bool ArchiveWriter::addFile(const std::filesystem::path &base, const std::filesy
     archive_write_header(XX, entry);
 
     int64_t len;
-    auto stream = io::File::create(file.string(), BINARY_READ_EXISTED);
+    auto stream = io::File::create(file.string(), io::File::B_READ);
     char buffer[4096];
     while ((len = stream->read(buffer, 4096)) > 0) {
         if (archive_write_data(XX, buffer, static_cast<size_t>(len)) != len) {
@@ -234,7 +234,7 @@ bool ArchiveWriter::addDirectory(const std::filesystem::path &base, const std::f
         archive_write_header(XX, entry);
 
         int64_t len;
-        auto file = io::File::create(file_path, BINARY_READ_EXISTED);
+        auto file = io::File::create(file_path, io::File::B_READ);
         char buffer[4096];
         while ((len = file->read(buffer, 4096)) > 0) {
             if (archive_write_data(XX, buffer, static_cast<size_t>(len)) != len) {
