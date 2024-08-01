@@ -1,3 +1,5 @@
+# README
+
 <h1 align="center">Sese Framework</h1>
 <div align="center">
 <img src="static/image/logo.svg" width="128" height="128" alt="logo"/>
@@ -65,8 +67,6 @@ SESE_WARN("error %s", err.what().c_str());
 > 2024-05-15T15:54:48.296Z I main.cpp:8 Main:7116> hello world<br>
 > 2024-05-15T15:54:48.296Z W main.cpp:9 Main:7116> error End of file
 
----
-
 HTTP Controller
 
 ```c++
@@ -88,8 +88,6 @@ SESE_CTRL(MyController, std::mutex mutex{}; int times = 0) {
     SESE_INFO("LOADED");
 }
 ```
-
----
 
 Cross-process communication
 
