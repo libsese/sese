@@ -24,23 +24,14 @@
 */
 var NAVTREE =
 [
-  [ "sese", "index.html", [
+  [ "Sese Framework", "index.html", [
+    [ "README", "index.html", "index" ],
     [ "目录说明", "md_sese_2_c_a_t_a_l_o_g.html", null ],
     [ "加解密功能", "md_sese_2security_2evp_2_r_e_a_d_m_e.html", null ],
     [ "字符串格式化", "md_sese_2text_2_f_o_r_m_a_t.html", null ],
     [ "弃用列表", "deprecated.html", null ],
     [ "Bug 列表", "bug.html", null ],
     [ "命名空间", "namespaces.html", [
-      [ "简介", "index.html#autotoc_md0", null ],
-      [ "示例", "index.html#autotoc_md1", null ],
-      [ "", "index.html#autotoc_md2", null ],
-      [ "构建", "index.html#autotoc_md4", [
-        [ "对于开发者/贡献者", "index.html#autotoc_md5", null ],
-        [ "对于普通使用者", "index.html#autotoc_md6", null ]
-      ] ],
-      [ "测试", "index.html#autotoc_md7", null ],
-      [ "文档", "index.html#autotoc_md8", null ],
-      [ "贡献者", "index.html#autotoc_md9", null ],
       [ "命名空间列表", "namespaces.html", "namespaces_dup" ],
       [ "命名空间成员", "namespacemembers.html", [
         [ "全部", "namespacemembers.html", null ],

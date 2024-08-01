@@ -61,7 +61,7 @@ var searchData=
   ['servletmap_58',['ServletMap',['../classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8',1,'sese::service::http::v3::HttpService']]],
   ['servlets_59',['servlets',['../classsese_1_1net_1_1http_1_1_controller.html#a2ccdbea2d867316696933f6349ec0c69',1,'sese::net::http::Controller::servlets'],['../classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a90f4ce101942bc898799157d5ab30d50',1,'sese::service::http::v3::HttpServer::servlets'],['../classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d',1,'sese::service::http::v3::HttpService::servlets']]],
   ['servprotos_60',['servProtos',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a',1,'sese::_windows::iocp::v1::NativeIOCPServer::servProtos'],['../classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6',1,'sese::iocp::v1::IOCPServer::servProtos']]],
-  ['sese_61',['sese',['../namespacesese.html',1,'sese'],['../index.html',1,'sese']]],
+  ['sese_61',['sese',['../namespacesese.html',1,'']]],
   ['sese_3a_3a_5fwindows_62',['_windows',['../namespacesese_1_1__windows.html',1,'sese']]],
   ['sese_3a_3a_5fwindows_3a_3aiocp_63',['iocp',['../namespacesese_1_1__windows_1_1iocp.html',1,'sese::_windows']]],
   ['sese_3a_3a_5fwindows_3a_3aiocp_3a_3av1_64',['v1',['../namespacesese_1_1__windows_1_1iocp_1_1v1.html',1,'sese::_windows::iocp']]],

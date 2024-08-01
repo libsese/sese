@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "abcdefghilmnoprstuvwz",
   9: "hinst",
   10: "_abcdefghilmnprstvwx",
-  11: "bs列加字弃目"
+  11: "br列加字弃目"
 };
 
 var indexSectionNames =

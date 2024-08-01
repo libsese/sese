@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese: sese</title>
+<title>Sese Framework: README</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -61,7 +61,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese
+   <div id="projectname">Sese Framework
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -132,17 +132,17 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">sese </div></div>
+  <div class="headertitle"><div class="title">README </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e_8zh___c_n"></a> </p><h1 align="center">Sese Framework</h1>
 <div align="center"> <img src="static/image/logo.svg" alt="logo" style="pointer-events: none;" width="128" height="128" class="inline"/> </div> <div align="center"> <img src="https://img.shields.io/static/v1?label=license&amp;message=Apache-2.0&amp;color=purple&amp;logo=Apache" alt="license" class="inline"/> <img src="https://img.shields.io/static/v1?label=language&amp;message=C%2B%2B%2020&amp;color=purple&amp;logo=cplusplus" alt="lang" class="inline"/> <img src="https://img.shields.io/static/v1?label=build%20system&amp;message=CMake&amp;color=purple&amp;logo=cmake" alt="buildsystem" class="inline"/> <br  />
  <img src="https://www.codefactor.io/repository/github/libsese/sese/badge" alt="CodeFactor Status" class="inline"/> <img src="https://sloc.xyz/github/libsese/sese/" alt="Lines of Code" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese/windows-2022.yml?label=Windows&amp;logo=windows" alt="GitHub Workflow Status (with event)" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese/ubuntu-2204-apt.yml?label=Ubuntu&amp;logo=ubuntu" alt="GitHub Workflow Status (with event)" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese/macos-12-brew.yml?label=macOS&amp;logo=apple" alt="GitHub Workflow Status (with event)" class="inline"/> <br  />
- </div><h2><a class="anchor" id="autotoc_md0"></a>
-简介</h2>
+ </div><h1><a class="anchor" id="autotoc_md1"></a>
+简介</h1>
 <p>这是一个跨平台的、用于基础组件开发的框架，一定程度上作为标准库的补充使用。定位上类似于 <code>Boost</code>、<code>folly</code> 之于标准库。项目使用 C++ 20 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。</p>
-<h2><a class="anchor" id="autotoc_md1"></a>
-示例</h2>
+<h1><a class="anchor" id="autotoc_md2"></a>
+示例</h1>
 <p>内建日志器</p>
 <p>现代的格式化方式</p>
 <div class="fragment"><div class="line"> ++</div>
@@ -179,8 +179,6 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <p>&zwj;2024-05-15T15:54:48.296Z I main.cpp:8 Main:7116&gt; hello world<br  />
  2024-05-15T15:54:48.296Z W main.cpp:9 Main:7116&gt; error End of file </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md2"></a>
-</h2>
 <p>HTTP 控制器</p>
 <div class="fragment"><div class="line"> ++</div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_http_server___v3_8h.html" title="Http 服务器">sese/service/http/HttpServer_V3.h</a>&gt;</span></div>
@@ -200,8 +198,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="line">    };</div>
 <div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;LOADED&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --><hr  />
-<p>跨进程通讯</p>
+</div><!-- fragment --><p>跨进程通讯</p>
 <div class="fragment"><div class="line"> ++</div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_i_p_c_8h.html">sese/system/IPC.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_log_8h.html">sese/Log.h</a>&gt;</span></div>
@@ -229,10 +226,10 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="line">channel-&gt;write(1, <span class="stringliteral">&quot;Hello&quot;</span>);</div>
 <div class="line">channel-&gt;write(2, <span class="stringliteral">&quot;Hi&quot;</span>);</div>
 <div class="line">channel-&gt;write(1, <span class="stringliteral">&quot;Exit&quot;</span>);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
-构建</h2>
-<h3><a class="anchor" id="autotoc_md5"></a>
-对于开发者/贡献者</h3>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+构建</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+对于开发者/贡献者</h2>
 <ol type="1">
 <li>配置开发环境</li>
 </ol>
@@ -263,8 +260,8 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </ol>
 <p>配置完成编译选项只需要常规构建即可，例如：</p>
 <div class="fragment"><div class="line">cmake --build build/linux-debug -- -j 4</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
-对于普通使用者</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+对于普通使用者</h2>
 <p>对于普通使用者，我们推荐使用 vcpkg 导入此依赖，可以参考我们的<a href="https://github.com/libsese/sese-template">模板项目</a>配置你的项目：</p>
 <dl class="section warning"><dt>警告</dt><dd>项目也可以作为普通项目安装在普通机器上，但这不是推荐的做法，也无法得到支持， 如果你想这么做可以参考 <code>构建</code> &gt; <code>对于开发者/贡献者</code> 中关于系统依赖管理工具的内容。</dd></dl>
 <p>主要工作是编写项目的依赖配置文件，例如：</p>
@@ -294,8 +291,8 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="line">  ]</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>如果你没有使用 vcpkg，上述步骤是不必要的。</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
-测试</h2>
+<h1><a class="anchor" id="autotoc_md6"></a>
+测试</h1>
 <p>使用了 googletest 作为了测试框架，测试的详细信息可以从 github actions 中查看，包括各个平台的测试结果和 linux 的测试覆盖率等内容。</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -330,12 +327,12 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="line">gcovr</div>
 </div><!-- fragment --><dl class="section note"><dt>注解</dt><dd>生成覆盖率测试数据首先需要设置一些额外的编译选项来生成例如 gcov 格式的测试数据，例如 GCC：</dd></dl>
 <p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L75">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L75</a></p>
-<h2><a class="anchor" id="autotoc_md8"></a>
-文档</h2>
+<h1><a class="anchor" id="autotoc_md7"></a>
+文档</h1>
 <p><a href="https://libsese.github.io/sese/">文档</a>将会随着主线的更新而自动更新到 github pages 上。</p>
 <p>文档内容将从代码注释中自动生成，docs 目录实际存放构建文档所需的部分资源。</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
-贡献者</h2>
+<h1><a class="anchor" id="autotoc_md8"></a>
+贡献者</h1>
 <p><img src="https://contrib.rocks/image?repo=libsese/sese" alt="Contributors" class="inline"/> </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
@@ -344,7 +341,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 七月 30日 星期二 16:03:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 八月 1日 星期四 17:55:04 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
