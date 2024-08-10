@@ -19,6 +19,8 @@ add_library(sese-http
         src/HttpServiceImpl.cpp
         src/HttpConnection.cpp
         src/HttpsConnection.cpp
+        src/HttpConnectionEx.cpp
+        src/HttpsConnectionEx.cpp
 )
 target_link_libraries(sese-http PRIVATE asio::asio Core)
 
