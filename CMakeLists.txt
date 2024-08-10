@@ -15,6 +15,14 @@ endif ()
 find_package(asio CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 
+add_library(sese-http
+        src/HttpServiceImpl.h
+        src/HttpServiceImpl.cpp
+        src/HttpConnectionImpl.cpp
+        src/HttpsConnectionImpl.cpp
+)
+target_link_libraries(sese-http PRIVATE asio::asio Core)
+
 enable_testing()
 add_executable(AllTestsInMain src/test/Main.cpp)
-target_link_libraries(AllTestsInMain PRIVATE GTest::gtest Core)
+target_link_libraries(AllTestsInMain PRIVATE GTest::gtest Core sese-http)
