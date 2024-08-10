@@ -1,6 +1,8 @@
 #pragma once
 
 #include <memory>
+#include <optional>
+
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
@@ -13,6 +15,8 @@ class HttpServiceImpl;
 
 struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
+
+    Ptr getPtr() { return shared_from_this(); }
 
     enum class ConnType {
         FILTER,
@@ -42,7 +46,22 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     std::vector<sese::net::http::Range> ranges;
     std::vector<sese::net::http::Range>::iterator range_iterator = ranges.begin();
 
+    bool is0x0a = false;
+    sese::iocp::IOBuf io_buffer;
+    std::unique_ptr<sese::iocp::IOBufNode> node;
+    sese::io::ByteBuilder dynamic_buffer;
+
     std::weak_ptr<HttpServiceImpl> service;
+
+    void readHeader();
+
+    void readBody();
+
+    void handleRequest();
+
+    void writeHeader();
+
+    void writeBody();
 
     /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
     /// @note 此函数必须实现
@@ -50,11 +69,18 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     /// @param length 缓存大小
     /// @param callback 完成回调函数
     virtual void writeBlock(const char *buffer, size_t length,
-                            const std::function<void(const asio::error_code &code)> &callback) = 0;
+                            const std::function<void(const asio::error_code &code)> &callback);
+
+    /// 读取函数，此函数会调用对应的 asio::async_read_some
+    /// @param buffer asio::buffer
+    /// @param callback 回调函数
+    virtual void asyncReadSome(const asio::mutable_buffers_1 &buffer,
+                               const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
+                               callback);
 
     /// 当一个请求处理完成后被调用，用于判断是否断开当前连接
     /// @note 此函数必须被实现
-    virtual void checkKeepalive() = 0;
+    virtual void checkKeepalive();
 
     /// 连接被彻底释放前调用，用于做一些成员变量的收尾工作
     /// @note 此函数是可选实现的
@@ -65,59 +91,20 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     void writeRanges();
 };
 
-/// Http 普通连接实现
-struct HttpConnectionImpl final : HttpConnection {
-    using Ptr = std::shared_ptr<HttpConnectionImpl>;
-    Ptr getPtr() { return std::static_pointer_cast<HttpConnectionImpl>(shared_from_this()); }
-
-    HttpConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
-
-    sese::io::ByteBuilder parse_buffer;
-    asio::streambuf asio_dynamic_buffer;
-
-    void writeBlock(const char *buffer, size_t length,
-                    const std::function<void(const asio::error_code &code)> &callback) override;
-
-    void readHeader();
-
-    void readBody();
-
-    void handleRequest();
-
-    void writeHeader();
-
-    void writeBody();
-
-    void checkKeepalive() override;
-};
-
 /// Http SSL 连接实现
-struct HttpsConnectionImpl final : HttpConnection {
-    using Ptr = std::shared_ptr<HttpsConnectionImpl>;
-    Ptr getPtr() { return std::static_pointer_cast<HttpsConnectionImpl>(shared_from_this()); }
+struct HttpsConnection final : HttpConnection {
+    using Ptr = std::shared_ptr<HttpsConnection>;
 
-    HttpsConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
+    HttpsConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
 
-    ~HttpsConnectionImpl() override;
+    ~HttpsConnection() override;
 
     std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &> > stream;
-    bool is0x0a = false;
-    sese::iocp::IOBuf io_buffer;
-    std::unique_ptr<sese::iocp::IOBufNode> node;
-    sese::io::ByteBuilder dynamic_buffer;
 
     void writeBlock(const char *buffer, size_t length,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
-    void readHeader();
-
-    void readBody();
-
-    void handleRequest();
-
-    void writeHeader();
-
-    void writeBody();
+    void asyncReadSome(const asio::mutable_buffers_1 &buffer, const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &callback) override;
 
     void checkKeepalive() override;
 };

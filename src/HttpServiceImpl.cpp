@@ -205,7 +205,7 @@ uni_handle:
 }
 
 void HttpServiceImpl::handleAccept() {
-    auto conn = std::make_shared<HttpConnectionImpl>(shared_from_this(), io_context);
+    auto conn = std::make_shared<HttpConnection>(shared_from_this(), io_context);
     acceptor.async_accept(
             conn->socket,
             [this, conn](const asio::error_code &e) {
@@ -218,7 +218,7 @@ void HttpServiceImpl::handleAccept() {
 }
 
 void HttpServiceImpl::handleSSLAccept() {
-    auto conn = std::make_shared<HttpsConnectionImpl>(shared_from_this(), io_context);
+    auto conn = std::make_shared<HttpsConnection>(shared_from_this(), io_context);
     acceptor.async_accept(
             conn->socket,
             [this, conn](const asio::error_code &e1) {
@@ -229,7 +229,9 @@ void HttpServiceImpl::handleSSLAccept() {
                 conn->stream->async_handshake(
                         asio::ssl::stream_base::server,
                         [conn, this](const asio::error_code &e2) {
-                            if (e2) return;
+                            if (e2) {
+                                return;
+                            }
                             this->connections.emplace(conn);
                             conn->readHeader();
                         }
@@ -237,122 +239,4 @@ void HttpServiceImpl::handleSSLAccept() {
                 this->handleSSLAccept();
             }
     );
-}
-
-HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
-    : socket(context),
-      timer(context, asio::chrono::seconds{service->getKeepalive()}),
-      expect_length(0),
-      real_length(0),
-      service(service) {
-}
-
-void HttpConnection::writeSingleRange() {
-    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
-    this->real_length += l;
-    l = this->file->read(this->send_buffer, l);
-    this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
-        if (error) {
-            conn->disponse();
-            return;
-        }
-        if (conn->expect_length > conn->real_length) {
-            conn->writeSingleRange();
-        } else {
-            // keepalive
-            conn->checkKeepalive();
-        }
-    });
-}
-
-void HttpConnection::writeRanges() {
-    if (this->real_length >= this->expect_length) {
-        if (this->range_iterator == this->ranges.begin()) {
-            // 首个区间
-            auto subheader = std::string("--") + HTTPD_BOUNDARY + "\r\n" +
-                             "content-type: " + this->content_type + "\r\n" +
-                             "content-range: " + this->range_iterator->toString(this->filesize) + "\r\n\r\n";
-            assert(subheader.length() <= MTU_VALUE);
-            std::memcpy(this->send_buffer, subheader.data(), subheader.length());
-            this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
-                if (error) {
-                    return;
-                }
-                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), sese::io::Seek::BEGIN)) {
-                    return;
-                }
-                conn->expect_length = conn->range_iterator->len;
-                conn->real_length = 0;
-                conn->writeRanges();
-                conn->range_iterator += 1;
-            });
-            return;
-        }
-        if (this->range_iterator == this->ranges.end()) {
-            // 最后一个区间
-            auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "--\r\n";
-            std::memcpy(this->send_buffer, subheader.data(), subheader.length());
-            assert(subheader.length() <= MTU_VALUE);
-            this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
-                if (error) {
-                    return;
-                }
-                conn->checkKeepalive();
-            });
-        } else {
-            // 中间的区间
-            auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "\r\n" +
-                             "content-type: " + this->content_type + "\r\n" +
-                             "content-range: " + this->range_iterator->toString(this->filesize) + "\r\n\r\n";
-            assert(subheader.length() <= MTU_VALUE);
-            std::memcpy(this->send_buffer, subheader.data(), subheader.length());
-            this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
-                if (error) {
-                    return;
-                }
-                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), sese::io::Seek::BEGIN)) {
-                    return;
-                }
-                conn->expect_length = conn->range_iterator->len;
-                conn->real_length = 0;
-                conn->writeRanges();
-                conn->range_iterator += 1;
-            });
-        }
-    } else {
-        auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
-        this->real_length += l;
-        l = this->file->read(this->send_buffer, l);
-        this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
-            if (error) {
-                conn->disponse();
-                return;
-            }
-            conn->writeRanges();
-        });
-    }
-}
-
-void HttpConnection::disponse() {
-    auto serv = service.lock();
-    assert(serv);
-    serv->connections.erase(shared_from_this());
-}
-
-void HttpConnection::reset() {
-    conn_type = ConnType::NORMAL;
-
-    expect_length = 0;
-    real_length = 0;
-    ranges.clear();
-
-    request.clear();
-    request.queryArgsClear();
-    request.getBody().freeCapacity();
-    if (auto cookies = request.getCookies()) cookies->clear();
-
-    response.setCode(200);
-    response.clear();
-    response.getBody().freeCapacity();
-    if (auto cookies = response.getCookies()) cookies->clear();
 }

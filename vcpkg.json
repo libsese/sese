@@ -4,7 +4,6 @@
       "name": "asio",
       "features": ["openssl"]
     },
-    "gtest",
     "zlib"
   ]
 }

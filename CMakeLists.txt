@@ -13,16 +13,18 @@ if (MSVC)
 endif ()
 
 find_package(asio CONFIG REQUIRED)
-find_package(GTest CONFIG REQUIRED)
 
 add_library(sese-http
         src/HttpServiceImpl.h
         src/HttpServiceImpl.cpp
-        src/HttpConnectionImpl.cpp
-        src/HttpsConnectionImpl.cpp
+        src/HttpConnection.cpp
+        src/HttpsConnection.cpp
 )
 target_link_libraries(sese-http PRIVATE asio::asio Core)
 
-enable_testing()
-add_executable(AllTestsInMain src/test/Main.cpp)
-target_link_libraries(AllTestsInMain PRIVATE GTest::gtest Core sese-http)
+add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
+
+add_executable(NewHttp1Impl
+        src/test/NewHttp1Impl.cpp
+)
+target_link_libraries(NewHttp1Impl PRIVATE asio::asio Core sese-http)
