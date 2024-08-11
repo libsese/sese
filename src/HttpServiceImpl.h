@@ -30,7 +30,7 @@ public:
 
     uint32_t getKeepalive() const { return keepalive; }
 
-    void handleRequest(const HttpConnection::Ptr &conn);
+    void handleRequest(const HttpConnection::Ptr &conn) const;
 
 private:
     asio::io_context io_context;

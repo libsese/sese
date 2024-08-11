@@ -7,6 +7,8 @@
 #include <sese/net/http/Range.h>
 #include <sese/io/File.h>
 
+#include "ConnType.h"
+
 class HttpServiceImpl;
 
 /// Http 普通连接实现
@@ -15,11 +17,7 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
 
     Ptr getPtr() { return shared_from_this(); }
 
-    enum class ConnType {
-        FILTER,
-        FILE_DOWNLOAD,
-        NORMAL
-    } conn_type = ConnType::NORMAL;
+    ConnType conn_type = ConnType::NONE;
 
     HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context);
 

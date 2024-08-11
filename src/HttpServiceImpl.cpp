@@ -12,27 +12,27 @@
 #include <filesystem>
 
 HttpServiceImpl::HttpServiceImpl(
-        const sese::net::IPAddress::Ptr &address,
-        SSLContextPtr ssl_context,
-        uint32_t keepalive,
-        std::string &serv_name,
-        MountPointMap &mount_points,
-        ServletMap &servlets,
-        FilterMap &filters
+    const sese::net::IPAddress::Ptr &address,
+    SSLContextPtr ssl_context,
+    uint32_t keepalive,
+    std::string &serv_name,
+    MountPointMap &mount_points,
+    ServletMap &servlets,
+    FilterMap &filters
 ) : HttpService(address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets, filters),
     io_context(),
     ssl_context(std::nullopt),
     acceptor(io_context) {
     thread = std::make_unique<sese::Thread>(
-            [this] {
-                if (this->ssl_context.has_value()) {
-                    this->handleSSLAccept();
-                } else {
-                    this->handleAccept();
-                }
-                this->io_context.run();
-            },
-            "HttpServiceAcceptor"
+        [this] {
+            if (this->ssl_context.has_value()) {
+                this->handleSSLAccept();
+            } else {
+                this->handleAccept();
+            }
+            this->io_context.run();
+        },
+        "HttpServiceAcceptor"
     );
 }
 
@@ -45,10 +45,10 @@ bool HttpServiceImpl::startup() {
     }
 
     error = acceptor.open(
-            addr.is_v4()
-                    ? asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v4()
-                    : asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v6(),
-            error
+        addr.is_v4()
+            ? asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v4()
+            : asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v6(),
+        error
     );
     if (error) return false;
 
@@ -77,7 +77,7 @@ int HttpServiceImpl::getLastError() {
     return error.value();
 }
 
-void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
+void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) const {
     auto &&req = conn->request;
     auto &&resp = conn->response;
     std::filesystem::path filename;
@@ -85,34 +85,36 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     // 过滤器匹配
     for (auto &&[uri_prefix, callback]: filters) {
         if (sese::text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
-            conn->conn_type = HttpConnection::ConnType::FILTER;
+            conn->conn_type = ConnType::FILTER;
             if (callback(req, resp)) {
-                conn->conn_type = HttpConnection::ConnType::NORMAL;
-            } else {
-                goto uni_handle;
+                conn->conn_type = ConnType::NONE;
             }
         }
     }
 
     // 挂载点匹配
-    for (auto &&[uri_prefix, mount_point]: mount_points) {
-        if (sese::text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
-            conn->conn_type = HttpConnection::ConnType::FILE_DOWNLOAD;
-            filename = mount_point + req.getUri().substr(uri_prefix.length());
-            // 确认文件名后进行下一步操作
-            break;
+    if (conn->conn_type == ConnType::NONE) {
+        for (auto &&[uri_prefix, mount_point]: mount_points) {
+            if (sese::text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
+                conn->conn_type = ConnType::FILE_DOWNLOAD;
+                filename = mount_point + req.getUri().substr(uri_prefix.length());
+                // 确认文件名后进行下一步操作
+                break;
+            }
         }
     }
 
-    if (conn->conn_type == HttpConnection::ConnType::NORMAL) {
+    if (conn->conn_type == ConnType::NONE) {
         auto iterator = servlets.find(req.getUri());
         if (iterator == servlets.end()) {
             resp.setCode(404);
         } else {
             iterator->second.invoke(req, resp);
+            conn->conn_type = ConnType::CONTROLLER;
         }
         resp.set("content-length", std::to_string(resp.getBody().getLength()));
-    } else if (conn->conn_type == HttpConnection::ConnType::FILE_DOWNLOAD) {
+    }
+    else if (conn->conn_type == ConnType::FILE_DOWNLOAD) {
         if (!exists(filename) ||
             !is_regular_file(filename) ||
             is_directory(filename)) {
@@ -172,12 +174,12 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
                     goto uni_handle;
                 }
                 content_length += 12 +
-                                  strlen(HTTPD_BOUNDARY) +
-                                  strlen("Content-Type: ") +
-                                  conn->content_type.length() +
-                                  strlen("Content-Range: ") +
-                                  item.toStringLength(conn->filesize) +
-                                  item.len;
+                        strlen(HTTPD_BOUNDARY) +
+                        strlen("Content-Type: ") +
+                        conn->content_type.length() +
+                        strlen("Content-Range: ") +
+                        item.toStringLength(conn->filesize) +
+                        item.len;
             }
             content_length += 6 + strlen(HTTPD_BOUNDARY);
             // content-type
@@ -189,7 +191,8 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
 
         auto last_modified = last_write_time(filename);
         uint64_t time = sese::to_time_t(last_modified) * 1000 * 1000;
-        resp.set("last-modified", sese::text::DateTimeFormatter::format(sese::DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
+        resp.set("last-modified",
+                 sese::text::DateTimeFormatter::format(sese::DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
     }
 
 uni_handle:
@@ -207,36 +210,37 @@ uni_handle:
 void HttpServiceImpl::handleAccept() {
     auto conn = std::make_shared<HttpConnection>(shared_from_this(), io_context);
     acceptor.async_accept(
-            conn->socket,
-            [this, conn](const asio::error_code &e) {
-                if (e) return;
-                this->connections.emplace(conn);
-                conn->readHeader();
-                this->handleAccept();
-            }
+        conn->socket,
+        [this, conn](const asio::error_code &e) {
+            if (e) return;
+            this->connections.emplace(conn);
+            conn->readHeader();
+            this->handleAccept();
+        }
     );
 }
 
 void HttpServiceImpl::handleSSLAccept() {
     auto conn = std::make_shared<HttpsConnection>(shared_from_this(), io_context);
     acceptor.async_accept(
-            conn->socket,
-            [this, conn](const asio::error_code &e1) {
-                if (e1) {
-                    return;
-                }
-                conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &>>(conn->socket, ssl_context.value());
-                conn->stream->async_handshake(
-                        asio::ssl::stream_base::server,
-                        [conn, this](const asio::error_code &e2) {
-                            if (e2) {
-                                return;
-                            }
-                            this->connections.emplace(conn);
-                            conn->readHeader();
-                        }
-                );
-                this->handleSSLAccept();
+        conn->socket,
+        [this, conn](const asio::error_code &e1) {
+            if (e1) {
+                return;
             }
+            conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &> >(
+                conn->socket, ssl_context.value());
+            conn->stream->async_handshake(
+                asio::ssl::stream_base::server,
+                [conn, this](const asio::error_code &e2) {
+                    if (e2) {
+                        return;
+                    }
+                    this->connections.emplace(conn);
+                    conn->readHeader();
+                }
+            );
+            this->handleSSLAccept();
+        }
     );
 }

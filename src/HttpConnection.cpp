@@ -271,7 +271,7 @@ void HttpConnection::disponse() {
 }
 
 void HttpConnection::reset() {
-    conn_type = ConnType::NORMAL;
+    conn_type = ConnType::NONE;
 
     expect_length = 0;
     real_length = 0;
