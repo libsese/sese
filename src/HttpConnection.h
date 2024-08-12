@@ -15,7 +15,7 @@ class HttpServiceImpl;
 struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
-    Ptr getPtr() { return shared_from_this(); }
+    Ptr getPtr() { return shared_from_this(); } // NOLINT
 
     ConnType conn_type = ConnType::NONE;
 
@@ -91,7 +91,7 @@ struct HttpConnectionImpl final : HttpConnection {
     using Socket = asio::ip::tcp::socket;
     using SharedSocket = std::shared_ptr<Socket>;
 
-    Ptr getPtr() { return std::reinterpret_pointer_cast<HttpConnectionImpl>(shared_from_this()); }
+    Ptr getPtr() { return std::reinterpret_pointer_cast<HttpConnectionImpl>(shared_from_this()); } // NOLINT
 
     SharedSocket socket;
 
@@ -114,7 +114,7 @@ struct HttpsConnectionImpl final : HttpConnection {
     using Stream = asio::ssl::stream<asio::ip::tcp::socket>;
     using SharedStream = std::shared_ptr<Stream>;
 
-    Ptr getPtr() { return std::reinterpret_pointer_cast<HttpsConnectionImpl>(shared_from_this()); }
+    Ptr getPtr() { return std::reinterpret_pointer_cast<HttpsConnectionImpl>(shared_from_this()); } // NOLINT
 
     SharedStream stream;
 
