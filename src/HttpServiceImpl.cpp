@@ -44,6 +44,12 @@ bool HttpServiceImpl::startup() {
         ssl_context = sese::internal::net::convert(std::move(HttpService::ssl_context));
     }
 
+    if (ssl_context) {
+        auto ctx = ssl_context->native_handle();
+        // SSL_CTX_set_alpn_protos(ctx, alpn_protos, sizeof(alpn_protos));
+        SSL_CTX_set_alpn_select_cb(ctx, alpnCallback, nullptr);
+    }
+
     error = acceptor.open(
         addr.is_v4()
             ? asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v4()
@@ -113,8 +119,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) const {
             conn->conn_type = ConnType::CONTROLLER;
         }
         resp.set("content-length", std::to_string(resp.getBody().getLength()));
-    }
-    else if (conn->conn_type == ConnType::FILE_DOWNLOAD) {
+    } else if (conn->conn_type == ConnType::FILE_DOWNLOAD) {
         if (!exists(filename) ||
             !is_regular_file(filename) ||
             is_directory(filename)) {
@@ -208,38 +213,82 @@ uni_handle:
 }
 
 void HttpServiceImpl::handleAccept() {
-    auto conn = std::make_shared<HttpConnection>(shared_from_this(), io_context);
+    auto accept_socket = std::make_shared<HttpConnectionImpl::Socket>(io_context);
     acceptor.async_accept(
-        conn->socket,
-        [this, conn](const asio::error_code &e) {
-            if (e) return;
-            this->connections.emplace(conn);
-            conn->readHeader();
+        *accept_socket,
+        [this, accept_socket](const asio::error_code &e) {
+            if (e.value() == 0) {
+                auto conn = std::make_shared<HttpConnectionImpl>(
+                    shared_from_this(),
+                    io_context,
+                    accept_socket
+                );
+                this->connections.emplace(conn);
+                conn->readHeader();
+            }
             this->handleAccept();
         }
     );
 }
 
+#include <sese/Log.h>
+
+int HttpServiceImpl::alpnCallback(
+    SSL *ssl,
+    const uint8_t **out,
+    uint8_t *out_length,
+    const uint8_t *in,
+    uint32_t in_length,
+    void *data) {
+    if (SSL_select_next_proto(
+            const_cast<unsigned char **>(out),
+            out_length,
+            alpn_protos,
+            sizeof(alpn_protos),
+            in,
+            in_length
+        ) != OPENSSL_NPN_NEGOTIATED) {
+        *out = nullptr;
+        *out_length = 0;
+        return SSL_TLSEXT_ERR_NOACK;
+    }
+    return SSL_TLSEXT_ERR_OK;
+}
+
+
 void HttpServiceImpl::handleSSLAccept() {
-    auto conn = std::make_shared<HttpsConnection>(shared_from_this(), io_context);
+    auto accept_socket = std::make_shared<HttpConnectionImpl::Socket>(io_context);
     acceptor.async_accept(
-        conn->socket,
-        [this, conn](const asio::error_code &e1) {
-            if (e1) {
-                return;
+        *accept_socket,
+        [this, accept_socket](const asio::error_code &e) {
+            if (e.value() == 0) {
+                auto accept_stream = std::make_shared<HttpsConnectionImpl::Stream>(
+                    std::move(*accept_socket), ssl_context.value());
+                accept_stream->async_handshake(
+                    asio::ssl::stream_base::server,
+                    [this, accept_stream](const asio::error_code &e) {
+                        if (e.value() == 0) {
+                            const uint8_t *data = nullptr;
+                            uint32_t dataLength;
+                            SSL_get0_alpn_selected(accept_stream->native_handle(), &data, &dataLength);
+                            auto proto = std::string_view(reinterpret_cast<const char *>(data), dataLength);
+                            if (proto == "http/1.1") {
+                                SESE_INFO("selected http/1.1");
+                                auto conn = std::make_shared<HttpsConnectionImpl>(
+                                    shared_from_this(),
+                                    io_context,
+                                    accept_stream
+                                );
+                                this->connections.emplace(conn);
+                                conn->readHeader();
+                            } else if (proto == "h2") {
+                                SESE_INFO("selected http/2");
+                            } else {
+                                SESE_WARN("unknown proto");
+                            }
+                        }
+                    });
             }
-            conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &> >(
-                conn->socket, ssl_context.value());
-            conn->stream->async_handshake(
-                asio::ssl::stream_base::server,
-                [conn, this](const asio::error_code &e2) {
-                    if (e2) {
-                        return;
-                    }
-                    this->connections.emplace(conn);
-                    conn->readHeader();
-                }
-            );
             this->handleSSLAccept();
         }
     );

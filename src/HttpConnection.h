@@ -11,7 +11,7 @@
 
 class HttpServiceImpl;
 
-/// Http 普通连接实现
+/// Http 连接基础实现
 struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
@@ -25,7 +25,6 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
 
     sese::net::http::Request request;
     sese::net::http::Response response;
-    asio::ip::tcp::socket socket;
 
     bool keepalive = false;
     asio::system_timer timer;
@@ -64,18 +63,18 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     /// @param length 缓存大小
     /// @param callback 完成回调函数
     virtual void writeBlock(const char *buffer, size_t length,
-                            const std::function<void(const asio::error_code &code)> &callback);
+                            const std::function<void(const asio::error_code &code)> &callback) = 0;
 
     /// 读取函数，此函数会调用对应的 asio::async_read_some
     /// @param buffer asio::buffer
     /// @param callback 回调函数
     virtual void asyncReadSome(const asio::mutable_buffers_1 &buffer,
                                const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
-                               callback);
+                               callback) = 0;
 
     /// 当一个请求处理完成后被调用，用于判断是否断开当前连接
     /// @note 此函数必须被实现
-    virtual void checkKeepalive();
+    virtual void checkKeepalive() = 0;
 
     /// 连接被彻底释放前调用，用于做一些成员变量的收尾工作
     /// @note 此函数是可选实现的
@@ -86,20 +85,49 @@ struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
     void writeRanges();
 };
 
-/// Http SSL 连接实现
-struct HttpsConnection final : HttpConnection {
-    using Ptr = std::shared_ptr<HttpsConnection>;
+/// Http 普通连接实现
+struct HttpConnectionImpl final : HttpConnection {
+    using Ptr = std::shared_ptr<HttpConnectionImpl>;
+    using Socket = asio::ip::tcp::socket;
+    using SharedSocket = std::shared_ptr<Socket>;
 
-    HttpsConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
+    Ptr getPtr() { return std::reinterpret_pointer_cast<HttpConnectionImpl>(shared_from_this()); }
 
-    ~HttpsConnection() override;
+    SharedSocket socket;
 
-    std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &> > stream;
+    HttpConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
+                       SharedSocket socket);
 
     void writeBlock(const char *buffer, size_t length,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
-    void asyncReadSome(const asio::mutable_buffers_1 &buffer, const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &callback) override;
+    void asyncReadSome(const asio::mutable_buffers_1 &buffer,
+                       const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
+                       callback) override;
+
+    void checkKeepalive() override;
+};
+
+/// Http SSL 连接实现
+struct HttpsConnectionImpl final : HttpConnection {
+    using Ptr = std::shared_ptr<HttpsConnectionImpl>;
+    using Stream = asio::ssl::stream<asio::ip::tcp::socket>;
+    using SharedStream = std::shared_ptr<Stream>;
+
+    Ptr getPtr() { return std::reinterpret_pointer_cast<HttpsConnectionImpl>(shared_from_this()); }
+
+    SharedStream stream;
+
+    HttpsConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, SharedStream stream);
+
+    ~HttpsConnectionImpl() override;
+
+    void writeBlock(const char *buffer, size_t length,
+                    const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void asyncReadSome(const asio::mutable_buffers_1 &buffer,
+                       const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
+                       callback) override;
 
     void checkKeepalive() override;
 };

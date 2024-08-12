@@ -3,8 +3,7 @@
 #include <sese/net/http/HttpUtil.h>
 
 HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
-    : socket(context),
-      timer(context, asio::chrono::seconds{service->getKeepalive()}),
+    : timer(context, asio::chrono::seconds{service->getKeepalive()}),
       expect_length(0),
       real_length(0),
       service(service) {
@@ -159,25 +158,6 @@ void HttpConnection::writeBody() {
     });
 }
 
-void HttpConnection::writeBlock(const char *buffer, size_t length,
-                                const std::function<void(const asio::error_code &code)> &callback) {
-    asio::async_write(this->socket, asio::buffer(buffer, length),
-                      [conn = shared_from_this(), buffer, length, callback](
-                  const asio::error_code &error, std::size_t wrote) {
-                          if (error || wrote == length) {
-                              callback(error);
-                          } else {
-                              conn->writeBlock(buffer + wrote, length - wrote, callback);
-                          }
-                      });
-}
-
-void HttpConnection::asyncReadSome(const asio::mutable_buffers_1 &buffer,
-                                   const std::function<void(const asio::error_code &error,
-                                                            std::size_t bytes_transferred)> &callback) {
-    this->socket.async_read_some(buffer, callback);
-}
-
 void HttpConnection::writeSingleRange() {
     auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
     this->real_length += l;
@@ -286,20 +266,4 @@ void HttpConnection::reset() {
     response.clear();
     response.getBody().freeCapacity();
     if (auto cookies = response.getCookies()) cookies->clear();
-}
-
-void HttpConnection::checkKeepalive() {
-    if (this->keepalive) {
-        this->reset();
-        this->timer.async_wait([conn = shared_from_this()](const asio::error_code &error) {
-            if (error.value() == asio::error::operation_aborted) {
-            } else {
-                conn->socket.cancel();
-                conn->disponse();
-            }
-        });
-        this->readHeader();
-    } else {
-        this->disponse();
-    }
 }
