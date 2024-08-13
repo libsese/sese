@@ -283,6 +283,12 @@ void HttpServiceImpl::handleSSLAccept() {
                                 conn->readHeader();
                             } else if (proto == "h2") {
                                 SESE_INFO("selected http/2");
+                                auto conn = std::make_shared<HttpsConnectionExImpl>(
+                                    shared_from_this(),
+                                    io_context,
+                                    accept_stream
+                                    );
+                                conn->readMagic();
                             } else {
                                 SESE_WARN("unknown proto");
                             }

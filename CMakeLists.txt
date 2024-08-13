@@ -5,6 +5,7 @@ include(sese/cmake/MiniSeseTools.cmake)
 project(sese-http)
 set(CMAKE_CXX_STANDARD 20)
 set(SESE_DB_USE_SQLITE OFF)
+set(SESE_BUILD_TEST ON)
 
 add_subdirectory(sese)
 
