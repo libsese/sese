@@ -31,7 +31,7 @@ var _http2_frame_info_8h =
     [ "GOAWAY_REFUSED_STREAM", "_http2_frame_info_8h.html#a40b2e7b6393076fa7cd672ca055b8632", null ],
     [ "GOAWAY_SETTINGS_TIMEOUT", "_http2_frame_info_8h.html#a0e3c4b66773ad2fdceba5ab625538d2f", null ],
     [ "GOAWAY_STREAM_CLOSED", "_http2_frame_info_8h.html#a38c5f575045f38ea6b257692bbbd0ab8", null ],
-    [ "MAGIC_STRING", "_http2_frame_info_8h.html#a2e6794b3a7e441b889b9f13780b22bfa", null ],
+    [ "MAGIC_STRING", "_http2_frame_info_8h.html#a10acf32dd7ef9e0e49b4d8f1b820cb97", null ],
     [ "SETTINGS_ENABLE_PUSH", "_http2_frame_info_8h.html#a45601d0deaf19137ab027549da60aae0", null ],
     [ "SETTINGS_FLAGS_ACK", "_http2_frame_info_8h.html#abb539430c3a3eea985636bdc34e39d1d", null ],
     [ "SETTINGS_HEADER_TABLE_SIZE", "_http2_frame_info_8h.html#a1c56a87a40a108085cb6d49dd84cd962", null ],

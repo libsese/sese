@@ -7,7 +7,7 @@ var searchData=
   ['m_5fright_4',['m_right',['../classsese_1_1net_1_1http_1_1huffman__node__t.html#a0f5fd936957e14e4e7f169b5260740b9',1,'sese::net::http::huffman_node_t']]],
   ['m_5froot_5',['m_root',['../classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de',1,'sese::net::http::huffman_tree_t']]],
   ['mac_6',['mac',['../structsese_1_1system_1_1_network_interface.html#a906f90e74ec018cb5e6f662b43c5e204',1,'sese::system::NetworkInterface']]],
-  ['magic_5fstring_7',['MAGIC_STRING',['../namespacesese_1_1net_1_1http.html#a2e6794b3a7e441b889b9f13780b22bfa',1,'sese::net::http']]],
+  ['magic_5fstring_7',['MAGIC_STRING',['../namespacesese_1_1net_1_1http.html#a10acf32dd7ef9e0e49b4d8f1b820cb97',1,'sese::net::http']]],
   ['main_5fid_8',['main_id',['../classsese_1_1_thread.html#a5e18e8b2e4914c6e4e7841f4f736d66e',1,'sese::Thread']]],
   ['major_5f_9',['major_',['../classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c',1,'sese::Version']]],
   ['map_10',['map',['../classsese_1_1net_1_1http_1_1_cookie_map.html#ac220ac694367db75ace492f440b907bc',1,'sese::net::http::CookieMap::map'],['../classsese_1_1_value_1_1_dict.html#a73203cabb1cfe10ef8a23483fa8edc46',1,'sese::Value::Dict::map']]],

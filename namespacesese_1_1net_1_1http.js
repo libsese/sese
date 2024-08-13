@@ -73,7 +73,7 @@ var namespacesese_1_1net_1_1http =
     [ "GOAWAY_SETTINGS_TIMEOUT", "namespacesese_1_1net_1_1http.html#a0e3c4b66773ad2fdceba5ab625538d2f", null ],
     [ "GOAWAY_STREAM_CLOSED", "namespacesese_1_1net_1_1http.html#a38c5f575045f38ea6b257692bbbd0ab8", null ],
     [ "HUFFMAN_TABLE", "namespacesese_1_1net_1_1http.html#a01ac945648e80cdf9e3e17bcf28677d0", null ],
-    [ "MAGIC_STRING", "namespacesese_1_1net_1_1http.html#a2e6794b3a7e441b889b9f13780b22bfa", null ],
+    [ "MAGIC_STRING", "namespacesese_1_1net_1_1http.html#a10acf32dd7ef9e0e49b4d8f1b820cb97", null ],
     [ "PREDEFINED_HEADERS", "namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d", null ],
     [ "SETTINGS_ENABLE_PUSH", "namespacesese_1_1net_1_1http.html#a45601d0deaf19137ab027549da60aae0", null ],
     [ "SETTINGS_FLAGS_ACK", "namespacesese_1_1net_1_1http.html#abb539430c3a3eea985636bdc34e39d1d", null ],
