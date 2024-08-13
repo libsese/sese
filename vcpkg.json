@@ -1,8 +1,9 @@
 {
+  "builtin-baseline": "1de2026f28ead93ff1773e6e680387643e914ea1",
   "dependencies": [
     {
       "name": "asio",
-      "features": ["openssl"]
+      "features": [ "openssl" ]
     },
     "zlib"
   ]
