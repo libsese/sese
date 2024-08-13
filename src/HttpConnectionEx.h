@@ -25,20 +25,18 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     std::weak_ptr<HttpServiceImpl> service;
 
-    /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
-    /// @note 此函数必须实现
+    /// 写入块函数，此函数会确保写入完指定大小的缓存，出现意外则直接回调
     /// @param buffer 缓存指针
     /// @param length 缓存大小
     /// @param callback 完成回调函数
     virtual void writeBlock(const char *buffer, size_t length,
                             const std::function<void(const asio::error_code &code)> &callback) = 0;
 
-    /// 读取函数，此函数会调用对应的 asio::async_read_some
-    /// @param buffer asio::buffer
-    /// @param callback 回调函数
-    virtual void asyncReadSome(const asio::mutable_buffers_1 &buffer,
-                               const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
-                               callback) = 0;
+    /// 读取块函数，此函数会确保读取完指定大小的缓存，出现意外则直接回调
+    /// @param buffer 缓存指针
+    /// @param length 缓存大小
+    /// @param callback 完成回调函数
+    virtual void readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) = 0;
 };
 
 struct HttpConnectionExImpl final : HttpConnectionEx {
@@ -56,9 +54,7 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
     void writeBlock(const char *buffer, size_t length,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
-    void asyncReadSome(const asio::mutable_buffers_1 &buffer,
-                       const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
-                       callback) override;
+    void readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) override;
 };
 
 struct HttpsConnectionExImpl final : HttpConnectionEx {
@@ -75,7 +71,5 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
     void writeBlock(const char *buffer, size_t length,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
-    void asyncReadSome(const asio::mutable_buffers_1 &buffer,
-                       const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
-                       callback) override;
+    void readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) override;
 };
