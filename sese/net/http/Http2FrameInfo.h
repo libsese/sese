@@ -54,7 +54,7 @@ constexpr static uint16_t SETTINGS_MAX_HEADER_LIST_SIZE = 0x6;
 
 constexpr static uint8_t SETTINGS_FLAGS_ACK = 0x1;
 
-constexpr static std::string_view MAGIC_STRING{"PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n"};
+constexpr static auto MAGIC_STRING = "PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n";
 
 /// HTTP 2 帧信息
 struct Http2FrameInfo {
