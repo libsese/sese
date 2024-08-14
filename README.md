@@ -1,5 +1,19 @@
 # sese-http
 
+## test command
+
+http/1.1 to h2
+
+```shell
+curl --http2 -k https://127.0.0.1:8080/haha --noproxy "*" -v
+```
+
+without upgrade
+
+```shell
+curl --http2-prior-knowledge -k https://127.0.0.1:8080/haha --noproxy "*" -v
+```
+
 ## todos
 
 - servlet

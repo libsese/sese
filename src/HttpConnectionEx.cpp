@@ -172,7 +172,6 @@ void HttpConnectionEx::handleHeadersFrame() {
     stream->temp_buffer.write(temp_buffer, frame.length);
 
     if (frame.flags & FRAME_FLAG_END_HEADERS) {
-        // todo failed to decode the uri
         HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table, stream->req);
         stream->temp_buffer.freeCapacity();
         requestFormHttp2(stream->req);
