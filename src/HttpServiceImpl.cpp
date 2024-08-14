@@ -83,7 +83,7 @@ int HttpServiceImpl::getLastError() {
     return error.value();
 }
 
-void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) const {
+void HttpServiceImpl::handleRequest(const Handleable::Ptr &conn) const {
     auto &&req = conn->request;
     auto &&resp = conn->response;
     std::filesystem::path filename;

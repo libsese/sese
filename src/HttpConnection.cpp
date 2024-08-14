@@ -3,7 +3,7 @@
 #include <sese/net/http/HttpUtil.h>
 
 HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
-    : timer(context, asio::chrono::seconds{service->getKeepalive()}),
+    : Handleable(), timer(context, asio::chrono::seconds{service->getKeepalive()}),
       expect_length(0),
       real_length(0),
       service(service) {

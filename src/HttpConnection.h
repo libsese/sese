@@ -7,39 +7,27 @@
 #include <sese/net/http/Range.h>
 #include <sese/io/File.h>
 
-#include "ConnType.h"
+#include "Handleable.h"
 
 class HttpServiceImpl;
 
 /// Http 连接基础实现
-struct HttpConnection : std::enable_shared_from_this<HttpConnection> {
+struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
     Ptr getPtr() { return shared_from_this(); } // NOLINT
-
-    ConnType conn_type = ConnType::NONE;
 
     HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context);
 
     virtual ~HttpConnection() = default;
 
-    sese::net::http::Request request;
-    sese::net::http::Response response;
-
-    bool keepalive = false;
     asio::system_timer timer;
 
     void reset();
 
-    std::string content_type = "application/x-";
-    size_t filesize = 0;
-    char send_buffer[MTU_VALUE]{};
     size_t expect_length;
     size_t real_length;
-    sese::io::File::Ptr file;
-    std::vector<sese::net::http::Range> ranges;
-    std::vector<sese::net::http::Range>::iterator range_iterator = ranges.begin();
-
+    char send_buffer[MTU_VALUE]{};
     bool is0x0a = false;
     sese::iocp::IOBuf io_buffer;
     std::unique_ptr<sese::iocp::IOBufNode> node;

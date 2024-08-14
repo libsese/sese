@@ -1,42 +1,16 @@
 #include "HttpConnectionEx.h"
+#include "HttpServiceImpl.h"
 
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/util/Endian.h>
 #include <sese/net/http/HPackUtil.h>
+#include <sese/net/http/HttpConverter.h>
 #include <sese/Util.h>
-
 
 HttpConnectionEx::HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context)
     : timer(io_context),
       service(service) {
 }
-
-void HttpConnectionEx::requestFormHttp2(sese::net::http::Request &req) {
-    using sese::strcmpDoNotCase;
-    req.setVersion(sese::net::http::HttpVersion::VERSION_2);
-    req.setUrl(req.get(":path", "/"));
-    auto method = req.get(":method", "get");
-    if (strcmpDoNotCase(method.c_str(), "get")) {
-        req.setType(sese::net::http::RequestType::GET);
-    } else if (strcmpDoNotCase(method.c_str(), "options")) {
-        req.setType(sese::net::http::RequestType::OPTIONS);
-    } else if (strcmpDoNotCase(method.c_str(), "post")) {
-        req.setType(sese::net::http::RequestType::POST);
-    } else if (strcmpDoNotCase(method.c_str(), "head")) {
-        req.setType(sese::net::http::RequestType::HEAD);
-    } else if (strcmpDoNotCase(method.c_str(), "put")) {
-        req.setType(sese::net::http::RequestType::PUT);
-    } else if (strcmpDoNotCase(method.c_str(), "delete")) {
-        req.setType(sese::net::http::RequestType::DELETE);
-    } else if (strcmpDoNotCase(method.c_str(), "trace")) {
-        req.setType(sese::net::http::RequestType::TRACE);
-    } else if (strcmpDoNotCase(method.c_str(), "connect")) {
-        req.setType(sese::net::http::RequestType::CONNECT);
-    } else {
-        req.setType(sese::net::http::RequestType::ANOTHER);
-    }
-}
-
 
 void HttpConnectionEx::readMagic() {
     readBlock(temp_buffer, 24, [this](const asio::error_code &ec) {
@@ -89,8 +63,10 @@ void HttpConnectionEx::handleFrameHeader() {
             handleHeadersFrame();
             break;
         }
-        case FRAME_TYPE_DATA:
+        case FRAME_TYPE_DATA: {
+            handleDataFrame();
             break;
+        }
         default:
             break;
     }
@@ -163,8 +139,8 @@ void HttpConnectionEx::handleHeadersFrame() {
     if (iterator == streams.end()) {
         stream = std::make_shared<HttpStream>();
         stream->id = frame.ident;
-        stream->req.setVersion(HttpVersion::VERSION_2);
-        stream->resp.setVersion(HttpVersion::VERSION_2);
+        stream->request.setVersion(HttpVersion::VERSION_2);
+        stream->response.setVersion(HttpVersion::VERSION_2);
         streams[frame.ident] = stream;
     } else {
         stream = iterator->second;
@@ -172,8 +148,32 @@ void HttpConnectionEx::handleHeadersFrame() {
     stream->temp_buffer.write(temp_buffer, frame.length);
 
     if (frame.flags & FRAME_FLAG_END_HEADERS) {
-        HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table, stream->req);
+        HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
+                          stream->request);
         stream->temp_buffer.freeCapacity();
-        requestFormHttp2(stream->req);
+        HttpConverter::convertFromHttp2(&stream->request);
+
+        if (frame.flags & FRAME_FLAG_END_STREAM) {
+            handleRequest(stream);
+        }
     }
+}
+
+void HttpConnectionEx::handleDataFrame() {
+    using namespace sese::net::http;
+    auto iterator = streams.find(frame.ident);
+    auto stream = iterator->second;
+    stream->request.getBody().write(temp_buffer, frame.length);
+    stream->temp_buffer.freeCapacity();
+
+    if (frame.flags & FRAME_FLAG_END_STREAM) {
+        handleRequest(stream);
+    }
+}
+
+void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
+    auto serv = service.lock();
+    assert(serv);
+    serv->handleRequest(stream);
+    // todo do response
 }

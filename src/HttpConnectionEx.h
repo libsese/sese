@@ -11,27 +11,23 @@
 #include <sese/net/http/Http2FrameInfo.h>
 #include <sese/io/ByteBuffer.h>
 
-#include "ConnType.h"
+#include "Handleable.h"
 
 class HttpServiceImpl;
 
-struct HttpStream {
+struct HttpStream : Handleable {
     using Ptr = std::shared_ptr<HttpStream>;
 
     uint32_t id;
     uint32_t window_size = 65535;
 
     sese::io::ByteBuilder temp_buffer;
-    sese::net::http::Request req;
-    sese::net::http::Response resp;
 };
 
 struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     using Ptr = std::shared_ptr<HttpConnectionEx>;
 
     Ptr getPtr() { return shared_from_this(); } // NOLINT
-
-    ConnType conn_type = ConnType::NONE;
 
     HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context);
 
@@ -69,8 +65,6 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     virtual void readBlock(char *buffer, size_t length,
                            const std::function<void(const asio::error_code &code)> &callback) = 0;
 
-    static void requestFormHttp2(sese::net::http::Request &req);
-
     void readMagic();
 
     void readFrameHeader();
@@ -82,6 +76,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     void handleWindowUpdate();
 
     void handleHeadersFrame();
+
+    void handleDataFrame();
+
+    void handleRequest(const HttpStream::Ptr &stream);
 };
 
 struct HttpConnectionExImpl final : HttpConnectionEx {
