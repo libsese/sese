@@ -101,7 +101,7 @@ var NAVTREEINDEX =
 "classsese_1_1xml_1_1_xml_util.html#ac4dc3c747ffb7c36e36bc4d7dc6ebe4d",
 "classsstr_1_1_s_string_view.html#af34347e4255ce6e56e2ce4ed8cab2406",
 "globals_c.html",
-"namespacesese_1_1res.html",
+"namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3",
 "structsese_1_1_long_long_splitter.html",
 "structsese_1_1iocp_1_1_i_o_buf_node.html",
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1"

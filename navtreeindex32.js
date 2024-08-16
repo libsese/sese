@@ -1,5 +1,6 @@
 var NAVTREEINDEX32 =
 {
+"structsese_1_1iocp_1_1_i_o_buf_node.html":[6,0,0,8,2],
 "structsese_1_1iocp_1_1_i_o_buf_node.html":[7,0,0,8,2],
 "structsese_1_1iocp_1_1_i_o_buf_node.html#a0541eaf32688f946c467ba2d1ffe2de0":[6,0,0,8,2,0],
 "structsese_1_1iocp_1_1_i_o_buf_node.html#a0541eaf32688f946c467ba2d1ffe2de0":[7,0,0,8,2,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX32 =
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html":[6,0,0,17,0,2],
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html":[7,0,0,17,0,2],
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01":[6,0,0,17,0,2,1],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01":[7,0,0,17,0,2,1],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1":[6,0,0,17,0,2,2]
+"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01":[7,0,0,17,0,2,1]
 };

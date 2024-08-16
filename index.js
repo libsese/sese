@@ -8,5 +8,6 @@ var index =
     ] ],
     [ "测试", "index.html#autotoc_md6", null ],
     [ "文档", "index.html#autotoc_md7", null ],
-    [ "贡献者", "index.html#autotoc_md8", null ]
+    [ "贡献者", "index.html#autotoc_md8", null ],
+    [ "许可证", "index.html#autotoc_md9", null ]
 ];
