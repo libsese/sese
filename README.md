@@ -279,3 +279,7 @@ Document content is automatically generated from code comments, and the docs dir
 ## Contributors
 
 ![Contributors](https://contrib.rocks/image?repo=libsese/sese)
+
+## License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flibsese%2Fsese.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Flibsese%2Fsese?ref=badge_large&issueType=license)

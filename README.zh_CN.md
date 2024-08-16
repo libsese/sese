@@ -269,3 +269,7 @@ https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.g
 ## 贡献者
 
 ![Contributors](https://contrib.rocks/image?repo=libsese/sese)
+
+## 许可证
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flibsese%2Fsese.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Flibsese%2Fsese?ref=badge_large&issueType=license)
