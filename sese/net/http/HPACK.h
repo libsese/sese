@@ -16,7 +16,7 @@
 
 namespace sese::net::http {
 typedef std::pair<const std::string, const std::string> header_t;
-typedef std::vector<uint8_t> bits_t;
+typedef std::vector<bool> bits_t;
 
 inline const std::array<header_t, 62> PREDEFINED_HEADERS = {
         {header_t("INVALIDINDEX", "INVALIDINDEX"), header_t(":authority", ""), header_t(":method", "GET"),

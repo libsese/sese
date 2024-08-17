@@ -24,3 +24,7 @@ void sese::net::http::HttpConverter::convertFromHttp2(Request *request) {
         request->setType(RequestType::ANOTHER);
     }
 }
+
+void sese::net::http::HttpConverter::convert2Http2(Response *response) {
+    response->set(":status", std::to_string(response->getCode()));
+}
