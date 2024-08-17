@@ -22,6 +22,9 @@ struct HttpStream : Handleable {
     uint32_t window_size = 65535;
 
     sese::io::ByteBuilder temp_buffer;
+
+    sese::net::http::Http2FrameInfo frame{};
+    char frame_buffer[16384];
 };
 
 struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
@@ -40,7 +43,7 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     sese::net::http::Http2FrameInfo frame{};
     // 临时缓存，用于读取初始连接魔数、帧头，取最大帧大小
-    char temp_buffer[1024]{};
+    char temp_buffer[16384]{};
     uint32_t header_table_size = 4096;
     uint32_t enable_push = 0;
     uint32_t max_concurrent_stream = 0;
@@ -73,6 +76,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     uint8_t handleSettingsFrame();
 
+    void writeSettingsFrame();
+
+    void writeAckFrame();
+
     void handleWindowUpdate();
 
     void handleHeadersFrame();
@@ -80,6 +87,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     void handleDataFrame();
 
     void handleRequest(const HttpStream::Ptr &stream);
+
+    void buildFrameBuffer(const HttpStream::Ptr &stream);
+
+    void writeHeadersFrame(const HttpStream::Ptr &stream);
 };
 
 struct HttpConnectionExImpl final : HttpConnectionEx {

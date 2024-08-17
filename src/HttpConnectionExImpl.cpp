@@ -1,4 +1,4 @@
-#include <utility>
+#include <sese/Log.h>
 
 #include "HttpConnectionEx.h"
 
@@ -21,14 +21,19 @@ void HttpConnectionExImpl::writeBlock(const char *buffer, size_t length,
                 });
 }
 
-void HttpConnectionExImpl::readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
-    async_read(*this->socket, asio::buffer(buffer, length), [conn = shared_from_this(), buffer, length, callback](const asio::error_code &error, std::size_t read) {
-        if (error || read == length) {
-            callback(error);
-        } else {
-            conn->readBlock(buffer + read, length - read, callback);
-        }
-    });
+void HttpConnectionExImpl::readBlock(char *buffer, size_t length,
+                                     const std::function<void(const asio::error_code &code)> &callback) {
+    async_read(
+        *this->socket,
+        asio::buffer(buffer, length),
+        asio::transfer_at_least(1),
+        [conn = shared_from_this(), buffer, length, callback](const asio::error_code &error, std::size_t read) {
+            if (error || read == length) {
+                callback(error);
+            } else {
+                conn->readBlock(buffer + read, length - read, callback);
+            }
+        });
 }
 
 HttpsConnectionExImpl::HttpsConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
@@ -50,13 +55,15 @@ void HttpsConnectionExImpl::writeBlock(const char *buffer, size_t length,
                                    });
 }
 
-void HttpsConnectionExImpl::readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
+void HttpsConnectionExImpl::readBlock(char *buffer, size_t length,
+                                      const std::function<void(const asio::error_code &code)> &callback) {
     this->stream->async_read_some(asio::buffer(buffer, length),
-        [conn = getPtr(), buffer, length, callback](const asio::error_code &error, size_t read) {
-            if (error || read == length) {
-                callback(error);
-            } else {
-                conn->readBlock(buffer + read, length - read, callback);
-            }
-        });
+                                  [conn = getPtr(), buffer, length, callback](
+                              const asio::error_code &error, size_t read) {
+                                      if (error || read == length) {
+                                          callback(error);
+                                      } else {
+                                          conn->readBlock(buffer + read, length - read, callback);
+                                      }
+                                  });
 }

@@ -218,13 +218,14 @@ void HttpServiceImpl::handleAccept() {
         *accept_socket,
         [this, accept_socket](const asio::error_code &e) {
             if (e.value() == 0) {
-                auto conn = std::make_shared<HttpConnectionImpl>(
+                auto conn = std::make_shared<HttpConnectionExImpl>(
                     shared_from_this(),
                     io_context,
                     accept_socket
                 );
-                this->connections.emplace(conn);
-                conn->readHeader();
+                // this->connections.emplace(conn);
+                // conn->readHeader();
+                conn->readMagic();
             }
             this->handleAccept();
         }

@@ -27,7 +27,7 @@ target_link_libraries(sese-http PRIVATE asio::asio Core)
 
 add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
 
-add_executable(NewHttp1Impl
-        src/test/NewHttp1Impl.cpp
+add_executable(NewHttpImpl
+        src/test/NewHttpImpl.cpp
 )
-target_link_libraries(NewHttp1Impl PRIVATE asio::asio Core sese-http)
+target_link_libraries(NewHttpImpl PRIVATE asio::asio Core sese-http)

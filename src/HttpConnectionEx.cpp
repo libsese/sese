@@ -6,6 +6,7 @@
 #include <sese/net/http/HPackUtil.h>
 #include <sese/net/http/HttpConverter.h>
 #include <sese/Util.h>
+#include <sese/Log.h>
 
 HttpConnectionEx::HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context)
     : timer(io_context),
@@ -52,10 +53,14 @@ void HttpConnectionEx::handleFrameHeader() {
     switch (frame.type) {
         case FRAME_TYPE_SETTINGS: {
             handleSettingsFrame();
+            // writeSettingsFrame();
+            writeAckFrame();
             break;
         }
         case FRAME_TYPE_WINDOW_UPDATE: {
             handleWindowUpdate();
+            // readFrameHeader();
+            writeAckFrame();
             break;
         }
         case FRAME_TYPE_HEADERS:
@@ -63,17 +68,17 @@ void HttpConnectionEx::handleFrameHeader() {
             handleHeadersFrame();
             break;
         }
-        case FRAME_TYPE_DATA: {
-            handleDataFrame();
-            break;
-        }
+        // case FRAME_TYPE_DATA: {
+        //     handleDataFrame();
+        //     break;
+        // }
         default:
             break;
     }
-    readFrameHeader();
 }
 
 uint8_t HttpConnectionEx::handleSettingsFrame() {
+    SESE_DEBUG("Settings");
     using namespace sese::net::http;
     char buffer[6];
     auto ident = reinterpret_cast<uint16_t *>(&buffer[0]);
@@ -124,7 +129,54 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
     return 0;
 }
 
+void HttpConnectionEx::writeSettingsFrame() {
+    SESE_DEBUG("Write Settings");
+    using namespace sese::net::http;
+    std::vector<std::pair<uint16_t, uint32_t> > values = {
+        {SETTINGS_INITIAL_WINDOW_SIZE, 1048576},
+        {SETTINGS_MAX_FRAME_SIZE, sizeof(temp_buffer)},
+        {SETTINGS_HEADER_TABLE_SIZE, 8192}
+    };
+
+    frame.length = values.size() * 6;
+    frame.type = FRAME_TYPE_SETTINGS;
+    frame.flags = 0;
+    frame.ident = 0;
+    buildFrameBuffer(nullptr);
+
+    int pos = 9;
+    for (auto [key, value]: values) {
+        key = ToBigEndian16(key);
+        value = ToBigEndian32(value);
+        memcpy(temp_buffer + pos, &key, sizeof(key));
+        pos += sizeof(key);
+        memcpy(temp_buffer + pos, &value, sizeof(value));
+        pos += sizeof(value);
+    }
+
+    writeBlock(temp_buffer, pos, [conn = getPtr()](const asio::error_code &ec) {
+        if (ec) {
+            return;
+        }
+        conn->readFrameHeader();
+    });
+}
+
+void HttpConnectionEx::writeAckFrame() {
+    SESE_DEBUG("Write ACK");
+    uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
+    memcpy(temp_buffer, buffer, sizeof(buffer));
+    writeBlock(temp_buffer, sizeof(buffer), [conn = getPtr()](const asio::error_code &ec) {
+        if (ec) {
+            return;
+        }
+        conn->readFrameHeader();
+    });
+}
+
+
 void HttpConnectionEx::handleWindowUpdate() {
+    SESE_DEBUG("WindowUpdate");
     auto data = reinterpret_cast<uint32_t *>(temp_buffer);
     if (frame.ident == 0) {
         window_size = FromBigEndian32(*data);
@@ -160,6 +212,7 @@ void HttpConnectionEx::handleHeadersFrame() {
 }
 
 void HttpConnectionEx::handleDataFrame() {
+    SESE_INFO("Headers Frame");
     using namespace sese::net::http;
     auto iterator = streams.find(frame.ident);
     auto stream = iterator->second;
@@ -175,5 +228,49 @@ void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
     auto serv = service.lock();
     assert(serv);
     serv->handleRequest(stream);
-    // todo do response
+    writeHeadersFrame(stream);
+}
+
+void HttpConnectionEx::buildFrameBuffer(const HttpStream::Ptr &stream) {
+    char *buffer = this->temp_buffer;
+    auto *frame = &this->frame;
+    if (stream) {
+        buffer = stream->frame_buffer;
+        frame = &stream->frame;
+    }
+
+    frame->length = ToBigEndian32(frame->length);
+    frame->ident = ToBigEndian32(frame->ident);
+
+    memcpy(buffer + 0, reinterpret_cast<const char *>(&frame->length) + 1, 3);
+    memcpy(buffer + 3, &frame->type, 1);
+    memcpy(buffer + 4, &frame->flags, 1);
+    memcpy(buffer + 5, &frame->ident, 4);
+}
+
+void HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream) {
+    sese::net::http::Header header;
+    sese::net::http::HttpConverter::convert2Http2(&stream->response);
+    auto len = sese::net::http::HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
+    stream->frame.type = sese::net::http::FRAME_TYPE_HEADERS;
+    stream->frame.ident = stream->id;
+
+    if (len <= sizeof(stream->temp_buffer) - 9) {
+        stream->frame.flags |= sese::net::http::FRAME_FLAG_END_HEADERS;
+    }
+    if (stream->conn_type == ConnType::NONE) {
+        stream->frame.flags |= sese::net::http::FRAME_FLAG_END_STREAM;
+    } else if (stream->conn_type == ConnType::CONTROLLER && stream->response.getBody().getReadableSize() == 0) {
+        stream->frame.flags |= sese::net::http::FRAME_FLAG_END_STREAM;
+    }
+    len = stream->temp_buffer.read(stream->frame_buffer + 9, sizeof(stream->temp_buffer) - 9);
+    stream->frame.length = len;
+
+    buildFrameBuffer(stream);
+    writeBlock(stream->frame_buffer, 9 + len, [conn = getPtr()](const asio::error_code &code) {
+        if (code) {
+            return;
+        }
+        conn->readFrameHeader();
+    });
 }
