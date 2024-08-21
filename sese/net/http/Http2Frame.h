@@ -1,5 +1,5 @@
 /**
-* @file Http2FrameInfo.h
+* @file Http2Frame.h
 * @author kaoru
 * @version 0.1
 * @brief HTTP 2 帧信息
@@ -9,6 +9,7 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 
 namespace sese::net::http {
 
@@ -62,6 +63,37 @@ struct Http2FrameInfo {
     uint8_t type;
     uint8_t flags;
     uint32_t ident;
+};
+
+/// HTTP 2 帧信息（包含缓存）
+struct Http2Frame {
+    uint32_t length;
+    uint8_t type;
+    uint8_t flags;
+    uint32_t ident;
+
+    std::unique_ptr<char []> frame;
+
+    explicit Http2Frame(size_t frame_size);
+
+    /// 获取包括帧头在内的缓存
+    /// @return 缓存
+    [[nodiscard]] char *getFrameBuffer() const;
+
+    /// 获取包括帧头在内的缓存大小
+    /// @return 缓存大小
+    [[nodiscard]] size_t getFrameLength() const;
+
+    /// 获取不包括帧头在内的缓存
+    /// @return 缓存
+    [[nodiscard]] char *getFrameContentBuffer() const;
+
+    /// 获取不包括帧头在内的缓存大小
+    /// @return 缓存大小
+    [[nodiscard]] size_t getFrameContentLength() const;
+
+    /// 根据已有信息构建帧头
+    void buildFrameHeader() const;
 };
 
 } // namespace sese::net::http

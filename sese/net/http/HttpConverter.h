@@ -9,6 +9,8 @@ namespace sese::net::http {
 
     class HttpConverter final : public NotInstantiable {
     public:
+        HttpConverter() = delete;
+
         static void convertFromHttp2(Request *request);
 
         static void convert2Http2(Response *response);
