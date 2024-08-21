@@ -8,7 +8,7 @@
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
 #include <sese/net/http/DynamicTable.h>
-#include <sese/net/http/Http2FrameInfo.h>
+#include <sese/net/http/Http2Frame.h>
 #include <sese/io/ByteBuffer.h>
 
 #include "Handleable.h"
@@ -87,8 +87,6 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     void handleDataFrame();
 
     void handleRequest(const HttpStream::Ptr &stream);
-
-    void buildFrameBuffer(const HttpStream::Ptr &stream);
 
     void writeHeadersFrame(const HttpStream::Ptr &stream);
 };

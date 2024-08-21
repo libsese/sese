@@ -142,7 +142,7 @@ void HttpConnectionEx::writeSettingsFrame() {
     frame.type = FRAME_TYPE_SETTINGS;
     frame.flags = 0;
     frame.ident = 0;
-    buildFrameBuffer(nullptr);
+    // buildFrameBuffer(nullptr);
 
     int pos = 9;
     for (auto [key, value]: values) {
@@ -154,24 +154,26 @@ void HttpConnectionEx::writeSettingsFrame() {
         pos += sizeof(value);
     }
 
-    writeBlock(temp_buffer, pos, [conn = getPtr()](const asio::error_code &ec) {
-        if (ec) {
-            return;
-        }
-        conn->readFrameHeader();
-    });
+    // todo post write
+    // writeBlock(temp_buffer, pos, [conn = getPtr()](const asio::error_code &ec) {
+    //     if (ec) {
+    //         return;
+    //     }
+    //     conn->readFrameHeader();
+    // });
 }
 
 void HttpConnectionEx::writeAckFrame() {
     SESE_DEBUG("Write ACK");
-    uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
-    memcpy(temp_buffer, buffer, sizeof(buffer));
-    writeBlock(temp_buffer, sizeof(buffer), [conn = getPtr()](const asio::error_code &ec) {
-        if (ec) {
-            return;
-        }
-        conn->readFrameHeader();
-    });
+    // todo post write
+    // uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
+    // memcpy(temp_buffer, buffer, sizeof(buffer));
+    // writeBlock(temp_buffer, sizeof(buffer), [conn = getPtr()](const asio::error_code &ec) {
+    //     if (ec) {
+    //         return;
+    //     }
+    //     conn->readFrameHeader();
+    // });
 }
 
 
@@ -231,23 +233,6 @@ void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
     writeHeadersFrame(stream);
 }
 
-void HttpConnectionEx::buildFrameBuffer(const HttpStream::Ptr &stream) {
-    char *buffer = this->temp_buffer;
-    auto *frame = &this->frame;
-    if (stream) {
-        buffer = stream->frame_buffer;
-        frame = &stream->frame;
-    }
-
-    frame->length = ToBigEndian32(frame->length);
-    frame->ident = ToBigEndian32(frame->ident);
-
-    memcpy(buffer + 0, reinterpret_cast<const char *>(&frame->length) + 1, 3);
-    memcpy(buffer + 3, &frame->type, 1);
-    memcpy(buffer + 4, &frame->flags, 1);
-    memcpy(buffer + 5, &frame->ident, 4);
-}
-
 void HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream) {
     sese::net::http::Header header;
     sese::net::http::HttpConverter::convert2Http2(&stream->response);
@@ -266,11 +251,12 @@ void HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream) {
     len = stream->temp_buffer.read(stream->frame_buffer + 9, sizeof(stream->temp_buffer) - 9);
     stream->frame.length = len;
 
-    buildFrameBuffer(stream);
-    writeBlock(stream->frame_buffer, 9 + len, [conn = getPtr()](const asio::error_code &code) {
-        if (code) {
-            return;
-        }
-        conn->readFrameHeader();
-    });
+    // todo post write
+    // buildFrameBuffer(stream);
+    // writeBlock(stream->frame_buffer, 9 + len, [conn = getPtr()](const asio::error_code &code) {
+    //     if (code) {
+    //         return;
+    //     }
+    //     conn->readFrameHeader();
+    // });
 }
