@@ -67,6 +67,8 @@ struct Http2FrameInfo {
 
 /// HTTP 2 帧信息（包含缓存）
 struct Http2Frame {
+    using Ptr = std::unique_ptr<Http2Frame>;
+
     uint32_t length;
     uint8_t type;
     uint8_t flags;
