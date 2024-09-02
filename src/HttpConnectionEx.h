@@ -11,6 +11,8 @@
 #include <sese/net/http/Http2Frame.h>
 #include <sese/io/ByteBuffer.h>
 
+#include <queue>
+
 #include "Handleable.h"
 
 class HttpServiceImpl;
@@ -24,7 +26,6 @@ struct HttpStream : Handleable {
     sese::io::ByteBuilder temp_buffer;
 
     sese::net::http::Http2FrameInfo frame{};
-    char frame_buffer[16384];
 };
 
 struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
@@ -41,9 +42,11 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     std::weak_ptr<HttpServiceImpl> service;
 
+    bool is_read = false;
     sese::net::http::Http2FrameInfo frame{};
     // 临时缓存，用于读取初始连接魔数、帧头，取最大帧大小
-    char temp_buffer[16384]{};
+    static constexpr size_t MAX_BUFFER_SIZE = 16384;
+    char temp_buffer[MAX_BUFFER_SIZE]{};
     uint32_t header_table_size = 4096;
     uint32_t enable_push = 0;
     uint32_t max_concurrent_stream = 0;
@@ -53,6 +56,9 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     sese::net::http::DynamicTable req_dynamic_table;
     sese::net::http::DynamicTable resp_dynamic_table;
     std::map<uint32_t, HttpStream::Ptr> streams;
+
+    /// 发送队列
+    std::queue<sese::net::http::Http2Frame::Ptr> send_queue;
 
     /// 写入块函数，此函数会确保写入完指定大小的缓存，出现意外则直接回调
     /// @param buffer 缓存指针
@@ -82,11 +88,15 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     void handleWindowUpdate();
 
+    void handleGoaway();
+
     void handleHeadersFrame();
 
     void handleDataFrame();
 
     void handleRequest(const HttpStream::Ptr &stream);
+
+    void handleWrite();
 
     void writeHeadersFrame(const HttpStream::Ptr &stream);
 };

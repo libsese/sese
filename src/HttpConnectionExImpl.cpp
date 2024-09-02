@@ -23,11 +23,13 @@ void HttpConnectionExImpl::writeBlock(const char *buffer, size_t length,
 
 void HttpConnectionExImpl::readBlock(char *buffer, size_t length,
                                      const std::function<void(const asio::error_code &code)> &callback) {
+    is_read = true;
     async_read(
         *this->socket,
         asio::buffer(buffer, length),
         asio::transfer_at_least(1),
         [conn = shared_from_this(), buffer, length, callback](const asio::error_code &error, std::size_t read) {
+            conn->is_read = false;
             if (error || read == length) {
                 callback(error);
             } else {
@@ -57,9 +59,11 @@ void HttpsConnectionExImpl::writeBlock(const char *buffer, size_t length,
 
 void HttpsConnectionExImpl::readBlock(char *buffer, size_t length,
                                       const std::function<void(const asio::error_code &code)> &callback) {
+    is_read = true;
     this->stream->async_read_some(asio::buffer(buffer, length),
                                   [conn = getPtr(), buffer, length, callback](
                               const asio::error_code &error, size_t read) {
+                                      conn->is_read = false;
                                       if (error || read == length) {
                                           callback(error);
                                       } else {
