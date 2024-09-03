@@ -98,6 +98,9 @@ void HttpConnectionEx::handleFrameHeader() {
 uint8_t HttpConnectionEx::handleSettingsFrame() {
     SESE_DEBUG("Settings");
     using namespace sese::net::http;
+    if  (frame.ident != 0) {
+        return GOAWAY_PROTOCOL_ERROR;
+    }
     if (frame.flags & SETTINGS_FLAGS_ACK) {
         return UINT8_MAX;
     }
