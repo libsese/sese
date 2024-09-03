@@ -70,7 +70,7 @@ void HttpConnectionEx::handleFrameHeader() {
             break;
         }
         case FRAME_TYPE_GOAWAY: {
-            handleGoaway();
+            handleGoawayFrame();
             break;
         }
         case FRAME_TYPE_HEADERS:
@@ -80,6 +80,14 @@ void HttpConnectionEx::handleFrameHeader() {
         }
         case FRAME_TYPE_DATA: {
             handleDataFrame();
+            break;
+        }
+        case FRAME_TYPE_PRIORITY: {
+            handlePriorityFrame();
+            break;
+        }
+        case FRAME_TYPE_RST_STREAM: {
+            handleRstStreamFrame();
             break;
         }
         default:
@@ -142,6 +150,211 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
     return 0;
 }
 
+void HttpConnectionEx::handleWindowUpdate() {
+    SESE_DEBUG("WindowUpdate");
+    auto data = reinterpret_cast<uint32_t *>(temp_buffer);
+    if (frame.ident == 0) {
+        window_size = FromBigEndian32(*data);
+    } else {
+    }
+}
+
+void HttpConnectionEx::handleGoawayFrame() {
+    uint32_t latest_stream;
+    memcpy(&latest_stream, temp_buffer, sizeof(latest_stream));
+    latest_stream = FromBigEndian32(latest_stream);
+    uint32_t error_code;
+    memcpy(&error_code, temp_buffer + 4, sizeof(latest_stream));
+    error_code = FromBigEndian32(error_code);
+    if (frame.length - 8) {
+        auto msg = std::string(temp_buffer + 8, frame.length - 8);
+        SESE_WARN("FAILED: F:0x{:x} S:{} LS:{} CODE:{} MSG:{}",
+                  frame.flags,
+                  frame.ident,
+                  latest_stream,
+                  error_code,
+                  msg);
+    } else {
+        SESE_WARN("FAILED: F:0x{:x} S:{} LS:{} CODE:{}",
+                  frame.flags,
+                  frame.ident,
+                  latest_stream,
+                  error_code);
+    }
+    readFrameHeader();
+}
+
+void HttpConnectionEx::handleHeadersFrame() {
+    SESE_DEBUG("Headers Frame");
+    using namespace sese::net::http;
+    if (frame.ident == 0) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
+    HttpStream::Ptr stream;
+    auto iterator = streams.find(frame.ident);
+    if (iterator == streams.end()) {
+        stream = std::make_shared<HttpStream>();
+        stream->id = frame.ident;
+        stream->request.setVersion(HttpVersion::VERSION_2);
+        stream->response.setVersion(HttpVersion::VERSION_2);
+        streams[frame.ident] = stream;
+    } else {
+        stream = iterator->second;
+    }
+    stream->temp_buffer.write(temp_buffer, frame.length);
+
+    if (frame.flags & FRAME_FLAG_END_HEADERS) {
+        HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
+                          stream->request);
+        stream->temp_buffer.freeCapacity();
+        HttpConverter::convertFromHttp2(&stream->request);
+
+        if (frame.flags & FRAME_FLAG_END_STREAM) {
+            handleRequest(stream);
+
+            HttpConverter::convert2Http2(&stream->response);
+            Header header;
+            HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
+
+            writeHeadersFrame(stream);
+        }
+    }
+}
+
+void HttpConnectionEx::handleDataFrame() {
+    SESE_DEBUG("Data Frame");
+    using namespace sese::net::http;
+    if (frame.ident == 0) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
+    auto iterator = streams.find(frame.ident);
+    auto stream = iterator->second;
+    stream->request.getBody().write(temp_buffer, frame.length);
+    stream->temp_buffer.freeCapacity();
+
+    if (frame.flags & FRAME_FLAG_END_STREAM) {
+        handleRequest(stream);
+
+        HttpConverter::convert2Http2(&stream->response);
+        Header header;
+        HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
+
+        writeHeadersFrame(stream);
+    }
+}
+
+void HttpConnectionEx::handleRstStreamFrame() {
+    SESE_DEBUG("Reset Stream Frame");
+    using namespace sese::net::http;
+    if (frame.ident == 0) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
+    uint32_t code;
+    memcpy(temp_buffer, &code, 4);
+    code = FromBigEndian32(code);
+    SESE_WARN("RST STREAM {} CODE {}", frame.ident, code);
+
+    auto iterator = streams.find(frame.ident);
+    if (iterator == streams.end()) {
+        writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
+    readFrameHeader();
+}
+
+
+void HttpConnectionEx::handlePriorityFrame() {
+    SESE_DEBUG("Priority Frame");
+    using namespace sese::net::http;
+    if (frame.ident == 0) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
+    HttpStream::Ptr stream;
+    auto iterator = streams.find(frame.ident);
+    if (iterator == streams.end()) {
+        stream = std::make_shared<HttpStream>();
+        stream->id = frame.ident;
+        stream->request.setVersion(HttpVersion::VERSION_2);
+        stream->response.setVersion(HttpVersion::VERSION_2);
+        streams[frame.ident] = stream;
+    } else {
+        stream = iterator->second;
+    }
+    // 读取负载但不处理
+    uint8_t exclusive_flag = 0;
+    uint32_t stream_dependency = 0;
+    uint8_t weight = 0;
+
+    memcpy(&stream_dependency, temp_buffer, 4);
+    stream_dependency = FromBigEndian32(stream_dependency);
+    exclusive_flag = (stream_dependency & 0x80000000) >> 31;
+    stream_dependency &= 0x7FFFFFFF;
+    memcpy(&weight, temp_buffer + 4, 1);
+
+    SESE_DEBUG("Priority set {} deps {}, exclusive {}, weight {}",
+               frame.ident,
+               stream_dependency,
+               exclusive_flag,
+               weight);
+    readFrameHeader();
+}
+
+
+void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
+    auto serv = service.lock();
+    assert(serv);
+    serv->handleRequest(stream);
+}
+
+void HttpConnectionEx::handleWrite() {
+    if (!is_read) {
+        this->readFrameHeader();
+    }
+
+    if (!send_queue.empty()) {
+        auto &frame = send_queue.front();
+        writeBlock(frame->getFrameBuffer(), frame->getFrameLength(), [conn = getPtr()](const asio::error_code &ec) {
+            if (ec) {
+                return;
+            }
+            conn->send_queue.pop();
+            conn->handleWrite();
+        });
+    }
+}
+
+void HttpConnectionEx::writeGoawayFrame(
+    uint32_t stream_id,
+    uint32_t latest_stream_id,
+    uint8_t flags,
+    uint32_t error_code,
+    const std::string &msg) {
+    SESE_DEBUG("Write Goaway");
+    using namespace sese::net::http;
+    auto frame = std::make_unique<Http2Frame>(msg.length() + 8);
+    frame->type = FRAME_TYPE_GOAWAY;
+    frame->flags = flags;
+    frame->ident = stream_id;
+    frame->length = msg.length() + 8;
+    frame->buildFrameHeader();
+    latest_stream_id = ToBigEndian32(latest_stream_id);
+    error_code = ToBigEndian32(error_code);
+    memcpy(frame->getFrameContentBuffer() + 0, &latest_stream_id, 4);
+    memcpy(frame->getFrameContentBuffer() + 4, &error_code, 4);
+    send_queue.push(std::move(frame));
+    handleWrite();
+}
+
+
 void HttpConnectionEx::writeSettingsFrame() {
     SESE_DEBUG("Write Settings");
     using namespace sese::net::http;
@@ -181,116 +394,6 @@ void HttpConnectionEx::writeAckFrame() {
     frame->buildFrameHeader();
     send_queue.push(std::move(frame));
     handleWrite();
-}
-
-void HttpConnectionEx::handleWindowUpdate() {
-    SESE_DEBUG("WindowUpdate");
-    auto data = reinterpret_cast<uint32_t *>(temp_buffer);
-    if (frame.ident == 0) {
-        window_size = FromBigEndian32(*data);
-    } else {
-    }
-}
-
-void HttpConnectionEx::handleGoaway() {
-    uint32_t latest_stream;
-    memcpy(&latest_stream, temp_buffer, sizeof(latest_stream));
-    latest_stream = FromBigEndian32(latest_stream);
-    uint32_t error_code;
-    memcpy(&error_code, temp_buffer + 4, sizeof(latest_stream));
-    error_code = FromBigEndian32(error_code);
-    if (frame.length - 8) {
-        auto msg = std::string(temp_buffer + 8, frame.length - 8);
-        SESE_WARN("FAILED: F:0x{:x} S:{} LS:{} CODE:{} MSG:{}",
-                  frame.flags,
-                  frame.ident,
-                  latest_stream,
-                  error_code,
-                  msg);
-    } else {
-        SESE_WARN("FAILED: F:0x{:x} S:{} LS:{} CODE:{}",
-                  frame.flags,
-                  frame.ident,
-                  latest_stream,
-                  error_code);
-    }
-    readFrameHeader();
-}
-
-void HttpConnectionEx::handleHeadersFrame() {
-    SESE_INFO("Headers Frame");
-    using namespace sese::net::http;
-    HttpStream::Ptr stream;
-    auto iterator = streams.find(frame.ident);
-    if (iterator == streams.end()) {
-        stream = std::make_shared<HttpStream>();
-        stream->id = frame.ident;
-        stream->request.setVersion(HttpVersion::VERSION_2);
-        stream->response.setVersion(HttpVersion::VERSION_2);
-        streams[frame.ident] = stream;
-    } else {
-        stream = iterator->second;
-    }
-    stream->temp_buffer.write(temp_buffer, frame.length);
-
-    if (frame.flags & FRAME_FLAG_END_HEADERS) {
-        HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
-                          stream->request);
-        stream->temp_buffer.freeCapacity();
-        HttpConverter::convertFromHttp2(&stream->request);
-
-        if (frame.flags & FRAME_FLAG_END_STREAM) {
-            handleRequest(stream);
-
-            HttpConverter::convert2Http2(&stream->response);
-            Header header;
-            HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
-
-            writeHeadersFrame(stream);
-        }
-    }
-}
-
-void HttpConnectionEx::handleDataFrame() {
-    SESE_INFO("Data Frame");
-    using namespace sese::net::http;
-    auto iterator = streams.find(frame.ident);
-    auto stream = iterator->second;
-    stream->request.getBody().write(temp_buffer, frame.length);
-    stream->temp_buffer.freeCapacity();
-
-    if (frame.flags & FRAME_FLAG_END_STREAM) {
-        handleRequest(stream);
-
-        HttpConverter::convert2Http2(&stream->response);
-        Header header;
-        HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
-
-        writeHeadersFrame(stream);
-    }
-}
-
-void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
-    auto serv = service.lock();
-    assert(serv);
-    serv->handleRequest(stream);
-}
-
-void HttpConnectionEx::handleWrite() {
-    if (!is_read) {
-        this->readFrameHeader();
-    }
-
-    if (!send_queue.empty()) {
-        auto &frame = send_queue.front();
-        writeBlock(frame->getFrameBuffer(), frame->getFrameLength(), [conn = getPtr()](const asio::error_code &ec) {
-            if (ec) {
-                return;
-            }
-            conn->send_queue.pop();
-            conn->handleWrite();
-        });
-    }
 }
 
 void HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream) {

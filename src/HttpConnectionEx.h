@@ -82,21 +82,33 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     uint8_t handleSettingsFrame();
 
-    void writeSettingsFrame();
-
-    void writeAckFrame();
-
     void handleWindowUpdate();
 
-    void handleGoaway();
+    void handleRstStreamFrame();
+
+    void handleGoawayFrame();
 
     void handleHeadersFrame();
 
     void handleDataFrame();
 
+    void handlePriorityFrame();
+
     void handleRequest(const HttpStream::Ptr &stream);
 
     void handleWrite();
+
+    void writeSettingsFrame();
+
+    void writeAckFrame();
+
+    void writeGoawayFrame(
+        uint32_t stream_id,
+        uint32_t latest_stream_id,
+        uint8_t flags,
+        uint32_t error_code,
+        const std::string &msg
+    );
 
     void writeHeadersFrame(const HttpStream::Ptr &stream);
 };
