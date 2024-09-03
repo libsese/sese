@@ -98,7 +98,7 @@ void HttpConnectionEx::handleFrameHeader() {
 uint8_t HttpConnectionEx::handleSettingsFrame() {
     SESE_DEBUG("Settings");
     using namespace sese::net::http;
-    if  (frame.ident != 0) {
+    if (frame.ident != 0) {
         return GOAWAY_PROTOCOL_ERROR;
     }
     if (frame.flags & SETTINGS_FLAGS_ACK) {
@@ -122,11 +122,10 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
                 this->max_concurrent_stream = (*value == 0 ? 100 : *value);
                 break;
             case SETTINGS_MAX_FRAME_SIZE:
-                if (*value > 16777215) {
+                if (*value > 16777215 || *value < 16384) {
                     return GOAWAY_PROTOCOL_ERROR;
-                } else {
-                    this->max_frame_size = *value;
                 }
+                this->max_frame_size = *value;
                 break;
             case SETTINGS_ENABLE_PUSH:
                 if (*value <= 1) {
@@ -141,12 +140,10 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
             case SETTINGS_INITIAL_WINDOW_SIZE:
                 if (*value > 2147483647) {
                     return GOAWAY_FLOW_CONTROL_ERROR;
-                } else {
-                    this->window_size = *value;
                 }
+                this->window_size = *value;
                 break;
             default:
-                // 暂不处理
                 break;
         }
     }

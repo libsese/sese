@@ -50,12 +50,12 @@ curl --http2-prior-knowledge -k https://127.0.0.1:8080/haha --noproxy "*" -v
 - 6.5. SETTINGS
     - [ ] 1: Sends a SETTINGS frame with ACK flag and payload
     - [x] 2: Sends a SETTINGS frame with a stream identifier other than 0x0
-    - [x] 3: Sends a SETTINGS frame with a length other than a multiple of 6 octets
+    - [ ] 3: Sends a SETTINGS frame with a length other than a multiple of 6 octets
     - 6.5.2. Defined SETTINGS Parameters
-        - [ ] 1: SETTINGS_ENABLE_PUSH (0x2): Sends the value other than 0 or 1
-        - [ ] 2: SETTINGS_INITIAL_WINDOW_SIZE (0x4): Sends the value above the maximum flow control window size
-        - [ ] 3: SETTINGS_MAX_FRAME_SIZE (0x5): Sends the value below the initial value
-        - [ ] 4: SETTINGS_MAX_FRAME_SIZE (0x5): Sends the value above the maximum allowed frame size
+        - [x] 1: SETTINGS_ENABLE_PUSH (0x2): Sends the value other than 0 or 1
+        - [x] 2: SETTINGS_INITIAL_WINDOW_SIZE (0x4): Sends the value above the maximum flow control window size
+        - [x] 3: SETTINGS_MAX_FRAME_SIZE (0x5): Sends the value below the initial value
+        - [x] 4: SETTINGS_MAX_FRAME_SIZE (0x5): Sends the value above the maximum allowed frame size
         - [ ] 5: Sends a SETTINGS frame with unknown identifier
     - 6.5.3. Settings Synchronization
         - [ ] 1: Sends multiple values of SETTINGS_INITIAL_WINDOW_SIZE
