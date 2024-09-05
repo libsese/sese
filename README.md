@@ -5,13 +5,13 @@
 http/1.1 to h2
 
 ```shell
-curl --http2 -k http://127.0.0.1:8080/haha --noproxy "*" -v
+curl --http2 -k http://127.0.0.1:80/haha --noproxy "*" -v
 ```
 
 without upgrade
 
 ```shell
-curl --http2-prior-knowledge -k https://127.0.0.1:8080/haha --noproxy "*" -v
+curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 ```
 
 ## todos
@@ -62,10 +62,10 @@ curl --http2-prior-knowledge -k https://127.0.0.1:8080/haha --noproxy "*" -v
         - [ ] 2: Sends a SETTINGS frame without ACK flag
 
 - 6.7. PING
-    - [ ] 1: Sends a PING frame
-    - [ ] 2: Sends a PING frame with ACK
-    - [ ] 3: Sends a PING frame with a stream identifier field value other than 0x0
-    - [ ] 4: Sends a PING frame with a length field value other than 8
+    - [x] 1: Sends a PING frame
+    - [x] 2: Sends a PING frame with ACK
+    - [x] 3: Sends a PING frame with a stream identifier field value other than 0x0
+    - [x] 4: Sends a PING frame with a length field value other than 8
 
 - 6.8. GOAWAY
     - [ ] 1: Sends a GOAWAY frame with a stream identifier other than 0x0

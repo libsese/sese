@@ -94,6 +94,8 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     void handlePriorityFrame();
 
+    void handlePingFrame();
+
     void handleRequest(const HttpStream::Ptr &stream);
 
     void handleWrite();

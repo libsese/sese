@@ -65,8 +65,6 @@ void HttpConnectionEx::handleFrameHeader() {
         }
         case FRAME_TYPE_WINDOW_UPDATE: {
             handleWindowUpdate();
-            readFrameHeader();
-            // writeAckFrame();
             break;
         }
         case FRAME_TYPE_GOAWAY: {
@@ -88,6 +86,10 @@ void HttpConnectionEx::handleFrameHeader() {
         }
         case FRAME_TYPE_RST_STREAM: {
             handleRstStreamFrame();
+            break;
+        }
+        case FRAME_TYPE_PING: {
+            handlePingFrame();
             break;
         }
         default:
@@ -157,6 +159,7 @@ void HttpConnectionEx::handleWindowUpdate() {
         window_size = FromBigEndian32(*data);
     } else {
     }
+    readFrameHeader();
 }
 
 void HttpConnectionEx::handleGoawayFrame() {
@@ -308,6 +311,33 @@ void HttpConnectionEx::handlePriorityFrame() {
     readFrameHeader();
 }
 
+void HttpConnectionEx::handlePingFrame() {
+    SESE_DEBUG("Headers Frame");
+    using namespace sese::net::http;
+    if (frame.ident != 0) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+    if (frame.length != 8) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        return;
+    }
+    if (frame.flags & SETTINGS_FLAGS_ACK) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "unexpected ping with ack");
+        return;
+    }
+
+    auto frame = std::make_unique<Http2Frame>(8);
+    frame->type = FRAME_TYPE_PING;
+    frame->length = 8;
+    frame->ident = 0;
+    frame->flags = SETTINGS_FLAGS_ACK;
+    frame->buildFrameHeader();
+    memcpy(frame->getFrameContentBuffer(), temp_buffer, 8);
+
+    send_queue.push(std::move(frame));
+    handleWrite();
+}
 
 void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
     auto serv = service.lock();
