@@ -40,17 +40,17 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 
 - 6.3. PRIORITY
     - [x] 1: Sends a PRIORITY frame with 0x0 stream identifier
-    - [ ] 2: Sends a PRIORITY frame with a length other than 5 octets
+    - [x] 2: Sends a PRIORITY frame with a length other than 5 octets
 
 - 6.4. RST_STREAM
     - [x] 1: Sends a RST_STREAM frame with 0x0 stream identifier
     - [x] 2: Sends a RST_STREAM frame on a idle stream
-    - [ ] 3: Sends a RST_STREAM frame with a length other than 4 octets
+    - [x] 3: Sends a RST_STREAM frame with a length other than 4 octets
 
 - 6.5. SETTINGS
-    - [ ] 1: Sends a SETTINGS frame with ACK flag and payload
+    - [x] 1: Sends a SETTINGS frame with ACK flag and payload
     - [x] 2: Sends a SETTINGS frame with a stream identifier other than 0x0
-    - [ ] 3: Sends a SETTINGS frame with a length other than a multiple of 6 octets
+    - [x] 3: Sends a SETTINGS frame with a length other than a multiple of 6 octets
     - 6.5.2. Defined SETTINGS Parameters
         - [x] 1: SETTINGS_ENABLE_PUSH (0x2): Sends the value other than 0 or 1
         - [x] 2: SETTINGS_INITIAL_WINDOW_SIZE (0x4): Sends the value above the maximum flow control window size

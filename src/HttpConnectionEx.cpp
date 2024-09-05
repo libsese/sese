@@ -104,7 +104,13 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
         return GOAWAY_PROTOCOL_ERROR;
     }
     if (frame.flags & SETTINGS_FLAGS_ACK) {
+        if (frame.length) {
+            return GOAWAY_FRAME_SIZE_ERROR;
+        }
         return UINT8_MAX;
+    }
+    if (frame.length % 6) {
+        return GOAWAY_FRAME_SIZE_ERROR;
     }
     char buffer[6];
     auto ident = reinterpret_cast<uint16_t *>(&buffer[0]);
@@ -273,6 +279,10 @@ void HttpConnectionEx::handleRstStreamFrame() {
         writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
+    if (frame.length != 4) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        return;
+    }
 
     uint32_t code;
     memcpy(temp_buffer, &code, 4);
@@ -294,6 +304,10 @@ void HttpConnectionEx::handlePriorityFrame() {
     using namespace sese::net::http;
     if (frame.ident == 0) {
         writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+    if (frame.length != 5) {
+        writeGoawayFrame(0, frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
         return;
     }
 
