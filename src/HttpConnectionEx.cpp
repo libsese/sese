@@ -154,15 +154,31 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
 
 void HttpConnectionEx::handleWindowUpdate() {
     SESE_DEBUG("WindowUpdate");
+    using namespace sese::net::http;
     auto data = reinterpret_cast<uint32_t *>(temp_buffer);
+    if (frame.length != 4) {
+        writeGoawayFrame(0, frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        return;
+    }
+    auto i = FromBigEndian32(*data);
+    if (i == 0) {
+        writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
     if (frame.ident == 0) {
-        window_size = FromBigEndian32(*data);
+        window_size += i;
     } else {
     }
     readFrameHeader();
 }
 
 void HttpConnectionEx::handleGoawayFrame() {
+    // SESE_DEBUG("Goaway Frame");
+    using namespace sese::net::http;
+    if (frame.ident != 0) {
+        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
     uint32_t latest_stream;
     memcpy(&latest_stream, temp_buffer, sizeof(latest_stream));
     latest_stream = FromBigEndian32(latest_stream);

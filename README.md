@@ -68,12 +68,12 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
     - [x] 4: Sends a PING frame with a length field value other than 8
 
 - 6.8. GOAWAY
-    - [ ] 1: Sends a GOAWAY frame with a stream identifier other than 0x0
+    - [x] 1: Sends a GOAWAY frame with a stream identifier other than 0x0
 
 - 6.9. WINDOW_UPDATE
-    - [ ] 1: Sends a WINDOW_UPDATE frame with a flow control window increment of 0
-    - [ ] 2: Sends a WINDOW_UPDATE frame with a flow control window increment of 0 on a stream
-    - [ ] 3: Sends a WINDOW_UPDATE frame with a length other than 4 octets
+    - [x] 1: Sends a WINDOW_UPDATE frame with a flow control window increment of 0
+    - [x] 2: Sends a WINDOW_UPDATE frame with a flow control window increment of 0 on a stream
+    - [x] 3: Sends a WINDOW_UPDATE frame with a length other than 4 octets
     - 6.9.1. The Flow-Control Window
         - [ ] 1: Sends SETTINGS frame to set the initial window size to 1 and sends HEADERS frame
         - [ ] 2: Sends multiple WINDOW_UPDATE frames increasing the flow control window to above 2^31-1
