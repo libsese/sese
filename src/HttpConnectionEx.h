@@ -112,6 +112,12 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         const std::string &msg
     );
 
+    void writeRstStreamFrame(
+        uint32_t stream_id,
+        uint8_t flags,
+        uint32_t error_code
+    );
+
     void writeHeadersFrame(const HttpStream::Ptr &stream);
 };
 

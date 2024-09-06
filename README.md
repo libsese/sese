@@ -76,8 +76,8 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
     - [x] 3: Sends a WINDOW_UPDATE frame with a length other than 4 octets
     - 6.9.1. The Flow-Control Window
         - [ ] 1: Sends SETTINGS frame to set the initial window size to 1 and sends HEADERS frame
-        - [ ] 2: Sends multiple WINDOW_UPDATE frames increasing the flow control window to above 2^31-1
-        - [ ] 3: Sends multiple WINDOW_UPDATE frames increasing the flow control window to above 2^31-1 on a stream
+        - [x] 2: Sends multiple WINDOW_UPDATE frames increasing the flow control window to above 2^31-1
+        - [x] 3: Sends multiple WINDOW_UPDATE frames increasing the flow control window to above 2^31-1 on a stream
     - 6.9.2. Initial Flow-Control Window Size
         - [ ] 1: Changes SETTINGS_INITIAL_WINDOW_SIZE after sending HEADERS frame
         - [ ] 2: Sends a SETTINGS frame for window size to be negative

@@ -163,18 +163,29 @@ void HttpConnectionEx::handleWindowUpdate() {
     using namespace sese::net::http;
     auto data = reinterpret_cast<uint32_t *>(temp_buffer);
     if (frame.length != 4) {
-        writeGoawayFrame(0, frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
         return;
     }
     auto i = FromBigEndian32(*data);
     if (i == 0) {
-        writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
+
     if (frame.ident == 0) {
+        if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(window_size), static_cast<int32_t>(i))) {
+            writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
+            return;
+        }
         window_size += i;
     } else {
+        if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(window_size), static_cast<int32_t>(i))) {
+            writeRstStreamFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR);
+            return;
+        }
+        // stream->window_size += i;
     }
+
     readFrameHeader();
 }
 
@@ -244,6 +255,8 @@ void HttpConnectionEx::handleHeadersFrame() {
             HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
 
             writeHeadersFrame(stream);
+        } else {
+            readFrameHeader();
         }
     }
 }
@@ -410,6 +423,24 @@ void HttpConnectionEx::writeGoawayFrame(
     error_code = ToBigEndian32(error_code);
     memcpy(frame->getFrameContentBuffer() + 0, &latest_stream_id, 4);
     memcpy(frame->getFrameContentBuffer() + 4, &error_code, 4);
+    send_queue.push(std::move(frame));
+    handleWrite();
+}
+
+void HttpConnectionEx::writeRstStreamFrame(
+    uint32_t stream_id,
+    uint8_t flags,
+    uint32_t error_code) {
+    SESE_DEBUG("Write RstStream");
+    using namespace sese::net::http;
+    auto frame = std::make_unique<Http2Frame>(4);
+    frame->type = FRAME_TYPE_RST_STREAM;
+    frame->flags = flags;
+    frame->ident = stream_id;
+    frame->length = 4;
+    frame->buildFrameHeader();
+    error_code = ToBigEndian32(error_code);
+    memcpy(frame->getFrameContentBuffer(), &error_code ,4);
     send_queue.push(std::move(frame));
     handleWrite();
 }
