@@ -22,6 +22,7 @@ struct HttpStream : Handleable {
 
     uint32_t id;
     uint32_t window_size = 65535;
+    uint16_t continue_type = 0;
 
     sese::io::ByteBuilder temp_buffer;
 
@@ -43,6 +44,9 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     std::weak_ptr<HttpServiceImpl> service;
 
     bool is_read = false;
+    bool is_init_window_size = false;
+    bool expect_ack = false;
+
     sese::net::http::Http2FrameInfo frame{};
     // 临时缓存，用于读取初始连接魔数、帧头，取最大帧大小
     static constexpr size_t MAX_BUFFER_SIZE = 16384;

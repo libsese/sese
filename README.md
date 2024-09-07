@@ -59,7 +59,7 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
         - [ ] 5: Sends a SETTINGS frame with unknown identifier
     - 6.5.3. Settings Synchronization
         - [ ] 1: Sends multiple values of SETTINGS_INITIAL_WINDOW_SIZE
-        - [ ] 2: Sends a SETTINGS frame without ACK flag
+        - [x] 2: Sends a SETTINGS frame without ACK flag
 
 - 6.7. PING
     - [x] 1: Sends a PING frame
@@ -86,7 +86,7 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 - 6.10. CONTINUATION
     - [ ] 1: Sends multiple CONTINUATION frames preceded by a HEADERS frame
     - [ ] 2: Sends a CONTINUATION frame followed by any frame other than CONTINUATION
-    - [ ] 3: Sends a CONTINUATION frame with 0x0 stream identifier
+    - [x] 3: Sends a CONTINUATION frame with 0x0 stream identifier
     - [ ] 4: Sends a CONTINUATION frame preceded by a HEADERS frame with END_HEADERS flag
     - [ ] 5: Sends a CONTINUATION frame preceded by a CONTINUATION frame with END_HEADERS flag
-    - [ ] 6: Sends a CONTINUATION frame preceded by a DATA frame
+    - [x] 6: Sends a CONTINUATION frame preceded by a DATA frame
