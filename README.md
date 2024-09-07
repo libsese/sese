@@ -27,6 +27,10 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 
 ## [RFC7540](https://www.rfc-editor.org/rfc/rfc7540.txt) verify by [h2spec](https://github.com/summerwind/h2spec)
 
+> [!NOTE]
+> Except for 6.1/2, 6.2/4, 
+> the unfinished parts are suspected to be due to errors in the implementation of the h2spec standard.
+
 - 6.1. DATA
     - [x] 1: Sends a DATA frame with 0x0 stream identifier
     - [ ] 2: Sends a DATA frame on the stream that is not in "open" or "half-closed (local)" state
@@ -87,6 +91,6 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
     - [ ] 1: Sends multiple CONTINUATION frames preceded by a HEADERS frame
     - [ ] 2: Sends a CONTINUATION frame followed by any frame other than CONTINUATION
     - [x] 3: Sends a CONTINUATION frame with 0x0 stream identifier
-    - [ ] 4: Sends a CONTINUATION frame preceded by a HEADERS frame with END_HEADERS flag
-    - [ ] 5: Sends a CONTINUATION frame preceded by a CONTINUATION frame with END_HEADERS flag
+    - [x] 4: Sends a CONTINUATION frame preceded by a HEADERS frame with END_HEADERS flag
+    - [x] 5: Sends a CONTINUATION frame preceded by a CONTINUATION frame with END_HEADERS flag
     - [x] 6: Sends a CONTINUATION frame preceded by a DATA frame

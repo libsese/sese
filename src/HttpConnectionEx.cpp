@@ -87,6 +87,10 @@ void HttpConnectionEx::handleFrameHeader() {
                 writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
+            if (iterator->second->end_headers) {
+                writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+                break;
+            }
         }
         case FRAME_TYPE_HEADERS: {
             handleHeadersFrame();
@@ -281,6 +285,7 @@ void HttpConnectionEx::handleHeadersFrame() {
     stream->temp_buffer.write(temp_buffer, frame.length);
 
     if (frame.flags & FRAME_FLAG_END_HEADERS) {
+        stream->end_headers = true;
         HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
                           stream->request);
         stream->temp_buffer.freeCapacity();
