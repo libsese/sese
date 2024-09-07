@@ -196,13 +196,6 @@ void HttpConnectionEx::handleWindowUpdate() {
         return;
     }
 
-    auto iterator = streams.find(frame.ident);
-    if (iterator == streams.end()) {
-        writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
-        return;
-    }
-    iterator->second->continue_type = frame.type;
-
     if (frame.ident == 0) {
         if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(window_size), static_cast<int32_t>(i))) {
             writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
@@ -210,6 +203,12 @@ void HttpConnectionEx::handleWindowUpdate() {
         }
         window_size += i;
     } else {
+        auto iterator = streams.find(frame.ident);
+        if (iterator == streams.end()) {
+            writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
+        iterator->second->continue_type = frame.type;
         if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(iterator->second->window_size),
                                               static_cast<int32_t>(i))) {
             writeRstStreamFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR);
