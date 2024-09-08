@@ -61,7 +61,8 @@ void HttpConnectionEx::handleFrameHeader() {
     // CONTINUATION 帧不连续
     // 判断前序帧2
     if (iterator != streams.end()) {
-        if (iterator->second->continue_type == FRAME_TYPE_CONTINUATION &&
+        if (frame.type != FRAME_TYPE_CONTINUATION &&
+            iterator->second->continue_type == FRAME_TYPE_CONTINUATION &&
             iterator->second->end_headers == false) {
             writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
             return;
@@ -306,8 +307,22 @@ void HttpConnectionEx::handleHeadersFrame() {
         stream = iterator->second;
     }
 
+    uint8_t offset = 0;
+    uint8_t padded = 0;
     stream->continue_type = frame.type;
-    stream->temp_buffer.write(temp_buffer, frame.length);
+    if (frame.flags & FRAME_FLAG_PADDED) {
+        padded = temp_buffer[0];
+        offset += 1;
+    }
+    if (frame.flags & FRAME_FLAG_PRIORITY) {
+        uint32_t dependency;
+        memcpy(temp_buffer + offset, &dependency, 4);
+        dependency = FromBigEndian32(dependency);
+        offset += 4;
+        uint8_t priority = temp_buffer[offset];
+        offset += 1;
+    }
+    stream->temp_buffer.write(temp_buffer + offset, frame.length - padded - offset);
 
     if (frame.flags & FRAME_FLAG_END_HEADERS) {
         stream->end_headers = true;

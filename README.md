@@ -33,7 +33,7 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
     - [x] 1: Sends a PRIORITY frame on idle stream
     - [ ] 2: Sends a WINDOW_UPDATE frame on half-closed (remote) stream
     - [ ] 3: Sends a PRIORITY frame on half-closed (remote) stream
-    - [ ] 4: Sends a RST_STREAM frame on half-closed (remote) stream
+    - [x] 4: Sends a RST_STREAM frame on half-closed (remote) stream
     - [x] 5: Sends a PRIORITY frame on closed stream
 
 - 3.Frame Definitions
@@ -65,11 +65,11 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
     - 3.10. CONTINUATION
         - [x] 1: Sends a CONTINUATION frame
         - [x] 2: Sends multiple CONTINUATION frames
-    - 4.HTTP Message Exchanges
-        - [ ] 1: Sends a GET request
-        - [ ] 2: Sends a HEAD request
-        - [ ] 3: Sends a POST request
-        - [ ] 4: Sends a POST request with trailers
+- 4.HTTP Message Exchanges
+    - [x] 1: Sends a GET request
+    - [x] 2: Sends a HEAD request
+    - [x] 3: Sends a POST request
+    - [x] 4: Sends a POST request with trailers
 
 ## [RFC7541](https://www.rfc-editor.org/rfc/rfc7541.txt)
 
@@ -94,8 +94,8 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 
 - 3.Starting HTTP/2
     - 3.5. HTTP/2 Connection Preface
-        - [ ] 1: Sends client connection preface
-        - [ ] 2: Sends invalid connection preface
+        - [x] 1: Sends client connection preface
+        - [x] 2: Sends invalid connection preface
 
 - 4.HTTP Frames
     - 4.1. Frame Format
@@ -104,27 +104,27 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
         - [ ] 3: Sends a frame with reserved field bit
 
 - 4.2. Frame Size
-    - [ ] 1: Sends a DATA frame with 2^14 octets in length
-    - [ ] 2: Sends a large size DATA frame that exceeds the SETTINGS_MAX_FRAME_SIZE
-    - [ ] 3: Sends a large size HEADERS frame that exceeds the SETTINGS_MAX_FRAME_SIZE
+    - [x] 1: Sends a DATA frame with 2^14 octets in length
+    - [x] 2: Sends a large size DATA frame that exceeds the SETTINGS_MAX_FRAME_SIZE
+    - [x] 3: Sends a large size HEADERS frame that exceeds the SETTINGS_MAX_FRAME_SIZE
 
 - 4.3. Header Compression and Decompression
-    - [ ] 1: Sends invalid header block fragment
-    - [ ] 2: Sends a PRIORITY frame while sending the header blocks
+    - [x] 1: Sends invalid header block fragment
+    - [x] 2: Sends a PRIORITY frame while sending the header blocks
     - [ ] 3: Sends a HEADERS frame to another stream while sending the header blocks
 
 - 5.Streams and Multiplexing
     - 5.1. Stream States
-        - [ ] 1: idle: Sends a DATA frame
-        - [ ] 2: idle: Sends a RST_STREAM frame
-        - [ ] 3: idle: Sends a WINDOW_UPDATE frame
-        - [ ] 4: idle: Sends a CONTINUATION frame
+        - [x] 1: idle: Sends a DATA frame
+        - [x] 2: idle: Sends a RST_STREAM frame
+        - [x] 3: idle: Sends a WINDOW_UPDATE frame
+        - [x] 4: idle: Sends a CONTINUATION frame
         - [ ] 5: half closed (remote): Sends a DATA frame
         - [ ] 6: half closed (remote): Sends a HEADERS frame
         - [ ] 7: half closed (remote): Sends a CONTINUATION frame
         - [ ] 8: closed: Sends a DATA frame after sending RST_STREAM frame
         - [ ] 9: closed: Sends a HEADERS frame after sending RST_STREAM frame
-        - [ ] 10: closed: Sends a CONTINUATION frame after sending RST_STREAM frame
+        - [x] 10: closed: Sends a CONTINUATION frame after sending RST_STREAM frame
         - [ ] 11: closed: Sends a DATA frame
         - [ ] 12: closed: Sends a HEADERS frame
         - [ ] 13: closed: Sends a CONTINUATION frame
