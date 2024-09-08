@@ -11,6 +11,8 @@
  *      3.从不索引的字面 HEADER 字段
  *          0001 + index -> indexedName + 编码 value
  *          0001 + 0     -> 编码 key + 编码 value
+ *      4.更新动态表大小
+ *          001 + size
  */
 
 #include "sese/net/http/HttpUtil.h"
@@ -36,24 +38,42 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
     uint8_t buf;
     size_t len = 0;
     while (len < content_length) {
-        src->read(&buf, 1);
+        if (1 != src->read(&buf, 1)) {
+            return false;
+        }
         len += 1;
         /// 对应第 0 种情况
         if (buf & 0b1000'0000) {
             uint32_t index = 0;
             auto l = decodeInteger(buf, src, index, 7);
-            if (-1 == l) return false;
+            if (-1 == l) {
+                return false;
+            }
             len += l;
-            if (index == 0) return false;
+            if (index == 0) {
+                return false;
+            }
 
             auto pair = table.get(index);
-            if (pair == std::nullopt) return false;
+            if (pair == std::nullopt) {
+                return false;
+            }
             if (strcasecmp(pair->first.c_str(), "Cookie") == 0) {
                 auto cookies = HttpUtil::parseFromCookie(pair->second);
                 header.setCookies(cookies);
             } else {
                 header.set(pair->first, pair->second);
             }
+        }
+        // 对应第4种情况
+        else if (buf & 0b0010'0000) {
+            uint32_t new_size;
+            auto l = decodeInteger(buf, src, new_size, 5);
+            if (-1 == l) {
+                return false;
+            }
+            len += l;
+            table.resize(new_size);
         } else {
             uint32_t index = 0;
             bool is_store;
@@ -61,7 +81,9 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             if (0b0100'0000 == (buf & 0b1100'0000)) {
                 // 添加至动态表
                 auto l = decodeInteger(buf, src, index, 6);
-                if (-1 == l) return false;
+                if (-1 == l) {
+                    return false;
+                }
                 len += l;
                 is_store = true;
             }
@@ -69,7 +91,9 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             else {
                 // 不添加至动态表
                 auto l = decodeInteger(buf, src, index, 4);
-                if (-1 == l) return false;
+                if (-1 == l) {
+                    return false;
+                }
                 len += l;
                 is_store = false;
             }
@@ -113,7 +137,8 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
     return true;
 }
 
-size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header, Header &indexed_header) noexcept {
+size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header,
+                         Header &indexed_header) noexcept {
     size_t size = 0;
     // 处理索引的 HEADERS
     for (const auto &item: indexed_header) {
@@ -309,7 +334,7 @@ int HPackUtil::decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uin
 
 int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     uint8_t buf;
-    src->read(&buf, 1);
+    auto i = src->read(&buf, 1);
     uint8_t len = (buf & 0x7F);
     bool is_huffman = (buf & 0x80) == 0x80;
 
