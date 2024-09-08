@@ -20,8 +20,9 @@ class HttpServiceImpl;
 struct HttpStream : Handleable {
     using Ptr = std::shared_ptr<HttpStream>;
 
-    uint32_t id;
-    uint32_t window_size = 65535;
+    uint32_t id = 0;
+    uint32_t write_window_size = 0;
+    uint32_t read_window_size = 0;
     uint16_t continue_type = 0;
     bool end_headers = false;
     bool end_stream = false;
@@ -49,14 +50,21 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     bool is_init_window_size = false;
     bool expect_ack = false;
 
+    // 本地最大帧大小
+    static constexpr uint32_t MAX_FRAME_SIZE = 16384;
+    // 本地初始窗口值
+    static constexpr uint32_t INIT_WINDOW_SIZE = 65535;
+    // 默认动态表大小
+    static constexpr uint32_t HEADER_TABLE_SIZE = 8192;
+
     sese::net::http::Http2FrameInfo frame{};
     // 临时缓存，用于读取初始连接魔数、帧头，取最大帧大小
-    static constexpr size_t MAX_BUFFER_SIZE = 16384;
-    char temp_buffer[MAX_BUFFER_SIZE]{};
+    char temp_buffer[MAX_FRAME_SIZE]{};
     uint32_t header_table_size = 4096;
     uint32_t enable_push = 0;
     uint32_t max_concurrent_stream = 0;
-    uint32_t window_size = 65535;
+    // 对端初始窗口值
+    uint32_t init_window_size = 65535;
     uint32_t max_frame_size = 16384;
     uint32_t max_header_list_size = 0;
     sese::net::http::DynamicTable req_dynamic_table;
