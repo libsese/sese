@@ -1,6 +1,6 @@
 # sese-http
 
-## test command
+## Simple test command
 
 http/1.1 to h2
 
@@ -14,7 +14,7 @@ without upgrade
 curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 ```
 
-## todos
+## Todos
 
 - [x] servlet
 - [x] controller
