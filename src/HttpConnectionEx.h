@@ -24,6 +24,7 @@ struct HttpStream : Handleable {
     uint32_t window_size = 65535;
     uint16_t continue_type = 0;
     bool end_headers = false;
+    bool end_stream = false;
 
     sese::io::ByteBuilder temp_buffer;
 

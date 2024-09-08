@@ -28,7 +28,7 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 ## [RFC7540](https://www.rfc-editor.org/rfc/rfc7540.txt) verify by [h2spec](https://github.com/summerwind/h2spec)
 
 > [!NOTE]
-> Except for 6.1/2, 6.2/4, 
+> Except for 6.1/2, 6.2/4,
 > the unfinished parts are suspected to be due to errors in the implementation of the h2spec standard.
 
 - 6.1. DATA
@@ -88,9 +88,50 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
         - [ ] 3: Sends a SETTINGS_INITIAL_WINDOW_SIZE settings with an exceeded maximum window size value
 
 - 6.10. CONTINUATION
-    - [ ] 1: Sends multiple CONTINUATION frames preceded by a HEADERS frame
-    - [ ] 2: Sends a CONTINUATION frame followed by any frame other than CONTINUATION
+    - [x] 1: Sends multiple CONTINUATION frames preceded by a HEADERS frame
+    - [x] 2: Sends a CONTINUATION frame followed by any frame other than CONTINUATION
     - [x] 3: Sends a CONTINUATION frame with 0x0 stream identifier
     - [x] 4: Sends a CONTINUATION frame preceded by a HEADERS frame with END_HEADERS flag
     - [x] 5: Sends a CONTINUATION frame preceded by a CONTINUATION frame with END_HEADERS flag
     - [x] 6: Sends a CONTINUATION frame preceded by a DATA frame
+
+## HTTP2 Server verify by h2spec
+
+- 1.Starting HTTP/2
+    - [x] 1: Sends a client connection preface
+- 2.Streams and Multiplexing
+    - [x] 1: Sends a PRIORITY frame on idle stream
+    - [ ] 2: Sends a WINDOW_UPDATE frame on half-closed (remote) stream
+    - [ ] 3: Sends a PRIORITY frame on half-closed (remote) stream
+    - [ ] 4: Sends a RST_STREAM frame on half-closed (remote) stream
+    - [x] 5: Sends a PRIORITY frame on closed stream
+
+- 3.Frame Definitions
+    - 3.1. DATA
+      - [x] 1: Sends a DATA frame
+      - [x] 2: Sends multiple DATA frames
+      - [x] 3: Sends a DATA frame with padding
+    - 3.2. HEADERS
+      - [x] 1: Sends a HEADERS frame
+      - [x] 2: Sends a HEADERS frame with padding
+      - [x] 3: Sends a HEADERS frame with priority
+    - 3.3. PRIORITY
+      - [x] 1: Sends a PRIORITY frame with priority 1
+      - [x] 2: Sends a PRIORITY frame with priority 256
+      - [x] 3: Sends a PRIORITY frame with stream dependency
+      - [x] 4: Sends a PRIORITY frame with exclusive
+      - [x] 5: Sends a PRIORITY frame for an idle stream, then send a HEADER frame for a lower stream ID
+    - 3.4. RST_STREAM
+      - [x] 1: Sends a RST_STREAM frame
+    - 3.5. SETTINGS
+      - [x] 1: Sends a SETTINGS frame
+    - 3.7. PING
+      - [x] 1: Sends a PING frame
+    - 3.8. GOAWAY
+      - [x] 1: Sends a GOAWAY frame
+    - 3.9. WINDOW_UPDATE
+      - [x] 1: Sends a WINDOW_UPDATE frame with stream ID 0
+      - [x] 2: Sends a WINDOW_UPDATE frame with stream ID 1
+    - 3.10. CONTINUATION
+      - [x] 1: Sends a CONTINUATION frame
+      - [x] 2: Sends multiple CONTINUATION frames

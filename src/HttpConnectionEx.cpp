@@ -52,6 +52,16 @@ void HttpConnectionEx::readFrameHeader() {
 
 void HttpConnectionEx::handleFrameHeader() {
     using namespace sese::net::http;
+    auto iterator = streams.find(frame.ident);
+    // CONTINUATION 帧不连续
+    // 判断前序帧2
+    if (iterator != streams.end()) {
+        if (iterator->second->continue_type == FRAME_TYPE_CONTINUATION &&
+            iterator->second->end_headers == false) {
+            writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
+    }
     switch (frame.type) {
         case FRAME_TYPE_SETTINGS: {
             auto code = handleSettingsFrame();
@@ -73,17 +83,18 @@ void HttpConnectionEx::handleFrameHeader() {
             break;
         }
         // 对于服务器而言，只需要处理 HEADERS 后的 CONTINUATION
+        // 判断前序帧1
         case FRAME_TYPE_CONTINUATION: {
             if (frame.ident == 0) {
                 writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
-            auto iterator = streams.find(frame.ident);
             if (iterator == streams.end()) {
                 writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
-            if (iterator->second->continue_type != FRAME_TYPE_HEADERS) {
+            if (iterator->second->continue_type != FRAME_TYPE_HEADERS &&
+                iterator->second->continue_type != FRAME_TYPE_CONTINUATION) {
                 writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
@@ -279,18 +290,23 @@ void HttpConnectionEx::handleHeadersFrame() {
         stream = iterator->second;
     }
 
-    stream->continue_type = FRAME_TYPE_HEADERS;
-
+    stream->continue_type = frame.type;
     stream->temp_buffer.write(temp_buffer, frame.length);
 
     if (frame.flags & FRAME_FLAG_END_HEADERS) {
         stream->end_headers = true;
+    }
+    if (frame.flags & FRAME_FLAG_END_STREAM) {
+        stream->end_stream = true;
+    }
+
+    if (stream->end_headers) {
         HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
                           stream->request);
         stream->temp_buffer.freeCapacity();
         HttpConverter::convertFromHttp2(&stream->request);
 
-        if (frame.flags & FRAME_FLAG_END_STREAM) {
+        if (stream->end_stream) {
             handleRequest(stream);
 
             HttpConverter::convert2Http2(&stream->response);
@@ -327,6 +343,8 @@ void HttpConnectionEx::handleDataFrame() {
         HPackUtil::encode(&stream->temp_buffer, resp_dynamic_table, header, stream->response);
 
         writeHeadersFrame(stream);
+    } else {
+        readFrameHeader();
     }
 }
 
@@ -381,7 +399,7 @@ void HttpConnectionEx::handlePriorityFrame() {
     } else {
         stream = iterator->second;
     }
-    iterator->second->continue_type = frame.type;
+    stream->continue_type = frame.type;
 
     // 读取负载但不处理
     uint8_t exclusive_flag = 0;
