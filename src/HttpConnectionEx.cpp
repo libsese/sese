@@ -41,6 +41,11 @@ void HttpConnectionEx::readFrameHeader() {
         memcpy(&frame.ident, temp_buffer + 5, 4);
         frame.length = FromBigEndian32(frame.length);
         frame.ident = FromBigEndian32(frame.ident);
+
+        if (frame.length > max_frame_size) {
+            return;
+        }
+
         readBlock(temp_buffer, frame.length, [this](const asio::error_code &ec) {
             if (ec) {
                 return;
@@ -58,7 +63,7 @@ void HttpConnectionEx::handleFrameHeader() {
     if (iterator != streams.end()) {
         if (iterator->second->continue_type == FRAME_TYPE_CONTINUATION &&
             iterator->second->end_headers == false) {
-            writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
             return;
         }
     }
@@ -86,20 +91,20 @@ void HttpConnectionEx::handleFrameHeader() {
         // 判断前序帧1
         case FRAME_TYPE_CONTINUATION: {
             if (frame.ident == 0) {
-                writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+                writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
             if (iterator == streams.end()) {
-                writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+                writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
             if (iterator->second->continue_type != FRAME_TYPE_HEADERS &&
                 iterator->second->continue_type != FRAME_TYPE_CONTINUATION) {
-                writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+                writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
             if (iterator->second->end_headers) {
-                writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+                writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
                 break;
             }
         }
@@ -198,25 +203,25 @@ void HttpConnectionEx::handleWindowUpdate() {
     using namespace sese::net::http;
     auto data = reinterpret_cast<uint32_t *>(temp_buffer);
     if (frame.length != 4) {
-        writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        writeGoawayFrame(frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
         return;
     }
     auto i = FromBigEndian32(*data);
     if (i == 0) {
-        writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
 
     if (frame.ident == 0) {
         if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(window_size), static_cast<int32_t>(i))) {
-            writeGoawayFrame(frame.ident, frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
+            writeGoawayFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
             return;
         }
         window_size += i;
     } else {
         auto iterator = streams.find(frame.ident);
         if (iterator == streams.end()) {
-            writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
             return;
         }
         iterator->second->continue_type = frame.type;
@@ -235,13 +240,13 @@ void HttpConnectionEx::handleGoawayFrame() {
     // SESE_DEBUG("Goaway Frame");
     using namespace sese::net::http;
     if (frame.ident != 0) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
 
     auto iterator = streams.find(frame.ident);
     if (iterator == streams.end()) {
-        writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
     iterator->second->continue_type = frame.type;
@@ -274,7 +279,7 @@ void HttpConnectionEx::handleHeadersFrame() {
     // SESE_DEBUG("Headers Frame");
     using namespace sese::net::http;
     if (frame.ident == 0) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
 
@@ -305,7 +310,7 @@ void HttpConnectionEx::handleHeadersFrame() {
                           stream->request);
         stream->temp_buffer.freeCapacity();
         if (!rt) {
-            writeGoawayFrame(0, frame.ident, 0, GOAWAY_COMPRESSION_ERROR, "");
+            writeGoawayFrame(frame.ident, 0, GOAWAY_COMPRESSION_ERROR, "");
             return;
         }
 
@@ -331,12 +336,19 @@ void HttpConnectionEx::handleDataFrame() {
     // SESE_DEBUG("Data Frame");
     using namespace sese::net::http;
     if (frame.ident == 0) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
 
     auto iterator = streams.find(frame.ident);
+    if (iterator == streams.end()) {
+        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
     auto stream = iterator->second;
+    stream->continue_type = frame.type;
+
     stream->request.getBody().write(temp_buffer, frame.length);
     stream->temp_buffer.freeCapacity();
 
@@ -357,17 +369,17 @@ void HttpConnectionEx::handleRstStreamFrame() {
     // SESE_DEBUG("Reset Stream Frame");
     using namespace sese::net::http;
     if (frame.ident == 0) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
     if (frame.length != 4) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_FRAME_SIZE_ERROR, "");
         return;
     }
 
     auto iterator = streams.find(frame.ident);
     if (iterator == streams.end()) {
-        writeGoawayFrame(0, frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
     iterator->second->continue_type = frame.type;
@@ -375,7 +387,7 @@ void HttpConnectionEx::handleRstStreamFrame() {
     uint32_t code;
     memcpy(temp_buffer, &code, 4);
     code = FromBigEndian32(code);
-    SESE_WARN("RST STREAM {} CODE {}", frame.ident, code);
+    // SESE_WARN("RST STREAM {} CODE {}", frame.ident, code);
 
     readFrameHeader();
 }
@@ -385,11 +397,11 @@ void HttpConnectionEx::handlePriorityFrame() {
     // SESE_DEBUG("Priority Frame");
     using namespace sese::net::http;
     if (frame.ident == 0) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
     if (frame.length != 5) {
-        writeGoawayFrame(0, frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        writeGoawayFrame(frame.ident, 0, GOAWAY_FRAME_SIZE_ERROR, "");
         return;
     }
 
@@ -417,11 +429,11 @@ void HttpConnectionEx::handlePriorityFrame() {
     stream_dependency &= 0x7FFFFFFF;
     memcpy(&weight, temp_buffer + 4, 1);
 
-    SESE_DEBUG("Priority set {} deps {}, exclusive {}, weight {}",
-               frame.ident,
-               stream_dependency,
-               exclusive_flag,
-               weight);
+    // SESE_DEBUG("Priority set {} deps {}, exclusive {}, weight {}",
+    //            frame.ident,
+    //            stream_dependency,
+    //            exclusive_flag,
+    //            weight);
     readFrameHeader();
 }
 
@@ -429,15 +441,15 @@ void HttpConnectionEx::handlePingFrame() {
     // SESE_DEBUG("Headers Frame");
     using namespace sese::net::http;
     if (frame.ident != 0) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
     if (frame.length != 8) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_FRAME_SIZE_ERROR, "");
+        writeGoawayFrame(0, 0, GOAWAY_FRAME_SIZE_ERROR, "");
         return;
     }
     if (frame.flags & SETTINGS_FLAGS_ACK) {
-        writeGoawayFrame(0, 0, 0, GOAWAY_PROTOCOL_ERROR, "unexpected ping with ack");
+        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "unexpected ping with ack");
         return;
     }
 
@@ -479,7 +491,6 @@ void HttpConnectionEx::handleWrite() {
 }
 
 void HttpConnectionEx::writeGoawayFrame(
-    uint32_t stream_id,
     uint32_t latest_stream_id,
     uint8_t flags,
     uint32_t error_code,
@@ -489,7 +500,7 @@ void HttpConnectionEx::writeGoawayFrame(
     auto frame = std::make_unique<Http2Frame>(msg.length() + 8);
     frame->type = FRAME_TYPE_GOAWAY;
     frame->flags = flags;
-    frame->ident = stream_id;
+    frame->ident = 0;
     frame->length = msg.length() + 8;
     frame->buildFrameHeader();
     latest_stream_id = ToBigEndian32(latest_stream_id);

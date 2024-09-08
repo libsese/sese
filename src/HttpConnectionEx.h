@@ -111,7 +111,6 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     void writeAckFrame();
 
     void writeGoawayFrame(
-        uint32_t stream_id,
         uint32_t latest_stream_id,
         uint8_t flags,
         uint32_t error_code,
