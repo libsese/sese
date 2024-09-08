@@ -301,9 +301,14 @@ void HttpConnectionEx::handleHeadersFrame() {
     }
 
     if (stream->end_headers) {
-        HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
+        auto rt = HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
                           stream->request);
         stream->temp_buffer.freeCapacity();
+        if (!rt) {
+            writeGoawayFrame(0, frame.ident, 0, GOAWAY_COMPRESSION_ERROR, "");
+            return;
+        }
+
         HttpConverter::convertFromHttp2(&stream->request);
 
         if (stream->end_stream) {
