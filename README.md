@@ -99,7 +99,7 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 
 - 4.HTTP Frames
     - 4.1. Frame Format
-        - [ ] 1: Sends a frame with unknown type
+        - [x] 1: Sends a frame with unknown type
         - [ ] 2: Sends a frame with undefined flag
         - [ ] 3: Sends a frame with reserved field bit
 
@@ -135,8 +135,8 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
         - [ ] 1: Sends HEADERS frames that causes their advertised concurrent stream limit to be exceeded
     - 5.3. Stream Priority
         - 5.3.1. Stream Dependencies
-            - [ ] 1: Sends HEADERS frame that depends on itself
-            - [ ] 2: Sends PRIORITY frame that depend on itself
+            - [x] 1: Sends HEADERS frame that depends on itself
+            - [x] 2: Sends PRIORITY frame that depend on itself
     - 5.4. Error Handling
         - 5.4.1. Connection Error Handling
             - [ ] 1: Sends an invalid PING frame for connection close

@@ -27,20 +27,17 @@ void HttpConnectionEx::readMagic() {
 }
 
 void HttpConnectionEx::readFrameHeader() {
-    // static int i = 0;
-    // SESE_INFO("POST {} READ", i);
     readBlock(temp_buffer, 9, [this](const asio::error_code &ec) {
         if (ec) {
             return;
         }
-        // SESE_INFO("{} READ", i++);
         memset(&frame, 0, sizeof(frame));
         memcpy(reinterpret_cast<char *>(&frame.length) + 1, temp_buffer + 0, 3);
         memcpy(&frame.type, temp_buffer + 3, 1);
         memcpy(&frame.flags, temp_buffer + 4, 1);
         memcpy(&frame.ident, temp_buffer + 5, 4);
         frame.length = FromBigEndian32(frame.length);
-        frame.ident = FromBigEndian32(frame.ident);
+        frame.ident = FromBigEndian32<uint32_t>(frame.ident & 0x7FFF'FFFF'FFFF'FFFF);
 
         if (frame.length > max_frame_size) {
             return;
@@ -129,8 +126,10 @@ void HttpConnectionEx::handleFrameHeader() {
             handlePingFrame();
             break;
         }
-        default:
+        default: {
+            writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "unknown frame type");
             break;
+        }
     }
 }
 
@@ -221,7 +220,7 @@ void HttpConnectionEx::handleWindowUpdate() {
             writeGoawayFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
             return;
         }
-        for (auto &[ident, stream] : streams) {
+        for (auto &[ident, stream]: streams) {
             stream->write_window_size += i;
         }
     } else {
@@ -316,11 +315,16 @@ void HttpConnectionEx::handleHeadersFrame() {
     }
     if (frame.flags & FRAME_FLAG_PRIORITY) {
         uint32_t dependency;
-        memcpy(temp_buffer + offset, &dependency, 4);
+        memcpy(&dependency, temp_buffer + offset, 4);
         dependency = FromBigEndian32(dependency);
         offset += 4;
-        uint8_t priority = temp_buffer[offset];
+        uint8_t priority = temp_buffer[offset]; // NOLINT
         offset += 1;
+
+        if (dependency == frame.ident) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
     }
     stream->temp_buffer.write(temp_buffer + offset, frame.length - padded - offset);
 
@@ -333,7 +337,7 @@ void HttpConnectionEx::handleHeadersFrame() {
 
     if (stream->end_headers) {
         auto rt = HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
-                          stream->request);
+                                    stream->request);
         stream->temp_buffer.freeCapacity();
         if (!rt) {
             writeGoawayFrame(frame.ident, 0, GOAWAY_COMPRESSION_ERROR, "");
@@ -380,7 +384,13 @@ void HttpConnectionEx::handleDataFrame() {
     auto stream = iterator->second;
     stream->continue_type = frame.type;
 
-    stream->request.getBody().write(temp_buffer, frame.length);
+    if (frame.flags & FRAME_FLAG_PADDED) {
+        uint8_t padded = temp_buffer[0];
+        stream->request.getBody().write(temp_buffer + 1, frame.length - padded - 1);
+    } else {
+        stream->request.getBody().write(temp_buffer, frame.length);
+    }
+
     stream->temp_buffer.freeCapacity();
 
     if (frame.flags & FRAME_FLAG_END_STREAM) {
@@ -451,16 +461,20 @@ void HttpConnectionEx::handlePriorityFrame() {
     stream->continue_type = frame.type;
 
     // 读取负载但不处理
-    uint8_t exclusive_flag = 0;
+    uint8_t exclusive_flag = 0; // NOLINT
     uint32_t stream_dependency = 0;
     uint8_t weight = 0;
 
     memcpy(&stream_dependency, temp_buffer, 4);
     stream_dependency = FromBigEndian32(stream_dependency);
-    exclusive_flag = (stream_dependency & 0x80000000) >> 31;
+    exclusive_flag = (stream_dependency & 0x80000000) >> 31; // NOLINT
     stream_dependency &= 0x7FFFFFFF;
     memcpy(&weight, temp_buffer + 4, 1);
 
+    if (stream_dependency == frame.ident) {
+        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
     // SESE_DEBUG("Priority set {} deps {}, exclusive {}, weight {}",
     //            frame.ident,
     //            stream_dependency,
@@ -497,7 +511,7 @@ void HttpConnectionEx::handlePingFrame() {
     handleWrite();
 }
 
-void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
+void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) { // NOLINT
     auto serv = service.lock();
     assert(serv);
     serv->handleRequest(stream);
@@ -533,7 +547,7 @@ void HttpConnectionEx::writeGoawayFrame(
     frame->type = FRAME_TYPE_GOAWAY;
     frame->flags = flags;
     frame->ident = 0;
-    frame->length = msg.length() + 8;
+    frame->length = static_cast<uint32_t>(msg.length() + 8);
     frame->buildFrameHeader();
     latest_stream_id = ToBigEndian32(latest_stream_id);
     error_code = ToBigEndian32(error_code);
