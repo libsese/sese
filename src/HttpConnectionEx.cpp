@@ -37,7 +37,8 @@ void HttpConnectionEx::readFrameHeader() {
         memcpy(&frame.flags, temp_buffer + 4, 1);
         memcpy(&frame.ident, temp_buffer + 5, 4);
         frame.length = FromBigEndian32(frame.length);
-        frame.ident = FromBigEndian32<uint32_t>(frame.ident & 0x7FFF'FFFF'FFFF'FFFF);
+        frame.ident = FromBigEndian32<uint32_t>(frame.ident);
+        frame.ident &= 0x7fffffff;
 
         if (frame.length > max_frame_size) {
             return;
@@ -409,10 +410,12 @@ void HttpConnectionEx::handleDataFrame() {
     stream->temp_buffer.freeCapacity();
 
     if (frame.flags & FRAME_FLAG_END_STREAM) {
-        auto content_length = sese::toInteger(stream->request.get("content-length", "0"));
-        if (content_length != stream->request.getBody().getReadableSize()) {
-            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
-            return;
+        if (stream->request.exist("content-length")) {
+            auto content_length = sese::toInteger(stream->request.get("content-length"));
+            if (content_length != stream->request.getBody().getReadableSize()) {
+                writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+                return;
+            }
         }
 
         handleRequest(stream);
@@ -532,7 +535,8 @@ void HttpConnectionEx::handlePingFrame() {
     handleWrite();
 }
 
-void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) { // NOLINT
+void HttpConnectionEx::handleRequest(const HttpStream::Ptr &stream) {
+    // NOLINT
     auto serv = service.lock();
     assert(serv);
     serv->handleRequest(stream);
