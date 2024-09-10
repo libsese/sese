@@ -51,6 +51,7 @@ jobs:
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()
         with:
           name: test
           path: test.xml
