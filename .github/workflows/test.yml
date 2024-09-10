@@ -21,6 +21,14 @@ jobs:
       - name: Init Submodule
         run: git submodule update --init --recursive --depth 1
 
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.11'
+
+      - name: Pip install
+        run: pip -r requirements.txt
+
       - name: Download h2spec
         run: |
           wget https://github.com/summerwind/h2spec/releases/download/v2.6.0/h2spec_linux_amd64.tar.gz
@@ -43,24 +51,21 @@ jobs:
       - name: Build
         run: cmake --build build --target NewHttpImpl
 
-      - name: Run
+      - name: Test
         run: |
           nohup ./build/NewHttpImpl &
           sleep 3
           ./h2spec -p 9956 -j test.xml
-#          pkill NewHttpImpl
+          pkill NewHttpImpl
 
-      - name: Upload
-        uses: actions/upload-artifact@v4.4.0
+      - name: Make report
         if: success() || failure()
-        with:
-          name: test.zip
-          path: test.xml
+        run: |
+          mkdir public
+          junit2html test.xml public/index.html
 
-#      - name: Test report
-#        uses: dorny/test-reporter@v1.9.1
-#        if: success() || failure()
-#        with:
-#          name: test
-#          path: test.xml
-#          reporter: jest-junit
+      - name: Deploy pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
