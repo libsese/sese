@@ -8,6 +8,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
   VCPKG_FEATURE_FLAGS: dependencygraph
 
 jobs:
@@ -44,10 +45,10 @@ jobs:
 
       - name: Run
         run: |
-          ./build/NewHttpImpl &
+          nohup ./build/NewHttpImpl &
           sleep 3
           ./h2spec -p 9956 -j test.xml
-          pkill NewHttpImpl
+#          pkill NewHttpImpl
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1
