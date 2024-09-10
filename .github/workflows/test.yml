@@ -60,14 +60,12 @@ jobs:
         continue-on-error: true
 
       - name: Make report
-        if: success() || failure()
         run: |
           mkdir public
           junit2html test.xml public/index.html
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
-        if: success() || failure()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
