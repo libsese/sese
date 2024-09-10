@@ -186,7 +186,7 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
                 break;
             case SETTINGS_INITIAL_WINDOW_SIZE:
                 if (is_init_window_size) {
-                    continue;
+                    return GOAWAY_FLOW_CONTROL_ERROR;
                 }
                 is_init_window_size = true;
                 if (*value > 2147483647) {
@@ -326,6 +326,12 @@ void HttpConnectionEx::handleHeadersFrame() {
             return;
         }
     }
+
+    if (padded > frame.length) {
+        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        return;
+    }
+
     stream->temp_buffer.write(temp_buffer + offset, frame.length - padded - offset);
 
     if (frame.flags & FRAME_FLAG_END_HEADERS) {
@@ -344,7 +350,11 @@ void HttpConnectionEx::handleHeadersFrame() {
             return;
         }
 
-        HttpConverter::convertFromHttp2(&stream->request);
+        rt = HttpConverter::convertFromHttp2(&stream->request);
+        if (!rt) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
 
         if (stream->end_stream) {
             handleRequest(stream);
@@ -386,6 +396,11 @@ void HttpConnectionEx::handleDataFrame() {
 
     if (frame.flags & FRAME_FLAG_PADDED) {
         uint8_t padded = temp_buffer[0];
+        if (padded > frame.length) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
+
         stream->request.getBody().write(temp_buffer + 1, frame.length - padded - 1);
     } else {
         stream->request.getBody().write(temp_buffer, frame.length);
@@ -394,6 +409,12 @@ void HttpConnectionEx::handleDataFrame() {
     stream->temp_buffer.freeCapacity();
 
     if (frame.flags & FRAME_FLAG_END_STREAM) {
+        auto content_length = sese::toInteger(stream->request.get("content-length", "0"));
+        if (content_length != stream->request.getBody().getReadableSize()) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
+
         handleRequest(stream);
 
         HttpConverter::convert2Http2(&stream->response);
@@ -487,7 +508,7 @@ void HttpConnectionEx::handlePingFrame() {
     // SESE_DEBUG("Headers Frame");
     using namespace sese::net::http;
     if (frame.ident != 0) {
-        writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
+        // writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
         return;
     }
     if (frame.length != 8) {

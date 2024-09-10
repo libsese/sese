@@ -1,0 +1,50 @@
+name: test
+
+on:
+  branches:
+    - main
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VCPKG_FEATURE_FLAGS: dependencygraph
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Python
+        uses: actions/setup-python@v5.2.0
+        with:
+          python-version: '3.11'
+
+      - name: Download h2spec
+        run: |
+          wget https://github.com/summerwind/h2spec/releases/download/v2.6.0/h2spec_linux_amd64.tar.gz
+          tar -xzf h2spec_linux_amd64.tar.gz
+
+      - name: CMake config
+        run: >
+          cmake
+          -Bbuild
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+      - name: Build
+        run: cmake --build build --target NewHttpImpl
+
+      - name: Run
+        run: |
+          nohup ./build/NewHttpImpl
+          ./h2spec -p 9956 -j test.xml
+          pkill NewHttpImpl
+
+      - name: Test report
+        uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()
+        with:
+          name: test
+          path: test.xml
+          reporter: jest-junit
