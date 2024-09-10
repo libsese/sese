@@ -1,8 +1,9 @@
 name: test
 
 on:
-  branches:
-    - main
+  push:
+    branches:
+      - main
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -14,11 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
-
-      - name: Setup Python
-        uses: actions/setup-python@v5.2.0
-        with:
-          python-version: '3.11'
 
       - name: Download h2spec
         run: |
