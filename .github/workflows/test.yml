@@ -27,7 +27,7 @@ jobs:
           python-version: '3.11'
 
       - name: Pip install
-        run: pip -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Download h2spec
         run: |
@@ -66,6 +66,7 @@ jobs:
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
+        if: success() || failure()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
