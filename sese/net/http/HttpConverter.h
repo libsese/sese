@@ -11,7 +11,7 @@ namespace sese::net::http {
     public:
         HttpConverter() = delete;
 
-        static void convertFromHttp2(Request *request);
+        static bool convertFromHttp2(Request *request);
 
         static void convert2Http2(Response *response);
     };

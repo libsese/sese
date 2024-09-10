@@ -1,6 +1,17 @@
 #include <sese/net/http/HttpConverter.h>
 
-void sese::net::http::HttpConverter::convertFromHttp2(Request *request) {
+bool sese::net::http::HttpConverter::convertFromHttp2(Request *request) {
+    if (!request->exist(":path") ||
+        !request->exist(":method") ||
+        !request->exist(":scheme")
+        ) {
+        return false;
+    }
+
+    if (request->get(":path").empty()) {
+        return false;
+    }
+
     request->setVersion(HttpVersion::VERSION_2);
     request->setUrl(request->get(":path", "/"));
     auto method = request->get(":method", "get");
@@ -21,8 +32,10 @@ void sese::net::http::HttpConverter::convertFromHttp2(Request *request) {
     } else if (strcmpDoNotCase(method.c_str(), "connect")) {
         request->setType(RequestType::CONNECT);
     } else {
-        request->setType(RequestType::ANOTHER);
+        // request->setType(RequestType::ANOTHER);
+        return false;
     }
+    return true;
 }
 
 void sese::net::http::HttpConverter::convert2Http2(Response *response) {
