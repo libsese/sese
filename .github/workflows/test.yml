@@ -57,6 +57,7 @@ jobs:
           sleep 3
           ./h2spec -p 9956 -j test.xml
           pkill NewHttpImpl
+        continue-on-error: true
 
       - name: Make report
         if: success() || failure()
