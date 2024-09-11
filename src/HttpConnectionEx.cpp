@@ -361,7 +361,7 @@ void HttpConnectionEx::handleHeadersFrame() {
 
     if (stream->end_headers) {
         auto rt = HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
-                                    stream->request, false);
+                                    stream->request, false, header_table_size);
         stream->temp_buffer.freeCapacity();
         if (rt) {
             writeGoawayFrame(frame.ident, 0, rt, "");
