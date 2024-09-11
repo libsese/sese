@@ -32,7 +32,7 @@
 
 using namespace sese::net::http;
 
-const std::string HPackUtil::REQ_PSEUDO_HEADER[4] {":method", ":scheme", ":authority", ":path"};
+const std::string HPackUtil::REQ_PSEUDO_HEADER[4]{":method", ":scheme", ":authority", ":path"};
 
 HuffmanDecoder HPackUtil::decoder{};
 HuffmanEncoder HPackUtil::encoder{};
@@ -57,7 +57,7 @@ bool HPackUtil::setHeader(Header &header, const std::string &key, const std::str
 
 bool HPackUtil::verifyHeader(Header &header, bool is_resp) noexcept {
     if (is_resp) {
-        for (auto &&item : REQ_PSEUDO_HEADER) {
+        for (auto &&item: REQ_PSEUDO_HEADER) {
             if (header.exist(item)) {
                 return false;
             }
@@ -66,7 +66,7 @@ bool HPackUtil::verifyHeader(Header &header, bool is_resp) noexcept {
             return false;
         }
     } else {
-        for (auto &&item : REQ_PSEUDO_HEADER) {
+        for (auto &&item: REQ_PSEUDO_HEADER) {
             if (!header.exist(item)) {
                 return false;
             }
@@ -78,8 +78,15 @@ bool HPackUtil::verifyHeader(Header &header, bool is_resp) noexcept {
     return true;
 }
 
-uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header,
-                           bool is_resp, uint32_t limit) noexcept {
+uint32_t HPackUtil::decode(
+    InputStream *src,
+    size_t content_length,
+    DynamicTable &table,
+    Header &header,
+    bool is_resp,
+    bool has_pseudo,
+    uint32_t limit
+) noexcept {
     uint8_t buf;
     size_t len = 0;
     while (len < content_length) {
@@ -108,6 +115,13 @@ uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable
                 header.setCookies(cookies);
             } else {
                 // header.set(pair->first, pair->second);
+                if (*pair->first.begin() == ':') {
+                    if (!has_pseudo) {
+                        return GOAWAY_COMPRESSION_ERROR;
+                    }
+                } else {
+                    has_pseudo = false;
+                }
                 if (!setHeader(header, pair->first, pair->second)) {
                     return GOAWAY_PROTOCOL_ERROR;
                 }
@@ -129,7 +143,7 @@ uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable
             uint32_t index = 0;
             bool is_store;
             /// 对应第 1 种情况
-            if ((buf & 0b1100'0000) == 0b0100'0000 ) {
+            if ((buf & 0b1100'0000) == 0b0100'0000) {
                 // 添加至动态表
                 auto l = decodeInteger(buf, src, index, 6);
                 if (-1 == l) {
@@ -180,6 +194,13 @@ uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable
                 header.setCookies(cookies);
             } else {
                 // header.set(key, value);
+                if (*key.begin() == ':') {
+                    if (!has_pseudo) {
+                        return GOAWAY_COMPRESSION_ERROR;
+                    }
+                } else {
+                    has_pseudo = false;
+                }
                 if (!setHeader(header, key, value)) {
                     return GOAWAY_PROTOCOL_ERROR;
                 }
