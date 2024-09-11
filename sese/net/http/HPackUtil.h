@@ -33,8 +33,9 @@ public:
     /// \param table 解析所用的动态表
     /// \param header 存放解析结果
     /// \param is_resp 指示当前是否为响应
+    /// \param limit 动态表大小限制
     /// \return 解析成功返回0，否则返回错误码
-    static uint32_t decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header, bool is_resp) noexcept;
+    static uint32_t decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header, bool is_resp, uint32_t limit = 8192) noexcept;
 
     /// 尝试将 HEADERS 按照 HPACK 格式压缩
     /// \param dest 目的流

@@ -79,7 +79,7 @@ bool HPackUtil::verifyHeader(Header &header, bool is_resp) noexcept {
 }
 
 uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header,
-                           bool is_resp) noexcept {
+                           bool is_resp, uint32_t limit) noexcept {
     uint8_t buf;
     size_t len = 0;
     while (len < content_length) {
@@ -121,6 +121,9 @@ uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable
                 return GOAWAY_COMPRESSION_ERROR;
             }
             len += l;
+            if (new_size > limit) {
+                return GOAWAY_COMPRESSION_ERROR;
+            }
             table.resize(new_size);
         } else {
             uint32_t index = 0;
