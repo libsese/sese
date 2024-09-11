@@ -26,6 +26,7 @@ struct HttpStream : Handleable {
     uint16_t continue_type = 0;
     bool end_headers = false;
     bool end_stream = false;
+    bool is_closed = false;
 
     sese::io::ByteBuilder temp_buffer;
 
@@ -49,6 +50,7 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     bool is_read = false;
     bool expect_ack = false;
     uint32_t accept_stream_count = 0;
+    uint32_t latest_stream_ident = 0;
 
     // 本地最大帧大小
     static constexpr uint32_t MAX_FRAME_SIZE = 16384;
