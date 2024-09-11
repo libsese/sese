@@ -186,10 +186,9 @@ uint8_t HttpConnectionEx::handleSettingsFrame() {
                 resp_dynamic_table.resize(max_header_list_size);
                 break;
             case SETTINGS_INITIAL_WINDOW_SIZE:
-                if (is_init_window_size) {
-                    return GOAWAY_FLOW_CONTROL_ERROR;
+                if (accept_stream_count) {
+                     return GOAWAY_FLOW_CONTROL_ERROR;
                 }
-                is_init_window_size = true;
                 if (*value > 2147483647) {
                     return GOAWAY_FLOW_CONTROL_ERROR;
                 }
@@ -296,16 +295,31 @@ void HttpConnectionEx::handleHeadersFrame() {
 
     HttpStream::Ptr stream;
     auto iterator = streams.find(frame.ident);
-    if (iterator == streams.end()) {
-        stream = std::make_shared<HttpStream>();
-        stream->id = frame.ident;
-        stream->write_window_size = init_window_size;
-        stream->request.setVersion(HttpVersion::VERSION_2);
-        stream->response.setVersion(HttpVersion::VERSION_2);
-        streams[frame.ident] = stream;
+    if (frame.type == FRAME_TYPE_HEADERS) {
+        if (frame.ident != accept_stream_count * 2 + 1) {
+            writeGoawayFrame(0, 0, GOAWAY_STREAM_CLOSED, "");
+            return;
+        }
+        if (iterator == streams.end()) {
+            stream = std::make_shared<HttpStream>();
+            stream->id = frame.ident;
+            stream->write_window_size = init_window_size;
+            stream->request.setVersion(HttpVersion::VERSION_2);
+            stream->response.setVersion(HttpVersion::VERSION_2);
+            streams[frame.ident] = stream;
+            accept_stream_count += 1;
+        } else {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
     } else {
+        if (iterator == streams.end()) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+            return;
+        }
         stream = iterator->second;
     }
+
 
     uint8_t offset = 0;
     uint8_t padded = 0;
@@ -388,7 +402,11 @@ void HttpConnectionEx::handleDataFrame() {
 
     auto iterator = streams.find(frame.ident);
     if (iterator == streams.end()) {
-        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        uint32_t code = GOAWAY_PROTOCOL_ERROR;
+        if (frame.ident <= accept_stream_count * 2 + 1) {
+            code = GOAWAY_STREAM_CLOSED;
+        }
+        writeGoawayFrame(frame.ident, 0, code, "");
         return;
     }
 
@@ -444,7 +462,11 @@ void HttpConnectionEx::handleRstStreamFrame() {
 
     auto iterator = streams.find(frame.ident);
     if (iterator == streams.end()) {
-        writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        uint32_t code = GOAWAY_PROTOCOL_ERROR;
+        if (frame.ident <= accept_stream_count * 2 + 1) {
+            code = GOAWAY_STREAM_CLOSED;
+        }
+        writeGoawayFrame(frame.ident, 0, code, "");
         return;
     }
     iterator->second->continue_type = frame.type;
@@ -452,7 +474,8 @@ void HttpConnectionEx::handleRstStreamFrame() {
     uint32_t code;
     memcpy(temp_buffer, &code, 4);
     code = FromBigEndian32(code);
-    // SESE_WARN("RST STREAM {} CODE {}", frame.ident, code);
+
+    streams.erase(frame.ident);
 
     readFrameHeader();
 }
@@ -479,6 +502,7 @@ void HttpConnectionEx::handlePriorityFrame() {
         stream->request.setVersion(HttpVersion::VERSION_2);
         stream->response.setVersion(HttpVersion::VERSION_2);
         streams[frame.ident] = stream;
+        accept_stream_count += 1;
     } else {
         stream = iterator->second;
     }
@@ -656,6 +680,7 @@ void HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream) {
     }
     if (stream->response.getBody().getReadableSize() == 0) {
         frame->flags |= sese::net::http::FRAME_FLAG_END_STREAM;
+        streams.erase(stream->id);
     }
     frame->buildFrameHeader();
     send_queue.push(std::move(frame));

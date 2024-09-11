@@ -47,8 +47,8 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     std::weak_ptr<HttpServiceImpl> service;
 
     bool is_read = false;
-    bool is_init_window_size = false;
     bool expect_ack = false;
+    uint32_t accept_stream_count = 0;
 
     // 本地最大帧大小
     static constexpr uint32_t MAX_FRAME_SIZE = 16384;
