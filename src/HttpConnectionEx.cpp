@@ -296,11 +296,11 @@ void HttpConnectionEx::handleHeadersFrame() {
     HttpStream::Ptr stream;
     auto iterator = streams.find(frame.ident);
     if (frame.type == FRAME_TYPE_HEADERS) {
-        if (frame.ident != accept_stream_count * 2 + 1) {
-            writeGoawayFrame(0, 0, GOAWAY_STREAM_CLOSED, "");
-            return;
-        }
         if (iterator == streams.end()) {
+            if (frame.ident != accept_stream_count * 2 + 1) {
+                writeGoawayFrame(0, 0, GOAWAY_STREAM_CLOSED, "");
+                return;
+            }
             stream = std::make_shared<HttpStream>();
             stream->id = frame.ident;
             stream->write_window_size = init_window_size;
@@ -309,8 +309,11 @@ void HttpConnectionEx::handleHeadersFrame() {
             streams[frame.ident] = stream;
             accept_stream_count += 1;
         } else {
-            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
-            return;
+            stream = iterator->second;
+            if (stream->end_stream) {
+                writeGoawayFrame(frame.ident, 0, GOAWAY_STREAM_CLOSED, "");
+                return;
+            }
         }
     } else {
         if (iterator == streams.end()) {
@@ -409,6 +412,10 @@ void HttpConnectionEx::handleDataFrame() {
         writeGoawayFrame(frame.ident, 0, code, "");
         return;
     }
+    if (iterator->second->end_stream) {
+        writeGoawayFrame(frame.ident, 0, GOAWAY_STREAM_CLOSED, "");
+        return;
+    }
 
     auto stream = iterator->second;
     stream->continue_type = frame.type;
@@ -495,6 +502,10 @@ void HttpConnectionEx::handlePriorityFrame() {
 
     HttpStream::Ptr stream;
     auto iterator = streams.find(frame.ident);
+    if (frame.ident != accept_stream_count * 2 + 1) {
+        writeGoawayFrame(0, 0, GOAWAY_STREAM_CLOSED, "");
+        return;
+    }
     if (iterator == streams.end()) {
         stream = std::make_shared<HttpStream>();
         stream->id = frame.ident;
@@ -505,6 +516,10 @@ void HttpConnectionEx::handlePriorityFrame() {
         accept_stream_count += 1;
     } else {
         stream = iterator->second;
+        if (stream->end_stream) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_STREAM_CLOSED, "");
+            return;
+        }
     }
     stream->continue_type = frame.type;
 
