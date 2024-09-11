@@ -229,13 +229,14 @@ void HttpConnectionEx::handleWindowUpdate() {
             writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
             return;
         }
-        iterator->second->continue_type = frame.type;
-        if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(iterator->second->write_window_size),
+        auto stream = iterator->second;
+        stream->continue_type = frame.type;
+        if (sese::isAdditionOverflow<int32_t>(static_cast<int32_t>(stream->write_window_size),
                                               static_cast<int32_t>(i))) {
             writeRstStreamFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR);
             return;
         }
-        iterator->second->write_window_size += i;
+        stream->write_window_size += i;
     }
 
     readFrameHeader();
@@ -363,13 +364,14 @@ void HttpConnectionEx::handleHeadersFrame() {
 
     if (stream->end_headers) {
         auto rt = HPackUtil::decode(&stream->temp_buffer, stream->temp_buffer.getReadableSize(), req_dynamic_table,
-                                    stream->request, false, header_table_size);
+                                    stream->request, false, true, header_table_size);
         stream->temp_buffer.freeCapacity();
         if (rt) {
             writeGoawayFrame(frame.ident, 0, rt, "");
             return;
         }
-        if (stream->request.exist("trailer")) {
+        if (stream->request.exist("trailer") ||
+            stream->request.exist("te")) {
             writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
             return;
         }
@@ -524,10 +526,6 @@ void HttpConnectionEx::handlePriorityFrame() {
         accept_stream_count += 1;
     } else {
         stream = iterator->second;
-        if (stream->end_stream) {
-            writeGoawayFrame(frame.ident, 0, GOAWAY_STREAM_CLOSED, "");
-            return;
-        }
     }
     stream->continue_type = frame.type;
 
