@@ -391,23 +391,31 @@ int HPackUtil::decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uin
 int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     uint8_t buf;
     src->read(&buf, 1);
-    uint8_t len = (buf & 0x7F);
     bool is_huffman = (buf & 0x80) == 0x80;
 
-    char buffer[UINT8_MAX]{};
+    uint32_t len;
+    auto l = decodeInteger(buf, src, len, 7);
+    if (l == -1) {
+        return -1;
+    }
+    if (len > UINT16_MAX) {
+        return -1;
+    }
+    char buffer[UINT16_MAX]{};
     if (len != src->read(buffer, len)) {
         return -1;
     }
 
     if (is_huffman) {
         auto result = decoder.decode(buffer, len);
-        if (result != std::nullopt) {
-            dest = decoder.decode(buffer, len).value();
+        if (result == std::nullopt) {
+            return -1;
         }
+        dest = result.value();
     } else {
         dest = buffer;
     }
-    return len + 1;
+    return l + len;
 }
 
 size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
