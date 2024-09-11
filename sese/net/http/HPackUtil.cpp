@@ -415,7 +415,7 @@ int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     } else {
         dest = buffer;
     }
-    return l + len;
+    return l + 1 + len;
 }
 
 size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
