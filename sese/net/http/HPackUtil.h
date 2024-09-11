@@ -32,8 +32,9 @@ public:
     /// \param content_length 需要解析的内容长度
     /// \param table 解析所用的动态表
     /// \param header 存放解析结果
-    /// \return 解析成功与否
-    static bool decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header) noexcept;
+    /// \param is_resp 指示当前是否为响应
+    /// \return 解析成功返回0，否则返回错误码
+    static uint32_t decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header, bool is_resp) noexcept;
 
     /// 尝试将 HEADERS 按照 HPACK 格式压缩
     /// \param dest 目的流
@@ -59,6 +60,22 @@ private:
     static size_t encodeString(OutputStream *dest, const std::string &str) noexcept;
 
     static std::string buildCookieString(const Cookie::Ptr &cookie) noexcept;
+
+    /// 检查伪字段是否重复并设置头部值
+    /// @see sese::net::http::HttpConverter
+    /// @param header 目标头
+    /// @param key 键
+    /// @param value 值
+    /// @return 是否设置成功
+    static bool setHeader(Header &header, const std::string &key, const std::string &value) noexcept;
+
+    /// 校验伪字段
+    /// @param header 头部
+    /// @param is_resp 是否为响应
+    /// @return 校验结果
+    static bool verifyHeader(Header &header, bool is_resp) noexcept;
+
+    static const std::string REQ_PSEUDO_HEADER[4];
 
     static HuffmanDecoder decoder;
     static HuffmanEncoder encoder;

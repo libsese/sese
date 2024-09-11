@@ -18,6 +18,7 @@
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/HPACK.h"
+#include "sese/net/http/Http2Frame.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/util/DateTime.h"
 #include "sese/text/StringBuilder.h"
@@ -31,15 +32,59 @@
 
 using namespace sese::net::http;
 
+const std::string HPackUtil::REQ_PSEUDO_HEADER[4] {":method", ":scheme", ":authority", ":path"};
+
 HuffmanDecoder HPackUtil::decoder{};
 HuffmanEncoder HPackUtil::encoder{};
 
-bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header) noexcept {
+bool HPackUtil::setHeader(Header &header, const std::string &key, const std::string &value) noexcept {
+    auto iter = header.find(key);
+    if (iter == header.end()) {
+        header.set(key, value);
+        return true;
+    }
+
+    if (key == ":status") {
+        return false;
+    }
+    if (std::find(std::begin(REQ_PSEUDO_HEADER), std::end(REQ_PSEUDO_HEADER), key) != std::end(REQ_PSEUDO_HEADER)) {
+        return false;
+    }
+
+    header.set(key, value);
+    return true;
+}
+
+bool HPackUtil::verifyHeader(Header &header, bool is_resp) noexcept {
+    if (is_resp) {
+        for (auto &&item : REQ_PSEUDO_HEADER) {
+            if (header.exist(item)) {
+                return false;
+            }
+        }
+        if (!header.exist(":status")) {
+            return false;
+        }
+    } else {
+        for (auto &&item : REQ_PSEUDO_HEADER) {
+            if (!header.exist(item)) {
+                return false;
+            }
+        }
+        if (header.exist(":status")) {
+            return false;
+        }
+    }
+    return true;
+}
+
+uint32_t HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header,
+                           bool is_resp) noexcept {
     uint8_t buf;
     size_t len = 0;
     while (len < content_length) {
         if (1 != src->read(&buf, 1)) {
-            return false;
+            return GOAWAY_COMPRESSION_ERROR;
         }
         len += 1;
         /// 对应第 0 种情况
@@ -47,30 +92,33 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             uint32_t index = 0;
             auto l = decodeInteger(buf, src, index, 7);
             if (-1 == l) {
-                return false;
+                return GOAWAY_COMPRESSION_ERROR;
             }
             len += l;
             if (index == 0) {
-                return false;
+                return GOAWAY_COMPRESSION_ERROR;
             }
 
             auto pair = table.get(index);
             if (pair == std::nullopt) {
-                return false;
+                return GOAWAY_COMPRESSION_ERROR;
             }
-            if (strcasecmp(pair->first.c_str(), "Cookie") == 0) {
+            if (strcmpDoNotCase(pair->first.c_str(), "Cookie")) {
                 auto cookies = HttpUtil::parseFromCookie(pair->second);
                 header.setCookies(cookies);
             } else {
-                header.set(pair->first, pair->second);
+                // header.set(pair->first, pair->second);
+                if (!setHeader(header, pair->first, pair->second)) {
+                    return GOAWAY_PROTOCOL_ERROR;
+                }
             }
         }
         // 对应第4种情况
-        else if (buf & 0b0010'0000) {
+        else if ((buf & 0b1110'0000) == 0b0010'0000) {
             uint32_t new_size;
             auto l = decodeInteger(buf, src, new_size, 5);
             if (-1 == l) {
-                return false;
+                return GOAWAY_COMPRESSION_ERROR;
             }
             len += l;
             table.resize(new_size);
@@ -78,11 +126,11 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             uint32_t index = 0;
             bool is_store;
             /// 对应第 1 种情况
-            if (0b0100'0000 == (buf & 0b1100'0000)) {
+            if ((buf & 0b1100'0000) == 0b0100'0000 ) {
                 // 添加至动态表
                 auto l = decodeInteger(buf, src, index, 6);
                 if (-1 == l) {
-                    return false;
+                    return GOAWAY_COMPRESSION_ERROR;
                 }
                 len += l;
                 is_store = true;
@@ -92,7 +140,7 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
                 // 不添加至动态表
                 auto l = decodeInteger(buf, src, index, 4);
                 if (-1 == l) {
-                    return false;
+                    return GOAWAY_COMPRESSION_ERROR;
                 }
                 len += l;
                 is_store = false;
@@ -102,39 +150,44 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             if (0 != index) {
                 auto ret = table.get(index);
                 if (ret == std::nullopt) {
-                    return false;
+                    return GOAWAY_COMPRESSION_ERROR;
                 }
                 key = ret.value().first;
             } else {
                 auto l = decodeString(src, key);
                 if (-1 == l) {
-                    return false;
-                } else {
-                    len += l;
+                    return GOAWAY_COMPRESSION_ERROR;
                 }
+                len += l;
             }
 
             std::string value;
             auto l = decodeString(src, value);
             if (-1 == l) {
-                return false;
-            } else {
-                len += l;
+                return GOAWAY_COMPRESSION_ERROR;
             }
+            len += l;
 
             if (is_store) {
                 table.set(key, value);
             }
 
-            if (strcasecmp(key.c_str(), "Cookie") == 0) {
+            if (strcmpDoNotCase(key.c_str(), "Cookie")) {
                 auto cookies = HttpUtil::parseFromCookie(value);
                 header.setCookies(cookies);
             } else {
-                header.set(key, value);
+                // header.set(key, value);
+                if (!setHeader(header, key, value)) {
+                    return GOAWAY_PROTOCOL_ERROR;
+                }
             }
         }
     }
-    return true;
+
+    if (!verifyHeader(header, is_resp)) {
+        return GOAWAY_PROTOCOL_ERROR;
+    }
+    return 0;
 }
 
 size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header,
@@ -334,7 +387,7 @@ int HPackUtil::decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uin
 
 int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     uint8_t buf;
-    auto i = src->read(&buf, 1);
+    src->read(&buf, 1);
     uint8_t len = (buf & 0x7F);
     bool is_huffman = (buf & 0x80) == 0x80;
 
