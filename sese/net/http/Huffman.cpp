@@ -42,7 +42,7 @@ huffman_tree_t::~huffman_tree_t() noexcept {
     delete_node(m_root);
 }
 
-void huffman_tree_t::delete_node(huffman_node_t *n) noexcept {
+void huffman_tree_t::delete_node(huffman_node_t *n) noexcept { // NOLINT
     if (nullptr != n->right()) {
         delete_node(n->right());
     }
@@ -53,7 +53,7 @@ void huffman_tree_t::delete_node(huffman_node_t *n) noexcept {
     delete n;
 }
 
-std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) {
+std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) const {
     std::string dst;
     huffman_node_t *current(m_root);
 
@@ -116,7 +116,7 @@ bool huffman_encoder_t::write_bit(uint8_t bit) noexcept {
     return false;
 }
 
-std::vector<uint8_t> huffman_encoder_t::encode(std::vector<uint8_t> &src) noexcept {
+std::vector<uint8_t> huffman_encoder_t::encode(const std::vector<uint8_t> &src) noexcept {
     std::vector<uint8_t> ret(0);
 
     for (auto &byte: src) {

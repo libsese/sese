@@ -59,7 +59,7 @@ public:
 
     virtual ~huffman_tree_t() noexcept;
 
-    std::optional<std::string> decode(const char *src, size_t len);
+    std::optional<std::string> decode(const char *src, size_t len) const;
 };
 
 /// Huffman 编码器
@@ -76,7 +76,7 @@ public:
 
     virtual ~huffman_encoder_t() noexcept = default;
 
-    std::vector<uint8_t> encode(std::vector<uint8_t> &src) noexcept;
+    std::vector<uint8_t> encode(const std::vector<uint8_t> &src) noexcept;
 
     std::vector<uint8_t> encode(const std::string &src) noexcept;
 
