@@ -6,12 +6,13 @@
 using namespace sese::net::http;
 
 huffman_node_t::huffman_node_t(
-        huffman_node_t *l,
-        huffman_node_t *r,
-        int16_t c
+    huffman_node_t *l,
+    huffman_node_t *r,
+    int16_t c
 ) noexcept : m_left(l),
              m_right(r),
-             m_code(c) {}
+             m_code(c) {
+}
 
 huffman_tree_t::huffman_tree_t() noexcept : m_root(new huffman_node_t) {
     for (std::size_t idx = 0; idx < HUFFMAN_TABLE.size(); idx++) {
@@ -62,8 +63,10 @@ std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) {
     }
 
     for (unsigned int idx = 0; idx < len; ++idx) {
+        bool has_value = false;
         for (int8_t j = 7; j >= 0; j--) {
-            if ((src[idx] & (1 << j)) > 0) {
+            auto result = src[idx] & (1 << j);
+            if (result > 0) {
                 if (nullptr == current->right()) {
                     // throw std::runtime_error(
                     //        "HPACK::huffman_tree_t::decode(): Internal state error (right == nullptr)");
@@ -77,23 +80,28 @@ std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) {
                 }
                 current = current->left();
             }
-
             if (current->code() >= 0) {
-                uint16_t code = current->code();
+                int16_t code = current->code();
 
-                if (257 == code)
-                    dst += static_cast<uint8_t>(((code & 0xFF00) >> 8) & 0xFF);
+                if (257 == code) {
+                    dst += static_cast<char>((code & 0xFF00) >> 8 & 0xFF);
+                }
 
-                dst += static_cast<uint8_t>(code & 0xFF);
+                dst += static_cast<char>(code & 0xFF);
                 current = m_root;
+                has_value = true;
             }
+        }
+        if (!has_value) {
+            return std::nullopt;
         }
     }
 
     return dst;
 }
 
-huffman_encoder_t::huffman_encoder_t() noexcept : m_byte(0), m_count(8) {}
+huffman_encoder_t::huffman_encoder_t() noexcept : m_byte(0), m_count(8) {
+}
 
 bool huffman_encoder_t::write_bit(uint8_t bit) noexcept {
     m_byte |= bit;

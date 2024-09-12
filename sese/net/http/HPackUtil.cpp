@@ -114,16 +114,16 @@ uint32_t HPackUtil::decode(
                 auto cookies = HttpUtil::parseFromCookie(pair->second);
                 header.setCookies(cookies);
             } else {
-                // header.set(pair->first, pair->second);
                 if (*pair->first.begin() == ':') {
                     if (!has_pseudo) {
                         return GOAWAY_COMPRESSION_ERROR;
                     }
+                    if (!setHeader(header, pair->first, pair->second)) {
+                        return GOAWAY_PROTOCOL_ERROR;
+                    }
                 } else {
                     has_pseudo = false;
-                }
-                if (!setHeader(header, pair->first, pair->second)) {
-                    return GOAWAY_PROTOCOL_ERROR;
+                    header.set(pair->first, pair->second);
                 }
             }
         }
@@ -193,16 +193,16 @@ uint32_t HPackUtil::decode(
                 auto cookies = HttpUtil::parseFromCookie(value);
                 header.setCookies(cookies);
             } else {
-                // header.set(key, value);
                 if (*key.begin() == ':') {
                     if (!has_pseudo) {
                         return GOAWAY_COMPRESSION_ERROR;
                     }
+                    if (!setHeader(header, key, value)) {
+                        return GOAWAY_PROTOCOL_ERROR;
+                    }
                 } else {
                     has_pseudo = false;
-                }
-                if (!setHeader(header, key, value)) {
-                    return GOAWAY_PROTOCOL_ERROR;
+                    header.set(key, value);
                 }
             }
         }
@@ -404,9 +404,8 @@ int HPackUtil::decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uin
             }
         }
         return -1;
-    } else {
-        return 0;
     }
+    return 0;
 }
 
 int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
@@ -436,7 +435,7 @@ int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     } else {
         dest = buffer;
     }
-    return l + 1 + len;
+    return static_cast<int>(1 + l + len);
 }
 
 size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
@@ -560,7 +559,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
                 i = i / 128;
                 size += 1;
             }
-            buf = (uint8_t) i;
+            buf = static_cast<uint8_t>(i);
             dest->write(&buf, 1);
             size += 1;
             dest->write(code.data(), code.size());
@@ -623,13 +622,11 @@ std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
         }
     }
 
-    bool secure = cookie->isSecure();
-    if (secure) {
+    if (cookie->isSecure()) {
         stream << "; Secure";
     }
 
-    bool http_only = cookie->isHttpOnly();
-    if (http_only) {
+    if (cookie->isHttpOnly()) {
         stream << "; HttpOnly";
     }
 
