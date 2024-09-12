@@ -11,6 +11,7 @@ add_subdirectory(sese)
 
 if (MSVC)
     add_compile_options(/utf-8)
+    add_definitions(-D_WIN32_WINNT=0x0601)
 endif ()
 
 find_package(asio CONFIG REQUIRED)
