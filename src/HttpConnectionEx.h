@@ -3,15 +3,15 @@
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
-#include <memory>
-
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
 #include <sese/net/http/DynamicTable.h>
 #include <sese/net/http/Http2Frame.h>
 #include <sese/io/ByteBuffer.h>
 
+#include <memory>
 #include <queue>
+#include <set>
 
 #include "Handleable.h"
 
@@ -20,13 +20,16 @@ class HttpServiceImpl;
 struct HttpStream : Handleable {
     using Ptr = std::shared_ptr<HttpStream>;
 
+    explicit HttpStream(uint32_t id, uint32_t write_window_size) noexcept;
+
     uint32_t id = 0;
+    /// 对端写入窗口
     uint32_t write_window_size = 0;
+    /// 本地读取窗口
     uint32_t read_window_size = 0;
     uint16_t continue_type = 0;
     bool end_headers = false;
     bool end_stream = false;
-    bool is_closed = false;
 
     sese::io::ByteBuilder temp_buffer;
 
@@ -72,9 +75,14 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     sese::net::http::DynamicTable req_dynamic_table;
     sese::net::http::DynamicTable resp_dynamic_table;
     std::map<uint32_t, HttpStream::Ptr> streams;
+    std::set<uint32_t> closed_streams;
 
     /// 发送队列
     std::queue<sese::net::http::Http2Frame::Ptr> send_queue;
+
+    /// 关闭流
+    /// @param id 流 ID
+    void close(uint32_t id);
 
     /// 写入块函数，此函数会确保写入完指定大小的缓存，出现意外则直接回调
     /// @param buffer 缓存指针
