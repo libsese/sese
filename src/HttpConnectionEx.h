@@ -3,11 +3,8 @@
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
-#include <sese/net/http/Request.h>
-#include <sese/net/http/Response.h>
 #include <sese/net/http/DynamicTable.h>
 #include <sese/net/http/Http2Frame.h>
-#include <sese/io/ByteBuffer.h>
 
 #include <memory>
 #include <queue>
@@ -24,9 +21,9 @@ struct HttpStream : Handleable {
 
     uint32_t id = 0;
     /// 对端写入窗口
-    uint32_t write_window_size = 0;
+    uint32_t endpoint_window_size = 0;
     /// 本地读取窗口
-    uint32_t read_window_size = 0;
+    uint32_t window_size = 0;
     uint16_t continue_type = 0;
     bool end_headers = false;
     bool end_stream = false;
@@ -69,7 +66,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     uint32_t enable_push = 0;
     uint32_t max_concurrent_stream = 0;
     // 对端初始窗口值
-    uint32_t init_window_size = 65535;
+    uint32_t endpoint_init_window_size = 65535;
+    // 对端帧最大大小
+    uint32_t endpoint_max_frame_size = 16384;
+    // 采用的帧大小
     uint32_t max_frame_size = 16384;
     uint32_t max_header_list_size = 0;
     sese::net::http::DynamicTable req_dynamic_table;
@@ -78,17 +78,18 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     std::set<uint32_t> closed_streams;
 
     /// 发送队列
-    std::queue<sese::net::http::Http2Frame::Ptr> send_queue;
+    std::vector<sese::net::http::Http2Frame::Ptr> pre_vector;
+    std::vector<sese::net::http::Http2Frame::Ptr> vector;
+    std::vector<asio::const_buffer> asio_buffers;
 
     /// 关闭流
     /// @param id 流 ID
     void close(uint32_t id);
 
-    /// 写入块函数，此函数会确保写入完指定大小的缓存，出现意外则直接回调
-    /// @param buffer 缓存指针
-    /// @param length 缓存大小
+    /// 写入块函数，此函数会确保写入完指定的缓存，出现意外则直接回调
+    /// @param buffers 缓存
     /// @param callback 完成回调函数
-    virtual void writeBlock(const char *buffer, size_t length,
+    virtual void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                             const std::function<void(const asio::error_code &code)> &callback) = 0;
 
     /// 读取块函数，此函数会确保读取完指定大小的缓存，出现意外则直接回调
@@ -140,8 +141,6 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         uint8_t flags,
         uint32_t error_code
     );
-
-    void writeHeadersFrame(const HttpStream::Ptr &stream);
 };
 
 struct HttpConnectionExImpl final : HttpConnectionEx {
@@ -156,7 +155,7 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
     HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
                          SharedSocket socket);
 
-    void writeBlock(const char *buffer, size_t length,
+    void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
     void readBlock(char *buffer, size_t length,
@@ -175,7 +174,7 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
     HttpsConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
                           SharedStream stream);
 
-    void writeBlock(const char *buffer, size_t length,
+    void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
     void readBlock(char *buffer, size_t length,
