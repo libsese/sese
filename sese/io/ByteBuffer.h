@@ -24,6 +24,7 @@ public:
 
     explicit ByteBuffer(size_t base_size = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
     void resetPos() override;
+    bool eof() override;
     [[nodiscard]] size_t getLength();
     [[nodiscard]] size_t getCapacity();
     size_t freeCapacity() override;
