@@ -44,12 +44,11 @@ void HttpConnectionEx::readMagic() {
 }
 
 void HttpConnectionEx::readFrameHeader() {
-    // SESE_INFO("post read");
+    using namespace sese::net::http;
     readBlock(temp_buffer, 9, [this](const asio::error_code &ec) {
         if (ec) {
             return;
         }
-        // SESE_INFO("read");
         memset(&frame, 0, sizeof(frame));
         memcpy(reinterpret_cast<char *>(&frame.length) + 1, temp_buffer + 0, 3);
         memcpy(&frame.type, temp_buffer + 3, 1);
@@ -60,6 +59,7 @@ void HttpConnectionEx::readFrameHeader() {
         frame.ident &= 0x7fffffff;
 
         if (frame.length > endpoint_max_frame_size) {
+            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "shutdown", true);
             return;
         }
 
@@ -649,7 +649,8 @@ void HttpConnectionEx::writeGoawayFrame(
     uint32_t latest_stream_id,
     uint8_t flags,
     uint32_t error_code,
-    const std::string &msg) {
+    const std::string &msg,
+    bool once) {
     using namespace sese::net::http;
     auto frame = std::make_unique<Http2Frame>(msg.length() + 8);
     frame->type = FRAME_TYPE_GOAWAY;
@@ -661,14 +662,24 @@ void HttpConnectionEx::writeGoawayFrame(
     error_code = ToBigEndian32(error_code);
     memcpy(frame->getFrameContentBuffer() + 0, &latest_stream_id, 4);
     memcpy(frame->getFrameContentBuffer() + 4, &error_code, 4);
-    pre_vector.push_back(std::move(frame));
-    handleWrite();
+    if (once) {
+        auto buf = frame->getFrameBuffer();
+        auto len = frame->getFrameLength();
+        writeBlock(buf,
+                   len,
+                   [conn = getPtr(), f = std::shared_ptr(std::move(frame))](const asio::error_code &) {
+                   });
+    } else {
+        pre_vector.push_back(std::move(frame));
+        handleWrite();
+    }
 }
 
 void HttpConnectionEx::writeRstStreamFrame(
     uint32_t stream_id,
     uint8_t flags,
-    uint32_t error_code) {
+    uint32_t error_code,
+    bool once) {
     using namespace sese::net::http;
     auto frame = std::make_unique<Http2Frame>(4);
     frame->type = FRAME_TYPE_RST_STREAM;
@@ -678,8 +689,17 @@ void HttpConnectionEx::writeRstStreamFrame(
     frame->buildFrameHeader();
     error_code = ToBigEndian32(error_code);
     memcpy(frame->getFrameContentBuffer(), &error_code, 4);
-    pre_vector.push_back(std::move(frame));
-    handleWrite();
+    if (once) {
+        auto buf = frame->getFrameBuffer();
+        auto len = frame->getFrameLength();
+        writeBlock(buf,
+                   len,
+                   [conn = getPtr(), f = std::shared_ptr(std::move(frame))](const asio::error_code &) {
+                   });
+    } else {
+        pre_vector.push_back(std::move(frame));
+        handleWrite();
+    }
 }
 
 

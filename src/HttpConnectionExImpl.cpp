@@ -9,11 +9,20 @@ HttpConnectionExImpl::HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl
 
 
 void HttpConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers,
-                                      const std::function<void(const asio::error_code &code)> &callback) {
-    async_write(*this->socket, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t bytes) {
+                                       const std::function<void(const asio::error_code &code)> &callback) {
+    async_write(*this->socket, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
         callback(error);
     });
 }
+
+void HttpConnectionExImpl::writeBlock(const void *buffer, size_t size,
+                                      const std::function<void(const asio::error_code &code)> &callback) {
+    async_write(*this->socket, asio::buffer(buffer, size),
+                [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+                    callback(error);
+                });
+}
+
 
 void HttpConnectionExImpl::readBlock(char *buffer, size_t length,
                                      const std::function<void(const asio::error_code &code)> &callback) {
@@ -39,11 +48,20 @@ HttpsConnectionExImpl::HttpsConnectionExImpl(const std::shared_ptr<HttpServiceIm
 
 
 void HttpsConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers,
-                                      const std::function<void(const asio::error_code &code)> &callback) {
-    asio::async_write(*this->stream, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+                                        const std::function<void(const asio::error_code &code)> &callback) {
+    async_write(*this->stream, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
         callback(error);
     });
 }
+
+void HttpsConnectionExImpl::writeBlock(const void *buffer, size_t size,
+                                       const std::function<void(const asio::error_code &code)> &callback) {
+    async_write(*this->stream, asio::buffer(buffer, size),
+                [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+                    callback(error);
+                });
+}
+
 
 void HttpsConnectionExImpl::readBlock(char *buffer, size_t length,
                                       const std::function<void(const asio::error_code &code)> &callback) {

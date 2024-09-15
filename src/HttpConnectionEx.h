@@ -90,6 +90,13 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     /// @param buffers 缓存
     /// @param callback 完成回调函数
     virtual void writeBlocks(const std::vector<asio::const_buffer> &buffers,
+                             const std::function<void(const asio::error_code &code)> &callback) = 0;
+
+    /// 写入块函数，此函数会确保写入完单块缓存，出现意外则直接回调
+    /// @param buffer 单块缓存
+    /// @param size 缓存大小
+    /// @param callback 完成回调函数
+    virtual void writeBlock(const void *buffer, size_t size,
                             const std::function<void(const asio::error_code &code)> &callback) = 0;
 
     /// 读取块函数，此函数会确保读取完指定大小的缓存，出现意外则直接回调
@@ -133,13 +140,15 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         uint32_t latest_stream_id,
         uint8_t flags,
         uint32_t error_code,
-        const std::string &msg
+        const std::string &msg,
+        bool once = false
     );
 
     void writeRstStreamFrame(
         uint32_t stream_id,
         uint8_t flags,
-        uint32_t error_code
+        uint32_t error_code,
+        bool once = false
     );
 };
 
@@ -156,6 +165,9 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
                          SharedSocket socket);
 
     void writeBlocks(const std::vector<asio::const_buffer> &buffers,
+                     const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void writeBlock(const void *buffer, size_t size,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
     void readBlock(char *buffer, size_t length,
@@ -175,6 +187,9 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
                           SharedStream stream);
 
     void writeBlocks(const std::vector<asio::const_buffer> &buffers,
+                     const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void writeBlock(const void *buffer, size_t size,
                     const std::function<void(const asio::error_code &code)> &callback) override;
 
     void readBlock(char *buffer, size_t length,
