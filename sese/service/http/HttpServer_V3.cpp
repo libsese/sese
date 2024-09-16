@@ -1,4 +1,4 @@
-#include <sese/internal/service/http/HttpServiceImpl_V3.h>
+#include <sese/internal/service/http/HttpServiceImpl.h>
 #include <sese/service/http/HttpServer_V3.h>
 
 #include <utility>
@@ -22,7 +22,7 @@ void HttpServer::setKeepalive(uint32_t seconds) {
 }
 
 void HttpServer::regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context) {
-    auto service = internal::service::http::v3::HttpServiceImpl::create(
+    auto service = internal::service::http::HttpServiceImpl::create(
             address, std::move(context), keepalive, name, mount_points, servlets, filters
     );
     this->services.push_back(service);

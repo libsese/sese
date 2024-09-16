@@ -18,7 +18,7 @@ size_t sese::StrCaseUnorderedMapComparer::operator()(const std::string &key) con
 #define XX ::tolower
 #endif
     auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin(), XX);
+    std::transform(temp.begin(), temp.end(), temp.begin(), tolower);
     return std::hash<std::string>{}(temp);
 #undef XX
 }

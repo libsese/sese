@@ -67,7 +67,7 @@ target_include_directories(
 
 set_target_properties(
         Core PROPERTIES
-        CXX_STANDARD 17
+        CXX_STANDARD 20
         OUTPUT_NAME "sese.core"
         PREFIX ""
         ENABLE_EXPORTS ON
