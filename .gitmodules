@@ -1,4 +1,0 @@
-[submodule "sese"]
-	path = sese
-	url = https://github.com/libsese/sese.git
-	branch = dev-http

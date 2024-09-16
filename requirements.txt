@@ -1,3 +1,0 @@
-Jinja2==3.1.4
-junit2html==31.0.2
-MarkupSafe==2.1.5
