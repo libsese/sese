@@ -257,7 +257,6 @@ int HttpServiceImpl::alpnCallback(
     return SSL_TLSEXT_ERR_OK;
 }
 
-
 void HttpServiceImpl::handleSSLAccept() {
     auto accept_socket = std::make_shared<HttpConnectionImpl::Socket>(io_context);
     acceptor.async_accept(
@@ -275,7 +274,7 @@ void HttpServiceImpl::handleSSLAccept() {
                             SSL_get0_alpn_selected(accept_stream->native_handle(), &data, &dataLength);
                             auto proto = std::string_view(reinterpret_cast<const char *>(data), dataLength);
                             if (proto == "http/1.1") {
-                                SESE_INFO("selected http/1.1");
+                                // SESE_INFO("selected http/1.1");
                                 auto conn = std::make_shared<HttpsConnectionImpl>(
                                     shared_from_this(),
                                     io_context,
@@ -284,7 +283,7 @@ void HttpServiceImpl::handleSSLAccept() {
                                 this->connections.emplace(conn);
                                 conn->readHeader();
                             } else if (proto == "h2") {
-                                SESE_INFO("selected http/2");
+                                // SESE_INFO("selected http/2");
                                 auto conn = std::make_shared<HttpsConnectionExImpl>(
                                     shared_from_this(),
                                     io_context,
@@ -292,7 +291,14 @@ void HttpServiceImpl::handleSSLAccept() {
                                     );
                                 conn->readMagic();
                             } else {
-                                SESE_WARN("unknown proto");
+                                auto conn = std::make_shared<HttpsConnectionImpl>(
+                                    shared_from_this(),
+                                    io_context,
+                                    accept_stream
+                                );
+                                this->connections.emplace(conn);
+                                conn->readHeader();
+                                // SESE_WARN("unknown proto");
                             }
                         }
                     });

@@ -1,7 +1,4 @@
 #include "HttpConnectionEx.h"
-
-#include <ranges>
-
 #include "HttpServiceImpl.h"
 
 #include <sese/io/InputBufferWrapper.h>
@@ -10,6 +7,8 @@
 #include <sese/net/http/HttpConverter.h>
 #include <sese/Util.h>
 #include <sese/Log.h>
+
+#include <ranges>
 
 HttpStream::HttpStream(uint32_t id, uint32_t write_window_size) noexcept
     : Handleable(),
