@@ -11,11 +11,14 @@
  *      3.从不索引的字面 HEADER 字段
  *          0001 + index -> indexedName + 编码 value
  *          0001 + 0     -> 编码 key + 编码 value
+ *      4.更新动态表大小
+ *          001 + size
  */
 
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/HPACK.h"
+#include "sese/net/http/Http2Frame.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/util/DateTime.h"
 #include "sese/text/StringBuilder.h"
@@ -29,39 +32,123 @@
 
 using namespace sese::net::http;
 
+const std::string HPackUtil::REQ_PSEUDO_HEADER[4]{":method", ":scheme", ":authority", ":path"};
+
 HuffmanDecoder HPackUtil::decoder{};
 HuffmanEncoder HPackUtil::encoder{};
 
-bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header) noexcept {
+bool HPackUtil::setHeader(Header &header, const std::string &key, const std::string &value) noexcept {
+    auto iter = header.find(key);
+    if (iter == header.end()) {
+        header.set(key, value);
+        return true;
+    }
+
+    if (key == ":status") {
+        return false;
+    }
+    if (std::find(std::begin(REQ_PSEUDO_HEADER), std::end(REQ_PSEUDO_HEADER), key) != std::end(REQ_PSEUDO_HEADER)) {
+        return false;
+    }
+
+    header.set(key, value);
+    return true;
+}
+
+bool HPackUtil::verifyHeader(Header &header, bool is_resp) noexcept {
+    if (is_resp) {
+        for (auto &&item: REQ_PSEUDO_HEADER) {
+            if (header.exist(item)) {
+                return false;
+            }
+        }
+        if (!header.exist(":status")) {
+            return false;
+        }
+    } else {
+        for (auto &&item: REQ_PSEUDO_HEADER) {
+            if (!header.exist(item)) {
+                return false;
+            }
+        }
+        if (header.exist(":status")) {
+            return false;
+        }
+    }
+    return true;
+}
+
+uint32_t HPackUtil::decode(
+    InputStream *src,
+    size_t content_length,
+    DynamicTable &table,
+    Header &header,
+    bool is_resp,
+    bool has_pseudo,
+    uint32_t limit
+) noexcept {
     uint8_t buf;
     size_t len = 0;
     while (len < content_length) {
-        src->read(&buf, 1);
+        if (1 != src->read(&buf, 1)) {
+            return GOAWAY_COMPRESSION_ERROR;
+        }
         len += 1;
         /// 对应第 0 种情况
         if (buf & 0b1000'0000) {
             uint32_t index = 0;
             auto l = decodeInteger(buf, src, index, 7);
-            if (-1 == l) return false;
+            if (-1 == l) {
+                return GOAWAY_COMPRESSION_ERROR;
+            }
             len += l;
-            if (index == 0) return false;
+            if (index == 0) {
+                return GOAWAY_COMPRESSION_ERROR;
+            }
 
             auto pair = table.get(index);
-            if (pair == std::nullopt) return false;
-            if (strcasecmp(pair->first.c_str(), "Cookie") == 0) {
+            if (pair == std::nullopt) {
+                return GOAWAY_COMPRESSION_ERROR;
+            }
+            if (strcmpDoNotCase(pair->first.c_str(), "Cookie")) {
                 auto cookies = HttpUtil::parseFromCookie(pair->second);
                 header.setCookies(cookies);
             } else {
-                header.set(pair->first, pair->second);
+                if (*pair->first.begin() == ':') {
+                    if (!has_pseudo) {
+                        return GOAWAY_COMPRESSION_ERROR;
+                    }
+                    if (!setHeader(header, pair->first, pair->second)) {
+                        return GOAWAY_PROTOCOL_ERROR;
+                    }
+                } else {
+                    has_pseudo = false;
+                    header.set(pair->first, pair->second);
+                }
             }
+        }
+        // 对应第4种情况
+        else if ((buf & 0b1110'0000) == 0b0010'0000) {
+            uint32_t new_size;
+            auto l = decodeInteger(buf, src, new_size, 5);
+            if (-1 == l) {
+                return GOAWAY_COMPRESSION_ERROR;
+            }
+            len += l;
+            if (new_size > limit) {
+                return GOAWAY_COMPRESSION_ERROR;
+            }
+            table.resize(new_size);
         } else {
             uint32_t index = 0;
             bool is_store;
             /// 对应第 1 种情况
-            if (0b0100'0000 == (buf & 0b1100'0000)) {
+            if ((buf & 0b1100'0000) == 0b0100'0000) {
                 // 添加至动态表
                 auto l = decodeInteger(buf, src, index, 6);
-                if (-1 == l) return false;
+                if (-1 == l) {
+                    return GOAWAY_COMPRESSION_ERROR;
+                }
                 len += l;
                 is_store = true;
             }
@@ -69,7 +156,9 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             else {
                 // 不添加至动态表
                 auto l = decodeInteger(buf, src, index, 4);
-                if (-1 == l) return false;
+                if (-1 == l) {
+                    return GOAWAY_COMPRESSION_ERROR;
+                }
                 len += l;
                 is_store = false;
             }
@@ -78,42 +167,55 @@ bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &ta
             if (0 != index) {
                 auto ret = table.get(index);
                 if (ret == std::nullopt) {
-                    return false;
+                    return GOAWAY_COMPRESSION_ERROR;
                 }
                 key = ret.value().first;
             } else {
                 auto l = decodeString(src, key);
                 if (-1 == l) {
-                    return false;
-                } else {
-                    len += l;
+                    return GOAWAY_COMPRESSION_ERROR;
                 }
+                len += l;
             }
 
             std::string value;
             auto l = decodeString(src, value);
             if (-1 == l) {
-                return false;
-            } else {
-                len += l;
+                return GOAWAY_COMPRESSION_ERROR;
             }
+            len += l;
 
             if (is_store) {
                 table.set(key, value);
             }
 
-            if (strcasecmp(key.c_str(), "Cookie") == 0) {
+            if (strcmpDoNotCase(key.c_str(), "Cookie")) {
                 auto cookies = HttpUtil::parseFromCookie(value);
                 header.setCookies(cookies);
             } else {
-                header.set(key, value);
+                if (*key.begin() == ':') {
+                    if (!has_pseudo) {
+                        return GOAWAY_COMPRESSION_ERROR;
+                    }
+                    if (!setHeader(header, key, value)) {
+                        return GOAWAY_PROTOCOL_ERROR;
+                    }
+                } else {
+                    has_pseudo = false;
+                    header.set(key, value);
+                }
             }
         }
     }
-    return true;
+
+    if (!verifyHeader(header, is_resp)) {
+        return GOAWAY_PROTOCOL_ERROR;
+    }
+    return 0;
 }
 
-size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header, Header &indexed_header) noexcept {
+size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header,
+                         Header &indexed_header) noexcept {
     size_t size = 0;
     // 处理索引的 HEADERS
     for (const auto &item: indexed_header) {
@@ -134,7 +236,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
             // auto iterator = std::find_if(table.begin(), table.end(), isHitAll);
             if (iterator_all != table.end()) {
                 /// 对应第 0 种情况
-                size_t index = iterator_all - table.begin() + 62;
+                size_t index = table.getCount() - 1 - (iterator_all - table.begin()) + PREDEFINED_HEADERS.size();
                 size += encodeIndexCase0(dest, index);
                 continue;
             }
@@ -142,7 +244,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
             // iterator = std::find_if(table.begin(), table.end(), isHit);
             // 存在动态表中
             if (iterator_key != table.end()) {
-                size_t index = iterator_key - table.begin() + 62;
+                size_t index = table.getCount() - 1 - (iterator_key - table.begin()) + PREDEFINED_HEADERS.size();
                 /// 对应第 1 种情况
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);
@@ -302,31 +404,38 @@ int HPackUtil::decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uin
             }
         }
         return -1;
-    } else {
-        return 0;
     }
+    return 0;
 }
 
 int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     uint8_t buf;
     src->read(&buf, 1);
-    uint8_t len = (buf & 0x7F);
     bool is_huffman = (buf & 0x80) == 0x80;
 
-    char buffer[UINT8_MAX]{};
+    uint32_t len;
+    auto l = decodeInteger(buf, src, len, 7);
+    if (l == -1) {
+        return -1;
+    }
+    if (len > UINT16_MAX) {
+        return -1;
+    }
+    char buffer[UINT16_MAX]{};
     if (len != src->read(buffer, len)) {
         return -1;
     }
 
     if (is_huffman) {
         auto result = decoder.decode(buffer, len);
-        if (result != std::nullopt) {
-            dest = decoder.decode(buffer, len).value();
+        if (result == std::nullopt) {
+            return -1;
         }
+        dest = result.value();
     } else {
         dest = buffer;
     }
-    return len + 1;
+    return static_cast<int>(1 + l + len);
 }
 
 size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
@@ -450,7 +559,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
                 i = i / 128;
                 size += 1;
             }
-            buf = (uint8_t) i;
+            buf = static_cast<uint8_t>(i);
             dest->write(&buf, 1);
             size += 1;
             dest->write(code.data(), code.size());
@@ -513,13 +622,11 @@ std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
         }
     }
 
-    bool secure = cookie->isSecure();
-    if (secure) {
+    if (cookie->isSecure()) {
         stream << "; Secure";
     }
 
-    bool http_only = cookie->isHttpOnly();
-    if (http_only) {
+    if (cookie->isHttpOnly()) {
         stream << "; HttpOnly";
     }
 

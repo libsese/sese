@@ -18,7 +18,7 @@ namespace sese::net::http {
 typedef std::pair<const std::string, const std::string> header_t;
 typedef std::vector<bool> bits_t;
 
-static const std::array<header_t, 62> PREDEFINED_HEADERS = {
+inline const std::array<header_t, 62> PREDEFINED_HEADERS = {
         {header_t("INVALIDINDEX", "INVALIDINDEX"), header_t(":authority", ""), header_t(":method", "GET"),
          header_t(":method", "POST"), header_t(":path", "/"), header_t(":path", "/index.html"),
          header_t(":scheme", "http"), header_t(":scheme", "https"), header_t(":status", "200"),
@@ -43,7 +43,7 @@ static const std::array<header_t, 62> PREDEFINED_HEADERS = {
 };
 
 // 256 chars plus end of string
-static const std::array<bits_t, 257> HUFFMAN_TABLE = {
+inline const std::array<const bits_t, 257> HUFFMAN_TABLE = {
         // NOLINTBEGIN
         {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},                                                    // 0
          {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0},                      // 1

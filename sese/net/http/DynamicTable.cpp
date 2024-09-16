@@ -10,12 +10,12 @@ DynamicTable::DynamicTable(size_t max) noexcept {
 }
 
 void DynamicTable::resize(size_t max) noexcept {
-    while (size >= max) {
+    this->max = max;
+    while (size > max) {
         decltype(auto) header = queue.back();
         size -= header.first.size() + header.second.size() + 4;
-        queue.pop_back();
+        queue.pop_front();
     }
-    this->max = max;
 }
 
 
@@ -25,11 +25,14 @@ bool DynamicTable::set(const std::string &key, const std::string &value) noexcep
     }
 
     auto addition = key.size() + value.size() + 4;
+    if (addition > max) {
+        return false;
+    }
 
-    while (size + addition >= max) {
+    while (size + addition > max) {
         decltype(auto) header = queue.back();
         size -= header.first.size() + header.second.size() + 4;
-        queue.pop_back();
+        queue.pop_front();
     }
 
     size += addition;
@@ -38,10 +41,17 @@ bool DynamicTable::set(const std::string &key, const std::string &value) noexcep
 }
 
 std::optional<DynamicTable::Header> DynamicTable::get(size_t index) const noexcept {
-    if (index < PREDEFINED_HEADERS.size()) {
-        return PREDEFINED_HEADERS.at(index);
-    } else if (index < PREDEFINED_HEADERS.size() + queue.size()) {
-        return queue.at(index - PREDEFINED_HEADERS.size());
+    if (index == 0) {
+        return std::nullopt;
     }
+
+    if (index < PREDEFINED_HEADERS.size()) {
+        return PREDEFINED_HEADERS[index];
+    }
+
+    if (index < PREDEFINED_HEADERS.size() + queue.size()) {
+        return queue[queue.size() - 1 - (index - PREDEFINED_HEADERS.size())];
+    }
+
     return std::nullopt;
 }

@@ -41,8 +41,9 @@ public:
 #if SESE_CXX_STANDARD > 201700L
     std::string_view getView(const std::string &key, const std::string &default_value) noexcept;
 #endif
-    inline std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
-    inline std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
+    std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
+    std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
+    auto find(const std::string &key) noexcept { return headers.find(key); }
 
     void clear() { headers.clear(); }
     [[nodiscard]] bool empty() const { return headers.empty(); }

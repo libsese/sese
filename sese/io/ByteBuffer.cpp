@@ -26,6 +26,11 @@ void sese::io::ByteBuffer::resetPos() {
     AbstractByteBuffer::resetPos();
 }
 
+bool sese::io::ByteBuffer::eof() {
+    Locker locker(mutex);
+    return AbstractByteBuffer::eof();
+}
+
 size_t sese::io::ByteBuffer::getLength() {
     Locker locker(mutex);
     return AbstractByteBuffer::getLength();

@@ -114,6 +114,17 @@ void AbstractByteBuffer::resetPos() {
     this->currentReadPos = 0;
 }
 
+bool AbstractByteBuffer::eof() {
+    if (currentReadNode->length - currentReadPos) {
+        return false;
+    }
+    if (currentReadNode->next &&
+        currentReadNode->next->length) {
+        return false;
+    }
+    return true;
+}
+
 size_t AbstractByteBuffer::getLength() const {
     return this->length + currentWriteNode->length;
 }

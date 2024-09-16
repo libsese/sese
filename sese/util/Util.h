@@ -54,7 +54,7 @@ struct StrCmpI {
  * \param rv 字符串2
  * \return 比较结果
  */
- bool strcmp(char const *lv, char const *rv) noexcept;
+bool strcmp(char const *lv, char const *rv) noexcept;
 
 /**
  * 比较两个字符串是否相同（忽略大小写）
@@ -62,21 +62,21 @@ struct StrCmpI {
  * \param rv 字符串2
  * \return 比较结果
  */
- bool strcmpDoNotCase(char const *lv, char const *rv) noexcept;
+bool strcmpDoNotCase(char const *lv, char const *rv) noexcept;
 
 /**
  * 判断字符是否属于空白
  * @param ch 欲判断的字符
  * @return 是否属于空白
  */
- bool isSpace(char ch) noexcept;
+bool isSpace(char ch) noexcept;
 
 /**
  * 根据日志等级返回对应的字符串
  * @param level 日志等级
  * @return 字符串
  */
- const char *getLevelString(Level level) noexcept;
+const char *getLevelString(Level level) noexcept;
 
 /**
  * 查找某字符在字符串中第一次出现的位置
@@ -84,19 +84,19 @@ struct StrCmpI {
  * @param ch 欲查找的字符
  * @return 第一次出现的位置，没有则返回 -1
  */
- int32_t findFirstAt(const char *str, char ch);
+int32_t findFirstAt(const char *str, char ch);
 
 /**
  * 使当前线程休眠一段时间，NATIVE API 实现
  * @param second 秒
  */
- void sleep(uint32_t second);
+void sleep(uint32_t second);
 
 /**
  * 使当前线程休眠一段时间，std 实现
  */
 template<class REP, class PERIOD>
- void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
+void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
     std::this_thread::sleep_for(duration);
 }
 
@@ -105,20 +105,20 @@ template<class REP, class PERIOD>
  * @param error 错误代码
  * @return 错误描述
  */
- std::string getErrorString(int64_t error = errno);
+std::string getErrorString(int64_t error = errno);
 
 /**
  * 获取 error 代码
  * @return error 代码
  */
- int64_t getErrorCode();
+int64_t getErrorCode();
 
 /// 移动流数据
 /// \param out 输出流
 /// \param in 输入流
 /// \param size 移动大小
 /// \return 实际移动大小
- size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
+size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
 
 /// 获取数字转字符串后所需的字节长度
 /// @note 只能转换整数
@@ -172,6 +172,34 @@ std::time_t to_time_t(TP tp) {
     return system_clock::to_time_t(sctp);
 }
 // GCOVR_EXCL_STOP
+
+ /// 加法溢出检测
+template <typename T>
+bool isAdditionOverflow(T a, T b) {
+    if constexpr (std::is_unsigned_v<T>) {
+        return a > std::numeric_limits<T>::max() - b;
+    } else {
+        if ((b > 0 && a > std::numeric_limits<T>::max() - b) ||
+            (b < 0 && a < std::numeric_limits<T>::min() - b)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/// 减法溢出检测
+template <typename T>
+bool isSubtractionOverflow(T a, T b) {
+    if constexpr (std::is_unsigned<T>::value) {
+        return a < b;
+    } else {
+        if ((b < 0 && a > std::numeric_limits<T>::max() + b) ||
+            (b > 0 && a < std::numeric_limits<T>::min() + b)) {
+           return true;
+        }
+    }
+    return false;
+}
 
 } // namespace sese
 

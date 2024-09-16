@@ -51,3 +51,22 @@ TEST(TestUtil, Strcmp) {
     auto j = sese::strcmp("ABC", "abc");
     EXPECT_EQ(j, false);
 }
+
+TEST(TestUtil, Overflow) {
+    EXPECT_TRUE(sese::isAdditionOverflow<int32_t>(INT32_MAX, 1));
+    EXPECT_TRUE(sese::isAdditionOverflow<int32_t>(INT32_MAX, INT32_MAX));
+    EXPECT_FALSE(sese::isAdditionOverflow<int32_t>(1, INT32_MAX - 1));
+
+    EXPECT_TRUE(sese::isAdditionOverflow<uint32_t>(UINT32_MAX, 1));
+    EXPECT_TRUE(sese::isAdditionOverflow<uint32_t>(UINT32_MAX, UINT32_MAX));
+    EXPECT_FALSE(sese::isAdditionOverflow<uint32_t>(1, UINT32_MAX - 1));
+
+    EXPECT_TRUE(sese::isSubtractionOverflow<int32_t>(-2, INT32_MAX));
+    EXPECT_TRUE(sese::isSubtractionOverflow<int32_t>(INT32_MIN, INT32_MAX));
+    EXPECT_FALSE(sese::isSubtractionOverflow<int32_t>(1, INT32_MAX));
+
+    EXPECT_TRUE(sese::isSubtractionOverflow<uint32_t>(0 , 1));
+    EXPECT_TRUE(sese::isSubtractionOverflow<uint32_t>(0 , INT32_MAX));
+    EXPECT_FALSE(sese::isSubtractionOverflow<uint32_t>(UINT32_MAX, UINT32_MAX));
+
+}

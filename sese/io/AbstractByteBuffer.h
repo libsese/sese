@@ -54,6 +54,9 @@ public:
     ~AbstractByteBuffer() override;
     /// 重置读取位置
     virtual void resetPos();
+    /// 是否有可读数据
+    virtual bool eof();
+
     /**
      * @return 所有节点已用内存总数
      */
