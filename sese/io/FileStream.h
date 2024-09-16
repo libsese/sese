@@ -76,6 +76,11 @@ public:
     int64_t peek(void *buffer, size_t length) override;
     int64_t trunc(size_t length) override;
 
+    /// 此函数用于判断是否已经读取到文件末尾
+    /// @warning 这首先需要先触发一次读取失败才能获取有效值
+    /// @return 结果s
+    [[nodiscard]] bool eof() const;
+
     [[nodiscard]] int64_t getSeek() const;
     [[nodiscard]] int32_t setSeek(int64_t offset, int32_t whence) const;
     [[nodiscard]] int32_t setSeek(int64_t offset, Seek type) const;

@@ -29,6 +29,10 @@ void FileStream::close() {
     file = nullptr;
 }
 
+bool FileStream::eof() const {
+    return 0 != ::feof(file);
+}
+
 int64_t FileStream::getSeek() const {
     return ftell(file);
 }
