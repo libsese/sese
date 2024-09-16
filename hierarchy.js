@@ -108,11 +108,15 @@ var hierarchy =
       [ "sese::Timer", "classsese_1_1_timer.html", null ],
       [ "sese::TimerTask", "classsese_1_1_timer_task.html", null ],
       [ "sese::concurrent::ObjectPool< T >", "classsese_1_1concurrent_1_1_object_pool.html", null ],
-      [ "sese::internal::service::http::v3::HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html", [
-        [ "sese::internal::service::http::v3::HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html", null ],
-        [ "sese::internal::service::http::v3::HttpSSLConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html", null ]
+      [ "sese::internal::service::http::HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html", [
+        [ "sese::internal::service::http::HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html", null ],
+        [ "sese::internal::service::http::HttpsConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl.html", null ]
       ] ],
-      [ "sese::internal::service::http::v3::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", null ],
+      [ "sese::internal::service::http::HttpConnectionEx", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html", [
+        [ "sese::internal::service::http::HttpConnectionExImpl", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex_impl.html", null ],
+        [ "sese::internal::service::http::HttpsConnectionExImpl", "structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html", null ]
+      ] ],
+      [ "sese::internal::service::http::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html", null ],
       [ "sese::plugin::BaseClass", "classsese_1_1plugin_1_1_base_class.html", null ],
       [ "sese::security::SSLContext", "classsese_1_1security_1_1_s_s_l_context.html", null ]
     ] ],
@@ -152,6 +156,10 @@ var hierarchy =
     [ "sese::net::dns::FrameFlagsInfo", "structsese_1_1net_1_1dns_1_1_frame_flags_info.html", null ],
     [ "sese::net::dns::FrameHeaderInfo", "structsese_1_1net_1_1dns_1_1_frame_header_info.html", null ],
     [ "sese::GlobalThreadPool", "classsese_1_1_global_thread_pool.html", null ],
+    [ "sese::internal::service::http::Handleable", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html", [
+      [ "sese::internal::service::http::HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html", null ],
+      [ "sese::internal::service::http::HttpStream", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html", null ]
+    ] ],
     [ "sese::net::http::Header", "classsese_1_1net_1_1http_1_1_header.html", [
       [ "sese::net::http::RequestHeader", "classsese_1_1net_1_1http_1_1_request_header.html", [
         [ "sese::net::http::Request", "classsese_1_1net_1_1http_1_1_request.html", null ]
@@ -332,7 +340,7 @@ var hierarchy =
     [ "sese::system::Semaphore", "classsese_1_1system_1_1_semaphore.html", null ],
     [ "sese::service::Service", "classsese_1_1service_1_1_service.html", [
       [ "sese::service::http::v3::HttpService", "classsese_1_1service_1_1http_1_1v3_1_1_http_service.html", [
-        [ "sese::internal::service::http::v3::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", null ]
+        [ "sese::internal::service::http::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html", null ]
       ] ]
     ] ],
     [ "sese::net::http::Servlet", "classsese_1_1net_1_1http_1_1_servlet.html", null ],

@@ -68,12 +68,15 @@ var annotated_dup =
         ] ],
         [ "service", "namespacesese_1_1internal_1_1service.html", [
           [ "http", "namespacesese_1_1internal_1_1service_1_1http.html", [
-            [ "v3", "namespacesese_1_1internal_1_1service_1_1http_1_1v3.html", [
-              [ "HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection" ],
-              [ "HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl" ],
-              [ "HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl" ],
-              [ "HttpSSLConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl" ]
-            ] ]
+            [ "Handleable", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html", "structsese_1_1internal_1_1service_1_1http_1_1_handleable" ],
+            [ "HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection" ],
+            [ "HttpConnectionEx", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" ],
+            [ "HttpConnectionExImpl", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex_impl" ],
+            [ "HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl" ],
+            [ "HttpsConnectionExImpl", "structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl" ],
+            [ "HttpsConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl" ],
+            [ "HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl" ],
+            [ "HttpStream", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream" ]
           ] ]
         ] ]
       ] ],
