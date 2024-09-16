@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>Sese Framework: sese::net::http::Http2Frame结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sese Framework
+   &#160;<span id="projectnumber">x.y.z</span>
+   </div>
+   <div id="projectbrief">A cross-platform framework</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('structsese_1_1net_1_1http_1_1_http2_frame.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structsese_1_1net_1_1http_1_1_http2_frame-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::http::Http2Frame结构体 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HTTP 2 帧信息（包含缓存）  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_http2_frame_8h_source.html">Http2Frame.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a101b82981860e8c155781a0264245c90" id="r_a101b82981860e8c155781a0264245c90"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a101b82981860e8c155781a0264245c90">Ptr</a> = std::unique_ptr&lt;<a class="el" href="structsese_1_1net_1_1http_1_1_http2_frame.html">Http2Frame</a>&gt;</td></tr>
+<tr class="separator:a101b82981860e8c155781a0264245c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:af0e18aa626656a662e60cc71df5cf339" id="r_af0e18aa626656a662e60cc71df5cf339"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0e18aa626656a662e60cc71df5cf339">Http2Frame</a> (size_t frame_size)</td></tr>
+<tr class="separator:af0e18aa626656a662e60cc71df5cf339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f2f344599d75b24e6f309b5b5f514c" id="r_a26f2f344599d75b24e6f309b5b5f514c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26f2f344599d75b24e6f309b5b5f514c">getFrameBuffer</a> () const</td></tr>
+<tr class="separator:a26f2f344599d75b24e6f309b5b5f514c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d6d374aa6e3365970977336e550cf80" id="r_a6d6d374aa6e3365970977336e550cf80"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d6d374aa6e3365970977336e550cf80">getFrameLength</a> () const</td></tr>
+<tr class="separator:a6d6d374aa6e3365970977336e550cf80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b4d97f77a9356e61a908c3077f0f3e" id="r_a02b4d97f77a9356e61a908c3077f0f3e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02b4d97f77a9356e61a908c3077f0f3e">getFrameContentBuffer</a> () const</td></tr>
+<tr class="separator:a02b4d97f77a9356e61a908c3077f0f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee9d8cb09ebbc721b0b75949bb3b2bd" id="r_a9ee9d8cb09ebbc721b0b75949bb3b2bd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ee9d8cb09ebbc721b0b75949bb3b2bd">getFrameContentLength</a> () const</td></tr>
+<tr class="separator:a9ee9d8cb09ebbc721b0b75949bb3b2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acef5f4a2874100efdceab5d29a4c9df0" id="r_acef5f4a2874100efdceab5d29a4c9df0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acef5f4a2874100efdceab5d29a4c9df0">buildFrameHeader</a> () const</td></tr>
+<tr class="memdesc:acef5f4a2874100efdceab5d29a4c9df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据已有信息构建帧头  <br /></td></tr>
+<tr class="separator:acef5f4a2874100efdceab5d29a4c9df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:ac03b5c63f02cfcb58e1494bb051f392d" id="r_ac03b5c63f02cfcb58e1494bb051f392d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac03b5c63f02cfcb58e1494bb051f392d">length</a></td></tr>
+<tr class="separator:ac03b5c63f02cfcb58e1494bb051f392d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bea10634b6f28ea3cbb8c3bf30062fc" id="r_a2bea10634b6f28ea3cbb8c3bf30062fc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bea10634b6f28ea3cbb8c3bf30062fc">type</a></td></tr>
+<tr class="separator:a2bea10634b6f28ea3cbb8c3bf30062fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5713b0b9baca2d7d8377e81c03df0310" id="r_a5713b0b9baca2d7d8377e81c03df0310"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5713b0b9baca2d7d8377e81c03df0310">flags</a></td></tr>
+<tr class="separator:a5713b0b9baca2d7d8377e81c03df0310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d659cf6650efc209e3812272c313175" id="r_a7d659cf6650efc209e3812272c313175"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d659cf6650efc209e3812272c313175">ident</a></td></tr>
+<tr class="separator:a7d659cf6650efc209e3812272c313175"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ab9ab7f0f1c232e0487b97ba75da5c" id="r_a19ab9ab7f0f1c232e0487b97ba75da5c"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; char[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19ab9ab7f0f1c232e0487b97ba75da5c">frame</a></td></tr>
+<tr class="separator:a19ab9ab7f0f1c232e0487b97ba75da5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>HTTP 2 帧信息（包含缓存） </p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a101b82981860e8c155781a0264245c90" name="a101b82981860e8c155781a0264245c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a101b82981860e8c155781a0264245c90">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a101b82981860e8c155781a0264245c90">sese::net::http::Http2Frame::Ptr</a> = std::unique_ptr&lt;<a class="el" href="structsese_1_1net_1_1http_1_1_http2_frame.html">Http2Frame</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="af0e18aa626656a662e60cc71df5cf339" name="af0e18aa626656a662e60cc71df5cf339"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e18aa626656a662e60cc71df5cf339">&#9670;&#160;</a></span>Http2Frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Http2Frame::Http2Frame </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>frame_size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="acef5f4a2874100efdceab5d29a4c9df0" name="acef5f4a2874100efdceab5d29a4c9df0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acef5f4a2874100efdceab5d29a4c9df0">&#9670;&#160;</a></span>buildFrameHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Http2Frame::buildFrameHeader </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据已有信息构建帧头 </p>
+
+<p class="reference">引用了 <a class="el" href="#a5713b0b9baca2d7d8377e81c03df0310">flags</a>, <a class="el" href="#a26f2f344599d75b24e6f309b5b5f514c">getFrameBuffer()</a>, <a class="el" href="#a7d659cf6650efc209e3812272c313175">ident</a>, <a class="el" href="#ac03b5c63f02cfcb58e1494bb051f392d">length</a>, <a class="el" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32()</a> , 以及 <a class="el" href="#a2bea10634b6f28ea3cbb8c3bf30062fc">type</a>.</p>
+
+</div>
+</div>
+<a id="a26f2f344599d75b24e6f309b5b5f514c" name="a26f2f344599d75b24e6f309b5b5f514c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26f2f344599d75b24e6f309b5b5f514c">&#9670;&#160;</a></span>getFrameBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Http2Frame::getFrameBuffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取包括帧头在内的缓存 </p><dl class="section return"><dt>返回</dt><dd>缓存 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="#a19ab9ab7f0f1c232e0487b97ba75da5c">frame</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#acef5f4a2874100efdceab5d29a4c9df0">buildFrameHeader()</a>.</p>
+
+</div>
+</div>
+<a id="a02b4d97f77a9356e61a908c3077f0f3e" name="a02b4d97f77a9356e61a908c3077f0f3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02b4d97f77a9356e61a908c3077f0f3e">&#9670;&#160;</a></span>getFrameContentBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Http2Frame::getFrameContentBuffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取不包括帧头在内的缓存 </p><dl class="section return"><dt>返回</dt><dd>缓存 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="#a19ab9ab7f0f1c232e0487b97ba75da5c">frame</a>.</p>
+
+</div>
+</div>
+<a id="a9ee9d8cb09ebbc721b0b75949bb3b2bd" name="a9ee9d8cb09ebbc721b0b75949bb3b2bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee9d8cb09ebbc721b0b75949bb3b2bd">&#9670;&#160;</a></span>getFrameContentLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Http2Frame::getFrameContentLength </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取不包括帧头在内的缓存大小 </p><dl class="section return"><dt>返回</dt><dd>缓存大小 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="#ac03b5c63f02cfcb58e1494bb051f392d">length</a>.</p>
+
+</div>
+</div>
+<a id="a6d6d374aa6e3365970977336e550cf80" name="a6d6d374aa6e3365970977336e550cf80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6d374aa6e3365970977336e550cf80">&#9670;&#160;</a></span>getFrameLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Http2Frame::getFrameLength </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取包括帧头在内的缓存大小 </p><dl class="section return"><dt>返回</dt><dd>缓存大小 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="#ac03b5c63f02cfcb58e1494bb051f392d">length</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a5713b0b9baca2d7d8377e81c03df0310" name="a5713b0b9baca2d7d8377e81c03df0310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5713b0b9baca2d7d8377e81c03df0310">&#9670;&#160;</a></span>flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sese::net::http::Http2Frame::flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#acef5f4a2874100efdceab5d29a4c9df0">buildFrameHeader()</a>.</p>
+
+</div>
+</div>
+<a id="a19ab9ab7f0f1c232e0487b97ba75da5c" name="a19ab9ab7f0f1c232e0487b97ba75da5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19ab9ab7f0f1c232e0487b97ba75da5c">&#9670;&#160;</a></span>frame</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;char []&gt; sese::net::http::Http2Frame::frame</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a26f2f344599d75b24e6f309b5b5f514c">getFrameBuffer()</a> , 以及 <a class="el" href="#a02b4d97f77a9356e61a908c3077f0f3e">getFrameContentBuffer()</a>.</p>
+
+</div>
+</div>
+<a id="a7d659cf6650efc209e3812272c313175" name="a7d659cf6650efc209e3812272c313175"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d659cf6650efc209e3812272c313175">&#9670;&#160;</a></span>ident</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sese::net::http::Http2Frame::ident</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#acef5f4a2874100efdceab5d29a4c9df0">buildFrameHeader()</a>.</p>
+
+</div>
+</div>
+<a id="ac03b5c63f02cfcb58e1494bb051f392d" name="ac03b5c63f02cfcb58e1494bb051f392d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac03b5c63f02cfcb58e1494bb051f392d">&#9670;&#160;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sese::net::http::Http2Frame::length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#acef5f4a2874100efdceab5d29a4c9df0">buildFrameHeader()</a>, <a class="el" href="#a9ee9d8cb09ebbc721b0b75949bb3b2bd">getFrameContentLength()</a> , 以及 <a class="el" href="#a6d6d374aa6e3365970977336e550cf80">getFrameLength()</a>.</p>
+
+</div>
+</div>
+<a id="a2bea10634b6f28ea3cbb8c3bf30062fc" name="a2bea10634b6f28ea3cbb8c3bf30062fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bea10634b6f28ea3cbb8c3bf30062fc">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sese::net::http::Http2Frame::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#acef5f4a2874100efdceab5d29a4c9df0">buildFrameHeader()</a>.</p>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li>sese/net/http/<a class="el" href="_http2_frame_8h_source.html">Http2Frame.h</a></li>
+<li>sese/net/http/<a class="el" href="_http2_frame_8cpp.html">Http2Frame.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="structsese_1_1net_1_1http_1_1_http2_frame.html">Http2Frame</a></li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:48 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

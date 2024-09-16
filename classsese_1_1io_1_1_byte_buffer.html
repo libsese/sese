@@ -168,6 +168,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:af9062d37a000dbe6b22cd141c6a5b064" id="r_af9062d37a000dbe6b22cd141c6a5b064"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9062d37a000dbe6b22cd141c6a5b064">resetPos</a> () override</td></tr>
 <tr class="memdesc:af9062d37a000dbe6b22cd141c6a5b064"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置读取位置  <br /></td></tr>
 <tr class="separator:af9062d37a000dbe6b22cd141c6a5b064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133d8c98ef62895335a0d1098cae0a57" id="r_a133d8c98ef62895335a0d1098cae0a57"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a133d8c98ef62895335a0d1098cae0a57">eof</a> () override</td></tr>
+<tr class="memdesc:a133d8c98ef62895335a0d1098cae0a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否有可读数据  <br /></td></tr>
+<tr class="separator:a133d8c98ef62895335a0d1098cae0a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a424b3448336f0a6684f1c5566fca8dc8" id="r_a424b3448336f0a6684f1c5566fca8dc8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a424b3448336f0a6684f1c5566fca8dc8">getLength</a> ()</td></tr>
 <tr class="separator:a424b3448336f0a6684f1c5566fca8dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b78f7dbe66e53c73258caca160e4fdc" id="r_a1b78f7dbe66e53c73258caca160e4fdc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b78f7dbe66e53c73258caca160e4fdc">getCapacity</a> ()</td></tr>
@@ -283,6 +286,37 @@ Private 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a133d8c98ef62895335a0d1098cae0a57" name="a133d8c98ef62895335a0d1098cae0a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133d8c98ef62895335a0d1098cae0a57">&#9670;&#160;</a></span>eof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::io::ByteBuffer::eof </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>是否有可读数据 </p>
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ad2965c0b3bdd86a4d067b27a33f5a920">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ad2965c0b3bdd86a4d067b27a33f5a920">sese::io::AbstractByteBuffer::eof()</a>.</p>
+
+</div>
+</div>
 <a id="aa9d783b8664890feec56be7af07ccd57" name="aa9d783b8664890feec56be7af07ccd57"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9d783b8664890feec56be7af07ccd57">&#9670;&#160;</a></span>freeCapacity()</h2>
 
@@ -420,6 +454,8 @@ Private 属性</h2></td></tr>
 <dl class="section return"><dt>返回</dt><dd>所有节点已用内存总数 </dd></dl>
 
 <p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">sese::io::AbstractByteBuffer::currentWriteNode</a>.</p>
 
 </div>
 </div>
@@ -632,7 +668,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html">ByteBuffer</a></li>
-    <li class="footer">生成于 2024年 八月 16日 星期五 04:56:27 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:47 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

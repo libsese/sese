@@ -1,7 +1,7 @@
 var searchData=
 [
   ['id_0',['id',['../structsese_1_1system_1_1_message_iterator.html#a29ca54fabaadca7253d8a436461eaa1e',1,'sese::system::MessageIterator::id'],['../classsese_1_1system_1_1_process.html#a0d8c961499ee551b6995cc49469db263',1,'sese::system::Process::id'],['../classsese_1_1system_1_1_shared_memory.html#abfec4f8addcfee061b17fa2feaffba1a',1,'sese::system::SharedMemory::id'],['../structsese_1_1_thread_1_1_runtime_data.html#a18380541e22923460703a902203fd2a5',1,'sese::Thread::RuntimeData::id']]],
-  ['ident_1',['ident',['../structsese_1_1net_1_1http_1_1_http2_frame_info.html#a3fd34b6134c979251b808f79da7e6a11',1,'sese::net::http::Http2FrameInfo']]],
+  ['ident_1',['ident',['../structsese_1_1net_1_1http_1_1_http2_frame_info.html#a3fd34b6134c979251b808f79da7e6a11',1,'sese::net::http::Http2FrameInfo::ident'],['../structsese_1_1net_1_1http_1_1_http2_frame.html#a7d659cf6650efc209e3812272c313175',1,'sese::net::http::Http2Frame::ident']]],
   ['info_2',['info',['../structsese_1_1plugin_1_1_class_factory_1_1_register_info.html#a65db9ffb1399eeccc74e849a5c407f9c',1,'sese::plugin::ClassFactory::RegisterInfo::info'],['../classsese_1_1plugin_1_1_module.html#a4c483646c070aef2844e09f97702cb75',1,'sese::plugin::Module::info']]],
   ['infomap_3',['infoMap',['../classsese_1_1plugin_1_1_class_factory.html#ab604e844a83d0c095ad1822632511003',1,'sese::plugin::ClassFactory']]],
   ['input_4',['input',['../classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a',1,'sese::archive::ArchiveReader::input'],['../classsese_1_1io_1_1_input_stream_reader.html#ad40cca62f217f14430d63167ad98e38d',1,'sese::io::InputStreamReader::input']]],

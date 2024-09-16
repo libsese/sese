@@ -10,13 +10,14 @@ var searchData=
   ['varcharoid_7',['VARCHAROID',['../_postgres_prepared_statement_impl_8cpp.html#a24eccf5fa2a41f7738ab1aa1b7dce72d',1,'PostgresPreparedStatementImpl.cpp']]],
   ['vector_8',['vector',['../structsese_1_1security_1_1evp_1_1_crypter_context.html#a112846823843e40fa9a634448bc29553',1,'sese::security::evp::CrypterContext::vector'],['../classsese_1_1_value_1_1_list.html#ad5ea50ea8df54c339e2b850e75f33f7d',1,'sese::Value::List::vector']]],
   ['verify_9',['verify',['../classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#ab99f20d2be50c95be29e026e05f293e2',1,'sese::net::ws::WebsocketAuthenticator']]],
-  ['version_10',['Version',['../classsese_1_1_version.html',1,'sese::Version'],['../classsese_1_1_version.html#a3b5af3925921dbb756450f689efd92c2',1,'sese::Version::Version()']]],
-  ['version_11',['version',['../classsese_1_1net_1_1http_1_1_request_header.html#a48534bb1c5f858019585c9d177443e83',1,'sese::net::http::RequestHeader::version'],['../classsese_1_1net_1_1http_1_1_response_header.html#ae84378891962c04dec387f0861a66323',1,'sese::net::http::ResponseHeader::version']]],
-  ['version_2ecpp_12',['Version.cpp',['../_version_8cpp.html',1,'']]],
-  ['version_2eh_13',['Version.h',['../_version_8h.html',1,'']]],
-  ['version_5f1_5f1_14',['VERSION_1_1',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7',1,'sese::net::http']]],
-  ['version_5f2_15',['VERSION_2',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8a718bd52cc92714b62a24cb681e3dd69e',1,'sese::net::http']]],
-  ['version_5funknown_16',['VERSION_UNKNOWN',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8aa8becbfb24b71846118a5584b60ca8de',1,'sese::net::http']]],
-  ['versionstring_17',['versionString',['../structsese_1_1plugin_1_1_module_info.html#a6e630b29e693af1b8442a6760a2b1c28',1,'sese::plugin::ModuleInfo']]],
-  ['void_5ft_18',['void_t',['../namespacesese.html#a92d29821f90f33b97b43ed12b4f88841',1,'sese']]]
+  ['verifyheader_10',['verifyHeader',['../classsese_1_1net_1_1http_1_1_h_pack_util.html#a75127fc3826eabc31b3ce74dffbc3530',1,'sese::net::http::HPackUtil']]],
+  ['version_11',['Version',['../classsese_1_1_version.html',1,'sese::Version'],['../classsese_1_1_version.html#a3b5af3925921dbb756450f689efd92c2',1,'sese::Version::Version()']]],
+  ['version_12',['version',['../classsese_1_1net_1_1http_1_1_request_header.html#a48534bb1c5f858019585c9d177443e83',1,'sese::net::http::RequestHeader::version'],['../classsese_1_1net_1_1http_1_1_response_header.html#ae84378891962c04dec387f0861a66323',1,'sese::net::http::ResponseHeader::version']]],
+  ['version_2ecpp_13',['Version.cpp',['../_version_8cpp.html',1,'']]],
+  ['version_2eh_14',['Version.h',['../_version_8h.html',1,'']]],
+  ['version_5f1_5f1_15',['VERSION_1_1',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7',1,'sese::net::http']]],
+  ['version_5f2_16',['VERSION_2',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8a718bd52cc92714b62a24cb681e3dd69e',1,'sese::net::http']]],
+  ['version_5funknown_17',['VERSION_UNKNOWN',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8aa8becbfb24b71846118a5584b60ca8de',1,'sese::net::http']]],
+  ['versionstring_18',['versionString',['../structsese_1_1plugin_1_1_module_info.html#a6e630b29e693af1b8442a6760a2b1c28',1,'sese::plugin::ModuleInfo']]],
+  ['void_5ft_19',['void_t',['../namespacesese.html#a92d29821f90f33b97b43ed12b4f88841',1,'sese']]]
 ];

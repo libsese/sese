@@ -5,6 +5,7 @@ var classsese_1_1io_1_1_abstract_byte_buffer =
     [ "AbstractByteBuffer", "classsese_1_1io_1_1_abstract_byte_buffer.html#a54239375ac434917f74006e7f10805c7", null ],
     [ "AbstractByteBuffer", "classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2", null ],
     [ "~AbstractByteBuffer", "classsese_1_1io_1_1_abstract_byte_buffer.html#adb203e29f3c1cfa71e295405d3586a2b", null ],
+    [ "eof", "classsese_1_1io_1_1_abstract_byte_buffer.html#ad2965c0b3bdd86a4d067b27a33f5a920", null ],
     [ "freeCapacity", "classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013", null ],
     [ "getCapacity", "classsese_1_1io_1_1_abstract_byte_buffer.html#a4b380c9183805818aaa40db8bd667420", null ],
     [ "getLength", "classsese_1_1io_1_1_abstract_byte_buffer.html#a7f688fe58a47816e45402d93de044a45", null ],

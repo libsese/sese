@@ -2,6 +2,7 @@ var classsese_1_1io_1_1_byte_buffer =
 [
     [ "Ptr", "classsese_1_1io_1_1_byte_buffer.html#a738a8e7ce6f49c564dc424f7216b8ecb", null ],
     [ "ByteBuffer", "classsese_1_1io_1_1_byte_buffer.html#a1f0b37cddd7b4539b6441b121ae30779", null ],
+    [ "eof", "classsese_1_1io_1_1_byte_buffer.html#a133d8c98ef62895335a0d1098cae0a57", null ],
     [ "freeCapacity", "classsese_1_1io_1_1_byte_buffer.html#aa9d783b8664890feec56be7af07ccd57", null ],
     [ "getCapacity", "classsese_1_1io_1_1_byte_buffer.html#a1b78f7dbe66e53c73258caca160e4fdc", null ],
     [ "getCapacity", "classsese_1_1io_1_1_byte_buffer.html#a4b380c9183805818aaa40db8bd667420", null ],

@@ -1,5 +1,9 @@
 var NAVTREEINDEX12 =
 {
+"classsese_1_1db_1_1_result_set.html#a6e656f99c9e5f12805d7e5b590fe710f":[7,0,0,3,4,2],
+"classsese_1_1db_1_1_result_set.html#a7cee3b3394a785050d8f2fdf3fc6ed4f":[6,0,0,3,4,6],
+"classsese_1_1db_1_1_result_set.html#a7cee3b3394a785050d8f2fdf3fc6ed4f":[7,0,0,3,4,6],
+"classsese_1_1db_1_1_result_set.html#a8a240837690a71c7d0459abd23dcff8f":[6,0,0,3,4,7],
 "classsese_1_1db_1_1_result_set.html#a8a240837690a71c7d0459abd23dcff8f":[7,0,0,3,4,7],
 "classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa":[6,0,0,3,4,0],
 "classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa":[7,0,0,3,4,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX12 =
 "classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a53138c8da7f513bd8532f9c08366de2f":[7,0,0,3,0,6,9],
 "classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6c7f522b9e99182c6bc83225eb927ad3":[6,0,0,3,0,6,6],
 "classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6c7f522b9e99182c6bc83225eb927ad3":[7,0,0,3,0,6,6],
-"classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39":[6,0,0,3,0,6,12],
-"classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39":[7,0,0,3,0,6,12],
-"classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a8453d42b10409bae6ff01caf7b27cb8c":[6,0,0,3,0,6,4],
-"classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a8453d42b10409bae6ff01caf7b27cb8c":[7,0,0,3,0,6,4],
-"classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a996d6215caf6bb73614d297b7eecfce1":[6,0,0,3,0,6,14]
+"classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39":[6,0,0,3,0,6,12]
 };

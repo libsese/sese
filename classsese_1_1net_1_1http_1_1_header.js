@@ -10,6 +10,7 @@ var classsese_1_1net_1_1http_1_1_header =
     [ "empty", "classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee", null ],
     [ "end", "classsese_1_1net_1_1http_1_1_header.html#a0de7f929e0c2308d21fba1b15e259db3", null ],
     [ "exist", "classsese_1_1net_1_1http_1_1_header.html#a3f1567ebe644edf12ac59717d4b80a4a", null ],
+    [ "find", "classsese_1_1net_1_1http_1_1_header.html#a00b9754538255d11bd35886b565c0465", null ],
     [ "get", "classsese_1_1net_1_1http_1_1_header.html#a8b59c2f39588bbe63126312371385e03", null ],
     [ "get", "classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61", null ],
     [ "getCookie", "classsese_1_1net_1_1http_1_1_header.html#aee26bf81a39563de0799e9451ff9c6bc", null ],

@@ -161,6 +161,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "sese::net::http::HeaderBuilder", "classsese_1_1net_1_1http_1_1_header_builder.html", null ],
+    [ "sese::net::http::Http2Frame", "structsese_1_1net_1_1http_1_1_http2_frame.html", null ],
     [ "sese::net::http::Http2FrameInfo", "structsese_1_1net_1_1http_1_1_http2_frame_info.html", null ],
     [ "sese::service::http::v3::HttpServer", "classsese_1_1service_1_1http_1_1v3_1_1_http_server.html", null ],
     [ "sese::net::http::HttpUtil", "classsese_1_1net_1_1http_1_1_http_util.html", null ],
@@ -258,6 +259,7 @@ var hierarchy =
       [ "sese::SymbolConverter", "classsese_1_1_symbol_converter.html", null ],
       [ "sese::json::JsonUtil", "classsese_1_1json_1_1_json_util.html", null ],
       [ "sese::net::http::HPackUtil", "classsese_1_1net_1_1http_1_1_h_pack_util.html", null ],
+      [ "sese::net::http::HttpConverter", "classsese_1_1net_1_1http_1_1_http_converter.html", null ],
       [ "sese::net::http::RequestableFactory", "classsese_1_1net_1_1http_1_1_requestable_factory.html", null ],
       [ "sese::net::ws::WebsocketAuthenticator", "classsese_1_1net_1_1ws_1_1_websocket_authenticator.html", null ],
       [ "sese::security::MessageDigest", "classsese_1_1security_1_1_message_digest.html", null ],

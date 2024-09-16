@@ -181,6 +181,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:aa1f5da1259d14ff3bb3a3c591eaa1d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de7f929e0c2308d21fba1b15e259db3" id="r_a0de7f929e0c2308d21fba1b15e259db3"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0de7f929e0c2308d21fba1b15e259db3">end</a> () noexcept</td></tr>
 <tr class="separator:a0de7f929e0c2308d21fba1b15e259db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b9754538255d11bd35886b565c0465" id="r_a00b9754538255d11bd35886b565c0465"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00b9754538255d11bd35886b565c0465">find</a> (const std::string &amp;key) noexcept</td></tr>
+<tr class="separator:a00b9754538255d11bd35886b565c0465"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f16ac94962f129ffd6ea7b647c456fb" id="r_a3f16ac94962f129ffd6ea7b647c456fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f16ac94962f129ffd6ea7b647c456fb">clear</a> ()</td></tr>
 <tr class="separator:a3f16ac94962f129ffd6ea7b647c456fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18772acaacda337977c884fb40ae09ee" id="r_a18772acaacda337977c884fb40ae09ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18772acaacda337977c884fb40ae09ee">empty</a> () const</td></tr>
@@ -457,7 +459,34 @@ Protected 属性</h2></td></tr>
 
 <p class="reference">引用了 <a class="el" href="#a15ea480fc51c5925ffc914f8c24c63f1">headers</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#a66b423a1e055c4831cf284a763ba4673">sese::net::http::Servlet::invoke()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_http_converter.html#a8f9893e6f3a853c6d0710a76d0cb63bb">sese::net::http::HttpConverter::convertFromHttp2()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#a66b423a1e055c4831cf284a763ba4673">sese::net::http::Servlet::invoke()</a>.</p>
+
+</div>
+</div>
+<a id="a00b9754538255d11bd35886b565c0465" name="a00b9754538255d11bd35886b565c0465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b9754538255d11bd35886b565c0465">&#9670;&#160;</a></span>find()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto sese::net::http::Header::find </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a15ea480fc51c5925ffc914f8c24c63f1">headers</a>.</p>
 
 </div>
 </div>
@@ -523,7 +552,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">sese::internal::net::http::HttpClientImpl::request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_http_converter.html#a8f9893e6f3a853c6d0710a76d0cb63bb">sese::net::http::HttpConverter::convertFromHttp2()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">sese::internal::net::http::HttpClientImpl::request()</a>.</p>
 
 </div>
 </div>
@@ -628,7 +657,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">sese::internal::net::http::HttpClientImpl::request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_http_converter.html#ace43496b3d23dfcc6d14c84b67481d9a">sese::net::http::HttpConverter::convert2Http2()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">sese::internal::net::http::HttpClientImpl::request()</a>.</p>
 
 </div>
 </div>
@@ -756,7 +785,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#aa1f5da1259d14ff3bb3a3c591eaa1d45">begin()</a>, <a class="el" href="#a3f16ac94962f129ffd6ea7b647c456fb">clear()</a>, <a class="el" href="#a18772acaacda337977c884fb40ae09ee">empty()</a>, <a class="el" href="#a0de7f929e0c2308d21fba1b15e259db3">end()</a>, <a class="el" href="#a3f1567ebe644edf12ac59717d4b80a4a">exist()</a>, <a class="el" href="#a8b59c2f39588bbe63126312371385e03">get()</a> , 以及 <a class="el" href="#afa34542cc8a8e5f1fdbe5026bbc5b703">size()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#aa1f5da1259d14ff3bb3a3c591eaa1d45">begin()</a>, <a class="el" href="#a3f16ac94962f129ffd6ea7b647c456fb">clear()</a>, <a class="el" href="#a18772acaacda337977c884fb40ae09ee">empty()</a>, <a class="el" href="#a0de7f929e0c2308d21fba1b15e259db3">end()</a>, <a class="el" href="#a3f1567ebe644edf12ac59717d4b80a4a">exist()</a>, <a class="el" href="#a00b9754538255d11bd35886b565c0465">find()</a>, <a class="el" href="#a8b59c2f39588bbe63126312371385e03">get()</a> , 以及 <a class="el" href="#afa34542cc8a8e5f1fdbe5026bbc5b703">size()</a>.</p>
 
 </div>
 </div>
@@ -770,7 +799,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a></li>
-    <li class="footer">生成于 2024年 八月 16日 星期五 04:56:27 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:48 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -508,6 +508,14 @@ $(function(){initNavTree('namespacesese.html',''); initResizable(true); });
 <tr class="memitem:ad65b873dcf755a6a9d2f3e3186598b08" id="r_ad65b873dcf755a6a9d2f3e3186598b08"><td class="memTemplParams" colspan="2">template&lt;typename TP &gt; </td></tr>
 <tr class="memitem:ad65b873dcf755a6a9d2f3e3186598b08"><td class="memTemplItemLeft" align="right" valign="top">std::time_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad65b873dcf755a6a9d2f3e3186598b08">to_time_t</a> (TP tp)</td></tr>
 <tr class="separator:ad65b873dcf755a6a9d2f3e3186598b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb7bed046af930f787f1f7183f08b77f" id="r_afb7bed046af930f787f1f7183f08b77f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afb7bed046af930f787f1f7183f08b77f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afb7bed046af930f787f1f7183f08b77f">isAdditionOverflow</a> (T <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, T <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>)</td></tr>
+<tr class="memdesc:afb7bed046af930f787f1f7183f08b77f"><td class="mdescLeft">&#160;</td><td class="mdescRight">加法溢出检测  <br /></td></tr>
+<tr class="separator:afb7bed046af930f787f1f7183f08b77f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad21355533ea9edd4a37c51174345bb00" id="r_ad21355533ea9edd4a37c51174345bb00"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad21355533ea9edd4a37c51174345bb00"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad21355533ea9edd4a37c51174345bb00">isSubtractionOverflow</a> (T <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, T <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>)</td></tr>
+<tr class="memdesc:ad21355533ea9edd4a37c51174345bb00"><td class="mdescLeft">&#160;</td><td class="mdescRight">减法溢出检测  <br /></td></tr>
+<tr class="separator:ad21355533ea9edd4a37c51174345bb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
@@ -1211,6 +1219,33 @@ template&lt;class T &gt; </div>
 
 </div>
 </div>
+<a id="afb7bed046af930f787f1f7183f08b77f" name="afb7bed046af930f787f1f7183f08b77f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb7bed046af930f787f1f7183f08b77f">&#9670;&#160;</a></span>isAdditionOverflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::isAdditionOverflow </td>
+          <td>(</td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加法溢出检测 </p>
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>.</p>
+
+</div>
+</div>
 <a id="a6122cf4dd9b32a7c8a00112c45639f37" name="a6122cf4dd9b32a7c8a00112c45639f37"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6122cf4dd9b32a7c8a00112c45639f37">&#9670;&#160;</a></span>isSpace()</h2>
 
@@ -1244,6 +1279,33 @@ template&lt;class T &gt; </div>
 <p class="reference">引用了 <a class="el" href="_config_8h.html#a458adb17a4c034322d679335e6e92b42">SPACE_CHARS</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">sese::json::JsonUtil::tokenizer()</a>, <a class="el" href="classsese_1_1xml_1_1_xml_util.html#aa4ad173341b19c94a86fe85bbbe555a4">sese::xml::XmlUtil::tokenizer()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a835c48f90c31722857f4c71ceb7b44a3">sese::text::AbstractStringBuffer::trim()</a>.</p>
+
+</div>
+</div>
+<a id="ad21355533ea9edd4a37c51174345bb00" name="ad21355533ea9edd4a37c51174345bb00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad21355533ea9edd4a37c51174345bb00">&#9670;&#160;</a></span>isSubtractionOverflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::isSubtractionOverflow </td>
+          <td>(</td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>减法溢出检测 </p>
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>.</p>
 
 </div>
 </div>
@@ -1558,7 +1620,7 @@ template&lt;class REP , class PERIOD &gt; </div>
 
 <p class="reference">引用了 <a class="el" href="native_2darwin_2_config_8h.html#acf1a32c487efc5306d57219a57d57b60">strcmpi</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable_factory.html#a73f1cffd0524aac0e4269f6c7f0dae42">sese::net::http::RequestableFactory::createHttpRequest()</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aa78ce823b71dee85b7e25c4f6955e449">sese::db::impl::SqlitePreparedStatementImpl::getColumnType()</a>, <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html#a4610edeb6e748c91f7aafdcbee10975a">sese::internal::service::http::v3::HttpServiceImpl::handleRequest()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a>, <a class="el" href="classsese_1_1_yaml.html#ab720cea47a5be8c478bec54e68c5e354">sese::Yaml::parseArray()</a>, <a class="el" href="classsese_1_1_yaml.html#a8a29c2165e43cc3a3f49a15b0b475da0">sese::Yaml::parseObject()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">sese::internal::net::http::HttpClientImpl::request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_http_converter.html#a8f9893e6f3a853c6d0710a76d0cb63bb">sese::net::http::HttpConverter::convertFromHttp2()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable_factory.html#a73f1cffd0524aac0e4269f6c7f0dae42">sese::net::http::RequestableFactory::createHttpRequest()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a606dfdbad3044ebb2c069f69e11d3dc7">sese::net::http::HPackUtil::decode()</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aa78ce823b71dee85b7e25c4f6955e449">sese::db::impl::SqlitePreparedStatementImpl::getColumnType()</a>, <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html#a4610edeb6e748c91f7aafdcbee10975a">sese::internal::service::http::v3::HttpServiceImpl::handleRequest()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a>, <a class="el" href="classsese_1_1_yaml.html#ab720cea47a5be8c478bec54e68c5e354">sese::Yaml::parseArray()</a>, <a class="el" href="classsese_1_1_yaml.html#a8a29c2165e43cc3a3f49a15b0b475da0">sese::Yaml::parseObject()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a7b11b790aa2ee8bf18b6b038e4b6e7c7">sese::internal::net::http::HttpClientImpl::request()</a>.</p>
 
 </div>
 </div>
@@ -1722,7 +1784,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li>
-    <li class="footer">生成于 2024年 八月 16日 星期五 04:56:26 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:47 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

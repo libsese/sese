@@ -182,8 +182,8 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab645a4008c3ba572c5ccf88052a7e712" id="r_ab645a4008c3ba572c5ccf88052a7e712"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab645a4008c3ba572c5ccf88052a7e712">decode</a> (<a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, size_t content_length, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;header) noexcept</td></tr>
-<tr class="separator:ab645a4008c3ba572c5ccf88052a7e712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606dfdbad3044ebb2c069f69e11d3dc7" id="r_a606dfdbad3044ebb2c069f69e11d3dc7"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a606dfdbad3044ebb2c069f69e11d3dc7">decode</a> (<a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, size_t content_length, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;header, bool is_resp, bool has_pseudo=true, uint32_t limit=8192) noexcept</td></tr>
+<tr class="separator:a606dfdbad3044ebb2c069f69e11d3dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9323debee57166cc235a9ca963d3c4f2" id="r_a9323debee57166cc235a9ca963d3c4f2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9323debee57166cc235a9ca963d3c4f2">encode</a> (<a class="el" href="#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;once_header, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;indexed_header) noexcept</td></tr>
 <tr class="separator:a9323debee57166cc235a9ca963d3c4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -205,9 +205,15 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:af47118bf81bfd307c614a19cd924a69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98dc16490271859f0260bd6d51b19564" id="r_a98dc16490271859f0260bd6d51b19564"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98dc16490271859f0260bd6d51b19564">buildCookieString</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie) noexcept</td></tr>
 <tr class="separator:a98dc16490271859f0260bd6d51b19564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1430c68aa4e2e1e47af5de8134bfce4b" id="r_a1430c68aa4e2e1e47af5de8134bfce4b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1430c68aa4e2e1e47af5de8134bfce4b">setHeader</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;header, const std::string &amp;key, const std::string &amp;value) noexcept</td></tr>
+<tr class="separator:a1430c68aa4e2e1e47af5de8134bfce4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75127fc3826eabc31b3ce74dffbc3530" id="r_a75127fc3826eabc31b3ce74dffbc3530"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75127fc3826eabc31b3ce74dffbc3530">verifyHeader</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;header, bool is_resp) noexcept</td></tr>
+<tr class="separator:a75127fc3826eabc31b3ce74dffbc3530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 静态 Private 属性</h2></td></tr>
+<tr class="memitem:a5bbf28c7107bca81e5c7b0f34214ef0e" id="r_a5bbf28c7107bca81e5c7b0f34214ef0e"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bbf28c7107bca81e5c7b0f34214ef0e">REQ_PSEUDO_HEADER</a> [4] {&quot;:method&quot;, &quot;:scheme&quot;, &quot;:authority&quot;, &quot;:path&quot;}</td></tr>
+<tr class="separator:a5bbf28c7107bca81e5c7b0f34214ef0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab664faeaf4e254ba194e645671fb292f" id="r_ab664faeaf4e254ba194e645671fb292f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#a78baeb0ea2f7ae66da3529d3ba6b51ec">HuffmanDecoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab664faeaf4e254ba194e645671fb292f">decoder</a> {}</td></tr>
 <tr class="separator:ab664faeaf4e254ba194e645671fb292f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87c844834b5d3070e9c82f7399c2481f" id="r_a87c844834b5d3070e9c82f7399c2481f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#ad0af380e2cf908eac82ff9bd729d076f">HuffmanEncoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87c844834b5d3070e9c82f7399c2481f">encoder</a> {}</td></tr>
@@ -302,8 +308,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="ab645a4008c3ba572c5ccf88052a7e712" name="ab645a4008c3ba572c5ccf88052a7e712"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab645a4008c3ba572c5ccf88052a7e712">&#9670;&#160;</a></span>decode()</h2>
+<a id="a606dfdbad3044ebb2c069f69e11d3dc7" name="a606dfdbad3044ebb2c069f69e11d3dc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606dfdbad3044ebb2c069f69e11d3dc7">&#9670;&#160;</a></span>decode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +318,7 @@ Public 成员函数</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool HPackUtil::decode </td>
+          <td class="memname">uint32_t HPackUtil::decode </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
@@ -329,7 +335,22 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>header</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>header</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_resp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>has_pseudo</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>limit</em></span><span class="paramdefsep"> = </span><span class="paramdefval">8192</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -344,15 +365,18 @@ Public 成员函数</h2></td></tr>
     <tr><td class="paramname">content_length</td><td>需要解析的内容长度 </td></tr>
     <tr><td class="paramname">table</td><td>解析所用的动态表 </td></tr>
     <tr><td class="paramname">header</td><td>存放解析结果 </td></tr>
+    <tr><td class="paramname">is_resp</td><td>指示当前是否为响应 </td></tr>
+    <tr><td class="paramname">has_pseudo</td><td>需要验证最前面的伪字段 </td></tr>
+    <tr><td class="paramname">limit</td><td>动态表大小限制 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>解析成功与否 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>解析成功返回0，否则返回错误码 </dd></dl>
 <p>对应第 0 种情况</p>
 <p>对应第 1 种情况</p>
 <p>对应第 2 种和第 3 种情况</p>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">sese::net::http::HttpUtil::parseFromCookie()</a> , 以及 <a class="el" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c">strcasecmp</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1net_1_1http.html#a2228f88be35c6e17df30b1b5742dc521">sese::net::http::GOAWAY_COMPRESSION_ERROR</a>, <a class="el" href="namespacesese_1_1net_1_1http.html#a2fec464fb0fa4244578be41f5ec0589d">sese::net::http::GOAWAY_PROTOCOL_ERROR</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">sese::net::http::HttpUtil::parseFromCookie()</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
 
 </div>
 </div>
@@ -634,6 +658,87 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
+<a id="a1430c68aa4e2e1e47af5de8134bfce4b" name="a1430c68aa4e2e1e47af5de8134bfce4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1430c68aa4e2e1e47af5de8134bfce4b">&#9670;&#160;</a></span>setHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HPackUtil::setHeader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>header</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>检查伪字段是否重复并设置头部值 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="classsese_1_1net_1_1http_1_1_http_converter.html">sese::net::http::HttpConverter</a> </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>目标头 </td></tr>
+    <tr><td class="paramname">key</td><td>键 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+</div>
+</div>
+<a id="a75127fc3826eabc31b3ce74dffbc3530" name="a75127fc3826eabc31b3ce74dffbc3530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75127fc3826eabc31b3ce74dffbc3530">&#9670;&#160;</a></span>verifyHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HPackUtil::verifyHeader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>header</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_resp</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>校验伪字段 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>头部 </td></tr>
+    <tr><td class="paramname">is_resp</td><td>是否为响应 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>校验结果 </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">类成员变量说明</h2>
 <a id="ab664faeaf4e254ba194e645671fb292f" name="ab664faeaf4e254ba194e645671fb292f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab664faeaf4e254ba194e645671fb292f">&#9670;&#160;</a></span>decoder</h2>
@@ -679,6 +784,28 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
+<a id="a5bbf28c7107bca81e5c7b0f34214ef0e" name="a5bbf28c7107bca81e5c7b0f34214ef0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bbf28c7107bca81e5c7b0f34214ef0e">&#9670;&#160;</a></span>REQ_PSEUDO_HEADER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string HPackUtil::REQ_PSEUDO_HEADER {&quot;:method&quot;, &quot;:scheme&quot;, &quot;:authority&quot;, &quot;:path&quot;}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/http/<a class="el" href="_h_pack_util_8h_source.html">HPackUtil.h</a></li>
 <li>sese/net/http/<a class="el" href="_h_pack_util_8cpp.html">HPackUtil.cpp</a></li>
@@ -689,7 +816,7 @@ Public 成员函数</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html">HPackUtil</a></li>
-    <li class="footer">生成于 2024年 八月 16日 星期五 04:56:27 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:48 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

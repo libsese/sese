@@ -193,6 +193,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a27a05640779675dde405424b39c1bca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1382a876bf965b7b417ec7b76a434550" id="r_a1382a876bf965b7b417ec7b76a434550"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1382a876bf965b7b417ec7b76a434550">trunc</a> (size_t length) override</td></tr>
 <tr class="separator:a1382a876bf965b7b417ec7b76a434550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29cdad4d47e748bececdaeb493f8e38e" id="r_a29cdad4d47e748bececdaeb493f8e38e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29cdad4d47e748bececdaeb493f8e38e">eof</a> () const</td></tr>
+<tr class="separator:a29cdad4d47e748bececdaeb493f8e38e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae11092c00f0229cbf47368e31b2d1b26" id="r_ae11092c00f0229cbf47368e31b2d1b26"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae11092c00f0229cbf47368e31b2d1b26">getSeek</a> () const</td></tr>
 <tr class="separator:ae11092c00f0229cbf47368e31b2d1b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a770c29df8d3544e4ab905ee8bc137419" id="r_a770c29df8d3544e4ab905ee8bc137419"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a770c29df8d3544e4ab905ee8bc137419">setSeek</a> (int64_t offset, int32_t whence) const</td></tr>
@@ -442,6 +444,35 @@ Private 属性</h2></td></tr>
 </dl>
 
 <p class="reference">引用了 <a class="el" href="#a0f0b3b41e51beff78b4327d6a709b9d0">create()</a>.</p>
+
+</div>
+</div>
+<a id="a29cdad4d47e748bececdaeb493f8e38e" name="a29cdad4d47e748bececdaeb493f8e38e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29cdad4d47e748bececdaeb493f8e38e">&#9670;&#160;</a></span>eof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FileStream::eof </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>此函数用于判断是否已经读取到文件末尾 </p><dl class="section warning"><dt>警告</dt><dd>这首先需要先触发一次读取失败才能获取有效值 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>结果s </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
 
 </div>
 </div>
@@ -870,7 +901,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a4be153f099bdbfa08a796973175c3716">close()</a>, <a class="el" href="#a7a45ea882727739882d16d7ecd105898">flush()</a>, <a class="el" href="#aaec4306ec863594c74041e36cd62ceee">getFd()</a>, <a class="el" href="#ae11092c00f0229cbf47368e31b2d1b26">getSeek()</a>, <a class="el" href="#a697d1769ba0c6f93a03382bf99113b76">read()</a>, <a class="el" href="#a770c29df8d3544e4ab905ee8bc137419">setSeek()</a>, <a class="el" href="#af618e56ce8ee1a57070bbcd04e495c03">setSeek()</a>, <a class="el" href="#a1382a876bf965b7b417ec7b76a434550">trunc()</a> , 以及 <a class="el" href="#ac5f16a5108e129882c519710bf23fd2b">write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a4be153f099bdbfa08a796973175c3716">close()</a>, <a class="el" href="#a29cdad4d47e748bececdaeb493f8e38e">eof()</a>, <a class="el" href="#a7a45ea882727739882d16d7ecd105898">flush()</a>, <a class="el" href="#aaec4306ec863594c74041e36cd62ceee">getFd()</a>, <a class="el" href="#ae11092c00f0229cbf47368e31b2d1b26">getSeek()</a>, <a class="el" href="#a697d1769ba0c6f93a03382bf99113b76">read()</a>, <a class="el" href="#a770c29df8d3544e4ab905ee8bc137419">setSeek()</a>, <a class="el" href="#af618e56ce8ee1a57070bbcd04e495c03">setSeek()</a>, <a class="el" href="#a1382a876bf965b7b417ec7b76a434550">trunc()</a> , 以及 <a class="el" href="#ac5f16a5108e129882c519710bf23fd2b">write()</a>.</p>
 
 </div>
 </div>
@@ -998,7 +1029,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_file_stream.html">FileStream</a></li>
-    <li class="footer">生成于 2024年 八月 16日 星期五 04:56:27 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:47 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

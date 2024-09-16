@@ -182,6 +182,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a73f0889296b5de12c6b3eb272cade1cd" id="r_a73f0889296b5de12c6b3eb272cade1cd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73f0889296b5de12c6b3eb272cade1cd">resetPos</a> ()</td></tr>
 <tr class="memdesc:a73f0889296b5de12c6b3eb272cade1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置读取位置  <br /></td></tr>
 <tr class="separator:a73f0889296b5de12c6b3eb272cade1cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2965c0b3bdd86a4d067b27a33f5a920" id="r_ad2965c0b3bdd86a4d067b27a33f5a920"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2965c0b3bdd86a4d067b27a33f5a920">eof</a> ()</td></tr>
+<tr class="memdesc:ad2965c0b3bdd86a4d067b27a33f5a920"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否有可读数据  <br /></td></tr>
+<tr class="separator:ad2965c0b3bdd86a4d067b27a33f5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f688fe58a47816e45402d93de044a45" id="r_a7f688fe58a47816e45402d93de044a45"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f688fe58a47816e45402d93de044a45">getLength</a> () const</td></tr>
 <tr class="separator:a7f688fe58a47816e45402d93de044a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b380c9183805818aaa40db8bd667420" id="r_a4b380c9183805818aaa40db8bd667420"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b380c9183805818aaa40db8bd667420">getCapacity</a> () const</td></tr>
@@ -376,6 +379,39 @@ Private 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="ad2965c0b3bdd86a4d067b27a33f5a920" name="ad2965c0b3bdd86a4d067b27a33f5a920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2965c0b3bdd86a4d067b27a33f5a920">&#9670;&#160;</a></span>eof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::io::AbstractByteBuffer::eof </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>是否有可读数据 </p>
+
+<p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a133d8c98ef62895335a0d1098cae0a57">sese::io::ByteBuffer</a> 重载.</p>
+
+<p class="reference">引用了 <a class="el" href="#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a> , 以及 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a133d8c98ef62895335a0d1098cae0a57">sese::io::ByteBuffer::eof()</a>.</p>
+
+</div>
+</div>
 <a id="a86b89ad54d270e3128ff1c68d1840013" name="a86b89ad54d270e3128ff1c68d1840013"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86b89ad54d270e3128ff1c68d1840013">&#9670;&#160;</a></span>freeCapacity()</h2>
 
@@ -766,7 +802,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="#ae7297d57122eac25013c0904b567c78d">trunc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="#ad2965c0b3bdd86a4d067b27a33f5a920">eof()</a>, <a class="el" href="#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="#ae7297d57122eac25013c0904b567c78d">trunc()</a>.</p>
 
 </div>
 </div>
@@ -790,7 +826,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="#ae7297d57122eac25013c0904b567c78d">trunc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="#ad2965c0b3bdd86a4d067b27a33f5a920">eof()</a>, <a class="el" href="#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="#ae7297d57122eac25013c0904b567c78d">trunc()</a>.</p>
 
 </div>
 </div>
@@ -814,7 +850,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="#a7f688fe58a47816e45402d93de044a45">getLength()</a>, <a class="el" href="#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a>, <a class="el" href="#ae7297d57122eac25013c0904b567c78d">trunc()</a> , 以及 <a class="el" href="#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="#a7f688fe58a47816e45402d93de044a45">getLength()</a>, <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">sese::io::ByteBuffer::getLength()</a>, <a class="el" href="#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a>, <a class="el" href="#ae7297d57122eac25013c0904b567c78d">trunc()</a> , 以及 <a class="el" href="#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
 
 </div>
 </div>
@@ -925,7 +961,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html">AbstractByteBuffer</a></li>
-    <li class="footer">生成于 2024年 八月 16日 星期五 04:56:27 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 16日 星期一 14:38:47 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
