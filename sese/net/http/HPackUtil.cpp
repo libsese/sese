@@ -236,7 +236,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
             // auto iterator = std::find_if(table.begin(), table.end(), isHitAll);
             if (iterator_all != table.end()) {
                 /// 对应第 0 种情况
-                size_t index = iterator_all - table.begin() + 62;
+                size_t index = table.getCount() - 1 - (iterator_all - table.begin()) + PREDEFINED_HEADERS.size();
                 size += encodeIndexCase0(dest, index);
                 continue;
             }
@@ -244,7 +244,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
             // iterator = std::find_if(table.begin(), table.end(), isHit);
             // 存在动态表中
             if (iterator_key != table.end()) {
-                size_t index = iterator_key - table.begin() + 62;
+                size_t index = table.getCount() - 1 - (iterator_key - table.begin()) + PREDEFINED_HEADERS.size();
                 /// 对应第 1 种情况
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);

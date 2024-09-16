@@ -63,7 +63,7 @@ std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) c
     }
 
     for (unsigned int idx = 0; idx < len; ++idx) {
-        bool has_value = false;
+        // bool has_value = false;
         for (int8_t j = 7; j >= 0; j--) {
             auto result = src[idx] & (1 << j);
             if (result > 0) {
@@ -89,12 +89,12 @@ std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) c
 
                 dst += static_cast<char>(code & 0xFF);
                 current = m_root;
-                has_value = true;
+                // has_value = true;
             }
         }
-        if (!has_value) {
-            return std::nullopt;
-        }
+        // if (!has_value) {
+        //     return std::nullopt;
+        // }
     }
 
     return dst;
