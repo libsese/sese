@@ -125,6 +125,7 @@ void HttpServiceImpl::handleRequest(const Handleable::Ptr &conn) const {
             is_directory(filename)) {
             resp.setCode(404);
             resp.set("content-length", std::to_string(resp.getBody().getLength()));
+            conn->conn_type = ConnType::NONE;
             goto uni_handle;
         }
 

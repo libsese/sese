@@ -19,18 +19,26 @@ struct HttpStream : Handleable {
 
     explicit HttpStream(uint32_t id, uint32_t write_window_size) noexcept;
 
-    uint32_t id = 0;
+    /// 初始化当前文件区间并迭代迭代器
+    void prepareRange();
+
+    uint32_t id;
     /// 对端写入窗口
-    uint32_t endpoint_window_size = 0;
+    uint32_t endpoint_window_size;
     /// 本地读取窗口
     uint32_t window_size = 0;
     uint16_t continue_type = 0;
     bool end_headers = false;
     bool end_stream = false;
+    bool do_response = false;
+
+    size_t expect_length;
+    size_t real_length;
 
     sese::io::ByteBuilder temp_buffer;
 
     sese::net::http::Http2FrameInfo frame{};
+
 };
 
 struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
@@ -150,6 +158,35 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         uint32_t error_code,
         bool once = false
     );
+
+    /// 写入 HEADERS 帧
+    /// @param stream 操作流
+    /// @param verify_end_stream 是否需要通过 response body 判断 END_STREAM
+    /// @return 当前流是否已经完整处理
+    bool writeHeadersFrame(const HttpStream::Ptr &stream, bool verify_end_stream = true);
+
+    /// 将控制器响应 body 写入 DATA 帧
+    /// @param stream stream 操作流
+    /// @return 当前流是否已经完整处理
+    bool writeDataFrame4Body(const HttpStream::Ptr &stream);
+
+    /// 将单区间文件响应写入 DATA 帧
+    /// @param stream stream 操作流
+    /// @return 当前流是否处理完成
+    bool writeDataFrame4SingleRange(const HttpStream::Ptr &stream);
+
+    /// 将多区间文件响应写入 DATA 帧
+    /// @param stream stream 操作流
+    /// @return 当前流是否已经处理完成
+    bool writeDataFrame4Ranges(const HttpStream::Ptr &stream);
+
+    /// 处理区间的首个 DATA 帧
+    /// @warning 此函数高度耦合，为复用而设
+    /// @param stream stream 操作流
+    /// @param subheader 区间头
+    /// @param remind 除去区间头剩余的窗口大小
+    /// @see writeDataFrame4Ranges
+    void writeSubheaderAndData(const HttpStream::Ptr &stream, const std::string &subheader, size_t remind);
 };
 
 struct HttpConnectionExImpl final : HttpConnectionEx {

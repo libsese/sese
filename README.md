@@ -19,10 +19,10 @@ curl --http2-prior-knowledge -k https://127.0.0.1:80/haha --noproxy "*" -v
 - [x] servlet
 - [x] controller
 - [x] filter
-- [ ] static resources mounting
+- [x] static resources mounting
 - [x] ALPN
 - [x] http/1.1
-- [ ] http/2 (exclude the priority algorithm)
+- [x] http/2 (exclude the priority algorithm)
 - [ ] merge into sese-core
 
 ## Others
