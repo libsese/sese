@@ -1,6 +1,5 @@
-#include <sese/Log.h>
-
-#include "HttpConnectionEx.h"
+#include <sese/Config.h>
+#include <sese/internal/service/http/HttpConnectionEx.h>
 
 sese::internal::service::http::HttpConnectionExImpl::HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
                                            SharedSocket socket) : HttpConnectionEx(service, context),

@@ -3,6 +3,7 @@
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
+#include <sese/Config.h>
 #include <sese/net/http/DynamicTable.h>
 #include <sese/net/http/Http2Frame.h>
 
@@ -10,7 +11,7 @@
 #include <queue>
 #include <set>
 
-#include "Handleable.h"
+#include <sese/internal/service/http/Handleable.h>
 
 namespace sese::internal::service::http {
 class HttpServiceImpl;
@@ -67,6 +68,8 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     static constexpr uint32_t INIT_WINDOW_SIZE = 65535;
     // 默认动态表大小
     static constexpr uint32_t HEADER_TABLE_SIZE = 8192;
+    // 单连接并发大小
+    static constexpr uint32_t MAX_CONCURRENT_STREAMS = 16;
 
     sese::net::http::Http2FrameInfo frame{};
     // 临时缓存，用于读取初始连接魔数、帧头，取最大帧大小
