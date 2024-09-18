@@ -1,7 +1,7 @@
 #pragma once
 
 #include <optional>
-#include <sese/service/http/HttpService_V3.h>
+#include <sese/service/http/HttpService.h>
 
 #include <sese/internal/service/http/HttpConnection.h>
 #include <sese/internal/service/http/HttpConnectionEx.h>
@@ -9,7 +9,7 @@
 namespace sese::internal::service::http {
 
 /// Http 服务实现
-class HttpServiceImpl final : public sese::service::http::v3::HttpService,
+class HttpServiceImpl final : public sese::service::http::HttpService,
                               public std::enable_shared_from_this<HttpServiceImpl> {
 public:
     friend struct HttpConnection;

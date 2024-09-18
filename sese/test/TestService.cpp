@@ -7,7 +7,7 @@
 #include "sese/service/UserBalanceLoader.h"
 #include "sese/service/TimerableService_V1.h"
 #include "sese/service/TimerableService_V2.h"
-#include "sese/service/http/HttpServer_V3.h"
+#include "sese/service/http/HttpServer.h"
 #include "sese/security/SSLContextBuilder.h"
 #include "sese/io/ConsoleOutputStream.h"
 #include "sese/record/Marco.h"
@@ -46,10 +46,10 @@ public:
     static uint16_t ssl_port;
     static uint16_t port;
 
-    static std::unique_ptr<sese::service::http::v3::HttpServer> server;
+    static std::unique_ptr<sese::service::http::HttpServer> server;
 
     static void SetUpTestSuite() {
-        using sese::service::http::v3::HttpServer;
+        using sese::service::http::HttpServer;
 
         auto ssl = sese::security::SSLContextBuilder::UniqueSSL4Server();
         ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt");
@@ -188,7 +188,7 @@ public:
 uint16_t TestHttpServerV3::ssl_port = 0;
 uint16_t TestHttpServerV3::port = 0;
 
-std::unique_ptr<sese::service::http::v3::HttpServer> TestHttpServerV3::server;
+std::unique_ptr<sese::service::http::HttpServer> TestHttpServerV3::server;
 
 TEST_F(TestHttpServerV3, OnceRequest_query) {
     onceRequestQuery(true, ssl_port);

@@ -1,4 +1,4 @@
-/// @file HttpService_V3.h
+/// @file HttpService.h
 /// @brief Http v3 服务接口
 /// @author kaoru
 /// @date 2024年05月1日
@@ -13,7 +13,7 @@
 
 #include <unordered_map>
 
-namespace sese::service::http::v3 {
+namespace sese::service::http {
 
 /// Http 服务接口
 class HttpService : public Service {
@@ -56,4 +56,4 @@ protected:
     FilterMap &filters;
 };
 
-} // namespace sese::service::http::v3
+} // namespace sese::service::http

@@ -1,6 +1,6 @@
 #define SESE_C_LIKE_FORMAT
 
-#include <sese/service/http/HttpServer_V3.h>
+#include <sese/service/http/HttpServer.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Initializer.h>
 #include <sese/record/Marco.h>
@@ -48,7 +48,7 @@ SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> m
 }
 
 int main(int argc, char **argv) {
-    using sese::service::http::v3::HttpServer;
+    using sese::service::http::HttpServer;
 
     sese::initCore(argc, argv);
     auto ssl = sese::security::SSLContextBuilder::UniqueSSL4Server();
@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
 
     auto server = HttpServer();
     server.setKeepalive(60);
-    server.setName("HttpServiceImpl_V3");
+    server.setName("HttpService");
     server.regMountPoint("/www", PROJECT_PATH "/build/html");
     server.regController<MyController>();
     server.regService(sese::net::IPv4Address::localhost(9090), std::move(ssl));

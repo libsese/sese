@@ -1,9 +1,9 @@
-#include <sese/service/http/HttpService_V3.h>
+#include <sese/service/http/HttpService.h>
 #include <sese/internal/service/http/HttpServiceImpl.h>
 
 #include <memory>
 
-sese::service::http::v3::HttpService::Ptr sese::service::http::v3::HttpService::create(
+sese::service::http::HttpService::Ptr sese::service::http::HttpService::create(
         const net::IPAddress::Ptr &address,
         SSLContextPtr ssl_context,
         uint32_t keepalive,
@@ -17,7 +17,7 @@ sese::service::http::v3::HttpService::Ptr sese::service::http::v3::HttpService::
     );
 }
 
-sese::service::http::v3::HttpService::HttpService(
+sese::service::http::HttpService::HttpService(
         net::IPAddress::Ptr address,
         SSLContextPtr ssl_context,
         uint32_t keepalive,

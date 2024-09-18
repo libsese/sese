@@ -1,9 +1,9 @@
 #include <sese/internal/service/http/HttpServiceImpl.h>
-#include <sese/service/http/HttpServer_V3.h>
+#include <sese/service/http/HttpServer.h>
 
 #include <utility>
 
-using namespace sese::service::http::v3;
+using namespace sese::service::http;
 
 void HttpServer::regMountPoint(const std::string &uri_prefix, const std::string &local) {
     mount_points[uri_prefix] = local;
