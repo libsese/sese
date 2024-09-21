@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-12
+    runs-on: macos-latest-large
 
     steps:
       - name: Checkout
