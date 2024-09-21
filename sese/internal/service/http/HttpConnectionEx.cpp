@@ -392,11 +392,11 @@ void sese::internal::service::http::HttpConnectionEx::handleHeadersFrame() {
             writeGoawayFrame(frame.ident, 0, rt, "");
             return;
         }
-        if (stream->request.exist("trailer") ||
-            stream->request.exist("te")) {
-            writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
-            return;
-        }
+        // if (stream->request.exist("trailer") ||
+        //     stream->request.exist("te")) {
+        //     writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+        //     return;
+        // }
 
         rt = HttpConverter::convertFromHttp2(&stream->request);
         if (!rt) {
@@ -596,17 +596,6 @@ void sese::internal::service::http::HttpConnectionEx::handleRequest(const HttpSt
 }
 
 void sese::internal::service::http::HttpConnectionEx::handleWrite() {
-    // printf("streams [");
-    // for (auto &&[id, _]: streams) {
-    //     printf("%u ", id);
-    // }
-    // printf("]\n");
-    // fflush(stdout);
-
-    if (!is_read) {
-        this->readFrameHeader();
-    }
-
     for (auto &&current = streams.begin(); current != streams.end();) {
         auto stream = current->second;
         // 流未进入响应状态
@@ -670,7 +659,11 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
         }
     }
 
-    if (!pre_vector.empty()) {
+    if (pre_vector.empty()) {
+        if (!is_read) {
+            this->readFrameHeader();
+        }
+    } else {
         vector.clear();
         vector.swap(pre_vector);
         asio_buffers.clear();
@@ -798,7 +791,6 @@ bool sese::internal::service::http::HttpConnectionEx::writeHeadersFrame(const Ht
         frame->flags |= net::http::FRAME_FLAG_END_STREAM;
         result = true;
     }
-    SESE_INFO("HEADERS [{}] END {}", stream->id, result ? "Y" : "N");
     frame->buildFrameHeader();
     pre_vector.push_back(std::move(frame));
     return result;
@@ -825,11 +817,6 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Body(const 
     return result;
 }
 
-void push(sese::internal::service::http::HttpConnectionEx *conn,
-    std::unique_ptr<sese::net::http::Http2Frame> frame) {
-    conn->pre_vector.push_back(std::move(frame));
-}
-
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange(const HttpStream::Ptr &stream) {
     // 窗口大小不足
     if (stream->endpoint_window_size == 0) {
@@ -853,10 +840,8 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange
         frame->flags |= net::http::FRAME_FLAG_END_STREAM;
         result = true;
     }
-    SESE_INFO("DATA [{}] END {}", stream->id, result ? "Y" : "N");
     frame->buildFrameHeader();
-    // pre_vector.push_back(std::move(frame));
-    push(this, std::move(frame));
+    pre_vector.push_back(std::move(frame));
     return result;
 }
 
@@ -894,8 +879,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
             frame->flags |= sese::net::http::FRAME_FLAG_END_STREAM;
             frame->buildFrameHeader();
             memcpy(frame->getFrameContentBuffer(), end_boundary.data(), end_boundary.length());
-            // pre_vector.push_back(std::move(frame));
-            push(this, std::move(frame));
+            pre_vector.push_back(std::move(frame));
             return true;
         } else {
             // 中间的区间和最后一个区间
@@ -916,8 +900,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
         stream->real_length += l;
         stream->file->read(frame->getFrameContentBuffer(), l);
         frame->buildFrameHeader();
-        // pre_vector.push_back(std::move(frame));
-        push(this, std::move(frame));
+        pre_vector.push_back(std::move(frame));
     }
     return result;
 }
@@ -932,6 +915,5 @@ void sese::internal::service::http::HttpConnectionEx::writeSubheaderAndData(cons
     stream->file->read(frame->getFrameContentBuffer() + subheader.length(), l);
     frame->length = static_cast<uint32_t>(subheader.length() + l);
     frame->buildFrameHeader();
-    // pre_vector.push_back(std::move(frame));
-    push(this, std::move(frame));
+    pre_vector.push_back(std::move(frame));
 }

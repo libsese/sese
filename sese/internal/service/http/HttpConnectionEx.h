@@ -58,6 +58,7 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     std::weak_ptr<HttpServiceImpl> service;
 
     bool is_read = false;
+    bool is_write = false;
     bool expect_ack = false;
     uint32_t accept_stream_count = 0;
     uint32_t latest_stream_ident = 0;
