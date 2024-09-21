@@ -15,6 +15,9 @@
 <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
 <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/macos-12-brew.yml?label=macOS&logo=apple">
 <br>
+
+<i style="color: red">由于缺少 macOS 物理设备，开发、测试和发布已暂停</i>
+
 </div>
 
 ## 简介

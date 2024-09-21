@@ -250,6 +250,10 @@ subject to the terms and conditions of the following licenses:
     Project URL: https://github.com/libsese/sese-db
     License: Apache-2.0 License
 
+- libsese/sese-http
+    Project URL: https://github.com/libsese/sese-http
+    License: Apache-2.0 License
+
 - libarchive/libarchive
     Project URL: https://www.libarchive.org
     License: Copyright (c) 2003-2018 <author(s)>

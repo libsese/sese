@@ -40,6 +40,9 @@ libsese/sese-archive
 libsese/sese-db
 - Copyright (c) 2022-2024 libsese Organization
 
+libsese/sese-http
+- Copyright (c) 2022-2024 libsese Organization
+
 sqlite
 - No Copyright
 
