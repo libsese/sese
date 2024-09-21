@@ -46,6 +46,7 @@ bool sese::internal::service::http::HttpServiceImpl::startup() {
         auto ctx = ssl_context->native_handle();
         // SSL_CTX_set_alpn_protos(ctx, alpn_protos, sizeof(alpn_protos));
         SSL_CTX_set_alpn_select_cb(ctx, alpnCallback, nullptr);
+        SSL_CTX_set_mode(ctx, SSL_MODE_ENABLE_PARTIAL_WRITE);
     }
 
     error = acceptor.open(
@@ -217,14 +218,14 @@ void sese::internal::service::http::HttpServiceImpl::handleAccept() {
         *accept_socket,
         [this, accept_socket](const asio::error_code &e) {
             if (e.value() == 0) {
-                auto conn = std::make_shared<HttpConnectionExImpl>(
+                auto conn = std::make_shared<HttpConnectionImpl>(
                     shared_from_this(),
                     io_context,
                     accept_socket
                 );
-                // this->connections.emplace(conn);
-                // conn->readHeader();
-                conn->readMagic();
+                this->connections.emplace(conn);
+                conn->readHeader();
+                // conn->readMagic();
             }
             this->handleAccept();
         }
