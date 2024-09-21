@@ -219,10 +219,8 @@ var annotated_dup =
       ] ],
       [ "service", "namespacesese_1_1service.html", [
         [ "http", "namespacesese_1_1service_1_1http.html", [
-          [ "v3", "namespacesese_1_1service_1_1http_1_1v3.html", [
-            [ "HttpServer", "classsese_1_1service_1_1http_1_1v3_1_1_http_server.html", "classsese_1_1service_1_1http_1_1v3_1_1_http_server" ],
-            [ "HttpService", "classsese_1_1service_1_1http_1_1v3_1_1_http_service.html", "classsese_1_1service_1_1http_1_1v3_1_1_http_service" ]
-          ] ]
+          [ "HttpServer", "classsese_1_1service_1_1http_1_1_http_server.html", "classsese_1_1service_1_1http_1_1_http_server" ],
+          [ "HttpService", "classsese_1_1service_1_1http_1_1_http_service.html", "classsese_1_1service_1_1http_1_1_http_service" ]
         ] ],
         [ "v1", "namespacesese_1_1service_1_1v1.html", [
           [ "TimeoutEvent", "structsese_1_1service_1_1v1_1_1_timeout_event.html", "structsese_1_1service_1_1v1_1_1_timeout_event" ],

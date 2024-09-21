@@ -171,7 +171,7 @@ var hierarchy =
     [ "sese::net::http::HeaderBuilder", "classsese_1_1net_1_1http_1_1_header_builder.html", null ],
     [ "sese::net::http::Http2Frame", "structsese_1_1net_1_1http_1_1_http2_frame.html", null ],
     [ "sese::net::http::Http2FrameInfo", "structsese_1_1net_1_1http_1_1_http2_frame_info.html", null ],
-    [ "sese::service::http::v3::HttpServer", "classsese_1_1service_1_1http_1_1v3_1_1_http_server.html", null ],
+    [ "sese::service::http::HttpServer", "classsese_1_1service_1_1http_1_1_http_server.html", null ],
     [ "sese::net::http::HttpUtil", "classsese_1_1net_1_1http_1_1_http_util.html", null ],
     [ "sese::net::http::huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", null ],
     [ "sese::net::http::huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", null ],
@@ -339,7 +339,7 @@ var hierarchy =
     [ "sese::ConfigObject::Section", "structsese_1_1_config_object_1_1_section.html", null ],
     [ "sese::system::Semaphore", "classsese_1_1system_1_1_semaphore.html", null ],
     [ "sese::service::Service", "classsese_1_1service_1_1_service.html", [
-      [ "sese::service::http::v3::HttpService", "classsese_1_1service_1_1http_1_1v3_1_1_http_service.html", [
+      [ "sese::service::http::HttpService", "classsese_1_1service_1_1http_1_1_http_service.html", [
         [ "sese::internal::service::http::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html", null ]
       ] ]
     ] ],

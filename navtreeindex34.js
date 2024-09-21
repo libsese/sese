@@ -1,5 +1,8 @@
 var NAVTREEINDEX34 =
 {
+"structsese_1_1text_1_1_format_option.html#af42033bedb4d099a93f232ddb422107f":[7,0,0,17,5,2],
+"structsese_1_1text_1_1overload_1_1_formatter.html":[6,0,0,17,0,0],
+"structsese_1_1text_1_1overload_1_1_formatter.html":[7,0,0,17,0,0],
 "structsese_1_1text_1_1overload_1_1_formatter.html#a65396aac2159ab444ac1e227bae9e49e":[6,0,0,17,0,0,0],
 "structsese_1_1text_1_1overload_1_1_formatter.html#a65396aac2159ab444ac1e227bae9e49e":[7,0,0,17,0,0,0],
 "structsese_1_1text_1_1overload_1_1_formatter.html#acdd3ac513bc1033698dbeb98c1394f97":[6,0,0,17,0,0,1],

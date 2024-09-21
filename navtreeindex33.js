@@ -1,5 +1,8 @@
 var NAVTREEINDEX33 =
 {
+"structsese_1_1iocp_1_1_i_o_buf_node.html#a9039bea539d60dda19c8073a36d935a7":[7,0,0,8,2,1],
+"structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95":[6,0,0,8,2,5],
+"structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95":[7,0,0,8,2,5],
 "structsese_1_1is__iterable.html":[6,0,0,45],
 "structsese_1_1is__iterable.html":[7,0,0,45],
 "structsese_1_1is__pair.html":[6,0,0,46],
@@ -246,8 +249,5 @@ var NAVTREEINDEX33 =
 "structsese_1_1text_1_1_format_option.html#aa813e7742a29f275914ec69df8ba13c3":[7,0,0,17,5,6],
 "structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7":[6,0,0,17,5,5],
 "structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7":[7,0,0,17,5,5],
-"structsese_1_1text_1_1_format_option.html#af42033bedb4d099a93f232ddb422107f":[6,0,0,17,5,2],
-"structsese_1_1text_1_1_format_option.html#af42033bedb4d099a93f232ddb422107f":[7,0,0,17,5,2],
-"structsese_1_1text_1_1overload_1_1_formatter.html":[6,0,0,17,0,0],
-"structsese_1_1text_1_1overload_1_1_formatter.html":[7,0,0,17,0,0]
+"structsese_1_1text_1_1_format_option.html#af42033bedb4d099a93f232ddb422107f":[6,0,0,17,5,2]
 };

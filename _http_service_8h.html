@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>Sese Framework: sese/service/http/HttpServer_V3.h 文件参考</title>
+<title>Sese Framework: sese/service/http/HttpService.h 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -106,7 +106,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('_http_server___v3_8h.html',''); initResizable(true); });
+$(function(){initNavTree('_http_service_8h.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,20 +135,25 @@ $(function(){initNavTree('_http_server___v3_8h.html',''); initResizable(true); }
   <div class="summary">
 <a href="#nested-classes">类</a> &#124;
 <a href="#namespaces">命名空间</a>  </div>
-  <div class="headertitle"><div class="title">HttpServer_V3.h 文件参考</div></div>
+  <div class="headertitle"><div class="title">HttpService.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Http 服务器  
+<p>Http v3 服务接口  
 <a href="#details">更多...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="_http_service___v3_8h_source.html">sese/service/http/HttpService_V3.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="_service_8h_source.html">sese/service/Service.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_controller_8h_source.html">sese/net/http/Controller.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_i_pv6_address_8h_source.html">sese/net/IPv6Address.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_s_s_l_context_8h_source.html">sese/security/SSLContext.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
 </div>
-<p><a href="_http_server___v3_8h_source.html">浏览该文件的源代码.</a></p>
+<p><a href="_http_service_8h_source.html">浏览该文件的源代码.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 类</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html">sese::service::http::v3::HttpServer</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html">sese::service::http::HttpService</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http 服务接口  <a href="classsese_1_1service_1_1http_1_1_http_service.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -159,11 +164,9 @@ $(function(){initNavTree('_http_server___v3_8h.html',''); initResizable(true); }
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1service_1_1http.html">sese::service::http</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1service_1_1http_1_1v3.html">sese::service::http::v3</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>Http 服务器 </p>
+<div class="textblock"><p>Http v3 服务接口 </p>
 <dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
 <dl class="section date"><dt>日期</dt><dd>2024年05月1日 </dd></dl>
 </div></div><!-- contents -->
@@ -171,8 +174,8 @@ $(function(){initNavTree('_http_server___v3_8h.html',''); initResizable(true); }
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="dir_78f1b6dd02cd4b7d3321f2cc3c579aa3.html">http</a></li><li class="navelem"><a class="el" href="_http_server___v3_8h.html">HttpServer_V3.h</a></li>
-    <li class="footer">生成于 2024年 九月 16日 星期一 16:15:14 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="dir_78f1b6dd02cd4b7d3321f2cc3c579aa3.html">http</a></li><li class="navelem"><a class="el" href="_http_service_8h.html">HttpService.h</a></li>
+    <li class="footer">生成于 2024年 九月 21日 星期六 09:52:14 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -28,7 +28,7 @@ var searchData=
   ['httpconverter_25',['HttpConverter',['../classsese_1_1net_1_1http_1_1_http_converter.html#afb98418bcebc65661c9763bcd51bf607',1,'sese::net::http::HttpConverter']]],
   ['httpsconnectioneximpl_26',['HttpsConnectionExImpl',['../structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html#a7bbbcfcd0a022e076da1219b22735d67',1,'sese::internal::service::http::HttpsConnectionExImpl']]],
   ['httpsconnectionimpl_27',['HttpsConnectionImpl',['../structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl.html#a4366756598ceac5e3881296ffb2d446e',1,'sese::internal::service::http::HttpsConnectionImpl']]],
-  ['httpservice_28',['HttpService',['../classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a4d2620e1433f9bc2c76d67c3a4521846',1,'sese::service::http::v3::HttpService']]],
+  ['httpservice_28',['HttpService',['../classsese_1_1service_1_1http_1_1_http_service.html#a2b2beb677a6ec02dec5e52166cfe5ff1',1,'sese::service::http::HttpService']]],
   ['httpserviceimpl_29',['HttpServiceImpl',['../classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a1c85e78469f88b6b67484817e5611193',1,'sese::internal::service::http::HttpServiceImpl']]],
   ['httpsslclientimpl_30',['HttpSSLClientImpl',['../classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html#acb8a6cbfc0007e8afd1235b71b363709',1,'sese::internal::net::http::HttpSSLClientImpl']]],
   ['httpstream_31',['HttpStream',['../structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#aa0650c365f2cd02b60dc3ae082da54fb',1,'sese::internal::service::http::HttpStream']]],
