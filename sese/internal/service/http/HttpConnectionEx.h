@@ -25,7 +25,7 @@ struct HttpStream : Handleable {
     void prepareRange();
 
     uint32_t id;
-    /// 对端写入窗口
+    /// 写入到对端窗口大小
     uint32_t endpoint_window_size;
     /// 本地读取窗口
     uint32_t window_size = 0;
@@ -80,6 +80,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     uint32_t max_concurrent_stream = 0;
     // 对端初始窗口值
     uint32_t endpoint_init_window_size = 65535;
+    // 写入到对端窗口大小
+    uint32_t endpoint_window_size = 65535;
+    // 本地读取窗口大小
+    uint32_t window_size = 65535;
     // 对端帧最大大小
     uint32_t endpoint_max_frame_size = 16384;
     // 采用的帧大小
@@ -162,6 +166,12 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         uint8_t flags,
         uint32_t error_code,
         bool once = false
+    );
+
+    void writeWindowUpdateFrame(
+        uint32_t stream_id,
+        uint8_t flags,
+        uint32_t window_size
     );
 
     /// 写入 HEADERS 帧

@@ -46,13 +46,17 @@ sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(cons
 
 
 void sese::internal::service::http::HttpsConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {
+    is_write = true;
     async_write(*this->stream, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+        conn->is_write = false;
         callback(error);
     });
 }
 
 void sese::internal::service::http::HttpsConnectionExImpl::writeBlock(const void *buffer, size_t size, const std::function<void(const asio::error_code &code)> &callback) {
+    is_write = true;
     async_write(*this->stream, asio::buffer(buffer, size), [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+        conn->is_write = false;
         callback(error);
     });
 }

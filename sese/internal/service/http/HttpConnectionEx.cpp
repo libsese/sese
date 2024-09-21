@@ -245,9 +245,7 @@ void sese::internal::service::http::HttpConnectionEx::handleWindowUpdate() {
             writeGoawayFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
             return;
         }
-        for (auto &[_, stream]: streams) {
-            stream->endpoint_window_size += i;
-        }
+        endpoint_window_size += i;
     } else {
         auto iterator = streams.find(frame.ident);
         if (iterator != streams.end()) {
@@ -450,6 +448,22 @@ void sese::internal::service::http::HttpConnectionEx::handleDataFrame() {
 
     stream->continue_type = frame.type;
 
+    if (frame.length > window_size ||
+        frame.length > stream->window_size) {
+        writeGoawayFrame(frame.ident, 0, GOAWAY_FLOW_CONTROL_ERROR, "");
+        return;
+    }
+
+    window_size -= frame.length;
+    stream->window_size -= frame.length;
+
+    if (window_size < INIT_WINDOW_SIZE / 2) {
+        writeWindowUpdateFrame(0, 0, INIT_WINDOW_SIZE);
+    }
+    if (stream->window_size < INIT_WINDOW_SIZE / 2) {
+        writeWindowUpdateFrame(stream->id, 0, INIT_WINDOW_SIZE);
+    }
+
     if (frame.flags & FRAME_FLAG_PADDED) {
         uint8_t padded = temp_buffer[0];
         if (padded > frame.length) {
@@ -596,6 +610,14 @@ void sese::internal::service::http::HttpConnectionEx::handleRequest(const HttpSt
 }
 
 void sese::internal::service::http::HttpConnectionEx::handleWrite() {
+    if (!is_read) {
+        this->readFrameHeader();
+    }
+
+    if (is_write) {
+        return;
+    }
+
     for (auto &&current = streams.begin(); current != streams.end();) {
         auto stream = current->second;
         // 流未进入响应状态
@@ -659,11 +681,7 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
         }
     }
 
-    if (pre_vector.empty()) {
-        if (!is_read) {
-            this->readFrameHeader();
-        }
-    } else {
+    if (!pre_vector.empty()) {
         vector.clear();
         vector.swap(pre_vector);
         asio_buffers.clear();
@@ -777,6 +795,20 @@ void sese::internal::service::http::HttpConnectionEx::writeAckFrame() {
     handleWrite();
 }
 
+void sese::internal::service::http::HttpConnectionEx::writeWindowUpdateFrame(uint32_t stream_id, uint8_t flags, uint32_t window_size) {
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(4);
+    frame->type = sese::net::http::FRAME_TYPE_WINDOW_UPDATE;
+    frame->length = 4;
+    frame->ident = stream_id;
+    frame->flags = flags;
+    frame->buildFrameHeader();
+    window_size = ToBigEndian32(window_size);
+    memcpy(frame->getFrameContentBuffer(), &window_size, 4);
+    pre_vector.push_back(std::move(frame));
+    handleWrite();
+}
+
+
 bool sese::internal::service::http::HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream, bool verify_end_stream) {
     auto result = false;
     auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
@@ -798,13 +830,14 @@ bool sese::internal::service::http::HttpConnectionEx::writeHeadersFrame(const Ht
 
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Body(const HttpStream::Ptr &stream) {
     // 窗口大小不足
-    if (stream->endpoint_window_size == 0) {
+    if (endpoint_window_size == 0 ||
+        stream->endpoint_window_size == 0) {
         return false;
     }
     auto result = false;
     auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
     frame->ident = stream->id;
-    auto remind = std::min(stream->endpoint_window_size, max_frame_size);
+    auto remind = std::min({endpoint_window_size, stream->endpoint_window_size, max_frame_size});
     auto len = stream->response.getBody().read(frame->getFrameContentBuffer(), remind);
     frame->type = net::http::FRAME_TYPE_DATA;
     frame->length = static_cast<uint32_t>(len);
@@ -819,7 +852,8 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Body(const 
 
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange(const HttpStream::Ptr &stream) {
     // 窗口大小不足
-    if (stream->endpoint_window_size == 0) {
+    if (endpoint_window_size == 0 ||
+        stream->endpoint_window_size == 0) {
         return false;
     }
 
@@ -831,7 +865,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange
     auto result = false;
     auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
     frame->ident = stream->id;
-    size_t remind = std::min(stream->endpoint_window_size, max_frame_size);
+    size_t remind = std::min({endpoint_window_size, stream->endpoint_window_size, max_frame_size});
     auto l = std::min<size_t>(stream->expect_length - stream->real_length, remind);
     stream->real_length += l;
     stream->file->read(frame->getFrameContentBuffer(), l);
@@ -849,11 +883,12 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(const HttpStream::Ptr &stream) {
     // 此函数的所有直接返回 false 均为窗口大小不足所导致
     // 通过 result 返回均为正常处理
-    if (stream->endpoint_window_size == 0) {
+    if (endpoint_window_size == 0 ||
+        stream->endpoint_window_size == 0) {
         return false;
     }
     auto result = false;
-    size_t remind = std::min(stream->endpoint_window_size, max_frame_size);
+    size_t remind = std::min({endpoint_window_size, stream->endpoint_window_size, max_frame_size});
     if (stream->real_length >= stream->expect_length) {
         if (stream->range_iterator == stream->ranges.begin()) {
             // 首个区间
