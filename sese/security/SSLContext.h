@@ -11,7 +11,7 @@
 namespace sese::security {
 
 /// SSL 上下文
-class  SSLContext final : public std::enable_shared_from_this<SSLContext> {
+class SSLContext final : public std::enable_shared_from_this<SSLContext> {
 public:
     using Ptr = std::shared_ptr<SSLContext>;
     using Socket = sese::net::Socket;
@@ -24,14 +24,14 @@ public:
     /// @brief 从文件中加载证书
     /// @param file 证书文件路径
     /// @return 加载结果
-    bool importCertFile(const char *file) noexcept;
+    bool importCertFile(const char *file) const noexcept;
     /// @brief 从文件中加载私钥
     /// @param file 私钥文件路径
     /// @return 加载结果
-    bool importPrivateKeyFile(const char *file) noexcept;
+    bool importPrivateKeyFile(const char *file) const noexcept;
     /// @brief 校验证书和私钥
     /// @return 校验结果
-    bool authPrivateKey() noexcept;
+    bool authPrivateKey() const noexcept;
 
     /// @brief 从当前上下文中创建一个 TCP Socket
     /// @param family 协议
@@ -44,8 +44,15 @@ public:
     /// @return 底层 SSL_CTX 指针
     void *release() noexcept;
 
+    /// 深拷贝当前上下文，包括证书和私钥(如果存在的话)，生命周期独立
+    /// @return SSL 上下文
+    std::unique_ptr<SSLContext> copy() const noexcept;
+
 private:
+    SSLContext() = default;
+
     // SSL_CTX *context = nullptr;
     void *context = nullptr;
 };
+
 } // namespace sese::security

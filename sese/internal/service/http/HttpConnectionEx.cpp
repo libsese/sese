@@ -3,7 +3,7 @@
 #include <sese/net/http/HPackUtil.h>
 #include <sese/net/http/HttpConverter.h>
 #include <sese/Util.h>
-#include <sese/Log.h>
+// #include <sese/Log.h>
 
 #include <sese/internal/service/http/HttpConnectionEx.h>
 #include <sese/internal/service/http/HttpServiceImpl.h>
@@ -289,12 +289,12 @@ void sese::internal::service::http::HttpConnectionEx::handleGoawayFrame() {
     error_code = FromBigEndian32(error_code);
     if (frame.length - 8) {
         auto msg = std::string(temp_buffer + 8, frame.length - 8);
-        SESE_WARN("FAILED: LS {} CODE {} MSG {}", latest_stream, error_code, msg);
+        // SESE_WARN("FAILED: LS {} CODE {} MSG {}", latest_stream, error_code, msg);
         if (msg == "shutdown") {
             return;
         }
     } else {
-        SESE_WARN("FAILED: LS {} CODE {}", latest_stream, error_code);
+        // SESE_WARN("FAILED: LS {} CODE {}", latest_stream, error_code);
     }
     readFrameHeader();
 }
@@ -459,9 +459,11 @@ void sese::internal::service::http::HttpConnectionEx::handleDataFrame() {
 
     if (window_size < INIT_WINDOW_SIZE / 2) {
         writeWindowUpdateFrame(0, 0, INIT_WINDOW_SIZE);
+        window_size += INIT_WINDOW_SIZE;
     }
     if (stream->window_size < INIT_WINDOW_SIZE / 2) {
         writeWindowUpdateFrame(stream->id, 0, INIT_WINDOW_SIZE);
+        stream->window_size += INIT_WINDOW_SIZE;
     }
 
     if (frame.flags & FRAME_FLAG_PADDED) {
