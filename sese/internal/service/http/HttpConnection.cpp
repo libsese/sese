@@ -1,5 +1,4 @@
-#include "HttpServiceImpl.h"
-
+#include <sese/internal/service/http/HttpServiceImpl.h>
 #include <sese/net/http/HttpUtil.h>
 
 sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
@@ -11,86 +10,87 @@ sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_
 
 void sese::internal::service::http::HttpConnection::readHeader() {
     node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
-    asyncReadSome(asio::buffer(node->buffer, MTU_VALUE),
-                  [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
-                      if (conn->keepalive) {
-                          conn->keepalive = false;
-                          conn->timer.cancel();
-                      }
-                      if (error) {
-                          // 出现错误，应该断开连接
-                          conn->disponse();
-                          conn->node = nullptr;
-                          return;
-                      }
-                      conn->node->size = bytes_transferred;
-                      bool recv_status = false;
-                      bool parse_status = false;
-                      for (int i = 0; i < bytes_transferred; ++i) {
-                          if (conn->is0x0a && static_cast<char *>(conn->node->buffer)[i] == '\r') {
-                              conn->is0x0a = false;
-                              recv_status = true;
-                              conn->io_buffer.push(std::move(conn->node));
-                              parse_status = net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
-                              break;
-                          }
-                          conn->is0x0a = static_cast<char *>(conn->node->buffer)[i] == '\n';
-                      }
-                      if (!recv_status) {
-                          // 接收不完整，保存现有结果并继续接收
-                          // SESE_WARN("read again");
-                          conn->io_buffer.push(std::move(conn->node));
-                          conn->readHeader();
-                          return;
-                      }
-                      if (!parse_status) {
-                          // 解析失败，应该断开连接
-                          // SESE_ERROR("解析失败");
-                          conn->disponse();
-                          return;
-                      }
+    asyncReadSome(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
+        if (conn->keepalive) {
+            conn->keepalive = false;
+            conn->timer.cancel();
+        }
+        if (error) {
+            // 出现错误，应该断开连接
+            conn->disponse();
+            conn->node = nullptr;
+            return;
+        }
+        conn->node->size = bytes_transferred;
+        bool recv_status = false;
+        bool parse_status = false;
+        for (int i = 0; i < bytes_transferred; ++i) {
+            if (conn->is0x0a && static_cast<char *>(conn->node->buffer)[i] == '\r') {
+                conn->is0x0a = false;
+                recv_status = true;
+                conn->io_buffer.push(std::move(conn->node));
+                parse_status = net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
+                break;
+            }
+            conn->is0x0a = static_cast<char *>(conn->node->buffer)[i] == '\n';
+        }
+        if (!recv_status) {
+            // 接收不完整，保存现有结果并继续接收
+            // SESE_WARN("read again");
+            conn->io_buffer.push(std::move(conn->node));
+            conn->readHeader();
+            return;
+        }
+        if (!parse_status) {
+            // 解析失败，应该断开连接
+            // SESE_ERROR("解析失败");
+            conn->disponse();
+            return;
+        }
 
-                      // todo new filter
+        auto service = conn->service.lock();
+        service->handleFilter(conn);
 
-                      conn->expect_length = toInteger(conn->request.get("content-length", "0"));
-                      conn->real_length = conn->io_buffer.getReadableSize();
-                      if (conn->real_length) {
-                          // 部分 body
-                          streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
-                      }
-                      conn->io_buffer.clear();
-                      conn->node = nullptr;
-                      if (conn->expect_length != conn->real_length) {
-                          conn->readBody();
-                      } else {
-                          conn->handleRequest();
-                      }
-                  });
+        conn->expect_length = toInteger(conn->request.get("content-length", "0"));
+        conn->real_length = conn->io_buffer.getReadableSize();
+        if (conn->real_length && conn->conn_type != ConnType::FILTER) {
+            // 部分 body
+            streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
+        }
+        conn->io_buffer.clear();
+        conn->node = nullptr;
+        if (conn->expect_length != conn->real_length) {
+            conn->readBody();
+        } else {
+            conn->handleRequest();
+        }
+    });
 }
 
 void sese::internal::service::http::HttpConnection::readBody() {
     node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
-    asyncReadSome(asio::buffer(node->buffer, MTU_VALUE),
-                  [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
-                      if (error) {
-                          // 出现错误，应该断开连接
-                          conn->disponse();
-                          return;
-                      }
-                      conn->node->size = bytes_transferred;
-                      conn->real_length += conn->node->size;
-                      auto node_size = conn->node->size;
-                      conn->io_buffer.push(std::move(conn->node));
-                      streamMove(&conn->request.getBody(), &conn->io_buffer, node_size);
-                      if (conn->real_length >= conn->expect_length) {
-                          // 理论上 real_length 不可能大于 expect_length，此处预防万一
-                          conn->io_buffer.clear();
-                          conn->node = nullptr;
-                          conn->handleRequest();
-                      } else {
-                          conn->readBody();
-                      }
-                  });
+    asyncReadSome(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
+        if (error) {
+            // 出现错误，应该断开连接
+            conn->disponse();
+            return;
+        }
+        conn->node->size = bytes_transferred;
+        conn->real_length += conn->node->size;
+        auto node_size = conn->node->size;
+        conn->io_buffer.push(std::move(conn->node));
+        if (conn->conn_type != ConnType::FILTER) {
+            streamMove(&conn->request.getBody(), &conn->io_buffer, node_size);
+        }
+        if (conn->real_length >= conn->expect_length) {
+            // 理论上 real_length 不可能大于 expect_length，此处预防万一
+            conn->io_buffer.clear();
+            conn->node = nullptr;
+            conn->handleRequest();
+        } else {
+            conn->readBody();
+        }
+    });
 }
 
 void sese::internal::service::http::HttpConnection::handleRequest() {
@@ -262,7 +262,8 @@ void sese::internal::service::http::HttpConnection::reset() {
     request.clear();
     request.queryArgsClear();
     request.getBody().freeCapacity();
-    if (auto cookies = request.getCookies()) cookies->clear();
+    if (auto cookies = request.getCookies())
+        cookies->clear();
 
     response.setCode(200);
     response.clear();

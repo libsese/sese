@@ -32,6 +32,8 @@ public:
 
     uint32_t getKeepalive() const { return keepalive; }
 
+    void handleFilter(const Handleable::Ptr &conn) const;
+
     void handleRequest(const Handleable::Ptr &conn) const;
 
 private:
@@ -40,7 +42,7 @@ private:
     asio::ip::tcp::acceptor acceptor;
     asio::error_code error;
 
-    static constexpr unsigned char alpn_protos[] = "\x2h2\x8http/1.1";
+    static constexpr unsigned char ALPN_PROTOS[] = "\x2h2\x8http/1.1";
 
     static int alpnCallback(SSL *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length, void *data);
 

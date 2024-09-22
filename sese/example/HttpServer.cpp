@@ -63,15 +63,19 @@ int main(int argc, char **argv) {
     server.regService(sese::net::IPv4Address::localhost(443), std::move(ssl));
     server.regService(sese::net::IPv4Address::localhost(80), nullptr);
     // 返回值代表是否需要继续作为普通请求处理，此处 false 代表直接返回并响应
-    server.regFilter("/data1", [](sese::net::http::Request &req, sese::net::http::Response &resp) {
+    server.regFilter("/data1", [](Request &req, Response &resp) -> bool {
         SESE_INFO("filter /data1: %s", req.getUri().c_str());
         resp.setCode(404);
         return false;
     });
     // true 代表继续处理
-    server.regFilter("/data2", [](sese::net::http::Request &req, sese::net::http::Response &resp) {
+    server.regFilter("/data2", [](Request &req, Response &resp) -> bool {
         SESE_INFO("filter /data2: %s", req.getUri().c_str());
         resp.set("myfilter", "data2");
+        return true;
+    });
+    server.regFilter("/www", [](Request &req, Response &resp) -> bool {
+        resp.set("msg", "continue");
         return true;
     });
 

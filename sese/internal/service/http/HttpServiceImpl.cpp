@@ -82,20 +82,35 @@ int sese::internal::service::http::HttpServiceImpl::getLastError() {
     return error.value();
 }
 
+void sese::internal::service::http::HttpServiceImpl::handleFilter(const Handleable::Ptr &conn) const {
+    auto &&req = conn->request;
+    auto &&resp = conn->response;
+    for (auto &&[uri_prefix, callback]: filters) {
+        if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
+            if (callback(req, resp)) {
+                conn->conn_type = ConnType::NONE;
+            } else {
+                conn->conn_type = ConnType::FILTER;
+                break;
+            }
+        }
+    }
+}
+
 void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handleable::Ptr &conn) const {
     auto &&req = conn->request;
     auto &&resp = conn->response;
     std::filesystem::path filename;
 
     // 过滤器匹配
-    for (auto &&[uri_prefix, callback]: filters) {
-        if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
-            conn->conn_type = ConnType::FILTER;
-            if (callback(req, resp)) {
-                conn->conn_type = ConnType::NONE;
-            }
-        }
-    }
+    // for (auto &&[uri_prefix, callback]: filters) {
+    //     if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
+    //         conn->conn_type = ConnType::FILTER;
+    //         if (callback(req, resp)) {
+    //             conn->conn_type = ConnType::NONE;
+    //         }
+    //     }
+    // }
 
     // 挂载点匹配
     if (conn->conn_type == ConnType::NONE) {
@@ -242,8 +257,8 @@ int sese::internal::service::http::HttpServiceImpl::alpnCallback(
     if (SSL_select_next_proto(
             const_cast<unsigned char **>(out),
             out_length,
-            alpn_protos,
-            sizeof(alpn_protos),
+            ALPN_PROTOS,
+            sizeof(ALPN_PROTOS),
             in,
             in_length
         ) != OPENSSL_NPN_NEGOTIATED) {

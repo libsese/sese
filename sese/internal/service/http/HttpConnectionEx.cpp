@@ -5,6 +5,9 @@
 #include <sese/Util.h>
 // #include <sese/Log.h>
 
+#include "sese/text/StringBuilder.h"
+
+
 #include <sese/internal/service/http/HttpConnectionEx.h>
 #include <sese/internal/service/http/HttpServiceImpl.h>
 
@@ -402,7 +405,8 @@ void sese::internal::service::http::HttpConnectionEx::handleHeadersFrame() {
             return;
         }
 
-        // todo new filter
+        auto service = this->service.lock();
+        service->handleFilter(stream);
 
         if (stream->end_stream) {
             handleRequest(stream);
@@ -475,20 +479,28 @@ void sese::internal::service::http::HttpConnectionEx::handleDataFrame() {
             return;
         }
 
-        stream->request.getBody().write(temp_buffer + 1, frame.length - padded - 1);
+        if (stream->conn_type != ConnType::FILTER) {
+            stream->request.getBody().write(temp_buffer + 1, frame.length - padded - 1);
+        }
     } else {
-        stream->request.getBody().write(temp_buffer, frame.length);
+        if (stream->conn_type != ConnType::FILTER) {
+            stream->request.getBody().write(temp_buffer, frame.length);
+        }
     }
 
     if (frame.flags & FRAME_FLAG_END_STREAM) {
-        if (stream->request.exist("content-length")) {
-            auto content_length = toInteger(stream->request.get("content-length"));
-            if (content_length != stream->request.getBody().getReadableSize()) {
-                writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
-                return;
+        if (stream->conn_type != ConnType::FILTER) {
+            // 被拦截的情况下不会读取 body，自然也不需要验证长度
+            if (stream->request.exist("content-length")) {
+                auto content_length = toInteger(stream->request.get("content-length"));
+                if (content_length != stream->request.getBody().getReadableSize()) {
+                    writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
+                    return;
+                }
             }
         }
-        if (stream->request.exist("trailer")) {
+        if (stream->request.exist("te") ||
+            stream->request.exist("trailer")) {
             writeGoawayFrame(frame.ident, 0, GOAWAY_PROTOCOL_ERROR, "");
             return;
         }

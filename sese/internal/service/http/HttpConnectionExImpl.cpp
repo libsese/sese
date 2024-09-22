@@ -5,7 +5,6 @@ sese::internal::service::http::HttpConnectionExImpl::HttpConnectionExImpl(const 
                                                                                                                                                                              socket(std::move(socket)) {
 }
 
-
 void sese::internal::service::http::HttpConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {
     is_write = true;
     async_write(*this->socket, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
@@ -44,7 +43,6 @@ sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(cons
                                                                                                                                                                                stream(std::move(stream)) {
 }
 
-
 void sese::internal::service::http::HttpsConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {
     is_write = true;
     async_write(*this->stream, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
@@ -60,7 +58,6 @@ void sese::internal::service::http::HttpsConnectionExImpl::writeBlock(const void
         callback(error);
     });
 }
-
 
 void sese::internal::service::http::HttpsConnectionExImpl::readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
     is_read = true;
