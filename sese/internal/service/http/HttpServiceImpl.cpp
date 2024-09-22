@@ -21,7 +21,7 @@ sese::internal::service::http::HttpServiceImpl::HttpServiceImpl(
     io_context(),
     ssl_context(std::nullopt),
     acceptor(io_context) {
-    thread = std::make_unique<sese::Thread>(
+    thread = std::make_unique<Thread>(
         [this] {
             if (this->ssl_context.has_value()) {
                 this->handleSSLAccept();
@@ -35,11 +35,11 @@ sese::internal::service::http::HttpServiceImpl::HttpServiceImpl(
 }
 
 bool sese::internal::service::http::HttpServiceImpl::startup() {
-    auto addr = sese::internal::net::convert(address);
+    auto addr = net::convert(address);
     auto endpoint = asio::ip::tcp::endpoint(addr, address->getPort());
 
     if (HttpService::ssl_context) {
-        ssl_context = sese::internal::net::convert(std::move(HttpService::ssl_context));
+        ssl_context = net::convert(std::move(HttpService::ssl_context));
     }
 
     if (ssl_context) {
@@ -89,7 +89,7 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
 
     // 过滤器匹配
     for (auto &&[uri_prefix, callback]: filters) {
-        if (sese::text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
+        if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
             conn->conn_type = ConnType::FILTER;
             if (callback(req, resp)) {
                 conn->conn_type = ConnType::NONE;
@@ -100,7 +100,7 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
     // 挂载点匹配
     if (conn->conn_type == ConnType::NONE) {
         for (auto &&[uri_prefix, mount_point]: mount_points) {
-            if (sese::text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
+            if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
                 conn->conn_type = ConnType::FILE_DOWNLOAD;
                 filename = mount_point + req.getUri().substr(uri_prefix.length());
                 // 确认文件名后进行下一步操作
@@ -128,7 +128,7 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
             goto uni_handle;
         }
 
-        conn->file = sese::io::File::create(filename.string(), sese::io::File::B_READ);
+        conn->file = io::File::create(filename.string(), io::File::B_READ);
         if (!conn->file) {
             resp.setCode(500);
             resp.set("content-length", std::to_string(resp.getBody().getLength()));
@@ -195,14 +195,14 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
         }
 
         auto last_modified = last_write_time(filename);
-        uint64_t time = sese::to_time_t(last_modified) * 1000 * 1000;
+        uint64_t time = to_time_t(last_modified) * 1000 * 1000;
         resp.set("last-modified",
-                 sese::text::DateTimeFormatter::format(sese::DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
+                 text::DateTimeFormatter::format(DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
     }
 
 uni_handle:
     auto keepalive_str = req.get("connection", "close");
-    conn->keepalive = sese::strcmpDoNotCase(keepalive_str.c_str(), "keep-alive");
+    conn->keepalive = strcmpDoNotCase(keepalive_str.c_str(), "keep-alive");
 
     if (conn->keepalive) {
         resp.set("connection", "keep-alive");
@@ -267,9 +267,9 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
                     [this, accept_stream](const asio::error_code &e) {
                         if (e.value() == 0) {
                             const uint8_t *data = nullptr;
-                            uint32_t dataLength;
-                            SSL_get0_alpn_selected(accept_stream->native_handle(), &data, &dataLength);
-                            auto proto = std::string_view(reinterpret_cast<const char *>(data), dataLength);
+                            uint32_t data_length;
+                            SSL_get0_alpn_selected(accept_stream->native_handle(), &data, &data_length);
+                            auto proto = std::string_view(reinterpret_cast<const char *>(data), data_length);
                             if (proto == "http/1.1") {
                                 // SESE_INFO("selected http/1.1");
                                 auto conn = std::make_shared<HttpsConnectionImpl>(

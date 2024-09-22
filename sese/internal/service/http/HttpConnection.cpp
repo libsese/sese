@@ -10,7 +10,7 @@ sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_
 }
 
 void sese::internal::service::http::HttpConnection::readHeader() {
-    node = std::make_unique<sese::iocp::IOBufNode>(MTU_VALUE);
+    node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
     asyncReadSome(asio::buffer(node->buffer, MTU_VALUE),
                   [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
                       if (conn->keepalive) {
@@ -31,10 +31,10 @@ void sese::internal::service::http::HttpConnection::readHeader() {
                               conn->is0x0a = false;
                               recv_status = true;
                               conn->io_buffer.push(std::move(conn->node));
-                              parse_status = sese::net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
+                              parse_status = net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
                               break;
                           }
-                          conn->is0x0a = (static_cast<char *>(conn->node->buffer)[i] == '\n');
+                          conn->is0x0a = static_cast<char *>(conn->node->buffer)[i] == '\n';
                       }
                       if (!recv_status) {
                           // 接收不完整，保存现有结果并继续接收
@@ -50,11 +50,13 @@ void sese::internal::service::http::HttpConnection::readHeader() {
                           return;
                       }
 
-                      conn->expect_length = sese::toInteger(conn->request.get("content-length", "0"));
+                      // todo new filter
+
+                      conn->expect_length = toInteger(conn->request.get("content-length", "0"));
                       conn->real_length = conn->io_buffer.getReadableSize();
                       if (conn->real_length) {
                           // 部分 body
-                          sese::streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
+                          streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
                       }
                       conn->io_buffer.clear();
                       conn->node = nullptr;
@@ -67,7 +69,7 @@ void sese::internal::service::http::HttpConnection::readHeader() {
 }
 
 void sese::internal::service::http::HttpConnection::readBody() {
-    node = std::make_unique<sese::iocp::IOBufNode>(MTU_VALUE);
+    node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
     asyncReadSome(asio::buffer(node->buffer, MTU_VALUE),
                   [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
                       if (error) {
@@ -79,7 +81,7 @@ void sese::internal::service::http::HttpConnection::readBody() {
                       conn->real_length += conn->node->size;
                       auto node_size = conn->node->size;
                       conn->io_buffer.push(std::move(conn->node));
-                      sese::streamMove(&conn->request.getBody(), &conn->io_buffer, node_size);
+                      streamMove(&conn->request.getBody(), &conn->io_buffer, node_size);
                       if (conn->real_length >= conn->expect_length) {
                           // 理论上 real_length 不可能大于 expect_length，此处预防万一
                           conn->io_buffer.clear();
@@ -95,7 +97,7 @@ void sese::internal::service::http::HttpConnection::handleRequest() {
     auto serv = service.lock();
     assert(serv);
     serv->handleRequest(shared_from_this());
-    sese::net::http::HttpUtil::sendResponse(&this->dynamic_buffer, &this->response);
+    net::http::HttpUtil::sendResponse(&this->dynamic_buffer, &this->response);
     this->real_length = 0;
     this->expect_length = this->dynamic_buffer.getReadableSize();
     this->writeHeader();
@@ -120,7 +122,7 @@ void sese::internal::service::http::HttpConnection::writeHeader() {
             if (conn->ranges.size() == 1) {
                 // 单区间文件
                 conn->expect_length = conn->range_iterator->len;
-                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), sese::io::Seek::BEGIN)) {
+                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
                     conn->disponse();
                     return;
                 }
@@ -189,7 +191,7 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
                 if (error) {
                     return;
                 }
-                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), sese::io::Seek::BEGIN)) {
+                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
                     return;
                 }
                 conn->expect_length = conn->range_iterator->len;
@@ -221,7 +223,7 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
                 if (error) {
                     return;
                 }
-                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), sese::io::Seek::BEGIN)) {
+                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
                     return;
                 }
                 conn->expect_length = conn->range_iterator->len;
