@@ -60,8 +60,8 @@ int main(int argc, char **argv) {
     server.setName("HttpService");
     server.regMountPoint("/www", PROJECT_PATH "/build/html");
     server.regController<MyController>();
-    server.regService(sese::net::IPv4Address::localhost(443), std::move(ssl));
-    server.regService(sese::net::IPv4Address::localhost(80), nullptr);
+    server.regService(sese::net::IPv4Address::any(443), std::move(ssl->copy()));
+    server.regService(sese::net::IPv4Address::any(80), nullptr);
     // 返回值代表是否需要继续作为普通请求处理，此处 false 代表直接返回并响应
     server.regFilter("/data1", [](Request &req, Response &resp) -> bool {
         SESE_INFO("filter /data1: %s", req.getUri().c_str());

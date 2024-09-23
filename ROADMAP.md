@@ -1,6 +1,6 @@
 # Roadmap publicity
 
-## Intro
+## Short intro
 
 1. ❌ Canceled
 2. ⭕️ Done
@@ -17,3 +17,10 @@
 
 - ⭕️ Static Links
 - ⭕️ Upload to builtin repos
+
+## Version 2.3.0
+
+- ⭕️ HPACK(RFC7541)
+- ⭕️ HTTP2(RFC7540)
+- 🛠️ Better web-related support
+- 🛠️ IP/TCP based filters
