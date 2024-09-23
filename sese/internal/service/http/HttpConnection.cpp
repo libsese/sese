@@ -1,10 +1,11 @@
 #include <sese/internal/service/http/HttpServiceImpl.h>
 #include <sese/net/http/HttpUtil.h>
 
-sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
+sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, const sese::net::IPAddress::Ptr &addr)
     : Handleable(), timer(context, asio::chrono::seconds{service->getKeepalive()}),
       expect_length(0),
       real_length(0),
+      remote_address(addr),
       service(service) {
 }
 

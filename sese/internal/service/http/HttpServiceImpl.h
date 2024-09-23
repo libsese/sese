@@ -15,7 +15,7 @@ public:
     friend struct HttpConnection;
 
     HttpServiceImpl(
-        const net::IPAddress::Ptr &address,
+        const sese::net::IPAddress::Ptr &address,
         SSLContextPtr ssl_context,
         uint32_t keepalive,
         std::string &serv_name,

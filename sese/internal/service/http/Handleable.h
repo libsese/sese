@@ -13,13 +13,13 @@ struct Handleable {
     using Ptr = std::shared_ptr<Handleable>;
 
     ConnType conn_type = ConnType::NONE;
-    net::http::Request request;
-    net::http::Response response;
+    sese::net::http::Request request;
+    sese::net::http::Response response;
     std::string content_type = "application/x-";
     io::File::Ptr file;
     size_t filesize = 0;
-    std::vector<net::http::Range> ranges;
-    std::vector<net::http::Range>::iterator range_iterator = ranges.begin();
+    std::vector<sese::net::http::Range> ranges;
+    std::vector<sese::net::http::Range>::iterator range_iterator = ranges.begin();
     bool keepalive = false;
 };
 

@@ -2,12 +2,11 @@
 #include <sese/util/Endian.h>
 #include <sese/net/http/HPackUtil.h>
 #include <sese/net/http/HttpConverter.h>
+#include <sese/text/StringBuilder.h>
 #include <sese/Util.h>
 // #include <sese/Log.h>
 
-#include "sese/text/StringBuilder.h"
-
-
+#include <sese/internal/net/AsioIPConvert.h>
 #include <sese/internal/service/http/HttpConnectionEx.h>
 #include <sese/internal/service/http/HttpServiceImpl.h>
 
@@ -29,8 +28,13 @@ void sese::internal::service::http::HttpStream::prepareRange() {
     ++range_iterator;
 }
 
-sese::internal::service::http::HttpConnectionEx::HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context)
+sese::internal::service::http::HttpConnectionEx::HttpConnectionEx(
+        const std::shared_ptr<HttpServiceImpl> &service,
+        asio::io_context &io_context,
+        const sese::net::IPAddress::Ptr &addr
+)
     : timer(io_context),
+      remote_address(addr),
       service(service) {
 }
 
@@ -45,7 +49,7 @@ void sese::internal::service::http::HttpConnectionEx::readMagic() {
             return;
         }
         // 魔数错误
-        if (0 != strncmp(temp_buffer, net::http::MAGIC_STRING, 24)) {
+        if (0 != strncmp(temp_buffer, sese::net::http::MAGIC_STRING, 24)) {
             return;
         }
         writeSettingsFrame();
@@ -803,17 +807,17 @@ void sese::internal::service::http::HttpConnectionEx::writeSettingsFrame() {
 }
 
 void sese::internal::service::http::HttpConnectionEx::writeAckFrame() {
-    auto frame = std::make_unique<net::http::Http2Frame>(0);
-    frame->type = net::http::FRAME_TYPE_SETTINGS;
-    frame->flags = net::http::SETTINGS_FLAGS_ACK;
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(0);
+    frame->type = sese::net::http::FRAME_TYPE_SETTINGS;
+    frame->flags = sese::net::http::SETTINGS_FLAGS_ACK;
     frame->buildFrameHeader();
     pre_vector.push_back(std::move(frame));
     handleWrite();
 }
 
 void sese::internal::service::http::HttpConnectionEx::writeWindowUpdateFrame(uint32_t stream_id, uint8_t flags, uint32_t window_size) {
-    auto frame = std::make_unique<net::http::Http2Frame>(4);
-    frame->type = net::http::FRAME_TYPE_WINDOW_UPDATE;
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(4);
+    frame->type = sese::net::http::FRAME_TYPE_WINDOW_UPDATE;
     frame->length = 4;
     frame->ident = stream_id;
     frame->flags = flags;
@@ -826,16 +830,16 @@ void sese::internal::service::http::HttpConnectionEx::writeWindowUpdateFrame(uin
 
 bool sese::internal::service::http::HttpConnectionEx::writeHeadersFrame(const HttpStream::Ptr &stream, bool verify_end_stream) {
     auto result = false;
-    auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
     frame->ident = stream->id;
     auto len = stream->temp_buffer.read(frame->getFrameContentBuffer(), max_frame_size);
-    frame->type = net::http::FRAME_TYPE_HEADERS;
+    frame->type = sese::net::http::FRAME_TYPE_HEADERS;
     frame->length = static_cast<uint32_t>(len);
     if (stream->temp_buffer.eof()) {
-        frame->flags |= net::http::FRAME_FLAG_END_HEADERS;
+        frame->flags |= sese::net::http::FRAME_FLAG_END_HEADERS;
     }
     if (verify_end_stream && stream->response.getBody().eof()) {
-        frame->flags |= net::http::FRAME_FLAG_END_STREAM;
+        frame->flags |= sese::net::http::FRAME_FLAG_END_STREAM;
         result = true;
     }
     frame->buildFrameHeader();
@@ -850,14 +854,14 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Body(const 
         return false;
     }
     auto result = false;
-    auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
     frame->ident = stream->id;
     auto remind = std::min({endpoint_window_size, stream->endpoint_window_size, max_frame_size});
     auto len = stream->response.getBody().read(frame->getFrameContentBuffer(), remind);
-    frame->type = net::http::FRAME_TYPE_DATA;
+    frame->type = sese::net::http::FRAME_TYPE_DATA;
     frame->length = static_cast<uint32_t>(len);
     if (stream->response.getBody().eof()) {
-        frame->flags |= net::http::FRAME_FLAG_END_STREAM;
+        frame->flags |= sese::net::http::FRAME_FLAG_END_STREAM;
         result = true;
     }
     frame->buildFrameHeader();
@@ -878,7 +882,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange
     }
 
     auto result = false;
-    auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
     frame->ident = stream->id;
     size_t remind = std::min({endpoint_window_size, stream->endpoint_window_size, max_frame_size});
     auto l = std::min<size_t>(stream->expect_length - stream->real_length, remind);
@@ -886,7 +890,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange
     stream->file->read(frame->getFrameContentBuffer(), l);
     frame->length = static_cast<uint32_t>(l);
     if (stream->real_length >= stream->expect_length) {
-        frame->flags |= net::http::FRAME_FLAG_END_STREAM;
+        frame->flags |= sese::net::http::FRAME_FLAG_END_STREAM;
         result = true;
     }
     frame->buildFrameHeader();
@@ -922,11 +926,11 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
             if (end_boundary.length() > remind) {
                 return false;
             }
-            auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
+            auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
             frame->ident = stream->id;
-            frame->type = net::http::FRAME_TYPE_DATA;
+            frame->type = sese::net::http::FRAME_TYPE_DATA;
             frame->length = static_cast<uint32_t>(end_boundary.length());
-            frame->flags |= net::http::FRAME_FLAG_END_STREAM;
+            frame->flags |= sese::net::http::FRAME_FLAG_END_STREAM;
             frame->buildFrameHeader();
             memcpy(frame->getFrameContentBuffer(), end_boundary.data(), end_boundary.length());
             pre_vector.push_back(std::move(frame));
@@ -944,7 +948,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
             writeSubheaderAndData(stream, subheader, remind);
         }
     } else {
-        auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
+        auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
         frame->ident = stream->id;
         auto l = std::min<size_t>(stream->expect_length - stream->real_length, remind);
         stream->real_length += l;
@@ -956,9 +960,9 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
 }
 
 void sese::internal::service::http::HttpConnectionEx::writeSubheaderAndData(const HttpStream::Ptr &stream, const std::string &subheader, size_t remind) {
-    auto frame = std::make_unique<net::http::Http2Frame>(max_frame_size);
+    auto frame = std::make_unique<sese::net::http::Http2Frame>(max_frame_size);
     frame->ident = stream->id;
-    frame->type = net::http::FRAME_TYPE_DATA;
+    frame->type = sese::net::http::FRAME_TYPE_DATA;
     memcpy(frame->getFrameContentBuffer(), subheader.data(), subheader.length());
     auto l = std::min<size_t>(stream->expect_length - stream->real_length, remind);
     stream->real_length += l;

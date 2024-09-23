@@ -7,6 +7,8 @@
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Util.h>
 
+#include <sese/Log.h>
+
 #include <filesystem>
 
 sese::internal::service::http::HttpServiceImpl::HttpServiceImpl(
@@ -232,15 +234,19 @@ void sese::internal::service::http::HttpServiceImpl::handleAccept() {
     acceptor.async_accept(
         *accept_socket,
         [this, accept_socket](const asio::error_code &e) {
+            auto remote_address = sese::internal::net::convert(accept_socket->remote_endpoint());
+            // todo ip filter
             if (e.value() == 0) {
                 auto conn = std::make_shared<HttpConnectionImpl>(
                     shared_from_this(),
                     io_context,
+                    remote_address,
                     accept_socket
                 );
                 this->connections.emplace(conn);
                 conn->readHeader();
                 // conn->readMagic();
+                SESE_DEBUG("address {}:{}", conn->remote_address->getAddress(), conn->remote_address->getPort());
             }
             this->handleAccept();
         }
@@ -275,11 +281,13 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
         *accept_socket,
         [this, accept_socket](const asio::error_code &e) {
             if (e.value() == 0) {
+                auto remote_address = sese::internal::net::convert(accept_socket->remote_endpoint());
+                // todo ip filter
                 auto accept_stream = std::make_shared<HttpsConnectionImpl::Stream>(
                     std::move(*accept_socket), ssl_context.value());
                 accept_stream->async_handshake(
                     asio::ssl::stream_base::server,
-                    [this, accept_stream](const asio::error_code &e) {
+                    [this, remote_address, accept_stream](const asio::error_code &e) {
                         if (e.value() == 0) {
                             const uint8_t *data = nullptr;
                             uint32_t data_length;
@@ -290,6 +298,7 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
                                 auto conn = std::make_shared<HttpsConnectionImpl>(
                                     shared_from_this(),
                                     io_context,
+                                    remote_address,
                                     accept_stream
                                 );
                                 this->connections.emplace(conn);
@@ -299,18 +308,20 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
                                 auto conn = std::make_shared<HttpsConnectionExImpl>(
                                     shared_from_this(),
                                     io_context,
+                                    remote_address,
                                     accept_stream
                                     );
                                 conn->readMagic();
                             } else {
+                                // SESE_WARN("unknown proto");
                                 auto conn = std::make_shared<HttpsConnectionImpl>(
                                     shared_from_this(),
                                     io_context,
+                                    remote_address,
                                     accept_stream
                                 );
                                 this->connections.emplace(conn);
                                 conn->readHeader();
-                                // SESE_WARN("unknown proto");
                             }
                         }
                     });

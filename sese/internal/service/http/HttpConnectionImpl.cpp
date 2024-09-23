@@ -1,28 +1,27 @@
 #include <sese/internal/service/http/HttpServiceImpl.h>
+#include <sese/internal/net/AsioIPConvert.h>
 
-#include <utility>
-
-sese::internal::service::http::HttpConnectionImpl::HttpConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                                       SharedSocket socket)
-    : HttpConnection(service, context), socket(std::move(socket)) {
+sese::internal::service::http::HttpConnectionImpl::HttpConnectionImpl(
+        const std::shared_ptr<HttpServiceImpl> &service,
+        asio::io_context &context,
+        const sese::net::IPAddress::Ptr &addr,
+        SharedSocket socket
+)
+    : HttpConnection(service, context, addr), socket(std::move(socket)) {
+    remote_address = net::convert(socket->remote_endpoint());
 }
 
-void sese::internal::service::http::HttpConnectionImpl::writeBlock(const char *buffer, size_t length,
-                                    const std::function<void(const asio::error_code &code)> &callback) {
-    async_write(*this->socket, asio::buffer(buffer, length),
-                [conn = shared_from_this(), buffer, length, callback](
-            const asio::error_code &error, std::size_t wrote) {
-                    if (error || wrote == length) {
-                        callback(error);
-                    } else {
-                        conn->writeBlock(buffer + wrote, length - wrote, callback);
-                    }
-                });
+void sese::internal::service::http::HttpConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
+    async_write(*this->socket, asio::buffer(buffer, length), [conn = shared_from_this(), buffer, length, callback](const asio::error_code &error, std::size_t wrote) {
+        if (error || wrote == length) {
+            callback(error);
+        } else {
+            conn->writeBlock(buffer + wrote, length - wrote, callback);
+        }
+    });
 }
 
-void sese::internal::service::http::HttpConnectionImpl::asyncReadSome(const asio::mutable_buffers_1 &buffer,
-                                       const std::function<void(const asio::error_code &error,
-                                                                std::size_t bytes_transferred)> &callback) {
+void sese::internal::service::http::HttpConnectionImpl::asyncReadSome(const asio::mutable_buffers_1 &buffer, const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &callback) {
     this->socket->async_read_some(buffer, callback);
 }
 
@@ -42,31 +41,29 @@ void sese::internal::service::http::HttpConnectionImpl::checkKeepalive() {
     }
 }
 
-sese::internal::service::http::HttpsConnectionImpl::HttpsConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                                         SharedStream stream)
-    : HttpConnection(service, context), stream(std::move(stream)) {
+sese::internal::service::http::HttpsConnectionImpl::HttpsConnectionImpl(
+        const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
+        const sese::net::IPAddress::Ptr &addr, SharedStream stream
+)
+    : HttpConnection(service, context, addr), stream(std::move(stream)) {
+    remote_address = net::convert(this->stream->next_layer().remote_endpoint());
 }
 
 sese::internal::service::http::HttpsConnectionImpl::~HttpsConnectionImpl() {
     asio::error_code error = this->stream->shutdown(error);
 }
 
-void sese::internal::service::http::HttpsConnectionImpl::writeBlock(const char *buffer, size_t length,
-                                     const std::function<void(const asio::error_code &code)> &callback) {
-    this->stream->async_write_some(asio::buffer(buffer, length),
-                                   [conn = getPtr(), buffer, length, callback](
-                               const asio::error_code &error, size_t wrote) {
-                                       if (error || wrote == length) {
-                                           callback(error);
-                                       } else {
-                                           conn->writeBlock(buffer + wrote, length - wrote, callback);
-                                       }
-                                   });
+void sese::internal::service::http::HttpsConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
+    this->stream->async_write_some(asio::buffer(buffer, length), [conn = getPtr(), buffer, length, callback](const asio::error_code &error, size_t wrote) {
+        if (error || wrote == length) {
+            callback(error);
+        } else {
+            conn->writeBlock(buffer + wrote, length - wrote, callback);
+        }
+    });
 }
 
-void sese::internal::service::http::HttpsConnectionImpl::asyncReadSome(const asio::mutable_buffers_1 &buffer,
-                                        const std::function<void(const asio::error_code &error,
-                                                                 std::size_t bytes_transferred)> &callback) {
+void sese::internal::service::http::HttpsConnectionImpl::asyncReadSome(const asio::mutable_buffers_1 &buffer, const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &callback) {
     this->stream->async_read_some(buffer, callback);
 }
 

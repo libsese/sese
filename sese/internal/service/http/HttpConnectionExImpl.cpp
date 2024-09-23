@@ -1,8 +1,14 @@
 #include <sese/Config.h>
 #include <sese/internal/service/http/HttpConnectionEx.h>
 
-sese::internal::service::http::HttpConnectionExImpl::HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, SharedSocket socket) : HttpConnectionEx(service, context),
-                                                                                                                                                                             socket(std::move(socket)) {
+sese::internal::service::http::HttpConnectionExImpl::HttpConnectionExImpl(
+        const std::shared_ptr<HttpServiceImpl> &service,
+        asio::io_context &context,
+        const sese::net::IPAddress::Ptr &addr,
+        SharedSocket socket
+)
+    : HttpConnectionEx(service, context, addr),
+      socket(std::move(socket)) {
 }
 
 void sese::internal::service::http::HttpConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {
@@ -39,8 +45,14 @@ void sese::internal::service::http::HttpConnectionExImpl::readBlock(char *buffer
     );
 }
 
-sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, SharedStream stream) : HttpConnectionEx(service, context),
-                                                                                                                                                                               stream(std::move(stream)) {
+sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(
+        const std::shared_ptr<HttpServiceImpl> &service,
+        asio::io_context &context,
+        const sese::net::IPAddress::Ptr &addr,
+        SharedStream stream
+)
+    : HttpConnectionEx(service, context, addr),
+      stream(std::move(stream)) {
 }
 
 void sese::internal::service::http::HttpsConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {

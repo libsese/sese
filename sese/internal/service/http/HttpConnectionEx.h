@@ -3,15 +3,17 @@
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
+
 #include <sese/Config.h>
 #include <sese/net/http/DynamicTable.h>
 #include <sese/net/http/Http2Frame.h>
+#include <sese/internal/service/http/Handleable.h>
+#include <sese/net/IPv6Address.h>
 
 #include <memory>
 #include <queue>
 #include <set>
 
-#include <sese/internal/service/http/Handleable.h>
 
 namespace sese::internal::service::http {
 class HttpServiceImpl;
@@ -48,12 +50,14 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     Ptr getPtr() { return shared_from_this(); } // NOLINT
 
-    HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context);
+    HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context, const sese::net::IPAddress::Ptr &addr);
 
     virtual ~HttpConnectionEx() = default;
 
     bool keepalive = false;
     asio::system_timer timer;
+
+    sese::net::IPAddress::Ptr remote_address{};
 
     std::weak_ptr<HttpServiceImpl> service;
 
@@ -214,7 +218,7 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
     SharedSocket socket;
 
     HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                         SharedSocket socket);
+                         const sese::net::IPAddress::Ptr &addr, SharedSocket socket);
 
     void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                      const std::function<void(const asio::error_code &code)> &callback) override;
@@ -236,7 +240,7 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
     SharedStream stream;
 
     HttpsConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                          SharedStream stream);
+                          const sese::net::IPAddress::Ptr &addr, SharedStream stream);
 
     void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                      const std::function<void(const asio::error_code &code)> &callback) override;
