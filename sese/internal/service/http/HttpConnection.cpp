@@ -190,9 +190,11 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
             std::memcpy(this->send_buffer, subheader.data(), subheader.length());
             this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
                 if (error) {
+                    conn->disponse();
                     return;
                 }
                 if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
+                    conn->disponse();
                     return;
                 }
                 conn->expect_length = conn->range_iterator->len;
@@ -209,6 +211,7 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
             assert(subheader.length() <= MTU_VALUE);
             this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
                 if (error) {
+                    conn->disponse();
                     return;
                 }
                 conn->checkKeepalive();
@@ -222,9 +225,11 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
             std::memcpy(this->send_buffer, subheader.data(), subheader.length());
             this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
                 if (error) {
+                    conn->disponse();
                     return;
                 }
                 if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
+                    conn->disponse();
                     return;
                 }
                 conn->expect_length = conn->range_iterator->len;

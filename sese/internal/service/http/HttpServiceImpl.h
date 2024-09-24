@@ -13,6 +13,7 @@ class HttpServiceImpl final : public sese::service::http::HttpService,
                               public std::enable_shared_from_this<HttpServiceImpl> {
 public:
     friend struct HttpConnection;
+    friend struct HttpConnectionEx;
 
     HttpServiceImpl(
         const sese::net::IPAddress::Ptr &address,
@@ -52,6 +53,7 @@ private:
     void handleSSLAccept();
 
     std::set<HttpConnection::Ptr> connections;
+    std::set<HttpConnectionEx::Ptr> connections2;
 };
 
 }

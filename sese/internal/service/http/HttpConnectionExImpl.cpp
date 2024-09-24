@@ -45,6 +45,17 @@ void sese::internal::service::http::HttpConnectionExImpl::readBlock(char *buffer
     );
 }
 
+void sese::internal::service::http::HttpConnectionExImpl::checkKeepalive() {
+    // if (keepalive) {
+    timer.async_wait([conn = getPtr()](const asio::error_code &error) {
+        if (error == asio::error::operation_aborted) {
+        } else {
+            conn->socket->close();
+        }
+    });
+    // }
+}
+
 sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(
         const std::shared_ptr<HttpServiceImpl> &service,
         asio::io_context &context,
@@ -81,4 +92,15 @@ void sese::internal::service::http::HttpsConnectionExImpl::readBlock(char *buffe
             conn->readBlock(buffer + read, length - read, callback);
         }
     });
+}
+
+void sese::internal::service::http::HttpsConnectionExImpl::checkKeepalive() {
+    // if (keepalive) {
+    timer.async_wait([conn = getPtr()](const asio::error_code &error) {
+        if (error == asio::error::operation_aborted) {
+        } else {
+            conn->stream->lowest_layer().close();
+        }
+    });
+    // }
 }

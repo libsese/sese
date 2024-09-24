@@ -10,7 +10,7 @@
 #include <sese/internal/service/http/HttpConnectionEx.h>
 #include <sese/internal/service/http/HttpServiceImpl.h>
 
-sese::internal::service::http::HttpStream::HttpStream(uint32_t id, uint32_t write_window_size, sese::net::IPAddress::Ptr addr) noexcept
+sese::internal::service::http::HttpStream::HttpStream(uint32_t id, uint32_t write_window_size, const sese::net::IPAddress::Ptr &addr) noexcept
     : Handleable(),
       id(id),
       endpoint_window_size(write_window_size),
@@ -34,7 +34,7 @@ sese::internal::service::http::HttpConnectionEx::HttpConnectionEx(
         asio::io_context &io_context,
         const sese::net::IPAddress::Ptr &addr
 )
-    : timer(io_context),
+    : timer(io_context, asio::chrono::seconds{service->getKeepalive()}),
       remote_address(addr),
       service(service) {
 }
@@ -44,13 +44,22 @@ void sese::internal::service::http::HttpConnectionEx::close(uint32_t id) {
     closed_streams.emplace(id);
 }
 
+void sese::internal::service::http::HttpConnectionEx::disponse() {
+    auto serv = service.lock();
+    assert(serv);
+    serv->connections2.erase(shared_from_this());
+    // SESE_INFO("timeout {}:{}", remote_address->getAddress(), remote_address->getPort());
+}
+
 void sese::internal::service::http::HttpConnectionEx::readMagic() {
     readBlock(temp_buffer, 24, [this](const asio::error_code &ec) {
         if (ec) {
+            disponse();
             return;
         }
         // 魔数错误
         if (0 != strncmp(temp_buffer, sese::net::http::MAGIC_STRING, 24)) {
+            disponse();
             return;
         }
         writeSettingsFrame();
@@ -61,6 +70,7 @@ void sese::internal::service::http::HttpConnectionEx::readFrameHeader() {
     using namespace sese::net::http;
     readBlock(temp_buffer, 9, [this](const asio::error_code &ec) {
         if (ec) {
+            disponse();
             return;
         }
         memset(&frame, 0, sizeof(frame));
@@ -79,6 +89,7 @@ void sese::internal::service::http::HttpConnectionEx::readFrameHeader() {
 
         readBlock(temp_buffer, frame.length, [this](const asio::error_code &ec0) {
             if (ec0) {
+                disponse();
                 return;
             }
             handleFrameHeader();
@@ -309,6 +320,12 @@ void sese::internal::service::http::HttpConnectionEx::handleGoawayFrame() {
 
 void sese::internal::service::http::HttpConnectionEx::handleHeadersFrame() {
     using namespace sese::net::http;
+
+    // if (keepalive) {
+    // keepalive = false;
+    timer.cancel();
+    // }
+
     // if (expect_ack) {
     //     writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "expect ack");
     //     return;
@@ -431,6 +448,12 @@ void sese::internal::service::http::HttpConnectionEx::handleHeadersFrame() {
 
 void sese::internal::service::http::HttpConnectionEx::handleDataFrame() {
     using namespace sese::net::http;
+
+    // if (keepalive) {
+    // keepalive = false;
+    timer.cancel();
+    // }
+
     if (expect_ack) {
         writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "expect ack");
         return;
@@ -598,6 +621,12 @@ void sese::internal::service::http::HttpConnectionEx::handlePriorityFrame() {
 
 void sese::internal::service::http::HttpConnectionEx::handlePingFrame() {
     using namespace sese::net::http;
+
+    // if (keepalive) {
+    // keepalive = false;
+    timer.cancel();
+    // }
+
     if (frame.ident != 0) {
         writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "", true);
         return;
@@ -638,6 +667,10 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
     if (is_write) {
         return;
     }
+
+    // if (keepalive) {
+    timer.cancel();
+    // }
 
     for (auto &&current = streams.begin(); current != streams.end();) {
         auto stream = current->second;
@@ -710,8 +743,10 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
         for (auto &&item: vector) {
             asio_buffers.emplace_back(asio::buffer(item->getFrameBuffer(), item->getFrameLength()));
         }
+        checkKeepalive();
         writeBlocks(asio_buffers, [conn = getPtr()](const asio::error_code &ec) {
             if (ec) {
+                conn->disponse();
                 return;
             }
             conn->handleWrite();
@@ -741,6 +776,7 @@ void sese::internal::service::http::HttpConnectionEx::writeGoawayFrame(
         auto buf = frame->getFrameBuffer();
         auto len = frame->getFrameLength();
         writeBlock(buf, len, [conn = getPtr(), f = std::shared_ptr(std::move(frame))](const asio::error_code &) {
+            conn->disponse();
         });
     } else {
         pre_vector.push_back(std::move(frame));
@@ -767,6 +803,7 @@ void sese::internal::service::http::HttpConnectionEx::writeRstStreamFrame(
         auto buf = frame->getFrameBuffer();
         auto len = frame->getFrameLength();
         writeBlock(buf, len, [conn = getPtr(), f = std::shared_ptr(std::move(frame))](const asio::error_code &) {
+            conn->disponse();
         });
     } else {
         pre_vector.push_back(std::move(frame));

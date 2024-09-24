@@ -224,12 +224,14 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
     }
 
 uni_handle:
-    auto keepalive_str = req.get("connection", "close");
-    conn->keepalive = strcmpDoNotCase(keepalive_str.c_str(), "keep-alive");
+    if (req.getVersion() == sese::net::http::HttpVersion::VERSION_1_1) {
+        auto keepalive_str = req.get("connection", "close");
+        conn->keepalive = strcmpDoNotCase(keepalive_str.c_str(), "keep-alive");
 
-    if (conn->keepalive) {
-        resp.set("connection", "keep-alive");
-        resp.set("keep-alive", "timeout=" + std::to_string(keepalive));
+        if (conn->keepalive) {
+            resp.set("connection", "keep-alive");
+            resp.set("keep-alive", "timeout=" + std::to_string(keepalive));
+        }
     }
     resp.set("server", this->serv_name);
     resp.set("accept-range", "bytes");
@@ -324,6 +326,7 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
                                                 remote_address,
                                                 accept_stream
                                         );
+                                        this->connections2.emplace(conn);
                                         conn->readMagic();
                                     } else {
                                         // SESE_WARN("unknown proto");

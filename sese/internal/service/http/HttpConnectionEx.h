@@ -21,7 +21,7 @@ class HttpServiceImpl;
 struct HttpStream : Handleable {
     using Ptr = std::shared_ptr<HttpStream>;
 
-    explicit HttpStream(uint32_t id, uint32_t write_window_size, sese::net::IPAddress::Ptr addr) noexcept;
+    explicit HttpStream(uint32_t id, uint32_t write_window_size, const sese::net::IPAddress::Ptr &addr) noexcept;
 
     /// 初始化当前文件区间并迭代迭代器
     void prepareRange();
@@ -42,7 +42,6 @@ struct HttpStream : Handleable {
     sese::io::ByteBuilder temp_buffer;
 
     sese::net::http::Http2FrameInfo frame{};
-
 };
 
 struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
@@ -106,6 +105,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     /// 关闭流
     /// @param id 流 ID
     void close(uint32_t id);
+
+    virtual void checkKeepalive() = 0;
+
+    void disponse();
 
     /// 写入块函数，此函数会确保写入完指定的缓存，出现意外则直接回调
     /// @param buffers 缓存
@@ -228,6 +231,8 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
 
     void readBlock(char *buffer, size_t length,
                    const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void checkKeepalive() override;
 };
 
 struct HttpsConnectionExImpl final : HttpConnectionEx {
@@ -250,6 +255,8 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
 
     void readBlock(char *buffer, size_t length,
                    const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void checkKeepalive() override;
 };
 
 }
