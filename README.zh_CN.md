@@ -77,13 +77,13 @@ SESE_CTRL(MyController, std::mutex mutex{}; int times = 0) {
     SESE_INFO("LOADING MyController");
     SESE_URL(timers, RequestType::GET, "/times") {
         sese::Locker locker(mutex);
-        auto resp = ctx.getResp();
+        auto &resp = ctx.getResp();
         times += 1;
         auto message = "timers = '" + std::to_string(this->times) + "'\n";
         resp.getBody().write(message.data(), message.length());
     };
     SESE_URL(say, RequestType::GET, "/say?<say>") {
-        auto resp = ctx.getResp();
+        auto &resp = ctx.getResp();
         auto words = req.get("say");
         auto message = "you say '" + words + "'\n";
         resp.getBody().write(message.data(), message.length());

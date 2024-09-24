@@ -16,8 +16,7 @@ SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> m
     SESE_INFO("LOADING MyController");
     SESE_URL(set, RequestType::GET, "/set?{name}&{id}") {
         sese::Locker locker(mutex);
-        auto req = ctx.getReq();
-        auto resp = ctx.getResp();
+        auto &req = ctx.getReq();
         auto name = req.getQueryArg("name");
         auto id = req.getQueryArg("id");
         map[id] = name;
@@ -25,8 +24,8 @@ SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> m
     };
     SESE_URL(get, RequestType::GET, "/get?{id}") {
         sese::Locker locker(mutex);
-        auto req = ctx.getReq();
-        auto resp = ctx.getResp();
+        auto &req = ctx.getReq();
+        auto &resp = ctx.getResp();
         auto id = req.getQueryArg("id");
         auto iterator = map.find(id);
         std::string message;
@@ -40,15 +39,13 @@ SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> m
     };
     SESE_URL(timers, RequestType::GET, "/times") {
         sese::Locker locker(mutex);
-        auto req = ctx.getReq();
-        auto resp = ctx.getResp();
+        auto &resp = ctx.getResp();
         times += 1;
         auto message = "timers = '" + std::to_string(this->times) + "'\n";
         resp.getBody().write(message.data(), message.length());
     };
     SESE_URL(say, RequestType::GET, "/say?<say>") {
-        auto req = ctx.getReq();
-        auto resp = ctx.getResp();
+        auto &req = ctx.getReq();
         auto words = req.get("say");
         auto message = "you say '" + words + "'\n";
         ctx.getOutputStream()->write(message.data(), message.length());

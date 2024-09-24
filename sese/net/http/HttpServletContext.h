@@ -26,8 +26,8 @@ public:
         : req(req), resp(resp), remote_address(remote_address) {
     }
 
-    [[nodiscard]] auto getReq() const { return req; }
-    [[nodiscard]] auto getResp() const { return resp; }
+    [[nodiscard]] auto &getReq() const { return req; }
+    [[nodiscard]] auto &getResp() const { return resp; }
     [[nodiscard]] auto getRemoteAddress() const { return remote_address; }
     [[nodiscard]] io::InputStream *getInputStream() const { return &req.getBody(); }
     [[nodiscard]] io::OutputStream *getOutputStream() const { return &resp.getBody(); }
