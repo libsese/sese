@@ -78,6 +78,17 @@ int main(int argc, char **argv) {
         resp.set("msg", "continue");
         return true;
     });
+    server.setConnectionCallback([](const sese::net::IPAddress::Ptr &address) -> bool {
+        auto string = address->getAddress();
+        if (string == "192.168.31.230") {
+            SESE_INFO("connection from ban ip, closed");
+            // 断开连接
+            return false;
+        }
+        SESE_INFO("address %s", string.c_str());
+        // 继续处理
+        return true;
+    });
 
     server.startup();
     getchar();

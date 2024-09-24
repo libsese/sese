@@ -48,6 +48,10 @@ public:
     /// @param name 服务器名称
     void setName(const std::string &name);
 
+    /// 设置连接回调函数，函数会在连接对象被创建前调用，SSL 连接尚未握手
+    /// @param callback 连接回调函数，函数返回 true 将继续正常处理，反之则直接丢弃该连接
+    void setConnectionCallback(const HttpService::ConnectionCallback &callback);
+
     /// 启动服务
     /// @return 结果
     bool startup();
@@ -64,6 +68,7 @@ private:
     HttpService::MountPointMap mount_points;
     HttpService::ServletMap servlets;
     HttpService::FilterMap filters;
+    HttpService::ConnectionCallback connection_callback;
 };
 
 template<class CTL, class... ARGS>

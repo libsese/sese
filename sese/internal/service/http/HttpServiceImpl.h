@@ -21,7 +21,8 @@ public:
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
-        FilterMap &filters
+        FilterMap &filters,
+        ConnectionCallback &connection_callback
     );
 
     bool startup() override;

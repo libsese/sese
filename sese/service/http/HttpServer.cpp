@@ -23,13 +23,17 @@ void HttpServer::setKeepalive(uint32_t seconds) {
 
 void HttpServer::regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context) {
     auto service = internal::service::http::HttpServiceImpl::create(
-            address, std::move(context), keepalive, name, mount_points, servlets, filters
+            address, std::move(context), keepalive, name, mount_points, servlets, filters, connection_callback
     );
     this->services.push_back(service);
 }
 
 void HttpServer::setName(const std::string &name) {
     this->name = name;
+}
+
+void HttpServer::setConnectionCallback(const HttpService::ConnectionCallback &callback) {
+    this->connection_callback = callback;
 }
 
 bool HttpServer::startup() {
