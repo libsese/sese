@@ -82,6 +82,8 @@ bool sese::internal::service::http::HttpServiceImpl::startup() {
 bool sese::internal::service::http::HttpServiceImpl::shutdown() {
     error = acceptor.close(error);
     io_context.stop();
+    connections.clear();
+    connections2.clear();
     thread->join();
     return !error;
 }

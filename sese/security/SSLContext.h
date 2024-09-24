@@ -44,7 +44,7 @@ public:
     /// @return 底层 SSL_CTX 指针
     void *release() noexcept;
 
-    /// 深拷贝当前上下文，包括证书和私钥(如果存在的话)，生命周期独立
+    /// 深拷贝当前上下文，包括证书和私钥(必须存在)，生命周期独立
     /// @return SSL 上下文
     std::unique_ptr<SSLContext> copy() const noexcept;
 

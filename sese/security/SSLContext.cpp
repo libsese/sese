@@ -1,3 +1,5 @@
+#include <openssl/evp.h>
+#include <openssl/x509.h>
 #define SESE_C_LIKE_FORMAT
 
 #include <openssl/ssl.h>
@@ -63,20 +65,22 @@ std::unique_ptr<SSLContext> SSLContext::copy() const noexcept {
     auto key = SSL_CTX_get0_privatekey(origin);
     auto method = SSL_CTX_get_ssl_method(origin);
 
+    if (cert == nullptr &&
+        key == nullptr) {
+        return nullptr;
+    }
+
     auto new_ctx = SSL_CTX_new(method);
     auto new_cert = X509_dup(cert);
     auto new_key = EVP_PKEY_dup(key);
 
-    if (new_cert) {
-        SSL_CTX_use_certificate(new_ctx, new_cert);
-    }
+    SSL_CTX_use_certificate(new_ctx, new_cert);
+    X509_free(new_cert);
 
-    if (new_key) {
-        SSL_CTX_use_PrivateKey(new_ctx, new_key);
-    }
+    SSL_CTX_use_PrivateKey(new_ctx, new_key);
+    EVP_PKEY_free(new_key);
 
     auto ssl_context = MAKE_UNIQUE_PRIVATE(SSLContext);
     ssl_context->context = new_ctx;
     return std::move(ssl_context);
 }
-

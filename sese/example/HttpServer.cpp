@@ -96,6 +96,9 @@ int main(int argc, char **argv) {
         return true;
     });
     server.setConnectionCallback([](const sese::net::IPAddress::Ptr &address) -> bool {
+        if (!address) {
+            return false;
+        }
         auto string = address->getAddress();
         if (string == "192.168.31.230") {
             SESE_INFO("connection from ban ip, closed");
