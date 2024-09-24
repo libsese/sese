@@ -1,7 +1,6 @@
 #pragma once
 
-#include <sese/net/http/Request.h>
-#include <sese/net/http/Response.h>
+#include <sese/net/http/HttpServletContext.h>
 #include <sese/net/http/Range.h>
 #include <sese/io/File.h>
 
@@ -20,6 +19,7 @@ struct Handleable {
     size_t filesize = 0;
     std::vector<sese::net::http::Range> ranges;
     std::vector<sese::net::http::Range>::iterator range_iterator = ranges.begin();
+    sese::net::IPAddress::Ptr remote_address{};
     bool keepalive = false;
 };
 

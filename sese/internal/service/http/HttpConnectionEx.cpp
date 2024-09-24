@@ -10,7 +10,7 @@
 #include <sese/internal/service/http/HttpConnectionEx.h>
 #include <sese/internal/service/http/HttpServiceImpl.h>
 
-sese::internal::service::http::HttpStream::HttpStream(uint32_t id, uint32_t write_window_size) noexcept
+sese::internal::service::http::HttpStream::HttpStream(uint32_t id, uint32_t write_window_size, sese::net::IPAddress::Ptr addr) noexcept
     : Handleable(),
       id(id),
       endpoint_window_size(write_window_size),
@@ -19,6 +19,7 @@ sese::internal::service::http::HttpStream::HttpStream(uint32_t id, uint32_t writ
     using namespace sese::net::http;
     request.setVersion(HttpVersion::VERSION_2);
     response.setVersion(HttpVersion::VERSION_2);
+    remote_address = addr;
 }
 
 void sese::internal::service::http::HttpStream::prepareRange() {
@@ -335,7 +336,7 @@ void sese::internal::service::http::HttpConnectionEx::handleHeadersFrame() {
                 writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "shutdown", true);
                 return;
             }
-            stream = std::make_shared<HttpStream>(frame.ident, endpoint_init_window_size);
+            stream = std::make_shared<HttpStream>(frame.ident, endpoint_init_window_size, remote_address);
             streams[frame.ident] = stream;
             accept_stream_count += 1;
             latest_stream_ident = frame.ident;
@@ -569,7 +570,7 @@ void sese::internal::service::http::HttpConnectionEx::handlePriorityFrame() {
     HttpStream::Ptr stream;
     auto iterator = streams.find(frame.ident);
     if (iterator == streams.end()) {
-        stream = std::make_shared<HttpStream>(frame.ident, endpoint_init_window_size);
+        stream = std::make_shared<HttpStream>(frame.ident, endpoint_init_window_size, remote_address);
         streams[frame.ident] = stream;
         accept_stream_count += 1;
     } else {

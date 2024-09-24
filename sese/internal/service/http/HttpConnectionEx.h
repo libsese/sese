@@ -21,7 +21,7 @@ class HttpServiceImpl;
 struct HttpStream : Handleable {
     using Ptr = std::shared_ptr<HttpStream>;
 
-    explicit HttpStream(uint32_t id, uint32_t write_window_size) noexcept;
+    explicit HttpStream(uint32_t id, uint32_t write_window_size, sese::net::IPAddress::Ptr addr) noexcept;
 
     /// 初始化当前文件区间并迭代迭代器
     void prepareRange();
@@ -57,7 +57,7 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     bool keepalive = false;
     asio::system_timer timer;
 
-    sese::net::IPAddress::Ptr remote_address{};
+    sese::net::IPAddress::Ptr remote_address;
 
     std::weak_ptr<HttpServiceImpl> service;
 

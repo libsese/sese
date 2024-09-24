@@ -51,16 +51,18 @@ TEST(TestServlet, NoCallback) {
     auto serv = Servlet(sese::net::http::RequestType::GET, "/api/v2/login");
     sese::net::http::Request req;
     sese::net::http::Response resp;
-    serv.invoke(req, resp);
+    sese::net::http::HttpServletContext ctx(req, resp, {});
+    serv.invoke(ctx);
     EXPECT_EQ(500, resp.getCode());
 }
 
 // case: no expect type
 TEST(TestServlet, NoExpectType) {
     auto serv = Servlet(sese::net::http::RequestType::POST, "/api/v2/login");
-    serv = [](sese::net::http::Request &, sese::net::http::Response &) {};
+    serv = [](sese::net::http::HttpServletContext &) {};
     sese::net::http::Request req;
     sese::net::http::Response resp;
-    serv.invoke(req, resp);
+    sese::net::http::HttpServletContext ctx(req, resp, {});
+    serv.invoke(ctx);
     EXPECT_EQ(403, resp.getCode());
 }

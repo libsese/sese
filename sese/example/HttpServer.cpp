@@ -10,11 +10,14 @@
 using sese::net::http::Controller;
 using sese::net::http::Request;
 using sese::net::http::Response;
+using sese::net::http::HttpServletContext;
 
 SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> map{}; int times = 0) {
     SESE_INFO("LOADING MyController");
     SESE_URL(set, RequestType::GET, "/set?{name}&{id}") {
         sese::Locker locker(mutex);
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         auto name = req.getQueryArg("name");
         auto id = req.getQueryArg("id");
         map[id] = name;
@@ -22,6 +25,8 @@ SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> m
     };
     SESE_URL(get, RequestType::GET, "/get?{id}") {
         sese::Locker locker(mutex);
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         auto id = req.getQueryArg("id");
         auto iterator = map.find(id);
         std::string message;
@@ -35,14 +40,26 @@ SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> m
     };
     SESE_URL(timers, RequestType::GET, "/times") {
         sese::Locker locker(mutex);
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         times += 1;
         auto message = "timers = '" + std::to_string(this->times) + "'\n";
         resp.getBody().write(message.data(), message.length());
     };
     SESE_URL(say, RequestType::GET, "/say?<say>") {
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         auto words = req.get("say");
         auto message = "you say '" + words + "'\n";
-        resp.getBody().write(message.data(), message.length());
+        ctx.getOutputStream()->write(message.data(), message.length());
+    };
+    SESE_URL(ip, RequestType::GET, "/ip") {
+        if (!ctx.getRemoteAddress()) {
+            ctx.getResp().setCode(400);
+            return;
+        }
+        auto message = "your ip is " + ctx.getRemoteAddress()->getAddress();
+        ctx.getOutputStream()->write(message.data(), message.length());
     };
     SESE_INFO("LOADED");
 }

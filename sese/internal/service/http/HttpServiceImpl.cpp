@@ -137,7 +137,8 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
         if (iterator == servlets.end()) {
             resp.setCode(404);
         } else {
-            iterator->second.invoke(req, resp);
+            auto ctx = sese::net::http::HttpServletContext(req, resp, conn->remote_address);
+            iterator->second.invoke(ctx);
             conn->conn_type = ConnType::CONTROLLER;
         }
         resp.set("content-length", std::to_string(resp.getBody().getLength()));
@@ -254,7 +255,6 @@ void sese::internal::service::http::HttpServiceImpl::handleAccept() {
                     this->connections.emplace(conn);
                     conn->readHeader();
                     // conn->readMagic();
-                    SESE_DEBUG("address {}:{}", conn->remote_address->getAddress(), conn->remote_address->getPort());
                 }
                 this->handleAccept();
             }

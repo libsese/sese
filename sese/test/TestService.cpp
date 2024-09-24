@@ -19,14 +19,20 @@
 
 SESE_CTRL(MyController) {
     SESE_URL(get_info, RequestType::GET, "/get_info?{name}") {
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         auto name = req.getQueryArg("name");
         resp.set("name", name);
     };
     SESE_URL(get_info_2, RequestType::GET, "/get_info_2?<name>") {
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         auto name = req.get("name");
         resp.set("name", name);
     };
     SESE_URL(login, RequestType::POST, "/login") {
+        auto req = ctx.getReq();
+        auto resp = ctx.getResp();
         auto obj = sese::Json::parse(&req.getBody(), 3);
         if (!obj.isDict()) {
             resp.setCode(403);

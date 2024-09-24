@@ -8,7 +8,6 @@ sese::internal::service::http::HttpConnectionImpl::HttpConnectionImpl(
         SharedSocket socket
 )
     : HttpConnection(service, context, addr), socket(std::move(socket)) {
-    remote_address = net::convert(socket->remote_endpoint());
 }
 
 void sese::internal::service::http::HttpConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {

@@ -34,8 +34,6 @@ struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection>
     std::unique_ptr<iocp::IOBufNode> node;
     io::ByteBuilder dynamic_buffer;
 
-    sese::net::IPAddress::Ptr remote_address {};
-
     std::weak_ptr<HttpServiceImpl> service;
 
     void readHeader();

@@ -5,8 +5,8 @@ sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_
     : Handleable(), timer(context, asio::chrono::seconds{service->getKeepalive()}),
       expect_length(0),
       real_length(0),
-      remote_address(addr),
       service(service) {
+    remote_address = addr;
 }
 
 void sese::internal::service::http::HttpConnection::readHeader() {
