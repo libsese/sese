@@ -80,11 +80,17 @@ bool sese::internal::service::http::HttpServiceImpl::startup() {
 }
 
 bool sese::internal::service::http::HttpServiceImpl::shutdown() {
-    error = acceptor.close(error);
-    io_context.stop();
+    asio::post(acceptor.get_executor(), [this] {
+        error = acceptor.close(error);
+    });
+    asio::post(io_context.get_executor(), [this] {
+        io_context.stop();
+    });
+    sese::sleep(0s);
     connections.clear();
     connections2.clear();
-    thread->join();
+    // 使用 asio::post 确保线程是正常退出的，不再判断 join
+    // thread->join();
     return !error;
 }
 
@@ -244,6 +250,9 @@ void sese::internal::service::http::HttpServiceImpl::handleAccept() {
     acceptor.async_accept(
             *accept_socket,
             [this, accept_socket](const asio::error_code &e) {
+                if (!acceptor.is_open()) {
+                    return;
+                }
                 if (e.value() == 0) {
                     auto remote_address = sese::internal::net::convert(accept_socket->remote_endpoint());
                     if (connection_callback && !connection_callback(remote_address)) {
@@ -293,6 +302,9 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
     acceptor.async_accept(
             *accept_socket,
             [this, accept_socket](const asio::error_code &e) {
+                if (!acceptor.is_open()) {
+                    return;
+                }
                 if (e.value() == 0) {
                     auto remote_address = sese::internal::net::convert(accept_socket->remote_endpoint());
                     if (connection_callback && !connection_callback(remote_address)) {
@@ -345,7 +357,7 @@ void sese::internal::service::http::HttpServiceImpl::handleSSLAccept() {
                             }
                     );
                 }
-            this->handleSSLAccept();
-        }
+                this->handleSSLAccept();
+            }
     );
 }
