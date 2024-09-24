@@ -90,7 +90,7 @@ bool sese::internal::service::http::HttpServiceImpl::shutdown() {
     connections.clear();
     connections2.clear();
     // 使用 asio::post 确保线程是正常退出的，不再判断 join
-    // thread->join();
+    thread->join();
     return !error;
 }
 
