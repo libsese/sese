@@ -23,7 +23,6 @@ constexpr char STR1[]{
         "    null2: null\n"
         "    null3: Null\n"
         "    null4:\n"
-        "\n"
         "  sequence:\n"
         "    - element1\n"
         "    - element2\n"
@@ -35,6 +34,7 @@ constexpr char STR1[]{
         "    - mapping2:\n"
         "      bool1: False\n"
         "      bool2: No\n"
+        "    - mapping3: value\n"
         "sub:\n"
         "  str5: 'Hello str5'"
 };

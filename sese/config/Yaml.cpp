@@ -106,18 +106,19 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
             if (current_tokens.size() == 1) {
                 result.append(Value());
                 tokens_queue.pop();
-            } else if (current_tokens.size() == 2) {
+            }
+            else if (current_tokens.size() == 2) {
                 std::string value = current_tokens[1];
                 // auto valueObject = std::make_shared<BasicData>();
                 if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~") {
-                    ;
                     result.append(Value());
                 } else {
                     result.append(std::move(value));
                 }
                 // result->push(valueObject);
                 tokens_queue.pop();
-            } else if (current_tokens.size() == 3) {
+            }
+            else if (current_tokens.size() == 3) {
                 // 新的对象或数组
                 auto current_count_and_tokens = tokens_queue.front();
                 tokens_queue.pop();
@@ -151,6 +152,15 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                     }
                     // GCOVR_EXCL_STOP
                 }
+            }
+            else if (current_tokens.size() == 4 &&
+                     current_tokens[0] == "-" &&
+                     current_tokens[2] == ":") {
+                result.append(Value::Dict().set(current_tokens[1], std::move(current_tokens[3])));
+                tokens_queue.pop();
+            }
+            else {
+                return {};
             }
         } else if (count > current_count) {
             // 当前数组结束
