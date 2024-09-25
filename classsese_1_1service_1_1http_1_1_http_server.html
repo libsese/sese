@@ -159,6 +159,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a0568326367b5c0c66e3fa519504fc75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a123ddd679509d2134a445b3a13594799" id="r_a123ddd679509d2134a445b3a13594799"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a123ddd679509d2134a445b3a13594799">setName</a> (const std::string &amp;<a class="el" href="#a5eea43c082d0aa7ec984efadc57c856b">name</a>)</td></tr>
 <tr class="separator:a123ddd679509d2134a445b3a13594799"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fe2e50b575a9f10c93bb01c4eb6e1b" id="r_ad4fe2e50b575a9f10c93bb01c4eb6e1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4fe2e50b575a9f10c93bb01c4eb6e1b">setConnectionCallback</a> (const <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#aa54b8e86ace9797358465acf8a907473">HttpService::ConnectionCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="separator:ad4fe2e50b575a9f10c93bb01c4eb6e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3385aa87f07cea4bb2d54fb4ac3549e" id="r_ab3385aa87f07cea4bb2d54fb4ac3549e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3385aa87f07cea4bb2d54fb4ac3549e">startup</a> ()</td></tr>
 <tr class="separator:ab3385aa87f07cea4bb2d54fb4ac3549e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467d91e57266a9140b68768944a0f0e1" id="r_a467d91e57266a9140b68768944a0f0e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a467d91e57266a9140b68768944a0f0e1">shutdown</a> ()</td></tr>
@@ -180,6 +182,8 @@ Private 属性</h2></td></tr>
 <tr class="separator:a0e8fb2cb3dd9efa838fae045dfe72e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d037cce32ddfc0f75503cdcf5c78126" id="r_a9d037cce32ddfc0f75503cdcf5c78126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#afca78509f290f25de38b486463c32818">HttpService::FilterMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d037cce32ddfc0f75503cdcf5c78126">filters</a></td></tr>
 <tr class="separator:a9d037cce32ddfc0f75503cdcf5c78126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a189fd5b1b91cc8a6200a676264507c9d" id="r_a189fd5b1b91cc8a6200a676264507c9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#aa54b8e86ace9797358465acf8a907473">HttpService::ConnectionCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a189fd5b1b91cc8a6200a676264507c9d">connection_callback</a></td></tr>
+<tr class="separator:a189fd5b1b91cc8a6200a676264507c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Http 服务器 </p><dl class="section note"><dt>注解</dt><dd>调用优先级 Filter &gt; Mount Point(Filter) &gt; Controller = Servlet，互相独立不可转换 </dd></dl>
@@ -304,7 +308,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#a2c8304a3d97d008554070fa916ca1b8b">sese::service::http::HttpService::create()</a>, <a class="el" href="#a9d037cce32ddfc0f75503cdcf5c78126">filters</a>, <a class="el" href="#a497fd197cf01751aefe1573a5910e16a">keepalive</a>, <a class="el" href="#a1932fcb31106245be29525cf91303214">mount_points</a>, <a class="el" href="#a5eea43c082d0aa7ec984efadc57c856b">name</a>, <a class="el" href="#abf6506b171895896889aa9a52ee084fe">services</a> , 以及 <a class="el" href="#a0e8fb2cb3dd9efa838fae045dfe72e58">servlets</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a189fd5b1b91cc8a6200a676264507c9d">connection_callback</a>, <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#a79c1049a29466f4c93f3d7bb6094a3b6">sese::service::http::HttpService::create()</a>, <a class="el" href="#a9d037cce32ddfc0f75503cdcf5c78126">filters</a>, <a class="el" href="#a497fd197cf01751aefe1573a5910e16a">keepalive</a>, <a class="el" href="#a1932fcb31106245be29525cf91303214">mount_points</a>, <a class="el" href="#a5eea43c082d0aa7ec984efadc57c856b">name</a>, <a class="el" href="#abf6506b171895896889aa9a52ee084fe">services</a> , 以及 <a class="el" href="#a0e8fb2cb3dd9efa838fae045dfe72e58">servlets</a>.</p>
 
 </div>
 </div>
@@ -330,6 +334,31 @@ template&lt;class CTL , class... ARGS&gt; </div>
 </dl>
 
 <p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#a07dcaf96e592a346b74a581a87b4ce5b">sese::net::http::Servlet::getUri()</a> , 以及 <a class="el" href="#a0e8fb2cb3dd9efa838fae045dfe72e58">servlets</a>.</p>
+
+</div>
+</div>
+<a id="ad4fe2e50b575a9f10c93bb01c4eb6e1b" name="ad4fe2e50b575a9f10c93bb01c4eb6e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fe2e50b575a9f10c93bb01c4eb6e1b">&#9670;&#160;</a></span>setConnectionCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HttpServer::setConnectionCallback </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#aa54b8e86ace9797358465acf8a907473">HttpService::ConnectionCallback</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>设置连接回调函数，函数会在连接对象被创建前调用，SSL 连接尚未握手 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>连接回调函数，函数返回 true 将继续正常处理，反之则直接丢弃该连接 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a> , 以及 <a class="el" href="#a189fd5b1b91cc8a6200a676264507c9d">connection_callback</a>.</p>
 
 </div>
 </div>
@@ -424,6 +453,30 @@ template&lt;class CTL , class... ARGS&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
+<a id="a189fd5b1b91cc8a6200a676264507c9d" name="a189fd5b1b91cc8a6200a676264507c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a189fd5b1b91cc8a6200a676264507c9d">&#9670;&#160;</a></span>connection_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#aa54b8e86ace9797358465acf8a907473">HttpService::ConnectionCallback</a> sese::service::http::HttpServer::connection_callback</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a0568326367b5c0c66e3fa519504fc75c">regService()</a> , 以及 <a class="el" href="#ad4fe2e50b575a9f10c93bb01c4eb6e1b">setConnectionCallback()</a>.</p>
+
+</div>
+</div>
 <a id="a130d097a6006ef18b1aac9b899683fd8" name="a130d097a6006ef18b1aac9b899683fd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a130d097a6006ef18b1aac9b899683fd8">&#9670;&#160;</a></span>controllers</h2>
 
@@ -602,7 +655,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1http_1_1_http_server.html">HttpServer</a></li>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:32 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:44 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

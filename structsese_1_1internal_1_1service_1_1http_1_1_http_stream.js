@@ -1,7 +1,7 @@
 var structsese_1_1internal_1_1service_1_1http_1_1_http_stream =
 [
     [ "Ptr", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a0f74c1a346c5cf8833f295f5993371e4", null ],
-    [ "HttpStream", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#aa0650c365f2cd02b60dc3ae082da54fb", null ],
+    [ "HttpStream", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#ac5cbfc5f16f0d9e3c7e5bcb686f90aaf", null ],
     [ "prepareRange", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#ac6da7f62641f5f5f673a93ba375a887e", null ],
     [ "continue_type", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a9a368faeafc738b0454300fa4cba307e", null ],
     [ "do_response", "structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a2c59a3849cd47edecb40065d2e18647b", null ],

@@ -1,9 +1,11 @@
 var structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex =
 [
     [ "Ptr", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#abd8bc93a521d24c584d6cfbd42103593", null ],
-    [ "HttpConnectionEx", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a47b8b4e5531b0b3119c9b621f5c1c944", null ],
+    [ "HttpConnectionEx", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a9e0e33c36a73577939bcd0492e397c40", null ],
     [ "~HttpConnectionEx", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a15f1dabb869069a832c3f305b36dd2ce", null ],
+    [ "checkKeepalive", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ad5f3816313392bedb1623af85ecf721e", null ],
     [ "close", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a7345fb46adbe094e86282adc3e05d690", null ],
+    [ "disponse", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a5328f500b3775e0923f56220bd0b5647", null ],
     [ "getPtr", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a7fbe5027ca7d9c04ccf9d894e3918422", null ],
     [ "handleDataFrame", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a96c64166b890ac991cfad7ba7187d687", null ],
     [ "handleFrameHeader", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ae5eb9fd92a2983a517687c05c94dc97d", null ],
@@ -30,12 +32,14 @@ var structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex =
     [ "writeRstStreamFrame", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ad848305d3e8263da03fddc8937bdb5e5", null ],
     [ "writeSettingsFrame", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a49960436727805746d472dd32b18d32d", null ],
     [ "writeSubheaderAndData", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a59e5af45f4a9a4bd644aa49cf2d78b2a", null ],
+    [ "writeWindowUpdateFrame", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a3ad2bed6415199b992ce4fc553f5df14", null ],
     [ "accept_stream_count", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ac80d065bac9c09597feb2c948682aebe", null ],
     [ "asio_buffers", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acd8ed99a3b04a27de7fa5a928a81652a", null ],
     [ "closed_streams", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a7b34a53cb93688de4d444c4d592c3a92", null ],
     [ "enable_push", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a9cf2bb091d224e8cc468d05314525c2f", null ],
     [ "endpoint_init_window_size", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ac2a84c69c976212092fa5ed9458aeb13", null ],
     [ "endpoint_max_frame_size", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a3cc3529afe9a5399bb13abdf2560a56c", null ],
+    [ "endpoint_window_size", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a773c88c39a8f7580eabc0d71ad9cd360", null ],
     [ "expect_ack", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a46b49b4a3bce9897379c802fd8590c77", null ],
     [ "frame", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acc73c9bf42ab14a596eaf255a92e2b47", null ],
     [ "HEADER_TABLE_SIZE", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a92cac1a626147e48f0e36eb0ee21e134", null ],
@@ -51,11 +55,13 @@ var structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex =
     [ "max_frame_size", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a444f20bf98e2ea4de0f430d147848cb4", null ],
     [ "max_header_list_size", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acb67368a627fe09d7e851aac87bddb03", null ],
     [ "pre_vector", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a72cf5ace072af32e77c1d2f5c0ef9a05", null ],
+    [ "remote_address", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#aefbf28b4798ba457081f97de5678de18", null ],
     [ "req_dynamic_table", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a2ff9fc58b7e84c1b7194b1fa5eca131b", null ],
     [ "resp_dynamic_table", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ab4d1095bfaa6c5fa5cb1f9552fae5c6c", null ],
     [ "service", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a033ea662554dc84c475a56ba8a40f779", null ],
     [ "streams", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a7f219007c7af09976af67b835ecf9d79", null ],
     [ "temp_buffer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ad7578012e33fd8bb2b3e46cfcde0a117", null ],
     [ "timer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ae82ddffe9d6fac2e3509bb171b8d64fb", null ],
-    [ "vector", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a28302972c71ed6ca5826c6b47b8146ec", null ]
+    [ "vector", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a28302972c71ed6ca5826c6b47b8146ec", null ],
+    [ "window_size", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#af4e92985cff82f81c0ed4212b84a3781", null ]
 ];

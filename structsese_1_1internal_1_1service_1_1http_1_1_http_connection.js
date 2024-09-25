@@ -1,7 +1,7 @@
 var structsese_1_1internal_1_1service_1_1http_1_1_http_connection =
 [
     [ "Ptr", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a9831950c8f1e60a9b8ab14fee6c36dca", null ],
-    [ "HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a290ecdd018e820a0f6ddc7dcd1a1985b", null ],
+    [ "HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a6e00172f4f7804dade1cac4585560dc1", null ],
     [ "~HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a7f274adb0757bbbcbe8c489555e10f86", null ],
     [ "asyncReadSome", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a8d262d096f69394c5b3582aca78f27cc", null ],
     [ "checkKeepalive", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a24b95a564dafc6fb86281737a91819cb", null ],
@@ -16,11 +16,11 @@ var structsese_1_1internal_1_1service_1_1http_1_1_http_connection =
     [ "writeHeader", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a69b68119e2faebfc84118e91d9af1a80", null ],
     [ "writeRanges", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#aff0ad43ea371ddbf28d22fc8e0ef75ad", null ],
     [ "writeSingleRange", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a845969ee2d125ac91eb774bab3f9de57", null ],
-    [ "dynamic_buffer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a028aa02394a8f74e7fdc4ec81d78aeb6", null ],
+    [ "dynamic_buffer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a698dd18b2d153756ea5dfde764c6ca39", null ],
     [ "expect_length", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a35e0c341513e7678b09e85fee13119f3", null ],
-    [ "io_buffer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a5339d336a63521599faca2474f144fe8", null ],
+    [ "io_buffer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a9aa995edb87bc0576af12599eed3a678", null ],
     [ "is0x0a", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a003f1d8732de616c3fe079b45571e8d7", null ],
-    [ "node", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#aa3d5ebbe124f42f70b95213f0f409801", null ],
+    [ "node", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#af5143182141605389fdb00611176d668", null ],
     [ "real_length", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a6c122ad881ecf60764a492492e58d178", null ],
     [ "send_buffer", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#af10f6ca6d3e8f10929b67490348d27f9", null ],
     [ "service", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a371853844b11a76c994c9e244ee7d30d", null ],

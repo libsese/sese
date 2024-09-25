@@ -168,23 +168,27 @@ Public 类型</h2></td></tr>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:ac98c340f438c5be9c9f7dfe6c4d356fb" id="r_ac98c340f438c5be9c9f7dfe6c4d356fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a36b926d4f7dceb9c855b83ce32cbf57e">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac98c340f438c5be9c9f7dfe6c4d356fb">getPtr</a> ()</td></tr>
 <tr class="separator:ac98c340f438c5be9c9f7dfe6c4d356fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a714184c9d7161c4744cdd333b75502d5" id="r_a714184c9d7161c4744cdd333b75502d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a714184c9d7161c4744cdd333b75502d5">HttpConnectionExImpl</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a033ea662554dc84c475a56ba8a40f779">service</a>, asio::io_context &amp;context, <a class="el" href="#a901c67af665a50345f12d8acc04e8f68">SharedSocket</a> <a class="el" href="#a76f9e28ec50afebff30486c897313880">socket</a>)</td></tr>
-<tr class="separator:a714184c9d7161c4744cdd333b75502d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfd3b6ee48eb5d79db17c0ba4194c0e" id="r_aedfd3b6ee48eb5d79db17c0ba4194c0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedfd3b6ee48eb5d79db17c0ba4194c0e">HttpConnectionExImpl</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a033ea662554dc84c475a56ba8a40f779">service</a>, asio::io_context &amp;context, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr, <a class="el" href="#a901c67af665a50345f12d8acc04e8f68">SharedSocket</a> <a class="el" href="#a76f9e28ec50afebff30486c897313880">socket</a>)</td></tr>
+<tr class="separator:aedfd3b6ee48eb5d79db17c0ba4194c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d35d0dc18560694a8c16518c35425d4" id="r_a6d35d0dc18560694a8c16518c35425d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d35d0dc18560694a8c16518c35425d4">writeBlocks</a> (const std::vector&lt; asio::const_buffer &gt; &amp;buffers, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>) override</td></tr>
 <tr class="separator:a6d35d0dc18560694a8c16518c35425d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec062b294e6e2c6aae859a1c6ec461e6" id="r_aec062b294e6e2c6aae859a1c6ec461e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec062b294e6e2c6aae859a1c6ec461e6">writeBlock</a> (const void *buffer, size_t size, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>) override</td></tr>
 <tr class="separator:aec062b294e6e2c6aae859a1c6ec461e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84de3dc3d100cf4bd3b614f9c1b4a6f0" id="r_a84de3dc3d100cf4bd3b614f9c1b4a6f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84de3dc3d100cf4bd3b614f9c1b4a6f0">readBlock</a> (char *buffer, size_t length, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>) override</td></tr>
 <tr class="separator:a84de3dc3d100cf4bd3b614f9c1b4a6f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1e434e0abaecffe895ecdece0b0ca8" id="r_a5d1e434e0abaecffe895ecdece0b0ca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d1e434e0abaecffe895ecdece0b0ca8">checkKeepalive</a> () override</td></tr>
+<tr class="separator:a5d1e434e0abaecffe895ecdece0b0ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html">sese::internal::service::http::HttpConnectionEx</a></td></tr>
 <tr class="memitem:a7fbe5027ca7d9c04ccf9d894e3918422 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a7fbe5027ca7d9c04ccf9d894e3918422"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#abd8bc93a521d24c584d6cfbd42103593">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a7fbe5027ca7d9c04ccf9d894e3918422">getPtr</a> ()</td></tr>
 <tr class="separator:a7fbe5027ca7d9c04ccf9d894e3918422 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47b8b4e5531b0b3119c9b621f5c1c944 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a47b8b4e5531b0b3119c9b621f5c1c944"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a47b8b4e5531b0b3119c9b621f5c1c944">HttpConnectionEx</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a033ea662554dc84c475a56ba8a40f779">service</a>, asio::io_context &amp;io_context)</td></tr>
-<tr class="separator:a47b8b4e5531b0b3119c9b621f5c1c944 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e0e33c36a73577939bcd0492e397c40 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a9e0e33c36a73577939bcd0492e397c40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a9e0e33c36a73577939bcd0492e397c40">HttpConnectionEx</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a033ea662554dc84c475a56ba8a40f779">service</a>, asio::io_context &amp;io_context, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr)</td></tr>
+<tr class="separator:a9e0e33c36a73577939bcd0492e397c40 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15f1dabb869069a832c3f305b36dd2ce inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a15f1dabb869069a832c3f305b36dd2ce"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a15f1dabb869069a832c3f305b36dd2ce">~HttpConnectionEx</a> ()=default</td></tr>
 <tr class="separator:a15f1dabb869069a832c3f305b36dd2ce inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7345fb46adbe094e86282adc3e05d690 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a7345fb46adbe094e86282adc3e05d690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a7345fb46adbe094e86282adc3e05d690">close</a> (uint32_t id)</td></tr>
 <tr class="separator:a7345fb46adbe094e86282adc3e05d690 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5328f500b3775e0923f56220bd0b5647 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a5328f500b3775e0923f56220bd0b5647"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a5328f500b3775e0923f56220bd0b5647">disponse</a> ()</td></tr>
+<tr class="separator:a5328f500b3775e0923f56220bd0b5647 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22c84af50da0be843cd58ffa3e9649af inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a22c84af50da0be843cd58ffa3e9649af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a22c84af50da0be843cd58ffa3e9649af">readMagic</a> ()</td></tr>
 <tr class="separator:a22c84af50da0be843cd58ffa3e9649af inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a187692a9935e6666492b79e15c267f7c inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a187692a9935e6666492b79e15c267f7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a187692a9935e6666492b79e15c267f7c">readFrameHeader</a> ()</td></tr>
@@ -219,6 +223,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a9beaff675bd6217e88c3be825e43f1a3 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad848305d3e8263da03fddc8937bdb5e5 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_ad848305d3e8263da03fddc8937bdb5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ad848305d3e8263da03fddc8937bdb5e5">writeRstStreamFrame</a> (uint32_t stream_id, uint8_t flags, uint32_t error_code, bool once=false)</td></tr>
 <tr class="separator:ad848305d3e8263da03fddc8937bdb5e5 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad2bed6415199b992ce4fc553f5df14 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a3ad2bed6415199b992ce4fc553f5df14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a3ad2bed6415199b992ce4fc553f5df14">writeWindowUpdateFrame</a> (uint32_t stream_id, uint8_t flags, uint32_t <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#af4e92985cff82f81c0ed4212b84a3781">window_size</a>)</td></tr>
+<tr class="separator:a3ad2bed6415199b992ce4fc553f5df14 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb5f64c680b8a5f87764bfaa562ab24c inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_acb5f64c680b8a5f87764bfaa562ab24c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acb5f64c680b8a5f87764bfaa562ab24c">writeHeadersFrame</a> (const <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a0f74c1a346c5cf8833f295f5993371e4">HttpStream::Ptr</a> &amp;stream, bool verify_end_stream=true)</td></tr>
 <tr class="separator:acb5f64c680b8a5f87764bfaa562ab24c inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43add1c9097e454ca9eeee7cb87c7168 inherit pub_methods_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a43add1c9097e454ca9eeee7cb87c7168"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a43add1c9097e454ca9eeee7cb87c7168">writeDataFrame4Body</a> (const <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a0f74c1a346c5cf8833f295f5993371e4">HttpStream::Ptr</a> &amp;stream)</td></tr>
@@ -239,6 +245,8 @@ Public 属性</h2></td></tr>
 <tr class="separator:a79d394609f621cac5d01f28dd31d4b1f inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae82ddffe9d6fac2e3509bb171b8d64fb inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_ae82ddffe9d6fac2e3509bb171b8d64fb"><td class="memItemLeft" align="right" valign="top">asio::system_timer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ae82ddffe9d6fac2e3509bb171b8d64fb">timer</a></td></tr>
 <tr class="separator:ae82ddffe9d6fac2e3509bb171b8d64fb inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbf28b4798ba457081f97de5678de18 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_aefbf28b4798ba457081f97de5678de18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#aefbf28b4798ba457081f97de5678de18">remote_address</a></td></tr>
+<tr class="separator:aefbf28b4798ba457081f97de5678de18 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a033ea662554dc84c475a56ba8a40f779 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a033ea662554dc84c475a56ba8a40f779"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a033ea662554dc84c475a56ba8a40f779">service</a></td></tr>
 <tr class="separator:a033ea662554dc84c475a56ba8a40f779 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaaa718776b1f525e56309b5cb94cefc inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_acaaa718776b1f525e56309b5cb94cefc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acaaa718776b1f525e56309b5cb94cefc">is_read</a> = false</td></tr>
@@ -263,6 +271,10 @@ Public 属性</h2></td></tr>
 <tr class="separator:aefd16486d225a0d1aa4a4f505a26568f inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2a84c69c976212092fa5ed9458aeb13 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_ac2a84c69c976212092fa5ed9458aeb13"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ac2a84c69c976212092fa5ed9458aeb13">endpoint_init_window_size</a> = 65535</td></tr>
 <tr class="separator:ac2a84c69c976212092fa5ed9458aeb13 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773c88c39a8f7580eabc0d71ad9cd360 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a773c88c39a8f7580eabc0d71ad9cd360"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a773c88c39a8f7580eabc0d71ad9cd360">endpoint_window_size</a> = 65535</td></tr>
+<tr class="separator:a773c88c39a8f7580eabc0d71ad9cd360 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4e92985cff82f81c0ed4212b84a3781 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_af4e92985cff82f81c0ed4212b84a3781"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#af4e92985cff82f81c0ed4212b84a3781">window_size</a> = 65535</td></tr>
+<tr class="separator:af4e92985cff82f81c0ed4212b84a3781 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cc3529afe9a5399bb13abdf2560a56c inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a3cc3529afe9a5399bb13abdf2560a56c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a3cc3529afe9a5399bb13abdf2560a56c">endpoint_max_frame_size</a> = 16384</td></tr>
 <tr class="separator:a3cc3529afe9a5399bb13abdf2560a56c inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444f20bf98e2ea4de0f430d147848cb4 inherit pub_attribs_structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex" id="r_a444f20bf98e2ea4de0f430d147848cb4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a444f20bf98e2ea4de0f430d147848cb4">max_frame_size</a> = 16384</td></tr>
@@ -341,8 +353,8 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a714184c9d7161c4744cdd333b75502d5" name="a714184c9d7161c4744cdd333b75502d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a714184c9d7161c4744cdd333b75502d5">&#9670;&#160;</a></span>HttpConnectionExImpl()</h2>
+<a id="aedfd3b6ee48eb5d79db17c0ba4194c0e" name="aedfd3b6ee48eb5d79db17c0ba4194c0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedfd3b6ee48eb5d79db17c0ba4194c0e">&#9670;&#160;</a></span>HttpConnectionExImpl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,6 +372,11 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="#a901c67af665a50345f12d8acc04e8f68">SharedSocket</a></td>          <td class="paramname"><span class="paramname"><em>socket</em></span>&#160;)</td>
         </tr>
       </table>
@@ -368,6 +385,33 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a5d1e434e0abaecffe895ecdece0b0ca8" name="a5d1e434e0abaecffe895ecdece0b0ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d1e434e0abaecffe895ecdece0b0ca8">&#9670;&#160;</a></span>checkKeepalive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::internal::service::http::HttpConnectionExImpl::checkKeepalive </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ad5f3816313392bedb1623af85ecf721e">sese::internal::service::http::HttpConnectionEx</a>.</p>
+
+</div>
+</div>
 <a id="ac98c340f438c5be9c9f7dfe6c4d356fb" name="ac98c340f438c5be9c9f7dfe6c4d356fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac98c340f438c5be9c9f7dfe6c4d356fb">&#9670;&#160;</a></span>getPtr()</h2>
 
@@ -550,7 +594,7 @@ Public 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex_impl.html">HttpConnectionExImpl</a></li>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:31 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:43 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

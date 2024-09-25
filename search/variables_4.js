@@ -19,5 +19,5 @@ var searchData=
   ['dns_5fpackage_5fsize_16',['DNS_PACKAGE_SIZE',['../_config_8h.html#adef322795de1e9ca964d542350bb1167',1,'Config.h']]],
   ['do_5fresponse_17',['do_response',['../structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a2c59a3849cd47edecb40065d2e18647b',1,'sese::internal::service::http::HttpStream']]],
   ['domain_18',['domain',['../classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e',1,'sese::net::http::Cookie']]],
-  ['dynamic_5fbuffer_19',['dynamic_buffer',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a028aa02394a8f74e7fdc4ec81d78aeb6',1,'sese::internal::service::http::HttpConnection']]]
+  ['dynamic_5fbuffer_19',['dynamic_buffer',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a698dd18b2d153756ea5dfde764c6ca39',1,'sese::internal::service::http::HttpConnection']]]
 ];

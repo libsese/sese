@@ -142,8 +142,7 @@ $(function(){initNavTree('_controller_8h.html',''); initResizable(true); });
 
 <p>控制器  
 <a href="#details">更多...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="_request_8h_source.html">sese/net/http/Request.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_response_8h_source.html">sese/net/http/Response.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="_http_servlet_context_8h_source.html">sese/net/http/HttpServletContext.h</a>&gt;</code><br />
 <code>#include &lt;set&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
@@ -202,10 +201,7 @@ $(function(){initNavTree('_controller_8h.html',''); initResizable(true); });
 </div><div class="memdoc">
 <b>值:</b><div class="fragment"><div class="line">    <span class="keyword">class </span>name final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_controller.html" title="HTTP 控制器">sese::net::http::Controller</a> { \</div>
 <div class="line">    <span class="keyword">public</span>:                                                 \</div>
-<div class="line">        <span class="keyword">using </span>Request = <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_request.html" title="HTTP 请求类">sese::net::http::Request</a>;           \</div>
 <div class="line">        <span class="keyword">using </span>RequestType = <a class="code hl_enumeration" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325" title="请求类型">sese::net::http::RequestType</a>;   \</div>
-<div class="line">        <span class="keyword">using </span>Response = <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_response.html" title="HTTP 响应类">sese::net::http::Response</a>;         \</div>
-<div class="line">        <span class="keyword">using </span>Servlet = <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_servlet.html" title="HTTP 应用">sese::net::http::Servlet</a>;           \</div>
 <div class="line">        name() : Controller() {                             \</div>
 <div class="line">        }                                                   \</div>
 <div class="line">        <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_controller.html#ab0438e43d281fc66d8cf81aa7cdd050e">init</a>() <span class="keyword">override</span>;                               \</div>
@@ -247,9 +243,9 @@ $(function(){initNavTree('_controller_8h.html',''); initResizable(true); });
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    this-&gt;servlets.emplace_back(method, url);      \</div>
-<div class="line">    Servlet &amp;name = servlets[servlets.size() - 1]; \</div>
-<div class="line">    name = [<span class="keyword">this</span>](Request &amp; req, Response &amp; resp)</div>
+<b>值:</b><div class="fragment"><div class="line">    this-&gt;servlets.emplace_back(method, url);                       \</div>
+<div class="line">    <a class="code hl_class" href="classsese_1_1net_1_1http_1_1_servlet.html" title="HTTP 应用">sese::net::http::Servlet</a> &amp;name = servlets[servlets.size() - 1]; \</div>
+<div class="line">    name = [<span class="keyword">this</span>](<a class="code hl_class" href="classsese_1_1net_1_1http_1_1_http_servlet_context.html">sese::net::http::HttpServletContext</a> &amp;ctx)</div>
 </div><!-- fragment --><p>注册一个 URL 路径 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>内部名称 </td></tr>
@@ -268,7 +264,7 @@ $(function(){initNavTree('_controller_8h.html',''); initResizable(true); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_fc5eb64f8b6490c66e0bc105dbd81c03.html">http</a></li><li class="navelem"><a class="el" href="_controller_8h.html">Controller.h</a></li>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:31 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:43 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

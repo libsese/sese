@@ -21,10 +21,11 @@ var searchData=
   ['httpserver_18',['HttpServer',['../classsese_1_1service_1_1http_1_1_http_server.html',1,'sese::service::http']]],
   ['httpservice_19',['HttpService',['../classsese_1_1service_1_1http_1_1_http_service.html',1,'sese::service::http']]],
   ['httpserviceimpl_20',['HttpServiceImpl',['../classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html',1,'sese::internal::service::http']]],
-  ['httpsslclientimpl_21',['HttpSSLClientImpl',['../classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html',1,'sese::internal::net::http']]],
-  ['httpstream_22',['HttpStream',['../structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html',1,'sese::internal::service::http']]],
-  ['httputil_23',['HttpUtil',['../classsese_1_1net_1_1http_1_1_http_util.html',1,'sese::net::http']]],
-  ['huffman_5fencoder_5ft_24',['huffman_encoder_t',['../classsese_1_1net_1_1http_1_1huffman__encoder__t.html',1,'sese::net::http']]],
-  ['huffman_5fnode_5ft_25',['huffman_node_t',['../classsese_1_1net_1_1http_1_1huffman__node__t.html',1,'sese::net::http']]],
-  ['huffman_5ftree_5ft_26',['huffman_tree_t',['../classsese_1_1net_1_1http_1_1huffman__tree__t.html',1,'sese::net::http']]]
+  ['httpservletcontext_21',['HttpServletContext',['../classsese_1_1net_1_1http_1_1_http_servlet_context.html',1,'sese::net::http']]],
+  ['httpsslclientimpl_22',['HttpSSLClientImpl',['../classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html',1,'sese::internal::net::http']]],
+  ['httpstream_23',['HttpStream',['../structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html',1,'sese::internal::service::http']]],
+  ['httputil_24',['HttpUtil',['../classsese_1_1net_1_1http_1_1_http_util.html',1,'sese::net::http']]],
+  ['huffman_5fencoder_5ft_25',['huffman_encoder_t',['../classsese_1_1net_1_1http_1_1huffman__encoder__t.html',1,'sese::net::http']]],
+  ['huffman_5fnode_5ft_26',['huffman_node_t',['../classsese_1_1net_1_1http_1_1huffman__node__t.html',1,'sese::net::http']]],
+  ['huffman_5ftree_5ft_27',['huffman_tree_t',['../classsese_1_1net_1_1http_1_1huffman__tree__t.html',1,'sese::net::http']]]
 ];

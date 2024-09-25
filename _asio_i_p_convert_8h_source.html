@@ -149,41 +149,59 @@ $(function(){initNavTree('_asio_i_p_convert_8h_source.html',''); initResizable(t
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span> (addr-&gt;getRawAddress()-&gt;sa_family == AF_INET) {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keyword">const</span> <span class="keyword">auto</span> ipv4 = <span class="keyword">reinterpret_cast&lt;</span>sockaddr_in *<span class="keyword">&gt;</span>(addr-&gt;getRawAddress());</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">return</span> asio::ip::make_address_v4(htonl(ipv4-&gt;sin_addr.s_addr));</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">const</span> <span class="keyword">auto</span> ipv6 = <span class="keyword">reinterpret_cast&lt;</span>sockaddr_in6 *<span class="keyword">&gt;</span>(addr-&gt;getRawAddress());</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">const</span> std::array&lt;unsigned char, 16&gt; bytes = {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>                ipv6-&gt;sin6_addr.s6_addr[0],</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                ipv6-&gt;sin6_addr.s6_addr[1],</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                ipv6-&gt;sin6_addr.s6_addr[2],</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                ipv6-&gt;sin6_addr.s6_addr[3],</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                ipv6-&gt;sin6_addr.s6_addr[4],</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                ipv6-&gt;sin6_addr.s6_addr[5],</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                ipv6-&gt;sin6_addr.s6_addr[6],</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                ipv6-&gt;sin6_addr.s6_addr[7],</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                ipv6-&gt;sin6_addr.s6_addr[8],</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                ipv6-&gt;sin6_addr.s6_addr[9],</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                ipv6-&gt;sin6_addr.s6_addr[10],</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                ipv6-&gt;sin6_addr.s6_addr[11],</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                ipv6-&gt;sin6_addr.s6_addr[12],</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                ipv6-&gt;sin6_addr.s6_addr[13],</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                ipv6-&gt;sin6_addr.s6_addr[14],</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                ipv6-&gt;sin6_addr.s6_addr[15]</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        };</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> asio::ip::make_address_v6(bytes, ipv6-&gt;sin6_scope_id);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">const</span> <span class="keyword">auto</span> ipv6 = <span class="keyword">reinterpret_cast&lt;</span>sockaddr_in6 *<span class="keyword">&gt;</span>(addr-&gt;getRawAddress());</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">const</span> std::array&lt;unsigned char, 16&gt; bytes = {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            ipv6-&gt;sin6_addr.s6_addr[0],</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            ipv6-&gt;sin6_addr.s6_addr[1],</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            ipv6-&gt;sin6_addr.s6_addr[2],</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            ipv6-&gt;sin6_addr.s6_addr[3],</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            ipv6-&gt;sin6_addr.s6_addr[4],</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            ipv6-&gt;sin6_addr.s6_addr[5],</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            ipv6-&gt;sin6_addr.s6_addr[6],</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            ipv6-&gt;sin6_addr.s6_addr[7],</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            ipv6-&gt;sin6_addr.s6_addr[8],</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            ipv6-&gt;sin6_addr.s6_addr[9],</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            ipv6-&gt;sin6_addr.s6_addr[10],</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            ipv6-&gt;sin6_addr.s6_addr[11],</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            ipv6-&gt;sin6_addr.s6_addr[12],</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            ipv6-&gt;sin6_addr.s6_addr[13],</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            ipv6-&gt;sin6_addr.s6_addr[14],</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            ipv6-&gt;sin6_addr.s6_addr[15]</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> asio::ip::make_address_v6(bytes, ipv6-&gt;sin6_scope_id);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace sese::internal::net</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespacesese_1_1internal_1_1net.html#a8f9a6bd4ddaae5965adc554c9b471359">   36</a></span><span class="keyword">inline</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> <a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>(<span class="keyword">const</span> asio::ip::tcp::endpoint &amp;endpoint) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span>(endpoint.protocol() == asio::ip::tcp::v4()) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        sockaddr_in sockaddr{};</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        sockaddr.sin_family = AF_INET;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        sockaddr.sin_port = htons(endpoint.port());</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        sockaddr.sin_addr.s_addr = htonl(endpoint.address().to_v4().to_uint());</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv4Address&gt; (sockaddr);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    sockaddr_in6 sockaddr{};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    sockaddr.sin6_family = AF_INET6;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    sockaddr.sin6_port = htons(endpoint.port());</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">auto</span> bytes = endpoint.address().to_v6().to_bytes();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    memcpy(&amp;sockaddr.sin6_addr, bytes.data(), bytes.size());</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv6Address&gt;(sockaddr);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>} <span class="comment">// namespace sese::internal::net</span></div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_7d3fb913f6b3b461897efa8818b452ce.html">internal</a></li><li class="navelem"><a class="el" href="dir_3491aff7cba398ff0383695f9587d3f2.html">net</a></li><li class="navelem"><a class="el" href="_asio_i_p_convert_8h.html">AsioIPConvert.h</a></li>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:30 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:42 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

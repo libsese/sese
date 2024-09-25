@@ -147,6 +147,7 @@ var annotated_dup =
           [ "Http2Frame", "structsese_1_1net_1_1http_1_1_http2_frame.html", "structsese_1_1net_1_1http_1_1_http2_frame" ],
           [ "Http2FrameInfo", "structsese_1_1net_1_1http_1_1_http2_frame_info.html", "structsese_1_1net_1_1http_1_1_http2_frame_info" ],
           [ "HttpConverter", "classsese_1_1net_1_1http_1_1_http_converter.html", "classsese_1_1net_1_1http_1_1_http_converter" ],
+          [ "HttpServletContext", "classsese_1_1net_1_1http_1_1_http_servlet_context.html", "classsese_1_1net_1_1http_1_1_http_servlet_context" ],
           [ "HttpUtil", "classsese_1_1net_1_1http_1_1_http_util.html", "classsese_1_1net_1_1http_1_1_http_util" ],
           [ "huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", "classsese_1_1net_1_1http_1_1huffman__encoder__t" ],
           [ "huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", "classsese_1_1net_1_1http_1_1huffman__node__t" ],

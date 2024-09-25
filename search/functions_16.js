@@ -33,5 +33,6 @@ var searchData=
   ['writesubheaderanddata_30',['writeSubheaderAndData',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a59e5af45f4a9a4bd644aa49cf2d78b2a',1,'sese::internal::service::http::HttpConnectionEx']]],
   ['writeuint16_31',['writeUint16',['../classsese_1_1net_1_1_socket.html#affadc0d6aebc8dee63db9fbb06373093',1,'sese::net::Socket']]],
   ['writeuint32_32',['writeUint32',['../classsese_1_1net_1_1_socket.html#ade9d450d914e834bf725182461fb3671',1,'sese::net::Socket']]],
-  ['writeuint64_33',['writeUint64',['../classsese_1_1net_1_1_socket.html#a72f97055925ffab833b79c940934704b',1,'sese::net::Socket']]]
+  ['writeuint64_33',['writeUint64',['../classsese_1_1net_1_1_socket.html#a72f97055925ffab833b79c940934704b',1,'sese::net::Socket']]],
+  ['writewindowupdateframe_34',['writeWindowUpdateFrame',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a3ad2bed6415199b992ce4fc553f5df14',1,'sese::internal::service::http::HttpConnectionEx']]]
 ];

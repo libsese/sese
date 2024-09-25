@@ -165,6 +165,8 @@ Public 类型</h2></td></tr>
 <tr class="separator:a0f820d3336105244ca0b9c7e28c50320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4635f7027cb6fa460c276d79cc7aa60" id="r_ab4635f7027cb6fa460c276d79cc7aa60"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4635f7027cb6fa460c276d79cc7aa60">FilterCallback</a> = std::function&lt;bool(<a class="el" href="classsese_1_1net_1_1http_1_1_request.html">net::http::Request</a> &amp;, <a class="el" href="classsese_1_1net_1_1http_1_1_response.html">net::http::Response</a> &amp;)&gt;</td></tr>
 <tr class="separator:ab4635f7027cb6fa460c276d79cc7aa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa54b8e86ace9797358465acf8a907473" id="r_aa54b8e86ace9797358465acf8a907473"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a> = std::function&lt;bool(<a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;)&gt;</td></tr>
+<tr class="separator:aa54b8e86ace9797358465acf8a907473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afca78509f290f25de38b486463c32818" id="r_afca78509f290f25de38b486463c32818"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> = std::unordered_map&lt;std::string, <a class="el" href="#ab4635f7027cb6fa460c276d79cc7aa60">FilterCallback</a>&gt;</td></tr>
 <tr class="separator:afca78509f290f25de38b486463c32818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b75ac1ce2cb0528fae9a6c07cc67ee5" id="r_a6b75ac1ce2cb0528fae9a6c07cc67ee5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b75ac1ce2cb0528fae9a6c07cc67ee5">MountPointMap</a> = std::unordered_map&lt;std::string, std::string&gt;</td></tr>
@@ -177,13 +179,13 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a2c8304a3d97d008554070fa916ca1b8b" id="r_a2c8304a3d97d008554070fa916ca1b8b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a8b8bde3480eecfa732377b9a941bd6ae">HttpService::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;<a class="el" href="#af2435dc143c90643647d7a69535551a1">address</a>, <a class="el" href="#a0f820d3336105244ca0b9c7e28c50320">SSLContextPtr</a> <a class="el" href="#a78927584faf42ecd54822f020fb16aaa">ssl_context</a>, uint32_t <a class="el" href="#aeae21fa16c3ab08663bb51fb01e456c5">keepalive</a>, std::string &amp;<a class="el" href="#a263d2270dfe5b14cb35d0adc4c7124ab">serv_name</a>, <a class="el" href="#a6b75ac1ce2cb0528fae9a6c07cc67ee5">MountPointMap</a> &amp;<a class="el" href="#a99ccc48ea1c15a5156b681cfd1c0c0f7">mount_points</a>, <a class="el" href="#a509d43cc2c0e7d948d3064c44cf3c92b">ServletMap</a> &amp;<a class="el" href="#aa29ae80e3252d087a7ac311736077ac8">servlets</a>, <a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;<a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a>)</td></tr>
-<tr class="separator:a2c8304a3d97d008554070fa916ca1b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79c1049a29466f4c93f3d7bb6094a3b6" id="r_a79c1049a29466f4c93f3d7bb6094a3b6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a8b8bde3480eecfa732377b9a941bd6ae">HttpService::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;<a class="el" href="#af2435dc143c90643647d7a69535551a1">address</a>, <a class="el" href="#a0f820d3336105244ca0b9c7e28c50320">SSLContextPtr</a> <a class="el" href="#a78927584faf42ecd54822f020fb16aaa">ssl_context</a>, uint32_t <a class="el" href="#aeae21fa16c3ab08663bb51fb01e456c5">keepalive</a>, std::string &amp;<a class="el" href="#a263d2270dfe5b14cb35d0adc4c7124ab">serv_name</a>, <a class="el" href="#a6b75ac1ce2cb0528fae9a6c07cc67ee5">MountPointMap</a> &amp;<a class="el" href="#a99ccc48ea1c15a5156b681cfd1c0c0f7">mount_points</a>, <a class="el" href="#a509d43cc2c0e7d948d3064c44cf3c92b">ServletMap</a> &amp;<a class="el" href="#aa29ae80e3252d087a7ac311736077ac8">servlets</a>, <a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;<a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a>, <a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a> &amp;<a class="el" href="#ac045a39d6ccc471eda92974a9f671c5b">connection_callback</a>)</td></tr>
+<tr class="separator:a79c1049a29466f4c93f3d7bb6094a3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
-<tr class="memitem:a2b2beb677a6ec02dec5e52166cfe5ff1" id="r_a2b2beb677a6ec02dec5e52166cfe5ff1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b2beb677a6ec02dec5e52166cfe5ff1">HttpService</a> (<a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> <a class="el" href="#af2435dc143c90643647d7a69535551a1">address</a>, <a class="el" href="#a0f820d3336105244ca0b9c7e28c50320">SSLContextPtr</a> <a class="el" href="#a78927584faf42ecd54822f020fb16aaa">ssl_context</a>, uint32_t <a class="el" href="#aeae21fa16c3ab08663bb51fb01e456c5">keepalive</a>, std::string &amp;<a class="el" href="#a263d2270dfe5b14cb35d0adc4c7124ab">serv_name</a>, <a class="el" href="#a6b75ac1ce2cb0528fae9a6c07cc67ee5">MountPointMap</a> &amp;<a class="el" href="#a99ccc48ea1c15a5156b681cfd1c0c0f7">mount_points</a>, <a class="el" href="#a509d43cc2c0e7d948d3064c44cf3c92b">ServletMap</a> &amp;<a class="el" href="#aa29ae80e3252d087a7ac311736077ac8">servlets</a>, <a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;<a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a>)</td></tr>
-<tr class="separator:a2b2beb677a6ec02dec5e52166cfe5ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5448cecbc7603d01f337b180c77904a" id="r_ae5448cecbc7603d01f337b180c77904a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5448cecbc7603d01f337b180c77904a">HttpService</a> (<a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> <a class="el" href="#af2435dc143c90643647d7a69535551a1">address</a>, <a class="el" href="#a0f820d3336105244ca0b9c7e28c50320">SSLContextPtr</a> <a class="el" href="#a78927584faf42ecd54822f020fb16aaa">ssl_context</a>, uint32_t <a class="el" href="#aeae21fa16c3ab08663bb51fb01e456c5">keepalive</a>, std::string &amp;<a class="el" href="#a263d2270dfe5b14cb35d0adc4c7124ab">serv_name</a>, <a class="el" href="#a6b75ac1ce2cb0528fae9a6c07cc67ee5">MountPointMap</a> &amp;<a class="el" href="#a99ccc48ea1c15a5156b681cfd1c0c0f7">mount_points</a>, <a class="el" href="#a509d43cc2c0e7d948d3064c44cf3c92b">ServletMap</a> &amp;<a class="el" href="#aa29ae80e3252d087a7ac311736077ac8">servlets</a>, <a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;<a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a>, <a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a> &amp;<a class="el" href="#ac045a39d6ccc471eda92974a9f671c5b">connection_callback</a>)</td></tr>
+<tr class="separator:ae5448cecbc7603d01f337b180c77904a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
@@ -203,6 +205,8 @@ Protected 属性</h2></td></tr>
 <tr class="separator:aa29ae80e3252d087a7ac311736077ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aac57a91ee4f96faf43545e71245802" id="r_a6aac57a91ee4f96faf43545e71245802"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a></td></tr>
 <tr class="separator:a6aac57a91ee4f96faf43545e71245802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac045a39d6ccc471eda92974a9f671c5b" id="r_ac045a39d6ccc471eda92974a9f671c5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac045a39d6ccc471eda92974a9f671c5b">connection_callback</a></td></tr>
+<tr class="separator:ac045a39d6ccc471eda92974a9f671c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
@@ -221,6 +225,20 @@ Protected 属性</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Http 服务接口 </p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aa54b8e86ace9797358465acf8a907473" name="aa54b8e86ace9797358465acf8a907473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa54b8e86ace9797358465acf8a907473">&#9670;&#160;</a></span>ConnectionCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#aa54b8e86ace9797358465acf8a907473">sese::service::http::HttpService::ConnectionCallback</a> = std::function&lt;bool(<a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab4635f7027cb6fa460c276d79cc7aa60" name="ab4635f7027cb6fa460c276d79cc7aa60"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4635f7027cb6fa460c276d79cc7aa60">&#9670;&#160;</a></span>FilterCallback</h2>
 
@@ -306,8 +324,8 @@ Protected 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a2b2beb677a6ec02dec5e52166cfe5ff1" name="a2b2beb677a6ec02dec5e52166cfe5ff1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b2beb677a6ec02dec5e52166cfe5ff1">&#9670;&#160;</a></span>HttpService()</h2>
+<a id="ae5448cecbc7603d01f337b180c77904a" name="ae5448cecbc7603d01f337b180c77904a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5448cecbc7603d01f337b180c77904a">&#9670;&#160;</a></span>HttpService()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -348,7 +366,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>filters</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>filters</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>connection_callback</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -361,8 +384,8 @@ Protected 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a2c8304a3d97d008554070fa916ca1b8b" name="a2c8304a3d97d008554070fa916ca1b8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c8304a3d97d008554070fa916ca1b8b">&#9670;&#160;</a></span>create()</h2>
+<a id="a79c1049a29466f4c93f3d7bb6094a3b6" name="a79c1049a29466f4c93f3d7bb6094a3b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79c1049a29466f4c93f3d7bb6094a3b6">&#9670;&#160;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -403,7 +426,12 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>filters</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#afca78509f290f25de38b486463c32818">FilterMap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>filters</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>connection_callback</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -413,7 +441,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="#af2435dc143c90643647d7a69535551a1">address</a>, <a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a>, <a class="el" href="#aeae21fa16c3ab08663bb51fb01e456c5">keepalive</a>, <a class="el" href="#a99ccc48ea1c15a5156b681cfd1c0c0f7">mount_points</a>, <a class="el" href="#a263d2270dfe5b14cb35d0adc4c7124ab">serv_name</a>, <a class="el" href="#aa29ae80e3252d087a7ac311736077ac8">servlets</a> , 以及 <a class="el" href="#a78927584faf42ecd54822f020fb16aaa">ssl_context</a>.</p>
+<p class="reference">引用了 <a class="el" href="#af2435dc143c90643647d7a69535551a1">address</a>, <a class="el" href="#ac045a39d6ccc471eda92974a9f671c5b">connection_callback</a>, <a class="el" href="#a6aac57a91ee4f96faf43545e71245802">filters</a>, <a class="el" href="#aeae21fa16c3ab08663bb51fb01e456c5">keepalive</a>, <a class="el" href="#a99ccc48ea1c15a5156b681cfd1c0c0f7">mount_points</a>, <a class="el" href="#a263d2270dfe5b14cb35d0adc4c7124ab">serv_name</a>, <a class="el" href="#aa29ae80e3252d087a7ac311736077ac8">servlets</a> , 以及 <a class="el" href="#a78927584faf42ecd54822f020fb16aaa">ssl_context</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1http_1_1_http_server.html#a0568326367b5c0c66e3fa519504fc75c">sese::service::http::HttpServer::regService()</a>.</p>
 
@@ -440,7 +468,31 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
+
+</div>
+</div>
+<a id="ac045a39d6ccc471eda92974a9f671c5b" name="ac045a39d6ccc471eda92974a9f671c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac045a39d6ccc471eda92974a9f671c5b">&#9670;&#160;</a></span>connection_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aa54b8e86ace9797358465acf8a907473">ConnectionCallback</a>&amp; sese::service::http::HttpService::connection_callback</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
 
 </div>
 </div>
@@ -464,7 +516,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
 
 </div>
 </div>
@@ -488,7 +540,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a9baddb8cc630563e066388f713019d24">sese::internal::service::http::HttpServiceImpl::getKeepalive()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a9baddb8cc630563e066388f713019d24">sese::internal::service::http::HttpServiceImpl::getKeepalive()</a>.</p>
 
 </div>
 </div>
@@ -512,7 +564,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
 
 </div>
 </div>
@@ -536,7 +588,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
 
 </div>
 </div>
@@ -560,7 +612,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
 
 </div>
 </div>
@@ -584,7 +636,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a2c8304a3d97d008554070fa916ca1b8b">create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a79c1049a29466f4c93f3d7bb6094a3b6">create()</a>.</p>
 
 </div>
 </div>
@@ -608,7 +660,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a1c85e78469f88b6b67484817e5611193">sese::internal::service::http::HttpServiceImpl::HttpServiceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#afdfd92fdddb88d29def58d510e1adb82">sese::internal::service::http::HttpServiceImpl::HttpServiceImpl()</a>.</p>
 
 </div>
 </div>
@@ -622,7 +674,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html">HttpService</a></li>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:32 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:44 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

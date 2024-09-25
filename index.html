@@ -187,11 +187,13 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;LOADING MyController&quot;</span>);</div>
 <div class="line">    <a class="code hl_define" href="_controller_8h.html#a7eaeb37d052ecaa4a1e25d0ccc71a867">SESE_URL</a>(timers, RequestType::GET, <span class="stringliteral">&quot;/times&quot;</span>) {</div>
 <div class="line">        <a class="code hl_class" href="classsese_1_1_locker.html" title="std::mutex 包装器">sese::Locker</a> locker(mutex);</div>
+<div class="line">        <span class="keyword">auto</span> &amp;resp = ctx.getResp();</div>
 <div class="line">        times += 1;</div>
 <div class="line">        <span class="keyword">auto</span> message = <span class="stringliteral">&quot;timers = &#39;&quot;</span> + std::to_string(this-&gt;times) + <span class="stringliteral">&quot;&#39;\n&quot;</span>;</div>
 <div class="line">        resp.getBody().write(message.data(), message.length());</div>
 <div class="line">    };</div>
 <div class="line">    <a class="code hl_define" href="_controller_8h.html#a7eaeb37d052ecaa4a1e25d0ccc71a867">SESE_URL</a>(say, RequestType::GET, <span class="stringliteral">&quot;/say?&lt;say&gt;&quot;</span>) {</div>
+<div class="line">        <span class="keyword">auto</span> &amp;resp = ctx.getResp();</div>
 <div class="line">        <span class="keyword">auto</span> words = req.get(<span class="stringliteral">&quot;say&quot;</span>);</div>
 <div class="line">        <span class="keyword">auto</span> message = <span class="stringliteral">&quot;you say &#39;&quot;</span> + words + <span class="stringliteral">&quot;&#39;\n&quot;</span>;</div>
 <div class="line">        resp.getBody().write(message.data(), message.length());</div>
@@ -344,7 +346,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:32 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:44 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

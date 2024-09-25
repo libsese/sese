@@ -7,7 +7,7 @@ var searchData=
   ['init_5fwindow_5fsize_4',['INIT_WINDOW_SIZE',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a26f7849774b3378cb93eda38ca0fbef9',1,'sese::internal::service::http::HttpConnectionEx']]],
   ['input_5',['input',['../classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a',1,'sese::archive::ArchiveReader::input'],['../classsese_1_1io_1_1_input_stream_reader.html#ad40cca62f217f14430d63167ad98e38d',1,'sese::io::InputStreamReader::input']]],
   ['integer_5faffinity_5fset_6',['INTEGER_AFFINITY_SET',['../classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5aa6a72bc44db0b00ddcf933768d14f0',1,'sese::db::impl::SqlitePreparedStatementImpl']]],
-  ['io_5fbuffer_7',['io_buffer',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a5339d336a63521599faca2474f144fe8',1,'sese::internal::service::http::HttpConnection']]],
+  ['io_5fbuffer_7',['io_buffer',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a9aa995edb87bc0576af12599eed3a678',1,'sese::internal::service::http::HttpConnection']]],
   ['io_5fcontext_8',['io_context',['../classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#ae328a5f9cc41b553263297c66b7fbbe9',1,'sese::internal::service::http::HttpServiceImpl']]],
   ['iocontext_9',['ioContext',['../classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html#a2bc841df5273e84f0388be1fdc5ec4ff',1,'sese::internal::net::http::HttpClientImpl']]],
   ['iocp_5fwsabuf_5fsize_10',['IOCP_WSABUF_SIZE',['../_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41',1,'Config.h']]],

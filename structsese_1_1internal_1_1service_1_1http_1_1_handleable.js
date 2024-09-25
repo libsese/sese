@@ -6,8 +6,9 @@ var structsese_1_1internal_1_1service_1_1http_1_1_handleable =
     [ "file", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#afccf1f1dd665ba714a0e618ebeed264e", null ],
     [ "filesize", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a236f2fb9ffeb39e25099ed71e7c8776b", null ],
     [ "keepalive", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#af0a69c689fea4d82a706d46a41200257", null ],
-    [ "range_iterator", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a8672fffb9e72420e6c1eae3def68d62f", null ],
-    [ "ranges", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a713d7aa8f17974efe1b05e98b8e031c4", null ],
-    [ "request", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a532d16545421c2f7d03a3c389d2ca67c", null ],
-    [ "response", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a92fec5af91c366ab8407433fac035aa5", null ]
+    [ "range_iterator", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a1d48a29a5318fdd0a3b4eb2e5118a26c", null ],
+    [ "ranges", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#adb754a03dc616e7e88ec079f7a4303e0", null ],
+    [ "remote_address", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a593648d587dc8eb98fd5cd6c58353bac", null ],
+    [ "request", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#ade8b2bb5f620f80ced1471b900ec7b97", null ],
+    [ "response", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a0c7d6b0449e2bd67ec6d5dc7e44c67f9", null ]
 ];

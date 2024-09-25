@@ -163,12 +163,16 @@ Public 类型</h2></td></tr>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a7fbe5027ca7d9c04ccf9d894e3918422" id="r_a7fbe5027ca7d9c04ccf9d894e3918422"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#abd8bc93a521d24c584d6cfbd42103593">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fbe5027ca7d9c04ccf9d894e3918422">getPtr</a> ()</td></tr>
 <tr class="separator:a7fbe5027ca7d9c04ccf9d894e3918422"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47b8b4e5531b0b3119c9b621f5c1c944" id="r_a47b8b4e5531b0b3119c9b621f5c1c944"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47b8b4e5531b0b3119c9b621f5c1c944">HttpConnectionEx</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="#a033ea662554dc84c475a56ba8a40f779">service</a>, asio::io_context &amp;io_context)</td></tr>
-<tr class="separator:a47b8b4e5531b0b3119c9b621f5c1c944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e0e33c36a73577939bcd0492e397c40" id="r_a9e0e33c36a73577939bcd0492e397c40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e0e33c36a73577939bcd0492e397c40">HttpConnectionEx</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="#a033ea662554dc84c475a56ba8a40f779">service</a>, asio::io_context &amp;io_context, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr)</td></tr>
+<tr class="separator:a9e0e33c36a73577939bcd0492e397c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15f1dabb869069a832c3f305b36dd2ce" id="r_a15f1dabb869069a832c3f305b36dd2ce"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15f1dabb869069a832c3f305b36dd2ce">~HttpConnectionEx</a> ()=default</td></tr>
 <tr class="separator:a15f1dabb869069a832c3f305b36dd2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7345fb46adbe094e86282adc3e05d690" id="r_a7345fb46adbe094e86282adc3e05d690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7345fb46adbe094e86282adc3e05d690">close</a> (uint32_t id)</td></tr>
 <tr class="separator:a7345fb46adbe094e86282adc3e05d690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5f3816313392bedb1623af85ecf721e" id="r_ad5f3816313392bedb1623af85ecf721e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5f3816313392bedb1623af85ecf721e">checkKeepalive</a> ()=0</td></tr>
+<tr class="separator:ad5f3816313392bedb1623af85ecf721e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5328f500b3775e0923f56220bd0b5647" id="r_a5328f500b3775e0923f56220bd0b5647"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5328f500b3775e0923f56220bd0b5647">disponse</a> ()</td></tr>
+<tr class="separator:a5328f500b3775e0923f56220bd0b5647"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6727ef41580018231378f38bf9510b2" id="r_af6727ef41580018231378f38bf9510b2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6727ef41580018231378f38bf9510b2">writeBlocks</a> (const std::vector&lt; asio::const_buffer &gt; &amp;buffers, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)=0</td></tr>
 <tr class="separator:af6727ef41580018231378f38bf9510b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e5aaa4b749bf4b50d4008cf208bbe1e" id="r_a8e5aaa4b749bf4b50d4008cf208bbe1e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e5aaa4b749bf4b50d4008cf208bbe1e">writeBlock</a> (const void *buffer, size_t size, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)=0</td></tr>
@@ -209,6 +213,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a9beaff675bd6217e88c3be825e43f1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad848305d3e8263da03fddc8937bdb5e5" id="r_ad848305d3e8263da03fddc8937bdb5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad848305d3e8263da03fddc8937bdb5e5">writeRstStreamFrame</a> (uint32_t stream_id, uint8_t flags, uint32_t error_code, bool once=false)</td></tr>
 <tr class="separator:ad848305d3e8263da03fddc8937bdb5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad2bed6415199b992ce4fc553f5df14" id="r_a3ad2bed6415199b992ce4fc553f5df14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ad2bed6415199b992ce4fc553f5df14">writeWindowUpdateFrame</a> (uint32_t stream_id, uint8_t flags, uint32_t <a class="el" href="#af4e92985cff82f81c0ed4212b84a3781">window_size</a>)</td></tr>
+<tr class="separator:a3ad2bed6415199b992ce4fc553f5df14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb5f64c680b8a5f87764bfaa562ab24c" id="r_acb5f64c680b8a5f87764bfaa562ab24c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb5f64c680b8a5f87764bfaa562ab24c">writeHeadersFrame</a> (const <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a0f74c1a346c5cf8833f295f5993371e4">HttpStream::Ptr</a> &amp;stream, bool verify_end_stream=true)</td></tr>
 <tr class="separator:acb5f64c680b8a5f87764bfaa562ab24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43add1c9097e454ca9eeee7cb87c7168" id="r_a43add1c9097e454ca9eeee7cb87c7168"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43add1c9097e454ca9eeee7cb87c7168">writeDataFrame4Body</a> (const <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#a0f74c1a346c5cf8833f295f5993371e4">HttpStream::Ptr</a> &amp;stream)</td></tr>
@@ -226,6 +232,8 @@ Public 属性</h2></td></tr>
 <tr class="separator:a79d394609f621cac5d01f28dd31d4b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae82ddffe9d6fac2e3509bb171b8d64fb" id="r_ae82ddffe9d6fac2e3509bb171b8d64fb"><td class="memItemLeft" align="right" valign="top">asio::system_timer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae82ddffe9d6fac2e3509bb171b8d64fb">timer</a></td></tr>
 <tr class="separator:ae82ddffe9d6fac2e3509bb171b8d64fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbf28b4798ba457081f97de5678de18" id="r_aefbf28b4798ba457081f97de5678de18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefbf28b4798ba457081f97de5678de18">remote_address</a></td></tr>
+<tr class="separator:aefbf28b4798ba457081f97de5678de18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a033ea662554dc84c475a56ba8a40f779" id="r_a033ea662554dc84c475a56ba8a40f779"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a033ea662554dc84c475a56ba8a40f779">service</a></td></tr>
 <tr class="separator:a033ea662554dc84c475a56ba8a40f779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaaa718776b1f525e56309b5cb94cefc" id="r_acaaa718776b1f525e56309b5cb94cefc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acaaa718776b1f525e56309b5cb94cefc">is_read</a> = false</td></tr>
@@ -250,6 +258,10 @@ Public 属性</h2></td></tr>
 <tr class="separator:aefd16486d225a0d1aa4a4f505a26568f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2a84c69c976212092fa5ed9458aeb13" id="r_ac2a84c69c976212092fa5ed9458aeb13"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2a84c69c976212092fa5ed9458aeb13">endpoint_init_window_size</a> = 65535</td></tr>
 <tr class="separator:ac2a84c69c976212092fa5ed9458aeb13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773c88c39a8f7580eabc0d71ad9cd360" id="r_a773c88c39a8f7580eabc0d71ad9cd360"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a773c88c39a8f7580eabc0d71ad9cd360">endpoint_window_size</a> = 65535</td></tr>
+<tr class="separator:a773c88c39a8f7580eabc0d71ad9cd360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4e92985cff82f81c0ed4212b84a3781" id="r_af4e92985cff82f81c0ed4212b84a3781"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4e92985cff82f81c0ed4212b84a3781">window_size</a> = 65535</td></tr>
+<tr class="separator:af4e92985cff82f81c0ed4212b84a3781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cc3529afe9a5399bb13abdf2560a56c" id="r_a3cc3529afe9a5399bb13abdf2560a56c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cc3529afe9a5399bb13abdf2560a56c">endpoint_max_frame_size</a> = 16384</td></tr>
 <tr class="separator:a3cc3529afe9a5399bb13abdf2560a56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444f20bf98e2ea4de0f430d147848cb4" id="r_a444f20bf98e2ea4de0f430d147848cb4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a444f20bf98e2ea4de0f430d147848cb4">max_frame_size</a> = 16384</td></tr>
@@ -299,8 +311,8 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a47b8b4e5531b0b3119c9b621f5c1c944" name="a47b8b4e5531b0b3119c9b621f5c1c944"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47b8b4e5531b0b3119c9b621f5c1c944">&#9670;&#160;</a></span>HttpConnectionEx()</h2>
+<a id="a9e0e33c36a73577939bcd0492e397c40" name="a9e0e33c36a73577939bcd0492e397c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e0e33c36a73577939bcd0492e397c40">&#9670;&#160;</a></span>HttpConnectionEx()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +325,12 @@ Public 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">asio::io_context &amp;</td>          <td class="paramname"><span class="paramname"><em>io_context</em></span>&#160;)</td>
+          <td class="paramtype">asio::io_context &amp;</td>          <td class="paramname"><span class="paramname"><em>io_context</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>addr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -346,6 +363,33 @@ Public 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="ad5f3816313392bedb1623af85ecf721e" name="ad5f3816313392bedb1623af85ecf721e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5f3816313392bedb1623af85ecf721e">&#9670;&#160;</a></span>checkKeepalive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::internal::service::http::HttpConnectionEx::checkKeepalive </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex_impl.html#a5d1e434e0abaecffe895ecdece0b0ca8">sese::internal::service::http::HttpConnectionExImpl</a> , 以及 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html#ae1906c89c516e2955b6e4f91573f544b">sese::internal::service::http::HttpsConnectionExImpl</a> 内被实现.</p>
+
+</div>
+</div>
 <a id="a7345fb46adbe094e86282adc3e05d690" name="a7345fb46adbe094e86282adc3e05d690"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7345fb46adbe094e86282adc3e05d690">&#9670;&#160;</a></span>close()</h2>
 
@@ -366,6 +410,23 @@ Public 属性</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a5328f500b3775e0923f56220bd0b5647" name="a5328f500b3775e0923f56220bd0b5647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5328f500b3775e0923f56220bd0b5647">&#9670;&#160;</a></span>disponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::internal::service::http::HttpConnectionEx::disponse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -409,7 +470,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="namespacesese.html#a6453fe856f0afc7bce5187768095cf4f">sese::toInteger()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1internal_1_1service_1_1http.html#a45a7d46b5eff58c8cee695a95f028e5eae75ab17a550f46adbbe891b819cf951d">sese::internal::service::http::FILTER</a> , 以及 <a class="el" href="namespacesese.html#a6453fe856f0afc7bce5187768095cf4f">sese::toInteger()</a>.</p>
 
 </div>
 </div>
@@ -445,7 +506,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32()</a> , 以及 <a class="el" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32()</a>.</p>
 
 </div>
 </div>
@@ -1017,6 +1078,34 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a3ad2bed6415199b992ce4fc553f5df14" name="a3ad2bed6415199b992ce4fc553f5df14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ad2bed6415199b992ce4fc553f5df14">&#9670;&#160;</a></span>writeWindowUpdateFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::internal::service::http::HttpConnectionEx::writeWindowUpdateFrame </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>stream_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>flags</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>window_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1net_1_1http.html#ab425c0da8cac859a3ff5375052d0cdb9">sese::net::http::FRAME_TYPE_WINDOW_UPDATE</a> , 以及 <a class="el" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32()</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">类成员变量说明</h2>
 <a id="ac80d065bac9c09597feb2c948682aebe" name="ac80d065bac9c09597feb2c948682aebe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac80d065bac9c09597feb2c948682aebe">&#9670;&#160;</a></span>accept_stream_count</h2>
@@ -1096,6 +1185,20 @@ Public 属性</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">uint32_t sese::internal::service::http::HttpConnectionEx::endpoint_max_frame_size = 16384</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a773c88c39a8f7580eabc0d71ad9cd360" name="a773c88c39a8f7580eabc0d71ad9cd360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a773c88c39a8f7580eabc0d71ad9cd360">&#9670;&#160;</a></span>endpoint_window_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sese::internal::service::http::HttpConnectionEx::endpoint_window_size = 65535</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1346,6 +1449,20 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="aefbf28b4798ba457081f97de5678de18" name="aefbf28b4798ba457081f97de5678de18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbf28b4798ba457081f97de5678de18">&#9670;&#160;</a></span>remote_address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> sese::internal::service::http::HttpConnectionEx::remote_address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2ff9fc58b7e84c1b7194b1fa5eca131b" name="a2ff9fc58b7e84c1b7194b1fa5eca131b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ff9fc58b7e84c1b7194b1fa5eca131b">&#9670;&#160;</a></span>req_dynamic_table</h2>
 
@@ -1444,6 +1561,20 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="af4e92985cff82f81c0ed4212b84a3781" name="af4e92985cff82f81c0ed4212b84a3781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4e92985cff82f81c0ed4212b84a3781">&#9670;&#160;</a></span>window_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sese::internal::service::http::HttpConnectionEx::window_size = 65535</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>该结构体的文档由以下文件生成:<ul>
 <li>sese/internal/service/http/<a class="el" href="_http_connection_ex_8h_source.html">HttpConnectionEx.h</a></li>
 <li>sese/internal/service/http/<a class="el" href="_http_connection_ex_8cpp.html">HttpConnectionEx.cpp</a></li>
@@ -1454,7 +1585,7 @@ Public 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html">HttpConnectionEx</a></li>
-    <li class="footer">生成于 2024年 九月 21日 星期六 09:58:31 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 25日 星期三 02:39:43 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

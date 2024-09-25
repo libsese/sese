@@ -3,7 +3,7 @@ var structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl =
     [ "Ptr", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#af979834545e664fa3f084a66ceab3fda", null ],
     [ "SharedSocket", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#ab6a9c5491250c12e425bbddcbc25bd23", null ],
     [ "Socket", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#aaaf1d491734a66d7765b5c10863b0e9c", null ],
-    [ "HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#ac3ca8c6426c63903cb89754879ba9693", null ],
+    [ "HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#a040896458e00a8d72e973fd5a1104aea", null ],
     [ "asyncReadSome", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#a78c6da3190e5dad5441fc171516904da", null ],
     [ "checkKeepalive", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#ad13ed945bce54e0412cec508bafea422", null ],
     [ "getPtr", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#ac379e756cc5f803387282de53e14b240", null ],
