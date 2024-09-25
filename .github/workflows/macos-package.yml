@@ -25,6 +25,16 @@ jobs:
             core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
 
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.11'
+
+      - name: Setup portfile.cmake
+        run: |
+          pip install -r ${{ github.workspace }}/requirements.txt
+          python ${{ github.workspace }}/scripts/update_portfile.py
+
       - name: Config
         working-directory: ${{ github.workspace }}/package
         run: >

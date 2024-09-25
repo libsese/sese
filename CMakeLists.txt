@@ -29,7 +29,7 @@ if (WIN32 OR SESE_AUTO_VCPKG)
     sese_auto_find_vcpkg()
 endif ()
 
-project(sese VERSION 2.2.1)
+project(sese VERSION 2.3.0)
 # for cxx 20 modules
 # set(CMAKE_CXX_EXTENSIONS OFF)
 # set(CMAKE_CXX_STANDARD_REQUIRED ON)
