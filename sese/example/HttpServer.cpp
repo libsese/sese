@@ -1,4 +1,3 @@
-#include "sese/util/Util.h"
 #define SESE_C_LIKE_FORMAT
 
 #include <sese/service/http/HttpServer.h>
