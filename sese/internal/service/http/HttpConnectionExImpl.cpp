@@ -1,10 +1,15 @@
 #include <sese/Config.h>
 #include <sese/internal/service/http/HttpConnectionEx.h>
 
-sese::internal::service::http::HttpConnectionExImpl::HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, SharedSocket socket) : HttpConnectionEx(service, context),
-                                                                                                                                                                             socket(std::move(socket)) {
+sese::internal::service::http::HttpConnectionExImpl::HttpConnectionExImpl(
+        const std::shared_ptr<HttpServiceImpl> &service,
+        asio::io_context &context,
+        const sese::net::IPAddress::Ptr &addr,
+        SharedSocket socket
+)
+    : HttpConnectionEx(service, context, addr),
+      socket(std::move(socket)) {
 }
-
 
 void sese::internal::service::http::HttpConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {
     is_write = true;
@@ -40,23 +45,42 @@ void sese::internal::service::http::HttpConnectionExImpl::readBlock(char *buffer
     );
 }
 
-sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, SharedStream stream) : HttpConnectionEx(service, context),
-                                                                                                                                                                               stream(std::move(stream)) {
+void sese::internal::service::http::HttpConnectionExImpl::checkKeepalive() {
+    // if (keepalive) {
+    timer.async_wait([conn = getPtr()](const asio::error_code &error) {
+        if (error == asio::error::operation_aborted) {
+        } else {
+            conn->socket->close();
+        }
+    });
+    // }
 }
 
+sese::internal::service::http::HttpsConnectionExImpl::HttpsConnectionExImpl(
+        const std::shared_ptr<HttpServiceImpl> &service,
+        asio::io_context &context,
+        const sese::net::IPAddress::Ptr &addr,
+        SharedStream stream
+)
+    : HttpConnectionEx(service, context, addr),
+      stream(std::move(stream)) {
+}
 
 void sese::internal::service::http::HttpsConnectionExImpl::writeBlocks(const std::vector<asio::const_buffer> &buffers, const std::function<void(const asio::error_code &code)> &callback) {
+    is_write = true;
     async_write(*this->stream, buffers, [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+        conn->is_write = false;
         callback(error);
     });
 }
 
 void sese::internal::service::http::HttpsConnectionExImpl::writeBlock(const void *buffer, size_t size, const std::function<void(const asio::error_code &code)> &callback) {
+    is_write = true;
     async_write(*this->stream, asio::buffer(buffer, size), [conn = getPtr(), callback](const asio::error_code &error, size_t) {
+        conn->is_write = false;
         callback(error);
     });
 }
-
 
 void sese::internal::service::http::HttpsConnectionExImpl::readBlock(char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
     is_read = true;
@@ -68,4 +92,15 @@ void sese::internal::service::http::HttpsConnectionExImpl::readBlock(char *buffe
             conn->readBlock(buffer + read, length - read, callback);
         }
     });
+}
+
+void sese::internal::service::http::HttpsConnectionExImpl::checkKeepalive() {
+    // if (keepalive) {
+    timer.async_wait([conn = getPtr()](const asio::error_code &error) {
+        if (error == asio::error::operation_aborted) {
+        } else {
+            conn->stream->lowest_layer().close();
+        }
+    });
+    // }
 }

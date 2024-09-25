@@ -45,7 +45,9 @@ void sese::net::http::Servlet::requiredHeader(const std::string &arg) { this->ex
 
 // GCOVR_EXCL_STOP
 
-void sese::net::http::Servlet::invoke(Request &req, Response &resp) const {
+void sese::net::http::Servlet::invoke(HttpServletContext &ctx) const {
+    auto &&req = ctx.getReq();
+    auto &&resp = ctx.getResp();
     if (!callback) {
         resp.setCode(500);
         return;
@@ -70,5 +72,5 @@ void sese::net::http::Servlet::invoke(Request &req, Response &resp) const {
         }
     }
 
-    callback(req, resp);
+    callback(ctx);
 }

@@ -8,8 +8,7 @@
 
 #pragma once
 
-#include <sese/net/http/Request.h>
-#include <sese/net/http/Response.h>
+#include <sese/net/http/HttpServletContext.h>
 
 #include <set>
 #include <vector>
@@ -22,7 +21,7 @@ namespace sese::net::http {
 class Servlet {
 public:
     using Ptr = std::shared_ptr<Servlet>;
-    using Callback = std::function<void(Request &req, Response &resp)>;
+    using Callback = std::function<void(HttpServletContext &)>;
 
     Servlet();
 
@@ -42,7 +41,7 @@ public:
 
     void requiredHeader(const std::string &arg);
 
-    void invoke(Request &req, Response &resp) const;
+    void invoke(HttpServletContext &ctx) const;
 
     Servlet &operator=(Callback callback) {
         setCallback(std::move(callback));
@@ -87,10 +86,7 @@ protected:
 #define SESE_CTRL(name, ...)                                \
     class name final : public sese::net::http::Controller { \
     public:                                                 \
-        using Request = sese::net::http::Request;           \
         using RequestType = sese::net::http::RequestType;   \
-        using Response = sese::net::http::Response;         \
-        using Servlet = sese::net::http::Servlet;           \
         name() : Controller() {                             \
         }                                                   \
         void init() override;                               \
@@ -105,7 +101,7 @@ protected:
 /// @param method 期望的 http 方法
 /// @param url 注册 URL 链接
 /// @note \<key\> 需求参数 key 作为 http header 传递， {key} 需求参数 key 作为 query 参数传递
-#define SESE_URL(name, method, url)                \
-    this->servlets.emplace_back(method, url);      \
-    Servlet &name = servlets[servlets.size() - 1]; \
-    name = [this](Request & req, Response & resp)
+#define SESE_URL(name, method, url)                                 \
+    this->servlets.emplace_back(method, url);                       \
+    sese::net::http::Servlet &name = servlets[servlets.size() - 1]; \
+    name = [this](sese::net::http::HttpServletContext &ctx)

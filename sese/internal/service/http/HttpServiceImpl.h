@@ -13,15 +13,17 @@ class HttpServiceImpl final : public sese::service::http::HttpService,
                               public std::enable_shared_from_this<HttpServiceImpl> {
 public:
     friend struct HttpConnection;
+    friend struct HttpConnectionEx;
 
     HttpServiceImpl(
-        const net::IPAddress::Ptr &address,
+        const sese::net::IPAddress::Ptr &address,
         SSLContextPtr ssl_context,
         uint32_t keepalive,
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
-        FilterMap &filters
+        FilterMap &filters,
+        ConnectionCallback &connection_callback
     );
 
     bool startup() override;
@@ -32,6 +34,8 @@ public:
 
     uint32_t getKeepalive() const { return keepalive; }
 
+    void handleFilter(const Handleable::Ptr &conn) const;
+
     void handleRequest(const Handleable::Ptr &conn) const;
 
 private:
@@ -40,7 +44,7 @@ private:
     asio::ip::tcp::acceptor acceptor;
     asio::error_code error;
 
-    static constexpr unsigned char alpn_protos[] = "\x2h2\x8http/1.1";
+    static constexpr unsigned char ALPN_PROTOS[] = "\x2h2\x8http/1.1";
 
     static int alpnCallback(SSL *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length, void *data);
 
@@ -49,6 +53,7 @@ private:
     void handleSSLAccept();
 
     std::set<HttpConnection::Ptr> connections;
+    std::set<HttpConnectionEx::Ptr> connections2;
 };
 
 }

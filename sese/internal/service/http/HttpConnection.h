@@ -18,7 +18,7 @@ struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection>
 
     Ptr getPtr() { return shared_from_this(); } // NOLINT
 
-    HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context);
+    HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context, const sese::net::IPAddress::Ptr &addr);
 
     virtual ~HttpConnection() = default;
 
@@ -30,9 +30,9 @@ struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection>
     size_t real_length;
     char send_buffer[MTU_VALUE]{};
     bool is0x0a = false;
-    sese::iocp::IOBuf io_buffer;
-    std::unique_ptr<sese::iocp::IOBufNode> node;
-    sese::io::ByteBuilder dynamic_buffer;
+    iocp::IOBuf io_buffer;
+    std::unique_ptr<iocp::IOBufNode> node;
+    io::ByteBuilder dynamic_buffer;
 
     std::weak_ptr<HttpServiceImpl> service;
 
@@ -85,7 +85,7 @@ struct HttpConnectionImpl final : HttpConnection {
     SharedSocket socket;
 
     HttpConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                       SharedSocket socket);
+                       const sese::net::IPAddress::Ptr &addr, SharedSocket socket);
 
     void writeBlock(const char *buffer, size_t length,
                     const std::function<void(const asio::error_code &code)> &callback) override;
@@ -107,7 +107,8 @@ struct HttpsConnectionImpl final : HttpConnection {
 
     SharedStream stream;
 
-    HttpsConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context, SharedStream stream);
+    HttpsConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
+                        const sese::net::IPAddress::Ptr &addr,SharedStream stream);
 
     ~HttpsConnectionImpl() override;
 

@@ -3,15 +3,17 @@
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
+
 #include <sese/Config.h>
 #include <sese/net/http/DynamicTable.h>
 #include <sese/net/http/Http2Frame.h>
+#include <sese/internal/service/http/Handleable.h>
+#include <sese/net/IPv6Address.h>
 
 #include <memory>
 #include <queue>
 #include <set>
 
-#include <sese/internal/service/http/Handleable.h>
 
 namespace sese::internal::service::http {
 class HttpServiceImpl;
@@ -19,13 +21,13 @@ class HttpServiceImpl;
 struct HttpStream : Handleable {
     using Ptr = std::shared_ptr<HttpStream>;
 
-    explicit HttpStream(uint32_t id, uint32_t write_window_size) noexcept;
+    explicit HttpStream(uint32_t id, uint32_t write_window_size, const sese::net::IPAddress::Ptr &addr) noexcept;
 
     /// 初始化当前文件区间并迭代迭代器
     void prepareRange();
 
     uint32_t id;
-    /// 对端写入窗口
+    /// 写入到对端窗口大小
     uint32_t endpoint_window_size;
     /// 本地读取窗口
     uint32_t window_size = 0;
@@ -40,7 +42,6 @@ struct HttpStream : Handleable {
     sese::io::ByteBuilder temp_buffer;
 
     sese::net::http::Http2FrameInfo frame{};
-
 };
 
 struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
@@ -48,12 +49,14 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
 
     Ptr getPtr() { return shared_from_this(); } // NOLINT
 
-    HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context);
+    HttpConnectionEx(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &io_context, const sese::net::IPAddress::Ptr &addr);
 
     virtual ~HttpConnectionEx() = default;
 
     bool keepalive = false;
     asio::system_timer timer;
+
+    sese::net::IPAddress::Ptr remote_address;
 
     std::weak_ptr<HttpServiceImpl> service;
 
@@ -80,6 +83,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     uint32_t max_concurrent_stream = 0;
     // 对端初始窗口值
     uint32_t endpoint_init_window_size = 65535;
+    // 写入到对端窗口大小
+    uint32_t endpoint_window_size = 65535;
+    // 本地读取窗口大小
+    uint32_t window_size = 65535;
     // 对端帧最大大小
     uint32_t endpoint_max_frame_size = 16384;
     // 采用的帧大小
@@ -98,6 +105,10 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     /// 关闭流
     /// @param id 流 ID
     void close(uint32_t id);
+
+    virtual void checkKeepalive() = 0;
+
+    void disponse();
 
     /// 写入块函数，此函数会确保写入完指定的缓存，出现意外则直接回调
     /// @param buffers 缓存
@@ -164,6 +175,12 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         bool once = false
     );
 
+    void writeWindowUpdateFrame(
+        uint32_t stream_id,
+        uint8_t flags,
+        uint32_t window_size
+    );
+
     /// 写入 HEADERS 帧
     /// @param stream 操作流
     /// @param verify_end_stream 是否需要通过 response body 判断 END_STREAM
@@ -204,7 +221,7 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
     SharedSocket socket;
 
     HttpConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                         SharedSocket socket);
+                         const sese::net::IPAddress::Ptr &addr, SharedSocket socket);
 
     void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                      const std::function<void(const asio::error_code &code)> &callback) override;
@@ -214,6 +231,8 @@ struct HttpConnectionExImpl final : HttpConnectionEx {
 
     void readBlock(char *buffer, size_t length,
                    const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void checkKeepalive() override;
 };
 
 struct HttpsConnectionExImpl final : HttpConnectionEx {
@@ -226,7 +245,7 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
     SharedStream stream;
 
     HttpsConnectionExImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context,
-                          SharedStream stream);
+                          const sese::net::IPAddress::Ptr &addr, SharedStream stream);
 
     void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                      const std::function<void(const asio::error_code &code)> &callback) override;
@@ -236,6 +255,8 @@ struct HttpsConnectionExImpl final : HttpConnectionEx {
 
     void readBlock(char *buffer, size_t length,
                    const std::function<void(const asio::error_code &code)> &callback) override;
+
+    void checkKeepalive() override;
 };
 
 }

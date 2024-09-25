@@ -10,10 +10,18 @@ sese::service::http::HttpService::Ptr sese::service::http::HttpService::create(
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
-        FilterMap &filters
+        FilterMap &filters,
+        ConnectionCallback &connection_callback
 ) {
     return std::make_shared<internal::service::http::HttpServiceImpl>(
-            address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets, filters
+            address,
+            std::move(ssl_context),
+            keepalive,
+            serv_name,
+            mount_points,
+            servlets,
+            filters,
+            connection_callback
     );
 }
 
@@ -24,6 +32,14 @@ sese::service::http::HttpService::HttpService(
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
-        FilterMap &filters
-) : address(std::move(address)), ssl_context(std::move(ssl_context)), keepalive(keepalive), serv_name(serv_name), mount_points(mount_points), servlets(servlets), filters(filters) {
+        FilterMap &filters,
+        ConnectionCallback &connection_callback
+) : address(std::move(address)),
+    ssl_context(std::move(ssl_context)),
+    keepalive(keepalive),
+    serv_name(serv_name),
+    mount_points(mount_points),
+    servlets(servlets),
+    filters(filters),
+    connection_callback(connection_callback) {
 }
