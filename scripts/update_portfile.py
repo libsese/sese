@@ -1,9 +1,8 @@
+import hashlib
 import os
 import subprocess
-import requests
-import hashlib
 
-from pygments.lexers.robotframework import Variable
+import requests
 
 # 获取最新的 commit hash
 result = subprocess.run(['git', '-C', '.', '--no-pager', 'log', '-1', '--pretty=format:%H'], stdout=subprocess.PIPE)
