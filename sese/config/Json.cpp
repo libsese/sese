@@ -1,11 +1,9 @@
 #include <sese/config/Json.h>
-#include <sese/config/json/JsonUtil.h>
 
 #include <cassert>
 
 using sese::Json;
 using sese::Value;
-using sese::json::JsonUtil;
 
 // GCOVR_EXCL_START
 
@@ -18,6 +16,73 @@ inline bool isKeyword(const char *str) {
     } else {
         return false;
     }
+}
+
+bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
+    char ch;
+    text::StringBuilder builder;
+
+    int64_t len;
+    while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
+        switch (ch) {
+            case '{':
+            case '}':
+            case '[':
+            case ']':
+            case ',':
+            case ':':
+                // 一般的 token
+                tokens.push({ch});
+                break;
+            case '\"':
+                builder.append("\"");
+                // 字符串 token，需要处理转义符号
+                while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
+                    // 说明是转义字符
+                    if (ch == '\\') {
+                        if (input_stream->read(&ch, 1 * sizeof(char)) == 0) {
+                            // 字符串不完整
+                            return false;
+                        }
+                        builder << '\\';
+                        builder << ch;
+                    } else if (ch == '\"') {
+                        builder.append("\"");
+                        tokens.push(builder.toString());
+                        builder.clear();
+                        break;
+                    } else {
+                        builder.append(ch);
+                    }
+                }
+                break;
+            default:
+                // 普通的值 token
+                if (sese::isSpace(ch)) break;
+                builder.append(ch);
+                while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
+                    //fix: 此处多加关键字判断
+                    if (isKeyword(&ch)) {
+                        tokens.push(builder.toString());
+                        builder.clear();
+                        tokens.push({ch});
+                        break;
+                    } else if (sese::isSpace(ch)) {
+                        tokens.push(builder.toString());
+                        builder.clear();
+                        break;
+                    } else if (ch == ',') {
+                        tokens.push(builder.toString());
+                        builder.clear();
+                        tokens.emplace(",");
+                        break;
+                    }
+                    builder.append(ch);
+                }
+                break;
+        }
+    }
+    return true;
 }
 
 Value Json::parseObject(Json::Tokens &tokens, size_t level) {
@@ -220,7 +285,7 @@ void Json::streamifyBasic(io::OutputStream *out, const sese::Value *value) {
 
 Value Json::parse(io::InputStream *input, size_t level) {
     Tokens tokens;
-    if (!JsonUtil::tokenizer(input, tokens)) {
+    if (!tokenizer(input, tokens)) {
         return {};
     }
 

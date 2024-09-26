@@ -197,22 +197,10 @@ TEST(TestValue, CompareDict) {
 
 TEST(TestValue, ToString) {
     Value value(Value::Dict()
-                        .set("list", Value(Value::List()
-                                                   .append("Hello")
-                                                   .append(Value())
-                                                   .append(true)
-                                                   .append(false)
-                                                   .append(INT64_C(114514))
-                                                   .append("Blob", 4)
-                                                   .append(Value::Dict())
-                                     )
-                        )
-                        .set("int", INT64_C(1919810))
-                        .set("double", 3.14)
-                        .set("dict", Value::Dict()
-                                             .set("string", "World")
-                                             .set("int", INT64_C(123456))
-                        )
+                    .set("list", Value(Value::List().append("Hello").append(Value()).append(true).append(false).append(INT64_C(114514)).append("Blob", 4).append(Value::Dict())))
+                    .set("int", INT64_C(1919810))
+                    .set("double", 3.14)
+                    .set("dict", Value::Dict().set("string", "World").set("int", INT64_C(123456)))
     );
     SESE_INFO("{2}", value);
 }
