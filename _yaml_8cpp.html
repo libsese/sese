@@ -132,19 +132,60 @@ $(function(){initNavTree('_yaml_8cpp.html',''); initResizable(true); });
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#var-members">变量</a>  </div>
   <div class="headertitle"><div class="title">Yaml.cpp 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="_yaml_8h_source.html">sese/config/Yaml.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;<a class="el" href="_yaml_8h_source.html">sese/config/Yaml.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_2_util_8h_source.html">sese/util/Util.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_yaml_util_8h_source.html">sese/config/yaml/YamlUtil.h</a>&gt;</code><br />
-</div></div><!-- contents -->
+<code>#include &lt;array&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:abbf37168ab9dce3e7a060e3514587c69" id="r_abbf37168ab9dce3e7a060e3514587c69"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbf37168ab9dce3e7a060e3514587c69">GET_SPACE_ARRAY</a></td></tr>
+<tr class="separator:abbf37168ab9dce3e7a060e3514587c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">变量说明</h2>
+<a id="abbf37168ab9dce3e7a060e3514587c69" name="abbf37168ab9dce3e7a060e3514587c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbf37168ab9dce3e7a060e3514587c69">&#9670;&#160;</a></span>GET_SPACE_ARRAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto GET_SPACE_ARRAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">= []() {</div>
+<div class="line">    std::array&lt;char, 1024&gt; array{};</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) item: array) {</div>
+<div class="line">        item = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> array;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_yaml.html#a39b7569e9de8864b3c31e506c0cc322e">sese::Yaml::writeSpace()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5ecdf26e97b02d25bfabe621b34c1b3c.html">config</a></li><li class="navelem"><a class="el" href="_yaml_8cpp.html">Yaml.cpp</a></li>
-    <li class="footer">生成于 2024年 九月 25日 星期三 15:29:52 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 27日 星期五 14:52:05 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

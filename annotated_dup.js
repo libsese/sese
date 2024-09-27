@@ -117,13 +117,6 @@ var annotated_dup =
         [ "IOBuf", "classsese_1_1iocp_1_1_i_o_buf.html", "classsese_1_1iocp_1_1_i_o_buf" ],
         [ "IOBufNode", "structsese_1_1iocp_1_1_i_o_buf_node.html", "structsese_1_1iocp_1_1_i_o_buf_node" ]
       ] ],
-      [ "json", "namespacesese_1_1json.html", [
-        [ "ArrayData", "classsese_1_1json_1_1_array_data.html", "classsese_1_1json_1_1_array_data" ],
-        [ "BasicData", "classsese_1_1json_1_1_basic_data.html", "classsese_1_1json_1_1_basic_data" ],
-        [ "Data", "classsese_1_1json_1_1_data.html", "classsese_1_1json_1_1_data" ],
-        [ "JsonUtil", "classsese_1_1json_1_1_json_util.html", "classsese_1_1json_1_1_json_util" ],
-        [ "ObjectData", "classsese_1_1json_1_1_object_data.html", "classsese_1_1json_1_1_object_data" ]
-      ] ],
       [ "net", "namespacesese_1_1net.html", [
         [ "dns", "namespacesese_1_1net_1_1dns.html", [
           [ "Answer", "classsese_1_1net_1_1dns_1_1_answer.html", "classsese_1_1net_1_1dns_1_1_answer" ],
@@ -287,13 +280,6 @@ var annotated_dup =
       [ "xml", "namespacesese_1_1xml.html", [
         [ "Element", "classsese_1_1xml_1_1_element.html", "classsese_1_1xml_1_1_element" ],
         [ "XmlUtil", "classsese_1_1xml_1_1_xml_util.html", "classsese_1_1xml_1_1_xml_util" ]
-      ] ],
-      [ "yaml", "namespacesese_1_1yaml.html", [
-        [ "ArrayData", "classsese_1_1yaml_1_1_array_data.html", "classsese_1_1yaml_1_1_array_data" ],
-        [ "BasicData", "classsese_1_1yaml_1_1_basic_data.html", "classsese_1_1yaml_1_1_basic_data" ],
-        [ "Data", "classsese_1_1yaml_1_1_data.html", "classsese_1_1yaml_1_1_data" ],
-        [ "ObjectData", "classsese_1_1yaml_1_1_object_data.html", "classsese_1_1yaml_1_1_object_data" ],
-        [ "YamlUtil", "classsese_1_1yaml_1_1_yaml_util.html", "classsese_1_1yaml_1_1_yaml_util" ]
       ] ],
       [ "ArgParser", "classsese_1_1_arg_parser.html", "classsese_1_1_arg_parser" ],
       [ "Base64Converter", "classsese_1_1_base64_converter.html", "classsese_1_1_base64_converter" ],

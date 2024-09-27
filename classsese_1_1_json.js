@@ -9,5 +9,6 @@ var classsese_1_1_json =
     [ "streamify", "classsese_1_1_json.html#ae1e7964bff61f9785480867c4e9ba532", null ],
     [ "streamifyArray", "classsese_1_1_json.html#a50ca8cdbc1e39cfb5dffaa0df846ed2b", null ],
     [ "streamifyBasic", "classsese_1_1_json.html#ad971c93e5674776b9d25fe6bfc301cd0", null ],
-    [ "streamifyObject", "classsese_1_1_json.html#a9dab53ab84ca850e0eb6a6474d9deaa8", null ]
+    [ "streamifyObject", "classsese_1_1_json.html#a9dab53ab84ca850e0eb6a6474d9deaa8", null ],
+    [ "tokenizer", "classsese_1_1_json.html#aa80c54f8a6131519ba44fa890f5c5121", null ]
 ];

@@ -159,9 +159,17 @@ Private 类型</h2></td></tr>
 <tr class="separator:a6c704fc7e0bda10aef45da6f7f079acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccb75977a6d860dbd53326987424720" id="r_a1ccb75977a6d860dbd53326987424720"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ccb75977a6d860dbd53326987424720">TokensQueue</a> = std::queue&lt;std::tuple&lt;int, <a class="el" href="#a6c704fc7e0bda10aef45da6f7f079acc">Tokens</a>&gt;&gt;</td></tr>
 <tr class="separator:a1ccb75977a6d860dbd53326987424720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c0e4e3ec910626994541543f7f3d42" id="r_ac9c0e4e3ec910626994541543f7f3d42"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9c0e4e3ec910626994541543f7f3d42">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
+<tr class="separator:ac9c0e4e3ec910626994541543f7f3d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b935ed7104ce468948a9e68bf85be3" id="r_a64b935ed7104ce468948a9e68bf85be3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64b935ed7104ce468948a9e68bf85be3">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
+<tr class="separator:a64b935ed7104ce468948a9e68bf85be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add768a3ae2dac31e1bf9a6ecb776e18d" id="r_add768a3ae2dac31e1bf9a6ecb776e18d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add768a3ae2dac31e1bf9a6ecb776e18d">Line</a> = std::tuple&lt;int, std::string&gt;</td></tr>
+<tr class="separator:add768a3ae2dac31e1bf9a6ecb776e18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:a9017e74538631cdbceaa0feb6dee8408" id="r_a9017e74538631cdbceaa0feb6dee8408"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9017e74538631cdbceaa0feb6dee8408">parseBasic</a> (const std::string &amp;value)</td></tr>
+<tr class="separator:a9017e74538631cdbceaa0feb6dee8408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a29c2165e43cc3a3f49a15b0b475da0" id="r_a8a29c2165e43cc3a3f49a15b0b475da0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject</a> (<a class="el" href="#a1ccb75977a6d860dbd53326987424720">TokensQueue</a> &amp;tokens_queue, size_t level)</td></tr>
 <tr class="separator:a8a29c2165e43cc3a3f49a15b0b475da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab720cea47a5be8c478bec54e68c5e354" id="r_ab720cea47a5be8c478bec54e68c5e354"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray</a> (<a class="el" href="#a1ccb75977a6d860dbd53326987424720">TokensQueue</a> &amp;tokens_queue, size_t level)</td></tr>
@@ -170,10 +178,84 @@ Private 类型</h2></td></tr>
 <tr class="separator:ab24858ad10ecb46c3d5696027b0ec9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac286a726617735d595cd944810eb01ac" id="r_ac286a726617735d595cd944810eb01ac"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *output, const <a class="el" href="classsese_1_1_value_1_1_list.html">Value::List</a> &amp;list, size_t level)</td></tr>
 <tr class="separator:ac286a726617735d595cd944810eb01ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ce0e80193ce6d09672194ec9de817e" id="r_aa7ce0e80193ce6d09672194ec9de817e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7ce0e80193ce6d09672194ec9de817e">getSpaceCount</a> (const std::string &amp;line) noexcept</td></tr>
+<tr class="separator:aa7ce0e80193ce6d09672194ec9de817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66f9ced994d9bb496ec267bde8ae7d0d" id="r_a66f9ced994d9bb496ec267bde8ae7d0d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#add768a3ae2dac31e1bf9a6ecb776e18d">Line</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66f9ced994d9bb496ec267bde8ae7d0d">getLine</a> (<a class="el" href="#ac9c0e4e3ec910626994541543f7f3d42">InputStream</a> *input) noexcept</td></tr>
+<tr class="separator:a66f9ced994d9bb496ec267bde8ae7d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e65b14fd04660b55646492fae9fa93c" id="r_a7e65b14fd04660b55646492fae9fa93c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a6c704fc7e0bda10aef45da6f7f079acc">Tokens</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e65b14fd04660b55646492fae9fa93c">tokenizer</a> (const std::string &amp;line) noexcept</td></tr>
+<tr class="separator:a7e65b14fd04660b55646492fae9fa93c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39b7569e9de8864b3c31e506c0cc322e" id="r_a39b7569e9de8864b3c31e506c0cc322e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39b7569e9de8864b3c31e506c0cc322e">writeSpace</a> (size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <a class="el" href="#a64b935ed7104ce468948a9e68bf85be3">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:a39b7569e9de8864b3c31e506c0cc322e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p><a class="el" href="classsese_1_1_yaml.html" title="Yaml 解析器">Yaml</a> 解析器 </p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ac9c0e4e3ec910626994541543f7f3d42" name="ac9c0e4e3ec910626994541543f7f3d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9c0e4e3ec910626994541543f7f3d42">&#9670;&#160;</a></span>InputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ac9c0e4e3ec910626994541543f7f3d42">sese::Yaml::InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add768a3ae2dac31e1bf9a6ecb776e18d" name="add768a3ae2dac31e1bf9a6ecb776e18d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add768a3ae2dac31e1bf9a6ecb776e18d">&#9670;&#160;</a></span>Line</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#add768a3ae2dac31e1bf9a6ecb776e18d">sese::Yaml::Line</a> = std::tuple&lt;int, std::string&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64b935ed7104ce468948a9e68bf85be3" name="a64b935ed7104ce468948a9e68bf85be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b935ed7104ce468948a9e68bf85be3">&#9670;&#160;</a></span>OutputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a64b935ed7104ce468948a9e68bf85be3">sese::Yaml::OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6c704fc7e0bda10aef45da6f7f079acc" name="a6c704fc7e0bda10aef45da6f7f079acc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c704fc7e0bda10aef45da6f7f079acc">&#9670;&#160;</a></span>Tokens</h2>
 
@@ -219,6 +301,62 @@ Private 类型</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a66f9ced994d9bb496ec267bde8ae7d0d" name="a66f9ced994d9bb496ec267bde8ae7d0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66f9ced994d9bb496ec267bde8ae7d0d">&#9670;&#160;</a></span>getLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; int, std::string &gt; sese::Yaml::getLine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ac9c0e4e3ec910626994541543f7f3d42">InputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a900154b0e1f8b8b606d8185030d10832">sese::text::AbstractStringBuffer::empty()</a>, <a class="el" href="#aa7ce0e80193ce6d09672194ec9de817e">getSpaceCount()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#a7169e079338c40568498b4dfa4db3e93">parse()</a>.</p>
+
+</div>
+</div>
+<a id="aa7ce0e80193ce6d09672194ec9de817e" name="aa7ce0e80193ce6d09672194ec9de817e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ce0e80193ce6d09672194ec9de817e">&#9670;&#160;</a></span>getSpaceCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::Yaml::getSpaceCount </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>line</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a66f9ced994d9bb496ec267bde8ae7d0d">getLine()</a>.</p>
+
+</div>
+</div>
 <a id="a7169e079338c40568498b4dfa4db3e93" name="a7169e079338c40568498b4dfa4db3e93"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7169e079338c40568498b4dfa4db3e93">&#9670;&#160;</a></span>parse()</h2>
 
@@ -254,7 +392,7 @@ Private 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>解析失败则 <a class="el" href="classsese_1_1_value.html#a920e68dea455df1b5857cd93790ff98a">Value::isNull</a> 为真 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a280f2758326c84ffac266eadd43d5f8e">sese::yaml::YamlUtil::getLine()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a>, <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aca854ce209061b7188b81b06e392b4d5">sese::yaml::YamlUtil::tokenizer()</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a66f9ced994d9bb496ec267bde8ae7d0d">getLine()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a>, <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a> , 以及 <a class="el" href="#a7e65b14fd04660b55646492fae9fa93c">tokenizer()</a>.</p>
 
 </div>
 </div>
@@ -285,9 +423,38 @@ Private 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">sese::Value::isDict()</a>, <a class="el" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">sese::Value::isList()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a>, <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">sese::Value::isDict()</a>, <a class="el" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">sese::Value::isList()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a>, <a class="el" href="#a9017e74538631cdbceaa0feb6dee8408">parseBasic()</a>, <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="#a7169e079338c40568498b4dfa4db3e93">parse()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a> , 以及 <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a>.</p>
+
+</div>
+</div>
+<a id="a9017e74538631cdbceaa0feb6dee8408" name="a9017e74538631cdbceaa0feb6dee8408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9017e74538631cdbceaa0feb6dee8408">&#9670;&#160;</a></span>parseBasic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> Yaml::parseBasic </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a> , 以及 <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a>.</p>
 
 </div>
 </div>
@@ -318,7 +485,7 @@ Private 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">sese::Value::isDict()</a>, <a class="el" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">sese::Value::isList()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a>, <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">sese::Value::isDict()</a>, <a class="el" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">sese::Value::isList()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a>, <a class="el" href="#a9017e74538631cdbceaa0feb6dee8408">parseBasic()</a> , 以及 <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="#a7169e079338c40568498b4dfa4db3e93">parse()</a>, <a class="el" href="#ab720cea47a5be8c478bec54e68c5e354">parseArray()</a> , 以及 <a class="el" href="#a8a29c2165e43cc3a3f49a15b0b475da0">parseObject()</a>.</p>
 
@@ -394,7 +561,7 @@ Private 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">sese::Value::DICT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">sese::Value::LIST</a>, <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a>, <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>, <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#adb18ecb74f9f20552f1ef12ffbadd080">sese::yaml::YamlUtil::writeSpace()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">sese::Value::DICT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">sese::Value::LIST</a>, <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a>, <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>, <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a> , 以及 <a class="el" href="#a39b7569e9de8864b3c31e506c0cc322e">writeSpace()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="#a48c149efd9b8fde4849402e492446e49">streamify()</a>, <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a> , 以及 <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>.</p>
 
@@ -432,9 +599,71 @@ Private 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">sese::Value::DICT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">sese::Value::LIST</a>, <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a>, <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>, <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#adb18ecb74f9f20552f1ef12ffbadd080">sese::yaml::YamlUtil::writeSpace()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">sese::Value::DICT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">sese::Value::LIST</a>, <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a>, <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>, <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a> , 以及 <a class="el" href="#a39b7569e9de8864b3c31e506c0cc322e">writeSpace()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="#a48c149efd9b8fde4849402e492446e49">streamify()</a>, <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a> , 以及 <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>.</p>
+
+</div>
+</div>
+<a id="a7e65b14fd04660b55646492fae9fa93c" name="a7e65b14fd04660b55646492fae9fa93c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e65b14fd04660b55646492fae9fa93c">&#9670;&#160;</a></span>tokenizer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; sese::Yaml::tokenizer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>line</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0">sese::text::AbstractStringBuffer::clear()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#a7169e079338c40568498b4dfa4db3e93">parse()</a>.</p>
+
+</div>
+</div>
+<a id="a39b7569e9de8864b3c31e506c0cc322e" name="a39b7569e9de8864b3c31e506c0cc322e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b7569e9de8864b3c31e506c0cc322e">&#9670;&#160;</a></span>writeSpace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::Yaml::writeSpace </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a64b935ed7104ce468948a9e68bf85be3">OutputStream</a> *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a> , 以及 <a class="el" href="_yaml_8cpp.html#abbf37168ab9dce3e7a060e3514587c69">GET_SPACE_ARRAY</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#ac286a726617735d595cd944810eb01ac">streamifyArray()</a> , 以及 <a class="el" href="#ab24858ad10ecb46c3d5696027b0ec9ab">streamifyObject()</a>.</p>
 
 </div>
 </div>
@@ -448,7 +677,7 @@ Private 类型</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_yaml.html">Yaml</a></li>
-    <li class="footer">生成于 2024年 九月 25日 星期三 15:29:52 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 九月 27日 星期五 14:52:05 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

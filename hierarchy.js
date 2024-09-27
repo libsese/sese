@@ -75,16 +75,6 @@ var hierarchy =
     [ "sese::security::evp::CrypterContext", "structsese_1_1security_1_1evp_1_1_crypter_context.html", null ],
     [ "sese::CSVReader", "classsese_1_1_c_s_v_reader.html", null ],
     [ "sese::CSVWriter", "classsese_1_1_c_s_v_writer.html", null ],
-    [ "sese::json::Data", "classsese_1_1json_1_1_data.html", [
-      [ "sese::json::ArrayData", "classsese_1_1json_1_1_array_data.html", null ],
-      [ "sese::json::BasicData", "classsese_1_1json_1_1_basic_data.html", null ],
-      [ "sese::json::ObjectData", "classsese_1_1json_1_1_object_data.html", null ]
-    ] ],
-    [ "sese::yaml::Data", "classsese_1_1yaml_1_1_data.html", [
-      [ "sese::yaml::ArrayData", "classsese_1_1yaml_1_1_array_data.html", null ],
-      [ "sese::yaml::BasicData", "classsese_1_1yaml_1_1_basic_data.html", null ],
-      [ "sese::yaml::ObjectData", "classsese_1_1yaml_1_1_object_data.html", null ]
-    ] ],
     [ "sese::DateTime", "classsese_1_1_date_time.html", null ],
     [ "sese::text::DateTimeFormatter", "classsese_1_1text_1_1_date_time_formatter.html", null ],
     [ "sese::text::DateTimeParser", "classsese_1_1text_1_1_date_time_parser.html", null ],
@@ -266,7 +256,6 @@ var hierarchy =
       [ "sese::MessageDigest", "classsese_1_1_message_digest.html", null ],
       [ "sese::PercentConverter", "classsese_1_1_percent_converter.html", null ],
       [ "sese::SymbolConverter", "classsese_1_1_symbol_converter.html", null ],
-      [ "sese::json::JsonUtil", "classsese_1_1json_1_1_json_util.html", null ],
       [ "sese::net::http::HPackUtil", "classsese_1_1net_1_1http_1_1_h_pack_util.html", null ],
       [ "sese::net::http::HttpConverter", "classsese_1_1net_1_1http_1_1_http_converter.html", null ],
       [ "sese::net::http::RequestableFactory", "classsese_1_1net_1_1http_1_1_requestable_factory.html", null ],
@@ -276,8 +265,7 @@ var hierarchy =
       [ "sese::system::CommandLine", "classsese_1_1system_1_1_command_line.html", null ],
       [ "sese::system::Environment", "classsese_1_1system_1_1_environment.html", null ],
       [ "sese::text::Number", "classsese_1_1text_1_1_number.html", null ],
-      [ "sese::xml::XmlUtil", "classsese_1_1xml_1_1_xml_util.html", null ],
-      [ "sese::yaml::YamlUtil", "classsese_1_1yaml_1_1_yaml_util.html", null ]
+      [ "sese::xml::XmlUtil", "classsese_1_1xml_1_1_xml_util.html", null ]
     ] ],
     [ "sese::Value::Null", "classsese_1_1_value_1_1_null.html", null ],
     [ "sese::io::OutputStream", "classsese_1_1io_1_1_output_stream.html", [

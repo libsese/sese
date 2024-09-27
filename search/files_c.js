@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['marco_2eh_0',['Marco.h',['../config_2json_2_marco_8h.html',1,'(全局命名空间)'],['../config_2yaml_2_marco_8h.html',1,'(全局命名空间)'],['../plugin_2_marco_8h.html',1,'(全局命名空间)'],['../record_2_marco_8h.html',1,'(全局命名空间)'],['../res_2_marco_8h.html',1,'(全局命名空间)']]],
+  ['marco_2eh_0',['Marco.h',['../plugin_2_marco_8h.html',1,'(全局命名空间)'],['../record_2_marco_8h.html',1,'(全局命名空间)'],['../res_2_marco_8h.html',1,'(全局命名空间)']]],
   ['mariadriverinstanceimpl_2ecpp_1',['MariaDriverInstanceImpl.cpp',['../_maria_driver_instance_impl_8cpp.html',1,'']]],
   ['mariadriverinstanceimpl_2eh_2',['MariaDriverInstanceImpl.h',['../_maria_driver_instance_impl_8h.html',1,'']]],
   ['mariapreparedstatementimpl_2ecpp_3',['MariaPreparedStatementImpl.cpp',['../_maria_prepared_statement_impl_8cpp.html',1,'']]],

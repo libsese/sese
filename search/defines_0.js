@@ -8,6 +8,6 @@ var searchData=
   ['_5f_5fsese_5flog_5',['__SESE_LOG',['../record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a',1,'Marco.h']]],
   ['_5f_5fsese_5fraw_6',['__SESE_RAW',['../record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8',1,'Marco.h']]],
   ['_5f_5fsese_5fwarn_7',['__SESE_WARN',['../record_2_marco_8h.html#a99f403c0a68d0fc39e18498ff540d4f1',1,'Marco.h']]],
-  ['_5fatoi64_8',['_atoi64',['../_json_types_8h.html#aaff71c6a827c63c88f736c3ff56b9dc0',1,'_atoi64:&#160;JsonTypes.h'],['../_http_util_8cpp.html#aaff71c6a827c63c88f736c3ff56b9dc0',1,'_atoi64:&#160;HttpUtil.cpp']]],
+  ['_5fatoi64_8',['_atoi64',['../_http_util_8cpp.html#aaff71c6a827c63c88f736c3ff56b9dc0',1,'HttpUtil.cpp']]],
   ['_5fwin32_5fwinnnt_9',['_WIN32_WINNNT',['../native_2win_2_config_8h.html#a6819d2afd398f4b5c0e55022b27f93d2',1,'Config.h']]]
 ];
