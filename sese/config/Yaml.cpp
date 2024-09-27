@@ -27,7 +27,7 @@ Value Yaml::parseBasic(const std::string &value) {
             }
         } else {
             char *end;
-            long l = std::strtol(value.c_str(), &end, 10);
+            int64_t l = std::strtol(value.c_str(), &end, 10);
             if (*end == 0) {
                 return Value{l};
             }
