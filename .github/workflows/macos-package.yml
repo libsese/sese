@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 jobs:
-  x64-osx:
+  x64-osx-package:
     runs-on: macos-13
     strategy:
       matrix:

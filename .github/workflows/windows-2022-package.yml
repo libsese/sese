@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 jobs:
-  x64-windows:
+  x64-windows-package:
     runs-on: windows-2022
     strategy:
       matrix:

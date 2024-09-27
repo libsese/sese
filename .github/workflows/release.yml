@@ -6,9 +6,9 @@ on:
       - "*.*.*"
   workflow_run:
     workflows:
-      - windows-package
-      - macOS-package
-      - ubuntu-package
+      - x64-linux-package
+      - x64-osx-package
+      - x64-windows-package
     types:
       - completed
 
