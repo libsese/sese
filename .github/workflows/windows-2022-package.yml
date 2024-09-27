@@ -2,6 +2,7 @@ name: windows-package
 
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   x64-windows:

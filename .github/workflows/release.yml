@@ -4,20 +4,20 @@ on:
   push:
     tags:
       - "*.*.*"
-  workflow_run:
-    workflows:
-      - windows-package
-      - ubuntu-package
-      - macOS-package
-    types:
-      - completed
 
 jobs:
+  test_package:
+    strategy:
+      matrix:
+          platform: [windows, ubuntu-2204, macos]
+    uses: libsese/sese/.github/workflows/${{ matrix.platform }}-package.yml
+
   release:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       tag: ${{ github.ref_name }}
+    needs: test_package
     steps:
       - name: Checksum
         run: |
@@ -38,4 +38,4 @@ jobs:
           --repo="$GITHUB_REPOSITORY" \
           --title="sese-core ${{ env.tag }} release" \
           --generate-notes \
-          ${{ contains(env.tag, 'alpha') || contains(env.tag, 'beta') && '--prerelease' || '' }}
+          ${{ (contains(env.tag, 'alpha') || contains(env.tag, 'beta')) && '--prerelease' || '' }}
