@@ -29,6 +29,22 @@ TEST(TestJson, FromFile) {
     // auto output = std::make_shared<sese::io::ConsoleOutputStream>();
     // sese::json::JsonUtil::serialize(object, output);
     // output->write("\n", 1);
+
+    auto object = sese::Json::parse(file_stream.get(), 3);
+    ASSERT_TRUE(object.isDict());
+
+    EXPECT_EQ(object.getDict().find("A"), nullptr);
+
+    EXPECT_TRUE(object.getDict().find("object")->isDict());
+    EXPECT_TRUE(object.getDict().find("mixin_array")->isList());
+    EXPECT_FALSE(object.getDict().find("value")->isNull());
+
+    EXPECT_TRUE(object.getDict().find("boolean")->isBool());
+    EXPECT_TRUE(object.getDict().find("boolean")->getBool());
+
+    auto output = sese::io::ConsoleOutputStream();
+    sese::Json::streamify(&output, object.getDict());
+    output.write("\n", 1);
 }
 
 TEST(TestJson, Getter) {
@@ -45,6 +61,8 @@ TEST(TestJson, Getter) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_NE(object, nullptr);
+    auto object = sese::Json::parse(&input, 5);
+    ASSERT_TRUE(object.isDict());
 
     // SESE_JSON_GET_STRING(str1, object, "str1", "undef");
     // EXPECT_EQ(str1, "\\b\\f\\t\\n\\r/\\K");
@@ -58,6 +76,12 @@ TEST(TestJson, Getter) {
     // EXPECT_EQ(int1, 1);
     // SESE_JSON_GET_DOUBLE(double1, object, "double", 0.0);
     // EXPECT_EQ(double1, 3.14);
+    ASSERT_EQ(object.getDict().find("str1")->getString(), "\\b\\f\\t\\n\\r/\\K");
+    ASSERT_EQ(object.getDict().find("str2")->getString(), "Hello");
+    ASSERT_EQ(object.getDict().find("bool1")->getBool(), true);
+    ASSERT_EQ(object.getDict().find("bool2")->getBool(), false);
+    ASSERT_EQ(object.getDict().find("int")->getInt(), 1);
+    ASSERT_EQ(object.getDict().find("double")->getDouble(), 3.14);
 
     // 测试不存在的基本数据
     // SESE_JSON_GET_STRING(str0, object, "A", "undef");
@@ -73,6 +97,7 @@ TEST(TestJson, Getter) {
     // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("A"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("A"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("A"), nullptr);
+    EXPECT_EQ(object.getDict().find("A"), nullptr);
 
     // 测试 null 元素
     // SESE_JSON_GET_BOOLEAN(b, object, "nullable", false);
@@ -83,42 +108,44 @@ TEST(TestJson, Getter) {
     // EXPECT_EQ(i, 0);
     // SESE_JSON_GET_DOUBLE(d, object, "nullable", 0);
     // EXPECT_EQ(d, 0);
+    EXPECT_TRUE(object.getDict().find("nullable")->isNull());
 
     // 测试不匹配的数据类型
     // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("str1"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("str1"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("object"), nullptr);
+    EXPECT_FALSE(object.getDict().find("str1")->isDict());
+    EXPECT_FALSE(object.getDict().find("str1")->isList());
 }
 
-TEST(TestJson, Setter) {
-    // auto object = std::make_shared<sese::json::ObjectData>();
-    // SESE_JSON_SET_STRING(object, "str1", "\\b\\f\\t\\n\\r/");
-    // SESE_JSON_SET_INTEGER(object, "int", 10);
-    // SESE_JSON_SET_DOUBLE(object, "pi", 3.14);
-    // SESE_JSON_SET_BOOLEAN(object, "t1", true);
-    // SESE_JSON_SET_BOOLEAN(object, "t2", false);
-    // SESE_JSON_SET_NULL(object, "nullable");
+// TEST(TestJson, Setter) {
+//     auto object = std::make_shared<sese::json::ObjectData>();
+//     SESE_JSON_SET_STRING(object, "str1", "\\b\\f\\t\\n\\r/");
+//     SESE_JSON_SET_INTEGER(object, "int", 10);
+//     SESE_JSON_SET_DOUBLE(object, "pi", 3.14);
+//     SESE_JSON_SET_BOOLEAN(object, "t1", true);
+//     SESE_JSON_SET_BOOLEAN(object, "t2", false);
+//     SESE_JSON_SET_NULL(object, "nullable");
 
-    // auto data = std::make_shared<sese::json::BasicData>();
-    // data->setNull(false);
-    // data->setNotNull("Hello", true);
-    // object->set("str2", data);
+//     auto data = std::make_shared<sese::json::BasicData>();
+//     data->setNull(false);
+//     data->setNotNull("Hello", true);
+//     object->set("str2", data);
 
-    // // 测试数组宏
-    // auto array = std::make_shared<sese::json::ArrayData>();
-    // object->set("array", array);
-    // SESE_JSON_PUT_STRING(array, "Hello");
-    // SESE_JSON_PUT_STRING(array, "World");
-    // SESE_JSON_PUT_BOOLEAN(array, true);
-    // SESE_JSON_PUT_BOOLEAN(array, false);
-    // SESE_JSON_PUT_INTEGER(array, 0);
-    // SESE_JSON_PUT_DOUBLE(array, 0.0);
-    // SESE_JSON_PUT_NULL(array);
+//     // 测试数组宏
+//     auto array = std::make_shared<sese::json::ArrayData>();
+//     object->set("array", array);
+//     SESE_JSON_PUT_STRING(array, "Hello");
+//     SESE_JSON_PUT_STRING(array, "World");
+//     SESE_JSON_PUT_BOOLEAN(array, true);
+//     SESE_JSON_PUT_BOOLEAN(array, false);
+//     SESE_JSON_PUT_INTEGER(array, 0);
+//     SESE_JSON_PUT_DOUBLE(array, 0.0);
+//     SESE_JSON_PUT_NULL(array);
 
-    // sese::io::ConsoleOutputStream console;
-    // sese::json::JsonUtil::serialize(object.get(), &console);
-}
-
+//     sese::io::ConsoleOutputStream console;
+//     sese::json::JsonUtil::serialize(object.get(), &console);
+// }
 
 TEST(TestJson, Value) {
     auto input = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
@@ -141,6 +168,8 @@ TEST(TestJson, Error_0) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 对象起始符错误
@@ -150,6 +179,8 @@ TEST(TestJson, Error_1) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 逗号后不存在下一个对象
@@ -160,6 +191,8 @@ TEST(TestJson, Error_2) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 字符串转义不完整
@@ -169,6 +202,8 @@ TEST(TestJson, Error_3) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// tokens 为空
@@ -177,6 +212,8 @@ TEST(TestJson, Error_4) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 子数组错误
@@ -189,6 +226,8 @@ TEST(TestJson, Error_5) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 子对象错误
@@ -202,6 +241,8 @@ TEST(TestJson, Error_6) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 不完整对象
@@ -212,6 +253,8 @@ TEST(TestJson, Error_7) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 不完整数组
@@ -222,6 +265,8 @@ TEST(TestJson, Error_8) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 5);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 构造对象时，子数组深度超过限制
@@ -232,6 +277,8 @@ TEST(TestJson, Error_9) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 1);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 1);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 构造对象时，子对象深度超过限制
@@ -242,6 +289,8 @@ TEST(TestJson, Error_10) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 1);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 1);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 构造数组时，子数组深度超过限制
@@ -252,6 +301,8 @@ TEST(TestJson, Error_11) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 2);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 2);
+    EXPECT_TRUE(value.isNull());
 }
 
 /// 构造数组时，子对象深度超过限制
@@ -262,4 +313,6 @@ TEST(TestJson, Error_12) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 2);
     // ASSERT_EQ(object, nullptr);
+    auto value = sese::Json::parse(&input, 2);
+    EXPECT_TRUE(value.isNull());
 }
