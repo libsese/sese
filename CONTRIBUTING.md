@@ -152,8 +152,9 @@ docker build -f docker/ubuntu-arm64.dockerfile .
 
 此部分规范适用于项目核心管理人员，需要严格安装下列操作进行
 
-1. 变更项目版本号，修改 `CMakeLists.txt` 和 `vcpkg.json`，提交将会自动触发 `update_portfile.py`，等待 CI 测试结果。
-2. 打上 tag 等待 CI 自动发版。
+1. 变更项目版本号，修改 `CMakeLists.txt` 和 `vcpkg.json`，打上 tag，提交将会自动触发 `update_portfile.py` 并进行发版前的测试。
+2. 测试未通过将会终止发版，此时命名新 tag 请遵循 `alpha.$(n + 1)` 形势，正式发版则增加补丁号或撤回当前版本。
+3. tag 中包含 `beta` 或者 `alpha` 将不会设置为最终版本。
 
 ## 联系方式
 

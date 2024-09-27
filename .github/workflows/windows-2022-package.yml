@@ -1,9 +1,6 @@
 name: windows-package
 
 on:
-  push:
-    paths:
-      - 'package/**'
   workflow_dispatch:
 
 jobs:

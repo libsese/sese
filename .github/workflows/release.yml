@@ -3,7 +3,14 @@ name: release
 on:
   push:
     tags:
-      - '*.*.*'
+      - "*.*.*"
+  workflow_run:
+    workflows:
+      - windows-package
+      - ubuntu-package
+      - macOS-package
+    types:
+      - completed
 
 jobs:
   release:
@@ -30,4 +37,5 @@ jobs:
           sese-${{ env.tag }}.tar.gz.sha512 \
           --repo="$GITHUB_REPOSITORY" \
           --title="sese-core ${{ env.tag }} release" \
-          --generate-notes
+          --generate-notes \
+          ${{ contains(env.tag, 'alpha') || contains(env.tag, 'beta') && '--prerelease' || '' }}

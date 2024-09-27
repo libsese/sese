@@ -1,9 +1,6 @@
 name: ubuntu-package
 
 on:
-  push:
-    paths:
-      - 'package/**'
   workflow_dispatch:
 
 jobs:
