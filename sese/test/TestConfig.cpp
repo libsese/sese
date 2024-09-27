@@ -1,10 +1,9 @@
-#include "sese/record/LogHelper.h"
-#include "sese/config/ConfigUtil.h"
-#include "sese/config/xml/XmlUtil.h"
-#include "sese/config/json/JsonUtil.h"
-#include "sese/io/ConsoleOutputStream.h"
-#include "sese/io/FileStream.h"
-#include "gtest/gtest.h"
+#include <sese/record/LogHelper.h>
+#include <sese/config/ConfigUtil.h>
+#include <sese/config/xml/XmlUtil.h>
+#include <sese/io/ConsoleOutputStream.h>
+#include <sese/io/FileStream.h>
+#include <gtest/gtest.h>
 
 #if defined(__clang__)
 #pragma clang diagnostic push
@@ -44,22 +43,6 @@ TEST(TestConfig, Config) {
 #elif defined(__GNUC__)
 #pragma GCC diagnostic pop
 #endif
-
-TEST(TestConfig, Json) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::File::T_READ);
-    ASSERT_TRUE(file != nullptr);
-    auto object = sese::json::JsonUtil::deserialize(file, 3);
-    ASSERT_TRUE(object != nullptr);
-
-    auto boolean_value = object->getDataAs<sese::json::BasicData>("boolean");
-    ASSERT_TRUE(boolean_value != nullptr);
-    ASSERT_TRUE(boolean_value->getDataAs<bool>(false));
-    boolean_value->setDataAs<bool>(false);
-
-    auto out = std::make_shared<sese::io::ConsoleOutputStream>();
-    sese::json::JsonUtil::serialize(object, out);
-    out->write("\n", 1);
-}
 
 TEST(TestConfig, Xml) {
     auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", sese::io::File::B_READ);

@@ -184,35 +184,49 @@ TEST(TestValue, CompareBlob) {
 }
 
 TEST(TestValue, CompareList) {
-    Value value1(Value::List().append(INT64_C(1)).append(INT64_C(2)));
-    Value value2(Value::List().append(INT64_C(1)).append(INT64_C(2)));
+    // clang-format off
+    Value value1(Value::List()
+        .append(INT64_C(1))
+        .append(INT64_C(2))
+    );
+    Value value2(Value::List()
+        .append(INT64_C(1))
+        .append(INT64_C(2))
+    );
+    // clang-format on
     EXPECT_NE(value1, value2);
 }
 
 TEST(TestValue, CompareDict) {
-    Value value1(Value::Dict().set("a", INT64_C(1)).set("b", INT64_C(2)));
-    Value value2(Value::Dict().set("a", INT64_C(1)).set("b", INT64_C(2)));
+    // clang-format off
+    Value value1(Value::Dict()
+        .set("a", INT64_C(1))
+        .set("b", INT64_C(2))
+    );
+    Value value2(Value::Dict()
+        .set("a", INT64_C(1))
+        .set("b", INT64_C(2))
+    );
     EXPECT_NE(value1, value2);
+    // clang-format on
 }
 
 TEST(TestValue, ToString) {
+    // clang-format off
     Value value(Value::Dict()
-                        .set("list", Value(Value::List()
-                                                   .append("Hello")
-                                                   .append(Value())
-                                                   .append(true)
-                                                   .append(false)
-                                                   .append(INT64_C(114514))
-                                                   .append("Blob", 4)
-                                                   .append(Value::Dict())
-                                     )
-                        )
-                        .set("int", INT64_C(1919810))
-                        .set("double", 3.14)
-                        .set("dict", Value::Dict()
-                                             .set("string", "World")
-                                             .set("int", INT64_C(123456))
-                        )
+        .set("list", Value::List()
+            .append("Hello").append(Value())
+            .append(true)
+            .append(false)
+            .append(INT64_C(114514))
+            .append("Blob", 4)
+            .append(Value::Dict()))
+        .set("int", INT64_C(1919810))
+        .set("double", 3.14)
+        .set("dict", Value::Dict()
+            .set("string", "World")
+            .set("int", INT64_C(123456)))
     );
+    // clang-format on
     SESE_INFO("{2}", value);
 }

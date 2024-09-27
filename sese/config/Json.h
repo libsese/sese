@@ -29,6 +29,7 @@ class Json final : public NotInstantiable {
 
     static void streamifyBasic(io::OutputStream *out, const Value *value);
 
+    static bool tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept;
 public:
     Json() = delete;
 

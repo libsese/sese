@@ -16,7 +16,12 @@ namespace sese {
 class Yaml {
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;
+    using InputStream = io::InputStream;
+    using OutputStream = io::OutputStream;
+    using Line = std::tuple<int, std::string>;
 
+    static Value parseBasic(const std::string &value);
+    
     static Value parseObject(TokensQueue &tokens_queue, size_t level);
 
     static Value parseArray(TokensQueue &tokens_queue, size_t level);
@@ -25,7 +30,16 @@ class Yaml {
 
     static void streamifyArray(io::OutputStream *output, const Value::List &list, size_t level);
 
+    static int getSpaceCount(const std::string &line) noexcept;
+
+    static Line getLine(InputStream *input) noexcept;
+
+    static Tokens tokenizer(const std::string &line) noexcept;
+
+    static void writeSpace(size_t count, OutputStream *output) noexcept;
+
 public:
+
     /// 从流中反序列化 yaml 对象
     /// \param input 输入流
     /// \param level 解析深度

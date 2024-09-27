@@ -1,17 +1,49 @@
+#include <cstdlib>
 #include <sese/config/Yaml.h>
 #include <sese/util/Util.h>
+
+#include <array>
 
 using sese::Value;
 using sese::Yaml;
 
 // GCOVR_EXCL_START
 
+Value Yaml::parseBasic(const std::string &value) {
+    if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~" || value.empty()) {
+        return {};
+    } else if (sese::strcmpDoNotCase(value.c_str(), "true") ||
+               sese::strcmpDoNotCase(value.c_str(), "yes")) {
+        return Value{true};
+    } else if (sese::strcmpDoNotCase(value.c_str(), "false") ||
+               sese::strcmpDoNotCase(value.c_str(), "no")) {
+        return Value{false};
+    } else {
+        if (value.find('.') != std::string::npos) {
+            char *end;
+            double d = std::strtod(value.c_str(), &end);
+            if (*end == 0) {
+                return Value{d};
+            }
+        } else {
+            char *end;
+            int64_t l = std::strtol(value.c_str(), &end, 10);
+            if (*end == 0) {
+                return Value{l};
+            }
+        }
+        return Value{value.c_str()};
+    }
+}
+
 Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
-    if (level == 0) return {};
+    if (level == 0)
+        return {};
 
     auto result = Value::Dict();
     // 对象无子元素
-    if (tokens_queue.empty()) return Value(std::move(result));
+    if (tokens_queue.empty())
+        return Value(std::move(result));
     int count = std::get<0>(tokens_queue.front());
 
     while (!tokens_queue.empty()) {
@@ -27,11 +59,7 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
                 // 普通键值对
                 std::string key = current_tokens[0];
                 std::string value = current_tokens[2];
-                if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~") {
-                    result.set(key, Value());
-                } else {
-                    result.set(key, std::move(value));
-                }
+                result.set(key, Yaml::parseBasic(value));
                 tokens_queue.pop();
             } else if (current_tokens.size() == 2) {
                 // 可能是空对象，也可能是新对象或新数组
@@ -90,11 +118,13 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
 }
 
 Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
-    if (level == 0) return {};
+    if (level == 0)
+        return {};
 
     auto result = Value::List();
     // 对象无子元素
-    if (tokens_queue.empty()) return Value(std::move(result));
+    if (tokens_queue.empty())
+        return Value(std::move(result));
     int count = std::get<0>(tokens_queue.front());
 
     while (!tokens_queue.empty()) {
@@ -106,8 +136,7 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
             if (current_tokens.size() == 1) {
                 result.append(Value());
                 tokens_queue.pop();
-            }
-            else if (current_tokens.size() == 2) {
+            } else if (current_tokens.size() == 2) {
                 std::string value = current_tokens[1];
                 // auto valueObject = std::make_shared<BasicData>();
                 if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~") {
@@ -117,8 +146,7 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                 }
                 // result->push(valueObject);
                 tokens_queue.pop();
-            }
-            else if (current_tokens.size() == 3) {
+            } else if (current_tokens.size() == 3) {
                 // 新的对象或数组
                 auto current_count_and_tokens = tokens_queue.front();
                 tokens_queue.pop();
@@ -152,14 +180,13 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                     }
                     // GCOVR_EXCL_STOP
                 }
-            }
-            else if (current_tokens.size() == 4 &&
-                     current_tokens[0] == "-" &&
-                     current_tokens[2] == ":") {
-                result.append(Value::Dict().set(current_tokens[1], std::move(current_tokens[3])));
+            } else if (current_tokens.size() == 4 &&
+                       current_tokens[0] == "-" &&
+                       current_tokens[2] == ":") {
+                // result.append(Value::Dict().set(current_tokens[1], std::move(current_tokens[3])));
+                result.append(Value::Dict().set(current_tokens[1], parseBasic(current_tokens[3])));
                 tokens_queue.pop();
-            }
-            else {
+            } else {
                 return {};
             }
         } else if (count > current_count) {
@@ -177,22 +204,153 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
     return Value(std::move(result));
 }
 
-#include <sese/config/yaml/YamlUtil.h>
+int sese::Yaml::getSpaceCount(const std::string &line) noexcept {
+    int value = 0;
+    for (decltype(auto) ch: line) {
+        if (ch == ' ') {
+            value += 1;
+        } else {
+            return value;
+        }
+    }
+    return value;
+}
+
+std::tuple<int, std::string> sese::Yaml::getLine(InputStream *input) noexcept {
+    sese::text::StringBuilder builder(1024);
+    char ch;
+    while (true) {
+        auto l = input->read(&ch, 1);
+        if (l <= 0) {
+            goto ret;
+        }
+        if (ch == '\r' || ch == '\n') {
+            if (!builder.empty()) {
+                goto ret;
+            } else {
+                continue;
+            }
+        } else {
+            builder << ch;
+        }
+    }
+
+ret:
+    auto str = builder.toString();
+    auto count = Yaml::getSpaceCount(str);
+    return {count, str.substr(count)};
+}
+
+std::vector<std::string> sese::Yaml::tokenizer(const std::string &line) noexcept {
+    std::vector<std::string> vector;
+    sese::text::StringBuilder builder(1024);
+    bool is_str = false; // 是否是字符串
+    bool quot1 = false;  // 单引号 - 不转义
+    bool quot2 = false;  // 双引号 - 转义
+    bool tran = false;   // 是否转义
+    for (decltype(auto) ch: line) {
+        if (quot1) {
+            if (ch == '\'') {
+                is_str = false;
+                quot1 = false;
+                vector.emplace_back(builder.toString());
+                builder.clear();
+            } else {
+                builder << ch;
+            }
+        } else if (quot2) {
+            if (tran) {
+                // 不再自动处理转义字符
+                // switch (ch) {
+                //     case 'n':
+                //         stream << '\n';
+                //         break;
+                //     case 'r':
+                //         stream << '\r';
+                //         break;
+                //     case '"':
+                //     case '\'':
+                //     case '\\':
+                //     default:
+                //         stream << ch;
+                //         break;
+                // }
+                builder << '\\';
+                builder << ch;
+                tran = false;
+            } else if (ch == '\"') {
+                is_str = false;
+                quot2 = false;
+                vector.emplace_back(builder.toString());
+                builder.clear();
+            } else if (ch == '\\') {
+                tran = true;
+            } else {
+                builder << ch;
+            }
+        } else if (is_str) {
+            if (ch == ':') {
+                is_str = false;
+                vector.emplace_back(builder.toString());
+                vector.emplace_back(":");
+                builder.clear();
+            } else {
+                builder << ch;
+            }
+        } else if (ch == '\'') {
+            quot1 = true;
+            is_str = true;
+        } else if (ch == '\"') {
+            quot2 = true;
+            is_str = true;
+        } else if (ch == ':') {
+            vector.emplace_back(":");
+        } else if (ch == '-') {
+            vector.emplace_back("-");
+        } else if (ch == ' ') {
+            continue;
+        } else {
+            builder << ch;
+            is_str = true;
+        }
+    }
+
+    auto str = builder.toString();
+    if (!str.empty()) {
+        vector.emplace_back(str);
+    }
+    return vector;
+}
+
+constexpr auto GET_SPACE_ARRAY = []() {
+    std::array<char, 1024> array{};
+    for (decltype(auto) item: array) {
+        item = ' ';
+    }
+    return array;
+};
+
+void sese::Yaml::writeSpace(size_t count, OutputStream *output) noexcept {
+    const auto BUFFER = GET_SPACE_ARRAY();
+    const auto SIZE = std::min<size_t>(1024, count);
+    output->write(BUFFER.data(), SIZE);
+}
 
 Value Yaml::parse(sese::io::InputStream *input, size_t level) {
     TokensQueue tokens_queue;
     while (true) {
-        decltype(auto) line = sese::yaml::YamlUtil::getLine(input);
+        decltype(auto) line = Yaml::getLine(input);
         if (std::get<1>(line).empty()) {
             break;
         }
-        auto tokens = sese::yaml::YamlUtil::tokenizer(std::get<1>(line));
+        auto tokens = Yaml::tokenizer(std::get<1>(line));
         tokens_queue.emplace(std::get<0>(line), tokens);
     }
 
     decltype(auto) top = tokens_queue.front();
     decltype(auto) top_tokens = std::get<1>(top);
-    if (top_tokens.empty()) return {};
+    if (top_tokens.empty())
+        return {};
     if (top_tokens[0] == "-") {
         // 根元素是数组
         return parseArray(tokens_queue, level);
@@ -206,21 +364,21 @@ void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, si
     for (const auto &[fst, snd]: dict) {
         if (snd->getType() == Value::Type::DICT) {
             if (auto &&sub = snd->getDict(); !sub.empty()) {
-                sese::yaml::YamlUtil::writeSpace(level * 2, output);
+                Yaml::writeSpace(level * 2, output);
                 output->write(fst.c_str(), fst.length());
                 output->write(":\n", 2);
                 streamifyObject(output, sub, level + 1);
             }
         } else if (snd->getType() == Value::Type::LIST) {
             if (auto &&sub = snd->getList(); !sub.empty()) {
-                sese::yaml::YamlUtil::writeSpace(level * 2, output);
+                Yaml::writeSpace(level * 2, output);
                 output->write(fst.c_str(), fst.length());
                 output->write(":\n", 2);
                 streamifyArray(output, sub, level + 1);
             }
         } else {
             const auto SUB = snd;
-            sese::yaml::YamlUtil::writeSpace(level * 2, output);
+            Yaml::writeSpace(level * 2, output);
             output->write(fst.c_str(), fst.length());
             output->write(": ", 2);
             if (SUB->isNull()) {
@@ -247,7 +405,7 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
             if (auto &&sub = item.getDict(); !sub.empty()) {
                 auto name = "element_" + std::to_string(count);
                 count += 1;
-                sese::yaml::YamlUtil::writeSpace(level * 2, output);
+                Yaml::writeSpace(level * 2, output);
                 output->write("- ", 2);
                 output->write(name.c_str(), name.length());
                 output->write(":\n", 2);
@@ -258,7 +416,7 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
             if (!sub.empty()) {
                 auto name = "element_" + std::to_string(count);
                 count += 1;
-                sese::yaml::YamlUtil::writeSpace(level * 2, output);
+                Yaml::writeSpace(level * 2, output);
                 output->write("- ", 2);
                 output->write(name.c_str(), name.length());
                 output->write(":\n", 2);
@@ -266,7 +424,7 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
             }
         } else {
             auto &&sub = item;
-            sese::yaml::YamlUtil::writeSpace(level * 2, output);
+            Yaml::writeSpace(level * 2, output);
             output->write("- ", 2);
             if (sub.isNull()) {
                 output->write("~", 1);
