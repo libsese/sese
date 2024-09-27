@@ -223,7 +223,8 @@ TEST(TestYaml, Serialize_0) {
     using sese::Value;
     sese::io::ConsoleOutputStream output;
 
-    auto root = sese::Value(Value::Dict()
+    // clang-format off
+    auto root = Value(Value::Dict()
         .set("name", "sese-core")
         .set("version", "0.6.3")
         .set("bool1", false)
@@ -247,6 +248,7 @@ TEST(TestYaml, Serialize_0) {
             .set("imag", INT64_C(-3))
         )
     );
+    // clang-format on
 
     sese::Yaml::streamify(&output, root);
 
@@ -289,6 +291,7 @@ TEST(TestYaml, Serialize_1) {
     using sese::Value;
     sese::io::ConsoleOutputStream output;
 
+    // clang-format off
     auto root = Value(Value::List()
         .append("value0")
         .append(true)
@@ -299,6 +302,7 @@ TEST(TestYaml, Serialize_1) {
         .append(0.15926e-2)
         .append(Value{})
     );
+    // clang-format on
     sese::Yaml::streamify(&output, root);
 
     // auto array = std::make_shared<sese::yaml::ArrayData>();
@@ -318,6 +322,7 @@ TEST(TestYaml, Serialize_2) {
     using sese::Value;
     sese::io::ConsoleOutputStream output;
 
+    // clang-format off
     auto root = Value(Value::List()
         .append("value0")
         .append(true)
@@ -328,6 +333,8 @@ TEST(TestYaml, Serialize_2) {
         .append(0.15926e-2)
         .append(Value{})
     );
+    // clang-format on
+
     sese::Yaml::streamify(&output, root);
 
     // auto array = std::make_shared<sese::yaml::ArrayData>();
