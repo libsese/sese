@@ -4,20 +4,20 @@ on:
   push:
     tags:
       - "*.*.*"
+  workflow_call:
+    workflows:
+      - windows-package
+      - macOS-package
+      - ubuntu-package
+    types:
+      - completed
 
 jobs:
-  test_package:
-    strategy:
-      matrix:
-          platform: [windows, ubuntu-2204, macos]
-    uses: libsese/sese/.github/workflows/${{ matrix.platform }}-package.yml
-
   release:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       tag: ${{ github.ref_name }}
-    needs: test_package
     steps:
       - name: Checksum
         run: |
