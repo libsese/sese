@@ -37,6 +37,8 @@ constexpr char STR1[]{
     "      bool1: False\n"
     "      bool2: No\n"
     "    - mapping3: value\n"
+    "      ip: 0.0.0.0\n"
+    "      port: 8080\n"
     "sub:\n"
     "  str5: 'Hello str5'"
 };
@@ -106,6 +108,15 @@ TEST(TestYaml, Deserialize_0) {
     auto element1_obj = array_obj->getList().begin();
     ASSERT_TRUE(element1_obj->isString());
     EXPECT_EQ(element1_obj->getString(), "element1");
+
+    auto element7_obj = array_obj->getList().end() - 1;
+    ASSERT_TRUE(element7_obj->isDict());
+    auto ip = element7_obj->getDict().find("ip");
+    ASSERT_NE(ip, nullptr);
+    EXPECT_EQ(ip->getString(), "0.0.0.0");
+    auto port = element7_obj->getDict().find("port");
+    ASSERT_NE(port, nullptr);
+    EXPECT_EQ(port->getInt(), 8080);
 
     // /// 数据为 null
     // SESE_YAML_GET_STRING(s0, mapping_obj, "null1", "undef");

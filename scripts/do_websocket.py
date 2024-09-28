@@ -11,6 +11,6 @@ def test(port: str):
     ws.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     p = sys.argv[1]
     test(p)
