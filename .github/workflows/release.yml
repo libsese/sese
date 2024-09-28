@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ matrix.triplet == 'x64-osx' }}
         with:
-          name: main
+          name: macos-main
           path: ${{ github.workspace }}/package/build/main
 
   x64-linux-package:
@@ -105,7 +105,7 @@ jobs:
         uses: actions/upload-artifact@v4.4.0
         if: ${{ matrix.triplet == 'x64-linux' }}
         with:
-          name: main
+          name: linux-main
           path: ${{ github.workspace }}/package/build/main
 
   x64-windows-package:
@@ -151,7 +151,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ matrix.triplet == 'x64-windows-static' }}
         with:
-          name: main
+          name: windows-main
           path: ${{ github.workspace }}/package/build/Debug/main.exe
 
   release:
