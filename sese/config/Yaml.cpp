@@ -12,28 +12,28 @@ using sese::Yaml;
 Value Yaml::parseBasic(const std::string &value) {
     if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~" || value.empty()) {
         return {};
-    } else if (sese::strcmpDoNotCase(value.c_str(), "true") ||
-               sese::strcmpDoNotCase(value.c_str(), "yes")) {
-        return Value{true};
-    } else if (sese::strcmpDoNotCase(value.c_str(), "false") ||
-               sese::strcmpDoNotCase(value.c_str(), "no")) {
-        return Value{false};
-    } else {
-        if (value.find('.') != std::string::npos) {
-            char *end;
-            double d = std::strtod(value.c_str(), &end);
-            if (*end == 0) {
-                return Value{d};
-            }
-        } else {
-            char *end;
-            int64_t l = std::strtol(value.c_str(), &end, 10);
-            if (*end == 0) {
-                return Value{l};
-            }
-        }
-        return Value{value.c_str()};
     }
+    if (sese::strcmpDoNotCase(value.c_str(), "true") ||
+        sese::strcmpDoNotCase(value.c_str(), "yes")) {
+        return Value{true};
+    }
+    if (sese::strcmpDoNotCase(value.c_str(), "false") || sese::strcmpDoNotCase(value.c_str(), "no")) {
+        return Value{false};
+    }
+    if (value.find('.') != std::string::npos) {
+        char *end;
+        double d = std::strtod(value.c_str(), &end);
+        if (*end == 0) {
+            return Value{d};
+        }
+    } else {
+        char *end;
+        int64_t l = std::strtol(value.c_str(), &end, 10);
+        if (*end == 0) {
+            return Value{l};
+        }
+    }
+    return Value{value.c_str()};
 }
 
 Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
@@ -129,8 +129,8 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
 
     while (!tokens_queue.empty()) {
         decltype(auto) count_and_tokens = tokens_queue.front();
-        auto current_count = std::get<0>(count_and_tokens);
-        auto current_tokens = std::get<1>(count_and_tokens);
+        auto &current_count = std::get<0>(count_and_tokens);
+        auto &current_tokens = std::get<1>(count_and_tokens);
 
         if (count == current_count) {
             if (current_tokens.size() == 1) {
@@ -184,8 +184,14 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                        current_tokens[0] == "-" &&
                        current_tokens[2] == ":") {
                 // result.append(Value::Dict().set(current_tokens[1], std::move(current_tokens[3])));
-                result.append(Value::Dict().set(current_tokens[1], parseBasic(current_tokens[3])));
-                tokens_queue.pop();
+                // result.append(Value::Dict().set(current_tokens[1], parseBasic(current_tokens[3])));
+                current_count += 2;
+                current_tokens.erase(current_tokens.begin());
+                if (auto value_object = parseObject(tokens_queue, level - 1); value_object.isDict()) {
+                    result.append(std::move(value_object));
+                } else {
+                    return {};
+                }
             } else {
                 return {};
             }
