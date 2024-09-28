@@ -4,16 +4,160 @@ on:
   push:
     tags:
       - "*.*.*"
-  workflow_run:
-    workflows:
-      - x64-linux-package
-      - x64-osx-package
-      - x64-windows-package
-    types:
-      - completed
 
 jobs:
+  update-portfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Update portfile.cmake
+        run: |
+          python ${{ github.workspace }}/scripts/update_portfile.py
+      - name: Upload portfile.cmake
+        uses: actions/upload-artifact@v3
+        with:
+          name: portfile.cmake
+          path: package/ports/sese/portfile.cmake
+
+  x64-osx-package:
+    needs: update-portfile
+    runs-on: macos-13
+    strategy:
+      matrix:
+        triplet: ['x64-osx', 'x64-osx-dynamic']
+    env:
+      VCPKG_BINARY_SOURCES: 'clear;x-gha,readwrite'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.11'
+      - name: Download portfile.cmake
+        uses: actions/download-artifact@v3
+        with:
+          name: portfile.cmake
+          path: package/ports/sese/portfile.cmake
+      - name: Config
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }}
+          -B build
+      - name: Build
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake --build build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.triplet == 'x64-osx' }}
+        with:
+          name: main
+          path: ${{ github.workspace }}/package/build/main
+
+  x64-linux-package:
+    needs: update-portfile
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        triplet: ['x64-linux', 'x64-linux-dynamic']
+    env:
+      VCPKG_BINARY_SOURCES: 'clear;x-gha,readwrite'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.11'
+      - name: Download portfile.cmake
+        uses: actions/download-artifact@v3
+        with:
+          name: portfile.cmake
+          path: package/ports/sese/portfile.cmake
+      - name: Config
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }}
+          -B build
+      - name: Build
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake --build build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.triplet == 'x64-linux' }}
+        with:
+          name: main
+          path: ${{ github.workspace }}/package/build/main
+
+  x64-windows-package:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        triplet: ['x64-windows', 'x64-windows-static']
+    env:
+      VCPKG_BINARY_SOURCES: 'clear;x-gha,readwrite'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      - name: Requiring CL
+        uses: ilammy/msvc-dev-cmd@v1.13.0
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.11'
+      - name: Download portfile.cmake
+        uses: actions/download-artifact@v3
+        with:
+          name: portfile.cmake
+          path: package/ports/sese/portfile.cmake
+      - name: Config
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake
+          -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }}
+          -B build
+      - name: Build
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake --build build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.triplet == 'x64-windows-static' }}
+        with:
+          name: main
+          path: ${{ github.workspace }}/package/build/Debug/main.exe
+
   release:
+    needs:
+      - x64-osx-package
+      - x64-linux-package
+      - x64-windows-package
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,7 +171,6 @@ jobs:
           wget https://github.com/libsese/sese/archive/refs/tags/${{ env.tag }}.tar.gz -O sese-${{ env.tag }}.tar.gz
           sha256sum sese-${{ env.tag }}.tar.gz > sese-${{ env.tag }}.tar.gz.sha256
           sha512sum sese-${{ env.tag }}.tar.gz > sese-${{ env.tag }}.tar.gz.sha512
-
       - name: Create release
         run: |
           gh release create "${{ env.tag }}" \
