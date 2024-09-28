@@ -57,8 +57,8 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
                     return {};
                 }
                 // 普通键值对
-                std::string key = current_tokens[0];
-                std::string value = current_tokens[2];
+                const std::string &key = current_tokens[0];
+                const std::string &value = current_tokens[2];
                 result.set(key, Yaml::parseBasic(value));
                 tokens_queue.pop();
             } else if (current_tokens.size() == 2) {
@@ -180,9 +180,7 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                     }
                     // GCOVR_EXCL_STOP
                 }
-            } else if (current_tokens.size() == 4 &&
-                       current_tokens[0] == "-" &&
-                       current_tokens[2] == ":") {
+            } else if (current_tokens.size() == 4 && current_tokens[0] == "-" && current_tokens[2] == ":") {
                 // result.append(Value::Dict().set(current_tokens[1], std::move(current_tokens[3])));
                 // result.append(Value::Dict().set(current_tokens[1], parseBasic(current_tokens[3])));
                 current_count += 2;

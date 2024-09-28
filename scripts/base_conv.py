@@ -12,18 +12,17 @@ def encode(num, alphabet=BASE62):
         num, rem = divmod(num, base)
         arr.append(alphabet[rem])
     arr.reverse()
-    return ''.join(arr)
+    return "".join(arr)
 
 
 def decode(string, alphabet=BASE62):
     base = len(alphabet)
     strlen = len(string)
     num = 0
-
     idx = 0
     for char in string:
-        power = (strlen - (idx + 1))
-        num += alphabet.index(char) * (base ** power)
+        power = strlen - (idx + 1)
+        num += alphabet.index(char) * (base**power)
         idx += 1
 
     return num
@@ -31,13 +30,13 @@ def decode(string, alphabet=BASE62):
 
 class ConvTest(unittest.TestCase):
     def test_decode_integer(self):
-        res = decode('ftXl')
+        res = decode("ftXl")
         self.assertEqual(res, 7562611)
 
     def test_encode_buffer(self):
         res = encode(7562611)
-        self.assertEqual(res, 'ftXl')
+        self.assertEqual(res, "ftXl")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
