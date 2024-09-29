@@ -171,5 +171,3 @@ jobs:
           --title="sese-core ${{ env.tag }} release" \
           --generate-notes \
           ${{ (contains(env.tag, 'alpha') || contains(env.tag, 'beta')) && '--prerelease' || '' }}
-      - name: Checksums
-        uses: wangzuo/action-release-checksums@v1.0.1
