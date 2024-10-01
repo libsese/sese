@@ -54,11 +54,11 @@ public:
 
     /// 启动服务
     /// @return 结果
-    bool startup();
+    bool startup()const;
 
     /// 终止服务
     /// @return 结果
-    bool shutdown();
+    bool shutdown()const;
 
 private:
     std::string name;

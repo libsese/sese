@@ -1,6 +1,6 @@
 #include <sese/internal/service/http/HttpServiceImpl.h>
 #include <sese/service/http/HttpServer.h>
-
+#include <sese/Log.h>
 #include <utility>
 
 using namespace sese::service::http;
@@ -23,7 +23,7 @@ void HttpServer::setKeepalive(uint32_t seconds) {
 
 void HttpServer::regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context) {
     auto service = internal::service::http::HttpServiceImpl::create(
-            address, std::move(context), keepalive, name, mount_points, servlets, filters, connection_callback
+        address, std::move(context), keepalive, name, mount_points, servlets, filters, connection_callback
     );
     this->services.push_back(service);
 }
@@ -36,14 +36,24 @@ void HttpServer::setConnectionCallback(const HttpService::ConnectionCallback &ca
     this->connection_callback = callback;
 }
 
-bool HttpServer::startup() {
+bool HttpServer::startup() const {
+    std::vector<HttpService::Ptr> startup_services;
     for (auto &&item: services) {
-        item->startup();
+        if (item->startup()) {
+            SESE_INFO("Service started");
+            startup_services.push_back(item);
+        } else {
+            SESE_ERROR("Failed to startup service: {}", item->getLastError());
+            for (auto &&service: startup_services) {
+                service->shutdown();
+            }
+            return false;
+        }
     }
     return true;
 }
 
-bool HttpServer::shutdown() {
+bool HttpServer::shutdown() const {
     for (auto &&item: services) {
         item->shutdown();
     }
