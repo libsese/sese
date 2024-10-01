@@ -41,25 +41,26 @@ bool HttpUtil::recvRequest(InputStream *source, RequestHeader *request) noexcept
 
     // method
     // GCOVR_EXCL_START
-    if ("GET" == first_lines[0]) {
-        request->setType(RequestType::GET);
-    } else if ("POST" == first_lines[0]) {
-        request->setType(RequestType::POST);
-    } else if ("OPTIONS" == first_lines[0]) {
-        request->setType(RequestType::OPTIONS);
-    } else if ("HEAD" == first_lines[0]) {
-        request->setType(RequestType::HEAD);
-    } else if ("PUT" == first_lines[0]) {
-        request->setType(RequestType::PUT);
-    } else if ("DELETE" == first_lines[0]) {
-        request->setType(RequestType::DELETE);
-    } else if ("TRACE" == first_lines[0]) {
-        request->setType(RequestType::TRACE);
-    } else if ("CONNECT" == first_lines[0]) {
-        request->setType(RequestType::CONNECT);
-    } else {
-        request->setType(RequestType::ANOTHER);
-    }
+    // if ("GET" == first_lines[0]) {
+    //     request->setType(RequestType::GET);
+    // } else if ("POST" == first_lines[0]) {
+    //     request->setType(RequestType::POST);
+    // } else if ("OPTIONS" == first_lines[0]) {
+    //     request->setType(RequestType::OPTIONS);
+    // } else if ("HEAD" == first_lines[0]) {
+    //     request->setType(RequestType::HEAD);
+    // } else if ("PUT" == first_lines[0]) {
+    //     request->setType(RequestType::PUT);
+    // } else if ("DELETE" == first_lines[0]) {
+    //     request->setType(RequestType::DELETE);
+    // } else if ("TRACE" == first_lines[0]) {
+    //     request->setType(RequestType::TRACE);
+    // } else if ("CONNECT" == first_lines[0]) {
+    //     request->setType(RequestType::CONNECT);
+    // } else {
+    //     request->setType(RequestType::ANOTHER);
+    // }
+    request->setType(stringToRequestType(first_lines[0]));
     // GCOVR_EXCL_STOP
 
     // url
@@ -81,34 +82,39 @@ bool HttpUtil::recvRequest(InputStream *source, RequestHeader *request) noexcept
 bool HttpUtil::sendRequest(OutputStream *dest, RequestHeader *request) noexcept {
     // method
     // GCOVR_EXCL_START
-    switch (request->getType()) {
-        case RequestType::OPTIONS:
-            if (8 != dest->write("OPTIONS ", 8)) return false;
-            break;
-        case RequestType::GET:
-            if (4 != dest->write("GET ", 4)) return false;
-            break;
-        case RequestType::POST:
-            if (5 != dest->write("POST ", 5)) return false;
-            break;
-        case RequestType::HEAD:
-            if (5 != dest->write("HEAD ", 5)) return false;
-            break;
-        case RequestType::PUT:
-            if (4 != dest->write("PUT ", 4)) return false;
-            break;
-        case RequestType::DELETE:
-            if (7 != dest->write("DELETE ", 7)) return false;
-            break;
-        case RequestType::TRACE:
-            if (6 != dest->write("TRACE ", 6)) return false;
-            break;
-        case RequestType::CONNECT:
-            if (8 != dest->write("CONNECT ", 8)) return false;
-            break;
-        case RequestType::ANOTHER:
-            break;
+    // switch (request->getType()) {
+    //     case RequestType::OPTIONS:
+    //         if (8 != dest->write("OPTIONS ", 8)) return false;
+    //         break;
+    //     case RequestType::GET:
+    //         if (4 != dest->write("GET ", 4)) return false;
+    //         break;
+    //     case RequestType::POST:
+    //         if (5 != dest->write("POST ", 5)) return false;
+    //         break;
+    //     case RequestType::HEAD:
+    //         if (5 != dest->write("HEAD ", 5)) return false;
+    //         break;
+    //     case RequestType::PUT:
+    //         if (4 != dest->write("PUT ", 4)) return false;
+    //         break;
+    //     case RequestType::DELETE:
+    //         if (7 != dest->write("DELETE ", 7)) return false;
+    //         break;
+    //     case RequestType::TRACE:
+    //         if (6 != dest->write("TRACE ", 6)) return false;
+    //         break;
+    //     case RequestType::CONNECT:
+    //         if (8 != dest->write("CONNECT ", 8)) return false;
+    //         break;
+    //     case RequestType::ANOTHER:
+    //         break;
+    // }
+    auto method = requestTypeToString(request->getType()) + " ";
+    if (method.length() != dest->write(method.c_str(), method.length())) {
+        return false;
     }
+
     // GCOVR_EXCL_STOP
 
     // url

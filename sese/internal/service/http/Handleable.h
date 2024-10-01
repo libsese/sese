@@ -3,6 +3,7 @@
 #include <sese/net/http/HttpServletContext.h>
 #include <sese/net/http/Range.h>
 #include <sese/io/File.h>
+#include <sese/util/StopWatch.h>
 
 #include <sese/internal/service/http/ConnType.h>
 
@@ -21,6 +22,7 @@ struct Handleable {
     std::vector<sese::net::http::Range>::iterator range_iterator = ranges.begin();
     sese::net::IPAddress::Ptr remote_address{};
     bool keepalive = false;
+    sese::StopWatch stopwatch;
 };
 
 }

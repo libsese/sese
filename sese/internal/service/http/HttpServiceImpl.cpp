@@ -116,6 +116,7 @@ void sese::internal::service::http::HttpServiceImpl::handleFilter(const Handleab
 }
 
 void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handleable::Ptr &conn) const {
+    conn->stopwatch.stop();
     auto &&req = conn->request;
     auto &&resp = conn->response;
     std::filesystem::path filename;
@@ -245,6 +246,7 @@ uni_handle:
     }
     resp.set("server", this->serv_name);
     resp.set("accept-range", "bytes");
+    SESE_INFO("{} {} {} in {}ms", sese::net::http::requestTypeToString(req.getType()), req.getUri(), resp.getCode(), conn->stopwatch.stop().getTotalMilliseconds());
 }
 
 void sese::internal::service::http::HttpServiceImpl::handleAccept() {

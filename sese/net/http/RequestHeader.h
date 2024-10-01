@@ -27,13 +27,64 @@ enum class RequestType {
     ANOTHER
 };
 
+inline std::string requestTypeToString(RequestType request_type) {
+    switch (request_type) {
+        case RequestType::OPTIONS:
+            return "OPTIONS";
+        case RequestType::GET:
+            return "GET";
+        case RequestType::POST:
+            return "POST";
+        case RequestType::HEAD:
+            return "HEAD";
+        case RequestType::PUT:
+            return "PUT";
+        case RequestType::DELETE:
+            return "DELETE";
+        case RequestType::TRACE:
+            return "TRACE";
+        case RequestType::CONNECT:
+            return "CONNECT";
+        case RequestType::ANOTHER:
+        default:
+            return "ANOTHER";
+    }
+}
+
+inline RequestType stringToRequestType(const std::string &request_type_str) {
+    if (request_type_str == "OPTIONS") {
+        return RequestType::OPTIONS;
+    }
+    if (request_type_str == "GET") {
+        return RequestType::GET;
+    }
+    if (request_type_str == "POST") {
+        return RequestType::POST;
+    }
+    if (request_type_str == "HEAD") {
+        return RequestType::HEAD;
+    }
+    if (request_type_str == "PUT") {
+        return RequestType::PUT;
+    }
+    if (request_type_str == "DELETE") {
+        return RequestType::DELETE;
+    }
+    if (request_type_str == "TRACE") {
+        return RequestType::TRACE;
+    }
+    if (request_type_str == "CONNECT") {
+        return RequestType::CONNECT;
+    }
+    return RequestType::ANOTHER;
+}
 // GCOVR_EXCL_START
 
 /**
  * @brief 请求头类
  * @warning 字段 uri 未进行任何处理（URL + QueryString）
  */
-class  RequestHeader : public Header {
+class RequestHeader : public Header {
 public:
     using Ptr = std::unique_ptr<RequestHeader>;
 
