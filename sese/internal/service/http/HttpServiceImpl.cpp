@@ -135,7 +135,7 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
         for (auto &&[uri_prefix, mount_point]: mount_points) {
             if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
                 conn->conn_type = ConnType::FILE_DOWNLOAD;
-                filename = mount_point + req.getUri().substr(uri_prefix.length());
+                filename = mount_point + "/" + req.getUri().substr(uri_prefix.length());
                 // 确认文件名后进行下一步操作
                 break;
             }
