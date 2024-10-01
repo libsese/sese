@@ -45,6 +45,8 @@ var namespacesese_1_1net_1_1http =
       [ "CONNECT", "namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325ab57e2519e26151feacdbe52076bc39ec", null ],
       [ "ANOTHER", "namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325aabcd763234591e04a9520ea0d0e29b43", null ]
     ] ],
+    [ "requestTypeToString", "namespacesese_1_1net_1_1http.html#af186d493049df145aafcad57dc090dac", null ],
+    [ "stringToRequestType", "namespacesese_1_1net_1_1http.html#aa0bfd5d7bc73ce9b17ab25ba3070088c", null ],
     [ "FRAME_FLAG_END_HEADERS", "namespacesese_1_1net_1_1http.html#a5e19141c8991badde80d903933b5263a", null ],
     [ "FRAME_FLAG_END_STREAM", "namespacesese_1_1net_1_1http.html#ac158cd78427951f2f85f5b5541337ba5", null ],
     [ "FRAME_FLAG_PADDED", "namespacesese_1_1net_1_1http.html#a93c6c380e8679a05a1e2af8e134b48a5", null ],

@@ -10,5 +10,6 @@ var structsese_1_1internal_1_1service_1_1http_1_1_handleable =
     [ "ranges", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#adb754a03dc616e7e88ec079f7a4303e0", null ],
     [ "remote_address", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a593648d587dc8eb98fd5cd6c58353bac", null ],
     [ "request", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#ade8b2bb5f620f80ced1471b900ec7b97", null ],
-    [ "response", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a0c7d6b0449e2bd67ec6d5dc7e44c67f9", null ]
+    [ "response", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#a0c7d6b0449e2bd67ec6d5dc7e44c67f9", null ],
+    [ "stopwatch", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#afea9135bf4fe96c2c050a3a5e7310f24", null ]
 ];

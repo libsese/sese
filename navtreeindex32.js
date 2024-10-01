@@ -1,5 +1,11 @@
 var NAVTREEINDEX32 =
 {
+"structsese_1_1net_1_1dns_1_1_dns_config.html#a3e1e941fa6406feb09df02fca64387cb":[6,0,0,9,0,2,2],
+"structsese_1_1net_1_1dns_1_1_dns_config.html#a3e1e941fa6406feb09df02fca64387cb":[7,0,0,9,0,2,2],
+"structsese_1_1net_1_1dns_1_1_dns_config.html#a5966f1c4cf74856d70157b97d08b77af":[6,0,0,9,0,2,1],
+"structsese_1_1net_1_1dns_1_1_dns_config.html#a5966f1c4cf74856d70157b97d08b77af":[7,0,0,9,0,2,1],
+"structsese_1_1net_1_1dns_1_1_frame_flags_info.html":[6,0,0,9,0,6],
+"structsese_1_1net_1_1dns_1_1_frame_flags_info.html":[7,0,0,9,0,6],
 "structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a095abf80d0b63b6344dd212d482b9f5b":[6,0,0,9,0,6,3],
 "structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a095abf80d0b63b6344dd212d482b9f5b":[7,0,0,9,0,6,3],
 "structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a0e0f95c100d6652dc864c17b53b3c174":[6,0,0,9,0,6,7],
@@ -243,11 +249,5 @@ var NAVTREEINDEX32 =
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01":[6,0,0,16,0,2,1],
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a358e69b78b2d209aef7debf0005f1c01":[7,0,0,16,0,2,1],
 "structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1":[6,0,0,16,0,2,2],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1":[7,0,0,16,0,2,2],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d":[6,0,0,16,0,2,0],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d":[7,0,0,16,0,2,0],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html":[6,0,0,16,0,5],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html":[7,0,0,16,0,5],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a3f5c088c1c34b9440324663d40380ffd":[6,0,0,16,0,5,1],
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a3f5c088c1c34b9440324663d40380ffd":[7,0,0,16,0,5,1]
+"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#a60d0c5d2e2922ecfed53dcfafc2c6bb1":[7,0,0,16,0,2,2]
 };

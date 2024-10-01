@@ -11,5 +11,7 @@ var _request_header_8h =
       [ "TRACE", "_request_header_8h.html#a20c34f00a2c16ad06f8e39d863a3d325a2d3e4144aa384b18849ab9a8abad74d6", null ],
       [ "CONNECT", "_request_header_8h.html#a20c34f00a2c16ad06f8e39d863a3d325ab57e2519e26151feacdbe52076bc39ec", null ],
       [ "ANOTHER", "_request_header_8h.html#a20c34f00a2c16ad06f8e39d863a3d325aabcd763234591e04a9520ea0d0e29b43", null ]
-    ] ]
+    ] ],
+    [ "requestTypeToString", "_request_header_8h.html#af186d493049df145aafcad57dc090dac", null ],
+    [ "stringToRequestType", "_request_header_8h.html#aa0bfd5d7bc73ce9b17ab25ba3070088c", null ]
 ];
