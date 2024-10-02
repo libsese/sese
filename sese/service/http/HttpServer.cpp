@@ -13,6 +13,10 @@ void HttpServer::regServlet(const net::http::Servlet &servlet) {
     this->servlets.emplace(servlet.getUri(), servlet);
 }
 
+void HttpServer::regTailFilter(const HttpService::FilterCallback &tail_filter) {
+    this->tail_filter = tail_filter;
+}
+
 void HttpServer::regFilter(const std::string &uri_prefix, const HttpService::FilterCallback &callback) {
     this->filters[uri_prefix] = callback;
 }
@@ -23,7 +27,7 @@ void HttpServer::setKeepalive(uint32_t seconds) {
 
 void HttpServer::regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context) {
     auto service = internal::service::http::HttpServiceImpl::create(
-        address, std::move(context), keepalive, name, mount_points, servlets, filters, connection_callback
+        address, std::move(context), keepalive, name, mount_points, servlets, tail_filter, filters, connection_callback
     );
     this->services.push_back(service);
 }

@@ -10,6 +10,7 @@ sese::service::http::HttpService::Ptr sese::service::http::HttpService::create(
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
+        FilterCallback &tail_filter,
         FilterMap &filters,
         ConnectionCallback &connection_callback
 ) {
@@ -20,6 +21,7 @@ sese::service::http::HttpService::Ptr sese::service::http::HttpService::create(
             serv_name,
             mount_points,
             servlets,
+            tail_filter,
             filters,
             connection_callback
     );
@@ -32,6 +34,7 @@ sese::service::http::HttpService::HttpService(
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
+        FilterCallback &tail_filter,
         FilterMap &filters,
         ConnectionCallback &connection_callback
 ) : address(std::move(address)),
@@ -40,6 +43,7 @@ sese::service::http::HttpService::HttpService(
     serv_name(serv_name),
     mount_points(mount_points),
     servlets(servlets),
+    tail_filter(tail_filter),
     filters(filters),
     connection_callback(connection_callback) {
 }

@@ -18,10 +18,11 @@ sese::internal::service::http::HttpServiceImpl::HttpServiceImpl(
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets,
+        FilterCallback &tail_filter,
         FilterMap &filters,
         ConnectionCallback &connection_callback
 )
-    : HttpService(address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets, filters, connection_callback),
+    : HttpService(address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets, tail_filter, filters, connection_callback),
       io_context(),
       ssl_context(std::nullopt),
       acceptor(io_context) {
@@ -246,6 +247,9 @@ uni_handle:
     }
     resp.set("server", this->serv_name);
     resp.set("accept-range", "bytes");
+    if (tail_filter) {
+        tail_filter(req, resp);
+    }
     SESE_INFO("{} {} {} in {}ms", sese::net::http::requestTypeToString(req.getType()), req.getUri(), resp.getCode(), conn->stopwatch.stop().getTotalMilliseconds());
 }
 

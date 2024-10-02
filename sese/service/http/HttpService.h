@@ -33,6 +33,7 @@ public:
             std::string &serv_name,
             MountPointMap &mount_points,
             ServletMap &servlets,
+            FilterCallback &tail_filter,
             FilterMap &filters,
             ConnectionCallback &connection_callback
     );
@@ -45,6 +46,7 @@ protected:
             std::string &serv_name,
             MountPointMap &mount_points,
             ServletMap &servlets,
+            FilterCallback &tail_filter,
             FilterMap &filters,
             ConnectionCallback &connection_callback
     );
@@ -56,6 +58,7 @@ protected:
     std::string &serv_name;
     MountPointMap &mount_points;
     ServletMap &servlets;
+    FilterCallback &tail_filter;
     FilterMap &filters;
     ConnectionCallback &connection_callback;
 };
