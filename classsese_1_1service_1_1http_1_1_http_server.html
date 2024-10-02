@@ -154,7 +154,6 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:ae6de8e196e7cea52a9d0211a5aa06c0e" id="r_ae6de8e196e7cea52a9d0211a5aa06c0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6de8e196e7cea52a9d0211a5aa06c0e">regServlet</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html">net::http::Servlet</a> &amp;servlet)</td></tr>
 <tr class="separator:ae6de8e196e7cea52a9d0211a5aa06c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7df583fc1bf274356255215e1704e86" id="r_aa7df583fc1bf274356255215e1704e86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7df583fc1bf274356255215e1704e86">regTailFilter</a> (const <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#ab4635f7027cb6fa460c276d79cc7aa60">HttpService::FilterCallback</a> &amp;<a class="el" href="#a0da92e9107dd8e3ec12ee93b560fe9f7">tail_filter</a>)</td></tr>
-<tr class="memdesc:aa7df583fc1bf274356255215e1704e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册后置 Http Filter 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理之后执行，同时它的返回值严格限制为 true 如果需要对响应进行最终修改或处理，可以使用此功能。  <br /></td></tr>
 <tr class="separator:aa7df583fc1bf274356255215e1704e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b644f445ded64c907298148f5244b44" id="r_a8b644f445ded64c907298148f5244b44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b644f445ded64c907298148f5244b44">setKeepalive</a> (uint32_t seconds)</td></tr>
 <tr class="separator:a8b644f445ded64c907298148f5244b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -356,9 +355,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>注册后置 Http Filter 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理之后执行，同时它的返回值严格限制为 true 如果需要对响应进行最终修改或处理，可以使用此功能。 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理异常之后执行。 如果需要对响应进行最终修改或处理（自定义404等页面），可以使用此功能。 返回值表示是否拦截做了处理，拦截后响应类型将会变为 Controller，并接受相关处理。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">tail_filter</td><td>待注册的后置 Http Filter，用于处理请求 </td></tr>
   </table>
@@ -711,7 +708,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1http_1_1_http_server.html">HttpServer</a></li>
-    <li class="footer">生成于 2024年 十月 2日 星期三 07:18:07 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 2日 星期三 08:46:29 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
