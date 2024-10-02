@@ -35,9 +35,9 @@ public:
     /// @param servlet Http 应用
     void regServlet(const net::http::Servlet &servlet);
 
-    /// \brief 注册后置 Http Filter
-    /// 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理之后执行，同时它的返回值严格限制为 true
-    /// 如果需要对响应进行最终修改或处理，可以使用此功能。
+    /// 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理异常之后执行。
+    /// 如果需要对响应进行最终修改或处理（自定义404等页面），可以使用此功能。
+    /// 返回值表示是否拦截做了处理，拦截后响应类型将会变为 Controller，并接受相关处理。
     /// \param tail_filter 待注册的后置 Http Filter，用于处理请求
     void regTailFilter(const HttpService::FilterCallback &tail_filter);
 

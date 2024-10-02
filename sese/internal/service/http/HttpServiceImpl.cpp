@@ -247,8 +247,11 @@ uni_handle:
     }
     resp.set("server", this->serv_name);
     resp.set("accept-range", "bytes");
-    if (tail_filter) {
-        tail_filter(req, resp);
+    if (tail_filter && (resp.getCode() != 200 && resp.getCode() != 201)) {
+        if(tail_filter(req, resp)) {
+            resp.set("content-length", std::to_string(resp.getBody().getReadableSize()));
+            conn->conn_type = ConnType::CONTROLLER;
+        }
     }
     SESE_INFO("{} {} {} in {}ms", sese::net::http::requestTypeToString(req.getType()), req.getUri(), resp.getCode(), conn->stopwatch.stop().getTotalMilliseconds());
 }
