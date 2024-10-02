@@ -153,6 +153,9 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:add4a29bd3c541d21221e4757819c0f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6de8e196e7cea52a9d0211a5aa06c0e" id="r_ae6de8e196e7cea52a9d0211a5aa06c0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6de8e196e7cea52a9d0211a5aa06c0e">regServlet</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html">net::http::Servlet</a> &amp;servlet)</td></tr>
 <tr class="separator:ae6de8e196e7cea52a9d0211a5aa06c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7df583fc1bf274356255215e1704e86" id="r_aa7df583fc1bf274356255215e1704e86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7df583fc1bf274356255215e1704e86">regTailFilter</a> (const <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#ab4635f7027cb6fa460c276d79cc7aa60">HttpService::FilterCallback</a> &amp;<a class="el" href="#a0da92e9107dd8e3ec12ee93b560fe9f7">tail_filter</a>)</td></tr>
+<tr class="memdesc:aa7df583fc1bf274356255215e1704e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册后置 Http Filter 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理之后执行，同时它的返回值严格限制为 true 如果需要对响应进行最终修改或处理，可以使用此功能。  <br /></td></tr>
+<tr class="separator:aa7df583fc1bf274356255215e1704e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b644f445ded64c907298148f5244b44" id="r_a8b644f445ded64c907298148f5244b44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b644f445ded64c907298148f5244b44">setKeepalive</a> (uint32_t seconds)</td></tr>
 <tr class="separator:a8b644f445ded64c907298148f5244b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0568326367b5c0c66e3fa519504fc75c" id="r_a0568326367b5c0c66e3fa519504fc75c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0568326367b5c0c66e3fa519504fc75c">regService</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address, std::unique_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">security::SSLContext</a> &gt; context)</td></tr>
@@ -182,6 +185,8 @@ Private 属性</h2></td></tr>
 <tr class="separator:a0e8fb2cb3dd9efa838fae045dfe72e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d037cce32ddfc0f75503cdcf5c78126" id="r_a9d037cce32ddfc0f75503cdcf5c78126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#afca78509f290f25de38b486463c32818">HttpService::FilterMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d037cce32ddfc0f75503cdcf5c78126">filters</a></td></tr>
 <tr class="separator:a9d037cce32ddfc0f75503cdcf5c78126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da92e9107dd8e3ec12ee93b560fe9f7" id="r_a0da92e9107dd8e3ec12ee93b560fe9f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#ab4635f7027cb6fa460c276d79cc7aa60">HttpService::FilterCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0da92e9107dd8e3ec12ee93b560fe9f7">tail_filter</a></td></tr>
+<tr class="separator:a0da92e9107dd8e3ec12ee93b560fe9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a189fd5b1b91cc8a6200a676264507c9d" id="r_a189fd5b1b91cc8a6200a676264507c9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#aa54b8e86ace9797358465acf8a907473">HttpService::ConnectionCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a189fd5b1b91cc8a6200a676264507c9d">connection_callback</a></td></tr>
 <tr class="separator:a189fd5b1b91cc8a6200a676264507c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -308,7 +313,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="#a189fd5b1b91cc8a6200a676264507c9d">connection_callback</a>, <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#a79c1049a29466f4c93f3d7bb6094a3b6">sese::service::http::HttpService::create()</a>, <a class="el" href="#a9d037cce32ddfc0f75503cdcf5c78126">filters</a>, <a class="el" href="#a497fd197cf01751aefe1573a5910e16a">keepalive</a>, <a class="el" href="#a1932fcb31106245be29525cf91303214">mount_points</a>, <a class="el" href="#a5eea43c082d0aa7ec984efadc57c856b">name</a>, <a class="el" href="#abf6506b171895896889aa9a52ee084fe">services</a> , 以及 <a class="el" href="#a0e8fb2cb3dd9efa838fae045dfe72e58">servlets</a>.</p>
+<p class="reference">引用了 <a class="el" href="#a189fd5b1b91cc8a6200a676264507c9d">connection_callback</a>, <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#ac43b89e5564f1bd468151be6241393ac">sese::service::http::HttpService::create()</a>, <a class="el" href="#a9d037cce32ddfc0f75503cdcf5c78126">filters</a>, <a class="el" href="#a497fd197cf01751aefe1573a5910e16a">keepalive</a>, <a class="el" href="#a1932fcb31106245be29525cf91303214">mount_points</a>, <a class="el" href="#a5eea43c082d0aa7ec984efadc57c856b">name</a>, <a class="el" href="#abf6506b171895896889aa9a52ee084fe">services</a>, <a class="el" href="#a0e8fb2cb3dd9efa838fae045dfe72e58">servlets</a> , 以及 <a class="el" href="#a0da92e9107dd8e3ec12ee93b560fe9f7">tail_filter</a>.</p>
 
 </div>
 </div>
@@ -334,6 +339,33 @@ template&lt;class CTL , class... ARGS&gt; </div>
 </dl>
 
 <p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#a07dcaf96e592a346b74a581a87b4ce5b">sese::net::http::Servlet::getUri()</a> , 以及 <a class="el" href="#a0e8fb2cb3dd9efa838fae045dfe72e58">servlets</a>.</p>
+
+</div>
+</div>
+<a id="aa7df583fc1bf274356255215e1704e86" name="aa7df583fc1bf274356255215e1704e86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7df583fc1bf274356255215e1704e86">&#9670;&#160;</a></span>regTailFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HttpServer::regTailFilter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#ab4635f7027cb6fa460c276d79cc7aa60">HttpService::FilterCallback</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>tail_filter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>注册后置 Http Filter 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理之后执行，同时它的返回值严格限制为 true 如果需要对响应进行最终修改或处理，可以使用此功能。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tail_filter</td><td>待注册的后置 Http Filter，用于处理请求 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">引用了 <a class="el" href="#a0da92e9107dd8e3ec12ee93b560fe9f7">tail_filter</a>.</p>
 
 </div>
 </div>
@@ -645,6 +677,30 @@ template&lt;class CTL , class... ARGS&gt; </div>
 
 </div>
 </div>
+<a id="a0da92e9107dd8e3ec12ee93b560fe9f7" name="a0da92e9107dd8e3ec12ee93b560fe9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0da92e9107dd8e3ec12ee93b560fe9f7">&#9670;&#160;</a></span>tail_filter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1service_1_1http_1_1_http_service.html#ab4635f7027cb6fa460c276d79cc7aa60">HttpService::FilterCallback</a> sese::service::http::HttpServer::tail_filter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a0568326367b5c0c66e3fa519504fc75c">regService()</a> , 以及 <a class="el" href="#aa7df583fc1bf274356255215e1704e86">regTailFilter()</a>.</p>
+
+</div>
+</div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/service/http/<a class="el" href="_http_server_8h_source.html">HttpServer.h</a></li>
 <li>sese/service/http/<a class="el" href="_http_server_8cpp.html">HttpServer.cpp</a></li>
@@ -655,7 +711,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1http_1_1_http_server.html">HttpServer</a></li>
-    <li class="footer">生成于 2024年 十月 1日 星期二 17:29:39 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 2日 星期三 07:18:07 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

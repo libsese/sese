@@ -96,15 +96,15 @@ var NAVTREEINDEX =
 "classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343",
 "classsese_1_1security_1_1evp_1_1_encrypter.html",
 "classsese_1_1service_1_1_user_balance_loader.html#a49756d28dfd9ec497e73e1fa8e54f463",
-"classsese_1_1system_1_1_library_object.html",
-"classsese_1_1text_1_1_date_time_formatter.html#a7e541cbdd004138509f67a4db5372d5e",
-"classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305",
-"functions_type.html",
-"namespacesese_1_1net_1_1http.html#ab6745fe88cd529a4ee8ac6dbfdf99933",
-"structsese_1_1_bitset32.html#af2f277d15668656317018a4897c481f2",
-"structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a49960436727805746d472dd32b18d32d",
-"structsese_1_1net_1_1dns_1_1_dns_config.html#a3e1e941fa6406feb09df02fca64387cb",
-"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html#af4ad6fae2dc25741da2ab613d1c8101d"
+"classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed",
+"classsese_1_1text_1_1_date_time_formatter.html#a399eda28b893b513c34e2580cc2e17b2",
+"classsstr_1_1_s_string_view.html",
+"functions_p.html",
+"namespacesese_1_1net_1_1http.html#aa0bfd5d7bc73ce9b17ab25ba3070088c",
+"structsese_1_1_bitset32.html#ae4094d696a33b37e3914c4c079e1b84c",
+"structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a43add1c9097e454ca9eeee7cb87c7168",
+"structsese_1_1is__pair_3_01std_1_1pair_3_01_t1_00_01_t2_01_4_01_4.html",
+"structsese_1_1text_1_1overload_1_1_formatter_3_01_date_time_01_4.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
