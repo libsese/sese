@@ -4,6 +4,7 @@ var classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl =
     [ "alpnCallback", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a661efb30ed771c1f8c63897a9175661f", null ],
     [ "getKeepalive", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a9baddb8cc630563e066388f713019d24", null ],
     [ "getLastError", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a7f709c52f062542eddbeb7be8b9289dc", null ],
+    [ "getLastErrorMessage", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a6b26ad789b5c4f71bbfe96bbd51ea983", null ],
     [ "handleAccept", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a3bd6a8ed20ee28b1bf199c2071018e27", null ],
     [ "handleFilter", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a91aa97d133a266d41eeac86edab06210", null ],
     [ "handleRequest", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#ade12d7954799ffa3b1d19a57f411ceed", null ],
