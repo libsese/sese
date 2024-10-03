@@ -18,12 +18,10 @@ TEST(TestStream, STLSupport) {
     std::string msg = "hello world\n";
     std::vector<char> vector{'h', 'e', 'l', 'l', 'o', '\n'};
     std::array<char, 6> array{'h', 'e', 'l', 'l', 'o', '\n'};
-    std::span span(array.begin(), array.end());
 
     out->write(msg);
     out->write(vector);
     out->write(array);
-    out->write(span);
 }
 
 TEST(TestStream, BufferedInput) {

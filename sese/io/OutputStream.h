@@ -39,11 +39,6 @@ public:
     int64_t write(std::array<T, N> &buffer) {
         return write(buffer.data(), N * sizeof(T));
     }
-
-    template<typename T>
-    int64_t write(std::span<T> &buffer) {
-        return write(buffer.data(), buffer.size() * sizeof(T));
-    }
 };
 
 // GCOVR_EXCL_STOP
