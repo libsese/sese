@@ -94,6 +94,8 @@ jobs:
         working-directory: ${{ github.workspace }}/package
         run: >
           cmake
+          -DCMAKE_C_COMPILER=/usr/bin/gcc-12
+          -DCMAKE_CXX_COMPILER=/usr/bin/g++-12
           -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
           -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }}
           -B build
