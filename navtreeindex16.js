@@ -123,14 +123,12 @@ var NAVTREEINDEX16 =
 "classsese_1_1io_1_1_output_stream.html#ab257a95dc38d0936f82f931447335204":[7,0,0,7,20,5],
 "classsese_1_1io_1_1_output_stream.html#ab2dba133806f97418ee6314cdd9946c2":[6,0,0,7,20,3],
 "classsese_1_1io_1_1_output_stream.html#ab2dba133806f97418ee6314cdd9946c2":[7,0,0,7,20,3],
-"classsese_1_1io_1_1_output_stream.html#abed044ab9481d57304f2379365605c39":[6,0,0,7,20,6],
-"classsese_1_1io_1_1_output_stream.html#abed044ab9481d57304f2379365605c39":[7,0,0,7,20,6],
 "classsese_1_1io_1_1_output_stream.html#abf9c6371443664ed220cff5a3d8aeb39":[6,0,0,7,20,2],
 "classsese_1_1io_1_1_output_stream.html#abf9c6371443664ed220cff5a3d8aeb39":[7,0,0,7,20,2],
 "classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54":[6,0,0,7,20,1],
 "classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54":[7,0,0,7,20,1],
-"classsese_1_1io_1_1_output_stream.html#aeacd2a67fb41593c5571525428846f9c":[6,0,0,7,20,7],
-"classsese_1_1io_1_1_output_stream.html#aeacd2a67fb41593c5571525428846f9c":[7,0,0,7,20,7],
+"classsese_1_1io_1_1_output_stream.html#aeacd2a67fb41593c5571525428846f9c":[6,0,0,7,20,6],
+"classsese_1_1io_1_1_output_stream.html#aeacd2a67fb41593c5571525428846f9c":[7,0,0,7,20,6],
 "classsese_1_1io_1_1_peekable_stream.html":[6,0,0,7,21],
 "classsese_1_1io_1_1_peekable_stream.html":[7,0,0,7,21],
 "classsese_1_1io_1_1_peekable_stream.html#a419bfa8f7e6094f2176165bc1a85fa2a":[6,0,0,7,21,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX16 =
 "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a12779ad88ec076ae7d6ea0d8bddc74b7":[7,0,0,8,0,1,20],
 "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a138c236d9be67089880c03294bcc2694":[6,0,0,8,0,1,16],
 "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a138c236d9be67089880c03294bcc2694":[7,0,0,8,0,1,16],
-"classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a29720fc3d902d5fefec65ed748f581c0":[6,0,0,8,0,1,1]
+"classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a29720fc3d902d5fefec65ed748f581c0":[6,0,0,8,0,1,1],
+"classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a29720fc3d902d5fefec65ed748f581c0":[7,0,0,8,0,1,1],
+"classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2a7e9c595ad9e21ea36ee22375f1b804":[6,0,0,8,0,1,7]
 };

@@ -1,7 +1,5 @@
 var NAVTREEINDEX33 =
 {
-"structsese_1_1text_1_1_format_option.html#a20fd011af85685a840a99039217e4f15":[7,0,0,16,5,0],
-"structsese_1_1text_1_1_format_option.html#a5a6a48bed84e1a152c6298ffe73cf961":[6,0,0,16,5,3],
 "structsese_1_1text_1_1_format_option.html#a5a6a48bed84e1a152c6298ffe73cf961":[7,0,0,16,5,3],
 "structsese_1_1text_1_1_format_option.html#aa813e7742a29f275914ec69df8ba13c3":[6,0,0,16,5,6],
 "structsese_1_1text_1_1_format_option.html#aa813e7742a29f275914ec69df8ba13c3":[7,0,0,16,5,6],

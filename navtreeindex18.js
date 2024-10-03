@@ -1,7 +1,5 @@
 var NAVTREEINDEX18 =
 {
-"classsese_1_1net_1_1_reusable_socket.html#a452e698ac913b18041bff769b8195bbe":[7,0,0,9,8,4],
-"classsese_1_1net_1_1_reusable_socket.html#a46738785d193fb94b4fa58308ee28195":[6,0,0,9,8,3],
 "classsese_1_1net_1_1_reusable_socket.html#a46738785d193fb94b4fa58308ee28195":[7,0,0,9,8,3],
 "classsese_1_1net_1_1_reusable_socket.html#a5582c67d4de1c155b1e1c72908ad24f8":[6,0,0,9,8,2],
 "classsese_1_1net_1_1_reusable_socket.html#a5582c67d4de1c155b1e1c72908ad24f8":[7,0,0,9,8,2],
@@ -249,5 +247,7 @@ var NAVTREEINDEX18 =
 "classsese_1_1net_1_1http_1_1_controller.html#ae0cadaba060167dac8e224de97494d62":[7,0,0,9,1,0,0],
 "classsese_1_1net_1_1http_1_1_controller.html#ae9ae2c65c614852278b4dabc6446d56b":[6,0,0,9,1,0,4],
 "classsese_1_1net_1_1http_1_1_controller.html#ae9ae2c65c614852278b4dabc6446d56b":[7,0,0,9,1,0,4],
-"classsese_1_1net_1_1http_1_1_cookie.html":[6,0,0,9,1,1]
+"classsese_1_1net_1_1http_1_1_cookie.html":[6,0,0,9,1,1],
+"classsese_1_1net_1_1http_1_1_cookie.html":[7,0,0,9,1,1],
+"classsese_1_1net_1_1http_1_1_cookie.html#a09c0300cedf79f2e530f57e982dbe894":[6,0,0,9,1,1,2]
 };
