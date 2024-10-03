@@ -63,7 +63,7 @@ bool sese::internal::service::http::HttpServiceImpl::startup() {
     if (error)
         return false;
 
-    error = acceptor.set_option(asio::socket_base::reuse_address(true), error);
+    error = acceptor.set_option(asio::ip::tcp::acceptor::reuse_address(true), error);
     if (error)
         return false;
 
@@ -99,6 +99,10 @@ bool sese::internal::service::http::HttpServiceImpl::shutdown() {
 
 int sese::internal::service::http::HttpServiceImpl::getLastError() {
     return error.value();
+}
+
+std::string sese::internal::service::http::HttpServiceImpl::getLastErrorMessage(){
+    return error.message();
 }
 
 void sese::internal::service::http::HttpServiceImpl::handleFilter(const Handleable::Ptr &conn) const {

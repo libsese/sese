@@ -20,6 +20,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 namespace sese::service {
 
@@ -37,5 +38,7 @@ public:
     virtual bool shutdown() = 0;
 
     virtual int getLastError() = 0;
+
+    virtual std::string getLastErrorMessage() = 0;
 };
 } // namespace sese::service

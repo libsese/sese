@@ -33,6 +33,8 @@ public:
 
     int getLastError() override;
 
+    std::string getLastErrorMessage() override;
+
     uint32_t getKeepalive() const { return keepalive; }
 
     void handleFilter(const Handleable::Ptr &conn) const;

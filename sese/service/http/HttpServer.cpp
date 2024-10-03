@@ -47,7 +47,7 @@ bool HttpServer::startup() const {
             SESE_INFO("Service started");
             startup_services.push_back(item);
         } else {
-            SESE_ERROR("Failed to startup service: {}", item->getLastError());
+            SESE_ERROR("Failed to startup service: {} {}", item->getLastError(), item->getLastErrorMessage());
             for (auto &&service: startup_services) {
                 service->shutdown();
             }
