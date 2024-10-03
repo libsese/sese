@@ -5,9 +5,26 @@
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/FileStream.h"
 #include "sese/io/BaseStreamReader.h"
+#include "sese/io/ConsoleOutputStream.h"
 #include "sese/io/InputStreamReader.h"
 #include "sese/text/TextReader.h"
 #include "gtest/gtest.h"
+
+#include <array>
+
+TEST(TestStream, STLSupport) {
+    sese::io::ConsoleOutputStream con;
+    sese::io::OutputStream *out = &con;
+    std::string msg = "hello world\n";
+    std::vector<char> vector{'h', 'e', 'l', 'l', 'o', '\n'};
+    std::array<char, 6> array{'h', 'e', 'l', 'l', 'o', '\n'};
+    std::span span(array.begin(), array.end());
+
+    out->write(msg);
+    out->write(vector);
+    out->write(array);
+    out->write(span);
+}
 
 TEST(TestStream, BufferedInput) {
     auto bytes = std::make_shared<sese::io::ByteBuilder>(16);
