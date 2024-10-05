@@ -1,4 +1,4 @@
-name: ubuntu-apt
+name: ubuntu
 
 on:
   pull_request:
@@ -59,19 +59,26 @@ jobs:
       - name: Setup pip
         run: pip install -r ${{ github.workspace }}/requirements.txt
 
-      - name: Setup deps
-        working-directory: ${{ github.workspace }}
-        run: |
-          chmod +x ./scripts/install_ubuntu_deps.sh
-          sudo ./scripts/install_ubuntu_deps.sh
+#      - name: Setup deps
+#        working-directory: ${{ github.workspace }}
+#        run: |
+#          chmod +x ./scripts/install_ubuntu_deps.sh
+#          sudo ./scripts/install_ubuntu_deps.sh
+
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
         run: >
           cmake
           -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
-          -DSESE_USE_NATIVE_MANAGER=ON
           -DSESE_USE_ARCHIVE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON
