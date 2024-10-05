@@ -42,10 +42,12 @@ jobs:
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
+        env:
+          VCPKG_ROOT: C:/vcpkg
         run: >
           cmake -G Ninja
           -DCMAKE_BUILD_TYPE=Release
-          -DCMAKE_TOOLCHAIN_FILE=${{env.VCPKG_INSTALLATION_ROOT}}/scripts/buildsystems/vcpkg.cmake
+          -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
           -Bbuild
