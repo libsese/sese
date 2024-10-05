@@ -38,20 +38,28 @@ gtest:
     POSTGRES_PASSWORD: libsese
     POSTGRES_HOST_AUTH_METHOD: trust
     PGPASSWORD: $POSTGRES_PASSWORD
+    VCPKG_DEFAULT_BINARY_CACHE: $CI_PROJECT_DIR/vcpkg-archives
   image: reg.mikumikumi.xyz/libsese/sese-core:latest
   allow_failure: true
   when: always
+  cache:
+    key:
+      files:
+        - vcpkg.json
+    paths:
+      - vcpkg-archives
   script:
+    - mkdir -p vcpkg-archives
     # config cmake project
     - cmake
       -G Ninja
+      -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
       -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
       -DCMAKE_C_COMPILER=/usr/bin/clang-17
       -DCMAKE_CXX_COMPILER=/usr/bin/clang++-17
       -Bbuild/linux-release
       -DCMAKE_BUILD_TYPE=Release
       -DSESE_BUILD_TEST=ON
-      -DSESE_USE_NATIVE_MANAGER=ON
       -DSESE_USE_ARCHIVE=ON
       -DSESE_DB_USE_SQLITE=ON
       -DSESE_DB_USE_MARIADB=ON
