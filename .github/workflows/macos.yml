@@ -1,4 +1,4 @@
-name: macOS-brew
+name: macos
 
 on:
   pull_request:
@@ -24,19 +24,33 @@ jobs:
       - name: Setup pip
         run: pip install -r ${{ github.workspace }}/requirements.txt
 
-      - name: Setup deps
-        working-directory: ${{ github.workspace }}
+#      - name: Setup deps
+#        working-directory: ${{ github.workspace }}
+#        run: |
+#          chmod +x ./scripts/install_darwin_deps.sh
+#          ./scripts/install_darwin_deps.sh
+
+      - name: Setup Vcpkg
         run: |
-          chmod +x ./scripts/install_darwin_deps.sh
-          ./scripts/install_darwin_deps.sh
+          git clone https://github.com/microsoft/vcpkg ${{ github.workspace }}/vcpkg
+          vcpkg/bootstrap-vcpkg.sh -disableMetrics
+
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
+        env:
+          VCPKG_ROOT: ${{ github.workspace }}/vcpkg
         run: >
           cmake
           -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
-          -DSESE_USE_NATIVE_MANAGER=ON
           -DSESE_USE_ARCHIVE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON

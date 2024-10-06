@@ -16,6 +16,10 @@ option(SESE_DB_USE_SQLITE "add sqlite support" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
 
+if (SESE_USE_NATIVE_MANAGER)
+    MESSAGE(FATAL_ERROR "The `SESE_USE_NATIVE_MANAGER` option has been deprecated.")
+endif ()
+
 include(cmake/MiniSeseTools.cmake)
 
 sese_auto_enable_feature(SESE_BUILD_TEST "tests")
@@ -25,9 +29,9 @@ sese_auto_enable_feature(SESE_DB_USE_SQLITE "sqlite3")
 sese_auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
 sese_auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
 
-if (WIN32 OR SESE_AUTO_VCPKG)
-    sese_auto_find_vcpkg()
-endif ()
+# if (WIN32 OR SESE_AUTO_VCPKG)
+#     sese_auto_find_vcpkg()
+# endif ()
 
 project(sese VERSION 2.3.0)
 # for cxx 20 modules
