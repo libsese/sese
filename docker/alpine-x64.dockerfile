@@ -1,8 +1,8 @@
 FROM amd64/alpine:3.20.1
 
-RUN apk add samurai ninja-build autoconf automake git cmake llvm17 clang17 clang17-extra-tools compiler-rt
+RUN apk add samurai autoconf automake git cmake gcc compiler-rt pkgconfig linux-headers bison flex tzdata-utils
 
-RUN apk add libtool python3 py3-pip
+RUN apk add libtool python3 py3-pip bash
 
 RUN apk add doxygen mariadb-client postgresql-client
 

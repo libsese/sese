@@ -5,19 +5,17 @@
 <img src="static/image/logo.svg" width="128" height="128" alt="logo"/>
 </div>
 <div align="center">
-<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=purple&logo=Apache" alt="license"/>
-<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=purple&logo=cplusplus" alt="lang"/>
-<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=purple&logo=cmake" alt="buildsystem"/>
+<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=blue&logo=Apache" alt="license"/>
+<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=blue&logo=cplusplus" alt="lang"/>
+<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=blue&logo=cmake" alt="buildsystem"/>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Flibsese%2Fsese?ref=badge_small" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Flibsese%2Fsese.svg?type=small"/></a>
 <br>
 <img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese/badge"/>
 <img alt="Lines of Code" src="https://sloc.xyz/github/libsese/sese/"/>
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/windows-2022.yml?label=Windows&logo=windows">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/macos-12-brew.yml?label=macOS&logo=apple">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/windows.yml?label=Windows&logo=windows">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/ubuntu.yml?label=Ubuntu&logo=ubuntu">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/macos.yml?label=macOS&logo=apple">
 <br>
-
-<i style="color: red">Development, testing, and release have been suspended due to lack of macOS physical devices.</i>
-
 </div>
 
 ## Intro

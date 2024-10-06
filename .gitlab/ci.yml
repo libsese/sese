@@ -39,6 +39,7 @@ gtest:
     POSTGRES_HOST_AUTH_METHOD: trust
     PGPASSWORD: $POSTGRES_PASSWORD
     VCPKG_DEFAULT_BINARY_CACHE: $CI_PROJECT_DIR/vcpkg-archives
+    ZIC: /usr/sbin/zic
   image: reg.mikumikumi.xyz/libsese/sese-core:latest
   allow_failure: true
   when: always
@@ -55,8 +56,8 @@ gtest:
       -G Ninja
       -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
       -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
-      -DCMAKE_C_COMPILER=/usr/bin/clang-17
-      -DCMAKE_CXX_COMPILER=/usr/bin/clang++-17
+      -DCMAKE_C_COMPILER=/usr/bin/gcc
+      -DCMAKE_CXX_COMPILER=/usr/bin/g++
       -Bbuild/linux-release
       -DCMAKE_BUILD_TYPE=Release
       -DSESE_BUILD_TEST=ON
