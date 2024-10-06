@@ -7,6 +7,7 @@ colorlog==6.8.2
 gcovr==7.2
 idna==3.10
 Jinja2==3.1.4
+junit2html==31.0.2
 lxml==5.2.1
 MarkupSafe==2.1.5
 mypy-extensions==1.0.0

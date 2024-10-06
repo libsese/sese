@@ -29,9 +29,9 @@ sese_auto_enable_feature(SESE_DB_USE_SQLITE "sqlite3")
 sese_auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
 sese_auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
 
-if (WIN32 OR SESE_AUTO_VCPKG)
-    sese_auto_find_vcpkg()
-endif ()
+# if (WIN32 OR SESE_AUTO_VCPKG)
+#     sese_auto_find_vcpkg()
+# endif ()
 
 project(sese VERSION 2.3.0)
 # for cxx 20 modules

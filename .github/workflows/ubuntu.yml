@@ -65,6 +65,11 @@ jobs:
 #          chmod +x ./scripts/install_ubuntu_deps.sh
 #          sudo ./scripts/install_ubuntu_deps.sh
 
+      - name: Download h2spec
+        run: |
+          wget https://github.com/summerwind/h2spec/releases/download/v2.6.0/h2spec_linux_amd64.tar.gz
+          tar -xzf h2spec_linux_amd64.tar.gz
+
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -96,7 +101,9 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
+        run: |
+          build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
+          junit2html h2spec_test.xml build/coverage/h2spec.html
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1
