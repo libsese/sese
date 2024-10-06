@@ -103,7 +103,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
-          junit2html h2spec_test.xml build/coverage/h2spec.html
+          junit2html h2spec_report.xml build/coverage/h2spec.html
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1
