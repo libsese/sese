@@ -48,11 +48,6 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 endif ()
 
-# for vcpkg_copy_pdbs()
-if (MSVC AND BUILD_SHARED_LIBS)
-    set(${CMAKE_CXX_FLAGS} "${CMAKE_CXX_FLAGS} /Zi")
-endif ()
-
 if (NOT "${CMAKE_BUILD_TYPE}" MATCHES "Debug")
     if (MSVC)
         set(${CMAKE_CXX_FLAGS} "${CMAKE_CXX_FLAGS} /Ox")
