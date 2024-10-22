@@ -17,6 +17,8 @@
 #include <sese/util/Endian.h>
 #include <sese/text/StringBuilder.h>
 
+#include <map>
+
 using sese::net::dns::DnsPackage;
 
 DnsPackage::Ptr DnsPackage::new_() {
@@ -110,23 +112,21 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
 
     auto result = new_();
 
-    DnsHeader header{};
-
 #define DECODE_HEADER(field, offset)    \
     memcpy(&field, buffer + offset, 2); \
     field = FromBigEndian16(field);
 
-    DECODE_HEADER(header.id, 0);
-    DECODE_HEADER(header.flags, 2);
-    DECODE_HEADER(header.qdcount, 4);
-    DECODE_HEADER(header.ancount, 6);
-    DECODE_HEADER(header.nscount, 8);
-    DECODE_HEADER(header.arcount, 10);
+    DECODE_HEADER(result->header.id, 0);
+    DECODE_HEADER(result->header.flags, 2);
+    DECODE_HEADER(result->header.qdcount, 4);
+    DECODE_HEADER(result->header.ancount, 6);
+    DECODE_HEADER(result->header.nscount, 8);
+    DECODE_HEADER(result->header.arcount, 10);
 #undef DECODE_HEADER
 
     size_t pos = 12;
-    result->questions.reserve(header.qdcount);
-    for (uint16_t i = 0; i < header.qdcount; i++) {
+    result->questions.reserve(result->header.qdcount);
+    for (uint16_t i = 0; i < result->header.qdcount; i++) {
         std::string name = decodeWords(buffer, length, pos);
         if (name.empty()) {
             return nullptr;
@@ -141,15 +141,48 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
         pos += 5;
     }
 
-    if (!decodeAnswers(result->answers, header.ancount, buffer, length, pos)) {
+    if (!decodeAnswers(result->answers, result->header.ancount, buffer, length, pos)) {
         return nullptr;
     }
-    if (!decodeAnswers(result->authorities, header.nscount, buffer, length, pos)) {
+    if (!decodeAnswers(result->authorities, result->header.nscount, buffer, length, pos)) {
         return nullptr;
     }
-    if (!decodeAnswers(result->additionals, header.arcount, buffer, length, pos)) {
+    if (!decodeAnswers(result->additionals, result->header.arcount, buffer, length, pos)) {
         return nullptr;
     }
 
     return result;
+}
+
+bool DnsPackage::encode(void *buffer, size_t &length) {
+    std::map<std::string, CompressIndex> compress_index;
+    uint16_t index = 0;
+    // 建立索引
+#define BUILD_INDEX(object_list)                                         \
+    for (auto &&item: object_list) {                                     \
+        auto names = text::StringBuilder::split(item.name, ".");         \
+        index += static_cast<uint16_t>(names.size());                    \
+        std::string name;                                                \
+        bool first = true;                                               \
+        auto pos = 0;                                                    \
+        for (auto i = static_cast<uint16_t>(names.size()); i > 0; i--) { \
+            if (!first)                                                  \
+                name = "." + name;                                       \
+            name = names[i - 1] + name;                                  \
+            auto iterator = compress_index.find(name);                   \
+            if (iterator == compress_index.end()) {                      \
+                auto tmp = static_cast<uint16_t>(index - pos);           \
+                pos++;                                                   \
+                compress_index[name] = {tmp, name, 0};                   \
+            }                                                            \
+            first = false;                                               \
+        }                                                                \
+    }
+
+    BUILD_INDEX(questions);
+    BUILD_INDEX(answers);
+    BUILD_INDEX(authorities);
+    BUILD_INDEX(additionals);
+#undef BUILD_INDEX
+    return true;
 }

@@ -51,6 +51,12 @@ class DnsPackage {
         uint16_t nscount;
         /// 附加记录数
         uint16_t arcount;
+    } header{};
+
+    struct CompressIndex {
+        uint16_t index;
+        std::string name;
+        uint16_t pos;
     };
 
     std::vector<Question> questions;
@@ -77,12 +83,17 @@ public:
 
     static Ptr decode(const uint8_t *buffer, size_t length);
 
-    // bool encode(const void *buffer, size_t length);
+    bool encode(void *buffer, size_t &length);
 
     [[nodiscard]] std::vector<Question> &getQuestions() { return questions; }
     [[nodiscard]] std::vector<Answer> &getAnswers() { return answers; }
     [[nodiscard]] std::vector<Authority> &getAuthorities() { return authorities; }
-    [[nodiscard]] std::vector<Additional> &getAdditionals() {return additionals;}
+    [[nodiscard]] std::vector<Additional> &getAdditionals() { return additionals; }
+    [[nodiscard]] auto getId() const { return header.id; }
+    [[nodiscard]] auto getFlags() const { return header.flags; }
+
+    void setId(uint16_t id) { header.id = id; }
+    void setFlags(uint16_t flags) {  header.flags = flags; }
 };
 
 } // namespace sese::net::dns
