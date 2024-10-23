@@ -18,6 +18,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <set>
+#include <map>
 
 namespace sese::net::dns {
 
@@ -53,12 +55,6 @@ class DnsPackage {
         uint16_t arcount;
     } header{};
 
-    struct CompressIndex {
-        uint16_t index;
-        std::string name;
-        uint16_t pos;
-    };
-
     std::vector<Question> questions;
     std::vector<Answer> answers;
     std::vector<Authority> authorities;
@@ -77,13 +73,27 @@ class DnsPackage {
     static bool decodeAnswers(std::vector<Answer> &answers, size_t expect_size, const uint8_t *buffer, size_t length, size_t &pos);
 
 public:
+    struct Index {
+        using CompressMapping = std::set<uint16_t>;
+        struct CompressIndex {
+            uint16_t index;
+            std::string name;
+            uint16_t pos;
+        };
+
+        std::vector<CompressIndex> compress_index;
+        std::map<std::string, CompressMapping> compress_mapping;
+    };
+
     using Ptr = std::shared_ptr<DnsPackage>;
 
     static Ptr new_();
 
     static Ptr decode(const uint8_t *buffer, size_t length);
 
-    bool encode(void *buffer, size_t &length);
+    Index buildIndex();
+
+    // bool encode(void *buffer, size_t &length);
 
     [[nodiscard]] std::vector<Question> &getQuestions() { return questions; }
     [[nodiscard]] std::vector<Answer> &getAnswers() { return answers; }

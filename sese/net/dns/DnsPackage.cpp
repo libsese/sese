@@ -14,6 +14,7 @@
 
 #include "DnsPackage.h"
 
+#include <iterator>
 #include <sese/util/Endian.h>
 #include <sese/text/StringBuilder.h>
 
@@ -154,29 +155,38 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
     return result;
 }
 
-bool DnsPackage::encode(void *buffer, size_t &length) {
-    std::map<std::string, CompressIndex> compress_index;
-    uint16_t index = 0;
+DnsPackage::Index DnsPackage::buildIndex() {
+    Index domain_index;
+
     // 建立索引
-#define BUILD_INDEX(object_list)                                         \
-    for (auto &&item: object_list) {                                     \
-        auto names = text::StringBuilder::split(item.name, ".");         \
-        index += static_cast<uint16_t>(names.size());                    \
-        std::string name;                                                \
-        bool first = true;                                               \
-        auto pos = 0;                                                    \
-        for (auto i = static_cast<uint16_t>(names.size()); i > 0; i--) { \
-            if (!first)                                                  \
-                name = "." + name;                                       \
-            name = names[i - 1] + name;                                  \
-            auto iterator = compress_index.find(name);                   \
-            if (iterator == compress_index.end()) {                      \
-                auto tmp = static_cast<uint16_t>(index - pos);           \
-                pos++;                                                   \
-                compress_index[name] = {tmp, name, 0};                   \
-            }                                                            \
-            first = false;                                               \
-        }                                                                \
+    std::map<std::string, Index::CompressIndex> compress_string_index;
+    uint16_t index = 0;
+#define BUILD_INDEX(object_list)                                                                           \
+    for (auto &&item: object_list) {                                                                       \
+        auto names = text::StringBuilder::split(item.name, ".");                                           \
+        index += static_cast<uint16_t>(names.size());                                                      \
+        std::string name;                                                                                  \
+        bool first = true;                                                                                 \
+        auto pos = 0;                                                                                      \
+        auto iterator0 = domain_index.compress_mapping.find(item.name);                                    \
+        if (iterator0 == domain_index.compress_mapping.end()) {                                            \
+            iterator0 = domain_index.compress_mapping.insert({item.name, Index::CompressMapping{}}).first; \
+        }                                                                                                  \
+        for (auto i = static_cast<uint16_t>(names.size()); i > 0; i--) {                                   \
+            if (!first)                                                                                    \
+                name = "." + name;                                                                         \
+            name = names[i - 1] + name;                                                                    \
+            auto iterator1 = compress_string_index.find(name);                                             \
+            if (iterator1 == compress_string_index.end()) {                                                \
+                auto tmp = static_cast<uint16_t>(index - pos);                                             \
+                pos++;                                                                                     \
+                compress_string_index[name] = {tmp, name, 0};                                              \
+                iterator0->second.emplace(tmp);                                                            \
+            } else {                                                                                       \
+                iterator0->second.emplace(iterator1->second.index);                                        \
+            }                                                                                              \
+            first = false;                                                                                 \
+        }                                                                                                  \
     }
 
     BUILD_INDEX(questions);
@@ -184,5 +194,17 @@ bool DnsPackage::encode(void *buffer, size_t &length) {
     BUILD_INDEX(authorities);
     BUILD_INDEX(additionals);
 #undef BUILD_INDEX
-    return true;
+    // 索引换键
+    domain_index.compress_index.reserve(compress_string_index.size());
+    std::transform(
+        compress_string_index.begin(),
+        compress_string_index.end(),
+        std::back_inserter(domain_index.compress_index),
+        [](const std::pair<const std::string, Index::CompressIndex> &item) {
+            return item.second;
+        }
+    );
+    compress_string_index.clear();
+
+    return domain_index;
 }

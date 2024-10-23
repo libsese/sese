@@ -53,8 +53,7 @@ TEST(TestDNS, Encode) {
     auto pkg = sese::net::dns::DnsPackage::new_();
     auto &&questions = pkg->getQuestions();
     questions.push_back({"www.example.com", 1, 1});
+    questions.push_back({"mail.example.com", 1, 1});
 
-    char buffer[512];
-    size_t size = sizeof(buffer);
-    pkg->encode(buffer, size);
+    auto index = pkg->buildIndex();
 }
