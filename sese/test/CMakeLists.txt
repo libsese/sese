@@ -1,3 +1,7 @@
+# https://discourse.cmake.org/t/possible-to-create-a-python-virtual-env-from-cmake-and-then-find-it-with-findpython3/1132/2
+set(ENV{VIRTUAL_ENV} "${PROJECT_SOURCE_DIR}/venv")
+set(Python3_FIND_VIRTUALENV FIRST)
+
 find_package(GTest CONFIG REQUIRED)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 

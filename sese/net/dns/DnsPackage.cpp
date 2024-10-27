@@ -174,13 +174,13 @@ bool DnsPackage::encode(void *buffer, size_t &length, Index &index) const {
         memcpy(static_cast<char *>(buffer) + length + 0, &i, 2);
         i = ToBigEndian16(header.flags);
         memcpy(static_cast<char *>(buffer) + length + 2, &i, 2);
-        i = ToBigEndian16(questions.size());
+        i = ToBigEndian16(static_cast<uint16_t>(questions.size()));
         memcpy(static_cast<char *>(buffer) + length + 4, &i, 2);
-        i = ToBigEndian16(answers.size());
+        i = ToBigEndian16(static_cast<uint16_t>(answers.size()));
         memcpy(static_cast<char *>(buffer) + length + 6, &i, 2);
-        i = ToBigEndian16(authorities.size());
+        i = ToBigEndian16(static_cast<uint16_t>(authorities.size()));
         memcpy(static_cast<char *>(buffer) + length + 8, &i, 2);
-        i = ToBigEndian16(additionals.size());
+        i = ToBigEndian16(static_cast<uint16_t>(additionals.size()));
         memcpy(static_cast<char *>(buffer) + length + 10, &i, 2);
         length += 12;
     }

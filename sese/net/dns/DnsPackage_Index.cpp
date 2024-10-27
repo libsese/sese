@@ -95,7 +95,7 @@ void DnsPackage::Index::updatePos(std::vector<CompressIndex *> &indexes, uint16_
             break;
         }
         if (!first) {
-            offset1 = fullname.length() - index->name.length();
+            offset1 = static_cast<uint16_t>(fullname.length() - index->name.length());
         } else {
             fullname = index->name;
         }

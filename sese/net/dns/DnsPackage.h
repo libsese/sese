@@ -25,6 +25,21 @@ namespace sese::net::dns {
 
 class DnsPackage {
 public:
+    struct Flags {
+        bool qr = false;
+        uint8_t opcode = 0;
+        bool aa = false;
+        bool tc = false;
+        bool rd = false;
+        bool ra = false;
+        uint8_t z = false;
+        uint8_t rcode = false;
+
+        uint16_t encode() const;
+
+        void decode(uint16_t flags);
+    };
+
     class Index;
 
     struct Question {
