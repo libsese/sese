@@ -14,11 +14,8 @@
 
 #include "DnsPackage.h"
 
-#include <iterator>
 #include <sese/util/Endian.h>
 #include <sese/text/StringBuilder.h>
-
-#include <map>
 
 using sese::net::dns::DnsPackage;
 
@@ -112,6 +109,10 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
     }
 
     auto result = new_();
+    uint16_t qdcount;
+    uint16_t ancount;
+    uint16_t nscount;
+    uint16_t arcount;
 
 #define DECODE_HEADER(field, offset)    \
     memcpy(&field, buffer + offset, 2); \
@@ -119,15 +120,15 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
 
     DECODE_HEADER(result->header.id, 0);
     DECODE_HEADER(result->header.flags, 2);
-    DECODE_HEADER(result->header.qdcount, 4);
-    DECODE_HEADER(result->header.ancount, 6);
-    DECODE_HEADER(result->header.nscount, 8);
-    DECODE_HEADER(result->header.arcount, 10);
+    DECODE_HEADER(qdcount, 4);
+    DECODE_HEADER(ancount, 6);
+    DECODE_HEADER(nscount, 8);
+    DECODE_HEADER(arcount, 10);
 #undef DECODE_HEADER
 
     size_t pos = 12;
-    result->questions.reserve(result->header.qdcount);
-    for (uint16_t i = 0; i < result->header.qdcount; i++) {
+    result->questions.reserve(qdcount);
+    for (uint16_t i = 0; i < qdcount; i++) {
         std::string name = decodeWords(buffer, length, pos);
         if (name.empty()) {
             return nullptr;
@@ -142,13 +143,13 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
         pos += 5;
     }
 
-    if (!decodeAnswers(result->answers, result->header.ancount, buffer, length, pos)) {
+    if (!decodeAnswers(result->answers, ancount, buffer, length, pos)) {
         return nullptr;
     }
-    if (!decodeAnswers(result->authorities, result->header.nscount, buffer, length, pos)) {
+    if (!decodeAnswers(result->authorities, nscount, buffer, length, pos)) {
         return nullptr;
     }
-    if (!decodeAnswers(result->additionals, result->header.arcount, buffer, length, pos)) {
+    if (!decodeAnswers(result->additionals, arcount, buffer, length, pos)) {
         return nullptr;
     }
 
@@ -156,55 +157,143 @@ DnsPackage::Ptr DnsPackage::decode(const uint8_t *buffer, size_t length) {
 }
 
 DnsPackage::Index DnsPackage::buildIndex() {
-    Index domain_index;
+    return {questions, answers, authorities, additionals};
+}
 
-    // 建立索引
-    std::map<std::string, Index::CompressIndex> compress_string_index;
-    uint16_t index = 0;
-#define BUILD_INDEX(object_list)                                                                           \
-    for (auto &&item: object_list) {                                                                       \
-        auto names = text::StringBuilder::split(item.name, ".");                                           \
-        index += static_cast<uint16_t>(names.size());                                                      \
-        std::string name;                                                                                  \
-        bool first = true;                                                                                 \
-        auto pos = 0;                                                                                      \
-        auto iterator0 = domain_index.compress_mapping.find(item.name);                                    \
-        if (iterator0 == domain_index.compress_mapping.end()) {                                            \
-            iterator0 = domain_index.compress_mapping.insert({item.name, Index::CompressMapping{}}).first; \
-        }                                                                                                  \
-        for (auto i = static_cast<uint16_t>(names.size()); i > 0; i--) {                                   \
-            if (!first)                                                                                    \
-                name = "." + name;                                                                         \
-            name = names[i - 1] + name;                                                                    \
-            auto iterator1 = compress_string_index.find(name);                                             \
-            if (iterator1 == compress_string_index.end()) {                                                \
-                auto tmp = static_cast<uint16_t>(index - pos);                                             \
-                pos++;                                                                                     \
-                compress_string_index[name] = {tmp, name, 0};                                              \
-                iterator0->second.emplace(tmp);                                                            \
-            } else {                                                                                       \
-                iterator0->second.emplace(iterator1->second.index);                                        \
-            }                                                                                              \
-            first = false;                                                                                 \
-        }                                                                                                  \
+bool DnsPackage::encode(void *buffer, size_t &length, Index &index) const {
+    index.clearPos();
+    const size_t max = length;
+    length = 0;
+    if (max == 0) {
+        length += 12;
+    } else {
+        if (max - length < 12) {
+            return false;
+        }
+        uint16_t i = ToBigEndian16(header.id);
+        memcpy(static_cast<char *>(buffer) + length + 0, &i, 2);
+        i = ToBigEndian16(header.flags);
+        memcpy(static_cast<char *>(buffer) + length + 2, &i, 2);
+        i = ToBigEndian16(questions.size());
+        memcpy(static_cast<char *>(buffer) + length + 4, &i, 2);
+        i = ToBigEndian16(answers.size());
+        memcpy(static_cast<char *>(buffer) + length + 6, &i, 2);
+        i = ToBigEndian16(authorities.size());
+        memcpy(static_cast<char *>(buffer) + length + 8, &i, 2);
+        i = ToBigEndian16(additionals.size());
+        memcpy(static_cast<char *>(buffer) + length + 10, &i, 2);
+        length += 12;
     }
 
-    BUILD_INDEX(questions);
-    BUILD_INDEX(answers);
-    BUILD_INDEX(authorities);
-    BUILD_INDEX(additionals);
-#undef BUILD_INDEX
-    // 索引换键
-    domain_index.compress_index.reserve(compress_string_index.size());
-    std::transform(
-        compress_string_index.begin(),
-        compress_string_index.end(),
-        std::back_inserter(domain_index.compress_index),
-        [](const std::pair<const std::string, Index::CompressIndex> &item) {
-            return item.second;
-        }
-    );
-    compress_string_index.clear();
+    size_t sublength = max == 0 ? max : max - length;
+    if (!encodeQuestions(questions, static_cast<char *>(buffer) + length, sublength, index)) {
+        return false;
+    }
+    length += sublength;
+    sublength = max == 0 ? max : max - length;
+    if (!encodeAnswers(answers, static_cast<char *>(buffer) + length, sublength, index)) {
+        return false;
+    }
+    length += sublength;
+    sublength = max == 0 ? max : max - length;
+    if (!encodeAnswers(authorities, static_cast<char *>(buffer) + length, sublength, index)) {
+        return false;
+    }
+    length += sublength;
+    sublength = max == 0 ? max : max - length;
+    if (!encodeAnswers(additionals, static_cast<char *>(buffer) + length, sublength, index)) {
+        return false;
+    }
 
-    return domain_index;
+    return true;
 }
+
+std::string DnsPackage::encodeWords(const std::string &fullname) {
+    text::StringBuilder builder(128);
+    auto words = text::StringBuilder::split(fullname, ".");
+    for (const auto &word: words) {
+        builder.append(static_cast<uint8_t>(word.size()));
+        builder.append(word);
+    }
+    builder.append('\0');
+    return builder.toString();
+}
+
+bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *buffer, size_t &length, Index &index) {
+    const size_t max = length;
+    length = 0;
+
+    for (const auto &item: questions) {
+        auto cache = index.compress_mapping.find(item.name);
+        std::string name;
+        if (cache != index.compress_mapping.end()) {
+            // 命中缓存捏
+            name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length));
+        } else {
+            // 无缓存直接写入
+            name = encodeWords(item.name);
+        }
+        if (max == 0) {
+            length += name.size();
+        } else {
+            if (max - length < name.size()) {
+                return false;
+            }
+            memcpy(static_cast<char *>(buffer) + length, name.data(), name.size());
+            length += name.size();
+        }
+        if (max == 0) {
+            uint16_t i = ToBigEndian16(item.type);
+            memcpy(static_cast<char *>(buffer) + length + 0, &i, 2);
+            i = ToBigEndian16(item.class_);
+            memcpy(static_cast<char *>(buffer) + length + 2, &i, 2);
+            length += 4;
+        }
+    }
+
+    return true;
+}
+
+bool DnsPackage::encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index) {
+    const size_t max = length;
+    length = 0;
+    for (const auto &item: answers) {
+        auto cache = index.compress_mapping.find(item.name);
+        std::string name;
+        if (cache != index.compress_mapping.end()) {
+            // 命中缓存捏
+            name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length));
+        } else {
+            // 无缓存直接写入
+            name = encodeWords(item.name);
+        }
+        if (max == 0) {
+            length += name.size();
+        } else {
+            if (max - length < name.size()) {
+                return false;
+            }
+            memcpy(static_cast<char *>(buffer) + length, name.data(), name.size());
+            length += name.size();
+        }
+
+        if (max == 0) {
+            length += 10 + item.data_length;
+        } else {
+            if (max - length < 10 + item.data_length) {
+                return false;
+            }
+            uint16_t i16 = ToBigEndian16(item.type);
+            memcpy(static_cast<char *>(buffer) + length + 0, &i16, 2);
+            i16 = ToBigEndian16(item.class_);
+            memcpy(static_cast<char *>(buffer) + length + 2, &i16, 2);
+            uint32_t i32 = ToBigEndian32(item.ttl);
+            memcpy(static_cast<char *>(buffer) + length + 4, &i32, 4);
+            i16 = ToBigEndian16(item.data_length);
+            memcpy(static_cast<char *>(buffer) + length + 8, &i16, 2);
+            memcpy(static_cast<char *>(buffer) + length + 10, item.data.get(), item.data_length);
+        }
+    }
+    return true;
+}
+

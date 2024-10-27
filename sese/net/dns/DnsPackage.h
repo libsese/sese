@@ -24,6 +24,9 @@
 namespace sese::net::dns {
 
 class DnsPackage {
+public:
+    class Index;
+
     struct Question {
         std::string name;
         uint16_t type;
@@ -42,17 +45,10 @@ class DnsPackage {
     using Authority = Answer;
     using Additional = Answer;
 
+private:
     struct DnsHeader {
         uint16_t id;
         uint16_t flags;
-        /// 问题数
-        uint16_t qdcount;
-        /// 解析记录数
-        uint16_t ancount;
-        /// 权威记录数
-        uint16_t nscount;
-        /// 附加记录数
-        uint16_t arcount;
     } header{};
 
     std::vector<Question> questions;
@@ -72,8 +68,15 @@ class DnsPackage {
 
     static bool decodeAnswers(std::vector<Answer> &answers, size_t expect_size, const uint8_t *buffer, size_t length, size_t &pos);
 
+    static std::string encodeWords(const std::string &fullname);
+
+    static bool encodeQuestions(const std::vector<Question> &questions, void *buffer, size_t &length, Index &index);
+
+    static bool encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index);
+
 public:
-    struct Index {
+    class Index {
+        friend class DnsPackage;
         using CompressMapping = std::set<uint16_t>;
         struct CompressIndex {
             uint16_t index;
@@ -83,6 +86,24 @@ public:
 
         std::vector<CompressIndex> compress_index;
         std::map<std::string, CompressMapping> compress_mapping;
+
+        Index(
+            std::vector<Question> &questions,
+            std::vector<Answer> &answers,
+            std::vector<Authority> &authorities,
+            std::vector<Additional> &additionals
+        );
+
+        [[nodiscard]] std::vector<CompressIndex *> getSortedIndexes(const std::set<uint16_t> &indexes);
+
+        static void updatePos(std::vector<CompressIndex *> &indexes, uint16_t offset);
+
+        void clearPos() const;
+
+        std::string encodeWords(const std::string &fullname, const std::set<uint16_t> &indexes, uint16_t base_offset);
+
+    public:
+        Index() = default;
     };
 
     using Ptr = std::shared_ptr<DnsPackage>;
@@ -93,7 +114,7 @@ public:
 
     Index buildIndex();
 
-    // bool encode(void *buffer, size_t &length);
+    bool encode(void *buffer, size_t &length, Index &index) const;
 
     [[nodiscard]] std::vector<Question> &getQuestions() { return questions; }
     [[nodiscard]] std::vector<Answer> &getAnswers() { return answers; }
@@ -103,7 +124,7 @@ public:
     [[nodiscard]] auto getFlags() const { return header.flags; }
 
     void setId(uint16_t id) { header.id = id; }
-    void setFlags(uint16_t flags) {  header.flags = flags; }
+    void setFlags(uint16_t flags) { header.flags = flags; }
 };
 
 } // namespace sese::net::dns

@@ -56,4 +56,7 @@ TEST(TestDNS, Encode) {
     questions.push_back({"mail.example.com", 1, 1});
 
     auto index = pkg->buildIndex();
+
+    size_t length = 0;
+    pkg->encode(nullptr, length, index);
 }
