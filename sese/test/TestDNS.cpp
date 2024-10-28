@@ -60,8 +60,15 @@ TEST(TestDNS, Encode) {
 
     auto index = pkg->buildIndex();
 
+    size_t compressed_length = 0;
+    pkg->encode(nullptr, compressed_length, index);
+
+    auto no_index = sese::net::dns::DnsPackage::Index();
     size_t length = 0;
-    pkg->encode(nullptr, length, index);
+    pkg->encode(nullptr, length, no_index);
+
+    SESE_INFO("compressed length: {}", compressed_length);
+    SESE_INFO("length: {}", length);
 }
 
 TEST(TestDNS, Resolver) {
