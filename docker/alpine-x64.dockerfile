@@ -10,7 +10,8 @@ RUN apk add build-base cmake ninja zip unzip curl git
 
 ENV VCPKG_FORCE_SYSTEM_BINARIES=1
 
-RUN git clone https://github.com/microsoft/vcpkg /opt/vcpkg && \
+RUN git config --global http.version HTTP/1.1 && \
+    git clone https://github.com/microsoft/vcpkg /opt/vcpkg && \
     /opt/vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
 ENV VCPKG_ROOT=/opt/vcpkg
