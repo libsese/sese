@@ -52,7 +52,6 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const std::string &host
 std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &name_server, const std::string &hostname, uint16_t type) {
     std::vector<IPAddress::Ptr> result;
     DnsPackage::Flags flags;
-    flags.qr = true;
 
     uint8_t buffer[512];
     size_t length = sizeof(buffer);
@@ -72,16 +71,12 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &n
     auto io_context = asio::io_context();
     auto socket = asio::ip::udp::socket(io_context);
     asio::error_code ec;
-    socket.open(endpoint.protocol(), ec);
+    ec = socket.open(endpoint.protocol(), ec);
     if (ec) {
         return result;
     }
     socket.send_to(asio::buffer(buffer, length), endpoint);
-    try {
-        length = socket.receive_from(asio::buffer(buffer), endpoint);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+    length = socket.receive_from(asio::buffer(buffer), endpoint);
     socket.close();
 
     auto package = DnsPackage::decode(buffer, length);
@@ -96,12 +91,12 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &n
             continue;
         }
         if (answer.type == 1 && answer.data_length == 4) {
-            sockaddr_in sockaddr;
+            sockaddr_in sockaddr{};
             sockaddr.sin_family = AF_INET;
             memcpy(&sockaddr.sin_addr.s_addr, &answer.data[0], 4);
             result.emplace_back(std::make_shared<IPv4Address>(sockaddr));
         } else if (answer.type == 28 || answer.data_length == 16) {
-            sockaddr_in6 sockaddr;
+            sockaddr_in6 sockaddr{};
             sockaddr.sin6_family = AF_INET6;
             memcpy(&sockaddr.sin6_addr, &answer.data[0], 16);
             result.emplace_back(std::make_shared<IPv6Address>(sockaddr));

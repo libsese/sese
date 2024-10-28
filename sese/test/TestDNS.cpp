@@ -2,6 +2,7 @@
 #include <sese/net/dns/DnsPackage.h>
 #include <sese/net/dns/Resolver.h>
 #include <sese/system/ProcessBuilder.h>
+#include <sese/net/Socket.h>
 
 #include <array>
 #include <random>
@@ -64,20 +65,24 @@ TEST(TestDNS, Encode) {
 }
 
 TEST(TestDNS, Resolver) {
+    auto port = sese::net::createRandomPort();
     sese::net::dns::Resolver resolver;
-    resolver.addNameServer("127.0.0.1", 53535);
+    resolver.addNameServer("127.0.0.1", port);
 
-    // auto process = sese::system::ProcessBuilder(PY_EXECUTABLE).args(PROJECT_PATH "/scripts/dns_server.py").args("53535").create();
-    // ASSERT_NE(nullptr, process);
-    // sese::sleep(1s);
+    auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
+                       .args(PROJECT_PATH "/scripts/dns_server.py")
+                       .args(std::to_string(port))
+                       .create();
+    ASSERT_NE(nullptr, process);
+    sese::sleep(1s);
 
     auto result = resolver.resolve("www.example.com", 1);
     for (auto &&i: result) {
         if (i->getFamily() == AF_INET) {
             auto ipv4 = std::dynamic_pointer_cast<sese::net::IPv4Address>(i);
-            SESE_INFO("{}", ipv4->getFamily());
+            SESE_INFO("{}", ipv4->getAddress());
         }
     }
 
-    // EXPECT_TRUE(process->kill());
+    EXPECT_TRUE(process->kill());
 }

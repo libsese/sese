@@ -98,6 +98,7 @@ bool DnsPackage::decodeAnswers(std::vector<Answer> &answers, size_t expect_size,
         answer.data = std::make_unique<uint8_t[]>(answer.data_length);
         memcpy(answer.data.get(), buffer + pos, answer.data_length);
         pos += answer.data_length;
+        answers.push_back(std::move(answer));
     }
     return true;
 }
@@ -212,7 +213,7 @@ std::string DnsPackage::encodeWords(const std::string &fullname) {
     text::StringBuilder builder(128);
     auto words = text::StringBuilder::split(fullname, ".");
     for (const auto &word: words) {
-        builder.append(static_cast<uint8_t>(word.size()));
+        builder.append(static_cast<char>(word.size()));
         builder.append(word);
     }
     builder.append('\0');
@@ -243,6 +244,11 @@ bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *b
             length += name.size();
         }
         if (max == 0) {
+            length += 4;
+        } else {
+            if (max - length < 4) {
+                return false;
+            }
             uint16_t i = ToBigEndian16(item.type);
             memcpy(static_cast<char *>(buffer) + length + 0, &i, 2);
             i = ToBigEndian16(item.class_);
