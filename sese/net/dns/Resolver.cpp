@@ -14,11 +14,11 @@
 
 #include "Resolver.h"
 #include "DnsPackage.h"
+#include "Config.h"
 
 #include <sese/internal/net/AsioIPConvert.h>
 
 #include <asio.hpp>
-#include <iostream>
 
 using sese::net::dns::DnsPackage;
 using sese::net::dns::Resolver;
@@ -58,7 +58,7 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &n
 
     DnsPackage::Index index;
     auto send_package = DnsPackage::new_();
-    send_package->getQuestions().emplace_back(hostname, type, 1);
+    send_package->getQuestions().emplace_back(hostname, type, CLASS_IN);
     send_package->setId(std::uniform_int_distribution<uint16_t>(0, 255)(generator));
     send_package->setFlags(flags.encode());
 
@@ -76,8 +76,11 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &n
         return result;
     }
     socket.send_to(asio::buffer(buffer, length), endpoint);
-    length = socket.receive_from(asio::buffer(buffer), endpoint);
+    length = socket.receive_from(asio::buffer(buffer), endpoint, 0, ec);
     socket.close();
+    if (ec) {
+        return result;
+    }
 
     auto package = DnsPackage::decode(buffer, length);
     if (!package ||
@@ -87,15 +90,15 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &n
     for (auto &&answer: package->getAnswers()) {
         if (answer.type != type ||
             answer.data_length == 0 ||
-            answer.class_ != 1) {
+            answer.class_ != CLASS_IN) {
             continue;
         }
-        if (answer.type == 1 && answer.data_length == 4) {
+        if (answer.type == TYPE_A && answer.data_length == 4) {
             sockaddr_in sockaddr{};
             sockaddr.sin_family = AF_INET;
             memcpy(&sockaddr.sin_addr.s_addr, &answer.data[0], 4);
             result.emplace_back(std::make_shared<IPv4Address>(sockaddr));
-        } else if (answer.type == 28 || answer.data_length == 16) {
+        } else if (answer.type == TYPE_AAAA || answer.data_length == 16) {
             sockaddr_in6 sockaddr{};
             sockaddr.sin6_family = AF_INET6;
             memcpy(&sockaddr.sin6_addr, &answer.data[0], 16);

@@ -33,13 +33,19 @@ inline asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
     return asio::ip::make_address_v6(bytes, ipv6->sin6_scope_id);
 }
 
-inline sese::net::IPAddress::Ptr convert(const asio::ip::tcp::endpoint &endpoint) {
-    if(endpoint.protocol() == asio::ip::tcp::v4()) {
+template<typename EndpointType>
+sese::net::IPAddress::Ptr convert(const EndpointType& endpoint) {
+    static_assert(
+        std::is_same_v<EndpointType, asio::ip::tcp::endpoint> || std::is_same_v<EndpointType, asio::ip::udp::endpoint>,
+        "EndpointType must be either asio::ip::tcp::endpoint or asio::ip::udp::endpoint"
+    );
+
+    if (endpoint.address().is_v4()) {
         sockaddr_in sockaddr{};
         sockaddr.sin_family = AF_INET;
         sockaddr.sin_port = htons(endpoint.port());
         sockaddr.sin_addr.s_addr = htonl(endpoint.address().to_v4().to_uint());
-        return std::make_shared<sese::net::IPv4Address> (sockaddr);
+        return std::make_shared<sese::net::IPv4Address>(sockaddr);
     }
     sockaddr_in6 sockaddr{};
     sockaddr.sin6_family = AF_INET6;

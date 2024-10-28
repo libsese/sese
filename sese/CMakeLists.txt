@@ -175,6 +175,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
+    target_compile_definitions(Core PRIVATE -D_WIN32_WINNT=0x0601)
 
     if (MSVC)
         target_compile_options(Core PRIVATE "/utf-8")
