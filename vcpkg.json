@@ -22,7 +22,11 @@
       "name": "vcpkg-cmake-config",
       "host": true
     },
-    "zlib"
+    "zlib",
+    {
+      "name": "vcpkg-tool-ninja",
+      "host": true
+    }
   ],
   "default-features": [
     "sqlite3"
