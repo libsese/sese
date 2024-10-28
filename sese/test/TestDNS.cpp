@@ -68,6 +68,7 @@ TEST(TestDNS, Resolver) {
     auto port = sese::net::createRandomPort();
     sese::net::dns::Resolver resolver;
     resolver.addNameServer("127.0.0.1", port);
+    resolver.addNameServer("8.8.8.8", 53);
 
     auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
                        .args(PROJECT_PATH "/scripts/dns_server.py")
@@ -77,6 +78,14 @@ TEST(TestDNS, Resolver) {
     sese::sleep(1s);
 
     auto result = resolver.resolve("www.example.com", 1);
+    for (auto &&i: result) {
+        if (i->getFamily() == AF_INET) {
+            auto ipv4 = std::dynamic_pointer_cast<sese::net::IPv4Address>(i);
+            SESE_INFO("{}", ipv4->getAddress());
+        }
+    }
+
+    result = resolver.resolve("bing.com", 1);
     for (auto &&i: result) {
         if (i->getFamily() == AF_INET) {
             auto ipv4 = std::dynamic_pointer_cast<sese::net::IPv4Address>(i);
