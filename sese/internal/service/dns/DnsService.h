@@ -36,6 +36,16 @@ class DnsService final : public sese::service::Service {
     std::map<std::string, sese::net::IPv4Address::Ptr> v4map;
     std::map<std::string, sese::net::IPv6Address::Ptr> v6map;
 
+    void handleBySelf(
+        std::vector<sese::net::dns::DnsPackage::Question> &questions,
+        std::vector<sese::net::dns::DnsPackage::Answer> &answers
+    );
+
+    void handleByUpstream(
+        std::vector<sese::net::dns::DnsPackage::Question> &questions,
+        std::vector<sese::net::dns::DnsPackage::Answer> &answers
+    );
+
 public:
     DnsService();
 

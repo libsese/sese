@@ -94,8 +94,11 @@ void DnsService::handle() {
         if (!recv_package) {
             continue;
         }
+        auto flags = sese::net::dns::DnsPackage::Flags();
+        flags.qr = true;
         auto send_package = sese::net::dns::DnsPackage::new_();
         send_package->setId(recv_package->getId());
+        send_package->setFlags(flags.encode());
         auto addr = convert(endpoint);
 
         bool handled = false;
@@ -110,65 +113,86 @@ void DnsService::handle() {
         }
 
         auto &&answers = send_package->getAnswers();
-        for (auto &&[name, type, class_]: recv_package->getQuestions()) {
-            if (class_ != sese::net::dns::CLASS_IN) {
-                continue;
+        handleBySelf(send_package->getQuestions(), answers);
+        if (answers.empty()) {
+            handleByUpstream(send_package->getQuestions(), answers);
+        }
+        // todo 上游也不一定有记录
+
+        auto index = send_package->buildIndex();
+        if (!send_package->encode(buffer.data(), length, index)) {
+            continue;
+        }
+        socket.send_to(asio::buffer(buffer.data(), length), endpoint, 0, error);
+    }
+}
+
+void DnsService::handleBySelf(
+    std::vector<sese::net::dns::DnsPackage::Question> &questions,
+    std::vector<sese::net::dns::DnsPackage::Answer> &answers
+) {
+    for (auto &&[name, type, class_]: questions) {
+        if (class_ != sese::net::dns::CLASS_IN) {
+            continue;
+        }
+        sese::net::dns::DnsPackage::Answer answer;
+        answer.name = name;
+        answer.type = type;
+        answer.class_ = class_;
+        answer.ttl = 114514;
+        if (type == sese::net::dns::TYPE_A) {
+            auto iterator = v4map.find(name);
+            if (iterator != v4map.end()) {
+                answer.data_length = 4;
+                answer.data = std::make_unique<uint8_t[]>(answer.data_length);
+                auto result = reinterpret_cast<sockaddr_in *>(iterator->second->getRawAddress());
+                memcpy(answer.data.get(), &result->sin_addr.s_addr, 4);
+                answers.push_back(std::move(answer));
             }
+        } else if (type == sese::net::dns::TYPE_AAAA) {
+            auto iterator = v6map.find(name);
+            if (iterator != v6map.end()) {
+                answer.data_length = 16;
+                answer.data = std::make_unique<uint8_t[]>(answer.data_length);
+                auto result = reinterpret_cast<sockaddr_in6 *>(iterator->second->getRawAddress());
+                memcpy(answer.data.get(), &result->sin6_addr.s6_addr, 16);
+                answers.push_back(std::move(answer));
+            }
+        }
+    }
+}
+
+void DnsService::handleByUpstream(
+    std::vector<sese::net::dns::DnsPackage::Question> &questions,
+    std::vector<sese::net::dns::DnsPackage::Answer> &answers
+) {
+    // todo 未来还需要处理 ttl 问题
+    for (auto &&[name, type, class_]: questions) {
+        auto ips = resolver.resolve(name, type);
+        if (ips.empty()) {
+            continue;
+        }
+        for (auto &&ip: ips) {
             sese::net::dns::DnsPackage::Answer answer;
             answer.name = name;
             answer.type = type;
             answer.class_ = class_;
             answer.ttl = 114514;
-            if (type == sese::net::dns::TYPE_A) {
-                auto iterator = v4map.find(name);
-                if (iterator != v4map.end()) {
-                    answer.data_length = 4;
-                    answer.data = std::make_unique<uint8_t[]>(answer.data_length);
-                    auto result = reinterpret_cast<sockaddr_in *>(iterator->second->getRawAddress());
-                    memcpy(answer.data.get(), &result->sin_addr.s_addr, 4);
-                    answers.push_back(std::move(answer));
-                }
-            } else if (type == sese::net::dns::TYPE_AAAA) {
-                auto iterator = v6map.find(name);
-                if (iterator != v6map.end()) {
-                    answer.data_length = 16;
-                    answer.data = std::make_unique<uint8_t[]>(answer.data_length);
-                    auto result = reinterpret_cast<sockaddr_in6 *>(iterator->second->getRawAddress());
-                    memcpy(answer.data.get(), &result->sin6_addr.s6_addr, 16);
-                    answers.push_back(std::move(answer));
-                }
+            if (ip->getFamily() == AF_INET) {
+                answer.data_length = 4;
+                answer.data = std::make_unique<uint8_t[]>(answer.data_length);
+                auto result = reinterpret_cast<sockaddr_in *>(ip->getRawAddress());
+                memcpy(answer.data.get(), &result->sin_addr.s_addr, 4);
+                answers.push_back(std::move(answer));
+                v4map[name] = std::dynamic_pointer_cast<sese::net::IPv4Address>(ip);
+            } else {
+                answer.data_length = 16;
+                answer.data = std::make_unique<uint8_t[]>(answer.data_length);
+                auto result = reinterpret_cast<sockaddr_in6 *>(ip->getRawAddress());
+                memcpy(answer.data.get(), &result->sin6_addr.s6_addr, 16);
+                answers.push_back(std::move(answer));
+                v6map[name] = std::dynamic_pointer_cast<sese::net::IPv6Address>(ip);
             }
         }
-        if (answers.empty()) {
-            for (auto &&[name, type, class_]: recv_package->getQuestions()) {
-                auto ips = resolver.resolve(name, type);
-                if (ips.empty()) {
-                    continue;
-                }
-                for (auto &&ip: ips) {
-                    sese::net::dns::DnsPackage::Answer answer;
-                    answer.name = name;
-                    answer.type = type;
-                    answer.class_ = class_;
-                    answer.ttl = 114514;
-                    if (ip->getFamily() == AF_INET) {
-                        answer.data_length = 4;
-                        answer.data = std::make_unique<uint8_t[]>(answer.data_length);
-                        auto result = reinterpret_cast<sockaddr_in *>(ip->getRawAddress());
-                        memcpy(answer.data.get(), &result->sin_addr.s_addr, 4);
-                        answers.push_back(std::move(answer));
-                    } else {
-                        answer.data_length = 16;
-                        answer.data = std::make_unique<uint8_t[]>(answer.data_length);
-                        auto result = reinterpret_cast<sockaddr_in6 *>(ip->getRawAddress());
-                        memcpy(answer.data.get(), &result->sin6_addr.s6_addr, 16);
-                        answers.push_back(std::move(answer));
-                    }
-                }
-            }
-        }
-        auto index = send_package->buildIndex();
-        send_package->encode(buffer.data(), length, index);
-        socket.send_to(asio::buffer(buffer.data(), length), endpoint, 0, error);
     }
 }
