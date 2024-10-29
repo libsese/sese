@@ -110,6 +110,7 @@ jobs:
       - name: Coverage
         working-directory: ${{ github.workspace }}
         run: |
+          source venv/bin/activate
           mkdir -p build/coverage/html
           junit2html h2spec_report.xml build/coverage/h2spec.html
           gcovr
