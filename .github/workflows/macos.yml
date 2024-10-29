@@ -21,32 +21,30 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Setup pip
-        run: pip install -r ${{ github.workspace }}/requirements.txt
-
-#      - name: Setup deps
-#        working-directory: ${{ github.workspace }}
-#        run: |
-#          chmod +x ./scripts/install_darwin_deps.sh
-#          ./scripts/install_darwin_deps.sh
+      - name: Setup Python Venv
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r ${{ github.workspace }}/requirements.txt
 
       - name: Setup Vcpkg
         run: |
           git clone https://github.com/microsoft/vcpkg ${{ github.workspace }}/vcpkg
           vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
-      - name: Export GitHub Actions cache environment variables
-        uses: actions/github-script@v6
+      - name: Restore Vcpkg Cache
+        uses: actions/cache@v4.1.2
         with:
-          script: |
-            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
-            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          path: ${{ github.workspace }}/vcpkg-archive
+          key: vcpkg-osx-x64
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
         env:
           VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+          VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
         run: >
+          mkdir -p vcpkg-archive &&
           cmake
           -DCMAKE_BUILD_TYPE=Release
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
