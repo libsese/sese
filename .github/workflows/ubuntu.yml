@@ -96,6 +96,7 @@ jobs:
       - name: Test
         working-directory: ${{ github.workspace }}
         run: |
+          source venv/bin/activate
           build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
 
       - name: Test report

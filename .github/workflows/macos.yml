@@ -56,7 +56,9 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite* --gtest_output="xml:build/test_report.xml"
+        run: |
+          source venv/bin/activate
+          build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite* --gtest_output="xml:build/test_report.xml"
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1
