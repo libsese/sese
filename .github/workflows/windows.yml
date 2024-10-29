@@ -11,8 +11,6 @@ on:
 jobs:
   test:
     runs-on: windows-2022
-    env:
-      VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.2
@@ -20,7 +18,7 @@ jobs:
       - name: Setup Python Venv
         run: |
           python -m venv venv
-          venv/Scripts/activate.ps1
+          venv/Scripts/Activate.ps1
           pip install -r ${{ github.workspace }}/requirements.txt
 
       - name: Setup Ninja
@@ -59,7 +57,7 @@ jobs:
       - name: Test
         working-directory: ${{ github.workspace }}
         run: |
-          venv/Scripts/activate.ps1
+          venv/Scripts/Activate.ps1
           build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite* --gtest_output="xml:build/test_report.xml"
 
       - name: Test report
