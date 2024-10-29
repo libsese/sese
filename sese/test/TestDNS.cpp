@@ -105,8 +105,7 @@ TEST(TestDNS, Resolver) {
 }
 
 TEST(TestDNS, Server) {
-    // auto port = sese::net::createRandomPort();
-    uint16_t port = 53535;
+    auto port = sese::net::createRandomPort();
     sese::service::dns::DnsServer server;
     server.addUpstreamNameServer("8.8.8.8");
     server.addRecord("www.example.com", sese::net::IPv4Address::localhost());
