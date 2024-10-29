@@ -16,7 +16,7 @@
 
 #include "Config.h"
 
-#include <sese/service/service.h>
+#include <sese/service/Service.h>
 
 namespace sese::service::dns {
 
