@@ -85,9 +85,9 @@ private:
 
     static std::string encodeWords(const std::string &fullname);
 
-    static bool encodeQuestions(const std::vector<Question> &questions, void *buffer, size_t &length, Index &index);
+    static bool encodeQuestions(const std::vector<Question> &questions, void *buffer, size_t &length, Index &index, size_t offset);
 
-    static bool encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index);
+    static bool encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index, size_t offset);
 
 public:
     class Index {

@@ -20,9 +20,13 @@ resolver = dns.resolver.Resolver()
 resolver.nameservers = ["127.0.0.1"]
 resolver.port = int(sys.argv[1])
 
+names = ["www.example.com", "www.baidu.com"]
+
 try:
-    answer = resolver.resolve("example.com", "A")
-    for rdata in answer:
-        print("ipaddr", rdata.to_text())
+    for name in names:
+        answer = resolver.resolve(name, "A")
+        for rdata in answer:
+            print(name, "ipaddr", rdata.to_text())
 except dns.exception.DNSException as e:
     print("failed to query", e)
+    exit(1)

@@ -35,6 +35,7 @@ bool DnsService::bind(const sese::net::IPAddress::Ptr &address) {
     auto endpoint = asio::ip::udp::endpoint(addr, address->getPort());
     if (!socket.is_open()) {
         socket.open(endpoint.protocol());
+        socket.non_blocking(true);
     }
     error = socket.bind(endpoint, error);
     if (error) {
@@ -88,6 +89,9 @@ void DnsService::handle() {
         asio::ip::udp::endpoint endpoint;
         size_t length = socket.receive_from(asio::buffer(buffer.data(), buffer.size()), endpoint, 0, error);
         if (error) {
+            if (error.value() == asio::error::timed_out) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
             continue;
         }
         auto recv_package = sese::net::dns::DnsPackage::decode(buffer.data(), length);
@@ -113,13 +117,12 @@ void DnsService::handle() {
         }
 
         auto &&answers = send_package->getAnswers();
-        handleBySelf(send_package->getQuestions(), answers);
-        if (answers.empty()) {
-            handleByUpstream(send_package->getQuestions(), answers);
-        }
+        handleBySelf(recv_package->getQuestions(), send_package);
+        handleByUpstream(recv_package->getQuestions(), send_package);
         // todo 上游也不一定有记录
 
         auto index = send_package->buildIndex();
+        length = buffer.size();
         if (!send_package->encode(buffer.data(), length, index)) {
             continue;
         }
@@ -129,10 +132,15 @@ void DnsService::handle() {
 
 void DnsService::handleBySelf(
     std::vector<sese::net::dns::DnsPackage::Question> &questions,
-    std::vector<sese::net::dns::DnsPackage::Answer> &answers
+    sese::net::dns::DnsPackage::Ptr &send_package
 ) {
-    for (auto &&[name, type, class_]: questions) {
+    auto &answers = send_package->getAnswers();
+    for (auto q_iterator = questions.begin(); q_iterator != questions.end();) {
+        auto &&name = q_iterator->name;
+        auto &&type = q_iterator->type;
+        auto &&class_ = q_iterator->class_;
         if (class_ != sese::net::dns::CLASS_IN) {
+            ++q_iterator;
             continue;
         }
         sese::net::dns::DnsPackage::Answer answer;
@@ -148,6 +156,9 @@ void DnsService::handleBySelf(
                 auto result = reinterpret_cast<sockaddr_in *>(iterator->second->getRawAddress());
                 memcpy(answer.data.get(), &result->sin_addr.s_addr, 4);
                 answers.push_back(std::move(answer));
+                send_package->getQuestions().push_back(*q_iterator);
+                q_iterator = questions.erase(q_iterator);
+                continue;
             }
         } else if (type == sese::net::dns::TYPE_AAAA) {
             auto iterator = v6map.find(name);
@@ -157,21 +168,31 @@ void DnsService::handleBySelf(
                 auto result = reinterpret_cast<sockaddr_in6 *>(iterator->second->getRawAddress());
                 memcpy(answer.data.get(), &result->sin6_addr.s6_addr, 16);
                 answers.push_back(std::move(answer));
+                send_package->getQuestions().push_back(*q_iterator);
+                q_iterator = questions.erase(q_iterator);
+                continue;
             }
         }
+        ++q_iterator;
     }
 }
 
 void DnsService::handleByUpstream(
     std::vector<sese::net::dns::DnsPackage::Question> &questions,
-    std::vector<sese::net::dns::DnsPackage::Answer> &answers
+    sese::net::dns::DnsPackage::Ptr &send_package
 ) {
     // todo 未来还需要处理 ttl 问题
-    for (auto &&[name, type, class_]: questions) {
+    auto &answers = send_package->getAnswers();
+    for (auto q_iterator = questions.begin(); q_iterator != questions.end();) {
+        auto &&name = q_iterator->name;
+        auto &&type = q_iterator->type;
+        auto &&class_ = q_iterator->class_;
         auto ips = resolver.resolve(name, type);
         if (ips.empty()) {
+            ++q_iterator;
             continue;
         }
+        bool handled = false;
         for (auto &&ip: ips) {
             sese::net::dns::DnsPackage::Answer answer;
             answer.name = name;
@@ -185,6 +206,7 @@ void DnsService::handleByUpstream(
                 memcpy(answer.data.get(), &result->sin_addr.s_addr, 4);
                 answers.push_back(std::move(answer));
                 v4map[name] = std::dynamic_pointer_cast<sese::net::IPv4Address>(ip);
+                handled = true;
             } else {
                 answer.data_length = 16;
                 answer.data = std::make_unique<uint8_t[]>(answer.data_length);
@@ -192,7 +214,14 @@ void DnsService::handleByUpstream(
                 memcpy(answer.data.get(), &result->sin6_addr.s6_addr, 16);
                 answers.push_back(std::move(answer));
                 v6map[name] = std::dynamic_pointer_cast<sese::net::IPv6Address>(ip);
+                handled = true;
             }
+        }
+        if (handled) {
+            send_package->getQuestions().push_back(*q_iterator);
+            q_iterator = questions.erase(q_iterator);
+        } else {
+            ++q_iterator;
         }
     }
 }

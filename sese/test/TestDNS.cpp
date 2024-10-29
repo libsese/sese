@@ -1,5 +1,6 @@
 #include <sese/record/Marco.h>
 #include <sese/net/dns/DnsPackage.h>
+#include <sese/service/dns/DnsServer.h>
 #include <sese/net/dns/Resolver.h>
 #include <sese/system/ProcessBuilder.h>
 #include <sese/net/Socket.h>
@@ -101,4 +102,24 @@ TEST(TestDNS, Resolver) {
     }
 
     EXPECT_TRUE(process->kill());
+}
+
+TEST(TestDNS, Server) {
+    // auto port = sese::net::createRandomPort();
+    uint16_t port = 53535;
+    sese::service::dns::DnsServer server;
+    server.addUpstreamNameServer("8.8.8.8");
+    server.addRecord("www.example.com", sese::net::IPv4Address::localhost());
+    ASSERT_TRUE(server.bind(sese::net::IPv4Address::localhost(port)));
+    server.startup();
+
+    auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
+                      .args(PROJECT_PATH "/scripts/dns_client.py")
+                      .args(std::to_string(port))
+                      .create();
+    ASSERT_NE(nullptr, process);
+    sese::sleep(1s);
+    EXPECT_EQ(0, process->wait());
+
+    server.shutdown();
 }

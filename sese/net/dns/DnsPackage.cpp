@@ -47,6 +47,7 @@ std::string DnsPackage::decodeWords(const uint8_t *buffer, size_t length, size_t
             }
             builder.append(sub);
             current_pos += 2;
+            break;
         } else {
             uint8_t sub_length = current[current_pos];
             if (offset + sub_length + 1 > length) {
@@ -187,22 +188,22 @@ bool DnsPackage::encode(void *buffer, size_t &length, Index &index) const {
     }
 
     size_t sublength = max == 0 ? max : max - length;
-    if (!encodeQuestions(questions, static_cast<char *>(buffer) + length, sublength, index)) {
+    if (!encodeQuestions(questions, static_cast<char *>(buffer) + length, sublength, index, length)) {
         return false;
     }
     length += sublength;
     sublength = max == 0 ? max : max - length;
-    if (!encodeAnswers(answers, static_cast<char *>(buffer) + length, sublength, index)) {
+    if (!encodeAnswers(answers, static_cast<char *>(buffer) + length, sublength, index, length)) {
         return false;
     }
     length += sublength;
     sublength = max == 0 ? max : max - length;
-    if (!encodeAnswers(authorities, static_cast<char *>(buffer) + length, sublength, index)) {
+    if (!encodeAnswers(authorities, static_cast<char *>(buffer) + length, sublength, index, length)) {
         return false;
     }
     length += sublength;
     sublength = max == 0 ? max : max - length;
-    if (!encodeAnswers(additionals, static_cast<char *>(buffer) + length, sublength, index)) {
+    if (!encodeAnswers(additionals, static_cast<char *>(buffer) + length, sublength, index, length)) {
         return false;
     }
 
@@ -220,7 +221,7 @@ std::string DnsPackage::encodeWords(const std::string &fullname) {
     return builder.toString();
 }
 
-bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *buffer, size_t &length, Index &index) {
+bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *buffer, size_t &length, Index &index, size_t offset) {
     const size_t max = length;
     length = 0;
 
@@ -229,7 +230,7 @@ bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *b
         std::string name;
         if (cache != index.compress_mapping.end()) {
             // 命中缓存捏
-            name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length));
+            name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length + offset));
         } else {
             // 无缓存直接写入
             name = encodeWords(item.name);
@@ -260,7 +261,7 @@ bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *b
     return true;
 }
 
-bool DnsPackage::encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index) {
+bool DnsPackage::encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index, size_t offset) {
     const size_t max = length;
     length = 0;
     for (const auto &item: answers) {
@@ -268,7 +269,7 @@ bool DnsPackage::encodeAnswers(const std::vector<Answer> &answers, void *buffer,
         std::string name;
         if (cache != index.compress_mapping.end()) {
             // 命中缓存捏
-            name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length));
+            name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length + offset));
         } else {
             // 无缓存直接写入
             name = encodeWords(item.name);
@@ -298,6 +299,7 @@ bool DnsPackage::encodeAnswers(const std::vector<Answer> &answers, void *buffer,
             i16 = ToBigEndian16(item.data_length);
             memcpy(static_cast<char *>(buffer) + length + 8, &i16, 2);
             memcpy(static_cast<char *>(buffer) + length + 10, item.data.get(), item.data_length);
+            length += 10 + item.data_length;
         }
     }
     return true;

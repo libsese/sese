@@ -38,13 +38,15 @@ class DnsService final : public sese::service::Service {
 
     void handleBySelf(
         std::vector<sese::net::dns::DnsPackage::Question> &questions,
-        std::vector<sese::net::dns::DnsPackage::Answer> &answers
+        sese::net::dns::DnsPackage::Ptr &send_package
     );
 
     void handleByUpstream(
         std::vector<sese::net::dns::DnsPackage::Question> &questions,
-        std::vector<sese::net::dns::DnsPackage::Answer> &answers
+        sese::net::dns::DnsPackage::Ptr &send_package
     );
+
+    void handle();
 
 public:
     DnsService();
@@ -58,8 +60,6 @@ public:
     bool addUpstreamNameServer(const std::string &ip, uint16_t port = 53);
 
     void addRecord(const std::string &name, const sese::net::IPAddress::Ptr &address);
-
-    void handle();
 
     bool startup() override;
 

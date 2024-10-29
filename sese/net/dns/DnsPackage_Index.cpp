@@ -118,6 +118,7 @@ std::string DnsPackage::Index::encodeWords(const std::string &fullname, const st
     text::StringBuilder builder(128);
     auto cached_items = getSortedIndexes(indexes);
     auto words = text::StringBuilder::split(fullname, ".");
+    bool has_point = false;
     for (size_t i = 0; i < cached_items.size(); i++) {
         auto &cached_item = cached_items[i];
         auto &word = words[i];
@@ -128,10 +129,13 @@ std::string DnsPackage::Index::encodeWords(const std::string &fullname, const st
             uint16_t pos = createPointer(cached_item->pos);
             pos = ToBigEndian16(pos);
             builder.append(reinterpret_cast<const char *>(&pos), 2);
+            has_point = true;
             break;
         }
     }
-    builder.append('\0');
+    if (!has_point) {
+        builder.append('\0');
+    }
     updatePos(cached_items, base_offset);
     return builder.toString();
 }
