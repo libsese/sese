@@ -58,7 +58,7 @@ std::vector<sese::net::IPAddress::Ptr> Resolver::resolve(const IPAddress::Ptr &n
 
     DnsPackage::Index index;
     auto send_package = DnsPackage::new_();
-    send_package->getQuestions().emplace_back(hostname, type, CLASS_IN);
+    send_package->getQuestions().push_back(DnsPackage::Question{hostname, type, CLASS_IN});
     send_package->setId(std::uniform_int_distribution<uint16_t>(0, 255)(generator));
     send_package->setFlags(flags.encode());
 
