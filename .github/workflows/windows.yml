@@ -35,7 +35,6 @@ jobs:
           path: ${{ github.workspace }}/vcpkg-archive
           key: vcpkg-windows-x64
 
-      # https://stackoverflow.com/questions/77295748/unrecognized-virtual-environment-in-github-actions-with-cmake
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
         env:
@@ -45,7 +44,7 @@ jobs:
           venv/Scripts/Activate.ps1 &&
           cmake -G Ninja
           -DCMAKE_BUILD_TYPE=Release
-          -DPython3_ROOT_DIR=${{ github.workspace }}/venv
+          -DPython3_EXECUTABLE=${{ github.workspace }}/venv/Scripts/python.exe
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
