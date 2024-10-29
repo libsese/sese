@@ -40,12 +40,12 @@ jobs:
         working-directory: ${{ github.workspace }}
         env:
           VCPKG_ROOT: C:/vcpkg
-          Python3_ROOT_DIR: ""
         run: >
           mkdir -Force vcpkg-archive &&
           venv/Scripts/Activate.ps1 &&
           cmake -G Ninja
           -DCMAKE_BUILD_TYPE=Release
+          -DPython3_ROOT_DIR=${{ github.workspace }}/venv
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
