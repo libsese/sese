@@ -44,6 +44,7 @@ jobs:
           VCPKG_ROOT: ${{ github.workspace }}/vcpkg
           VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
         run: >
+          source venv/bin/activate &&
           mkdir -p vcpkg-archive &&
           cmake
           -DCMAKE_BUILD_TYPE=Release

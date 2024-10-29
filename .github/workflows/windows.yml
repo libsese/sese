@@ -48,6 +48,7 @@ jobs:
         env:
           VCPKG_ROOT: C:/vcpkg
         run: >
+          venv/Scripts/activate.ps1 &&
           cmake -G Ninja
           -DCMAKE_BUILD_TYPE=Release
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
