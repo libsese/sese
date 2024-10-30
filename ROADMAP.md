@@ -27,4 +27,6 @@
 
 ## Version 2.4.0
 
-- 🛠️ DNS module decoupling and refactoring
+- ⭕️ DNS module decoupling and refactoring
+- 🛠️ Better Exception
+- 🛠️ Support std::error_code

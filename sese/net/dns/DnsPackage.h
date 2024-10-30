@@ -1,3 +1,8 @@
+/// @file DnsPackage.h
+/// @brief DNS 包对象
+/// @author kaoru
+/// @date 2024年10月30日
+
 // Copyright 2024 libsese
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +28,10 @@
 
 namespace sese::net::dns {
 
+/// \brief DNS 包对象
 class DnsPackage {
 public:
+    /// \brief DNS Flags 工具
     struct Flags {
         bool qr = false;
         uint8_t opcode = 0;
@@ -35,19 +42,21 @@ public:
         uint8_t z = false;
         uint8_t rcode = false;
 
-        uint16_t encode() const;
+        [[nodiscard]] uint16_t encode() const;
 
         void decode(uint16_t flags);
     };
 
     class Index;
 
+    /// \brief DNS 请求
     struct Question {
         std::string name;
         uint16_t type;
         uint16_t class_;
     };
 
+    /// \brief DNS 应答
     struct Answer {
         std::string name;
         uint16_t type;
@@ -57,7 +66,9 @@ public:
         std::unique_ptr<uint8_t[]> data{};
     };
 
+    /// \brief DNS 权威应答
     using Authority = Answer;
+    /// \brief DNS 附加应答
     using Additional = Answer;
 
 private:
@@ -90,6 +101,7 @@ private:
     static bool encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index, size_t offset);
 
 public:
+    /// \brief DNS 打包压缩索引
     class Index {
         friend class DnsPackage;
         using CompressMapping = std::set<uint16_t>;
@@ -123,12 +135,24 @@ public:
 
     using Ptr = std::shared_ptr<DnsPackage>;
 
+    /// @return 空 DNS 打包压缩索引
     static Ptr new_();
 
+    /// 解析 DNS 原始包
+    /// @param buffer DNS 包缓存
+    /// @param length 缓存大小
+    /// @return 成功返回对象，反之返回nullptr
     static Ptr decode(const uint8_t *buffer, size_t length);
 
+    /// 获取 DNS 打包压缩索引
+    /// @return 索引
     Index buildIndex();
 
+    /// 将 DNS 包编码至缓存
+    /// @param buffer 输出缓存
+    /// @param length 输出缓存大小，执行成功将返回实际所用大小；若输入0则计算所需缓存大小，不执行实际打包操作
+    /// @param index DNS 打包压缩索引
+    /// @return 是否执行成功
     bool encode(void *buffer, size_t &length, Index &index) const;
 
     [[nodiscard]] std::vector<Question> &getQuestions() { return questions; }

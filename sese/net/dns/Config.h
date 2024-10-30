@@ -1,3 +1,8 @@
+/// @file Config.h
+/// @brief DNS 配置
+/// @author kaoru
+/// @date 2024年10月30日
+
 // Copyright 2024 libsese
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
