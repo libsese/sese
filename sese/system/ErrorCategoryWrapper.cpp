@@ -1,8 +1,3 @@
-/// \file Service.h
-/// \brief 服务接口
-/// \author kaoru
-/// \date 2024年03月4日
-
 // Copyright 2024 libsese
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,31 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "ErrorCategoryWrapper.h"
 
-#include <memory>
-#include <string>
-#include <system_error>
+sese::system::ErrorCategoryWrapper::ErrorCategoryWrapper(const std::string &message) : message_(message) {
+}
 
-namespace sese::service {
+const char *sese::system::ErrorCategoryWrapper::name() const noexcept {
+    return "ErrorCategory";
+}
 
-/// @brief 服务接口类
-class Service {
-public:
-    using Ptr = std::unique_ptr<Service>;
-
-    Service() = default;
-
-    virtual ~Service() = default;
-
-    virtual bool startup() = 0;
-
-    virtual bool shutdown() = 0;
-
-    virtual int getLastError() = 0;
-
-    virtual std::string getLastErrorMessage() = 0;
-
-    std::error_code getErrorCode();
-};
-} // namespace sese::service
+std::string sese::system::ErrorCategoryWrapper::message(int code) const {
+    return message_;
+}

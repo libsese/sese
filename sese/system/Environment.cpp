@@ -1,4 +1,9 @@
 #include "sese/system/Environment.h"
+#include "sese/Config.h"
+
+#ifndef SESE_PLATFORM_WINDOWS
+#include <stdlib.h>
+#endif
 
 namespace sese::system {
 
@@ -64,4 +69,44 @@ const char *Environment::getOperateSystemType() noexcept {
     return "Other OS"
 #endif
 }
+
+bool Environment::setEnv(const std::string &key, const std::string &value) noexcept {
+#ifdef SESE_PLATFORM_WINDOWS
+    return TRUE == SetEnvironmentVariable(key.c_str(), value.c_str());
+#else
+    return 0 == setenv(key.c_str(), value.c_str(), 1);
+#endif
+}
+
+bool Environment::unsetEnv(const std::string &key) noexcept {
+#ifdef SESE_PLATFORM_WINDOWS
+    return TRUE == SetEnvironmentVariable(key.c_str(), nullptr);
+#else
+    return 0 == unsetenv(key.c_str());
+#endif
+}
+
+std::string Environment::getEnv(const std::string &key) noexcept {
+#ifdef SESE_PLATFORM_WINDOWS
+    auto size = GetEnvironmentVariable(key.c_str(), nullptr, 0);
+    if (size == 0) {
+        return "";
+    }
+    auto str = std::make_unique<char[]>(size);
+    GetEnvironmentVariable(key.c_str(), str.get(), size);
+    return std::string(str.get(), size);
+#else
+#ifdef HAVE_SECURE_GETENV
+    const char *value = secure_getenv(key.c_str());
+#else
+    const char *value = getenv(key.c_str());
+#endif
+    if (value == nullptr) {
+        return "";
+    } else {
+        return value;
+    }
+#endif
+}
+
 } // namespace sese::system

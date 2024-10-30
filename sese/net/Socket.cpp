@@ -1,5 +1,6 @@
 #include <sese/net/Socket.h>
 #include <sese/util/Util.h>
+#include <sese/system/ErrorCategoryWrapper.h>
 
 sese::socket_t sese::net::Socket::socket(int family, int type, int protocol) noexcept {
     return ::socket(family, type, protocol);
@@ -54,13 +55,13 @@ int sese::net::getNetworkError() noexcept {
 std::string sese::net::getNetworkErrorString(int error) noexcept {
     char *msg = nullptr;
     FormatMessage(
-            FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-            nullptr,
-            error,
-            MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
-            reinterpret_cast<LPTSTR>(&msg),
-            0,
-            nullptr
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+        nullptr,
+        error,
+        MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
+        reinterpret_cast<LPTSTR>(&msg),
+        0,
+        nullptr
     );
     return msg;
 }
@@ -102,6 +103,10 @@ std::string sese::net::getNetworkErrorString(int error) noexcept {
 }
 
 #endif
+
+std::error_code sese::net::getNetworkErrorCode() noexcept {
+    return {getNetworkError(), system::ErrorCategoryWrapper(getNetworkErrorString())};
+}
 
 #include <sese/util/RandomUtil.h>
 

@@ -198,7 +198,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(Core PRIVATE ${CMAKE_DL_LIBS})
 
     file(GLOB_RECURSE NATIVE_LINUX_SRC "native/linux/*.cpp" "native/linux/*.h")
-    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
+    target_sources(Core PRIVATE ${NATIVE_LINUX_SRC})
 
     # target_compile_options(Core PRIVATE "-fno-exceptions")
     # target_compile_options(Core PUBLIC "-fPIC")
@@ -218,7 +218,16 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # target_compile_options(Core PRIVATE "-fno-exceptions")
 
     file(GLOB_RECURSE NATIVE_DRAWIN_SRC "native/darwin/*.cpp" "native/darwin/*.h")
-    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
+    target_sources(Core PRIVATE ${NATIVE_DRAWIN_SRC})
+endif ()
+
+###################################################################################
+# Unix-Like 平台配置
+###################################################################################
+if (UNIX)
+    include(CheckFunctionExists)
+    target_sources(Core PRIVATE ${UNIX_SRC})
+    check_function_exists(secure_getenv HAVE_SECURE_GETENV)
 endif ()
 
 ###################################################################################

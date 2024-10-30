@@ -14,6 +14,8 @@
 #include "sese/io/PeekableStream.h"
 #include "sese/util/Initializer.h"
 
+#include <system_error>
+
 #ifdef _WIN32
 #pragma warning(disable : 4251)
 #endif
@@ -182,5 +184,11 @@ extern int getNetworkError() noexcept;
  * @return 错误描述
  */
 std::string getNetworkErrorString(int error = getNetworkError()) noexcept;
+
+/**
+ * 获取网络相关错误码
+ * @return 错误码
+ */
+std::error_code getNetworkErrorCode() noexcept;
 
 } // namespace sese::net

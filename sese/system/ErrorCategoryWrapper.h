@@ -1,7 +1,7 @@
-/// \file Service.h
-/// \brief 服务接口
-/// \author kaoru
-/// \date 2024年03月4日
+/// @file ErrorCategoryWrapper.h
+/// @brief 错误类别包装器
+/// @author kaoru
+/// @date 2024年10月30日
 
 // Copyright 2024 libsese
 //
@@ -19,29 +19,20 @@
 
 #pragma once
 
-#include <memory>
-#include <string>
 #include <system_error>
 
-namespace sese::service {
+namespace sese::system {
 
-/// @brief 服务接口类
-class Service {
+/// \brief 错误类别包装器
+/// \warning 此包装器纯粹是为了自定义 message，暂时不推荐使用
+class ErrorCategoryWrapper final : public std::error_category {
+    std::string message_;
+
 public:
-    using Ptr = std::unique_ptr<Service>;
+    explicit ErrorCategoryWrapper(const std::string &message);
 
-    Service() = default;
-
-    virtual ~Service() = default;
-
-    virtual bool startup() = 0;
-
-    virtual bool shutdown() = 0;
-
-    virtual int getLastError() = 0;
-
-    virtual std::string getLastErrorMessage() = 0;
-
-    std::error_code getErrorCode();
+    [[nodiscard]] const char *name() const noexcept override;
+    [[nodiscard]] std::string message(int code = 0) const override;
 };
-} // namespace sese::service
+
+} // namespace sese::system

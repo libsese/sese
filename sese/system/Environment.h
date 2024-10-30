@@ -7,8 +7,9 @@
 
 #pragma once
 
-#include "sese/Config.h"
 #include "sese/util/NotInstantiable.h"
+
+#include <string>
 
 #ifdef _WIN32
 #pragma warning(disable : 4624)
@@ -19,7 +20,7 @@ namespace sese::system {
 /**
  * @brief 环境信息类
  */
-class  Environment final : public NotInstantiable {
+class Environment final : public NotInstantiable {
 public:
     Environment() = delete;
 
@@ -72,5 +73,27 @@ public:
      * @return 返回 CPU 的大小端模式
      */
     static bool isLittleEndian() noexcept;
+
+    /**
+     * 设置当前上下文环境变量
+     * @param key 键
+     * @param value 值
+     * @return 是否设置成功
+     */
+    static bool setEnv(const std::string &key, const std::string &value) noexcept;
+
+    /**
+     * 取消设置当前上下文环境变量
+     * @param key 键
+     * @return 是否设置成功
+     */
+    static bool unsetEnv(const std::string &key) noexcept;
+
+    /**
+     * 获取当前上下文环境变量
+     * @param key 键
+     * @return 获取到的值，需要调用 std::string::empty() 判空
+     */
+    static std::string getEnv(const std::string &key) noexcept;
 };
 } // namespace sese::system
