@@ -7,11 +7,12 @@
       "generator": "Ninja",
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
-        "SESE_BUILD_TEST": "ON",
-        "SESE_BUILD_EXAMPLE": "ON",
-        "SESE_USE_ARCHIVE": "ON",
-        "SESE_DB_USE_MARIADB": "ON",
-        "SESE_DB_USE_POSTGRES": "ON"
+        "VCPKG_USE_HOST_TOOLS": true,
+        "SESE_BUILD_TEST": true,
+        "SESE_BUILD_EXAMPLE": true,
+        "SESE_USE_ARCHIVE": true,
+        "SESE_DB_USE_MARIADB": true,
+        "SESE_DB_USE_POSTGRES": true
       }
     }
   ]

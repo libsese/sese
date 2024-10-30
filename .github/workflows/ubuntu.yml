@@ -41,11 +41,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Setup Python
-        uses: actions/setup-python@v5.1.0
-        with:
-          python-version: '3.11'
-
       - name: Setup Database
         working-directory: ${{ github.workspace }}
         env:
@@ -56,32 +51,32 @@ jobs:
           mkdir build
           sqlite3 build/db_test.db < scripts/sqlite_dump.sql
 
-      - name: Setup pip
-        run: pip install -r ${{ github.workspace }}/requirements.txt
-
-#      - name: Setup deps
-#        working-directory: ${{ github.workspace }}
-#        run: |
-#          chmod +x ./scripts/install_ubuntu_deps.sh
-#          sudo ./scripts/install_ubuntu_deps.sh
+      - name: Setup Python Venv
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r ${{ github.workspace }}/requirements.txt
 
       - name: Download h2spec
         run: |
           wget https://github.com/summerwind/h2spec/releases/download/v2.6.0/h2spec_linux_amd64.tar.gz
           tar -xzf h2spec_linux_amd64.tar.gz
 
-      - name: Export GitHub Actions cache environment variables
-        uses: actions/github-script@v6
+      - name: Restore Vcpkg Cache
+        uses: actions/cache@v4.1.2
         with:
-          script: |
-            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
-            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          path: ${{ github.workspace }}/vcpkg-archive
+          key: vcpkg-linux-x64
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
         env:
           VCPKG_ROOT: /usr/local/share/vcpkg
+          VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
+          Python3_ROOT_DIR: ${{ github.workspace }}/venv
         run: >
+          source venv/bin/activate &&
+          mkdir -p vcpkg-archive &&
           cmake
           -DCMAKE_BUILD_TYPE=Release
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
@@ -102,6 +97,7 @@ jobs:
       - name: Test
         working-directory: ${{ github.workspace }}
         run: |
+          source venv/bin/activate
           build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
 
       - name: Test report
@@ -115,6 +111,7 @@ jobs:
       - name: Coverage
         working-directory: ${{ github.workspace }}
         run: |
+          source venv/bin/activate
           mkdir -p build/coverage/html
           junit2html h2spec_report.xml build/coverage/h2spec.html
           gcovr

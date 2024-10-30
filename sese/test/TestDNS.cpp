@@ -1,139 +1,124 @@
-#define SESE_C_LIKE_FORMAT
-
-#include <sese/net/dns/DnsServer.h>
-#include <sese/net/dns/DnsUtil.h>
 #include <sese/record/Marco.h>
+#include <sese/net/dns/DnsPackage.h>
+#include <sese/service/dns/DnsServer.h>
+#include <sese/net/dns/Resolver.h>
+#include <sese/system/ProcessBuilder.h>
+#include <sese/net/Socket.h>
 
+#include <array>
 #include <random>
 
 #include <gtest/gtest.h>
 
-#define printf SESE_INFO
-
 using namespace std::chrono_literals;
 
-TEST(TestDNS, Decode_0) {
-    const uint8_t BUFFER[12] = {0xc1, 0xa8, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+TEST(TestDNS, DecodeWords) {
+    std::array<uint8_t, 55> array = {
+        0x12, 0x34, // ID = 0x1234
+        0x01, 0x00, // Flags = 0x0100 (Standard query)
+        0x00, 0x03, // QDCOUNT = 3 (3 questions)
+        0x00, 0x00, // ANCOUNT = 0
+        0x00, 0x00, // NSCOUNT = 0
+        0x00, 0x00, // ARCOUNT = 0
 
-    sese::net::dns::FrameHeaderInfo info{};
-    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(BUFFER, info);
+        // Question 1: www.example.com
+        // Count: 21 bytes
+        0x03, 'w', 'w', 'w',
+        0x07, 'e', 'x', 'a', 'm', 'p', 'l', 'e',
+        0x03, 'c', 'o', 'm',
+        0x00,
+        0x00, 0x00, 0x00, 0x00,
 
-    EXPECT_EQ(info.transactionId, 0xc1a8);
+        // Question 2: mail.example.com
+        // Count: 12 bytes
+        0x04, 'm', 'a', 'i', 'l',
+        0xc0, 0x10,
+        0x00,
+        0x00, 0x00, 0x00, 0x00,
 
-    EXPECT_EQ(info.flags.QR, 0);
-    EXPECT_EQ(info.flags.opcode, 0);
-    EXPECT_EQ(info.flags.TC, 0);
-    EXPECT_EQ(info.flags.RD, 1);
-    EXPECT_EQ(info.flags.z, 0);
+        // Question 3: my.mail.example.com
+        // Count: 10 bytes
+        0x02, 'm', 'y',
+        0xc0, 0x21,
+        0x00,
+        0x00, 0x00, 0x00, 0x00
+    };
 
-    EXPECT_EQ(info.questions, 1);
-    EXPECT_EQ(info.answerPrs, 0);
-    EXPECT_EQ(info.authorityPrs, 0);
-    EXPECT_EQ(info.additionalPrs, 0);
+    std::array<std::string, 3> expect = {"www.example.com", "mail.example.com", "my.mail.example.com"};
+    auto pkg = sese::net::dns::DnsPackage::decode(array.data(), array.size());
+
+    auto &&items = pkg->getQuestions();
+    for (int i = 0; i < items.size(); i++) {
+        EXPECT_EQ(items[i].name, expect[i]);
+    }
 }
 
-TEST(TestDNS, Decode_1) {
-    const uint8_t BUFFER[12] = {0xc1, 0xa8, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
+TEST(TestDNS, Encode) {
+    auto pkg = sese::net::dns::DnsPackage::new_();
+    auto &&questions = pkg->getQuestions();
+    questions.push_back({"www.example.com", 1, 1});
+    questions.push_back({"mail.example.com", 1, 1});
 
-    sese::net::dns::FrameHeaderInfo info{};
-    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(BUFFER, info);
+    auto index = pkg->buildIndex();
 
-    EXPECT_EQ(info.transactionId, 0xc1a8);
+    size_t compressed_length = 0;
+    pkg->encode(nullptr, compressed_length, index);
 
-    EXPECT_EQ(info.flags.QR, 1);
-    EXPECT_EQ(info.flags.opcode, 0);
-    EXPECT_EQ(info.flags.TC, 0);
-    EXPECT_EQ(info.flags.RD, 1);
-    EXPECT_EQ(info.flags.RA, 1);
-    EXPECT_EQ(info.flags.z, 0);
-    EXPECT_EQ(info.flags.rcode, SESE_DNS_RCODE_NAME_ERROR);
+    auto no_index = sese::net::dns::DnsPackage::Index();
+    size_t length = 0;
+    pkg->encode(nullptr, length, no_index);
 
-    EXPECT_EQ(info.questions, 1);
-    EXPECT_EQ(info.answerPrs, 0);
-    EXPECT_EQ(info.authorityPrs, 1);
-    EXPECT_EQ(info.additionalPrs, 0);
+    SESE_INFO("compressed length: {}", compressed_length);
+    SESE_INFO("length: {}", length);
 }
 
-TEST(TestDNS, Encode_0) {
-    const uint8_t EXPECT[12] = {0x82, 0x67, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-    uint8_t result[12]{};
-
-    sese::net::dns::FrameHeaderInfo info{};
-    info.transactionId = 0x8267;
-
-    info.flags.QR = 0;
-    info.flags.opcode = 0;
-    info.flags.TC = 0;
-    info.flags.RD = 1;
-    info.flags.z = 0;
-
-    info.questions = 1;
-    info.answerPrs = 0;
-    info.authorityPrs = 0;
-    info.additionalPrs = 0;
-
-    sese::net::dns::DnsUtil::encodeFrameHeaderInfo(result, info);
-    EXPECT_EQ(memcmp(EXPECT, result, 12), 0);
-}
-
-TEST(TestDNS, Encode_1) {
-    const uint8_t EXPECT[12] = {0x82, 0x67, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
-    uint8_t result[12]{};
-
-    sese::net::dns::FrameHeaderInfo info{};
-    info.transactionId = 0x8267;
-
-    info.flags.QR = 1;
-    info.flags.opcode = 0;
-    info.flags.TC = 0;
-    info.flags.RD = 1;
-    info.flags.RA = 1;
-    info.flags.z = 0;
-    info.flags.rcode = SESE_DNS_RCODE_NAME_ERROR;
-
-    info.questions = 1;
-    info.answerPrs = 0;
-    info.authorityPrs = 1;
-    info.additionalPrs = 0;
-
-    sese::net::dns::DnsUtil::encodeFrameHeaderInfo(result, info);
-    EXPECT_EQ(memcmp(EXPECT, result, 12), 0);
-}
-
-static sese::net::IPv4Address::Ptr createAddress() {
+TEST(TestDNS, Resolver) {
     auto port = sese::net::createRandomPort();
-    printf("select port %d", (int) port);
-    return sese::net::IPv4Address::localhost(port);
-}
+    sese::net::dns::Resolver resolver;
+    resolver.addNameServer("127.0.0.1", port);
+    resolver.addNameServer("8.8.8.8", 53);
 
-TEST(TestDNS, DnsClient) {
-    auto server = sese::net::IPv4Address::create("114.114.114.114", 53);
-    auto ip = sese::net::dns::DnsClient::resolveAuto("www.bing.com", server);
-    ASSERT_NE(ip, nullptr);
-    SESE_INFO("www.bing.com -> %s", ip->getAddress().c_str());
+    auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
+                       .args(PROJECT_PATH "/scripts/dns_server.py")
+                       .args(std::to_string(port))
+                       .create();
+    ASSERT_NE(nullptr, process);
+    sese::sleep(1s);
+
+    auto result = resolver.resolve("www.example.com", 1);
+    for (auto &&i: result) {
+        if (i->getFamily() == AF_INET) {
+            auto ipv4 = std::dynamic_pointer_cast<sese::net::IPv4Address>(i);
+            SESE_INFO("{}", ipv4->getAddress());
+        }
+    }
+
+    result = resolver.resolve("bing.com", 1);
+    for (auto &&i: result) {
+        if (i->getFamily() == AF_INET) {
+            auto ipv4 = std::dynamic_pointer_cast<sese::net::IPv4Address>(i);
+            SESE_INFO("{}", ipv4->getAddress());
+        }
+    }
+
+    EXPECT_TRUE(process->kill());
 }
 
 TEST(TestDNS, Server) {
-    auto addr = createAddress();
+    auto port = sese::net::createRandomPort();
+    sese::service::dns::DnsServer server;
+    server.addUpstreamNameServer("8.8.8.8");
+    server.addRecord("www.example.com", sese::net::IPv4Address::localhost());
+    ASSERT_TRUE(server.bind(sese::net::IPv4Address::localhost(port)));
+    server.startup();
 
-    sese::net::dns::DnsConfig config;
-    config.address = addr;
-    config.hostIPv4Map["www.example.com"] = "127.0.0.1";
-    config.hostIPv4Map["www.kaoru.com"] = "192.168.3.230";
-    config.hostIPv6Map["www.kaoru.com"] = "::1";
+    auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
+                      .args(PROJECT_PATH "/scripts/dns_client.py")
+                      .args(std::to_string(port))
+                      .create();
+    ASSERT_NE(nullptr, process);
+    sese::sleep(1s);
+    EXPECT_EQ(0, process->wait());
 
-    auto server = sese::net::dns::DnsServer::create(&config);
-    ASSERT_NE(server, nullptr);
-
-    server->start();
-
-    auto ipv4 = sese::net::dns::DnsClient::resolveAuto("www.kaoru.com", addr);
-    ASSERT_NE(ipv4, nullptr);
-    SESE_INFO("www.kaoru.com -> %s", ipv4->getAddress().c_str());
-
-    auto ipv6 = sese::net::dns::DnsClient::resolveAuto("www.kaoru.com", addr, AF_INET6);
-    ASSERT_NE(ipv6, nullptr);
-    SESE_INFO("www.kaoru.com -> %s", ipv6->getAddress().c_str());
-
-    server->shutdown();
+    server.shutdown();
 }
