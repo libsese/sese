@@ -39,6 +39,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         env:
           VCPKG_ROOT: C:/vcpkg
+          VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
+          Python3_ROOT_DIR: ${{ github.workspace }}/venv
         run: >
           mkdir -Force vcpkg-archive &&
           venv/Scripts/Activate.ps1 &&

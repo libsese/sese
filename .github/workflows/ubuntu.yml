@@ -73,6 +73,7 @@ jobs:
         env:
           VCPKG_ROOT: /usr/local/share/vcpkg
           VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
+          Python3_ROOT_DIR: ${{ github.workspace }}/venv
         run: >
           source venv/bin/activate &&
           mkdir -p vcpkg-archive &&

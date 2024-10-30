@@ -1,6 +1,8 @@
 # https://discourse.cmake.org/t/possible-to-create-a-python-virtual-env-from-cmake-and-then-find-it-with-findpython3/1132/2
-set(ENV{VIRTUAL_ENV} "${PROJECT_SOURCE_DIR}/venv")
-set(Python3_FIND_VIRTUALENV FIRST)
+# set(ENV{VIRTUAL_ENV} "${PROJECT_SOURCE_DIR}/venv")
+# set(Python3_FIND_VIRTUALENV FIRST)
+# 已知此功能在 GitHub Action 中的 Windows 平台下不符合预期，无法选中对应的虚拟环境
+# 如有需要请指定环境变量 Python3_ROOT_DIR
 
 find_package(GTest CONFIG REQUIRED)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
