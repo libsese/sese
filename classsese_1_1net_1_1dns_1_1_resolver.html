@@ -141,6 +141,9 @@ $(function(){initNavTree('classsese_1_1net_1_1dns_1_1_resolver.html',''); initRe
 </div><!--header-->
 <div class="contents">
 
+<p>域名解析器  
+ <a href="#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_resolver_8h_source.html">Resolver.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -168,7 +171,9 @@ Private 属性</h2></td></tr>
 <tr class="memitem:a127e0c5446d11bfbb2b5b96b26b25980" id="r_a127e0c5446d11bfbb2b5b96b26b25980"><td class="memItemLeft" align="right" valign="top">std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a127e0c5446d11bfbb2b5b96b26b25980">generator</a></td></tr>
 <tr class="separator:a127e0c5446d11bfbb2b5b96b26b25980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">构造及析构函数说明</h2>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>域名解析器 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a19068f3ea9b219a8a9a254d227451d17" name="a19068f3ea9b219a8a9a254d227451d17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19068f3ea9b219a8a9a254d227451d17">&#9670;&#160;</a></span>Resolver()</h2>
 
@@ -201,6 +206,12 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>添加 NameServer </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip_address</td><td>IP </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">引用了 <a class="el" href="#acbf6cabad934d3adaad497d33f59b041">name_servers</a>.</p>
 
@@ -224,6 +235,14 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>添加 NameServer </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>IP </td></tr>
+    <tr><td class="paramname">port</td><td>端口 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否添加成功，这取决于填写的IP地址格式 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_p_address.html#a3a3333efc217a358ccbb9afeedac2b26">sese::net::IPAddress::create()</a> , 以及 <a class="el" href="#acbf6cabad934d3adaad497d33f59b041">name_servers</a>.</p>
 
@@ -287,6 +306,14 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>解析域名 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hostname</td><td>域名 </td></tr>
+    <tr><td class="paramname">type</td><td>类型 (<a class="el" href="namespacesese_1_1net_1_1dns.html#afb53e8925e001019fa2119f4443daddb">sese::net::dns::TYPE_A</a> || <a class="el" href="namespacesese_1_1net_1_1dns.html#aeb70a63ed8655c348744edcb322792a1">sese::net::dns::TYPE_AAAA</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>解析结果 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="#acbf6cabad934d3adaad497d33f59b041">name_servers</a> , 以及 <a class="el" href="#a5b36faa23f6a3fdda3313c796ba92688">resolve()</a>.</p>
 
@@ -373,7 +400,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1dns.html">dns</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1dns_1_1_resolver.html">Resolver</a></li>
-    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:34 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 08:06:03 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

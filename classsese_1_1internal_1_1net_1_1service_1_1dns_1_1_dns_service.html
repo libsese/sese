@@ -141,6 +141,9 @@ $(function(){initNavTree('classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns
 </div><!--header-->
 <div class="contents">
 
+<p>DNS 服务  
+ <a href="#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_dns_service_8h_source.html">DnsService.h</a>&gt;</code></p>
 <div class="dynheader">
 类 sese::internal::net::service::dns::DnsService 继承关系图:</div>
@@ -155,24 +158,34 @@ $(function(){initNavTree('classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:adc56d20a34cb1d9216c4d459590eb07e" id="r_adc56d20a34cb1d9216c4d459590eb07e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc56d20a34cb1d9216c4d459590eb07e">DnsService</a> ()</td></tr>
+<tr class="memdesc:adc56d20a34cb1d9216c4d459590eb07e"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
 <tr class="separator:adc56d20a34cb1d9216c4d459590eb07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43efba97294b2fa306c8724c72c1f1e0" id="r_a43efba97294b2fa306c8724c72c1f1e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43efba97294b2fa306c8724c72c1f1e0">bind</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;address)</td></tr>
+<tr class="memdesc:a43efba97294b2fa306c8724c72c1f1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">绑定地址  <br /></td></tr>
 <tr class="separator:a43efba97294b2fa306c8724c72c1f1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28acc61685e830ffbf57f3eb48b704d7" id="r_a28acc61685e830ffbf57f3eb48b704d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28acc61685e830ffbf57f3eb48b704d7">setCallback</a> (const <a class="el" href="namespacesese_1_1service_1_1dns.html#a9ef1e510de27f9331e58ed49186b2311">sese::service::dns::Callback</a> &amp;<a class="el" href="#a4f2f9f833f6366a124f34f3a05fe9f2f">callback</a>)</td></tr>
+<tr class="memdesc:a28acc61685e830ffbf57f3eb48b704d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置回调，回调函数先于域名判断逻辑，类似于过滤器，返回值代表是否需要下一步处理  <br /></td></tr>
 <tr class="separator:a28acc61685e830ffbf57f3eb48b704d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7688e0556f8987a809aeef68adb200c0" id="r_a7688e0556f8987a809aeef68adb200c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7688e0556f8987a809aeef68adb200c0">addUpstreamNameServer</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;address)</td></tr>
+<tr class="memdesc:a7688e0556f8987a809aeef68adb200c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加上游域名服务器  <br /></td></tr>
 <tr class="separator:a7688e0556f8987a809aeef68adb200c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb2e2bc490d47b8dd3b1d7045ef75cc8" id="r_afb2e2bc490d47b8dd3b1d7045ef75cc8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb2e2bc490d47b8dd3b1d7045ef75cc8">addUpstreamNameServer</a> (const std::string &amp;ip, uint16_t port=53)</td></tr>
+<tr class="memdesc:afb2e2bc490d47b8dd3b1d7045ef75cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加上游域名服务器  <br /></td></tr>
 <tr class="separator:afb2e2bc490d47b8dd3b1d7045ef75cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbd84394c585579fd5276226a91a8fb0" id="r_adbd84394c585579fd5276226a91a8fb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbd84394c585579fd5276226a91a8fb0">addRecord</a> (const std::string &amp;name, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;address)</td></tr>
+<tr class="memdesc:adbd84394c585579fd5276226a91a8fb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加记录  <br /></td></tr>
 <tr class="separator:adbd84394c585579fd5276226a91a8fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbb0f11237e3493d81ba6130e010721a" id="r_adbb0f11237e3493d81ba6130e010721a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbb0f11237e3493d81ba6130e010721a">startup</a> () override</td></tr>
+<tr class="memdesc:adbb0f11237e3493d81ba6130e010721a"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动服务  <br /></td></tr>
 <tr class="separator:adbb0f11237e3493d81ba6130e010721a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46842e54494e62d32cd84e25ffd8c040" id="r_a46842e54494e62d32cd84e25ffd8c040"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46842e54494e62d32cd84e25ffd8c040">shutdown</a> () override</td></tr>
+<tr class="memdesc:a46842e54494e62d32cd84e25ffd8c040"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止服务  <br /></td></tr>
 <tr class="separator:a46842e54494e62d32cd84e25ffd8c040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7196ad46e54d6da99c9e26339febab9d" id="r_a7196ad46e54d6da99c9e26339febab9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7196ad46e54d6da99c9e26339febab9d">getLastError</a> () override</td></tr>
+<tr class="memdesc:a7196ad46e54d6da99c9e26339febab9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取错误码  <br /></td></tr>
 <tr class="separator:a7196ad46e54d6da99c9e26339febab9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f863103dc167122dc8ecb8f94f39973" id="r_a9f863103dc167122dc8ecb8f94f39973"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f863103dc167122dc8ecb8f94f39973">getLastErrorMessage</a> () override</td></tr>
+<tr class="memdesc:a9f863103dc167122dc8ecb8f94f39973"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取错误信息  <br /></td></tr>
 <tr class="separator:a9f863103dc167122dc8ecb8f94f39973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classsese_1_1service_1_1_service"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1service_1_1_service')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1service_1_1_service.html">sese::service::Service</a></td></tr>
 <tr class="memitem:a81d7c4652df52b1f8f3e6b28fe6dad60 inherit pub_methods_classsese_1_1service_1_1_service" id="r_a81d7c4652df52b1f8f3e6b28fe6dad60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_service.html#a81d7c4652df52b1f8f3e6b28fe6dad60">Service</a> ()=default</td></tr>
@@ -218,7 +231,9 @@ Private 属性</h2></td></tr>
 <tr class="memitem:ac6f84d6c13a45cafb89778ab87e3b3af inherit pub_types_classsese_1_1service_1_1_service" id="r_ac6f84d6c13a45cafb89778ab87e3b3af"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_service.html#ac6f84d6c13a45cafb89778ab87e3b3af">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1service_1_1_service.html">Service</a>&gt;</td></tr>
 <tr class="separator:ac6f84d6c13a45cafb89778ab87e3b3af inherit pub_types_classsese_1_1service_1_1_service"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">构造及析构函数说明</h2>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>DNS 服务 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="adc56d20a34cb1d9216c4d459590eb07e" name="adc56d20a34cb1d9216c4d459590eb07e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc56d20a34cb1d9216c4d459590eb07e">&#9670;&#160;</a></span>DnsService()</h2>
 
@@ -233,6 +248,8 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>构造函数 </p>
 
 </div>
 </div>
@@ -256,6 +273,15 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>添加记录 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>域名 </td></tr>
+    <tr><td class="paramname">address</td><td>地址 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="reference">引用了 <a class="el" href="#ad3fe6b70d40b9c62208b9a2e7603a9da">v4map</a> , 以及 <a class="el" href="#a999d8f3449b324be19319a1a1467f640">v6map</a>.</p>
 
 </div>
@@ -274,6 +300,14 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>添加上游域名服务器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>地址 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1dns_1_1_resolver.html#a64642aae0ed4ab9be07dd51ad64b809f">sese::net::dns::Resolver::addNameServer()</a> , 以及 <a class="el" href="#abb45ea2059fc015f0c400c9853843965">resolver</a>.</p>
 
@@ -298,6 +332,16 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>添加上游域名服务器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>IP </td></tr>
+    <tr><td class="paramname">port</td><td>端口 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否添加成功，这取决于填写的IP地址格式 </dd></dl>
+
 <p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1dns_1_1_resolver.html#a64642aae0ed4ab9be07dd51ad64b809f">sese::net::dns::Resolver::addNameServer()</a> , 以及 <a class="el" href="#abb45ea2059fc015f0c400c9853843965">resolver</a>.</p>
 
 </div>
@@ -316,6 +360,15 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>绑定地址 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>地址 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否绑定成功 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="#ab2be129a4bd1d64cdbe023f31527ab1d">error</a> , 以及 <a class="el" href="#a43b0c5660254f7d7d8d9da179b1a9c27">socket</a>.</p>
 
@@ -343,6 +396,9 @@ Private 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>获取错误码 </p>
+<dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
 
 <p>实现了 <a class="el" href="classsese_1_1service_1_1_service.html#a4c52926d7d43e78d3ee2f005425f42f0">sese::service::Service</a>.</p>
 
@@ -372,6 +428,9 @@ Private 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>获取错误信息 </p>
+<dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
 
 <p>实现了 <a class="el" href="classsese_1_1service_1_1_service.html#a8efd75387aac6d057505651aab80cd75">sese::service::Service</a>.</p>
 
@@ -489,6 +548,14 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>设置回调，回调函数先于域名判断逻辑，类似于过滤器，返回值代表是否需要下一步处理 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>回调 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="reference">引用了 <a class="el" href="#a4f2f9f833f6366a124f34f3a05fe9f2f">callback</a>.</p>
 
 </div>
@@ -515,6 +582,9 @@ Private 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>停止服务 </p>
+<dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
 <p>实现了 <a class="el" href="classsese_1_1service_1_1_service.html#a9a1ccda8a0cf59c83c5b87b79587a2dc">sese::service::Service</a>.</p>
 
@@ -544,6 +614,9 @@ Private 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>启动服务 </p>
+<dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
 <p>实现了 <a class="el" href="classsese_1_1service_1_1_service.html#a585c46ebbdf1a46934b1832f80d5919f">sese::service::Service</a>.</p>
 
@@ -800,7 +873,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net_1_1service_1_1dns.html">dns</a></li><li class="navelem"><a class="el" href="classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html">DnsService</a></li>
-    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:34 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 08:06:03 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

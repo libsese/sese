@@ -140,29 +140,42 @@ $(function(){initNavTree('classsese_1_1service_1_1dns_1_1_dns_server.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p>DNS 服务器  
+ <a href="#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_dns_server_8h_source.html">DnsServer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a31ef71c5f504309c1c23dcb92110ff04" id="r_a31ef71c5f504309c1c23dcb92110ff04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31ef71c5f504309c1c23dcb92110ff04">DnsServer</a> ()</td></tr>
+<tr class="memdesc:a31ef71c5f504309c1c23dcb92110ff04"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
 <tr class="separator:a31ef71c5f504309c1c23dcb92110ff04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d7d7dd5785dfa143f02a3b709586b20" id="r_a8d7d7dd5785dfa143f02a3b709586b20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d7d7dd5785dfa143f02a3b709586b20">bind</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address)</td></tr>
+<tr class="memdesc:a8d7d7dd5785dfa143f02a3b709586b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">绑定地址  <br /></td></tr>
 <tr class="separator:a8d7d7dd5785dfa143f02a3b709586b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed721f973b370fee73bcf4c4d1824792" id="r_aed721f973b370fee73bcf4c4d1824792"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed721f973b370fee73bcf4c4d1824792">setCallback</a> (const <a class="el" href="namespacesese_1_1service_1_1dns.html#a9ef1e510de27f9331e58ed49186b2311">Callback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="memdesc:aed721f973b370fee73bcf4c4d1824792"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置回调  <br /></td></tr>
 <tr class="separator:aed721f973b370fee73bcf4c4d1824792"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f0dbe6302c3906964e289352599dc20" id="r_a1f0dbe6302c3906964e289352599dc20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f0dbe6302c3906964e289352599dc20">addUpstreamNameServer</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address)</td></tr>
+<tr class="memdesc:a1f0dbe6302c3906964e289352599dc20"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加上游服务器  <br /></td></tr>
 <tr class="separator:a1f0dbe6302c3906964e289352599dc20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6462a1dc33ca843c79e6ed15814742d" id="r_ad6462a1dc33ca843c79e6ed15814742d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6462a1dc33ca843c79e6ed15814742d">addUpstreamNameServer</a> (const std::string &amp;ip, uint16_t port=53)</td></tr>
+<tr class="memdesc:ad6462a1dc33ca843c79e6ed15814742d"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加上游服务器  <br /></td></tr>
 <tr class="separator:ad6462a1dc33ca843c79e6ed15814742d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409c8eec7dcf6a38ec529ec3e264e3a2" id="r_a409c8eec7dcf6a38ec529ec3e264e3a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a409c8eec7dcf6a38ec529ec3e264e3a2">addRecord</a> (const std::string &amp;name, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address)</td></tr>
+<tr class="memdesc:a409c8eec7dcf6a38ec529ec3e264e3a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加记录  <br /></td></tr>
 <tr class="separator:a409c8eec7dcf6a38ec529ec3e264e3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a364fb672ae069f40d79be403971e6ccc" id="r_a364fb672ae069f40d79be403971e6ccc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a364fb672ae069f40d79be403971e6ccc">startup</a> ()</td></tr>
+<tr class="memdesc:a364fb672ae069f40d79be403971e6ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动  <br /></td></tr>
 <tr class="separator:a364fb672ae069f40d79be403971e6ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a158eeb169b38648b8bf651af83a3701e" id="r_a158eeb169b38648b8bf651af83a3701e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a158eeb169b38648b8bf651af83a3701e">shutdown</a> ()</td></tr>
+<tr class="memdesc:a158eeb169b38648b8bf651af83a3701e"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止  <br /></td></tr>
 <tr class="separator:a158eeb169b38648b8bf651af83a3701e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e7dbbec22c52db47578334611936388" id="r_a8e7dbbec22c52db47578334611936388"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e7dbbec22c52db47578334611936388">getLastError</a> ()</td></tr>
+<tr class="memdesc:a8e7dbbec22c52db47578334611936388"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取错误码  <br /></td></tr>
 <tr class="separator:a8e7dbbec22c52db47578334611936388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b826f203e73af99385c4cdd12d2109a" id="r_a6b826f203e73af99385c4cdd12d2109a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b826f203e73af99385c4cdd12d2109a">getLastErrorMessage</a> ()</td></tr>
+<tr class="memdesc:a6b826f203e73af99385c4cdd12d2109a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取错误信息  <br /></td></tr>
 <tr class="separator:a6b826f203e73af99385c4cdd12d2109a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -170,7 +183,9 @@ Private 属性</h2></td></tr>
 <tr class="memitem:ac28a8b898dfa695c55ee9eb9ee32a7e4" id="r_ac28a8b898dfa695c55ee9eb9ee32a7e4"><td class="memItemLeft" align="right" valign="top">Service::Ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a></td></tr>
 <tr class="separator:ac28a8b898dfa695c55ee9eb9ee32a7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">构造及析构函数说明</h2>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>DNS 服务器 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a31ef71c5f504309c1c23dcb92110ff04" name="a31ef71c5f504309c1c23dcb92110ff04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31ef71c5f504309c1c23dcb92110ff04">&#9670;&#160;</a></span>DnsServer()</h2>
 
@@ -185,6 +200,8 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>构造函数 </p>
 
 <p class="reference">引用了 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
@@ -210,6 +227,15 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>添加记录 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>域名 </td></tr>
+    <tr><td class="paramname">address</td><td>地址 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="reference">引用了 <a class="el" href="_dns_server_8cpp.html#a1b0fda8ba947077492614595b1371c99">COV</a> , 以及 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
 </div>
@@ -228,6 +254,14 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>添加上游服务器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>地址 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">引用了 <a class="el" href="_dns_server_8cpp.html#a1b0fda8ba947077492614595b1371c99">COV</a> , 以及 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
@@ -252,6 +286,16 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>添加上游服务器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>地址 </td></tr>
+    <tr><td class="paramname">port</td><td>端口 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否添加成功 </dd></dl>
+
 <p class="reference">引用了 <a class="el" href="_dns_server_8cpp.html#a1b0fda8ba947077492614595b1371c99">COV</a> , 以及 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
 </div>
@@ -270,6 +314,15 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>绑定地址 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>地址 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否绑定成功 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="_dns_server_8cpp.html#a1b0fda8ba947077492614595b1371c99">COV</a> , 以及 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
@@ -290,6 +343,9 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>获取错误码 </p>
+<dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
 <p class="reference">引用了 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
 </div>
@@ -308,6 +364,9 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>获取错误信息 </p>
+<dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
@@ -328,6 +387,14 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>设置回调 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>回调 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a>, <a class="el" href="_dns_server_8cpp.html#a1b0fda8ba947077492614595b1371c99">COV</a> , 以及 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
 </div>
@@ -347,6 +414,9 @@ Private 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>停止 </p>
+<dl class="section return"><dt>返回</dt><dd>是否停止成功 </dd></dl>
+
 <p class="reference">引用了 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
 </div>
@@ -365,6 +435,9 @@ Private 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>启动 </p>
+<dl class="section return"><dt>返回</dt><dd>是否启动成功 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>.</p>
 
@@ -405,7 +478,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1dns.html">dns</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1dns_1_1_dns_server.html">DnsServer</a></li>
-    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:34 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 08:06:03 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
