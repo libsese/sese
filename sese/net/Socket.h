@@ -185,10 +185,4 @@ extern int getNetworkError() noexcept;
  */
 std::string getNetworkErrorString(int error = getNetworkError()) noexcept;
 
-/**
- * 获取网络相关错误码
- * @return 错误码
- */
-std::error_code getNetworkErrorCode() noexcept;
-
 } // namespace sese::net

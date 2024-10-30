@@ -1,6 +1,5 @@
 #include <sese/net/Socket.h>
 #include <sese/util/Util.h>
-#include <sese/system/ErrorCategoryWrapper.h>
 
 sese::socket_t sese::net::Socket::socket(int family, int type, int protocol) noexcept {
     return ::socket(family, type, protocol);
@@ -103,10 +102,6 @@ std::string sese::net::getNetworkErrorString(int error) noexcept {
 }
 
 #endif
-
-std::error_code sese::net::getNetworkErrorCode() noexcept {
-    return {getNetworkError(), system::ErrorCategoryWrapper(getNetworkErrorString())};
-}
 
 #include <sese/util/RandomUtil.h>
 

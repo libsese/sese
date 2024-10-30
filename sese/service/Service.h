@@ -41,7 +41,5 @@ public:
     virtual int getLastError() = 0;
 
     virtual std::string getLastErrorMessage() = 0;
-
-    std::error_code getErrorCode();
 };
 } // namespace sese::service
