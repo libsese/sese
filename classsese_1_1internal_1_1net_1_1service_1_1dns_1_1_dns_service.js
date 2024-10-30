@@ -1,0 +1,26 @@
+var classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service =
+[
+    [ "DnsService", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#adc56d20a34cb1d9216c4d459590eb07e", null ],
+    [ "addRecord", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#adbd84394c585579fd5276226a91a8fb0", null ],
+    [ "addUpstreamNameServer", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a7688e0556f8987a809aeef68adb200c0", null ],
+    [ "addUpstreamNameServer", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#afb2e2bc490d47b8dd3b1d7045ef75cc8", null ],
+    [ "bind", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a43efba97294b2fa306c8724c72c1f1e0", null ],
+    [ "getLastError", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a7196ad46e54d6da99c9e26339febab9d", null ],
+    [ "getLastErrorMessage", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a9f863103dc167122dc8ecb8f94f39973", null ],
+    [ "handle", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#aee3104d740cc5e6ebba89c1675b2bff3", null ],
+    [ "handleBySelf", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a1ce38f4ff2372d8b5abb38cbe0ad8023", null ],
+    [ "handleByUpstream", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a523c7b1c253290e18ec90c9f12106450", null ],
+    [ "setCallback", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a28acc61685e830ffbf57f3eb48b704d7", null ],
+    [ "shutdown", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a46842e54494e62d32cd84e25ffd8c040", null ],
+    [ "startup", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#adbb0f11237e3493d81ba6130e010721a", null ],
+    [ "buffer", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a85f407983d69e4b5160300d9c0de3504", null ],
+    [ "callback", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a4f2f9f833f6366a124f34f3a05fe9f2f", null ],
+    [ "error", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#ab2be129a4bd1d64cdbe023f31527ab1d", null ],
+    [ "io_service", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#af74781ba7cfa02e16aa6ea737a73a0c1", null ],
+    [ "resolver", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#abb45ea2059fc015f0c400c9853843965", null ],
+    [ "running", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#ae18290f82db73ef50606e316b9e97ee6", null ],
+    [ "socket", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a43b0c5660254f7d7d8d9da179b1a9c27", null ],
+    [ "thread", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a9469b955d8b922cba47546c4ed1e10b6", null ],
+    [ "v4map", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#ad3fe6b70d40b9c62208b9a2e7603a9da", null ],
+    [ "v6map", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#a999d8f3449b324be19319a1a1467f640", null ]
+];

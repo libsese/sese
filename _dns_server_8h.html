@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>Sese Framework: sese/net/dns/DnsServer.h 文件参考</title>
+<title>Sese Framework: sese/service/dns/DnsServer.h 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -138,49 +138,32 @@ $(function(){initNavTree('_dns_server_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">DnsServer.h 文件参考</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>DNS 服务器类  
-<a href="#details">更多...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="_socket_8h_source.html">sese/net/Socket.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_dns_client_8h_source.html">sese/net/dns/DnsClient.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_dns_session_8h_source.html">sese/net/dns/DnsSession.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&gt;</code><br />
-<code>#include &lt;atomic&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="service_2dns_2_config_8h_source.html">Config.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="_service_8h_source.html">sese/service/Service.h</a>&gt;</code><br />
 </div>
 <p><a href="_dns_server_8h_source.html">浏览该文件的源代码.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 类</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1dns_1_1_dns_config.html">sese::net::dns::DnsConfig</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">DNS 配置  <a href="structsese_1_1net_1_1dns_1_1_dns_config.html#details">更多...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html">sese::net::dns::DnsServer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">DNS 服务器  <a href="classsese_1_1net_1_1dns_1_1_dns_server.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1dns_1_1_dns_server.html">sese::service::dns::DnsServer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 命名空间</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net.html">sese::net</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1service.html">sese::service</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1dns.html">sese::net::dns</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1service_1_1dns.html">sese::service::dns</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>DNS 服务器类 </p>
-<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
-<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>日期</dt><dd>2023年8月13日 </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug</a></b></dt><dd>已知 DNS 协议实现存在无法解析二级指针、指针与字面值混合的形式，使用自带的服务端和客户端通信不会存在这个问题，使用其他实现时请谨慎 </dd></dl>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_ece034d7632fbc7245397ad3255ae09e.html">dns</a></li><li class="navelem"><a class="el" href="_dns_server_8h.html">DnsServer.h</a></li>
-    <li class="footer">生成于 2024年 十月 6日 星期日 16:32:58 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="dir_46cc73e43e3eca1b4a78d47f14f9ef80.html">dns</a></li><li class="navelem"><a class="el" href="_dns_server_8h.html">DnsServer.h</a></li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:33 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

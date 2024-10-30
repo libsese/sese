@@ -7,5 +7,6 @@ var searchData=
   ['checkrangebetween_4',['CheckRangeBetween',['../util_2_util_8h.html#af5377339bff575301da756d2f685a510',1,'Util.h']]],
   ['compare_5',['COMPARE',['../_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8',1,'HttpUtil.cpp']]],
   ['connectex_6',['ConnectEx',['../_native_i_o_c_p_server___v1_8cpp.html#a6e6fc0c2102b8bd1ab9462e0d285f812',1,'NativeIOCPServer_V1.cpp']]],
-  ['ctx_7',['CTX',['../_d_e_s_8cpp.html#a5bde6d2a1cd4fa3f21d8754ba58ccc8d',1,'DES.cpp']]]
+  ['cov_7',['COV',['../_dns_server_8cpp.html#a1b0fda8ba947077492614595b1371c99',1,'DnsServer.cpp']]],
+  ['ctx_8',['CTX',['../_d_e_s_8cpp.html#a5bde6d2a1cd4fa3f21d8754ba58ccc8d',1,'DES.cpp']]]
 ];

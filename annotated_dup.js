@@ -64,6 +64,11 @@ var annotated_dup =
           [ "http", "namespacesese_1_1internal_1_1net_1_1http.html", [
             [ "HttpClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl" ],
             [ "HttpSSLClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl" ]
+          ] ],
+          [ "service", "namespacesese_1_1internal_1_1net_1_1service.html", [
+            [ "dns", "namespacesese_1_1internal_1_1net_1_1service_1_1dns.html", [
+              [ "DnsService", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service" ]
+            ] ]
           ] ]
         ] ],
         [ "service", "namespacesese_1_1internal_1_1service.html", [
@@ -119,15 +124,8 @@ var annotated_dup =
       ] ],
       [ "net", "namespacesese_1_1net.html", [
         [ "dns", "namespacesese_1_1net_1_1dns.html", [
-          [ "Answer", "classsese_1_1net_1_1dns_1_1_answer.html", "classsese_1_1net_1_1dns_1_1_answer" ],
-          [ "DnsClient", "classsese_1_1net_1_1dns_1_1_dns_client.html", "classsese_1_1net_1_1dns_1_1_dns_client" ],
-          [ "DnsConfig", "structsese_1_1net_1_1dns_1_1_dns_config.html", "structsese_1_1net_1_1dns_1_1_dns_config" ],
-          [ "DnsServer", "classsese_1_1net_1_1dns_1_1_dns_server.html", "classsese_1_1net_1_1dns_1_1_dns_server" ],
-          [ "DnsSession", "classsese_1_1net_1_1dns_1_1_dns_session.html", "classsese_1_1net_1_1dns_1_1_dns_session" ],
-          [ "DnsUtil", "classsese_1_1net_1_1dns_1_1_dns_util.html", "classsese_1_1net_1_1dns_1_1_dns_util" ],
-          [ "FrameFlagsInfo", "structsese_1_1net_1_1dns_1_1_frame_flags_info.html", "structsese_1_1net_1_1dns_1_1_frame_flags_info" ],
-          [ "FrameHeaderInfo", "structsese_1_1net_1_1dns_1_1_frame_header_info.html", "structsese_1_1net_1_1dns_1_1_frame_header_info" ],
-          [ "Query", "classsese_1_1net_1_1dns_1_1_query.html", "classsese_1_1net_1_1dns_1_1_query" ]
+          [ "DnsPackage", "classsese_1_1net_1_1dns_1_1_dns_package.html", "classsese_1_1net_1_1dns_1_1_dns_package" ],
+          [ "Resolver", "classsese_1_1net_1_1dns_1_1_resolver.html", "classsese_1_1net_1_1dns_1_1_resolver" ]
         ] ],
         [ "http", "namespacesese_1_1net_1_1http.html", [
           [ "Controller", "classsese_1_1net_1_1http_1_1_controller.html", "classsese_1_1net_1_1http_1_1_controller" ],
@@ -212,6 +210,9 @@ var annotated_dup =
         [ "SSLContextBuilder", "classsese_1_1security_1_1_s_s_l_context_builder.html", "classsese_1_1security_1_1_s_s_l_context_builder" ]
       ] ],
       [ "service", "namespacesese_1_1service.html", [
+        [ "dns", "namespacesese_1_1service_1_1dns.html", [
+          [ "DnsServer", "classsese_1_1service_1_1dns_1_1_dns_server.html", "classsese_1_1service_1_1dns_1_1_dns_server" ]
+        ] ],
         [ "http", "namespacesese_1_1service_1_1http.html", [
           [ "HttpServer", "classsese_1_1service_1_1http_1_1_http_server.html", "classsese_1_1service_1_1http_1_1_http_server" ],
           [ "HttpService", "classsese_1_1service_1_1http_1_1_http_service.html", "classsese_1_1service_1_1http_1_1_http_service" ]

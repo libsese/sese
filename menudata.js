@@ -73,7 +73,8 @@ var menudata={children:[
 {text:"l",url:"namespacemembers_vars.html#index_l"},
 {text:"m",url:"namespacemembers_vars.html#index_m"},
 {text:"p",url:"namespacemembers_vars.html#index_p"},
-{text:"s",url:"namespacemembers_vars.html#index_s"}]},
+{text:"s",url:"namespacemembers_vars.html#index_s"},
+{text:"t",url:"namespacemembers_vars.html#index_t"}]},
 {text:"类型定义",url:"namespacemembers_type.html",children:[
 {text:"b",url:"namespacemembers_type.html#index_b"},
 {text:"c",url:"namespacemembers_type.html#index_c"},

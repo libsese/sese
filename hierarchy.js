@@ -19,7 +19,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "sese::net::AddressPool< ADDRESS >", "classsese_1_1net_1_1_address_pool.html", null ],
-    [ "sese::net::dns::Answer", "classsese_1_1net_1_1dns_1_1_answer.html", null ],
+    [ "sese::net::dns::DnsPackage::Answer", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html", null ],
     [ "sese::archive::ArchiveReader", "classsese_1_1archive_1_1_archive_reader.html", null ],
     [ "sese::archive::ArchiveWriter", "classsese_1_1archive_1_1_archive_writer.html", null ],
     [ "sese::ArgParser", "classsese_1_1_arg_parser.html", null ],
@@ -50,6 +50,7 @@ var hierarchy =
         [ "sese::security::SecuritySocket", "classsese_1_1security_1_1_security_socket.html", null ]
       ] ]
     ] ],
+    [ "sese::net::dns::DnsPackage::Index::CompressIndex", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html", null ],
     [ "sese::Compressor", "classsese_1_1_compressor.html", null ],
     [ "sese::archive::Config", "classsese_1_1archive_1_1_config.html", null ],
     [ "sese::ConfigObject", "classsese_1_1_config_object.html", null ],
@@ -80,11 +81,9 @@ var hierarchy =
     [ "sese::text::DateTimeParser", "classsese_1_1text_1_1_date_time_parser.html", null ],
     [ "sese::Decompressor", "classsese_1_1_decompressor.html", null ],
     [ "sese::Value::Dict", "classsese_1_1_value_1_1_dict.html", null ],
-    [ "sese::net::dns::DnsClient", "classsese_1_1net_1_1dns_1_1_dns_client.html", null ],
-    [ "sese::net::dns::DnsConfig", "structsese_1_1net_1_1dns_1_1_dns_config.html", null ],
-    [ "sese::net::dns::DnsServer", "classsese_1_1net_1_1dns_1_1_dns_server.html", null ],
-    [ "sese::net::dns::DnsSession", "classsese_1_1net_1_1dns_1_1_dns_session.html", null ],
-    [ "sese::net::dns::DnsUtil", "classsese_1_1net_1_1dns_1_1_dns_util.html", null ],
+    [ "sese::net::dns::DnsPackage::DnsHeader", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html", null ],
+    [ "sese::net::dns::DnsPackage", "classsese_1_1net_1_1dns_1_1_dns_package.html", null ],
+    [ "sese::service::dns::DnsServer", "classsese_1_1service_1_1dns_1_1_dns_server.html", null ],
     [ "sese::db::DriverInstance", "classsese_1_1db_1_1_driver_instance.html", [
       [ "sese::db::impl::MariaDriverInstanceImpl", "classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html", null ],
       [ "sese::db::impl::PostgresDriverInstanceImpl", "classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html", null ],
@@ -133,6 +132,7 @@ var hierarchy =
     [ "sese::system::FileLocker", "classsese_1_1system_1_1_file_locker.html", null ],
     [ "sese::system::FileNotifier", "classsese_1_1system_1_1_file_notifier.html", null ],
     [ "sese::system::FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", null ],
+    [ "sese::net::dns::DnsPackage::Flags", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_flags.html", null ],
     [ "sese::text::FmtCtx", "structsese_1_1text_1_1_fmt_ctx.html", null ],
     [ "sese::text::FormatOption", "structsese_1_1text_1_1_format_option.html", null ],
     [ "sese::text::overload::Formatter< VALUE, ENABLE >", "structsese_1_1text_1_1overload_1_1_formatter.html", null ],
@@ -143,8 +143,6 @@ var hierarchy =
     [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< is_iterable_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html", null ],
     [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< std::is_floating_point_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html", null ],
     [ "sese::text::overload::Formatter< VALUE, std::enable_if_t< std::is_integral_v< VALUE > > >", "structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_14386da942ee78ccb7afb372ea291d4d.html", null ],
-    [ "sese::net::dns::FrameFlagsInfo", "structsese_1_1net_1_1dns_1_1_frame_flags_info.html", null ],
-    [ "sese::net::dns::FrameHeaderInfo", "structsese_1_1net_1_1dns_1_1_frame_header_info.html", null ],
     [ "sese::GlobalThreadPool", "classsese_1_1_global_thread_pool.html", null ],
     [ "sese::internal::service::http::Handleable", "structsese_1_1internal_1_1service_1_1http_1_1_handleable.html", [
       [ "sese::internal::service::http::HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html", null ],
@@ -167,6 +165,7 @@ var hierarchy =
     [ "sese::net::http::huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", null ],
     [ "sese::net::http::huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", null ],
     [ "sese::net::http::huffman_tree_t", "classsese_1_1net_1_1http_1_1huffman__tree__t.html", null ],
+    [ "sese::net::dns::DnsPackage::Index", "classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html", null ],
     [ "sese::ini::IniConfig", "structsese_1_1ini_1_1_ini_config.html", null ],
     [ "sese::Initializer", "classsese_1_1_initializer.html", null ],
     [ "sese::InitiateTask", "classsese_1_1_initiate_task.html", [
@@ -303,12 +302,13 @@ var hierarchy =
     ] ],
     [ "sese::system::Process", "classsese_1_1system_1_1_process.html", null ],
     [ "sese::system::ProcessBuilder", "classsese_1_1system_1_1_process_builder.html", null ],
-    [ "sese::net::dns::Query", "classsese_1_1net_1_1dns_1_1_query.html", null ],
+    [ "sese::net::dns::DnsPackage::Question", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html", null ],
     [ "sese::RandomUtil", "classsese_1_1_random_util.html", null ],
     [ "sese::net::http::Range", "structsese_1_1net_1_1http_1_1_range.html", null ],
     [ "sese::Range< TYPE >", "classsese_1_1_range.html", null ],
     [ "sese::plugin::ClassFactory::RegisterInfo", "structsese_1_1plugin_1_1_class_factory_1_1_register_info.html", null ],
     [ "sese::net::http::RequestParser", "classsese_1_1net_1_1http_1_1_request_parser.html", null ],
+    [ "sese::net::dns::Resolver", "classsese_1_1net_1_1dns_1_1_resolver.html", null ],
     [ "sese::res::Resource", "classsese_1_1res_1_1_resource.html", null ],
     [ "sese::res::ResourceManager", "classsese_1_1res_1_1_resource_manager.html", null ],
     [ "sese::net::http::RequestParser::Result", "structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html", null ],
@@ -328,6 +328,7 @@ var hierarchy =
     [ "sese::ConfigObject::Section", "structsese_1_1_config_object_1_1_section.html", null ],
     [ "sese::system::Semaphore", "classsese_1_1system_1_1_semaphore.html", null ],
     [ "sese::service::Service", "classsese_1_1service_1_1_service.html", [
+      [ "sese::internal::net::service::dns::DnsService", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html", null ],
       [ "sese::service::http::HttpService", "classsese_1_1service_1_1http_1_1_http_service.html", [
         [ "sese::internal::service::http::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html", null ]
       ] ]

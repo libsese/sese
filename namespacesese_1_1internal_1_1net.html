@@ -143,38 +143,35 @@ $(function(){initNavTree('namespacesese_1_1internal_1_1net.html',''); initResiza
 命名空间</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1internal_1_1net_1_1http.html">http</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1internal_1_1net_1_1service.html">service</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:af1db21106bdd2952c72ab8fcd2f2e2a2" id="r_af1db21106bdd2952c72ab8fcd2f2e2a2"><td class="memItemLeft" align="right" valign="top">asio::ip::address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1db21106bdd2952c72ab8fcd2f2e2a2">convert</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr)</td></tr>
 <tr class="separator:af1db21106bdd2952c72ab8fcd2f2e2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f9a6bd4ddaae5965adc554c9b471359" id="r_a8f9a6bd4ddaae5965adc554c9b471359"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f9a6bd4ddaae5965adc554c9b471359">convert</a> (const asio::ip::tcp::endpoint &amp;endpoint)</td></tr>
-<tr class="separator:a8f9a6bd4ddaae5965adc554c9b471359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca24001660cb6022f1c79508d4047421" id="r_aca24001660cb6022f1c79508d4047421"><td class="memTemplParams" colspan="2">template&lt;typename EndpointType &gt; </td></tr>
+<tr class="memitem:aca24001660cb6022f1c79508d4047421"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aca24001660cb6022f1c79508d4047421">convert</a> (const EndpointType &amp;endpoint)</td></tr>
+<tr class="separator:aca24001660cb6022f1c79508d4047421"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf565da6b681fdff91a822e2dc8fb7d1" id="r_abf565da6b681fdff91a822e2dc8fb7d1"><td class="memItemLeft" align="right" valign="top">asio::ssl::context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf565da6b681fdff91a822e2dc8fb7d1">convert</a> (std::unique_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">security::SSLContext</a> &gt; context)</td></tr>
 <tr class="separator:abf565da6b681fdff91a822e2dc8fb7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">函数说明</h2>
-<a id="a8f9a6bd4ddaae5965adc554c9b471359" name="a8f9a6bd4ddaae5965adc554c9b471359"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f9a6bd4ddaae5965adc554c9b471359">&#9670;&#160;</a></span>convert() <span class="overload">[1/3]</span></h2>
+<a id="aca24001660cb6022f1c79508d4047421" name="aca24001660cb6022f1c79508d4047421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca24001660cb6022f1c79508d4047421">&#9670;&#160;</a></span>convert() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+<div class="memtemplate">
+template&lt;typename EndpointType &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> sese::internal::net::convert </td>
           <td>(</td>
-          <td class="paramtype">const asio::ip::tcp::endpoint &amp;</td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span></td><td>)</td>
+          <td class="paramtype">const EndpointType &amp;</td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -202,7 +199,7 @@ $(function(){initNavTree('namespacesese_1_1internal_1_1net.html',''); initResiza
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl.html#a7da7da7fbea5f8fb03179901a9e65262">sese::internal::service::http::HttpsConnectionImpl::HttpsConnectionImpl()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a7e635f5bdc14a672a4fa3962d12d1fc5">sese::internal::service::http::HttpServiceImpl::startup()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl.html#a7da7da7fbea5f8fb03179901a9e65262">sese::internal::service::http::HttpsConnectionImpl::HttpsConnectionImpl()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_resolver.html#a5b36faa23f6a3fdda3313c796ba92688">sese::net::dns::Resolver::resolve()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#a7e635f5bdc14a672a4fa3962d12d1fc5">sese::internal::service::http::HttpServiceImpl::startup()</a>.</p>
 
 </div>
 </div>
@@ -244,7 +241,7 @@ $(function(){initNavTree('namespacesese_1_1internal_1_1net.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net.html">net</a></li>
-    <li class="footer">生成于 2024年 十月 6日 星期日 16:32:58 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:34 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

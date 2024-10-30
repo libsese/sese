@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timer_0',['Timer',['../classsese_1_1_timer_task.html#a50de43af5bed41f30c071d8cce0e81bc',1,'sese::TimerTask']]]
+  ['sstringview_0',['SStringView',['../classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce',1,'sstr::SString']]]
 ];

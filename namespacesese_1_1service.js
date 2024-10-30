@@ -1,5 +1,6 @@
 var namespacesese_1_1service =
 [
+    [ "dns", "namespacesese_1_1service_1_1dns.html", "namespacesese_1_1service_1_1dns" ],
     [ "http", "namespacesese_1_1service_1_1http.html", "namespacesese_1_1service_1_1http" ],
     [ "v1", "namespacesese_1_1service_1_1v1.html", "namespacesese_1_1service_1_1v1" ],
     [ "v2", "namespacesese_1_1service_1_1v2.html", "namespacesese_1_1service_1_1v2" ],

@@ -17,6 +17,5 @@ var searchData=
   ['format_2ecpp_14',['Format.cpp',['../_format_8cpp.html',1,'']]],
   ['format_2eh_15',['Format.h',['../_format_8h.html',1,'']]],
   ['format_2emd_16',['FORMAT.md',['../_f_o_r_m_a_t_8md.html',1,'']]],
-  ['formatoption_2eh_17',['FormatOption.h',['../_format_option_8h.html',1,'']]],
-  ['frameheader_2eh_18',['FrameHeader.h',['../_frame_header_8h.html',1,'']]]
+  ['formatoption_2eh_17',['FormatOption.h',['../_format_option_8h.html',1,'']]]
 ];

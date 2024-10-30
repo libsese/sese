@@ -1,0 +1,26 @@
+var net_2dns_2_config_8h =
+[
+    [ "CLASS_CH", "net_2dns_2_config_8h.html#a3c20c22859b85dde599c7e5e361c166d", null ],
+    [ "CLASS_CS", "net_2dns_2_config_8h.html#aae64f4c3b10706ee1bab94ab3bde652e", null ],
+    [ "CLASS_HS", "net_2dns_2_config_8h.html#af7b1a33fff3686f7a04e3beefa857741", null ],
+    [ "CLASS_IN", "net_2dns_2_config_8h.html#a622cf85a49da39d1af7f0d14c0226950", null ],
+    [ "TYPE_A", "net_2dns_2_config_8h.html#afb53e8925e001019fa2119f4443daddb", null ],
+    [ "TYPE_AAAA", "net_2dns_2_config_8h.html#aeb70a63ed8655c348744edcb322792a1", null ],
+    [ "TYPE_AFSDB", "net_2dns_2_config_8h.html#ae2fdbfe305540dc257b4b422c977868f", null ],
+    [ "TYPE_CAA", "net_2dns_2_config_8h.html#a404fc002c6400c0687d9acb7315d1821", null ],
+    [ "TYPE_CNAME", "net_2dns_2_config_8h.html#ac280685d7cb6ced815dca64a5c719d1a", null ],
+    [ "TYPE_HINFO", "net_2dns_2_config_8h.html#a1e91d9266152bcf9a06e210208fd5397", null ],
+    [ "TYPE_ISDN", "net_2dns_2_config_8h.html#ad7909836e3eb6175d45f8d684481c20c", null ],
+    [ "TYPE_MINFO", "net_2dns_2_config_8h.html#ab98c3d19dbe6686158514208b8a5f807", null ],
+    [ "TYPE_MX", "net_2dns_2_config_8h.html#adb19989493b6a085ab7802b7a92c3b85", null ],
+    [ "TYPE_NAPTR", "net_2dns_2_config_8h.html#aa7023915f9381e2db61e6027af3a82ea", null ],
+    [ "TYPE_NS", "net_2dns_2_config_8h.html#a02a8c812cb7f956ed820a0771c2d34a6", null ],
+    [ "TYPE_NULL", "net_2dns_2_config_8h.html#a289da418fb7231a4462fe4673794b545", null ],
+    [ "TYPE_PTR", "net_2dns_2_config_8h.html#adb79f6977f8ee012e3197c9751878897", null ],
+    [ "TYPE_RP", "net_2dns_2_config_8h.html#ae96606bbb0729835caf68fb9a3693b6b", null ],
+    [ "TYPE_RT", "net_2dns_2_config_8h.html#a6830ce800105e4c60011d7155e9d941b", null ],
+    [ "TYPE_SOA", "net_2dns_2_config_8h.html#a4df1c97437151da38a5a2ed61f713d8e", null ],
+    [ "TYPE_SRV", "net_2dns_2_config_8h.html#a3b743efbebd04eee270b78bc5663f642", null ],
+    [ "TYPE_TXT", "net_2dns_2_config_8h.html#a7af4ec83be79a1c49435bed4fca718b5", null ],
+    [ "TYPE_X25", "net_2dns_2_config_8h.html#a0897057646a105aff678f0d702929172", null ]
+];

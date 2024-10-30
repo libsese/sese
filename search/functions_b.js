@@ -21,6 +21,6 @@ var searchData=
   ['lookup_18',['lookUp',['../classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391',1,'sese::net::Address']]],
   ['lookup_19',['lookup',['../classsese_1_1net_1_1_address_pool.html#a272f8e12a5f02920ca123b97d03b8363',1,'sese::net::AddressPool']]],
   ['lookupany_20',['lookUpAny',['../classsese_1_1net_1_1_address.html#a544254bd48f66c88cf02abd86d778ffc',1,'sese::net::Address']]],
-  ['loop_21',['loop',['../classsese_1_1net_1_1dns_1_1_dns_server.html#a883776b402352e227d976d91adb42462',1,'sese::net::dns::DnsServer::loop()'],['../classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068',1,'sese::record::AsyncLogger::loop()'],['../classsese_1_1_timer.html#a75a57d5cceb945740dd4b818fffea052',1,'sese::Timer::loop()']]],
+  ['loop_21',['loop',['../classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068',1,'sese::record::AsyncLogger::loop()'],['../classsese_1_1_timer.html#a75a57d5cceb945740dd4b818fffea052',1,'sese::Timer::loop()']]],
   ['loopnonblocking_22',['loopNonblocking',['../classsese_1_1system_1_1_file_notifier.html#a9da0fd7e668a72e2b96d24f4e756b0c5',1,'sese::system::FileNotifier']]]
 ];

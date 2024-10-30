@@ -1,0 +1,986 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>Sese Framework: sese::net::dns::DnsPackage类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sese Framework
+   &#160;<span id="projectnumber">x.y.z</span>
+   </div>
+   <div id="projectbrief">A cross-platform framework</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classsese_1_1net_1_1dns_1_1_dns_package.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classsese_1_1net_1_1dns_1_1_dns_package-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::dns::DnsPackage类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_dns_package_8h_source.html">DnsPackage.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html">DnsHeader</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_flags.html">Flags</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ac8556376d8e62b1dff8045e7c0933e3f" id="r_ac8556376d8e62b1dff8045e7c0933e3f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8556376d8e62b1dff8045e7c0933e3f">Authority</a> = <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a></td></tr>
+<tr class="separator:ac8556376d8e62b1dff8045e7c0933e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4bc39896cd19580176abcb3bdd5047" id="r_a4e4bc39896cd19580176abcb3bdd5047"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e4bc39896cd19580176abcb3bdd5047">Additional</a> = <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a></td></tr>
+<tr class="separator:a4e4bc39896cd19580176abcb3bdd5047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b0c56969e1c4a5351d3d633329cbbb" id="r_ad5b0c56969e1c4a5351d3d633329cbbb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5b0c56969e1c4a5351d3d633329cbbb">Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package.html">DnsPackage</a>&gt;</td></tr>
+<tr class="separator:ad5b0c56969e1c4a5351d3d633329cbbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a81c5fee46f5c414f62c99734a8db36b3" id="r_a81c5fee46f5c414f62c99734a8db36b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81c5fee46f5c414f62c99734a8db36b3">buildIndex</a> ()</td></tr>
+<tr class="separator:a81c5fee46f5c414f62c99734a8db36b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28fc1961eab8df197a3a3cc753d2223" id="r_ad28fc1961eab8df197a3a3cc753d2223"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode</a> (void *buffer, size_t &amp;length, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a> &amp;index) const</td></tr>
+<tr class="separator:ad28fc1961eab8df197a3a3cc753d2223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5a3021454c507bb31746bfe0ffd861" id="r_a3e5a3021454c507bb31746bfe0ffd861"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e5a3021454c507bb31746bfe0ffd861">getQuestions</a> ()</td></tr>
+<tr class="separator:a3e5a3021454c507bb31746bfe0ffd861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab4aacbc7631dcace595f891ed4f812" id="r_a8ab4aacbc7631dcace595f891ed4f812"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ab4aacbc7631dcace595f891ed4f812">getAnswers</a> ()</td></tr>
+<tr class="separator:a8ab4aacbc7631dcace595f891ed4f812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af71d851c4fac3ba0a3c8f47d1a384aab" id="r_af71d851c4fac3ba0a3c8f47d1a384aab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#ac8556376d8e62b1dff8045e7c0933e3f">Authority</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af71d851c4fac3ba0a3c8f47d1a384aab">getAuthorities</a> ()</td></tr>
+<tr class="separator:af71d851c4fac3ba0a3c8f47d1a384aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b33b811fad85748b5615960eccc0890" id="r_a5b33b811fad85748b5615960eccc0890"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a4e4bc39896cd19580176abcb3bdd5047">Additional</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b33b811fad85748b5615960eccc0890">getAdditionals</a> ()</td></tr>
+<tr class="separator:a5b33b811fad85748b5615960eccc0890"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a817e31d9560a450e55f104db0ac9304d" id="r_a817e31d9560a450e55f104db0ac9304d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a817e31d9560a450e55f104db0ac9304d">getId</a> () const</td></tr>
+<tr class="separator:a817e31d9560a450e55f104db0ac9304d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069c302f21b600af44f632f0f6412a9b" id="r_a069c302f21b600af44f632f0f6412a9b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a069c302f21b600af44f632f0f6412a9b">getFlags</a> () const</td></tr>
+<tr class="separator:a069c302f21b600af44f632f0f6412a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16fb7c1e2eef92432a3444e606637659" id="r_a16fb7c1e2eef92432a3444e606637659"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16fb7c1e2eef92432a3444e606637659">setId</a> (uint16_t id)</td></tr>
+<tr class="separator:a16fb7c1e2eef92432a3444e606637659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa054e84eb1ebefdbe96e49c4e1596213" id="r_aa054e84eb1ebefdbe96e49c4e1596213"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa054e84eb1ebefdbe96e49c4e1596213">setFlags</a> (uint16_t flags)</td></tr>
+<tr class="separator:aa054e84eb1ebefdbe96e49c4e1596213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:ad5b6d951ecbd44797e2eda5e6e48f87d" id="r_ad5b6d951ecbd44797e2eda5e6e48f87d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#ad5b0c56969e1c4a5351d3d633329cbbb">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5b6d951ecbd44797e2eda5e6e48f87d">new_</a> ()</td></tr>
+<tr class="separator:ad5b6d951ecbd44797e2eda5e6e48f87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe16896b41c1380bd5a36d56586efe22" id="r_afe16896b41c1380bd5a36d56586efe22"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#ad5b0c56969e1c4a5351d3d633329cbbb">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe16896b41c1380bd5a36d56586efe22">decode</a> (const uint8_t *buffer, size_t length)</td></tr>
+<tr class="separator:afe16896b41c1380bd5a36d56586efe22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a985a56d77b41a9e0ce4826596900eb06" id="r_a985a56d77b41a9e0ce4826596900eb06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a985a56d77b41a9e0ce4826596900eb06">DnsPackage</a> ()=default</td></tr>
+<tr class="separator:a985a56d77b41a9e0ce4826596900eb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:ae238a278c8e135ea02d03d56b29cd722" id="r_ae238a278c8e135ea02d03d56b29cd722"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae238a278c8e135ea02d03d56b29cd722">decodeWords</a> (const uint8_t *buffer, size_t length, size_t &amp;offset)</td></tr>
+<tr class="separator:ae238a278c8e135ea02d03d56b29cd722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7efc4353164c7959a8efb9b47af95f4" id="r_ae7efc4353164c7959a8efb9b47af95f4"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7efc4353164c7959a8efb9b47af95f4">decodeAnswers</a> (std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt; &amp;<a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>, size_t expect_size, const uint8_t *buffer, size_t length, size_t &amp;pos)</td></tr>
+<tr class="separator:ae7efc4353164c7959a8efb9b47af95f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c4bb9dad4111839e01c9b849e0c1d0d" id="r_a8c4bb9dad4111839e01c9b849e0c1d0d"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c4bb9dad4111839e01c9b849e0c1d0d">encodeWords</a> (const std::string &amp;fullname)</td></tr>
+<tr class="separator:a8c4bb9dad4111839e01c9b849e0c1d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8357b568117e62c57f22634acb00d71e" id="r_a8357b568117e62c57f22634acb00d71e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8357b568117e62c57f22634acb00d71e">encodeQuestions</a> (const std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a> &gt; &amp;<a class="el" href="#abde1579e44cab3e1af678bc5e671dc84">questions</a>, void *buffer, size_t &amp;length, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a> &amp;index, size_t offset)</td></tr>
+<tr class="separator:a8357b568117e62c57f22634acb00d71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec88586ae4ae805dc38ee9a8329989f2" id="r_aec88586ae4ae805dc38ee9a8329989f2"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec88586ae4ae805dc38ee9a8329989f2">encodeAnswers</a> (const std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt; &amp;<a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>, void *buffer, size_t &amp;length, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a> &amp;index, size_t offset)</td></tr>
+<tr class="separator:aec88586ae4ae805dc38ee9a8329989f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a9a080587725bd958fffe9b3920adda3c" id="r_a9a080587725bd958fffe9b3920adda3c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html">sese::net::dns::DnsPackage::DnsHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a080587725bd958fffe9b3920adda3c">header</a></td></tr>
+<tr class="separator:a9a080587725bd958fffe9b3920adda3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde1579e44cab3e1af678bc5e671dc84" id="r_abde1579e44cab3e1af678bc5e671dc84"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abde1579e44cab3e1af678bc5e671dc84">questions</a></td></tr>
+<tr class="separator:abde1579e44cab3e1af678bc5e671dc84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c5571bea02faf14aa87dbd3ddcee649" id="r_a9c5571bea02faf14aa87dbd3ddcee649"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a></td></tr>
+<tr class="separator:a9c5571bea02faf14aa87dbd3ddcee649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af94fe8d44c941fd5a281011d3cf54bb8" id="r_af94fe8d44c941fd5a281011d3cf54bb8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#ac8556376d8e62b1dff8045e7c0933e3f">Authority</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af94fe8d44c941fd5a281011d3cf54bb8">authorities</a></td></tr>
+<tr class="separator:af94fe8d44c941fd5a281011d3cf54bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ed0c42475029076f4d38b7183ef833" id="r_a12ed0c42475029076f4d38b7183ef833"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#a4e4bc39896cd19580176abcb3bdd5047">Additional</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12ed0c42475029076f4d38b7183ef833">additionals</a></td></tr>
+<tr class="separator:a12ed0c42475029076f4d38b7183ef833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">成员类型定义说明</h2>
+<a id="a4e4bc39896cd19580176abcb3bdd5047" name="a4e4bc39896cd19580176abcb3bdd5047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e4bc39896cd19580176abcb3bdd5047">&#9670;&#160;</a></span>Additional</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a4e4bc39896cd19580176abcb3bdd5047">sese::net::dns::DnsPackage::Additional</a> = <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8556376d8e62b1dff8045e7c0933e3f" name="ac8556376d8e62b1dff8045e7c0933e3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8556376d8e62b1dff8045e7c0933e3f">&#9670;&#160;</a></span>Authority</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ac8556376d8e62b1dff8045e7c0933e3f">sese::net::dns::DnsPackage::Authority</a> = <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5b0c56969e1c4a5351d3d633329cbbb" name="ad5b0c56969e1c4a5351d3d633329cbbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b0c56969e1c4a5351d3d633329cbbb">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ad5b0c56969e1c4a5351d3d633329cbbb">sese::net::dns::DnsPackage::Ptr</a> = std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package.html">DnsPackage</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a985a56d77b41a9e0ce4826596900eb06" name="a985a56d77b41a9e0ce4826596900eb06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a985a56d77b41a9e0ce4826596900eb06">&#9670;&#160;</a></span>DnsPackage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::dns::DnsPackage::DnsPackage </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#ad5b6d951ecbd44797e2eda5e6e48f87d">new_()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a81c5fee46f5c414f62c99734a8db36b3" name="a81c5fee46f5c414f62c99734a8db36b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c5fee46f5c414f62c99734a8db36b3">&#9670;&#160;</a></span>buildIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">DnsPackage::Index</a> DnsPackage::buildIndex </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a12ed0c42475029076f4d38b7183ef833">additionals</a>, <a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>, <a class="el" href="#af94fe8d44c941fd5a281011d3cf54bb8">authorities</a> , 以及 <a class="el" href="#abde1579e44cab3e1af678bc5e671dc84">questions</a>.</p>
+
+</div>
+</div>
+<a id="afe16896b41c1380bd5a36d56586efe22" name="afe16896b41c1380bd5a36d56586efe22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe16896b41c1380bd5a36d56586efe22">&#9670;&#160;</a></span>decode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad5b0c56969e1c4a5351d3d633329cbbb">DnsPackage::Ptr</a> DnsPackage::decode </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html#a8961c56a8ce2bc8be8c34f958e341245">sese::net::dns::DnsPackage::Question::class_</a>, <a class="el" href="_dns_package_8cpp.html#ae027808ba196528d8435720bf1a8c095">DECODE_HEADER</a>, <a class="el" href="#ae7efc4353164c7959a8efb9b47af95f4">decodeAnswers()</a>, <a class="el" href="#ae238a278c8e135ea02d03d56b29cd722">decodeWords()</a>, <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html#a262526931b17ca6108dead67b6bbf47e">sese::net::dns::DnsPackage::Question::name</a>, <a class="el" href="#ad5b6d951ecbd44797e2eda5e6e48f87d">new_()</a> , 以及 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html#abfe49457e46ab31136d46414f3dd6b38">sese::net::dns::DnsPackage::Question::type</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#aee3104d740cc5e6ebba89c1675b2bff3">sese::internal::net::service::dns::DnsService::handle()</a>.</p>
+
+</div>
+</div>
+<a id="ae7efc4353164c7959a8efb9b47af95f4" name="ae7efc4353164c7959a8efb9b47af95f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7efc4353164c7959a8efb9b47af95f4">&#9670;&#160;</a></span>decodeAnswers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DnsPackage::decodeAnswers </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>answers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>expect_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html#ade8490d29ff95d7be7617d688b35b845">sese::net::dns::DnsPackage::Answer::class_</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html#a69116cec2a49b1ff88d17bdfa4025736">sese::net::dns::DnsPackage::Answer::data</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html#ae9254a8f88d9c875a53a869ebe5c576e">sese::net::dns::DnsPackage::Answer::data_length</a>, <a class="el" href="#ae238a278c8e135ea02d03d56b29cd722">decodeWords()</a>, <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a>, <a class="el" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32()</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html#a1839f723003e316da8e0898012a6a2e3">sese::net::dns::DnsPackage::Answer::name</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html#ae47a7ef1f7636a773e65dbae4ecb74e2">sese::net::dns::DnsPackage::Answer::ttl</a> , 以及 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html#a683eafdf659a1459b74c3addad7f884c">sese::net::dns::DnsPackage::Answer::type</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#afe16896b41c1380bd5a36d56586efe22">decode()</a>.</p>
+
+</div>
+</div>
+<a id="ae238a278c8e135ea02d03d56b29cd722" name="ae238a278c8e135ea02d03d56b29cd722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae238a278c8e135ea02d03d56b29cd722">&#9670;&#160;</a></span>decodeWords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string DnsPackage::decodeWords </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>解码 DNS 名称 </p><dl class="section warning"><dt>警告</dt><dd>注意此函数会进行递归调用解码多级指针 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>完整 buffer </td></tr>
+    <tr><td class="paramname">length</td><td>buffer 大小 </td></tr>
+    <tr><td class="paramname">offset</td><td>需要解码的偏移位置，解码完成后停留在 00 位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>解码后字符串 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="#ae238a278c8e135ea02d03d56b29cd722">decodeWords()</a>, <a class="el" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#afe16896b41c1380bd5a36d56586efe22">decode()</a>, <a class="el" href="#ae7efc4353164c7959a8efb9b47af95f4">decodeAnswers()</a> , 以及 <a class="el" href="#ae238a278c8e135ea02d03d56b29cd722">decodeWords()</a>.</p>
+
+</div>
+</div>
+<a id="ad28fc1961eab8df197a3a3cc753d2223" name="ad28fc1961eab8df197a3a3cc753d2223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28fc1961eab8df197a3a3cc753d2223">&#9670;&#160;</a></span>encode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DnsPackage::encode </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a12ed0c42475029076f4d38b7183ef833">additionals</a>, <a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>, <a class="el" href="#af94fe8d44c941fd5a281011d3cf54bb8">authorities</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#acbf183dffbb265ce12bc1fc20182ecdf">sese::net::dns::DnsPackage::Index::clearPos()</a>, <a class="el" href="#aec88586ae4ae805dc38ee9a8329989f2">encodeAnswers()</a>, <a class="el" href="#a8357b568117e62c57f22634acb00d71e">encodeQuestions()</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html#a4334c6bbb9ef7e6c11e13ce51ada3201">sese::net::dns::DnsPackage::DnsHeader::flags</a>, <a class="el" href="#a9a080587725bd958fffe9b3920adda3c">header</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html#a5eef152fd0eb9ca97a77c2f00c46eb93">sese::net::dns::DnsPackage::DnsHeader::id</a>, <a class="el" href="#abde1579e44cab3e1af678bc5e671dc84">questions</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
+
+</div>
+</div>
+<a id="aec88586ae4ae805dc38ee9a8329989f2" name="aec88586ae4ae805dc38ee9a8329989f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec88586ae4ae805dc38ee9a8329989f2">&#9670;&#160;</a></span>encodeAnswers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DnsPackage::encodeAnswers </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>answers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a7b903e967dc74d2f2b762c59a1472ee7">sese::net::dns::DnsPackage::Index::compress_mapping</a>, <a class="el" href="#a8c4bb9dad4111839e01c9b849e0c1d0d">encodeWords()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a95218187f32764f0e6ff0582d9ed769b">sese::net::dns::DnsPackage::Index::encodeWords()</a>, <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a> , 以及 <a class="el" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a>.</p>
+
+</div>
+</div>
+<a id="a8357b568117e62c57f22634acb00d71e" name="a8357b568117e62c57f22634acb00d71e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8357b568117e62c57f22634acb00d71e">&#9670;&#160;</a></span>encodeQuestions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DnsPackage::encodeQuestions </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>questions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html">Index</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a7b903e967dc74d2f2b762c59a1472ee7">sese::net::dns::DnsPackage::Index::compress_mapping</a>, <a class="el" href="#a8c4bb9dad4111839e01c9b849e0c1d0d">encodeWords()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a95218187f32764f0e6ff0582d9ed769b">sese::net::dns::DnsPackage::Index::encodeWords()</a>, <a class="el" href="#abde1579e44cab3e1af678bc5e671dc84">questions</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a>.</p>
+
+</div>
+</div>
+<a id="a8c4bb9dad4111839e01c9b849e0c1d0d" name="a8c4bb9dad4111839e01c9b849e0c1d0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4bb9dad4111839e01c9b849e0c1d0d">&#9670;&#160;</a></span>encodeWords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string DnsPackage::encodeWords </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>fullname</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a42027ecdeca2f09104419174167ed2ab">sese::text::AbstractStringBuffer::split()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#aec88586ae4ae805dc38ee9a8329989f2">encodeAnswers()</a> , 以及 <a class="el" href="#a8357b568117e62c57f22634acb00d71e">encodeQuestions()</a>.</p>
+
+</div>
+</div>
+<a id="a5b33b811fad85748b5615960eccc0890" name="a5b33b811fad85748b5615960eccc0890"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b33b811fad85748b5615960eccc0890">&#9670;&#160;</a></span>getAdditionals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="#a4e4bc39896cd19580176abcb3bdd5047">Additional</a> &gt; &amp; sese::net::dns::DnsPackage::getAdditionals </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a12ed0c42475029076f4d38b7183ef833">additionals</a>.</p>
+
+</div>
+</div>
+<a id="a8ab4aacbc7631dcace595f891ed4f812" name="a8ab4aacbc7631dcace595f891ed4f812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ab4aacbc7631dcace595f891ed4f812">&#9670;&#160;</a></span>getAnswers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a> &gt; &amp; sese::net::dns::DnsPackage::getAnswers </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a9c5571bea02faf14aa87dbd3ddcee649">answers</a>.</p>
+
+</div>
+</div>
+<a id="af71d851c4fac3ba0a3c8f47d1a384aab" name="af71d851c4fac3ba0a3c8f47d1a384aab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af71d851c4fac3ba0a3c8f47d1a384aab">&#9670;&#160;</a></span>getAuthorities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="#ac8556376d8e62b1dff8045e7c0933e3f">Authority</a> &gt; &amp; sese::net::dns::DnsPackage::getAuthorities </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#af94fe8d44c941fd5a281011d3cf54bb8">authorities</a>.</p>
+
+</div>
+</div>
+<a id="a069c302f21b600af44f632f0f6412a9b" name="a069c302f21b600af44f632f0f6412a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069c302f21b600af44f632f0f6412a9b">&#9670;&#160;</a></span>getFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto sese::net::dns::DnsPackage::getFlags </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html#a4334c6bbb9ef7e6c11e13ce51ada3201">sese::net::dns::DnsPackage::DnsHeader::flags</a> , 以及 <a class="el" href="#a9a080587725bd958fffe9b3920adda3c">header</a>.</p>
+
+</div>
+</div>
+<a id="a817e31d9560a450e55f104db0ac9304d" name="a817e31d9560a450e55f104db0ac9304d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a817e31d9560a450e55f104db0ac9304d">&#9670;&#160;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto sese::net::dns::DnsPackage::getId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a9a080587725bd958fffe9b3920adda3c">header</a> , 以及 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html#a5eef152fd0eb9ca97a77c2f00c46eb93">sese::net::dns::DnsPackage::DnsHeader::id</a>.</p>
+
+</div>
+</div>
+<a id="a3e5a3021454c507bb31746bfe0ffd861" name="a3e5a3021454c507bb31746bfe0ffd861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e5a3021454c507bb31746bfe0ffd861">&#9670;&#160;</a></span>getQuestions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a> &gt; &amp; sese::net::dns::DnsPackage::getQuestions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#abde1579e44cab3e1af678bc5e671dc84">questions</a>.</p>
+
+</div>
+</div>
+<a id="ad5b6d951ecbd44797e2eda5e6e48f87d" name="ad5b6d951ecbd44797e2eda5e6e48f87d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b6d951ecbd44797e2eda5e6e48f87d">&#9670;&#160;</a></span>new_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad5b0c56969e1c4a5351d3d633329cbbb">DnsPackage::Ptr</a> DnsPackage::new_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a985a56d77b41a9e0ce4826596900eb06">DnsPackage()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#afe16896b41c1380bd5a36d56586efe22">decode()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#aee3104d740cc5e6ebba89c1675b2bff3">sese::internal::net::service::dns::DnsService::handle()</a> , 以及 <a class="el" href="classsese_1_1net_1_1dns_1_1_resolver.html#a5b36faa23f6a3fdda3313c796ba92688">sese::net::dns::Resolver::resolve()</a>.</p>
+
+</div>
+</div>
+<a id="aa054e84eb1ebefdbe96e49c4e1596213" name="aa054e84eb1ebefdbe96e49c4e1596213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa054e84eb1ebefdbe96e49c4e1596213">&#9670;&#160;</a></span>setFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::dns::DnsPackage::setFlags </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>flags</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html#a4334c6bbb9ef7e6c11e13ce51ada3201">sese::net::dns::DnsPackage::DnsHeader::flags</a> , 以及 <a class="el" href="#a9a080587725bd958fffe9b3920adda3c">header</a>.</p>
+
+</div>
+</div>
+<a id="a16fb7c1e2eef92432a3444e606637659" name="a16fb7c1e2eef92432a3444e606637659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16fb7c1e2eef92432a3444e606637659">&#9670;&#160;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::dns::DnsPackage::setId </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a9a080587725bd958fffe9b3920adda3c">header</a> , 以及 <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html#a5eef152fd0eb9ca97a77c2f00c46eb93">sese::net::dns::DnsPackage::DnsHeader::id</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a12ed0c42475029076f4d38b7183ef833" name="a12ed0c42475029076f4d38b7183ef833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ed0c42475029076f4d38b7183ef833">&#9670;&#160;</a></span>additionals</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="#a4e4bc39896cd19580176abcb3bdd5047">Additional</a>&gt; sese::net::dns::DnsPackage::additionals</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a81c5fee46f5c414f62c99734a8db36b3">buildIndex()</a>, <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a> , 以及 <a class="el" href="#a5b33b811fad85748b5615960eccc0890">getAdditionals()</a>.</p>
+
+</div>
+</div>
+<a id="a9c5571bea02faf14aa87dbd3ddcee649" name="a9c5571bea02faf14aa87dbd3ddcee649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c5571bea02faf14aa87dbd3ddcee649">&#9670;&#160;</a></span>answers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_answer.html">Answer</a>&gt; sese::net::dns::DnsPackage::answers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a81c5fee46f5c414f62c99734a8db36b3">buildIndex()</a>, <a class="el" href="#ae7efc4353164c7959a8efb9b47af95f4">decodeAnswers()</a>, <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a>, <a class="el" href="#aec88586ae4ae805dc38ee9a8329989f2">encodeAnswers()</a> , 以及 <a class="el" href="#a8ab4aacbc7631dcace595f891ed4f812">getAnswers()</a>.</p>
+
+</div>
+</div>
+<a id="af94fe8d44c941fd5a281011d3cf54bb8" name="af94fe8d44c941fd5a281011d3cf54bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94fe8d44c941fd5a281011d3cf54bb8">&#9670;&#160;</a></span>authorities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="#ac8556376d8e62b1dff8045e7c0933e3f">Authority</a>&gt; sese::net::dns::DnsPackage::authorities</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a81c5fee46f5c414f62c99734a8db36b3">buildIndex()</a>, <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a> , 以及 <a class="el" href="#af71d851c4fac3ba0a3c8f47d1a384aab">getAuthorities()</a>.</p>
+
+</div>
+</div>
+<a id="a9a080587725bd958fffe9b3920adda3c" name="a9a080587725bd958fffe9b3920adda3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a080587725bd958fffe9b3920adda3c">&#9670;&#160;</a></span>header</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_dns_header.html">sese::net::dns::DnsPackage::DnsHeader</a> sese::net::dns::DnsPackage::header</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a>, <a class="el" href="#a069c302f21b600af44f632f0f6412a9b">getFlags()</a>, <a class="el" href="#a817e31d9560a450e55f104db0ac9304d">getId()</a>, <a class="el" href="#aa054e84eb1ebefdbe96e49c4e1596213">setFlags()</a> , 以及 <a class="el" href="#a16fb7c1e2eef92432a3444e606637659">setId()</a>.</p>
+
+</div>
+</div>
+<a id="abde1579e44cab3e1af678bc5e671dc84" name="abde1579e44cab3e1af678bc5e671dc84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde1579e44cab3e1af678bc5e671dc84">&#9670;&#160;</a></span>questions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html">Question</a>&gt; sese::net::dns::DnsPackage::questions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="#a81c5fee46f5c414f62c99734a8db36b3">buildIndex()</a>, <a class="el" href="#ad28fc1961eab8df197a3a3cc753d2223">encode()</a>, <a class="el" href="#a8357b568117e62c57f22634acb00d71e">encodeQuestions()</a> , 以及 <a class="el" href="#a3e5a3021454c507bb31746bfe0ffd861">getQuestions()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/net/dns/<a class="el" href="_dns_package_8h_source.html">DnsPackage.h</a></li>
+<li>sese/net/dns/<a class="el" href="_dns_package_8cpp.html">DnsPackage.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1dns.html">dns</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_package.html">DnsPackage</a></li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:34 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>Sese Framework: sese/net/dns/DnsServer.h 源文件</title>
+<title>Sese Framework: sese/service/dns/DnsServer.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -135,61 +135,63 @@ $(function(){initNavTree('_dns_server_8h_source.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">DnsServer.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_dns_server_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="_socket_8h.html" title="Native Socket 类">sese/net/Socket.h</a>&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="_dns_client_8h.html" title="DNS 客户端类">sese/net/dns/DnsClient.h</a>&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="_dns_session_8h.html" title="DNS 会话类">sese/net/dns/DnsSession.h</a>&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="_thread_8h.html" title="线程类">sese/thread/Thread.h</a>&gt;</span></div>
+<a href="_dns_server_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2024 libsese</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//    http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// limitations under the License.</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;atomic&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1net_1_1dns.html">sese::net::dns</a> {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_dns_config.html">   21</a></span><span class="keyword">struct  </span><a class="code hl_struct" href="structsese_1_1net_1_1dns_1_1_dns_config.html" title="DNS 配置">DnsConfig</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_dns_config.html#a27ab6c31c5d38a2750ff551563b32fd5">   22</a></span>    <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_dns_config.html#a27ab6c31c5d38a2750ff551563b32fd5">address</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_dns_config.html#a5966f1c4cf74856d70157b97d08b77af">   23</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_dns_config.html#a5966f1c4cf74856d70157b97d08b77af">hostIPv4Map</a>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_dns_config.html#a3e1e941fa6406feb09df02fca64387cb">   24</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_dns_config.html#a3e1e941fa6406feb09df02fca64387cb">hostIPv6Map</a>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
-</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html">   28</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1net_1_1dns_1_1_dns_server.html" title="DNS 服务器">DnsServer</a> {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ac8190e5f278b7997878c6a2bb2bada56">   30</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ac8190e5f278b7997878c6a2bb2bada56">Ptr</a> = std::unique_ptr&lt;DnsServer&gt;;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ac8190e5f278b7997878c6a2bb2bada56">DnsServer::Ptr</a> <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_server.html#abf2234f01d02f1646a525983839e5d45">create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structsese_1_1net_1_1dns_1_1_dns_config.html" title="DNS 配置">DnsConfig</a> *config) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a38c5d839f287d68fb494b61d113dfb57">~DnsServer</a>() noexcept;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a06d46dd34ed2f7c2d2e0a2ac1658f5f8" title="启动实例">start</a>() noexcept;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="service_2dns_2_config_8h.html">Config.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;<a class="code" href="_service_8h.html" title="服务接口">sese/service/Service.h</a>&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1service_1_1dns.html">sese::service::dns</a> {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1dns_1_1_dns_server.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1service_1_1dns_1_1_dns_server.html">DnsServer</a> final {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1dns_1_1_dns_server.html#ac28a8b898dfa695c55ee9eb9ee32a7e4">   24</a></span>    Service::Ptr <a class="code hl_variable" href="classsese_1_1service_1_1dns_1_1_dns_server.html#ac28a8b898dfa695c55ee9eb9ee32a7e4">service</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a31ef71c5f504309c1c23dcb92110ff04">DnsServer</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a8d7d7dd5785dfa143f02a3b709586b20">bind</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#aed721f973b370fee73bcf4c4d1824792">setCallback</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesese_1_1service_1_1dns.html#a9ef1e510de27f9331e58ed49186b2311">Callback</a> &amp;<a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a1f0dbe6302c3906964e289352599dc20">addUpstreamNameServer</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a1f0dbe6302c3906964e289352599dc20">addUpstreamNameServer</a>(<span class="keyword">const</span> std::string &amp;ip, uint16_t port = 53);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a409c8eec7dcf6a38ec529ec3e264e3a2">addRecord</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;address);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a364fb672ae069f40d79be403971e6ccc">startup</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a158eeb169b38648b8bf651af83a3701e">shutdown</a>();</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_server.html#af0dbcfcc61b642f7027f1dd48963318c" title="关闭实例">shutdown</a>() noexcept;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>private:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a308db8804f34559cdb2cb8738f9cd5ce">   47</a></span>    <a class="code hl_class" href="classsese_1_1net_1_1dns_1_1_dns_server.html" title="DNS 服务器">DnsServer</a>() = default;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a883776b402352e227d976d91adb42462">loop</a>() noexcept;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a408633278145abd2822eefac2999930e">   51</a></span>    std::atomic_bool <a class="code hl_variable" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a408633278145abd2822eefac2999930e">isShutdown</a>{<span class="keyword">false</span>};</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">   52</a></span>    <a class="code hl_typedef" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a> <a class="code hl_variable" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">socket</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ab5fb0cad49a0cea929dd2345bb99af31">   53</a></span>    <a class="code hl_typedef" href="classsese_1_1_thread.html#ad7103016dd7461634441d871434bbb8d">Thread::Ptr</a> <a class="code hl_variable" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ab5fb0cad49a0cea929dd2345bb99af31">thread</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a582112093ead9bbec2e9c1481f7b403e">   54</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a582112093ead9bbec2e9c1481f7b403e">hostIPv4Map</a>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ad21cdddba18b16f1bfb4b06d8fbd98c2">   55</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ad21cdddba18b16f1bfb4b06d8fbd98c2">hostIPv6Map</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a8e7dbbec22c52db47578334611936388">getLastError</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    std::string <a class="code hl_function" href="classsese_1_1service_1_1dns_1_1_dns_server.html#a6b826f203e73af99385c4cdd12d2109a">getLastErrorMessage</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>} <span class="comment">// namespace sese::net::dns</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>} <span class="comment">// namespace sese::service::dns</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_ece034d7632fbc7245397ad3255ae09e.html">dns</a></li><li class="navelem"><a class="el" href="_dns_server_8h.html">DnsServer.h</a></li>
-    <li class="footer">生成于 2024年 十月 6日 星期日 16:32:57 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="dir_46cc73e43e3eca1b4a78d47f14f9ef80.html">dns</a></li><li class="navelem"><a class="el" href="_dns_server_8h.html">DnsServer.h</a></li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:32 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

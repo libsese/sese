@@ -3,13 +3,13 @@ var indexSectionsWithContent =
   0: "_abcdefghijklmnopqrstuvwxyz~列加字对弃文构测目示简许贡",
   1: "abcdefghijklmnopqrstuvwxy",
   2: "s",
-  3: "abcdefghijklmnopqrstuvwxyz",
+  3: "abcdefghijklmnoprstuvwxyz",
   4: "abcdefghijklmnopqrstuvwx~",
   5: "_abcdefghiklmnopqrstuvwyz",
   6: "abcdefghiklmnoprstuvw",
   7: "acdefhlmprst",
   8: "abcdefghilmnoprstuvwz",
-  9: "hinst",
+  9: "dhinst",
   10: "_abcdefghilmnprstvwx",
   11: "br列加字弃目"
 };

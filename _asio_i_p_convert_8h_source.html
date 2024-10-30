@@ -173,35 +173,41 @@ $(function(){initNavTree('_asio_i_p_convert_8h_source.html',''); initResizable(t
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespacesese_1_1internal_1_1net.html#a8f9a6bd4ddaae5965adc554c9b471359">   36</a></span><span class="keyword">inline</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> <a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>(<span class="keyword">const</span> asio::ip::tcp::endpoint &amp;endpoint) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span>(endpoint.protocol() == asio::ip::tcp::v4()) {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        sockaddr_in sockaddr{};</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        sockaddr.sin_family = AF_INET;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        sockaddr.sin_port = htons(endpoint.port());</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        sockaddr.sin_addr.s_addr = htonl(endpoint.address().to_v4().to_uint());</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv4Address&gt; (sockaddr);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    sockaddr_in6 sockaddr{};</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    sockaddr.sin6_family = AF_INET6;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    sockaddr.sin6_port = htons(endpoint.port());</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">auto</span> bytes = endpoint.address().to_v6().to_bytes();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    memcpy(&amp;sockaddr.sin6_addr, bytes.data(), bytes.size());</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv6Address&gt;(sockaddr);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Endpo<span class="keywordtype">int</span>Type&gt;</div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespacesese_1_1internal_1_1net.html#aca24001660cb6022f1c79508d4047421">   37</a></span><a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> <a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>(<span class="keyword">const</span> EndpointType&amp; endpoint) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">static_assert</span>(</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        std::is_same_v&lt;EndpointType, asio::ip::tcp::endpoint&gt; || std::is_same_v&lt;EndpointType, asio::ip::udp::endpoint&gt;,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="stringliteral">&quot;EndpointType must be either asio::ip::tcp::endpoint or asio::ip::udp::endpoint&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    );</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (endpoint.address().is_v4()) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        sockaddr_in sockaddr{};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        sockaddr.sin_family = AF_INET;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        sockaddr.sin_port = htons(endpoint.port());</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        sockaddr.sin_addr.s_addr = htonl(endpoint.address().to_v4().to_uint());</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv4Address&gt;(sockaddr);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    sockaddr_in6 sockaddr{};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    sockaddr.sin6_family = AF_INET6;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    sockaddr.sin6_port = htons(endpoint.port());</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">auto</span> bytes = endpoint.address().to_v6().to_bytes();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    memcpy(&amp;sockaddr.sin6_addr, bytes.data(), bytes.size());</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv6Address&gt;(sockaddr);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>} <span class="comment">// namespace sese::internal::net</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>} <span class="comment">// namespace sese::internal::net</span></div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_7d3fb913f6b3b461897efa8818b452ce.html">internal</a></li><li class="navelem"><a class="el" href="dir_3491aff7cba398ff0383695f9587d3f2.html">net</a></li><li class="navelem"><a class="el" href="_asio_i_p_convert_8h.html">AsioIPConvert.h</a></li>
-    <li class="footer">生成于 2024年 十月 6日 星期日 16:32:57 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十月 30日 星期三 07:01:32 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
