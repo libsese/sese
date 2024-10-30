@@ -30,8 +30,9 @@ TEST(TestEnv, CommandLine) {
 TEST(TestEnv, Var) {
     sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP, 114514);
     auto message = sese::net::getNetworkErrorString();
-    SESE_INFO("%s", message.c_str());
+    SESE_ERROR("%s", message.c_str());
     for (auto &&ch: message) {
         EXPECT_TRUE(static_cast<uint8_t>(ch) <= 127);
     }
+    SESE_INFO("ENV{VCPKG_ROOT} is %s", sese::sys::Environment::getEnv("VCPKG_ROOT").c_str());
 }

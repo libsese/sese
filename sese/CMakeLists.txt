@@ -1,3 +1,7 @@
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebugInfo")
+    add_definitions("-DSESE_IS_DEBUG")
+endif ()
+
 if (SESE_BUILD_TEST)
     enable_testing()
     add_subdirectory(benchmark)
