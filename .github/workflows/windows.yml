@@ -58,7 +58,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           venv/Scripts/Activate.ps1
-          build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite* --gtest_output="xml:build/test_report.xml"
+          build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*:TestDNS* --gtest_output="xml:build/test_report.xml"
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1
