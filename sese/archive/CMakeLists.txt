@@ -14,9 +14,4 @@ add_library(Archive OBJECT
 if (UNIX)
     set_target_properties(Archive PROPERTIES POSITION_INDEPENDENT_CODE ON)
 endif ()
-
-if (CMAKE_SYSTEM_NAME MATCHES "Darwin" AND SESE_USE_NATIVE_MANAGER)
-    set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
-endif ()
-find_package(LibArchive REQUIRED)
 target_link_libraries(Archive PRIVATE LibArchive::LibArchive)

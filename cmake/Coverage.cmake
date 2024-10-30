@@ -1,0 +1,7 @@
+if (SESE_ENABLE_COVERAGE)
+    if (MSVC)
+        message(WARNING "Coverage test flags are used on unsupported compilers and have been forced to be disabled.")
+    else ()
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
+    endif ()
+endif ()
