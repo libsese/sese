@@ -52,7 +52,7 @@ jobs:
           sqlite3 build/db_test.db < scripts/sqlite_dump.sql
 
       - name: Setup Python
-        uses: actions/setup-python@5.3.0
+        uses: actions/setup-python@v5.3.0
         with:
           python-version: '3.11'
           cache: 'pip'
