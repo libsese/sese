@@ -1,5 +1,5 @@
 #include "sese/record/ConsoleAppender.h"
-#include "sese/convert/EncodingConverter.h"
+// #include "sese/convert/EncodingConverter.h"
 
 #include <cstdio>
 

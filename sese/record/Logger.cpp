@@ -92,7 +92,6 @@ Logger *getLogger() noexcept { return logger; }
 
 int32_t LoggerInitiateTask::init() noexcept {
     // 初始化 Logger
-    setlocale(LC_ALL, "");
 #ifdef USE_ASYNC_LOGGER
     logger = new AsyncLogger();
 #else
