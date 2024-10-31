@@ -34,10 +34,11 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1.13.0
 
       - name: Restore Vcpkg Cache
-        uses: actions/cache@v4.1.2
+        id: restore-cache
+        uses: actions/cache/restore@v4.1.2
         with:
           path: ${{ github.workspace }}/vcpkg-archive
-          key: vcpkg-windows-x64
+          key: ${{ runner.os }}-vcpkg
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
@@ -53,6 +54,13 @@ jobs:
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
           -Bbuild
+
+      - name: Always Save Cache
+        if: always() && steps.restore-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4.1.2
+        with:
+          path: ${{ github.workspace }}/vcpkg-archive
+          key: ${{ runner.os }}-vcpkg
 
       - name: Build
         working-directory: ${{ github.workspace }}
