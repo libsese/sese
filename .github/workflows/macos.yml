@@ -16,6 +16,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
+      - name: Setup Python
+        uses: actions/setup-python@5.3.0
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
       - name: Setup Python Venv
         run: |
           python -m venv venv
