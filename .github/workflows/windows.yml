@@ -44,11 +44,11 @@ jobs:
         env:
           VCPKG_ROOT: C:/vcpkg
           VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
-          Python3_ROOT_DIR: ${{ github.workspace }}/venv
         run: >
           mkdir -Force vcpkg-archive &&
           cmake -G Ninja
           -DCMAKE_BUILD_TYPE=Release
+          -DPython3_EXECUTABLE=C:/hostedtoolcache/windows/Python/3.11.9/x64/python3.exe
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
