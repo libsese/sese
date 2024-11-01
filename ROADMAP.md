@@ -29,4 +29,4 @@
 
 - ⭕️ DNS module decoupling and refactoring
 - 🛠️ Better Exception
-- 🛠️ Support ~~std::error_code~~ sese::ErrorCode
+- 🛠️ Support ~~std::error_code~~ sese::ErrorCode & sese::Result<T>

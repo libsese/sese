@@ -25,6 +25,8 @@
 
 namespace sese {
 
+/// @brief 结果类
+/// @tparam T 结果类型
 template<class T>
 class Result final {
     std::variant<ErrorCode, T> err_result;
