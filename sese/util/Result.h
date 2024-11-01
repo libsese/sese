@@ -47,14 +47,14 @@ public:
     /// @brief 获取错误码
     /// @return 错误码
     [[nodiscard]] ErrorCode err() const noexcept {
-        assert(this());
+        assert(std::holds_alternative<ErrorCode>(err_result));
         return std::get<ErrorCode>(err_result);
     }
 
     /// @brief 获取结果
     /// @return 结果
     T get() const noexcept {
-        assert(!this());
+        assert(std::holds_alternative<T>(err_result));
         return std::get<T>(err_result);
     }
 };

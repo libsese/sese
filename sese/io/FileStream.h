@@ -10,6 +10,7 @@
 #include "sese/io/Closeable.h"
 #include "sese/io/PeekableStream.h"
 #include "sese/system/Path.h"
+#include "sese/util/Result.h"
 
 namespace sese::io {
 
@@ -65,6 +66,8 @@ public:
     /// \param mode 打开模式
     /// \retval nullptr 打开失败
     static FileStream::Ptr createWithPath(const system::Path &path, const char *mode) noexcept;
+
+    static Result<FileStream::Ptr> createEx(const std::string &file_path, const char *mode) noexcept;
 
     ~FileStream() override = default;
 

@@ -1,4 +1,5 @@
 #include "sese/io/FileStream.h"
+#include "sese/Log.h"
 
 #include <gtest/gtest.h>
 
@@ -42,4 +43,14 @@ TEST(TestFileStream, Peek) {
     EXPECT_EQ(buffer, expect);
     auto l = file->trunc(5);
     EXPECT_EQ(l, 5);
+}
+
+TEST(TestFileStream, Result) {
+    auto result = File::createEx("undef.txt", File::T_READ);
+    if (result) {
+        auto err = result.err();
+        SESE_ERROR("Error: {} {}", err.value(), err.message());
+        return;
+    }
+    [[maybe_unused]] auto file = result.get();
 }
