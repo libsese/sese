@@ -10,7 +10,9 @@ var searchData=
   ['epolleventconvert_2eh_7',['EpollEventConvert.h',['../_epoll_event_convert_8h.html',1,'']]],
   ['epolleventloop_2ecpp_8',['EpollEventLoop.cpp',['../_epoll_event_loop_8cpp.html',1,'']]],
   ['epolleventloop_2eh_9',['EpollEventLoop.h',['../_epoll_event_loop_8h.html',1,'']]],
-  ['event_2eh_10',['Event.h',['../event_2_event_8h.html',1,'(全局命名空间)'],['../record_2_event_8h.html',1,'(全局命名空间)']]],
-  ['exception_2ecpp_11',['Exception.cpp',['../_exception_8cpp.html',1,'']]],
-  ['exception_2eh_12',['Exception.h',['../_exception_8h.html',1,'']]]
+  ['errorcode_2ecpp_10',['ErrorCode.cpp',['../_error_code_8cpp.html',1,'']]],
+  ['errorcode_2eh_11',['ErrorCode.h',['../_error_code_8h.html',1,'']]],
+  ['event_2eh_12',['Event.h',['../event_2_event_8h.html',1,'(全局命名空间)'],['../record_2_event_8h.html',1,'(全局命名空间)']]],
+  ['exception_2ecpp_13',['Exception.cpp',['../_exception_8cpp.html',1,'']]],
+  ['exception_2eh_14',['Exception.h',['../_exception_8h.html',1,'']]]
 ];

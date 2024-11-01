@@ -15,7 +15,7 @@ var searchData=
   ['resourcestream_12',['ResourceStream',['../classsese_1_1res_1_1_resource_stream.html',1,'sese::res']]],
   ['response_13',['Response',['../classsese_1_1net_1_1http_1_1_response.html',1,'sese::net::http']]],
   ['responseheader_14',['ResponseHeader',['../classsese_1_1net_1_1http_1_1_response_header.html',1,'sese::net::http']]],
-  ['result_15',['Result',['../structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html',1,'sese::net::http::RequestParser']]],
+  ['result_15',['Result',['../structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html',1,'sese::net::http::RequestParser::Result'],['../classsese_1_1_result.html',1,'sese::Result&lt; T &gt;']]],
   ['resultset_16',['ResultSet',['../classsese_1_1db_1_1_result_set.html',1,'sese::db']]],
   ['reusablesocket_17',['ReusableSocket',['../classsese_1_1net_1_1_reusable_socket.html',1,'sese::net']]],
   ['reverseiterator_18',['ReverseIterator',['../classsese_1_1_range_1_1_reverse_iterator.html',1,'sese::Range']]],

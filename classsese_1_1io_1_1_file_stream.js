@@ -5,6 +5,7 @@ var classsese_1_1io_1_1_file_stream =
     [ "FileStream", "classsese_1_1io_1_1_file_stream.html#a8adbdc1ff0d8bcb56c7d5546d311e66d", null ],
     [ "close", "classsese_1_1io_1_1_file_stream.html#a4be153f099bdbfa08a796973175c3716", null ],
     [ "create", "classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0", null ],
+    [ "createEx", "classsese_1_1io_1_1_file_stream.html#a72582fe2c9300abffd35635cf82e49c3", null ],
     [ "createWithPath", "classsese_1_1io_1_1_file_stream.html#ab75e9aa9e8229c6404df0883def62850", null ],
     [ "eof", "classsese_1_1io_1_1_file_stream.html#a29cdad4d47e748bececdaeb493f8e38e", null ],
     [ "flush", "classsese_1_1io_1_1_file_stream.html#a7a45ea882727739882d16d7ecd105898", null ],

@@ -70,10 +70,13 @@ var NAVTREEINDEX1 =
 "_epoll_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09":[8,0,0,9,1,0,3,0],
 "_epoll_event_loop_8h.html":[8,0,0,9,1,0,4],
 "_epoll_event_loop_8h_source.html":[8,0,0,9,1,0,4],
-"_exception_8cpp.html":[8,0,0,20,5],
-"_exception_8h.html":[8,0,0,20,6],
-"_exception_8h.html#af9bb01745c9e3e8b62adbf3102fd942e":[8,0,0,20,6,2],
-"_exception_8h_source.html":[8,0,0,20,6],
+"_error_code_8cpp.html":[8,0,0,20,5],
+"_error_code_8h.html":[8,0,0,20,6],
+"_error_code_8h_source.html":[8,0,0,20,6],
+"_exception_8cpp.html":[8,0,0,20,7],
+"_exception_8h.html":[8,0,0,20,8],
+"_exception_8h.html#af9bb01745c9e3e8b62adbf3102fd942e":[8,0,0,20,8,2],
+"_exception_8h_source.html":[8,0,0,20,8],
 "_fake_stream_8cpp.html":[8,0,0,8,17],
 "_fake_stream_8h.html":[8,0,0,8,18],
 "_fake_stream_8h_source.html":[8,0,0,8,18],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "_i_p_address_8h_source.html":[8,0,0,10,8],
 "_i_p_c_8cpp.html":[8,0,0,16,6],
 "_i_p_c_8cpp.html#a49999be01380f41cc0d0f1f1406fb277":[8,0,0,16,6,0],
-"_i_p_c_8h.html":[8,0,0,16,7],
-"_i_p_c_8h_source.html":[8,0,0,16,7],
-"_i_pv4_address_8cpp.html":[8,0,0,10,9],
-"_i_pv4_address_8h.html":[8,0,0,10,10]
+"_i_p_c_8h.html":[8,0,0,16,7]
 };

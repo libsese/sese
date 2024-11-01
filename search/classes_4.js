@@ -8,6 +8,7 @@ var searchData=
   ['epollevent_5',['EpollEvent',['../classsese_1_1event_1_1_epoll_event.html',1,'sese::event']]],
   ['epolleventconvert_6',['EpollEventConvert',['../classsese_1_1event_1_1_epoll_event_convert.html',1,'sese::event']]],
   ['epolleventloop_7',['EpollEventLoop',['../classsese_1_1event_1_1_epoll_event_loop.html',1,'sese::event']]],
-  ['event_8',['Event',['../classsese_1_1record_1_1_event.html',1,'sese::record']]],
-  ['exception_9',['Exception',['../classsese_1_1_exception.html',1,'sese']]]
+  ['errorcode_8',['ErrorCode',['../classsese_1_1_error_code.html',1,'sese']]],
+  ['event_9',['Event',['../classsese_1_1record_1_1_event.html',1,'sese::record']]],
+  ['exception_10',['Exception',['../classsese_1_1_exception.html',1,'sese']]]
 ];

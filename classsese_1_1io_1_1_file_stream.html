@@ -234,6 +234,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a0f0b3b41e51beff78b4327d6a709b9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab75e9aa9e8229c6404df0883def62850" id="r_ab75e9aa9e8229c6404df0883def62850"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab75e9aa9e8229c6404df0883def62850">createWithPath</a> (const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;path, const char *mode) noexcept</td></tr>
 <tr class="separator:ab75e9aa9e8229c6404df0883def62850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72582fe2c9300abffd35635cf82e49c3" id="r_a72582fe2c9300abffd35635cf82e49c3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72582fe2c9300abffd35635cf82e49c3">createEx</a> (const std::string &amp;file_path, const char *mode) noexcept</td></tr>
+<tr class="separator:a72582fe2c9300abffd35635cf82e49c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静态 Public 属性</h2></td></tr>
@@ -410,6 +412,37 @@ Private 属性</h2></td></tr>
 <p class="reference">引用了 <a class="el" href="_memory_8h.html#ad672a32e754105785509dd843a3cb4bc">MAKE_SHARED_PRIVATE</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2544625cbe63e6aca28326048d6a2154">sese::archive::ArchiveWriter::addDirectory()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a77b70e9f7ce2ab7a281ff39ad998efde">sese::archive::ArchiveWriter::addFile()</a>, <a class="el" href="classsese_1_1record_1_1_block_appender.html#a9c4650b07a1df95b556be74b061c1f6d">sese::record::BlockAppender::BlockAppender()</a>, <a class="el" href="classsese_1_1text_1_1_text_reader.html#a243ddb4a8f13dd5f278b71df43bd892f">sese::text::TextReader::create()</a>, <a class="el" href="classsese_1_1_uni_reader.html#aeb8b5e2a8d416fc5f0c9afa994620a59">sese::UniReader::create()</a>, <a class="el" href="#ab75e9aa9e8229c6404df0883def62850">createWithPath()</a>, <a class="el" href="classsese_1_1record_1_1_block_appender.html#ae6b5d3e34cfcd88101c0bcb27b61fcc0">sese::record::BlockAppender::dump()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#ade12d7954799ffa3b1d19a57f411ceed">sese::internal::service::http::HttpServiceImpl::handleRequest()</a>.</p>
+
+</div>
+</div>
+<a id="a72582fe2c9300abffd35635cf82e49c3" name="a72582fe2c9300abffd35635cf82e49c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72582fe2c9300abffd35635cf82e49c3">&#9670;&#160;</a></span>createEx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_result.html">sese::Result</a>&lt; <a class="el" href="#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a> &gt; FileStream::createEx </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>file_path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="namespacesese.html#ab5e35a3f44b1c1dd95685d82185df166">sese::getErrorCode()</a> , 以及 <a class="el" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">sese::getErrorString()</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1072,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_file_stream.html">FileStream</a></li>
-    <li class="footer">生成于 2024年 十月 30日 星期三 08:06:03 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:38 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

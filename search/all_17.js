@@ -10,7 +10,7 @@ var searchData=
   ['websocketauthenticator_2ecpp_7',['WebSocketAuthenticator.cpp',['../_web_socket_authenticator_8cpp.html',1,'']]],
   ['websocketauthenticator_2eh_8',['WebsocketAuthenticator.h',['../_websocket_authenticator_8h.html',1,'']]],
   ['week_5fday_9',['WEEK_DAY',['../classsese_1_1text_1_1_date_time_formatter.html#acc8a8c7c759c27abcd3e1778e4888f2e',1,'sese::text::DateTimeFormatter']]],
-  ['what_10',['what',['../classsese_1_1_unix_exception.html#ae645c81dfc987d6aedf8554c70a0238e',1,'sese::UnixException']]],
+  ['what_10',['what',['../classsese_1_1_unix_exception.html#ae645c81dfc987d6aedf8554c70a0238e',1,'sese::UnixException::what()'],['../classsese_1_1_exception.html#aa92630359575979364aa4eaba0583c18',1,'sese::Exception::what()']]],
   ['wheel_11',['wheel',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c',1,'sese::_windows::iocp::v1::NativeIOCPServer']]],
   ['wide_12',['wide',['../structsese_1_1text_1_1_format_option.html#aa813e7742a29f275914ec69df8ba13c3',1,'sese::text::FormatOption']]],
   ['wide_5fchar_13',['wide_char',['../structsese_1_1text_1_1_format_option.html#a08c106991986e33371c915a3b7590157',1,'sese::text::FormatOption']]],

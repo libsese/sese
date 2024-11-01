@@ -109,6 +109,7 @@ var hierarchy =
       [ "sese::plugin::BaseClass", "classsese_1_1plugin_1_1_base_class.html", null ],
       [ "sese::security::SSLContext", "classsese_1_1security_1_1_s_s_l_context.html", null ]
     ] ],
+    [ "sese::ErrorCode", "classsese_1_1_error_code.html", null ],
     [ "sese::record::Event", "classsese_1_1record_1_1_event.html", null ],
     [ "sese::event::EventLoop", null, [
       [ "sese::service::MasterEventLoop", "classsese_1_1service_1_1_master_event_loop.html", null ],
@@ -312,6 +313,7 @@ var hierarchy =
     [ "sese::res::Resource", "classsese_1_1res_1_1_resource.html", null ],
     [ "sese::res::ResourceManager", "classsese_1_1res_1_1_resource_manager.html", null ],
     [ "sese::net::http::RequestParser::Result", "structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html", null ],
+    [ "sese::Result< T >", "classsese_1_1_result.html", null ],
     [ "sese::db::ResultSet", "classsese_1_1db_1_1_result_set.html", [
       [ "sese::db::impl::MariaResultSetImpl", "classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html", null ],
       [ "sese::db::impl::MariaStmtResultSet", "classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html", null ],

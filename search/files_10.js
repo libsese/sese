@@ -30,8 +30,9 @@ var searchData=
   ['response_2ecpp_27',['Response.cpp',['../_response_8cpp.html',1,'']]],
   ['response_2eh_28',['Response.h',['../_response_8h.html',1,'']]],
   ['responseheader_2eh_29',['ResponseHeader.h',['../_response_header_8h.html',1,'']]],
-  ['resultset_2eh_30',['ResultSet.h',['../_result_set_8h.html',1,'']]],
-  ['reusablesocket_2ecpp_31',['ReusableSocket.cpp',['../_reusable_socket_8cpp.html',1,'']]],
-  ['reusablesocket_2eh_32',['ReusableSocket.h',['../_reusable_socket_8h.html',1,'']]],
-  ['ringqueue_2eh_33',['RingQueue.h',['../_ring_queue_8h.html',1,'']]]
+  ['result_2eh_30',['Result.h',['../_result_8h.html',1,'']]],
+  ['resultset_2eh_31',['ResultSet.h',['../_result_set_8h.html',1,'']]],
+  ['reusablesocket_2ecpp_32',['ReusableSocket.cpp',['../_reusable_socket_8cpp.html',1,'']]],
+  ['reusablesocket_2eh_33',['ReusableSocket.h',['../_reusable_socket_8h.html',1,'']]],
+  ['ringqueue_2eh_34',['RingQueue.h',['../_ring_queue_8h.html',1,'']]]
 ];
