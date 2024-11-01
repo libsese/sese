@@ -26,6 +26,12 @@
 #include <algorithm>
 #include <string>
 #include <sese/util/Memory.h>
+#include <sese/system/Environment.h>
+
+// namespace alias
+namespace sese {
+namespace sys = sese::system;
+}
 
 #ifdef _WIN32
 #pragma warning(disable : 4819)

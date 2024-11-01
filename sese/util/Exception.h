@@ -13,6 +13,7 @@
 #include <sese/system/StackInfo.h>
 
 #include <exception>
+#include <utility>
 
 #ifdef SESE_PLATFORM_WINDOWS
 #pragma warning(disable : 4275)
@@ -41,9 +42,9 @@ using NativeException = UnixException;
 #endif
 
 /// 异常类
-class  Exception : public NativeException {
+class Exception : public NativeException {
 public:
-    explicit Exception(const char *message);
+    explicit Exception(std::string message);
 
     ~Exception() override;
 
@@ -60,10 +61,18 @@ public:
 
     static uint16_t offset;
 
-protected:
+    /// @brief 获取异常的文本信息
+    /// @return 异常的文本信息
+    [[nodiscard]] const char *what() const noexcept override;
 
+    /// @brief 获取异常的文本信息
+    /// @return 异常的文本信息
+    [[nodiscard]] std::string message() const noexcept;
+
+protected:
     virtual std::string buildStacktrace();
 
+    std::string *message_;
     system::StackInfo* stackInfo{};
 };
 } // namespace sese

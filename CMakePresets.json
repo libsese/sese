@@ -7,6 +7,7 @@
       "generator": "Ninja",
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "VCPKG_USE_HOST_TOOLS": true,
         "SESE_BUILD_TEST": true,
         "SESE_BUILD_EXAMPLE": true,

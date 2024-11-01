@@ -15,11 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Setup Python Venv
+      - name: Setup Python
+        uses: actions/setup-python@v5.3.0
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Setup Pip
         run: |
-          python -m venv venv
-          venv/Scripts/Activate.ps1
-          pip install -r ${{ github.workspace }}/requirements.txt
+          pip install -r requirements.txt
 
       - name: Setup Ninja
         uses: ashutoshvarma/setup-ninja@master
@@ -30,27 +34,33 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1.13.0
 
       - name: Restore Vcpkg Cache
-        uses: actions/cache@v4.1.2
+        id: restore-cache
+        uses: actions/cache/restore@v4.1.2
         with:
           path: ${{ github.workspace }}/vcpkg-archive
-          key: vcpkg-windows-x64
+          key: ${{ runner.os }}-vcpkg
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
         env:
           VCPKG_ROOT: C:/vcpkg
           VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archive
-          Python3_ROOT_DIR: ${{ github.workspace }}/venv
         run: >
           mkdir -Force vcpkg-archive &&
-          venv/Scripts/Activate.ps1 &&
           cmake -G Ninja
           -DCMAKE_BUILD_TYPE=Release
-          -DPython3_EXECUTABLE=${{ github.workspace }}/venv/Scripts/python.exe
+          -DPython3_EXECUTABLE=C:/hostedtoolcache/windows/Python/3.11.9/x64/python3.exe
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
           -Bbuild
+
+      - name: Always Save Cache
+        if: always() && steps.restore-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4.1.2
+        with:
+          path: ${{ github.workspace }}/vcpkg-archive
+          key: ${{ runner.os }}-vcpkg
 
       - name: Build
         working-directory: ${{ github.workspace }}
@@ -59,8 +69,7 @@ jobs:
       - name: Test
         working-directory: ${{ github.workspace }}
         run: |
-          venv/Scripts/Activate.ps1
-          build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*:TestDNS* --gtest_output="xml:build/test_report.xml"
+          build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite* --gtest_output="xml:build/test_report.xml"
 
       - name: Test report
         uses: dorny/test-reporter@v1.9.1

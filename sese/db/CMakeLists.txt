@@ -26,13 +26,7 @@ if (SESE_DB_USE_SQLITE)
             ../internal/db/sqlite/SqliteStmtResultSetImpl.cpp
             ../internal/db/sqlite/SqliteStmtResultSetImpl.h
     )
-    if (SESE_USE_NATIVE_MANAGER)
-        find_package(SQLite3 REQUIRED)
-        target_link_libraries(DB PUBLIC SQLite::SQLite3)
-    else ()
-        find_package(unofficial-sqlite3 CONFIG REQUIRED)
-        target_link_libraries(DB PUBLIC unofficial::sqlite3::sqlite3)
-    endif ()
+    target_link_libraries(DB PUBLIC unofficial::sqlite3::sqlite3)
 endif ()
 
 if (SESE_DB_USE_MARIADB)
@@ -47,35 +41,7 @@ if (SESE_DB_USE_MARIADB)
             ../internal/db/maria/MariaStmtResultSetImpl.cpp
             ../internal/db/maria/MariaStmtResultSetImpl.h
     )
-    if (SESE_USE_NATIVE_MANAGER)
-        if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-            find_package(MySQL MODULE REQUIRED)
-            target_link_libraries(DB PRIVATE ${MYSQL_LIB})
-        elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-            find_path(MYSQL_INCLUDE_DIR mysql.h
-                    /usr/local/include/mysql
-                    /usr/local/mysql/include
-                    /usr/include/mysql
-            )
-            find_library(
-                    MYSQL_LIB
-                    NAME mysqlclient
-                    PATHS /usr/lib /usr/local/lib /usr/local/mysql/lib
-                    PATH_SUFFIXES mysql
-            )
-            message(STATUS "MYSQL_INCLUDE_DIR :${MYSQL_INCLUDE_DIR}")
-            message(STATUS "MYSQL_LIB         :${MYSQL_LIB}")
-            if (MYSQL_INCLUDE_DIR AND MYSQL_LIB)
-                target_include_directories(DB PUBLIC ${MYSQL_INCLUDE_DIR})
-                target_link_libraries(DB PUBLIC ${MYSQL_LIB})
-            else ()
-                message(FATAL_ERROR "Could NOT find MySQL library")
-            endif ()
-        endif ()
-    else ()
-        find_package(unofficial-libmariadb CONFIG REQUIRED)
-        target_link_libraries(DB PUBLIC unofficial::libmariadb)
-    endif ()
+    target_link_libraries(DB PUBLIC unofficial::libmariadb)
 endif ()
 
 if (SESE_DB_USE_POSTGRES)
@@ -88,6 +54,5 @@ if (SESE_DB_USE_POSTGRES)
             ../internal/db/pgsql/PostgresResultSetImpl.cpp
             ../internal/db/pgsql/PostgresResultSetImpl.h
     )
-    find_package(PostgreSQL REQUIRED)
     target_link_libraries(DB PUBLIC PostgreSQL::PostgreSQL)
 endif ()

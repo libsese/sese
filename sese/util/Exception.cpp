@@ -2,6 +2,8 @@
 #include <sese/text/StringBuilder.h>
 
 #include <algorithm>
+#include <string>
+#include <utility>
 
 
 #if defined(_MSC_VER) && !defined(SESE_IS_DEBUG)
@@ -13,13 +15,15 @@ uint16_t sese::Exception::offset = 2;
 #endif
 
 
-sese::Exception::Exception(const char *message)
-    : NativeException(message) {
+sese::Exception::Exception(std::string message)
+    : NativeException("") {
+    message_ = new std::string(std::move(message));
     stackInfo = new system::StackInfo(16, offset);
 }
 
 sese::Exception::~Exception() {
     delete stackInfo; // GCOVR_EXCL_LINE
+    delete message_;  // GCOVR_EXCL_LINE
 }
 
 std::string sese::Exception::buildStacktrace() {
@@ -53,4 +57,12 @@ void sese::Exception::printStacktrace(sese::record::Logger *logger) {
 void sese::Exception::printStacktrace(sese::io::OutputStream *output) {
     auto content = buildStacktrace();
     output->write(content.c_str(), content.length());
+}
+
+const char *sese::Exception::what() const noexcept {
+    return message_->c_str();
+}
+
+std::string sese::Exception::message() const noexcept {
+    return *message_;
 }

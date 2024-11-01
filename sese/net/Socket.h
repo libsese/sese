@@ -14,6 +14,8 @@
 #include "sese/io/PeekableStream.h"
 #include "sese/util/Initializer.h"
 
+#include <system_error>
+
 #ifdef _WIN32
 #pragma warning(disable : 4251)
 #endif

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <typeinfo>
 #include <string>
 #include <sese/util/NotInstantiable.h>
 

@@ -54,13 +54,13 @@ int sese::net::getNetworkError() noexcept {
 std::string sese::net::getNetworkErrorString(int error) noexcept {
     char *msg = nullptr;
     FormatMessage(
-            FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-            nullptr,
-            error,
-            MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
-            reinterpret_cast<LPTSTR>(&msg),
-            0,
-            nullptr
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+        nullptr,
+        error,
+        MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
+        reinterpret_cast<LPTSTR>(&msg),
+        0,
+        nullptr
     );
     return msg;
 }

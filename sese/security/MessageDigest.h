@@ -10,6 +10,7 @@
 #include "sese/io/InputStream.h"
 
 #include <memory>
+#include <string>
 
 namespace sese::security {
 /// 基于 OPENSSL::CRYPTO 的信息摘要接口

@@ -3,6 +3,7 @@
 #include <sese/system/Environment.h>
 #include <sese/system/CommandLine.h>
 #include <sese/record/Marco.h>
+#include <sese/net/Socket.h>
 
 #include <gtest/gtest.h>
 
@@ -24,4 +25,14 @@ TEST(TestEnv, CommandLine) {
     for (int i = 0; i < CommandLine::getArgc(); ++i) {
         SESE_INFO("args[%d]=%s", i, CommandLine::getArgv()[i]);
     }
+}
+
+TEST(TestEnv, Var) {
+    sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP, 114514);
+    auto message = sese::net::getNetworkErrorString();
+    SESE_ERROR("%s", message.c_str());
+    for (auto &&ch: message) {
+        EXPECT_TRUE(static_cast<uint8_t>(ch) <= 127);
+    }
+    SESE_INFO("ENV{VCPKG_ROOT} is %s", sese::sys::Environment::getEnv("VCPKG_ROOT").c_str());
 }
