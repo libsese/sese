@@ -31,7 +31,7 @@ var NAVTREE =
     [ "字符串格式化", "md_sese_2text_2_f_o_r_m_a_t.html", null ],
     [ "错误处理", "md_sese_2util_2_e_r_r_o_r.html", [
       [ "sese::Result<T>", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md14", null ],
-      [ "Exception", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md15", null ],
+      [ "sese::Exception", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md15", null ],
       [ "Classic", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md16", null ]
     ] ],
     [ "弃用列表", "deprecated.html", null ],

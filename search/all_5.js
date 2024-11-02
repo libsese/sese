@@ -117,7 +117,7 @@ var searchData=
   ['eventthreadgroup_114',['eventThreadGroup',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#acde0c63aa3e43533d0f9e496dbb0dbe3',1,'sese::_windows::iocp::v1::NativeIOCPServer']]],
   ['eventthreadproc_115',['eventThreadProc',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d',1,'sese::_windows::iocp::v1::NativeIOCPServer']]],
   ['ewouldblock_116',['EWOULDBLOCK',['../native_2win_2_config_8h.html#a4a3a0b3605fd3b2336455062ee8e25f0',1,'Config.h']]],
-  ['exception_117',['Exception',['../classsese_1_1_exception.html',1,'sese::Exception'],['../classsese_1_1_exception.html#a1a405761443677ee45de488ec6e4e005',1,'sese::Exception::Exception()'],['../md_sese_2util_2_e_r_r_o_r.html#autotoc_md15',1,'Exception']]],
+  ['exception_117',['Exception',['../classsese_1_1_exception.html',1,'sese::Exception'],['../classsese_1_1_exception.html#a1a405761443677ee45de488ec6e4e005',1,'sese::Exception::Exception()']]],
   ['exception_2ecpp_118',['Exception.cpp',['../_exception_8cpp.html',1,'']]],
   ['exception_2eh_119',['Exception.h',['../_exception_8h.html',1,'']]],
   ['excepttimestamp_120',['exceptTimestamp',['../structsese_1_1service_1_1v1_1_1_timeout_event.html#afa2e377caae7d0b3942d412d99aa3951',1,'sese::service::v1::TimeoutEvent']]],
