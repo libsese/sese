@@ -188,6 +188,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a11c2e3954833882365a74431ae85417a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86eb94e26844ebcb016819d2716f6c80" id="r_a86eb94e26844ebcb016819d2716f6c80"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86eb94e26844ebcb016819d2716f6c80">begin</a> () noexcept=0</td></tr>
 <tr class="separator:a86eb94e26844ebcb016819d2716f6c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e14d71544db50c89a7993eb65ea533d" id="r_a2e14d71544db50c89a7993eb65ea533d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_error_code.html">ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e14d71544db50c89a7993eb65ea533d">getErrorCode</a> () const</td></tr>
+<tr class="separator:a2e14d71544db50c89a7993eb65ea533d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>数据库驱动实例类 </p>
@@ -257,7 +259,12 @@ Public 成员函数</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>事务开启 </p><dl class="section return"><dt>返回</dt><dd>false 开始失败 </dd></dl>
+<p>事务开启 </p><dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>开始失败 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ad18995f1136d428bd29fafc7971b2df7">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a0a4e0cdfb9e426ad3f9031e1a349211b">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
 
@@ -450,6 +457,33 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
+<a id="a2e14d71544db50c89a7993eb65ea533d" name="a2e14d71544db50c89a7993eb65ea533d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e14d71544db50c89a7993eb65ea533d">&#9670;&#160;</a></span>getErrorCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> sese::db::DriverInstance::getErrorCode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#a5b25a40ffc85321d20bd19522976e120">getLastError()</a> , 以及 <a class="el" href="#a440896cddef5269a0a80e5010fe6b7d4">getLastErrorMessage()</a>.</p>
+
+</div>
+</div>
 <a id="a11c2e3954833882365a74431ae85417a" name="a11c2e3954833882365a74431ae85417a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a11c2e3954833882365a74431ae85417a">&#9670;&#160;</a></span>getInsertId()</h2>
 
@@ -510,6 +544,8 @@ Public 成员函数</h2></td></tr>
 
 <p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a82ad69b66795715b4e9e3b6743e4b3c4">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a88cf873afff7222731ba2e26e7108a97">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a6374d7559156c4a047aa2e3be8e8b718">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
 
+<p class="reference">被这些函数引用 <a class="el" href="#a2e14d71544db50c89a7993eb65ea533d">getErrorCode()</a>.</p>
+
 </div>
 </div>
 <a id="a440896cddef5269a0a80e5010fe6b7d4" name="a440896cddef5269a0a80e5010fe6b7d4"></a>
@@ -537,6 +573,8 @@ Public 成员函数</h2></td></tr>
 <p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
 
 <p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a1ebb39d96f13d6ef7bacbf3e777090b3">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4f545197ac7ed8bdbb761725f6992e9c">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#ae17e446d0836b36dec9bc48123935205">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#a2e14d71544db50c89a7993eb65ea533d">getErrorCode()</a>.</p>
 
 </div>
 </div>
@@ -624,7 +662,7 @@ Public 成员函数</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a></li>
-    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:38 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 2日 星期六 10:42:08 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

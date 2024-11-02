@@ -5,6 +5,7 @@ var classsese_1_1system_1_1_process =
     [ "~Process", "classsese_1_1system_1_1_process.html#a07ff40a4769b99627fb2e88d467136f0", null ],
     [ "count", "classsese_1_1system_1_1_process.html#a93d03f07bdbc7ae0a49638e4b0f206f4", null ],
     [ "create", "classsese_1_1system_1_1_process.html#a79e195a84f2b555e3d12ae99b369fdb8", null ],
+    [ "createEx", "classsese_1_1system_1_1_process.html#afc6b321049c8a3a6d7e790adedc46fd4", null ],
     [ "exec", "classsese_1_1system_1_1_process.html#abb638054ee26bd6b029f1994e863990e", null ],
     [ "getCurrentProcessId", "classsese_1_1system_1_1_process.html#abf9ea1c83caea24d7c7af4fc52991473", null ],
     [ "getProcessId", "classsese_1_1system_1_1_process.html#a2f236e5e0b6b26cb7613b5d12c880237", null ],

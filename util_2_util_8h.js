@@ -7,7 +7,7 @@ var util_2_util_8h =
     [ "findFirstAt", "util_2_util_8h.html#a7c52b4c131447df3e4b83a9a7451ee97", null ],
     [ "floating2StringLength", "util_2_util_8h.html#a2efaa72ae22e5bed06aa1d1666d8810c", null ],
     [ "getClassName", "util_2_util_8h.html#a7f6ec509913dbb14930e43b251141591", null ],
-    [ "getErrorCode", "util_2_util_8h.html#ab5e35a3f44b1c1dd95685d82185df166", null ],
+    [ "getErrorCode", "util_2_util_8h.html#af6a7d078baabdfdd1deb7881913d2c11", null ],
     [ "getErrorString", "util_2_util_8h.html#a1833da64507c8e59f6799b93d2504ec6", null ],
     [ "getLevelString", "util_2_util_8h.html#aa1d206a5404e3a285ef301d61df25860", null ],
     [ "getSpecificVersion", "util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74", null ],

@@ -153,52 +153,81 @@ $(function(){initNavTree('_result_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="_error_code_8h.html" title="错误码类">ErrorCode.h</a>&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="_socket_8h.html" title="Native Socket 类">sese/net/Socket.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="util_2_util_8h.html" title="工具杂项函数">Util.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_error_code_8h.html" title="错误码类">ErrorCode.h</a>&quot;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html">   31</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result</a> final {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">   32</a></span>    std::variant&lt;ErrorCode, T&gt; <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a2d020e4994954d409863809f0d6e289f">   37</a></span>    <a class="code hl_function" href="classsese_1_1_result.html#a2d020e4994954d409863809f0d6e289f" title="构造函数">Result</a>(<a class="code hl_class" href="classsese_1_1_error_code.html" title="错误码">ErrorCode</a> <a class="code hl_function" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6" title="获取错误码">err</a>) : <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>(<a class="code hl_function" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6" title="获取错误码">err</a>) {} <span class="comment">// NOLINT</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a570926ed14960d805b049a13f414c0e7">   41</a></span>    <a class="code hl_function" href="classsese_1_1_result.html#a570926ed14960d805b049a13f414c0e7" title="构造函数">Result</a>(T result) : <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>(std::forward&lt;T&gt;(result)) {} <span class="comment">// NOLINT</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a0c5e32f1956614230415cb13e89ad372">   45</a></span>    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() const noexcept {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">return</span> std::holds_alternative&lt;ErrorCode&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html">   33</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result</a> final {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">   34</a></span>    std::variant&lt;ErrorCode, T&gt; <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a2d020e4994954d409863809f0d6e289f">   39</a></span>    <a class="code hl_function" href="classsese_1_1_result.html#a2d020e4994954d409863809f0d6e289f" title="构造函数">Result</a>(<a class="code hl_class" href="classsese_1_1_error_code.html" title="错误码">ErrorCode</a> <a class="code hl_function" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6" title="获取错误码">err</a>) : <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>(<a class="code hl_function" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6" title="获取错误码">err</a>) {} <span class="comment">// NOLINT</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a2d887e8f3edd2978b74a0e5d0fc58cea">   44</a></span>    <a class="code hl_function" href="classsese_1_1_result.html#a2d887e8f3edd2978b74a0e5d0fc58cea" title="构造函数">Result</a>(int32_t code, <span class="keyword">const</span> std::string &amp;msg) : <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>(<a class="code hl_class" href="classsese_1_1_error_code.html" title="错误码">ErrorCode</a>{code, msg}) {}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a570926ed14960d805b049a13f414c0e7">   48</a></span>    <a class="code hl_function" href="classsese_1_1_result.html#a570926ed14960d805b049a13f414c0e7" title="构造函数">Result</a>(T result) : <a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>(std::forward&lt;T&gt;(result)) {} <span class="comment">// NOLINT</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">static</span> <a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result</a> <a class="code hl_function" href="classsese_1_1_result.html#ac3149ffa8b92ec39fa0aae64e70ba430">fromLastError</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">static</span> <a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result</a> <a class="code hl_function" href="classsese_1_1_result.html#a0f2ae55dd895ab458a80b4b9453c243a">fromLastNetworkError</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a0c5e32f1956614230415cb13e89ad372">   56</a></span>    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() const noexcept {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> std::holds_alternative&lt;ErrorCode&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6">   51</a></span>    [[nodiscard]] <a class="code hl_class" href="classsese_1_1_error_code.html" title="错误码">ErrorCode</a> <a class="code hl_function" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6" title="获取错误码">err</a>() const noexcept {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        assert(std::holds_alternative&lt;ErrorCode&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>));</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> std::get&lt;ErrorCode&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6">   62</a></span>    [[nodiscard]] <a class="code hl_class" href="classsese_1_1_error_code.html" title="错误码">ErrorCode</a> <a class="code hl_function" href="classsese_1_1_result.html#a5ee8a07d89651fd26b03d455eba6f7a6" title="获取错误码">err</a>() const noexcept {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        assert(std::holds_alternative&lt;ErrorCode&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>));</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> std::get&lt;ErrorCode&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a35a9fdfb4138cb1cef7e07538b516fb7">   58</a></span>    T <a class="code hl_function" href="classsese_1_1_result.html#a35a9fdfb4138cb1cef7e07538b516fb7" title="获取结果">get</a>() const noexcept {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        assert(std::holds_alternative&lt;T&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>));</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">return</span> std::get&lt;T&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a90dd122c14d2ca7f455d38ebbdf274aa">   69</a></span>    T &amp;<a class="code hl_function" href="classsese_1_1_result.html#a90dd122c14d2ca7f455d38ebbdf274aa" title="获取结果">get</a>() noexcept {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        assert(std::holds_alternative&lt;T&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>));</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> std::get&lt;T&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a771bb55e5abcf04267a661e139b6a84f">   76</a></span>    <span class="keyword">const</span> T &amp;<a class="code hl_function" href="classsese_1_1_result.html#a771bb55e5abcf04267a661e139b6a84f" title="获取结果">get</a>() const noexcept {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        assert(std::holds_alternative&lt;T&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> std::get&lt;T&gt;(<a class="code hl_variable" href="classsese_1_1_result.html#a7d8054702319abcb0d9886302369183c">err_result</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#ac3149ffa8b92ec39fa0aae64e70ba430">   83</a></span><a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result&lt;T&gt;</a> <a class="code hl_function" href="classsese_1_1_result.html#ac3149ffa8b92ec39fa0aae64e70ba430">Result&lt;T&gt;::fromLastError</a>() {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> {<a class="code hl_function" href="namespacesese.html#af6a7d078baabdfdd1deb7881913d2c11">getErrorCode</a>(), <a class="code hl_function" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">getErrorString</a>()};</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classsese_1_1_result.html#a0f2ae55dd895ab458a80b4b9453c243a">   88</a></span><a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result&lt;T&gt;</a> <a class="code hl_function" href="classsese_1_1_result.html#a0f2ae55dd895ab458a80b4b9453c243a">Result&lt;T&gt;::fromLastNetworkError</a>() {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> {<a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">net::getNetworkError</a>(), <a class="code hl_function" href="namespacesese_1_1net.html#ab63cd37a34fddd659bacfc37796de374" title="获取网络相关错误描述">net::getNetworkErrorString</a>()};</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>} <span class="comment">// namespace sese</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_result_8h.html">Result.h</a></li>
-    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:37 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 2日 星期六 10:42:07 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

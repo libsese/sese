@@ -8,6 +8,7 @@ var classsese_1_1db_1_1_driver_instance =
     [ "executeQuery", "classsese_1_1db_1_1_driver_instance.html#a1c872d805ce3065afc9843f0ee2ce361", null ],
     [ "executeUpdate", "classsese_1_1db_1_1_driver_instance.html#a228dbfc67efa358605ff73c720536793", null ],
     [ "getAutoCommit", "classsese_1_1db_1_1_driver_instance.html#a54a3030dbd9dcafe8f14cc437a6ee0d4", null ],
+    [ "getErrorCode", "classsese_1_1db_1_1_driver_instance.html#a2e14d71544db50c89a7993eb65ea533d", null ],
     [ "getInsertId", "classsese_1_1db_1_1_driver_instance.html#a11c2e3954833882365a74431ae85417a", null ],
     [ "getLastError", "classsese_1_1db_1_1_driver_instance.html#a5b25a40ffc85321d20bd19522976e120", null ],
     [ "getLastErrorMessage", "classsese_1_1db_1_1_driver_instance.html#a440896cddef5269a0a80e5010fe6b7d4", null ],

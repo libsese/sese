@@ -168,6 +168,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a3c48b1eca409104a90e7a90b9b259b3f" id="r_a3c48b1eca409104a90e7a90b9b259b3f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c48b1eca409104a90e7a90b9b259b3f">create</a> (const std::string &amp;name) noexcept</td></tr>
 <tr class="memdesc:a3c48b1eca409104a90e7a90b9b259b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载一个外部库  <br /></td></tr>
 <tr class="separator:a3c48b1eca409104a90e7a90b9b259b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b875a395fb567d6bd24c43ab77ff3e4" id="r_a4b875a395fb567d6bd24c43ab77ff3e4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#a32e7db4d9ec748ae4b6ea3b94e186292">Ptr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b875a395fb567d6bd24c43ab77ff3e4">createEx</a> (const std::string &amp;name) noexcept</td></tr>
+<tr class="memdesc:a4b875a395fb567d6bd24c43ab77ff3e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载一个外部库  <br /></td></tr>
+<tr class="separator:a4b875a395fb567d6bd24c43ab77ff3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635537144044ec5ea2a24709d2610b69" id="r_a635537144044ec5ea2a24709d2610b69"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635537144044ec5ea2a24709d2610b69">createWithPath</a> (const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;path) noexcept</td></tr>
 <tr class="memdesc:a635537144044ec5ea2a24709d2610b69"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载一个外部库  <br /></td></tr>
 <tr class="separator:a635537144044ec5ea2a24709d2610b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -305,6 +308,40 @@ Private 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a4b875a395fb567d6bd24c43ab77ff3e4" name="a4b875a395fb567d6bd24c43ab77ff3e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b875a395fb567d6bd24c43ab77ff3e4">&#9670;&#160;</a></span>createEx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#a32e7db4d9ec748ae4b6ea3b94e186292">Ptr</a> &gt; sese::system::LibraryObject::createEx </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>加载一个外部库 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>库名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
+
+</div>
+</div>
 <a id="a635537144044ec5ea2a24709d2610b69" name="a635537144044ec5ea2a24709d2610b69"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a635537144044ec5ea2a24709d2610b69">&#9670;&#160;</a></span>createWithPath()</h2>
 
@@ -404,8 +441,8 @@ Private 属性</h2></td></tr>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/system/<a class="el" href="_library_loader_8h_source.html">LibraryLoader.h</a></li>
-<li>sese/native/unix/system/<a class="el" href="unix_2system_2_library_loader_8cpp.html">LibraryLoader.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="win_2system_2_library_loader_8cpp.html">LibraryLoader.cpp</a></li>
+<li>sese/native/unix/system/<a class="el" href="native_2unix_2system_2_library_loader_8cpp.html">LibraryLoader.cpp</a></li>
+<li>sese/native/win/system/<a class="el" href="native_2win_2system_2_library_loader_8cpp.html">LibraryLoader.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -413,7 +450,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_library_object.html">LibraryObject</a></li>
-    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:39 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 2日 星期六 10:42:08 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -14,6 +14,7 @@ var searchData=
   ['updatepos_11',['updatePos',['../classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a42a6b9dfef1f46cb0136f2977fd5c51d',1,'sese::net::dns::DnsPackage::Index']]],
   ['url_12',['Url',['../classsese_1_1net_1_1http_1_1_url.html#a505374701082074bceb58b33c9fb3a34',1,'sese::net::http::Url::Url()=default'],['../classsese_1_1net_1_1http_1_1_url.html#adedb3aec97b18a00cbb144878f2c0ea9',1,'sese::net::http::Url::Url(const std::string &amp;url) noexcept']]],
   ['use_13',['use',['../classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed',1,'sese::system::IPCChannel::use()'],['../classsese_1_1system_1_1_shared_memory.html#af17d5de9adecaa8dc3a483631b7f8c74',1,'sese::system::SharedMemory::use()']]],
-  ['uuid_14',['Uuid',['../classsese_1_1_uuid.html#a1ab4700e21c6b4b328ee9e1201f538fb',1,'sese::Uuid::Uuid() noexcept=default'],['../classsese_1_1_uuid.html#aad70c09c829830d2ad386abbf82a93be',1,'sese::Uuid::Uuid(uint8_t self_id, uint64_t timestamp, uint8_t r=0) noexcept']]],
-  ['uuidbuilder_15',['UuidBuilder',['../classsese_1_1_uuid_builder.html#a9a70b0950458af973022f558c81e33bb',1,'sese::UuidBuilder']]]
+  ['useex_14',['useEx',['../classsese_1_1system_1_1_i_p_c_channel.html#a815de82488a3ddfa9b85ace907f2c3b3',1,'sese::system::IPCChannel::useEx()'],['../classsese_1_1system_1_1_shared_memory.html#afd8e133402d1aebdd1a4cc1b9195f2bc',1,'sese::system::SharedMemory::useEx()']]],
+  ['uuid_15',['Uuid',['../classsese_1_1_uuid.html#a1ab4700e21c6b4b328ee9e1201f538fb',1,'sese::Uuid::Uuid() noexcept=default'],['../classsese_1_1_uuid.html#aad70c09c829830d2ad386abbf82a93be',1,'sese::Uuid::Uuid(uint8_t self_id, uint64_t timestamp, uint8_t r=0) noexcept']]],
+  ['uuidbuilder_16',['UuidBuilder',['../classsese_1_1_uuid_builder.html#a9a70b0950458af973022f558c81e33bb',1,'sese::UuidBuilder']]]
 ];

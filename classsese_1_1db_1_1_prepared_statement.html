@@ -203,6 +203,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:aff8704df5f18c8689877bb96b95a0d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75a7fed952a3c61fbe612ec30187f357" id="r_a75a7fed952a3c61fbe612ec30187f357"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75a7fed952a3c61fbe612ec30187f357">getLastErrorMessage</a> () const noexcept=0</td></tr>
 <tr class="separator:a75a7fed952a3c61fbe612ec30187f357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addb2fc41fd91a4f937fa3301b15a5c73" id="r_addb2fc41fd91a4f937fa3301b15a5c73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_error_code.html">ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addb2fc41fd91a4f937fa3301b15a5c73">getErrorCode</a> () const</td></tr>
+<tr class="separator:addb2fc41fd91a4f937fa3301b15a5c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>预处理语句对象 </p>
@@ -399,6 +401,33 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
+<a id="addb2fc41fd91a4f937fa3301b15a5c73" name="addb2fc41fd91a4f937fa3301b15a5c73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addb2fc41fd91a4f937fa3301b15a5c73">&#9670;&#160;</a></span>getErrorCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> sese::db::PreparedStatement::getErrorCode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#aff8704df5f18c8689877bb96b95a0d0c">getLastError()</a> , 以及 <a class="el" href="#a75a7fed952a3c61fbe612ec30187f357">getLastErrorMessage()</a>.</p>
+
+</div>
+</div>
 <a id="aff8704df5f18c8689877bb96b95a0d0c" name="aff8704df5f18c8689877bb96b95a0d0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff8704df5f18c8689877bb96b95a0d0c">&#9670;&#160;</a></span>getLastError()</h2>
 
@@ -424,6 +453,8 @@ Public 成员函数</h2></td></tr>
 <p>获取实例对应驱动的错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
 
 <p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#ac2650909d6c1c7f3fc8d6bfadbf09bf8">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3a189f1b6fbda0a3bc4693f97c21d305">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a877a6137e73d7368e07c6e86c6da22f8">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#addb2fc41fd91a4f937fa3301b15a5c73">getErrorCode()</a>.</p>
 
 </div>
 </div>
@@ -452,6 +483,8 @@ Public 成员函数</h2></td></tr>
 <p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
 
 <p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a5e4387f8e4808006d6301ec8382f4812">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a7f9c83590c6b2da00e9d2e4cfd0cbf48">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab7b64869de0f9a5160956ea57cc70977">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="#addb2fc41fd91a4f937fa3301b15a5c73">getErrorCode()</a>.</p>
 
 </div>
 </div>
@@ -746,7 +779,7 @@ Public 成员函数</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a></li>
-    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:38 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 2日 星期六 10:42:08 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

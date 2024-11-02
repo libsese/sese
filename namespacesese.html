@@ -497,8 +497,8 @@ $(function(){initNavTree('namespacesese.html',''); initResizable(true); });
 <tr class="separator:af714b4f593478e52e031ec08942b991e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1833da64507c8e59f6799b93d2504ec6" id="r_a1833da64507c8e59f6799b93d2504ec6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1833da64507c8e59f6799b93d2504ec6">getErrorString</a> (int64_t error=errno)</td></tr>
 <tr class="separator:a1833da64507c8e59f6799b93d2504ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5e35a3f44b1c1dd95685d82185df166" id="r_ab5e35a3f44b1c1dd95685d82185df166"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5e35a3f44b1c1dd95685d82185df166">getErrorCode</a> ()</td></tr>
-<tr class="separator:ab5e35a3f44b1c1dd95685d82185df166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6a7d078baabdfdd1deb7881913d2c11" id="r_af6a7d078baabdfdd1deb7881913d2c11"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6a7d078baabdfdd1deb7881913d2c11">getErrorCode</a> ()</td></tr>
+<tr class="separator:af6a7d078baabdfdd1deb7881913d2c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa562f1f629706a4851b840247fa1b5a0" id="r_aa562f1f629706a4851b840247fa1b5a0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa562f1f629706a4851b840247fa1b5a0">streamMove</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> *out, <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a> *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, size_t size) noexcept</td></tr>
 <tr class="separator:aa562f1f629706a4851b840247fa1b5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a951f1886af83a7d610e57a8257b834" id="r_a0a951f1886af83a7d610e57a8257b834"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
@@ -1078,14 +1078,14 @@ template&lt;class T &gt; </div>
 
 </div>
 </div>
-<a id="ab5e35a3f44b1c1dd95685d82185df166" name="ab5e35a3f44b1c1dd95685d82185df166"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5e35a3f44b1c1dd95685d82185df166">&#9670;&#160;</a></span>getErrorCode()</h2>
+<a id="af6a7d078baabdfdd1deb7881913d2c11" name="af6a7d078baabdfdd1deb7881913d2c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a7d078baabdfdd1deb7881913d2c11">&#9670;&#160;</a></span>getErrorCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t sese::getErrorCode </td>
+          <td class="memname">int32_t sese::getErrorCode </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -1094,7 +1094,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>获取 error 代码 </p><dl class="section return"><dt>返回</dt><dd>error 代码 </dd></dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a72582fe2c9300abffd35635cf82e49c3">sese::io::FileStream::createEx()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a72582fe2c9300abffd35635cf82e49c3">sese::io::FileStream::createEx()</a> , 以及 <a class="el" href="classsese_1_1_result.html#ac3149ffa8b92ec39fa0aae64e70ba430">sese::Result&lt; T &gt;::fromLastError()</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1120,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>错误描述 </dd></dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a72582fe2c9300abffd35635cf82e49c3">sese::io::FileStream::createEx()</a> , 以及 <a class="el" href="namespacesese_1_1net.html#ab63cd37a34fddd659bacfc37796de374">sese::net::getNetworkErrorString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a72582fe2c9300abffd35635cf82e49c3">sese::io::FileStream::createEx()</a>, <a class="el" href="classsese_1_1_result.html#ac3149ffa8b92ec39fa0aae64e70ba430">sese::Result&lt; T &gt;::fromLastError()</a> , 以及 <a class="el" href="namespacesese_1_1net.html#ab63cd37a34fddd659bacfc37796de374">sese::net::getNetworkErrorString()</a>.</p>
 
 </div>
 </div>
@@ -1790,7 +1790,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li>
-    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:37 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 2日 星期六 10:42:07 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -310,7 +310,7 @@ template&lt;typename T &gt; </div>
 <p>获取网络相关 error 代码 </p>
 <dl class="section return"><dt>返回</dt><dd>error 代码 </dd></dl>
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_socket.html#a00aeebfbe5e71a124e00769f24f67d9e">sese::net::Socket::connect()</a>, <a class="el" href="classsese_1_1security_1_1_security_socket.html#a889f7e6f3952506bb42b5b87cfe99fb8">sese::security::SecuritySocket::connect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">sese::_windows::iocp::v1::NativeIOCPServer::eventThreadProc()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">sese::_windows::iocp::v1::NativeIOCPServer::postConnect()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">sese::iocp::v1::IOCPServer::postConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad776a1800f79300e758d2d9f0e10a7eb">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_socket.html#a00aeebfbe5e71a124e00769f24f67d9e">sese::net::Socket::connect()</a>, <a class="el" href="classsese_1_1security_1_1_security_socket.html#a889f7e6f3952506bb42b5b87cfe99fb8">sese::security::SecuritySocket::connect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">sese::_windows::iocp::v1::NativeIOCPServer::eventThreadProc()</a>, <a class="el" href="classsese_1_1_result.html#a0f2ae55dd895ab458a80b4b9453c243a">sese::Result&lt; T &gt;::fromLastNetworkError()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">sese::_windows::iocp::v1::NativeIOCPServer::postConnect()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">sese::iocp::v1::IOCPServer::postConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad776a1800f79300e758d2d9f0e10a7eb">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
 
 </div>
 </div>
@@ -347,6 +347,8 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>返回</dt><dd>错误描述 </dd></dl>
 
 <p class="reference">引用了 <a class="el" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">sese::getErrorString()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_result.html#a0f2ae55dd895ab458a80b4b9453c243a">sese::Result&lt; T &gt;::fromLastNetworkError()</a>.</p>
 
 </div>
 </div>
@@ -392,7 +394,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li>
-    <li class="footer">生成于 2024年 十一月 1日 星期五 16:52:38 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 2日 星期六 10:42:08 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

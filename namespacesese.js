@@ -115,7 +115,7 @@ var namespacesese =
     [ "findFirstAt", "namespacesese.html#a7c52b4c131447df3e4b83a9a7451ee97", null ],
     [ "floating2StringLength", "namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c", null ],
     [ "getClassName", "namespacesese.html#a7f6ec509913dbb14930e43b251141591", null ],
-    [ "getErrorCode", "namespacesese.html#ab5e35a3f44b1c1dd95685d82185df166", null ],
+    [ "getErrorCode", "namespacesese.html#af6a7d078baabdfdd1deb7881913d2c11", null ],
     [ "getErrorString", "namespacesese.html#a1833da64507c8e59f6799b93d2504ec6", null ],
     [ "getLevelString", "namespacesese.html#aa1d206a5404e3a285ef301d61df25860", null ],
     [ "getLevelString", "namespacesese.html#afe8ef8abc4b5d8b2778fc2ae3fdc0ab2", null ],

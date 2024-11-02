@@ -6,6 +6,7 @@ var classsese_1_1db_1_1_prepared_statement =
     [ "executeUpdate", "classsese_1_1db_1_1_prepared_statement.html#a9694d9a5743da55015a6581e8ead04dd", null ],
     [ "getColumnSize", "classsese_1_1db_1_1_prepared_statement.html#a1883a70b666418e29fdfab12b76b86bb", null ],
     [ "getColumnType", "classsese_1_1db_1_1_prepared_statement.html#a01f6496e4c85855b83491c67acdb4834", null ],
+    [ "getErrorCode", "classsese_1_1db_1_1_prepared_statement.html#addb2fc41fd91a4f937fa3301b15a5c73", null ],
     [ "getLastError", "classsese_1_1db_1_1_prepared_statement.html#aff8704df5f18c8689877bb96b95a0d0c", null ],
     [ "getLastErrorMessage", "classsese_1_1db_1_1_prepared_statement.html#a75a7fed952a3c61fbe612ec30187f357", null ],
     [ "setDateTime", "classsese_1_1db_1_1_prepared_statement.html#a9c9370a35583b2a7133b0e5e6e8b1985", null ],
