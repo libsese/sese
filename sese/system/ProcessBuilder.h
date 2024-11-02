@@ -50,6 +50,13 @@ public:
      */
     Process::Ptr create();
 
+    /**
+     * @brief 构建进程
+     * @see sese::system::Process::createEx()
+     * @return Result<Process::Ptr>
+     */
+    Result<Process::Ptr> createEx();
+
 private:
     text::StringBuilder builder;
 };

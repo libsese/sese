@@ -8,6 +8,7 @@
 #pragma once
 
 #include <sese/Config.h>
+#include <sese/util/Result.h>
 #ifdef WIN32
 #else
 #include <sys/shm.h>
@@ -16,7 +17,7 @@
 namespace sese::system {
 
 /// \brief 共享内存类
-class  SharedMemory final {
+class SharedMemory final {
 public:
     using Ptr = std::unique_ptr<SharedMemory>;
 
@@ -26,11 +27,17 @@ public:
     /// \return 共享内存对象指针
     /// \retval nullptr 创建失败
     static SharedMemory::Ptr create(const char *name, size_t size) noexcept;
+
+    static Result<Ptr> createEx(const char *name, size_t size) noexcept;
+
     /// 使用一块现有的共享内存
     /// \param name 共享内存名称
     /// \return 共享内存对象指针
     /// \retval nullptr 获取失败
     static SharedMemory::Ptr use(const char *name) noexcept;
+
+    static Result<Ptr> useEx(const char *name) noexcept;
+
     /// 析构函数
     ~SharedMemory() noexcept;
     /// 获取共享内存实际地址

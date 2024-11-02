@@ -111,7 +111,7 @@ std::string getErrorString(int64_t error = errno);
  * 获取 error 代码
  * @return error 代码
  */
-int64_t getErrorCode();
+int32_t  getErrorCode();
 
 /// 移动流数据
 /// \param out 输出流

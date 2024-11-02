@@ -1,8 +1,3 @@
-/// \file Service.h
-/// \brief 服务接口
-/// \author kaoru
-/// \date 2024年03月4日
-
 // Copyright 2024 libsese
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,32 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "LibraryLoader.h"
+#include "sese/util/Util.h"
 
-#include <memory>
-#include <string>
-
-#include <sese/util/ErrorCode.h>
-
-namespace sese::service {
-
-/// @brief 服务接口类
-class Service {
-public:
-    using Ptr = std::unique_ptr<Service>;
-
-    Service() = default;
-
-    virtual ~Service() = default;
-
-    virtual bool startup() = 0;
-
-    virtual bool shutdown() = 0;
-
-    virtual int getLastError() = 0;
-
-    virtual std::string getLastErrorMessage() = 0;
-
-    ErrorCode getErrorCode();
-};
-} // namespace sese::service
+sese::Result<sese::system::LibraryObject::Ptr> sese::sys::LibraryObject::createEx(const std::string &name) noexcept {
+    if (auto result = create(name)) {
+        return result;
+    }
+    return {getErrorCode(), getErrorString()};
+}

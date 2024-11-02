@@ -56,6 +56,13 @@ IPCChannel::Ptr IPCChannel::create(const std::string &name, size_t buffer_size) 
     return ipc;
 }
 
+sese::Result<IPCChannel::Ptr> IPCChannel::createEx(const std::string &name, size_t buffer_size) {
+    if (auto result = create(name, buffer_size)) {
+        return std::move(result);
+    }
+    return Result<Ptr>::fromLastError();
+}
+
 IPCChannel::Ptr IPCChannel::use(const std::string &name) {
     auto sem_name = name + "00Semaphore";
     auto mem_name = name + "00Memory";
@@ -79,6 +86,13 @@ IPCChannel::Ptr IPCChannel::use(const std::string &name) {
     ipc->semaphore = std::move(sem);
     ipc->shared_memory = std::move(mem);
     return ipc;
+}
+
+sese::Result<IPCChannel::Ptr> IPCChannel::useEx(const std::string &name) {
+    if (auto result = use(name)) {
+        return std::move(result);
+    }
+    return Result<Ptr>::fromLastError();
 }
 
 #define HEADER_SIZE (sizeof(MessageIterator) - sizeof(uint32_t) * 2)

@@ -87,7 +87,7 @@ std::string sese::getErrorString(int64_t error) {
 #endif
 }
 
-int64_t sese::getErrorCode() {
+int32_t sese::getErrorCode() {
 #ifdef _WIN32
     return GetLastError();
 #else

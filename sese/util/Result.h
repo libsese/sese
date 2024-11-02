@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include "sese/net/Socket.h"
+#include "Util.h"
 #include "ErrorCode.h"
 
 #include <variant>
@@ -37,8 +39,17 @@ public:
     Result(ErrorCode err) : err_result(err) {} // NOLINT
 
     /// @brief 构造函数
+    /// @param code 错误代码
+    /// @param msg 错误描述
+    Result(int32_t code, const std::string &msg) : err_result(ErrorCode{code, msg}) {}
+
+    /// @brief 构造函数
     /// @param result 结果
     Result(T result) : err_result(std::forward<T>(result)) {} // NOLINT
+
+    static Result fromLastError();
+
+    static Result fromLastNetworkError();
 
     /// @brief 判断是否有错误
     /// @return 是否有错误
@@ -55,10 +66,27 @@ public:
 
     /// @brief 获取结果
     /// @return 结果
-    T get() const noexcept {
+    T &get() noexcept {
+        assert(std::holds_alternative<T>(err_result));
+        return std::get<T>(err_result);
+    }
+
+    /// @brief 获取结果
+    /// @return 结果
+    const T &get() const noexcept {
         assert(std::holds_alternative<T>(err_result));
         return std::get<T>(err_result);
     }
 };
+
+template<class T>
+Result<T> Result<T>::fromLastError() {
+    return {getErrorCode(), getErrorString()};
+}
+
+template<class T>
+Result<T> Result<T>::fromLastNetworkError() {
+    return {net::getNetworkError(), net::getNetworkErrorString()};
+}
 
 } // namespace sese

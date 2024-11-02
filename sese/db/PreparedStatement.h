@@ -8,6 +8,7 @@
 #include <sese/db/ResultSet.h>
 #include <sese/db/Metadata.h>
 #include <sese/text/DateTimeFormatter.h>
+#include <sese/util/ErrorCode.h>
 
 namespace sese::db {
 
@@ -79,5 +80,9 @@ namespace sese::db {
         /// 获取实例对应驱动的错误信息，需要判空
         /// \return 错误信息
         [[nodiscard]] virtual const char *getLastErrorMessage() const noexcept = 0;
+
+        ErrorCode getErrorCode() const {
+            return {getLastError(), getLastErrorMessage()};
+        }
     };
 }// namespace sese::db

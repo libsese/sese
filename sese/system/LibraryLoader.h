@@ -9,6 +9,7 @@
 
 #include "sese/Config.h"
 #include "sese/system/Path.h"
+#include "sese/util/Result.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4624)
@@ -33,6 +34,13 @@ public:
      * @return 库对象，打开失败返回 nullptr
      */
     static LibraryObject::Ptr create(const std::string &name) noexcept;
+
+    /**
+     * @brief 加载一个外部库
+     * @param name 库名称
+     * @return 结果
+     */
+    static Result<Ptr> createEx(const std::string &name) noexcept;
 
     /**
      * @brief 加载一个外部库

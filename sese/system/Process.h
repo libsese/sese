@@ -6,12 +6,13 @@
 
 #pragma once
 
-#include "sese/Config.h"
+#include "sese/Util.h"
+#include "sese/util/Result.h"
 
 namespace sese::system {
 
 /// 进程类
-class  Process {
+class Process {
 public:
     using Ptr = std::unique_ptr<Process>;
 
@@ -19,6 +20,9 @@ public:
     /// \param command 命令
     /// \retval nullptr 创建失败
     static Process::Ptr create(const char *command) noexcept;
+
+
+    static Result<Process::Ptr> createEx(const char *command) noexcept;
 
     /// 获取当前进程 ID
     /// \return 当前进程 ID

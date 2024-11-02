@@ -2,9 +2,12 @@
 /// \author kaoru
 /// \version 0.1
 /// \brief 数据库驱动实例类
+
 #pragma once
+
 #include <sese/db/Config.h>
 #include <sese/db/PreparedStatement.h>
+#include <sese/util/ErrorCode.h>
 
 namespace sese::db {
 
@@ -64,7 +67,11 @@ namespace sese::db {
         [[nodiscard]] virtual bool getInsertId(int64_t &id) const noexcept = 0;
 
         /// 事务开启
-        /// \return false 开始失败
+        /// \retval false 开始失败
         [[nodiscard]] virtual bool begin() noexcept = 0;
+
+        ErrorCode getErrorCode() const {
+            return {getLastError(), getLastErrorMessage()};
+        }
     };
 }// namespace sese::db

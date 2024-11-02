@@ -35,3 +35,12 @@ TEST(TestProcess, BUILDER) {
                            .create();
     EXPECT_EQ(0, process->wait());
 }
+
+TEST(TestProcess, RESULT) {
+    auto result = sese::sys::Process::createEx("undef.exe");
+    if (result) {
+        SESE_ERROR("{}", result.err().message());
+        return;
+    }
+    auto &process = result.get();
+}
