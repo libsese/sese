@@ -34,10 +34,10 @@ int main(int argc, char **argv) {
 }
 ```
 
-## Exception
+## sese::Exception
 
 这是 `C++` 中标准的错误处理方式，通过 try/catch 的方式捕获异常并且处理异常。
-**虽然框架API不会抛出异常**，但在此基础上，框架提供了功能更多的 `std::Expection`。
+**虽然框架API不会抛出异常**，但在此基础上，框架提供了功能更多的 `sese::Expection`。
 
 ```c++
 #include <sese/Init.h>
