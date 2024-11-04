@@ -1,5 +1,7 @@
 var NAVTREEINDEX12 =
 {
+"classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80":[8,0,0,3,1,2],
+"classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c":[7,0,0,3,1,4],
 "classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c":[8,0,0,3,1,4],
 "classsese_1_1db_1_1_driver_manager.html":[7,0,0,3,2],
 "classsese_1_1db_1_1_driver_manager.html":[8,0,0,3,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX12 =
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0489a668f87a6e7423344f5720089979":[8,0,0,3,0,5,14],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec":[7,0,0,3,0,5,19],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec":[8,0,0,3,0,5,19],
-"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922":[7,0,0,3,0,5,10],
-"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922":[8,0,0,3,0,5,10],
-"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f":[7,0,0,3,0,5,22]
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922":[7,0,0,3,0,5,10]
 };

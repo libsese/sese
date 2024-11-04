@@ -1,5 +1,7 @@
 var NAVTREEINDEX32 =
 {
+"structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a9cf2bb091d224e8cc468d05314525c2f":[8,0,0,6,1,0,2,36],
+"structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a9e0e33c36a73577939bcd0492e397c40":[7,0,0,6,1,0,2,1],
 "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a9e0e33c36a73577939bcd0492e397c40":[8,0,0,6,1,0,2,1],
 "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ab4d1095bfaa6c5fa5cb1f9552fae5c6c":[7,0,0,6,1,0,2,57],
 "structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ab4d1095bfaa6c5fa5cb1f9552fae5c6c":[8,0,0,6,1,0,2,57],
@@ -247,7 +249,5 @@ var NAVTREEINDEX32 =
 "structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html":[8,0,0,9,0,0,3,0],
 "structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html#a3081f8b13575a4b9ee3b52a8fcc5a536":[7,0,0,9,0,0,3,0,2],
 "structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html#a3081f8b13575a4b9ee3b52a8fcc5a536":[8,0,0,9,0,0,3,0,2],
-"structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html#abc5b8d673be744f4cab054345b80f6db":[7,0,0,9,0,0,3,0,0],
-"structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html#abc5b8d673be744f4cab054345b80f6db":[8,0,0,9,0,0,3,0,0],
-"structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html#af2449ed9740a6ffff4c16cb88dbfc404":[7,0,0,9,0,0,3,0,1]
+"structsese_1_1net_1_1dns_1_1_dns_package_1_1_index_1_1_compress_index.html#abc5b8d673be744f4cab054345b80f6db":[7,0,0,9,0,0,3,0,0]
 };

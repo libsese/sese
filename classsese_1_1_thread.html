@@ -175,12 +175,14 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:ae9146439e2a580926ed3e6647bc6b712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aece53e61faeb5cc6f0b79826f9f097f0" id="r_aece53e61faeb5cc6f0b79826f9f097f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aece53e61faeb5cc6f0b79826f9f097f0">Thread</a> (<a class="el" href="classsese_1_1_thread.html">Thread</a> &amp;thread)</td></tr>
 <tr class="separator:aece53e61faeb5cc6f0b79826f9f097f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59219703ab2a15f57118c21ee4188b9a" id="r_a59219703ab2a15f57118c21ee4188b9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59219703ab2a15f57118c21ee4188b9a">start</a> ()</td></tr>
-<tr class="separator:a59219703ab2a15f57118c21ee4188b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e8b20c33b261f87275bcb44c54a56a0" id="r_a6e8b20c33b261f87275bcb44c54a56a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e8b20c33b261f87275bcb44c54a56a0">join</a> ()</td></tr>
-<tr class="separator:a6e8b20c33b261f87275bcb44c54a56a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85a8c1637dc7a2d1a0838003b4d9f90e" id="r_a85a8c1637dc7a2d1a0838003b4d9f90e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85a8c1637dc7a2d1a0838003b4d9f90e">detach</a> ()</td></tr>
-<tr class="separator:a85a8c1637dc7a2d1a0838003b4d9f90e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b2710c090502966f89e97b0bd202a4" id="r_a09b2710c090502966f89e97b0bd202a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09b2710c090502966f89e97b0bd202a4">~Thread</a> () override</td></tr>
+<tr class="separator:a09b2710c090502966f89e97b0bd202a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f9a610ee763568be035cc4a00e87e7" id="r_a43f9a610ee763568be035cc4a00e87e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43f9a610ee763568be035cc4a00e87e7">start</a> () const</td></tr>
+<tr class="separator:a43f9a610ee763568be035cc4a00e87e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebd4230a8ab7bb015e73e35f58fe323a" id="r_aebd4230a8ab7bb015e73e35f58fe323a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebd4230a8ab7bb015e73e35f58fe323a">join</a> () const</td></tr>
+<tr class="separator:aebd4230a8ab7bb015e73e35f58fe323a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2c1bf18e1bd7c6f7198f33d2c6f332" id="r_a3a2c1bf18e1bd7c6f7198f33d2c6f332"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a2c1bf18e1bd7c6f7198f33d2c6f332">detach</a> () const</td></tr>
+<tr class="separator:a3a2c1bf18e1bd7c6f7198f33d2c6f332"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ca139147e828c91f80ad3e86d88bc21" id="r_a5ca139147e828c91f80ad3e86d88bc21"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ca139147e828c91f80ad3e86d88bc21">joinable</a> () const</td></tr>
 <tr class="separator:a5ca139147e828c91f80ad3e86d88bc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97d233332b46c4685bd23726214110b6" id="r_a97d233332b46c4685bd23726214110b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97d233332b46c4685bd23726214110b6">getTid</a> () const noexcept</td></tr>
@@ -292,9 +294,36 @@ Private 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a09b2710c090502966f89e97b0bd202a4" name="a09b2710c090502966f89e97b0bd202a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09b2710c090502966f89e97b0bd202a4">&#9670;&#160;</a></span>~Thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::Thread::~Thread </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="#ad6400c148d585d10d2aaec579a9eda7f">data</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a85a8c1637dc7a2d1a0838003b4d9f90e" name="a85a8c1637dc7a2d1a0838003b4d9f90e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85a8c1637dc7a2d1a0838003b4d9f90e">&#9670;&#160;</a></span>detach()</h2>
+<a id="a3a2c1bf18e1bd7c6f7198f33d2c6f332" name="a3a2c1bf18e1bd7c6f7198f33d2c6f332"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2c1bf18e1bd7c6f7198f33d2c6f332">&#9670;&#160;</a></span>detach()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,7 +332,7 @@ Private 属性</h2></td></tr>
           <td class="memname">void sese::Thread::detach </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -477,8 +506,8 @@ Private 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a6e8b20c33b261f87275bcb44c54a56a0" name="a6e8b20c33b261f87275bcb44c54a56a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e8b20c33b261f87275bcb44c54a56a0">&#9670;&#160;</a></span>join()</h2>
+<a id="aebd4230a8ab7bb015e73e35f58fe323a" name="aebd4230a8ab7bb015e73e35f58fe323a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebd4230a8ab7bb015e73e35f58fe323a">&#9670;&#160;</a></span>join()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -487,7 +516,7 @@ Private 属性</h2></td></tr>
           <td class="memname">void sese::Thread::join </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -550,7 +579,7 @@ Private 属性</h2></td></tr>
 
 <p class="reference">引用了 <a class="el" href="namespacesese.html#a188c7e63df4af0f87d26afe95591f4a4">sese::current_data</a>, <a class="el" href="#ad6400c148d585d10d2aaec579a9eda7f">data</a>, <a class="el" href="structsese_1_1_thread_1_1_runtime_data.html#a731358316e082dbcda11e9c805e98f36">sese::Thread::RuntimeData::function</a>, <a class="el" href="#a97d233332b46c4685bd23726214110b6">getTid()</a> , 以及 <a class="el" href="structsese_1_1_thread_1_1_runtime_data.html#a18380541e22923460703a902203fd2a5">sese::Thread::RuntimeData::id</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="#a59219703ab2a15f57118c21ee4188b9a">start()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a43f9a610ee763568be035cc4a00e87e7">start()</a>.</p>
 
 </div>
 </div>
@@ -583,8 +612,8 @@ Private 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a59219703ab2a15f57118c21ee4188b9a" name="a59219703ab2a15f57118c21ee4188b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59219703ab2a15f57118c21ee4188b9a">&#9670;&#160;</a></span>start()</h2>
+<a id="a43f9a610ee763568be035cc4a00e87e7" name="a43f9a610ee763568be035cc4a00e87e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43f9a610ee763568be035cc4a00e87e7">&#9670;&#160;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -593,7 +622,7 @@ Private 属性</h2></td></tr>
           <td class="memname">void sese::Thread::start </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -623,7 +652,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="#a85a8c1637dc7a2d1a0838003b4d9f90e">detach()</a>, <a class="el" href="#a6e8b20c33b261f87275bcb44c54a56a0">join()</a>, <a class="el" href="#a5ca139147e828c91f80ad3e86d88bc21">joinable()</a>, <a class="el" href="#a8836d5c3e7895a56b59eb0f3584fb6c0">run()</a>, <a class="el" href="#a59219703ab2a15f57118c21ee4188b9a">start()</a>, <a class="el" href="#ae9146439e2a580926ed3e6647bc6b712">Thread()</a> , 以及 <a class="el" href="#aece53e61faeb5cc6f0b79826f9f097f0">Thread()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="#a3a2c1bf18e1bd7c6f7198f33d2c6f332">detach()</a>, <a class="el" href="#aebd4230a8ab7bb015e73e35f58fe323a">join()</a>, <a class="el" href="#a5ca139147e828c91f80ad3e86d88bc21">joinable()</a>, <a class="el" href="#a8836d5c3e7895a56b59eb0f3584fb6c0">run()</a>, <a class="el" href="#a43f9a610ee763568be035cc4a00e87e7">start()</a>, <a class="el" href="#ae9146439e2a580926ed3e6647bc6b712">Thread()</a>, <a class="el" href="#aece53e61faeb5cc6f0b79826f9f097f0">Thread()</a> , 以及 <a class="el" href="#a09b2710c090502966f89e97b0bd202a4">~Thread()</a>.</p>
 
 </div>
 </div>
@@ -661,7 +690,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_thread.html">Thread</a></li>
-    <li class="footer">生成于 2024年 十一月 4日 星期一 08:44:45 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 4日 星期一 16:03:11 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
