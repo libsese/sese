@@ -1,7 +1,6 @@
 #include <openssl/evp.h>
 #include <openssl/x509.h>
-#define SESE_C_LIKE_FORMAT
-
+#include <openssl/err.h>
 #include <openssl/ssl.h>
 
 #include <sese/security/SSLContext.h>
@@ -83,4 +82,9 @@ std::unique_ptr<SSLContext> SSLContext::copy() const noexcept {
     auto ssl_context = MAKE_UNIQUE_PRIVATE(SSLContext);
     ssl_context->context = new_ctx;
     return std::move(ssl_context);
+}
+
+sese::ErrorCode SSLContext::getErrorCode() noexcept {
+    auto code = ERR_get_error();
+    return ErrorCode(static_cast<int32_t>(code), ERR_error_string(code, nullptr));
 }

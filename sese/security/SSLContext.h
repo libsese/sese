@@ -7,6 +7,7 @@
 #pragma once
 
 #include <sese/security/SecuritySocket.h>
+#include <sese/util/ErrorCode.h>
 
 namespace sese::security {
 
@@ -47,6 +48,8 @@ public:
     /// 深拷贝当前上下文，包括证书和私钥(必须存在)，生命周期独立
     /// @return SSL 上下文
     std::unique_ptr<SSLContext> copy() const noexcept;
+
+    static ErrorCode getErrorCode()  noexcept;
 
 private:
     SSLContext() = default;

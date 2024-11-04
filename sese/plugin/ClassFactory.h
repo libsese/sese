@@ -8,6 +8,7 @@
 #pragma once
 
 #include "sese/plugin/BaseClass.h"
+#include "sese/util/Result.h"
 
 #include <map>
 #include <string>
@@ -38,6 +39,8 @@ public:
     /// 创建某个已注册类的实例
     /// \param id 类注册名
     BaseClass::Ptr createClassWithName(const std::string &id) noexcept;
+
+    Result<BaseClass::Ptr> createClassWithNameEx(const std::string &id) noexcept;
 
     /// 获取已注册类的类型信息
     /// \return 类信息映射表

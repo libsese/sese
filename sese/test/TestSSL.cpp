@@ -11,13 +11,27 @@
 using namespace std::chrono_literals;
 
 TEST(TestSSL, Auth) {
-    auto context = sese::security::SSLContextBuilder::SSL4Server();
-    ASSERT_NE(context, nullptr);
-    ASSERT_NE(context->getContext(), nullptr);
+    {
+        auto context = sese::security::SSLContextBuilder::SSL4Server();
+        ASSERT_NE(context, nullptr);
+        ASSERT_NE(context->getContext(), nullptr);
 
-    ASSERT_TRUE(context->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt"));
-    ASSERT_TRUE(context->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem"));
-    ASSERT_TRUE(context->authPrivateKey());
+        EXPECT_TRUE(context->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt"));
+        EXPECT_TRUE(context->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem"));
+        ASSERT_TRUE(context->authPrivateKey());
+    }
+    {
+        auto context = sese::security::SSLContextBuilder::SSL4Server();
+        ASSERT_NE(context, nullptr);
+        ASSERT_NE(context->getContext(), nullptr);
+
+        EXPECT_TRUE(context->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt"));
+        /// 如果密钥和证书不匹配，在导入密钥时就会发生错误
+        EXPECT_FALSE(context->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key-failed.pem"));
+        ASSERT_FALSE(context->authPrivateKey());
+        auto error = context->getErrorCode();
+        SESE_ERROR("%s", error.message().c_str());
+    }
 }
 
 TEST(TestSSL, Client) {
@@ -55,20 +69,20 @@ TEST(TestSSL, Server) {
     server.listen(SERVER_MAX_CONNECTION);
 
     auto th = sese::Thread(
-            [&server] {
-                SESE_INFO("waiting accept");
-                auto socket = server.accept();
-                if (socket == nullptr) {
-                    SESE_ERROR("failed to accept");
-                    FAIL();
-                }
-                SESE_INFO("accepted");
-                constexpr auto s = "Hello, Client";
-                socket->write(s, strlen(s));
-                socket->close();
-                SESE_INFO("close");
-            },
-            "SSLServer"
+        [&server] {
+            SESE_INFO("waiting accept");
+            auto socket = server.accept();
+            if (socket == nullptr) {
+                SESE_ERROR("failed to accept");
+                FAIL();
+            }
+            SESE_INFO("accepted");
+            constexpr auto s = "Hello, Client";
+            socket->write(s, strlen(s));
+            socket->close();
+            SESE_INFO("close");
+        },
+        "SSLServer"
     );
     th.start();
 

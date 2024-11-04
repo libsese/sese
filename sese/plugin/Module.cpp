@@ -37,6 +37,13 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
 #undef STR2
 #undef STR1
 
+sese::Result<sese::plugin::Module::Ptr> sese::plugin::Module::openEx(const std::string &path) noexcept {
+    if (auto result = open(path)) {
+        return result;
+    }
+    return Result<Ptr>::fromLastError();
+}
+
 sese::plugin::Module::Ptr sese::plugin::Module::openWithPath(const system::Path &path) noexcept {
     return sese::plugin::Module::open(path.getNativePath());
 }
