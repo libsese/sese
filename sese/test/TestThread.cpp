@@ -91,6 +91,18 @@ TEST(TestThread, AutoShutdown) {
     auto pool = sese::ThreadPool("nameless", 0);
 }
 
+TEST(TestThread, AutoJoin) {
+    int i = 0;
+    {
+        sese::Thread th([&i]() {
+            sese::sleep(2s);
+            i = 114514;
+        });
+        th.start();
+    }
+    ASSERT_EQ(i, 114514);
+}
+
 TEST(TestThread, MainThread) {
     sese::record::LogHelper::i("Message from main thread.");
     auto th1 = sese::Thread([] { sese::record::LogHelper::i("Message from MyThread."); }, "MyThread");
