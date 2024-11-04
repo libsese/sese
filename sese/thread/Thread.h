@@ -45,7 +45,7 @@ namespace sese {
 /// 内建线程类的初始化任务
 class ThreadInitiateTask final : public InitiateTask {
 public:
-    ThreadInitiateTask() : InitiateTask(__FUNCTION__){};
+    ThreadInitiateTask() : InitiateTask(__FUNCTION__) {};
 
     int32_t init() noexcept override;
 
@@ -63,10 +63,11 @@ public:
 
     explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
     Thread(Thread &thread);
+    ~Thread() override;
 
-    void start();
-    void join();
-    void detach();
+    void start() const;
+    void join() const;
+    void detach() const;
     [[nodiscard]] bool joinable() const;
 
     static void run(std::shared_ptr<RuntimeData> data);

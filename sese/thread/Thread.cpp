@@ -60,7 +60,9 @@ tid_t Thread::getCurrentThreadId() noexcept {
 
 const char *Thread::getCurrentThreadName() noexcept {
     auto tid = ::getTid();
-    if (tid == Thread::main_id) return THREAD_MAIN_NAME;
+    if (tid == Thread::main_id) {
+        return THREAD_MAIN_NAME;
+    }
     return current_data ? current_data->name.c_str() : THREAD_DEFAULT_NAME;
 }
 
@@ -88,11 +90,19 @@ Thread::Thread(Thread &thread) {
     this->data = std::move(thread.data); // GCOVR_EXCL_LINE
 }
 
-void Thread::start() {
-    this->data->th = std::thread([this] { run(this->data); }); // GCOVR_EXCL_LINE
+Thread::~Thread() {
+    if (this->data->th.joinable()) {
+        this->data->th.join();
+    }
 }
 
-void Thread::join() {
+void Thread::start() const {
+    // clang-format off
+    this->data->th = std::thread([this] { run(this->data); }); // GCOVR_EXCL_LINE
+    // clang-format on
+}
+
+void Thread::join() const {
     this->data->th.join();
 }
 
@@ -107,7 +117,7 @@ bool Thread::joinable() const {
     return this->data->th.joinable();
 }
 
-void Thread::detach() {
+void Thread::detach() const {
     this->data->th.detach();
 }
 
