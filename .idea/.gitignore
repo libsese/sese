@@ -1,6 +1,7 @@
 /fileTemplates
 
 *.xml
+*.iml
 
 !/copyright/libsese_Default_Copyright.xml
 !/copyright/profiles_settings.xml
