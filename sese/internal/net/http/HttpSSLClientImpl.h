@@ -1,8 +1,3 @@
-/// \file HttpSSLClientImpl.h
-/// \brief 基于ASIO实现的HTTP/1.1客户端
-/// \author kaoru
-/// \date 2024年04月10日
-
 // Copyright 2024 libsese
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +11,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+/// \file HttpSSLClientImpl.h
+/// \brief 基于ASIO实现的HTTP/1.1客户端
+/// \author kaoru
+/// \date 2024年04月10日
 
 #pragma once
 
