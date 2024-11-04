@@ -115,12 +115,10 @@ jobs:
           build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
 
       - name: Test report
-        uses: dorny/test-reporter@v1.9.1
-        if: success() || failure()
-        with:
-          name: JEST Tests on Ubuntu
-          path: build/test_report.xml
-          reporter: jest-junit
+        if: always()
+        run: |
+          npx junit-to-ctrf ./build/test_report.xml -o ./build/ctrf-report.json
+          npx github-actions-ctrf ./build/ctrf-report.json
 
       - name: Coverage
         working-directory: ${{ github.workspace }}
