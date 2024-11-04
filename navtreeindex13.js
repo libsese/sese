@@ -1,6 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f":[7,0,0,3,0,5,22],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f":[8,0,0,3,0,5,22],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3433bea522dabff795487290cebae6af":[7,0,0,3,0,5,11],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3433bea522dabff795487290cebae6af":[8,0,0,3,0,5,11],
@@ -249,5 +248,6 @@ var NAVTREEINDEX13 =
 "classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2":[7,0,0,4,2,1],
 "classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2":[8,0,0,4,2,1],
 "classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4":[7,0,0,4,2,6],
-"classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4":[8,0,0,4,2,6]
+"classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4":[8,0,0,4,2,6],
+"classsese_1_1event_1_1_epoll_event.html":[7,0,0,4,3]
 };

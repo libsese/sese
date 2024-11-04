@@ -135,26 +135,39 @@ $(function(){initNavTree('_base_event_8h_source.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">BaseEvent.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_base_event_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">    9</a></span><span class="preprocessor">#define EVENT_NULL 0x0u</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">   10</a></span><span class="preprocessor">#define EVENT_READ 0x1u</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">   11</a></span><span class="preprocessor">#define EVENT_WRITE 0x2u</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">   12</a></span><span class="preprocessor">#define EVENT_ERROR 0x4u</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacesese_1_1event.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1event.html">sese::event</a> {</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html">   16</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">BaseEvent</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#a87392d84d67b3dcb100d6212a124e6b1">   17</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="structsese_1_1event_1_1_base_event.html#a87392d84d67b3dcb100d6212a124e6b1">~BaseEvent</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">   19</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">fd</a>{0};</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">   20</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a>{<a class="code hl_define" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>};</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">   21</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a>{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+<a href="_base_event_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2024 libsese</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//    http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// limitations under the License.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">   23</a></span><span class="preprocessor">#define EVENT_NULL 0x0u</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">   24</a></span><span class="preprocessor">#define EVENT_READ 0x1u</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">   25</a></span><span class="preprocessor">#define EVENT_WRITE 0x2u</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">   26</a></span><span class="preprocessor">#define EVENT_ERROR 0x4u</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespacesese_1_1event.html">   28</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1event.html">sese::event</a> {</div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html">   30</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">BaseEvent</a> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#a87392d84d67b3dcb100d6212a124e6b1">   31</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="structsese_1_1event_1_1_base_event.html#a87392d84d67b3dcb100d6212a124e6b1">~BaseEvent</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">   33</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">fd</a>{0};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">   34</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a>{<a class="code hl_define" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">   35</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a>{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>} <span class="comment">// namespace sese::event</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <span class="comment">// namespace sese::event</span></div>
 </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -162,7 +175,7 @@ $(function(){initNavTree('_base_event_8h_source.html',''); initResizable(true); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_7c286eea3cfc6a3857c5e9d8ef125036.html">event</a></li><li class="navelem"><a class="el" href="_base_event_8h.html">BaseEvent.h</a></li>
-    <li class="footer">生成于 2024年 十一月 2日 星期六 15:46:41 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 4日 星期一 08:44:43 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

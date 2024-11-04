@@ -8,6 +8,7 @@ var classsese_1_1security_1_1_s_s_l_context =
     [ "authPrivateKey", "classsese_1_1security_1_1_s_s_l_context.html#ab53b7ae9f3fea7e2067da6458ccc944a", null ],
     [ "copy", "classsese_1_1security_1_1_s_s_l_context.html#aa02583678702c74e71e8eba598e6bbf5", null ],
     [ "getContext", "classsese_1_1security_1_1_s_s_l_context.html#abd649a75c193adf97ff1ff9596a1a9bc", null ],
+    [ "getErrorCode", "classsese_1_1security_1_1_s_s_l_context.html#a1fd0381fe8aa411ef540880c5ba8e2cf", null ],
     [ "importCertFile", "classsese_1_1security_1_1_s_s_l_context.html#a406258b6bcb6ed1a705a13685ad35bd7", null ],
     [ "importPrivateKeyFile", "classsese_1_1security_1_1_s_s_l_context.html#ab63fa1e251b7bc129520a61b3036b93a", null ],
     [ "newSocketPtr", "classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd", null ],

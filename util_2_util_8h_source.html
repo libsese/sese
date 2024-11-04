@@ -135,156 +135,169 @@ $(function(){initNavTree('util_2_util_8h_source.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">Util.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="util_2_util_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_input_stream_8h.html" title="流式输入接口类">sese/io/InputStream.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_output_stream_8h.html" title="流式输出接口类">sese/io/OutputStream.h</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">using namespace </span>std::chrono_literals;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// 使用预声明减少头文件引用</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5" title="日志等级">Level</a>;</div>
+<a href="util_2_util_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2024 libsese</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//    http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// limitations under the License.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>int64_t <a class="code hl_function" href="namespacesese.html#a6453fe856f0afc7bce5187768095cf4f">toInteger</a>(<span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>, <span class="keywordtype">int</span> radix = 10);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>std::string <a class="code hl_function" href="namespacesese.html#a7f6ec509913dbb14930e43b251141591">getClassName</a>(<span class="keyword">const</span> std::type_info *type);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_input_stream_8h.html" title="流式输入接口类">sese/io/InputStream.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_output_stream_8h.html" title="流式输出接口类">sese/io/OutputStream.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">using namespace </span>std::chrono_literals;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structsese_1_1_str_cmp.html">   38</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_str_cmp.html" title="字符比较器">StrCmp</a> {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp.html#a2bbfa550c96431842fed8365c406124c">operator()</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp.html#a2bbfa550c96431842fed8365c406124c">operator()</a>(<span class="keyword">const</span> std::string &amp;lv, <span class="keyword">const</span> std::string &amp;rv) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// 使用预声明减少头文件引用</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5" title="日志等级">Level</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>int64_t <a class="code hl_function" href="namespacesese.html#a6453fe856f0afc7bce5187768095cf4f">toInteger</a>(<span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>, <span class="keywordtype">int</span> radix = 10);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>std::string <a class="code hl_function" href="namespacesese.html#a7f6ec509913dbb14930e43b251141591">getClassName</a>(<span class="keyword">const</span> std::type_info *type);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structsese_1_1_str_cmp.html">   52</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_str_cmp.html" title="字符比较器">StrCmp</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp.html#a2bbfa550c96431842fed8365c406124c">operator()</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp.html#a2bbfa550c96431842fed8365c406124c">operator()</a>(<span class="keyword">const</span> std::string &amp;lv, <span class="keyword">const</span> std::string &amp;rv) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structsese_1_1_str_cmp_i.html">   46</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_str_cmp_i.html" title="字符比较器（忽略大小写）">StrCmpI</a> {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp_i.html#ae6ff57aff62d8ce91973e113f7a7f4a8">operator()</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp_i.html#ae6ff57aff62d8ce91973e113f7a7f4a8">operator()</a>(<span class="keyword">const</span> std::string &amp;lv, <span class="keyword">const</span> std::string &amp;rv) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="};">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structsese_1_1_str_cmp_i.html">   60</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_str_cmp_i.html" title="字符比较器（忽略大小写）">StrCmpI</a> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp_i.html#ae6ff57aff62d8ce91973e113f7a7f4a8">operator()</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="structsese_1_1_str_cmp_i.html#ae6ff57aff62d8ce91973e113f7a7f4a8">operator()</a>(<span class="keyword">const</span> std::string &amp;lv, <span class="keyword">const</span> std::string &amp;rv) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">strcmp</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">strcmpDoNotCase</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">isSpace</a>(<span class="keywordtype">char</span> ch) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="namespacesese.html#aa1d206a5404e3a285ef301d61df25860">   79</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="namespacesese.html#afe8ef8abc4b5d8b2778fc2ae3fdc0ab2">getLevelString</a>(Level level) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">strcmp</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">strcmpDoNotCase</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>int32_t <a class="code hl_function" href="namespacesese.html#a7c52b4c131447df3e4b83a9a7451ee97">findFirstAt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> ch);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sleep</a>(uint32_t second);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">isSpace</a>(<span class="keywordtype">char</span> ch) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacesese.html#aa1d206a5404e3a285ef301d61df25860">   93</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="namespacesese.html#afe8ef8abc4b5d8b2778fc2ae3fdc0ab2">getLevelString</a>(Level level) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> REP, <span class="keyword">class</span> PERIOD&gt;</div>
-<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="namespacesese.html#af714b4f593478e52e031ec08942b991e">   99</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sleep</a>(<span class="keyword">const</span> std::chrono::duration&lt;REP, PERIOD&gt; &amp;duration) {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    std::this_thread::sleep_for(duration);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
-</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>int32_t <a class="code hl_function" href="namespacesese.html#a7c52b4c131447df3e4b83a9a7451ee97">findFirstAt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> ch);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>std::string <a class="code hl_function" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">getErrorString</a>(int64_t error = errno);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>int32_t  <a class="code hl_function" href="namespacesese.html#af6a7d078baabdfdd1deb7881913d2c11">getErrorCode</a>();</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#aa562f1f629706a4851b840247fa1b5a0">streamMove</a>(<a class="code hl_class" href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类">sese::io::OutputStream</a> *out, <a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">sese::io::InputStream</a> *<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, <span class="keywordtype">size_t</span> size) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">  130</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(T num, <span class="keywordtype">size_t</span> radix = 10) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keyword">static_assert</span>(!std::is_same_v&lt;T, double&gt;, <span class="stringliteral">&quot;Must be an integer&quot;</span>);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">static_assert</span>(!std::is_same_v&lt;T, float&gt;, <span class="stringliteral">&quot;Must be an integer&quot;</span>);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">size_t</span> length = 0;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">if</span> (num == 0) <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">if</span> (num &lt; 0) {</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        length += 1;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        num *= -1;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    }</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordflow">do</span> {</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        num /= <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(radix);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        length += 1;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    } <span class="keywordflow">while</span> (num &gt; 0);</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">return</span> length;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>}</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sleep</a>(uint32_t second);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> REP, <span class="keyword">class</span> PERIOD&gt;</div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="namespacesese.html#af714b4f593478e52e031ec08942b991e">  113</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sleep</a>(<span class="keyword">const</span> std::chrono::duration&lt;REP, PERIOD&gt; &amp;duration) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::this_thread::sleep_for(duration);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
 </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">  153</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">floating2StringLength</a>(T num, uint16_t placeholder) {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">static_assert</span>(std::is_same_v&lt;T, double&gt; || std::is_same_v&lt;T, float&gt;, <span class="stringliteral">&quot;Must be a floating number&quot;</span>);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">size_t</span> length = <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(<span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(num));</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">if</span> (placeholder &gt; 0) {</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        length += 1 + placeholder;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordflow">return</span> length;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>}</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>std::string <a class="code hl_function" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">getErrorString</a>(int64_t error = errno);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>int32_t  <a class="code hl_function" href="namespacesese.html#af6a7d078baabdfdd1deb7881913d2c11">getErrorCode</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#aa562f1f629706a4851b840247fa1b5a0">streamMove</a>(<a class="code hl_class" href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类">sese::io::OutputStream</a> *out, <a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">sese::io::InputStream</a> *<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, <span class="keywordtype">size_t</span> size) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">  144</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(T num, <span class="keywordtype">size_t</span> radix = 10) {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keyword">static_assert</span>(!std::is_same_v&lt;T, double&gt;, <span class="stringliteral">&quot;Must be an integer&quot;</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">static_assert</span>(!std::is_same_v&lt;T, float&gt;, <span class="stringliteral">&quot;Must be an integer&quot;</span>);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">size_t</span> length = 0;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">if</span> (num == 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">if</span> (num &lt; 0) {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        length += 1;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        num *= -1;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    }</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">do</span> {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        num /= <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(radix);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        length += 1;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    } <span class="keywordflow">while</span> (num &gt; 0);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}</div>
 </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TP&gt;</div>
-<div class="foldopen" id="foldopen00169" data-start="{" data-end="}">
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">  169</a></span>std::time_t <a class="code hl_function" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">to_time_t</a>(TP tp) {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keyword">using namespace </span>std::chrono;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keyword">auto</span> sctp = time_point_cast&lt;system_clock::duration&gt;(tp - TP::clock::now() + system_clock::now());</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">return</span> system_clock::to_time_t(sctp);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">  167</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#a2efaa72ae22e5bed06aa1d1666d8810c">floating2StringLength</a>(T num, uint16_t placeholder) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keyword">static_assert</span>(std::is_same_v&lt;T, double&gt; || std::is_same_v&lt;T, float&gt;, <span class="stringliteral">&quot;Must be a floating number&quot;</span>);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">size_t</span> length = <a class="code hl_function" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">number2StringLength</a>(<span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(num));</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">if</span> (placeholder &gt; 0) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        length += 1 + placeholder;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
 </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="namespacesese.html#afb7bed046af930f787f1f7183f08b77f">  178</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#afb7bed046af930f787f1f7183f08b77f" title="加法溢出检测">isAdditionOverflow</a>(T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) {</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_unsigned_v&lt;T&gt;) {</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">return</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &gt; std::numeric_limits&lt;T&gt;::max() - <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">if</span> ((<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> &gt; 0 &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &gt; std::numeric_limits&lt;T&gt;::max() - <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) ||</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            (<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> &lt; 0 &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &lt; std::numeric_limits&lt;T&gt;::min() - <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>)) {</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        }</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>}</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TP&gt;</div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">  183</a></span>std::time_t <a class="code hl_function" href="namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08">to_time_t</a>(TP tp) {</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keyword">using namespace </span>std::chrono;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">auto</span> sctp = time_point_cast&lt;system_clock::duration&gt;(tp - TP::clock::now() + system_clock::now());</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">return</span> system_clock::to_time_t(sctp);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
 </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00192" data-start="{" data-end="}">
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="namespacesese.html#ad21355533ea9edd4a37c51174345bb00">  192</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#ad21355533ea9edd4a37c51174345bb00" title="减法溢出检测">isSubtractionOverflow</a>(T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) {</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_unsigned&lt;T&gt;::value) {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">return</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &lt; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="namespacesese.html#afb7bed046af930f787f1f7183f08b77f">  192</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#afb7bed046af930f787f1f7183f08b77f" title="加法溢出检测">isAdditionOverflow</a>(T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_unsigned_v&lt;T&gt;) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">return</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &gt; std::numeric_limits&lt;T&gt;::max() - <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>;</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> ((<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b &lt; 0 &amp;&amp; a &gt;</a> std::numeric_limits&lt;T&gt;::max() + <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) ||</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            (<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> &gt; 0 &amp;&amp; a &lt; std::numeric_limits&lt;T&gt;::min() + <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>)) {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>           <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> ((<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> &gt; 0 &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &gt; std::numeric_limits&lt;T&gt;::max() - <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) ||</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            (<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> &lt; 0 &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &lt; std::numeric_limits&lt;T&gt;::min() - <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>)) {</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        }</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
 </div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>} <span class="comment">// namespace sese</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74">getSpecificVersion</a>();</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="preprocessor">#pragma warning(disable : 4996)</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">  219</a></span><span class="preprocessor">#define CheckRange(x, max) ((unsigned int) (x) &lt; (max))</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#af5377339bff575301da756d2f685a510">  224</a></span><span class="preprocessor">#define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) &gt;= 0)</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00206" data-start="{" data-end="}">
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno"><a class="line" href="namespacesese.html#ad21355533ea9edd4a37c51174345bb00">  206</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#ad21355533ea9edd4a37c51174345bb00" title="减法溢出检测">isSubtractionOverflow</a>(T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, T <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) {</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_unsigned&lt;T&gt;::value) {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">return</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> &lt; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">if</span> ((<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b &lt; 0 &amp;&amp; a &gt;</a> std::numeric_limits&lt;T&gt;::max() + <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>) ||</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            (<a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> &gt; 0 &amp;&amp; a &lt; std::numeric_limits&lt;T&gt;::min() + <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>)) {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>           <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        }</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
+</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74">getSpecificVersion</a>();</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="preprocessor">#pragma warning(disable : 4996)</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">  233</a></span><span class="preprocessor">#define CheckRange(x, max) ((unsigned int) (x) &lt; (max))</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#af5377339bff575301da756d2f685a510">  238</a></span><span class="preprocessor">#define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) &gt;= 0)</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="util_2_util_8h.html">Util.h</a></li>
-    <li class="footer">生成于 2024年 十一月 2日 星期六 15:46:42 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 4日 星期一 08:44:44 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

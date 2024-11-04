@@ -135,54 +135,68 @@ $(function(){initNavTree('res_2_marco_8h_source.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">Marco.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="res_2_marco_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="_resource_manager_8h.html" title="静态资源管理器">sese/res/ResourceManager.h</a>&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="_singleton_8h.html" title="单例模板类">sese/util/Singleton.h</a>&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="" data-end="">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#aefa30662595a92f7ff1872644c9c4041">    6</a></span><span class="preprocessor">#define SESE_DEF_RESOURCE(resClass, resName, resSize, resBuf)\</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">    class resClass final : public sese::res::Resource {      \</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">    public:                                                  \</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">        resClass() : sese::res::Resource(resBuf, resSize) {} \</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">    }</span></div>
-</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="" data-end="">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#a9949f140ebc84ec75e1af14de923b3bb">   12</a></span><span class="preprocessor">#define SESE_MAKE_RESOURCE(resName, resBuf, resSize) \</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    std::make_shared&lt;sese::res::Resource&gt;(resName, resBuf, resSize)</span></div>
-</div>
+<a href="res_2_marco_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2024 libsese</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//    http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// limitations under the License.</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="" data-end="">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#a88fd534004a9ac3c955f733e02f559a2">   15</a></span><span class="preprocessor">#define SESE_DEF_RES_STREAM(streamClass, streamSize, streamBuf)             \</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    class streamClass final : public sese::res::ResourceStream {            \</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    public:                                                                 \</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">        streamClass() : sese::res::ResourceStream(streamBuf, streamSize) {} \</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    };</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;<a class="code" href="_resource_manager_8h.html" title="静态资源管理器">sese/res/ResourceManager.h</a>&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;<a class="code" href="_singleton_8h.html" title="单例模板类">sese/util/Singleton.h</a>&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="" data-end="">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#aefa30662595a92f7ff1872644c9c4041">   20</a></span><span class="preprocessor">#define SESE_DEF_RESOURCE(resClass, resName, resSize, resBuf)\</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    class resClass final : public sese::res::Resource {      \</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    public:                                                  \</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">        resClass() : sese::res::Resource(resBuf, resSize) {} \</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    }</span></div>
 </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="foldopen" id="foldopen00021" data-start="" data-end="">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#adfaa157440b175e47388f79292687ae8">   21</a></span><span class="preprocessor">#define SESE_MAKE_RES_STREAM(streamBuf, streamSize) \</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    std::make_unique&lt;sese::res::ResourceStream&gt;(streamBuf, streamSize)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="" data-end="">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#a9949f140ebc84ec75e1af14de923b3bb">   26</a></span><span class="preprocessor">#define SESE_MAKE_RESOURCE(resName, resBuf, resSize) \</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">    std::make_shared&lt;sese::res::Resource&gt;(resName, resBuf, resSize)</span></div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="" data-end="">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#ad845b7595b4213febe4c44e7969a0088">   24</a></span><span class="preprocessor">#define SESE_ADD_RES(resName, resSize, resBuf) \</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">    this-&gt;resourceMap[resName] = SESE_MAKE_RESOURCE(resName, resBuf, resSize);</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="" data-end="">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#a88fd534004a9ac3c955f733e02f559a2">   29</a></span><span class="preprocessor">#define SESE_DEF_RES_STREAM(streamClass, streamSize, streamBuf)             \</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">    class streamClass final : public sese::res::ResourceStream {            \</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">    public:                                                                 \</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">        streamClass() : sese::res::ResourceStream(streamBuf, streamSize) {} \</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">    };</span></div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="" data-end="">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#ad98cdd8323b54c4254df8f1f6741f6b4">   27</a></span><span class="preprocessor">#define SESE_DEF_RES_MANAGER(managerName)                         \</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">    class managerName final : public sese::res::ResourceManager { \</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">    public:                                                       \</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">        managerName() : sese::res::ResourceManager() {</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="" data-end="">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#adfaa157440b175e47388f79292687ae8">   35</a></span><span class="preprocessor">#define SESE_MAKE_RES_STREAM(streamBuf, streamSize) \</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">    std::make_unique&lt;sese::res::ResourceStream&gt;(streamBuf, streamSize)</span></div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="" data-end="">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#a5eec6960e9151bc8159c62c4c8817abc">   32</a></span><span class="preprocessor">#define SESE_DEF_RES_MANAGER_END(managerName) \</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">        }                                     \</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">    };                                        \</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">    using managerName##Instance = sese::SingletonPtr&lt;managerName&gt;;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="" data-end="">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#ad845b7595b4213febe4c44e7969a0088">   38</a></span><span class="preprocessor">#define SESE_ADD_RES(resName, resSize, resBuf) \</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">    this-&gt;resourceMap[resName] = SESE_MAKE_RESOURCE(resName, resBuf, resSize);</span></div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="" data-end="">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#ad98cdd8323b54c4254df8f1f6741f6b4">   41</a></span><span class="preprocessor">#define SESE_DEF_RES_MANAGER(managerName)                         \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">    class managerName final : public sese::res::ResourceManager { \</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">    public:                                                       \</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">        managerName() : sese::res::ResourceManager() {</span></div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="" data-end="">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="res_2_marco_8h.html#a5eec6960e9151bc8159c62c4c8817abc">   46</a></span><span class="preprocessor">#define SESE_DEF_RES_MANAGER_END(managerName) \</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">        }                                     \</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">    };                                        \</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">    using managerName##Instance = sese::SingletonPtr&lt;managerName&gt;;</span></div>
 </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -190,7 +204,7 @@ $(function(){initNavTree('res_2_marco_8h_source.html',''); initResizable(true); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_13b369652b8046788ab8d56683cf9dbc.html">res</a></li><li class="navelem"><a class="el" href="res_2_marco_8h.html">Marco.h</a></li>
-    <li class="footer">生成于 2024年 十一月 2日 星期六 15:46:42 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 4日 星期一 08:44:44 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
