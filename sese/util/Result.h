@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <cassert>
 #include <optional>
 #include <type_traits>
 #include <variant>
@@ -32,7 +33,7 @@ template<class T, class E, class Enable = void>
 class Result;
 
 template<class T, class E>
-class Result<T, E, std::enable_if<std::is_same_v<T, E>>> {
+class Result<T, E, std::enable_if_t<std::is_same_v<T, E>>> {
     bool is_success;
     T result;
 
@@ -92,7 +93,7 @@ public:
 };
 
 template<class T, class E>
-class Result<T, E, std::enable_if<!std::is_same_v<T, E>>> final {
+class Result<T, E, std::enable_if_t<!std::is_same_v<T, E>>> final {
     std::variant<T, E> result;
 
 public:

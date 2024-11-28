@@ -21,6 +21,7 @@
 #pragma once
 
 #include "sese/Config.h"
+#include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
 #include <atomic>
@@ -62,7 +63,7 @@ public:
     /// \retval nullptr 创建失败
     static FileNotifier::Ptr create(const std::string &path, FileNotifyOption *option) noexcept;
 
-    static Result<Ptr> createEx(const std::string &path, FileNotifyOption *option) noexcept;
+    static Result<Ptr, ErrorCode> createEx(const std::string &path, FileNotifyOption *option) noexcept;
 
     virtual ~FileNotifier() noexcept;
 

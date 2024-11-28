@@ -23,6 +23,7 @@
 
 #include "sese/Config.h"
 #include "sese/system/Path.h"
+#include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
 #ifdef _WIN32
@@ -54,7 +55,7 @@ public:
      * @param name 库名称
      * @return 结果
      */
-    static Result<Ptr> createEx(const std::string &name) noexcept;
+    static Result<Ptr, ErrorCode> createEx(const std::string &name) noexcept;
 
     /**
      * @brief 加载一个外部库

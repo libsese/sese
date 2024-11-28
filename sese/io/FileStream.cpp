@@ -88,15 +88,15 @@ FileStream::Ptr FileStream::create(const std::string &file_path, const char *mod
 #endif
 }
 
-sese::Result<FileStream::Ptr> FileStream::createEx(const std::string &file_path, const char *mode) noexcept {
+sese::Result<FileStream::Ptr, sese::ErrorCode> FileStream::createEx(const std::string &file_path, const char *mode) noexcept {
     if (auto result = create(file_path, mode)) {
-        return result;
+        return Result<Ptr, ErrorCode>::success(std::move(result));
     }
     ErrorCode error(
         static_cast<int32_t>(getErrorCode()),
         getErrorString()
     );
-    return std::move(error);
+    return Result<Ptr, ErrorCode>::error(error);
 }
 
 FileStream::Ptr FileStream::createWithPath(const system::Path &path, const char *mode) noexcept {

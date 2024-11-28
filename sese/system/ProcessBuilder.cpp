@@ -27,6 +27,6 @@ sese::system::Process::Ptr sese::system::ProcessBuilder::create() {
     return Process::create(static_cast<const char *>(builder.buf()));
 }
 
-sese::Result<sese::system::Process::Ptr> sese::system::ProcessBuilder::createEx() {
+sese::Result<sese::system::Process::Ptr, sese::ErrorCode> sese::system::ProcessBuilder::createEx() {
     return Process::createEx(static_cast<const char *>(builder.buf()));
 }

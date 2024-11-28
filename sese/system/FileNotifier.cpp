@@ -14,9 +14,11 @@
 
 #include "FileNotifier.h"
 
-sese::Result<sese::system::FileNotifier::Ptr> sese::sys::FileNotifier::createEx(const std::string &path, FileNotifyOption *option) noexcept {
+#include "sese/util/Util.h"
+
+sese::Result<sese::system::FileNotifier::Ptr, sese::ErrorCode> sese::sys::FileNotifier::createEx(const std::string &path, FileNotifyOption *option) noexcept {
     if (auto result = create(path, option)) {
-        return std::move(result);
+        return Result<Ptr, ErrorCode>::success(std::move(result));
     }
-    return Result<Ptr>::fromLastError();
+    return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }

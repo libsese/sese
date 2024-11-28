@@ -24,6 +24,7 @@
 #include "sese/io/Closeable.h"
 #include "sese/io/PeekableStream.h"
 #include "sese/system/Path.h"
+#include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
 namespace sese::io {
@@ -41,7 +42,7 @@ enum class Seek {
 /**
  * @brief 文件流类
  */
-class  FileStream final : public Stream, public Closeable, public PeekableStream {
+class FileStream final : public Stream, public Closeable, public PeekableStream {
 public:
 #ifdef SESE_PLATFORM_WINDOWS
     static constexpr auto B_READ_W = "rb,ccs=utf-8";         // NOLINT
@@ -81,7 +82,7 @@ public:
     /// \retval nullptr 打开失败
     static FileStream::Ptr createWithPath(const system::Path &path, const char *mode) noexcept;
 
-    static Result<FileStream::Ptr> createEx(const std::string &file_path, const char *mode) noexcept;
+    static Result<Ptr, ErrorCode> createEx(const std::string &file_path, const char *mode) noexcept;
 
     ~FileStream() override = default;
 

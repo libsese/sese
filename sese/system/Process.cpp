@@ -14,9 +14,9 @@
 
 #include "Process.h"
 
-sese::Result<sese::sys::Process::Ptr> sese::sys::Process::createEx(const char *command) noexcept {
+sese::Result<sese::sys::Process::Ptr, sese::ErrorCode> sese::sys::Process::createEx(const char *command) noexcept {
     if (auto process = create(command)) {
-        return std::move(process);
+        return Result<Ptr, ErrorCode>::success(std::move(process));
     }
-    return {getErrorCode(), getErrorString()};
+    return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }
