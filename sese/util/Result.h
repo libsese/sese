@@ -14,79 +14,247 @@
 
 /// @file Result.h
 /// @brief 结果类
-/// @author: kaoru
-/// @date 2024年11月1日
+/// @author kaoru
+/// @date 2024年11月28日
 
 #pragma once
 
-#include "sese/net/Socket.h"
-#include "Util.h"
-#include "ErrorCode.h"
-
+#include <optional>
+#include <type_traits>
 #include <variant>
 
 namespace sese {
 
 /// @brief 结果类
 /// @tparam T 结果类型
-template<class T>
-class Result final {
-    std::variant<ErrorCode, T> err_result;
+/// @tparam E 错误类型
+template<class T, class E, class Enable = void>
+class Result;
+
+template<class T, class E>
+class Result<T, E, std::enable_if<std::is_same_v<T, E>>> {
+    bool is_success;
+    T result;
+
+    Result() = default;
 
 public:
-    /// @brief 构造函数
-    /// @param err 错误码
-    Result(ErrorCode err) : err_result(err) {} // NOLINT
+    using ResultType = T;
+    using ErrorType = E;
 
-    /// @brief 构造函数
-    /// @param code 错误代码
-    /// @param msg 错误描述
-    Result(int32_t code, const std::string &msg) : err_result(ErrorCode{code, msg}) {}
+    static Result error(E error) noexcept {
+        Result<T, E> tmp;
+        tmp.is_success = false;
+        tmp.result = error;
+        return tmp;
+    }
 
-    /// @brief 构造函数
-    /// @param result 结果
-    Result(T result) : err_result(std::forward<T>(result)) {} // NOLINT
-
-    static Result fromLastError();
-
-    static Result fromLastNetworkError();
+    static Result success(T result) noexcept {
+        Result<T, E> tmp;
+        tmp.is_success = true;
+        tmp.result = result;
+        return tmp;
+    }
 
     /// @brief 判断是否有错误
     /// @return 是否有错误
     explicit operator bool() const noexcept {
-        return std::holds_alternative<ErrorCode>(err_result);
+        return is_success;
     }
 
-    /// @brief 获取错误码
-    /// @return 错误码
-    [[nodiscard]] ErrorCode err() const noexcept {
-        assert(std::holds_alternative<ErrorCode>(err_result));
-        return std::get<ErrorCode>(err_result);
+    /// @brief 获取错误
+    /// @return 错误
+    E err() const noexcept {
+        assert(!is_success);
+        return result;
+    }
+
+    /// @brief 获取错误
+    /// @return 错误
+    E &err() noexcept {
+        assert(!is_success);
+        return result;
+    }
+
+    /// @brief 获取结果
+    /// @return 结果
+    T get() const noexcept {
+        assert(is_success);
+        return result;
     }
 
     /// @brief 获取结果
     /// @return 结果
     T &get() noexcept {
-        assert(std::holds_alternative<T>(err_result));
-        return std::get<T>(err_result);
+        assert(is_success);
+        return result;
+    }
+};
+
+template<class T, class E>
+class Result<T, E, std::enable_if<!std::is_same_v<T, E>>> final {
+    std::variant<T, E> result;
+
+public:
+    using ResultType = T;
+    using ErrorType = E;
+
+    static Result error(E error) noexcept {
+        Result<T, E> tmp;
+        tmp.result = std::forward<E>(error);
+        return tmp;
+    }
+
+    static Result success(T result) noexcept {
+        Result<T, E> tmp;
+        tmp.result = std::forward<T>(result);
+        return tmp;
+    }
+
+    /// @brief 判断是否有错误
+    /// @return 是否有错误
+    explicit operator bool() const noexcept {
+        return std::holds_alternative<E>(result);
+    }
+
+    /// @brief 获取错误
+    /// @return 错误
+    [[nodiscard]] E &err() noexcept {
+        assert(std::holds_alternative<E>(result));
+        return std::get<E>(result);
+    }
+
+    /// @brief 获取错误
+    /// @return 错误
+    E err() const noexcept {
+        assert(std::holds_alternative<E>(result));
+        return std::get<E>(result);
     }
 
     /// @brief 获取结果
     /// @return 结果
-    const T &get() const noexcept {
-        assert(std::holds_alternative<T>(err_result));
-        return std::get<T>(err_result);
+    T &get() noexcept {
+        assert(std::holds_alternative<T>(result));
+        return std::get<T>(result);
+    }
+
+    /// @brief 获取结果
+    /// @return 结果
+    T get() const noexcept {
+        assert(std::holds_alternative<T>(result));
+        return std::get<T>(result);
     }
 };
 
 template<class T>
-Result<T> Result<T>::fromLastError() {
-    return {getErrorCode(), getErrorString()};
-}
+class Result<T, void> {
+    std::optional<T> result;
 
-template<class T>
-Result<T> Result<T>::fromLastNetworkError() {
-    return {net::getNetworkError(), net::getNetworkErrorString()};
-}
+    Result() = default;
+
+public:
+    using ResultType = T;
+    using ErrorType = void;
+
+    static Result error() noexcept {
+        return {};
+    }
+
+    static Result success(T result) noexcept {
+        Result tmp;
+        tmp.result = std::forward<T>(result);
+        return tmp;
+    }
+
+    /// @brief 判断是否有错误
+    /// @return 是否有错误
+    explicit operator bool() const noexcept {
+        return result.has_value();
+    }
+
+    /// @brief 获取结果
+    /// @return 结果
+    T &get() noexcept {
+        assert(result.has_value());
+        return result.value();
+    }
+
+    /// @brief 获取结果
+    /// @return 结果
+    T get() const noexcept {
+        assert(result.has_value());
+        return result.value();
+    }
+};
+
+template<class E>
+class Result<void, E> {
+    std::optional<E> e;
+
+    Result() = default;
+
+public:
+    using ResultType = void;
+    using ErrorType = E;
+
+    static Result error(E error) noexcept {
+        Result tmp;
+        tmp.e = std::forward<E>(error);
+        return tmp;
+    }
+
+    static Result success() noexcept {
+        return {};
+    }
+
+    /// @brief 判断是否有错误
+    /// @return 是否有错误
+    explicit operator bool() const noexcept {
+        return !err.has_value();
+    }
+
+    /// @brief 获取错误
+    /// @return 错误
+    [[nodiscard]] E &err() noexcept {
+        assert(e.has_value());
+        return e.value();
+    }
+
+    /// @brief 获取错误
+    /// @return 错误
+    E err() const noexcept {
+        assert(e.has_value);
+        return e.value();
+    }
+};
+
+template<>
+class Result<void, void> {
+    bool is_success;
+
+    Result() = default;
+
+public:
+    using ResultType = void;
+    using ErrorType = void;
+
+    static Result error() noexcept {
+        Result tmp;
+        tmp.is_success = false;
+        return tmp;
+    }
+
+    static Result success() noexcept {
+        Result tmp;
+        tmp.is_success = true;
+        return tmp;
+    }
+
+    /// @brief 判断是否有错误
+    /// @return 是否有错误
+    explicit operator bool() const noexcept {
+        return is_success;
+    }
+};
 
 } // namespace sese
