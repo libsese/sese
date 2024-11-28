@@ -15,10 +15,15 @@ var searchData=
   ['resourcestream_12',['ResourceStream',['../classsese_1_1res_1_1_resource_stream.html',1,'sese::res']]],
   ['response_13',['Response',['../classsese_1_1net_1_1http_1_1_response.html',1,'sese::net::http']]],
   ['responseheader_14',['ResponseHeader',['../classsese_1_1net_1_1http_1_1_response_header.html',1,'sese::net::http']]],
-  ['result_15',['Result',['../structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html',1,'sese::net::http::RequestParser::Result'],['../classsese_1_1_result.html',1,'sese::Result&lt; T &gt;']]],
-  ['resultset_16',['ResultSet',['../classsese_1_1db_1_1_result_set.html',1,'sese::db']]],
-  ['reusablesocket_17',['ReusableSocket',['../classsese_1_1net_1_1_reusable_socket.html',1,'sese::net']]],
-  ['reverseiterator_18',['ReverseIterator',['../classsese_1_1_range_1_1_reverse_iterator.html',1,'sese::Range']]],
-  ['ringqueue_19',['RingQueue',['../classsese_1_1_ring_queue.html',1,'sese']]],
-  ['runtimedata_20',['RuntimeData',['../structsese_1_1_thread_1_1_runtime_data.html',1,'sese::Thread::RuntimeData'],['../structsese_1_1_thread_pool_1_1_runtime_data.html',1,'sese::ThreadPool::RuntimeData']]]
+  ['result_15',['Result',['../structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html',1,'sese::net::http::RequestParser::Result'],['../classsese_1_1_result.html',1,'sese::Result&lt; T, E, Enable &gt;']]],
+  ['result_3c_20t_2c_20e_2c_20std_3a_3aenable_5fif_5ft_3c_20std_3a_3ais_5fsame_5fv_3c_20t_2c_20e_20_3e_20_26_26_21std_3a_3ais_5fvoid_5fv_3c_20t_20_3e_20_26_26_21std_3a_3ais_5fvoid_5fv_3c_20e_20_3e_20_3e_20_3e_16',['Result&lt; T, E, std::enable_if_t&lt; std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;',['../classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html',1,'sese']]],
+  ['result_3c_20t_2c_20e_2c_20std_3a_3aenable_5fif_5ft_3c_21std_3a_3ais_5fsame_5fv_3c_20t_2c_20e_20_3e_20_26_26_21std_3a_3ais_5fvoid_5fv_3c_20t_20_3e_20_26_26_21std_3a_3ais_5fvoid_5fv_3c_20e_20_3e_20_3e_20_3e_17',['Result&lt; T, E, std::enable_if_t&lt;!std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;',['../classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_9std_1_1is__same__v_3_01_t_00_013f8dd99f9223d5bf89cfeb2095978f37.html',1,'sese']]],
+  ['result_3c_20t_2c_20void_20_3e_18',['Result&lt; T, void &gt;',['../classsese_1_1_result_3_01_t_00_01void_01_4.html',1,'sese']]],
+  ['result_3c_20void_2c_20e_20_3e_19',['Result&lt; void, E &gt;',['../classsese_1_1_result_3_01void_00_01_e_01_4.html',1,'sese']]],
+  ['result_3c_20void_2c_20void_20_3e_20',['Result&lt; void, void &gt;',['../classsese_1_1_result_3_01void_00_01void_01_4.html',1,'sese']]],
+  ['resultset_21',['ResultSet',['../classsese_1_1db_1_1_result_set.html',1,'sese::db']]],
+  ['reusablesocket_22',['ReusableSocket',['../classsese_1_1net_1_1_reusable_socket.html',1,'sese::net']]],
+  ['reverseiterator_23',['ReverseIterator',['../classsese_1_1_range_1_1_reverse_iterator.html',1,'sese::Range']]],
+  ['ringqueue_24',['RingQueue',['../classsese_1_1_ring_queue.html',1,'sese']]],
+  ['runtimedata_25',['RuntimeData',['../structsese_1_1_thread_1_1_runtime_data.html',1,'sese::Thread::RuntimeData'],['../structsese_1_1_thread_pool_1_1_runtime_data.html',1,'sese::ThreadPool::RuntimeData']]]
 ];

@@ -26,7 +26,7 @@ var searchData=
   ['urlhelper_2ecpp_23',['UrlHelper.cpp',['../_url_helper_8cpp.html',1,'']]],
   ['urlhelper_2eh_24',['UrlHelper.h',['../_url_helper_8h.html',1,'']]],
   ['use_25',['use',['../classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed',1,'sese::system::IPCChannel::use()'],['../classsese_1_1system_1_1_shared_memory.html#af17d5de9adecaa8dc3a483631b7f8c74',1,'sese::system::SharedMemory::use()']]],
-  ['useex_26',['useEx',['../classsese_1_1system_1_1_i_p_c_channel.html#a815de82488a3ddfa9b85ace907f2c3b3',1,'sese::system::IPCChannel::useEx()'],['../classsese_1_1system_1_1_shared_memory.html#afd8e133402d1aebdd1a4cc1b9195f2bc',1,'sese::system::SharedMemory::useEx()']]],
+  ['useex_26',['useEx',['../classsese_1_1system_1_1_i_p_c_channel.html#a4ef905390e0ce98dab41160fbb5b6c74',1,'sese::system::IPCChannel::useEx()'],['../classsese_1_1system_1_1_shared_memory.html#abca98f579fb6683f63040a5a4b572a4b',1,'sese::system::SharedMemory::useEx()']]],
   ['userbalanceloader_27',['UserBalanceLoader',['../classsese_1_1service_1_1_user_balance_loader.html',1,'sese::service']]],
   ['userbalanceloader_2ecpp_28',['UserBalanceLoader.cpp',['../_user_balance_loader_8cpp.html',1,'']]],
   ['userbalanceloader_2eh_29',['UserBalanceLoader.h',['../_user_balance_loader_8h.html',1,'']]],

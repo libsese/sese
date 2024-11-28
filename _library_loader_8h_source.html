@@ -153,47 +153,48 @@ $(function(){initNavTree('_library_loader_8h_source.html',''); initResizable(tru
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&quot;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_path_8h.html" title="UNIX-LIKE 路径转换类">sese/system/Path.h</a>&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_result_8h.html" title="结果类">sese/util/Result.h</a>&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#pragma warning(disable : 4624)</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1system.html">sese::system</a> {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html">   37</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1system_1_1_library_object.html" title="库对象">LibraryObject</a> {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">   39</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">Ptr</a> = std::shared_ptr&lt;LibraryObject&gt;;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> = HMODULE;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">   43</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> = <span class="keywordtype">void</span> *;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a3c48b1eca409104a90e7a90b9b259b3f" title="加载一个外部库">create</a>(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#a4b875a395fb567d6bd24c43ab77ff3e4">   57</a></span>    <span class="keyword">static</span> <a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result&lt;Ptr&gt;</a> <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a4b875a395fb567d6bd24c43ab77ff3e4" title="加载一个外部库">createEx</a>(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a635537144044ec5ea2a24709d2610b69" title="加载一个外部库">createWithPath</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1system_1_1_path.html" title="UNIX-LIKE 路径转换类">system::Path</a> &amp;path) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a136cc62cdf5aa68641da8e0af2729ad0">~LibraryObject</a>() noexcept;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    [[nodiscard]] const <span class="keywordtype">void</span> *<a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a9406933451e734b4225d00e3a977ee9a" title="根据名称返回库中函数指针">findFunctionByName</a>(const std::<span class="keywordtype">string</span> &amp;name) const;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>private:</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    explicit <a class="code hl_class" href="classsese_1_1system_1_1_library_object.html" title="库对象">LibraryObject</a>(<a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> <a class="code hl_variable" href="classsese_1_1system_1_1_library_object.html#a1962643aa332524d3a2681061d2fd3be">module</a>) noexcept;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#a1962643aa332524d3a2681061d2fd3be">   77</a></span>    <a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> <a class="code hl_variable" href="classsese_1_1system_1_1_library_object.html#a1962643aa332524d3a2681061d2fd3be">module</a>;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_error_code_8h.html" title="错误码类">sese/util/ErrorCode.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="_result_8h.html" title="结果类">sese/util/Result.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#pragma warning(disable : 4624)</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1system.html">sese::system</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html">   38</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1system_1_1_library_object.html" title="库对象">LibraryObject</a> {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">   40</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">Ptr</a> = std::shared_ptr&lt;LibraryObject&gt;;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> = HMODULE;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">   44</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> = <span class="keywordtype">void</span> *;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a3c48b1eca409104a90e7a90b9b259b3f" title="加载一个外部库">create</a>(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#afbf5ae10c570e0560720f714a1754ba1">   58</a></span>    <span class="keyword">static</span> <a class="code hl_class" href="classsese_1_1_result.html" title="结果类">Result&lt;Ptr, ErrorCode&gt;</a> <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#afbf5ae10c570e0560720f714a1754ba1" title="加载一个外部库">createEx</a>(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#a32e7db4d9ec748ae4b6ea3b94e186292">LibraryObject::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a635537144044ec5ea2a24709d2610b69" title="加载一个外部库">createWithPath</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1system_1_1_path.html" title="UNIX-LIKE 路径转换类">system::Path</a> &amp;path) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a136cc62cdf5aa68641da8e0af2729ad0">~LibraryObject</a>() noexcept;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    [[nodiscard]] const <span class="keywordtype">void</span> *<a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a9406933451e734b4225d00e3a977ee9a" title="根据名称返回库中函数指针">findFunctionByName</a>(const std::<span class="keywordtype">string</span> &amp;name) const;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>private:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    explicit <a class="code hl_class" href="classsese_1_1system_1_1_library_object.html" title="库对象">LibraryObject</a>(<a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> <a class="code hl_variable" href="classsese_1_1system_1_1_library_object.html#a1962643aa332524d3a2681061d2fd3be">module</a>) noexcept;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_library_object.html#a1962643aa332524d3a2681061d2fd3be">   78</a></span>    <a class="code hl_typedef" href="classsese_1_1system_1_1_library_object.html#af291a1b433faaf9c6203c246f0fe049a">Module</a> <a class="code hl_variable" href="classsese_1_1system_1_1_library_object.html#a1962643aa332524d3a2681061d2fd3be">module</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>} <span class="comment">// namespace sese::system</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <span class="comment">// namespace sese::system</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4143f1e6dbe5f494b17fda6fba951f90.html">system</a></li><li class="navelem"><a class="el" href="_library_loader_8h.html">LibraryLoader.h</a></li>
-    <li class="footer">生成于 2024年 十一月 28日 星期四 09:34:22 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 28日 星期四 10:03:09 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -19,13 +19,14 @@ var searchData=
   ['is0x0a_16',['is0x0a',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a003f1d8732de616c3fe079b45571e8d7',1,'sese::internal::service::http::HttpConnection']]],
   ['is_5fiterable_5fv_17',['is_iterable_v',['../namespacesese.html#a5174b9bd39720fb3b1a592bb3ba91f9a',1,'sese']]],
   ['is_5fread_18',['is_read',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acaaa718776b1f525e56309b5cb94cefc',1,'sese::internal::service::http::HttpConnectionEx']]],
-  ['is_5fwrite_19',['is_write',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ae463fef8a6727570b7cebc1fc78a3ff1',1,'sese::internal::service::http::HttpConnectionEx']]],
-  ['isasync_20',['isAsync',['../structsese_1_1service_1_1_tcp_connection.html#a8c9b88d1f84afcf3885446577be28869',1,'sese::service::TcpConnection']]],
-  ['isconn_21',['isConn',['../classsese_1_1iocp_1_1v1_1_1_context.html#a5c0a753713a432f26c2660cd2f04e848',1,'sese::iocp::v1::Context']]],
-  ['iscrlf_22',['isCRLF',['../classsese_1_1_c_s_v_writer.html#a73c4490682238bd7e16ad0f5820ffdb0',1,'sese::CSVWriter']]],
-  ['isleap_23',['isLeap',['../classsese_1_1_date_time.html#ad5576b8d8ea44352912858ba9ef5d23d',1,'sese::DateTime']]],
-  ['ismanual_24',['isManual',['../classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b',1,'sese::db::impl::SqlitePreparedStatementImpl']]],
-  ['isowner_25',['isOwner',['../classsese_1_1system_1_1_shared_memory.html#a2fac63c9b0cda7152e33f5133abd1e30',1,'sese::system::SharedMemory']]],
-  ['isrepeat_26',['isRepeat',['../classsese_1_1_timer_task.html#a5397c967caf2a5640a7c8210135b6d28',1,'sese::TimerTask']]],
-  ['isshutdown_27',['isShutdown',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79',1,'sese::_windows::iocp::v1::NativeIOCPServer::isShutdown'],['../classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219',1,'sese::record::AsyncLogger::isShutdown'],['../structsese_1_1_thread_pool_1_1_runtime_data.html#a5928f2e0cc9dd6b5dc3265b83371ba52',1,'sese::ThreadPool::RuntimeData::isShutdown'],['../classsese_1_1_timer.html#a82ed0a0bf0af3905840aa0ead7a4212d',1,'sese::Timer::isShutdown']]]
+  ['is_5fsuccess_19',['is_success',['../classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#a1b43b63d21bfc98f2972b33d8110bdb0',1,'sese::Result&lt; T, E, std::enable_if_t&lt; std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;::is_success'],['../classsese_1_1_result_3_01void_00_01void_01_4.html#a7b1d8e0f4747df33e4013b1c04090925',1,'sese::Result&lt; void, void &gt;::is_success']]],
+  ['is_5fwrite_20',['is_write',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#ae463fef8a6727570b7cebc1fc78a3ff1',1,'sese::internal::service::http::HttpConnectionEx']]],
+  ['isasync_21',['isAsync',['../structsese_1_1service_1_1_tcp_connection.html#a8c9b88d1f84afcf3885446577be28869',1,'sese::service::TcpConnection']]],
+  ['isconn_22',['isConn',['../classsese_1_1iocp_1_1v1_1_1_context.html#a5c0a753713a432f26c2660cd2f04e848',1,'sese::iocp::v1::Context']]],
+  ['iscrlf_23',['isCRLF',['../classsese_1_1_c_s_v_writer.html#a73c4490682238bd7e16ad0f5820ffdb0',1,'sese::CSVWriter']]],
+  ['isleap_24',['isLeap',['../classsese_1_1_date_time.html#ad5576b8d8ea44352912858ba9ef5d23d',1,'sese::DateTime']]],
+  ['ismanual_25',['isManual',['../classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b',1,'sese::db::impl::SqlitePreparedStatementImpl']]],
+  ['isowner_26',['isOwner',['../classsese_1_1system_1_1_shared_memory.html#a2fac63c9b0cda7152e33f5133abd1e30',1,'sese::system::SharedMemory']]],
+  ['isrepeat_27',['isRepeat',['../classsese_1_1_timer_task.html#a5397c967caf2a5640a7c8210135b6d28',1,'sese::TimerTask']]],
+  ['isshutdown_28',['isShutdown',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79',1,'sese::_windows::iocp::v1::NativeIOCPServer::isShutdown'],['../classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219',1,'sese::record::AsyncLogger::isShutdown'],['../structsese_1_1_thread_pool_1_1_runtime_data.html#a5928f2e0cc9dd6b5dc3265b83371ba52',1,'sese::ThreadPool::RuntimeData::isShutdown'],['../classsese_1_1_timer.html#a82ed0a0bf0af3905840aa0ead7a4212d',1,'sese::Timer::isShutdown']]]
 ];

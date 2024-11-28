@@ -392,13 +392,14 @@ var searchData=
   ['substackinfo_389',['SubStackInfo',['../structsese_1_1system_1_1_sub_stack_info.html',1,'sese::system']]],
   ['substring_390',['substring',['../classsstr_1_1_s_string_view.html#af0b2fbdd659342ea63c9a3f7d00873be',1,'sstr::SStringView::substring(size_t begin) const'],['../classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617',1,'sstr::SStringView::substring(size_t begin, size_t len) const']]],
   ['subtype_391',['SubType',['../classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218',1,'sese::xml::Element']]],
-  ['swap_392',['swap',['../classsese_1_1_buffered_queue_nn.html#a9b5f69e403370c775fe913dbb9893826',1,'sese::BufferedQueueNn::swap()'],['../classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9',1,'sese::io::AbstractByteBuffer::swap()'],['../classsese_1_1net_1_1http_1_1_request.html#a0177e9e7fd523e7031661443ea8c111e',1,'sese::net::http::Request::swap()'],['../classsese_1_1net_1_1http_1_1_response.html#aab10566800adeedbbaa7ad526a20f263',1,'sese::net::http::Response::swap()']]],
-  ['switchcipher_393',['switchCipher',['../_d_e_s_8cpp.html#a1a0ba4cc6c2b0045d5b5864aa1b01edd',1,'DES.cpp']]],
-  ['symbol_5flist_394',['SYMBOL_LIST',['../classsese_1_1_random_util.html#a5bfb461c05164e7b12ed149fe2890cb5',1,'sese::RandomUtil']]],
-  ['symbolconverter_395',['SymbolConverter',['../classsese_1_1_symbol_converter.html',1,'sese::SymbolConverter'],['../classsese_1_1_symbol_converter.html#a3e117d5bad0c9715ef00a5e76e776e44',1,'sese::SymbolConverter::SymbolConverter()']]],
-  ['symbolconverter_2ecpp_396',['SymbolConverter.cpp',['../_symbol_converter_8cpp.html',1,'']]],
-  ['symbolconverter_2eh_397',['SymbolConverter.h',['../_symbol_converter_8h.html',1,'']]],
-  ['systembalanceloader_398',['SystemBalanceLoader',['../classsese_1_1service_1_1_system_balance_loader.html',1,'sese::service']]],
-  ['systembalanceloader_2ecpp_399',['SystemBalanceLoader.cpp',['../_system_balance_loader_8cpp.html',1,'']]],
-  ['systembalanceloader_2eh_400',['SystemBalanceLoader.h',['../_system_balance_loader_8h.html',1,'']]]
+  ['success_392',['success',['../classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#abe272698d338fa851dda6902005ef78b',1,'sese::Result&lt; T, E, std::enable_if_t&lt; std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;::success()'],['../classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_9std_1_1is__same__v_3_01_t_00_013f8dd99f9223d5bf89cfeb2095978f37.html#ae3db656895978e102c79f9e571ee5144',1,'sese::Result&lt; T, E, std::enable_if_t&lt;!std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;::success()'],['../classsese_1_1_result_3_01_t_00_01void_01_4.html#affabd8765c8cbf416856b622a066cb44',1,'sese::Result&lt; T, void &gt;::success()'],['../classsese_1_1_result_3_01void_00_01_e_01_4.html#a0339f6a7e42ec76ab8b5f2a4dfaf71f2',1,'sese::Result&lt; void, E &gt;::success()'],['../classsese_1_1_result_3_01void_00_01void_01_4.html#afd71c7eb518b2e4f5362db097b6e73b4',1,'sese::Result&lt; void, void &gt;::success()']]],
+  ['swap_393',['swap',['../classsese_1_1_buffered_queue_nn.html#a9b5f69e403370c775fe913dbb9893826',1,'sese::BufferedQueueNn::swap()'],['../classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9',1,'sese::io::AbstractByteBuffer::swap()'],['../classsese_1_1net_1_1http_1_1_request.html#a0177e9e7fd523e7031661443ea8c111e',1,'sese::net::http::Request::swap()'],['../classsese_1_1net_1_1http_1_1_response.html#aab10566800adeedbbaa7ad526a20f263',1,'sese::net::http::Response::swap()']]],
+  ['switchcipher_394',['switchCipher',['../_d_e_s_8cpp.html#a1a0ba4cc6c2b0045d5b5864aa1b01edd',1,'DES.cpp']]],
+  ['symbol_5flist_395',['SYMBOL_LIST',['../classsese_1_1_random_util.html#a5bfb461c05164e7b12ed149fe2890cb5',1,'sese::RandomUtil']]],
+  ['symbolconverter_396',['SymbolConverter',['../classsese_1_1_symbol_converter.html',1,'sese::SymbolConverter'],['../classsese_1_1_symbol_converter.html#a3e117d5bad0c9715ef00a5e76e776e44',1,'sese::SymbolConverter::SymbolConverter()']]],
+  ['symbolconverter_2ecpp_397',['SymbolConverter.cpp',['../_symbol_converter_8cpp.html',1,'']]],
+  ['symbolconverter_2eh_398',['SymbolConverter.h',['../_symbol_converter_8h.html',1,'']]],
+  ['systembalanceloader_399',['SystemBalanceLoader',['../classsese_1_1service_1_1_system_balance_loader.html',1,'sese::service']]],
+  ['systembalanceloader_2ecpp_400',['SystemBalanceLoader.cpp',['../_system_balance_loader_8cpp.html',1,'']]],
+  ['systembalanceloader_2eh_401',['SystemBalanceLoader.h',['../_system_balance_loader_8h.html',1,'']]]
 ];

@@ -141,17 +141,24 @@ $(function(){initNavTree('_result_8h.html',''); initResizable(true); });
 
 <p>结果类  
 <a href="#details">更多...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_socket_8h_source.html">sese/net/Socket.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="util_2_util_8h_source.html">Util.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_error_code_8h_source.html">ErrorCode.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;variant&gt;</code><br />
 </div>
 <p><a href="_result_8h_source.html">浏览该文件的源代码.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 类</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_result.html">sese::Result&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">结果类  <a href="classsese_1_1_result.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html">sese::Result&lt; T, E, std::enable_if_t&lt; std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_9std_1_1is__same__v_3_01_t_00_013f8dd99f9223d5bf89cfeb2095978f37.html">sese::Result&lt; T, E, std::enable_if_t&lt;!std::is_same_v&lt; T, E &gt; &amp;&amp;!std::is_void_v&lt; T &gt; &amp;&amp;!std::is_void_v&lt; E &gt; &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_result_3_01_t_00_01void_01_4.html">sese::Result&lt; T, void &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_result_3_01void_00_01_e_01_4.html">sese::Result&lt; void, E &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_result_3_01void_00_01void_01_4.html">sese::Result&lt; void, void &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -161,15 +168,15 @@ $(function(){initNavTree('_result_8h.html',''); initResizable(true); });
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>结果类 </p>
-<dl class="section author"><dt>作者</dt><dd>: kaoru </dd></dl>
-<dl class="section date"><dt>日期</dt><dd>2024年11月1日 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024年11月28日 </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_result_8h.html">Result.h</a></li>
-    <li class="footer">生成于 2024年 十一月 28日 星期四 09:34:22 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十一月 28日 星期四 10:03:09 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

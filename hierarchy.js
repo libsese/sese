@@ -313,7 +313,12 @@ var hierarchy =
     [ "sese::res::Resource", "classsese_1_1res_1_1_resource.html", null ],
     [ "sese::res::ResourceManager", "classsese_1_1res_1_1_resource_manager.html", null ],
     [ "sese::net::http::RequestParser::Result", "structsese_1_1net_1_1http_1_1_request_parser_1_1_result.html", null ],
-    [ "sese::Result< T >", "classsese_1_1_result.html", null ],
+    [ "sese::Result< T, E, Enable >", "classsese_1_1_result.html", null ],
+    [ "sese::Result< T, E, std::enable_if_t< std::is_same_v< T, E > &&!std::is_void_v< T > &&!std::is_void_v< E > > >", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html", null ],
+    [ "sese::Result< T, E, std::enable_if_t<!std::is_same_v< T, E > &&!std::is_void_v< T > &&!std::is_void_v< E > > >", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_9std_1_1is__same__v_3_01_t_00_013f8dd99f9223d5bf89cfeb2095978f37.html", null ],
+    [ "sese::Result< T, void >", "classsese_1_1_result_3_01_t_00_01void_01_4.html", null ],
+    [ "sese::Result< void, E >", "classsese_1_1_result_3_01void_00_01_e_01_4.html", null ],
+    [ "sese::Result< void, void >", "classsese_1_1_result_3_01void_00_01void_01_4.html", null ],
     [ "sese::db::ResultSet", "classsese_1_1db_1_1_result_set.html", [
       [ "sese::db::impl::MariaResultSetImpl", "classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html", null ],
       [ "sese::db::impl::MariaStmtResultSet", "classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html", null ],
