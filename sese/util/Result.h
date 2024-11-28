@@ -33,7 +33,8 @@ template<class T, class E, class Enable = void>
 class Result;
 
 template<class T, class E>
-class Result<T, E, std::enable_if_t<std::is_same_v<T, E>>> {
+class Result<T, E, std::enable_if_t<std::is_same_v<T, E> && !std::is_void_v<T> && !std::is_void_v<E>>> {
+private:
     bool is_success;
     T result;
 
@@ -93,7 +94,8 @@ public:
 };
 
 template<class T, class E>
-class Result<T, E, std::enable_if_t<!std::is_same_v<T, E>>> final {
+class Result<T, E, std::enable_if_t<!std::is_same_v<T, E> && !std::is_void_v<T> && !std::is_void_v<E>>> final {
+private:
     std::variant<T, E> result;
 
 public:
@@ -149,6 +151,7 @@ public:
 
 template<class T>
 class Result<T, void> {
+private:
     std::optional<T> result;
 
     Result() = default;
@@ -190,6 +193,7 @@ public:
 
 template<class E>
 class Result<void, E> {
+private:
     std::optional<E> e;
 
     Result() = default;
@@ -211,7 +215,7 @@ public:
     /// @brief 判断是否有错误
     /// @return 是否有错误
     explicit operator bool() const noexcept {
-        return !err.has_value();
+        return !e.has_value();
     }
 
     /// @brief 获取错误
@@ -231,6 +235,7 @@ public:
 
 template<>
 class Result<void, void> {
+private:
     bool is_success;
 
     Result() = default;
