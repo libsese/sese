@@ -55,7 +55,7 @@ public:
      * @see sese::system::Process::createEx()
      * @return Result<Process::Ptr>
      */
-    Result<Process::Ptr> createEx();
+    Result<Process::Ptr, ErrorCode> createEx();
 
 private:
     text::StringBuilder builder;

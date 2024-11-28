@@ -70,14 +70,14 @@ public:
     /// \return IPC 通道
     static IPCChannel::Ptr create(const std::string &name, size_t buffer_size);
 
-    static Result<Ptr> createEx(const std::string &name, size_t buffer_size);
+    static Result<Ptr, ErrorCode> createEx(const std::string &name, size_t buffer_size);
 
     /// 使用现有的 IPC 通道
     /// \param name 通道名称
     /// \return IPC 通道
     static IPCChannel::Ptr use(const std::string &name);
 
-    static Result<Ptr> useEx(const std::string &name);
+    static Result<Ptr, ErrorCode> useEx(const std::string &name);
 
     /// 向 IPC 通道写入编号为 id 的数据
     /// \param id 编号

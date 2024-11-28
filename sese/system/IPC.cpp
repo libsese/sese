@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "sese/util/Util.h"
+
+
 #include <sese/system/IPC.h>
 #include <sese/thread/Locker.h>
 
@@ -70,11 +73,11 @@ IPCChannel::Ptr IPCChannel::create(const std::string &name, size_t buffer_size) 
     return ipc;
 }
 
-sese::Result<IPCChannel::Ptr> IPCChannel::createEx(const std::string &name, size_t buffer_size) {
+sese::Result<IPCChannel::Ptr, sese::ErrorCode> IPCChannel::createEx(const std::string &name, size_t buffer_size) {
     if (auto result = create(name, buffer_size)) {
-        return std::move(result);
+        return Result<Ptr, ErrorCode>::success(std::move(result));
     }
-    return Result<Ptr>::fromLastError();
+    return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }
 
 IPCChannel::Ptr IPCChannel::use(const std::string &name) {
@@ -102,11 +105,11 @@ IPCChannel::Ptr IPCChannel::use(const std::string &name) {
     return ipc;
 }
 
-sese::Result<IPCChannel::Ptr> IPCChannel::useEx(const std::string &name) {
+sese::Result<IPCChannel::Ptr, sese::ErrorCode> IPCChannel::useEx(const std::string &name) {
     if (auto result = use(name)) {
-        return std::move(result);
+        return Result<Ptr, ErrorCode>::success(std::move(result));
     }
-    return Result<Ptr>::fromLastError();
+    return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }
 
 #define HEADER_SIZE (sizeof(MessageIterator) - sizeof(uint32_t) * 2)
@@ -162,7 +165,7 @@ std::list<Message> IPCChannel::read(uint32_t id) {
 
     size_t size = 0;
     buf = static_cast<char *>(this->buffer);
-    for (auto && iterator = iterators.begin(); iterator != iterators.end(); ) {
+    for (auto &&iterator = iterators.begin(); iterator != iterators.end();) {
         if (iterator->id == id) {
             list.emplace_back(std::string(static_cast<char *>(iterator->buffer), iterator->length));
             iterator = iterators.erase(iterator);

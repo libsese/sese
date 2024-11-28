@@ -14,16 +14,24 @@
 
 #include "SharedMemory.h"
 
-sese::Result<sese::system::SharedMemory::Ptr> sese::system::SharedMemory::createEx(const char *name, size_t size) noexcept {
+#include "sese/util/Util.h"
+
+sese::Result<sese::system::SharedMemory::Ptr, sese::ErrorCode> sese::system::SharedMemory::createEx(const char *name, size_t size) noexcept {
     if (auto result = create(name, size)) {
-        return std::move(result);
+        return Result<Ptr, ErrorCode>::success(std::move(result));
     }
-    return Result<Ptr>::fromLastError();
+    return Result<Ptr, ErrorCode>::error({
+        getErrorCode(),
+        getErrorString()
+    });
 }
 
-sese::Result<sese::system::SharedMemory::Ptr> sese::system::SharedMemory::useEx(const char *name) noexcept {
+sese::Result<sese::system::SharedMemory::Ptr, sese::ErrorCode> sese::system::SharedMemory::useEx(const char *name) noexcept {
     if (auto result = use(name)) {
-        return std::move(result);
+        return Result<Ptr, ErrorCode>::success(std::move(result));
     }
-    return Result<Ptr>::fromLastError();
+    return Result<Ptr, ErrorCode>::error({
+        getErrorCode(),
+        getErrorString()
+    });
 }

@@ -21,6 +21,7 @@
 #pragma once
 
 #include "sese/Util.h"
+#include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
 namespace sese::system {
@@ -36,7 +37,7 @@ public:
     static Process::Ptr create(const char *command) noexcept;
 
 
-    static Result<Process::Ptr> createEx(const char *command) noexcept;
+    static Result<Process::Ptr, ErrorCode> createEx(const char *command) noexcept;
 
     /// 获取当前进程 ID
     /// \return 当前进程 ID

@@ -22,6 +22,7 @@
 #pragma once
 
 #include "sese/plugin/BaseClass.h"
+#include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
 #include <map>
@@ -54,7 +55,7 @@ public:
     /// \param id 类注册名
     BaseClass::Ptr createClassWithName(const std::string &id) noexcept;
 
-    Result<BaseClass::Ptr> createClassWithNameEx(const std::string &id) noexcept;
+    Result<BaseClass::Ptr, ErrorCode> createClassWithNameEx(const std::string &id) noexcept;
 
     /// 获取已注册类的类型信息
     /// \return 类信息映射表

@@ -40,7 +40,7 @@ public:
     /// \retval nullptr 加载错误
     static Module::Ptr open(const std::string &path) noexcept;
 
-    static Result<Ptr> openEx(const std::string &path) noexcept;
+    static Result<Ptr, ErrorCode> openEx(const std::string &path) noexcept;
 
     /// 尝试从动态链接库中加载一个模块
     /// \param path 动态链接库路径

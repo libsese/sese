@@ -23,6 +23,7 @@
 
 #include <sese/Config.h>
 #include <sese/util/Result.h>
+#include <sese/util/ErrorCode.h>
 #ifdef WIN32
 #else
 #include <sys/shm.h>
@@ -42,7 +43,7 @@ public:
     /// \retval nullptr 创建失败
     static SharedMemory::Ptr create(const char *name, size_t size) noexcept;
 
-    static Result<Ptr> createEx(const char *name, size_t size) noexcept;
+    static Result<Ptr, ErrorCode> createEx(const char *name, size_t size) noexcept;
 
     /// 使用一块现有的共享内存
     /// \param name 共享内存名称
@@ -50,7 +51,7 @@ public:
     /// \retval nullptr 获取失败
     static SharedMemory::Ptr use(const char *name) noexcept;
 
-    static Result<Ptr> useEx(const char *name) noexcept;
+    static Result<Ptr, ErrorCode> useEx(const char *name) noexcept;
 
     /// 析构函数
     ~SharedMemory() noexcept;
