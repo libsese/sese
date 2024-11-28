@@ -92,7 +92,7 @@ SESE_CTRL(MyController, std::mutex mutex{}; int times = 0) {
 }
 ```
 
-Cross-process communication
+Inter-Process communication
 
 ```c++
 #include <sese/system/IPC.h>
