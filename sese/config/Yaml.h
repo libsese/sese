@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Yaml.h
-/// \brief Yaml 解析器
-/// \author kaoru
-/// \date 2023年11月4日
+/// \brief YAML parser
+/// \author Kaoru
+/// \date November 4, 2023
 
 #pragma once
 
@@ -26,7 +26,7 @@
 #include <queue>
 
 namespace sese {
-/// Yaml 解析器
+/// YAML parser
 class Yaml {
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;

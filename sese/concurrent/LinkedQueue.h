@@ -14,12 +14,13 @@
 
 /**
  * @file LinkedQueue.h
- * @author kaoru
- * @date 2022年5月30日
- * @brief 非阻塞线程安全队列
+ * @author Kaoru
+ * @date May 30, 2022
+ * @brief Non-blocking, thread-safe queue
  * @version 0.2
  * @see https://dl.acm.org/doi/pdf/10.1145/248052.248106
  */
+
 #pragma once
 
 #include <atomic>
@@ -28,11 +29,11 @@ namespace sese::concurrent {
 
 // GCOVR_EXCL_START
 
-/// \brief 非阻塞线程安全队列
-/// \tparam T 模板类型
+/// \brief Non-blocking, thread-safe queue
+/// \tparam T The template type
 template<class T>
 class LinkedQueue {
-    /// \brief 节点
+    /// \brief Node
     struct Node {
         std::atomic<T> value{};
         std::atomic<Node *> next{nullptr};

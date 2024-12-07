@@ -14,9 +14,9 @@
 
 /**
  * @file LinkedStack.h
- * @brief 非阻塞线程安全栈
- * @author kaoru
- * @date 2022年5月31日
+ * @brief Non-blocking, thread-safe stack
+ * @author Kaoru
+ * @date May 31, 2022
  * @version 0.2
  */
 
@@ -28,11 +28,11 @@ namespace sese::concurrent {
 
 // GCOVR_EXCL_START
 
-/// \brief 非阻塞线程安全栈
-/// \tparam T 模板类型
+/// \brief Non-blocking, thread-safe stack
+/// \tparam T The template type
 template<class T>
 class LinkedStack {
-    /// \brief 节点
+    /// \brief Node
     struct Node {
         T value;
         std::atomic<Node *> next{nullptr};

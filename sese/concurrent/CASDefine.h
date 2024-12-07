@@ -14,16 +14,18 @@
 
 /**
  * @file CASDefine.h
- * @brief 包含并发数据结构所用 API 和 类型
- * @author kaoru
- * @date 2022年5月31日
+ * @brief Contains APIs and types for concurrent data structures
+ * @author Kaoru
+ * @date May 31, 2022
  */
+
 #pragma once
 #include <sese/Config.h>
 
 namespace sese::concurrent {
-/// \brief 节点
-/// \tparam T 数据类型
+
+/// \brief Node
+/// \tparam T The data type
 template<typename T>
 struct Node {
     T value{};
@@ -32,7 +34,7 @@ struct Node {
 } // namespace sese::concurrent
 
 /**
- * @brief 比较并交换两个指针
+ * @brief Compares and swaps two pointers
  * @verbatim
  * if( *object == oldValue ) {
  *   *object = newValue;
@@ -41,10 +43,10 @@ struct Node {
  *   return false;
  * }
  * @endverbatim
- * @param object 欲比较对象
- * @param oldValue 原先的值
- * @param newValue 欲设置的值
- * @return 是否设置成功
+ * @param object The object to be compared
+ * @param oldValue The original value
+ * @param newValue The value to be set
+ * @return Whether the operation was successful
  */
 extern "C" inline bool compareAndSwapPointer(void *volatile *object, void *oldValue, void *newValue) noexcept;
 
