@@ -14,9 +14,9 @@
 
 /**
  * @file Config.h
- * @brief 通用配置文件
+ * @brief Generic profiles
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
 
 #pragma once
@@ -71,80 +71,80 @@ namespace sys = sese::system;
 #else
 #endif
 
-/// 默认时区
+/// Default time zone
 static constexpr int32_t TIME_DEFAULT_ZONE = 8;
-/// 世界协调时匹配格式
+/// UTC Match format
 static constexpr const char *TIME_DEFAULT_PATTERN = "UTCz yyyy-MM-dd HH:mm:ss.ff";
-/// 格林威治时间匹配格式
+/// Greenwich Mean Time Matching Format
 static constexpr const char *TIME_GREENWICH_MEAN_PATTERN = "ddd, dd MMM yyyy HH:mm:ss %G%M%T";
-/// 短格式
+/// Time short format
 static constexpr const char *TIME_SHORT_PATTERN = "yyyy-MM-dd%THH:mm:ss.ff%Z";
 
-/// String Buffer 单元因子
+/// String Buffer Unit factor
 static constexpr size_t STRING_BUFFER_SIZE_FACTOR = 1024;
-/// 空格字符
+/// Whitespace characters
 static constexpr const char *SPACE_CHARS = " \n\r\t\v\b";
 
-/// 默认线程名称
+/// Default thread name
 static constexpr const char *THREAD_DEFAULT_NAME = "UNKNOWN";
-/// 主线程名称
+/// The name of the main thread
 static constexpr const char *THREAD_MAIN_NAME = "Main";
 
-/// 日志输出缓存区大小
+/// The size of the log output buffer
 static constexpr size_t RECORD_OUTPUT_BUFFER = 4096;
-/// 日志格式化器时间匹配格式
+/// Log formatter time matching format
 #ifndef SESE_RECORD_TIME_PATTERN
 static constexpr const char *RECORD_DEFAULT_TIME_PATTERN = TIME_SHORT_PATTERN;
 #else
 static constexpr const char *RECORD_DEFAULT_TIME_PATTERN = SESE_RECORD_TIME_PATTERN;
 #endif
-/// 日志格式化器匹配格式
+/// The log formatter matches the format
 #ifndef SESE_RECORD_TEXT_PATTERN
 static constexpr const char *RECORD_DEFAULT_TEXT_PATTERN = "c lv fn:li tn:th> m\n";
 #else
 static constexpr const char *RECORD_DEFAULT_TEXT_PATTERN = SESE_RECORD_TEXT_PATTERN;
 #endif
-/// 日志输出文件名称匹配模式
+/// The log output file name matches the pattern
 static constexpr const char *RECORD_DEFAULT_FILE_TIME_PATTERN = "yyyyMMdd HHmmssff";
-/// 异步日志器缓冲区大小
+/// Asynchronous logger buffer size
 static constexpr const size_t RECORD_BUFFER_SIZE = 4096;
 
-/// 字节流缓冲区单元因子
+/// Byte stream buffer unit factor
 static constexpr const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;
 
-/// 是否启用调试模式
+/// Whether to enable debug mode
 #ifdef SESE_IS_DEBUG
 static constexpr bool ENABLE_TEST = true;
 #else
 static constexpr bool ENABLE_TEST = false;
 #endif
 
-/// 定时器时间轮轮片数
+/// The number of timer time wheels
 static constexpr size_t TIMER_WHEEL_NUMBER = 30;
 
-/// TCP Server 默认线程池大小
+/// TCP Server default thread pool size
 static constexpr size_t SERVER_DEFAULT_THREADS = 4;
-/// TCP Server 默认监听队列大小
+/// TCP Server defaults to the listener queue size
 static constexpr size_t SERVER_MAX_CONNECTION = 511;
-/// TCP Server Keep-Alive 时长
+/// TCP Server Keep-Alive duration
 static constexpr size_t SERVER_KEEP_ALIVE_DURATION = 10;
 
-/// Http Util 单行最大大小
+/// The maximum size of a single HTTP util
 static constexpr size_t HTTP_MAX_SINGLE_LINE = 1023;
-/// Http Server 名称
+/// Http Server name
 static constexpr const char *HTTPD_NAME = "sese::service::HttpServer";
-/// Http 多段请求 boundary
+/// HTTP multi-segment request boundary
 static constexpr const char *HTTPD_BOUNDARY = "000000SESE0BOUNDARY000000";
-/// Http Client 名称
+/// Http Client name
 static constexpr const char *HTTP_CLIENT_NAME = "sese::net::http::HttpClient";
 
-/// Compressor Chunk 默认大小
+/// Compressor Chunk default size
 static constexpr size_t ZLIB_CHUNK_SIZE = 1024 * 16;
 
-/// IOCP 投递的 Recv 事件时携带的 WSABUF 大小
+/// The size of the WSABUF carried by the IOCP when delivering the Recv event
 static constexpr size_t IOCP_WSABUF_SIZE = 65535;
 
-/// 框架默认 MTU 值
+/// Framework default MTU value
 static constexpr size_t MTU_VALUE = 1472;
-/// 框架 DNS 数据包大小
+/// Framework DNS packet size
 static constexpr size_t DNS_PACKAGE_SIZE = 512;

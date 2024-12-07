@@ -13,14 +13,14 @@
 // limitations under the License.
 
 /// \file Config.h
-/// \brief Archive 相关配置
-/// \author kaoru
-/// \date 2024年04月10日
+/// \brief Archive-related configuration
+/// \author Kaoru
+/// \date April 10, 2024
 
 #pragma once
 
 namespace sese::archive {
-    /// @brief Archive 配置类
+    /// @brief Archive configuration class
     class Config {
     public:
         enum class EntryType {

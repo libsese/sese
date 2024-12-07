@@ -14,16 +14,16 @@
 
 /**
  * @file Closeable.h
- * @date 2023年7月5日
+ * @date July 5, 2023
  * @author kaoru
- * @brief 可关闭接口类
+ * @brief The closeable interface
  * @version 0.1
  */
 
 #pragma once
 
 namespace sese::io {
-/// 可关闭接口
+/// The closeable interface
 class  Closeable {
 public:
     virtual ~Closeable() = default;

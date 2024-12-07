@@ -14,11 +14,11 @@
 
 /// \file Config.h
 /// \author kaoru
-/// \brief 配置文件
+/// \brief Database-related configuration files
 /// \version 0.1
+
 #pragma once
 
-// 已弃用
 #define SESE_DB_API
 
 #ifdef _MSC_VER

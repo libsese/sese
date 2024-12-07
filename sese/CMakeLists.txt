@@ -13,7 +13,7 @@ if (SESE_BUILD_EXAMPLE)
 endif ()
 
 ###################################################################################
-# 通用目标
+# General Targets
 # 1.Core
 ###################################################################################
 file(
@@ -97,7 +97,7 @@ target_link_libraries(Core PRIVATE ZLIB::ZLIB)
 target_link_libraries(Core PRIVATE asio::asio)
 
 ###################################################################################
-# 内部独立子库和可选项
+# Internally independent sub-libraries and options
 # 1.Archive
 # 2.DB
 # 3.Async Logger
@@ -146,7 +146,7 @@ if (SESE_REPLACE_EXECINFO)
 endif ()
 
 ###################################################################################
-# 额外的任务配置
+# Additional task configurations
 ###################################################################################
 if (SESE_BUILD_TEST AND WIN32)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
@@ -160,7 +160,7 @@ if (SESE_BUILD_EXAMPLE AND WIN32)
 endif ()
 
 ###################################################################################
-# Windows 平台配置
+# Windows platform configuration
 ###################################################################################
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     file(GLOB_RECURSE NATIVE_WIN_SRC "native/win/*.cpp" "native/win/*.h")
@@ -178,7 +178,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 endif ()
 
 ###################################################################################
-# Linux 平台配置
+# Linux platform configuration
 ###################################################################################
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT})
@@ -192,7 +192,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif ()
 
 ###################################################################################
-# macOS 平台配置
+# macOS platform configuration
 ###################################################################################
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
@@ -202,7 +202,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif ()
 
 ###################################################################################
-# Unix-Like 平台配置
+# Unix-Like platform configuration
 ###################################################################################
 if (UNIX)
     include(CheckFunctionExists)
