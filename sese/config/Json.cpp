@@ -21,9 +21,9 @@ using sese::Value;
 
 // GCOVR_EXCL_START
 
-/// 判断一个 token 是否为 json 关键字
-/// \param str token
-/// \return 结果
+/// Checks if a token is a JSON keyword
+/// \param str The token
+/// \return The result
 inline bool isKeyword(const char *str) {
     if (str[0] == '}' || str[0] == ']' || str[0] == ':' || str[0] == ',') {
         return true;
@@ -75,7 +75,7 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
                 if (sese::isSpace(ch)) break;
                 builder.append(ch);
                 while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
-                    //fix: 此处多加关键字判断
+                    // fix: 此处多加关键字判断
                     if (isKeyword(&ch)) {
                         tokens.push(builder.toString());
                         builder.clear();

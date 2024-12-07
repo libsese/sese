@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file CSVReader.h
-/// \brief CSV 流读取器
-/// \author kaoru
+/// \brief CSV stream reader
+/// \author Kaoru
 /// \version 0.1
-/// \date 2023年3月30日
+/// \date March 30, 2023
 
 #pragma once
 
@@ -27,21 +27,20 @@
 
 namespace sese {
 
-/// CSV 流读取器
+/// CSV stream reader
 class  CSVReader {
 public:
-    /// 工具支持的输入流
+    /// Input stream supported by the utility
     using InputStream = io::InputStream;
-    /// 行
     using Row = std::vector<std::string>;
 
-    /// 构造函数
-    /// \param source 读取的流
-    /// \param split_char 分割字符
+    /// Constructor
+    /// \param source The input stream to read from
+    /// \param split_char The delimiter character
     explicit CSVReader(InputStream *source, char split_char = ',') noexcept;
 
-    /// 从流中读取一行
-    /// \return 返回包含一行内所有元素的 vector 容器
+    /// Reads a line from the stream
+    /// \return A vector container containing all elements in the line
     Row read() noexcept;
 
 protected:
