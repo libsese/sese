@@ -13,11 +13,12 @@
 // limitations under the License.
 
 /**
-* @file XmlTypes.h
-* @brief XML 类型定义
-* @author kaoru
-* @date 2022年10月23日
-*/
+ * @file XmlTypes.h
+ * @brief XML Type Definitions
+ * @author kaoru
+ * @date October 23, 2022
+ */
+
 #pragma once
 #include <sese/Config.h>
 #include <vector>
@@ -29,8 +30,8 @@
 
 namespace sese::xml {
 
-/// XML 元素对象
-class  Element {
+/// XML Element
+class Element {
 public:
     using Ptr = std::shared_ptr<Element>;
     using AttrType = std::map<std::string, std::string>;

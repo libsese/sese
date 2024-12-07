@@ -14,10 +14,10 @@
 
 /**
  * @file IOCPServer_V1.h
- * @brief 基于 sese-event 的完成端口服务器
+ * @brief IOCP server based on sese-event
  * @author kaoru
  * @version 0.1
- * @date 2023年9月25日
+ * @date September 25, 2023
  */
 
 #pragma once
@@ -35,7 +35,7 @@ class Context;
 class IOCPServer;
 class IOCPService;
 
-/// 基于 sese-event 的完成端口服务器
+/// IOCP server based on sese-event
 class IOCPServer {
 public:
     virtual ~IOCPServer() = default;
@@ -44,100 +44,100 @@ public:
     IOCPServer();
 
     /**
-     * 初始化并启动服务器
-     * @return 初始化结果
+     * Initialize and start the server
+     * @return Initialization result
      */
     bool init();
     /**
-     * 终止工作线程、释放系统资源并结束服务器
+     * Terminate worker threads, release system resources, and shut down the server
      */
     void shutdown();
     /**
-     * 投递读事件
-     * @param ctx 操作上下文
+     * Post a read event
+     * @param ctx Operation context
      */
     static void postRead(Context *ctx);
     /**
-     * 投递写事件
-     * @param ctx 操作上下文
+     * Post a write event
+     * @param ctx Operation context
      */
     static void postWrite(Context *ctx);
     /**
-     * 投递关闭事件
-     * @param ctx 操作上下文
+     * Post a close event
+     * @param ctx Operation context
      */
     static void postClose(Context *ctx);
     /**
-     * 投递连接事件
-     * @param to 连接地址
-     * @param cli_ctx ssl 客户端上下文
-     * @param data 额外数据
+     * Post a connection event
+     * @param to Connection address
+     * @param cli_ctx SSL client context
+     * @param data Additional data
      */
     void postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cli_ctx, void *data = nullptr);
     /**
-     * 设置超时事件
-     * @param ctx 操作上下文
-     * @param seconds 超时时间
+     * Set a timeout event
+     * @param ctx Operation context
+     * @param seconds Timeout duration
      */
     static void setTimeout(Context *ctx, int64_t seconds);
     /**
-     * 取消超时事件
-     * @param ctx 操作上下文
+     * Cancel the timeout event
+     * @param ctx Operation context
      */
     static void cancelTimeout(Context *ctx);
     /**
-     * 默认的上下文释放回调函数
+     * Default context release callback function
      */
     static void onDeleteContext(Context *) {}
     /**
-     * 连接握手完成回调函数
-     * @param ctx 操作上下文
+     * Handshake completed callback function
+     * @param ctx Operation context
      */
     virtual void onAcceptCompleted(Context *ctx) {}
     /**
-     * 读取事件触发回调函数
-     * @param ctx 操作上下文
+     * Callback function triggered by a read event
+     * @param ctx Operation context
      */
     virtual void onPreRead(Context *ctx) {}
     /**
-     * 读取事件完成回调函数
-     * @param ctx 操作上下文
+     * Callback function for completion of a read event
+     * @param ctx Operation context
      */
     virtual void onReadCompleted(Context *ctx) {}
     /**
-     * 写入事件完成回调函数
-     * @param ctx 操作上下文
+     * Write event completed callback function
+     * @param ctx Operation context
      */
     virtual void onWriteCompleted(Context *ctx) {}
     /**
-     * 超时事件回调函数
-     * @param ctx 操作上下文
+     * Timeout event callback function
+     * @param ctx Operation context
      */
     virtual void onTimeout(Context *ctx) {}
     /**
-     * 连接前事件回调函数
-     * @param ctx 操作上下文
+     * Connection pre-event callback function
+     * @param ctx Operation context
      */
     virtual void onPreConnect(Context *ctx) {}
     /**
-     * 连接事件回调函数
-     * @param ctx 操作上下文
+     * Connection event callback function
+     * @param ctx Operation context
      */
     virtual void onConnected(Context *ctx) {}
     /**
-     * ALPN 协议协商完成回调函数
-     * @param ctx 上下文
-     * @param in 协商内容
-     * @param in_length 协商内容长度
+     * ALPN protocol negotiation completion callback function
+     * @param ctx Context
+     * @param in Negotiation content
+     * @param in_length Length of negotiation content
      */
     virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t in_length) {}
     /**
-     * ALPN 协商回调函数
-     * @param out 对端期望内容
-     * @param out_length 对端期望内容长度
-     * @param in 响应内容
-     * @param in_length 响应内容长度
-     * @return ALPN 状态码
+     * ALPN negotiation callback function
+     * @param out Expected content from the other side
+     * @param out_length Length of expected content from the other side
+     * @param in Response content
+     * @param in_length Length of response content
+     * @return ALPN status code
      */
     int onAlpnSelect(
             const uint8_t **out, uint8_t *out_length,
@@ -146,62 +146,61 @@ public:
 
 public:
     /**
-     * 设置当前服务绑定的 IP 地址，设置此选项服务器将会自动监听对应地址的端口
-     * @param addr 目标 IP
+     * Set the IP address to which the current service is bound. Setting this option will make the server automatically listen to the corresponding port of the address
+     * @param addr Target IP
      */
     void setAddress(const net::IPAddress::Ptr &addr) { balanceLoader.setAddress(addr); }
     /**
-     * 设置服务期望线程数量
-     * @param threads 线程数量
+     * Set the desired number of threads for the service
+     * @param threads Number of threads
      */
     void setThreads(size_t threads) { balanceLoader.setThreads(threads); }
     /**
-     * 设置服务器监听所使用的 SSL 上下文
-     * @param ctx SSL 上下文
+     * Set the SSL context used for server listening
+     * @param ctx SSL context
      */
     void setServCtx(const security::SSLContext::Ptr &ctx) { IOCPServer::sslCtx = ctx; }
     /**
-     * 设置服务器 ALPN 协商内容
-     * @param protos 协议协商内容
+     * Set the ALPN negotiation content for the server
+     * @param protos Protocol negotiation content
      */
     void setServProtos(const std::string &protos) { IOCPServer::servProtos = protos; }
     /**
-     * 设置客户端 ALPN 协商内容
-     * @param protos 协议协商内容
+     * Set the ALPN negotiation content for the client
+     * @param protos Protocol negotiation content
      */
     void setClientProtos(const std::string &protos) { IOCPServer::clientProtos = protos; }
     /**
-     * 设置服务器操作上下文销毁回调函数
-     * @param callback 回调函数
+     * Set the server operation context destruction callback function
+     * @param callback Callback function
      */
     void setDeleteContextCallback(const DeleteContextCallback &callback) { IOCPServer::deleteContextCallback = callback; }
-
     /**
-     * 获取当前服务器监听 SSL 上下文
-     * @return SSL 上下文
+     * Get the current SSL context for server listening
+     * @return SSL context
      */
     [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return IOCPServer::sslCtx; }
     /**
-     * 获取当前服务的操作上下文销毁回调函数
-     * @return 回调函数
+     * Get the current operation context destruction callback function for the service
+     * @return Callback function
      */
     [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer::deleteContextCallback; };
 
     /**
-     * 获取主动释放模式状态
-     * @return 主动释放模式状态
+     * Get the status of the active release mode
+     * @return Status of the active release mode
      */
     [[nodiscard]] bool isActiveReleaseMode() const { return activeReleaseMode; }
 
 public:
     /**
-     * 设置连接接入超时时间，此函数仅用户基于 sese-event 的 IOCP 实现
-     * @param seconds 连接接入超时时间
+     * Set the connection access timeout duration. This function is only for IOCP implementations based on sese-event
+     * @param seconds Connection access timeout duration
      */
     [[maybe_unused]] void setAcceptTimeout(uint32_t seconds) { balanceLoader.setAcceptTimeout(seconds); }
     /**
-     * 设置连接分发超时时间，此函数仅用户基于 sese-event 的 IOCP 实现
-     * @param seconds 连接分发超时时间
+     * Set the connection dispatch timeout duration. This function is only for IOCP implementations based on sese-event
+     * @param seconds Connection dispatch timeout duration
      */
     [[maybe_unused]] void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
 
@@ -209,8 +208,8 @@ protected:
     void preConnectCallback(int fd, sese::event::EventLoop *event_loop, Context *ctx);
 
     /**
-     * 设置主动释放模式
-     * @param enable 是否启用
+     * Set active release mode
+     * @param enable Enable or disable
      */
     void setActiveReleaseMode(bool enable) { activeReleaseMode = enable; }
 
@@ -224,7 +223,7 @@ private:
     bool activeReleaseMode = true;
 };
 
-/// 基于 sese-event 的完成端口操作上下文
+/// Completion port operation context based on sese-event
 class Context final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
     friend class IOCPServer;
     friend class IOCPService;
@@ -241,120 +240,119 @@ class Context final : public io::InputStream, public io::OutputStream, public io
 
 public:
     /**
-     * 从当前连接中读取内容
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际读取大小
+     * Read content from the current connection
+     * @param buffer Buffer
+     * @param length Size of buffer
+     * @return Actual read size
      */
     int64_t read(void *buffer, size_t length) override;
     /**
-     * 向当前连接中写入内容
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际写入大小
+     * Write content to the current connection
+     * @param buffer Buffer
+     * @param length Size of buffer
+     * @return Actual written size
      */
     int64_t write(const void *buffer, size_t length) override;
     /**
-     * 从当前连接中读取内容，但不步进
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际读取大小
+     * Read content from the current connection without advancing
+     * @param buffer Buffer
+     * @param length Size of buffer
+     * @return Actual read size
      */
     int64_t peek(void *buffer, size_t length) override;
     /**
-     * 在当前连接中步进，不读取内容
-     * @param length 步进大小
-     * @return 实际步进大小
+     * Advance in the current connection without reading content
+     * @param length Advance size
+     * @return Actual advance size
      */
     int64_t trunc(size_t length) override;
     /**
-     * 获取当前上下文连接文件描述符
-     * @return 文件描述符
+     * Get the file descriptor of the current context connection
+     * @return File descriptor
      */
     [[nodiscard]] int32_t getFd() const { return static_cast<int32_t>(Context::fd); }
     /**
-     * 获取当前上下文额外数据
-     * @return 额外数据
+     * Get additional data of the current context
+     * @return Additional data
      */
     [[nodiscard]] void *getData() const { return Context::data; }
     /**
-     * 设置当前上下文额外数据
-     * @param p_data 额外数据
+     * Set additional data for the current context
+     * @param p_data Additional data
      */
     [[maybe_unused]] void setData(void *p_data) { Context::data = p_data; }
 };
 
-/// 基于 sese-event 的完成端口子服务
+/// Completion port sub-service based on sese-event
 class IOCPService final : public service::v2::TimerableService {
 public:
-    /// 初始化子服务
-    /// \param master 主服务器
-    /// \param active_release_mode 主动释放模式
+    /// Initialize sub-service
+    /// \param master Master server
+    /// \param active_release_mode Active release mode
     explicit IOCPService(IOCPServer *master, bool active_release_mode);
-    /// 析构函数
     ~IOCPService() override;
 
     /**
-     * 向主服务器投递读事件
-     * @param ctx 操作上下文
+     * Submit read event to the master server
+     * @param ctx Operation context
      */
     void postRead(Context *ctx);
     /**
-     * 向主服务器投递写事件
-     * @param ctx 操作上下文
+     * Submit write event to the master server
+     * @param ctx Operation context
      */
     void postWrite(Context *ctx);
     /**
-     * 向主服务器投递关闭事件
-     * @param ctx 操作上下文
+     * Submit close event to the master server
+     * @param ctx Operation context
      */
     void postClose(Context *ctx);
     /**
-     * 子服务器连接接入完成回调函数
-     * @param ctx 操作上下文
+     * Sub-server connection access completion callback function
+     * @param ctx Operation context
      */
     static void onAcceptCompleted(Context *ctx);
     /**
-     * 子服务读事件触发回调函数
-     * @param ctx 操作上下文
+     * Sub-service read event trigger callback function
+     * @param ctx Operation context
      */
     static void onPreRead(Context *ctx);
     /**
-     * 子服务读取事件完成触发回调函数
-     * @param ctx 操作上下文
+     * Sub-service read event completion trigger callback function
+     * @param ctx Operation context
      */
     static void onReadCompleted(Context *ctx);
     /**
-     * 子服务写入事件完成触发回调函数
-     * @param ctx 操作上下文
+     * Sub-service write event completion trigger callback function
+     * @param ctx Operation context
      */
     static void onWriteCompleted(Context *ctx);
     /**
-     * 子服务超时回调函数
-     * @param ctx 操作上下文
+     * Sub-service timeout callback function
+     * @param ctx Operation context
      */
     static void onTimeout(Context *ctx);
     /**
-     * 连接事件回调函数
-     * @param ctx 操作上下文
+     * Connection event callback function
+     * @param ctx Operation context
      */
     static void onConnected(Context *ctx);
     /**
-     * ALPN 协商完成回调函数
-     * @param ctx 操作上下文
-     * @param in 协商内容
-     * @param in_length 协商内容长度
+     * ALPN negotiation completion callback function
+     * @param ctx Operation context
+     * @param in Negotiation content
+     * @param in_length Negotiation content length
      */
     static void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t in_length);
     /**
-     * ALPN 协商回调函数
-     * @param ssl SSL 上下文
-     * @param out 对端期望内容
-     * @param out_length 对端期望内容长度
-     * @param in 响应内容
-     * @param in_length 响应内容长度
-     * @param service 所属子服务
-     * @return ALPN 状态码
+     * ALPN negotiation callback function
+     * @param ssl SSL context
+     * @param out Expected content from peer
+     * @param out_length Length of expected content from peer
+     * @param in Response content
+     * @param in_length Length of response content
+     * @param service Associated sub-service
+     * @return ALPN status code
      */
     static int alpnCallbackFunction(
             void *ssl,

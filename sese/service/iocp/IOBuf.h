@@ -14,9 +14,9 @@
 
 /**
  * @file IOBuf.h
- * @brief 用于 IOCP 的链式缓存
+ * @brief Chained buffer for IOCP
  * @author kaoru
- * @date 2023年9月20日
+ * @date September 20, 2023
  */
 
 #pragma once
@@ -29,74 +29,73 @@
 
 namespace sese::iocp {
 
-/// IOBuf 节点
+/// IOBuf Node
 struct IOBufNode {
-    /// 缓存指针
+    /// Cache pointers
     void *buffer{nullptr};
-    /// 缓存已读大小
+    /// Cache read size
     size_t read{0};
-    /// 缓存已填充大小
+    /// The cache is populated with size
     size_t size{0};
-    /// 缓存容量大小
+    /// The size of the cache capacity
     const size_t CAPACITY;
 
     /**
-     * 新建一个节点
-     * @param capacity 节点容量大小
+     * Creates a new node
+     * @param capacity The size of the node's capacity
      */
     explicit IOBufNode(size_t capacity);
 
-    /// 节点析构
     ~IOBufNode();
 
     /**
-     * 获取节点可读部分大小
-     * @return 可读大小
+     * Get the readable size of the node
+     * @return Readable size
      */
     [[nodiscard]] size_t getReadableSize() const noexcept;
 
     /**
-     * 获取节点可写入大小
-     * @return 可写大小（空闲部分）
+     * Get the writable size of the node
+     * @return Writable size (free portion)
      */
     [[nodiscard]] size_t getWriteableSize() const noexcept;
 };
 
-/// 用于 IOCP 的链式缓存
+/// Chained buffer for IOCP
 class IOBuf final : public io::InputStream, public io::PeekableStream {
 public:
-    /// 节点类型
+    /// Type of node
     using Node = std::unique_ptr<IOBufNode>;
     using ListType = std::list<Node>;
 
-    /// 添加一个新的节点，节点一旦被添加，外部就不可继续变更此节点
-    /// \param node 目标节点
+    /// Add a new node. Once the node is added, it can no longer be modified externally
+    /// \param node Target node
     void push(Node node);
 
-    /// 释放所有节点
+    /// Release all nodes
     void clear();
 
-    /// 获取当前可读大小
+    /// Get the current readable size
     [[nodiscard]] size_t getReadableSize() const noexcept;
 
-    /// 获取当前所有节点内容大小
+    /// Get the current total size of all node contents
     [[nodiscard]] size_t getTotalSize() const noexcept;
 
-    /// 从一个或多个节点读取内容
-    /// \param buffer 缓存
-    /// \param length 缓存大小
-    /// \return 实际获取大小
+    /// Read content from one or more nodes
+    /// \param buffer Buffer
+    /// \param length Buffer size
+    /// \return Actual size obtained
     int64_t read(void *buffer, size_t length) override;
 
-    /// 从一个或多个节点窥视内容
-    /// \param buffer 缓存
-    /// \param length 缓存大小
-    /// \return 实际获取大小
+    /// Peek at the content from one or more nodes
+    /// \param buffer Buffer
+    /// \param length Buffer size
+    /// \return Actual size obtained
     int64_t peek(void *buffer, size_t length) override;
 
-    /// 从一个或多个节点步进内容
-    /// \param length 步进大小
-    /// \return 实际步进大小
+    /// Step through the content from one or more nodes
+    /// \param length Step size
+    /// \return Actual step size
     int64_t trunc(size_t length) override;
 
 private:

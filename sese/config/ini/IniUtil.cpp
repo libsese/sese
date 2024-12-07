@@ -56,7 +56,7 @@ IniUtil::IniConfigObject IniUtil::parse(IniUtil::InputStream *input) noexcept {
 #define ASSERT_WRITE(buf, size) \
     if (output->write(buf, size) != size) return false;
 
-// 此处的分支基本用于判断写入是否成功，是硬性检查
+// The branch here is basically used to determine whether the write is successful
 // GCOVR_EXCL_START
 
 bool IniUtil::unparse(const IniUtil::IniConfigObject &target, IniUtil::OutputStream *output) noexcept {

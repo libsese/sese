@@ -27,31 +27,31 @@ sese::CSVReader::Row sese::CSVReader::read() noexcept {
     char ch = 0;
     size_t quot = 0;
     while ((source->read(&ch, 1)) != 0) {
-        // 是否处于字符串内部
+        // Is in string mode?
         if (quot % 2 == 1) {
             if (ch != '\"') {
                 builder << ch;
             } else {
-                // 退出字符串
+                // exit string mode
                 quot += 1;
             }
         } else {
             if (ch == '\"') {
-                // 进入字符串
+                // enter string mode
                 quot += 1;
             } else if (ch == CSVReader::splitChar) {
-                // 切割元素
+                // Split
                 row.emplace_back(builder.toString());
                 builder.clear();
             } else if (ch == '\r') {
-                // 换行 - \r\n
+                // Split lines - \r\n
                 if (source->read(&ch, 1) != 0) {
                     row.emplace_back(builder.toString());
                     builder.clear();
                     return row;
                 }
             } else if (ch == '\n') {
-                // 换行 - \n
+                // Split lines - \n
                 row.emplace_back(builder.toString());
                 builder.clear();
                 return row;

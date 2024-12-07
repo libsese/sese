@@ -4,7 +4,7 @@ ARG DB_PASSWORD=libsese
 ENV TERM=xterm-256color
 ENV DEBIAN_FRONTEND=noninteractive
 
-# 安装系统软件包（系统级操作）
+# Installing System Packages (System-Level Operations)
 # COPY ./scripts/install_ubuntu_deps.sh /tmp/install_deps.sh
 
 # RUN yes | unminimize && \
@@ -26,13 +26,13 @@ RUN git clone https://github.com/microsoft/vcpkg /opt/vcpkg && \
 
 ENV VCPKG_ROOT=/opt/vcpkg
 
-# 安装 pip 软件包（非系统级操作）
+# Installing the pip package (non-system-level operation)
 COPY ./requirements.txt /tmp/requirements.txt
 
 RUN pip install -r /tmp/requirements.txt && \
     pip cache purge
 
-# 初始化数据库（非系统级操作）
+# Initializing the database (non-system-level operation)
 # COPY ./scripts/*.sql /tmp/
 
 # RUN sqlite3 /tmp/db_test.db < /tmp/sqlite_dump.sql

@@ -13,11 +13,11 @@
 // limitations under the License.
 
 /**
-* \file IniUtil.h
-* \author kaoru
-* \brief INI 工具类
-* \date 2023年9月13日
-*/
+ * \file IniUtil.h
+ * \author kaoru
+ * \brief INI Utility Class
+ * \date September 13, 2023
+ */
 
 #pragma once
 
@@ -27,28 +27,25 @@
 
 namespace sese::ini {
 
-/// INI 工具类
+/// INI Utility Class
 class  IniUtil {
 public:
-    /// 工具支持的输入流
     using InputStream = io::PeekableStream;
-    /// 工具支持的输出流
     using OutputStream = io::OutputStream;
-    /// INI CONFIG 对象
     using IniConfigObject = std::unique_ptr<IniConfig>;
 
     /**
-     * 从可窥视流中解析一个 INI CONFIG 对象
-     * @param input 欲处理的可窥视流
-     * @return INI CONFIG 对象
+     * Parse an INI CONFIG object from a peekable stream
+     * @param input Peekable stream to be processed
+     * @return INI CONFIG object
      */
     static IniConfigObject parse(InputStream *input) noexcept;
 
     /**
-     * 向流中写入 INI CONFIG 对象
-     * @param target 欲写入的 INI CONFIG
-     * @param output 欲输出的流
-     * @return 操作是否成功
+     * Write an INI CONFIG object to a stream
+     * @param target INI CONFIG to be written
+     * @param output Stream to output
+     * @return Whether the operation is successful
      */
     static bool unparse(const IniConfigObject &target, OutputStream *output) noexcept;
 

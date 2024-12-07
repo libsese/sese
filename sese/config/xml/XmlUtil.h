@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file XmlUtil.h
-* @brief XML 序列化工具类
-* @author kaoru
-* @date 2022年10月23日
-* @version 0.2
-*/
+ * @file XmlUtil.h
+ * @brief XML Serialization Utility Class
+ * @author kaoru
+ * @date October 23, 2022
+ * @version 0.2
+ */
 
 #pragma once
 
@@ -30,7 +30,7 @@
 
 namespace sese::xml {
 
-/// XML 序列化工具类
+/// XML Serialization Utility Class
 class  XmlUtil final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
@@ -39,26 +39,26 @@ public:
 
     XmlUtil() = delete;
 
-    /// 从流中反序列化一个 Xml 元素对象
-    /// \param input_stream 输入流
-    /// \param level 反序列化深度
-    /// \retval nullptr 反序列化失败，否则为成功
+    /// Deserialize an XML element object from a stream
+    /// \param input_stream Input stream
+    /// \param level Deserialization depth
+    /// \retval nullptr Deserialization failed, otherwise succeeded
     static Element::Ptr deserialize(const InputStream::Ptr &input_stream, size_t level) noexcept;
 
-    /// 从流中反序列化一个 Xml 元素对象
-    /// \param input_stream 输入流
-    /// \param level 反序列化深度
-    /// \retval nullptr 反序列化失败，否则为成功
+    /// Deserialize an XML element object from a stream
+    /// \param input_stream Input stream
+    /// \param level Deserialization depth
+    /// \retval nullptr Deserialization failed, otherwise succeeded
     static Element::Ptr deserialize(InputStream *input_stream, size_t level) noexcept;
 
-    /// 向流中序列化一个 Xml 元素对象
-    /// \param object 待序列化对象
-    /// \param output_stream 待输出流
+    /// Serialize an XML element object to a stream
+    /// \param object Object to be serialized
+    /// \param output_stream Output stream
     static void serialize(const Element::Ptr &object, const OutputStream::Ptr &output_stream) noexcept;
 
-    /// 向流中序列化一个 Xml 元素对象
-    /// \param object 待序列化对象
-    /// \param output_stream 待输出流
+    /// Serialize an XML element object to a stream
+    /// \param object Object to be serialized
+    /// \param output_stream Output stream
     static void serialize(const Element::Ptr &object, OutputStream *output_stream) noexcept;
 
 private:
