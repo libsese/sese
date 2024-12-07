@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file ArchiveInputStream.h
-/// \brief 存档输入流
-/// \author kaoru
-/// \date 2024年01月9日
-
+/// \brief Archive input stream
+/// \author Kaoru
+/// \date January 9, 2024
 
 #pragma once
 
@@ -24,7 +23,7 @@
 
 namespace sese::archive {
 
-    /// 存档输入流
+    /// Archive input stream
     class ArchiveInputStream final : public io::InputStream {
     public:
         explicit ArchiveInputStream(void *archive_read);

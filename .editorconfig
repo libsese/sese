@@ -1,4 +1,4 @@
-# 行分割符应该在 .gitattributes 中指定
+# The line splitter should be specified in `.gitattributes`
 root = true
 
 [*]

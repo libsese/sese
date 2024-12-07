@@ -222,9 +222,9 @@ bool ArchiveWriter::addDirectory(const std::filesystem::path &base, const std::f
             }
         }
 
-        // 压缩包中的相对路径
+        // Relative paths in the package
         auto &&pathname = (base / item.path().filename()).string();
-        // 原始文件系统中的绝对路径
+        // The absolute path in the original file system
         auto &&file_path = item.path().string();
 
         struct archive_entry *entry = archive_entry_new();

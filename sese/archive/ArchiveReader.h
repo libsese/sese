@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file ArchiveReader.h
-/// \brief 存档读取器
-/// \author kaoru
-/// \date 2024年01月9日
-
+/// \brief Archive reader
+/// \author Kaoru
+/// \date January 9, 2024
 
 #pragma once
 
@@ -28,46 +27,45 @@
 
 namespace sese::archive {
 
-    /// 存档读取器
+    /// Archive reader
     class ArchiveReader {
     public:
-        /// 解压回调函数
         using ExtractCallback = std::function<bool(const std::filesystem::path &base_path, Config::EntryType type, io::InputStream *input, size_t readable)>;
 
-        /// 将存档解压至指定位置
-        /// \param src_path 存档路径
-        /// \param dest_path 解压目的路径
-        /// \param pwd 密码，可选的
-        /// \return 是否成功
+        /// Extracts the archive to the specified location
+        /// \param src_path The path of the archive
+        /// \param dest_path The destination path for extraction
+        /// \param pwd The password (optional)
+        /// \return Whether the operation was successful
         static bool extract(const std::filesystem::path &src_path, const std::filesystem::path &dest_path, const std::string &pwd = {});
 
-        /// 从输入流中读取存档
-        /// \param input 输入流
+        /// Reads the archive from the input stream
+        /// \param input The input stream
         explicit ArchiveReader(io::InputStream *input);
 
         virtual ~ArchiveReader();
 
-        /// 为当前读取的文档设置使用的密码
-        /// \param pwd 欲使用的密码
-        /// \return 成功返回 0
+        /// Sets the password for the currently read document
+        /// \param pwd The password to be used
+        /// \return Returns 0 if successful
         [[nodiscard]] int setPassword(const std::string &pwd) const;
 
-        /// 为当前的存档设置 libarchive 选项
-        /// \param opt 选项字符串
-        /// \return 成功返回 0
+        /// Sets libarchive options for the current archive
+        /// \param opt The options string
+        /// \return Returns 0 if successful
         [[nodiscard]] int setOptions(const std::string &opt) const;
 
-        /// 执行解压操作
-        /// \param callback 解压回调函数
-        /// \return 解压是否成功
+        /// Executes the extraction operation
+        /// \param callback The extraction callback function
+        /// \return Whether the extraction was successful
         bool extract(const ExtractCallback &callback);
 
-        /// 获取当前错误码
-        /// \return 错误码
+        /// Retrieves the current error code
+        /// \return The error code
         [[nodiscard]] int getError()const;
 
-        /// 获取当前错误字符串
-        /// \return 错误字符串
+        /// Retrieves the current error message
+        /// \return The error message
         [[nodiscard]] const char *getErrorString()const;
 
         static int openCallback(void *a, ArchiveReader *archive_this);
