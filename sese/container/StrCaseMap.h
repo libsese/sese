@@ -14,8 +14,8 @@
 
 /// \file StrCaseMap.h
 /// \author kaoru
-/// \date 2024年5月9日
-/// \brief 忽略字符串键大小写的字典类
+/// \date May 9, 2024
+/// \brief Dictionary class that ignores case of string keys
 
 #pragma once
 
@@ -25,26 +25,26 @@
 
 namespace sese {
 
-/// \brief StrCaseMap 比较器
+/// \brief StrCaseMap Comparator
 struct StrCaseMapComparer {
     bool operator()(const std::string &lv, const std::string &rv) const;
 };
 
-/// \brief StrCaseUnorderedMap 比较器
+/// \brief StrCaseUnorderedMap Comparator
 struct StrCaseUnorderedMapComparer {
     size_t operator()(const std::string &key) const;
     bool operator()(const std::string &lv, const std::string &rv) const;
 };
 
-/// \brief 忽略字符串键大小写的字典类
-/// \tparam VALUE 字典值类型
-/// \tparam ALLOCATOR 内存分配器
+/// \brief Dictionary class that ignores case of string keys
+/// \tparam VALUE Dictionary value type
+/// \tparam ALLOCATOR Memory allocator
 template<typename VALUE, typename ALLOCATOR = std::allocator<std::pair<const std::string, VALUE>>>
 using StrCaseMap = std::map<std::string, VALUE, StrCaseMapComparer, ALLOCATOR>;
 
-/// \brief 忽略字符串键大小写的字典类
-/// \tparam VALUE 字典值类型
-/// \tparam ALLOCATOR 内存分配器
+/// \brief Dictionary class that ignores case of string keys
+/// \tparam VALUE Dictionary value type
+/// \tparam ALLOCATOR Memory allocator
 template<typename VALUE, typename ALLOCATOR = std::allocator<std::pair<const std::string, VALUE>>>
 using StrCaseUnorderedMap = std::unordered_map<std::string, VALUE, StrCaseUnorderedMapComparer, StrCaseUnorderedMapComparer, ALLOCATOR>;
 

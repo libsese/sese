@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file ErrorCode.h
-/// @brief 错误码类
+/// @brief Error code class
 /// @author: kaoru
-/// @date 2024年11月1日
+/// @date November 1, 2024
 
 #pragma once
 
@@ -23,23 +23,23 @@
 
 namespace sese {
 
-/// @brief 错误码
+/// @brief Error code class
 class ErrorCode {
     int32_t error;
     std::string msg;
 
 public:
-    /// @brief 构造函数
-    /// @param error 错误码
-    /// @param msg 错误描述
+    /// @brief Constructor
+    /// @param error Error code
+    /// @param msg Error description
     ErrorCode(int32_t error, std::string msg) noexcept;
 
-    /// @brief 获取错误码
-    /// @return 错误码
+    /// @brief Get error code
+    /// @return Error code
     [[nodiscard]] int32_t value() const noexcept { return error; }
 
-    /// @brief 获取错误描述
-    /// @return 错误描述
+    /// @brief Get error description
+    /// @return Error description
     [[nodiscard]] const std::string &message() const noexcept { return msg; }
 
     explicit operator bool() const noexcept {

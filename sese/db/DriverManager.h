@@ -14,13 +14,14 @@
 
 /// \file DriverManager.h
 /// \author kaoru
-/// \brief 数据库驱动实例管理器
+/// \brief Database driver instance manager
 /// \version 0.1
+
 #pragma once
 #include <sese/db/DriverInstance.h>
 
 namespace sese::db {
-    /// \brief 数据库类型枚举
+    /// \brief Database type enumeration
     enum class DatabaseType {
         MY_SQL,
         MARIA,
@@ -28,14 +29,14 @@ namespace sese::db {
         POSTGRES
     };
 
-    /// \brief 数据库驱动实例管理器
+    /// \brief Database driver instance manager
     class  DriverManager {
     public:
-        /// \brief 创建数据库驱动实例
-        /// \param type 数据库类型
-        /// \param conn_string 连接字符串
-        /// \return 数据库驱动实例
-        /// \retval nullptr 创建数据库驱动实例失败，且通常是不可恢复错误，但极少出现
+        /// \brief Create a database driver instance
+        /// \param type Database type
+        /// \param conn_string Connection string
+        /// \return Database driver instance
+        /// \retval nullptr Failed to create a database driver instance, which is usually a non-recoverable error but occurs rarely
         static DriverInstance::Ptr getInstance(DatabaseType type, const char *conn_string) noexcept;
     };
 }// namespace sese::db

@@ -13,9 +13,10 @@
 // limitations under the License.
 
 /// \file ResultSet.h
-/// \brief 查询结果集
+/// \brief Query result set
 /// \version 0.1
 /// \author kaoru
+
 #pragma once
 #include <sese/db/Config.h>
 
@@ -26,50 +27,48 @@
 
 namespace sese::db {
 
-    /// \brief 查询结果集
+    /// \brief Query result set
     class  ResultSet {
     public:
         using Ptr = std::unique_ptr<ResultSet>;
 
-        /// \brief 析构函数
         virtual ~ResultSet() noexcept = default;
-        /// \brief 定位首条查询记录
+        /// \brief Locate the first query record
         virtual void reset() noexcept = 0;
-        /// \brief 定位到下一条记录
-        /// \return 是否存在下一条记录
+        /// \brief Move to the next record
+        /// \return Whether there is a next record
         [[nodiscard]] virtual bool next() noexcept = 0;
-        // [[nodiscard]] virtual const char *getColumnByIndex(size_t index) const noexcept = 0;
-        /// \brief 获取记录列数
-        /// \return 结果集记录的列数
+        /// \brief Get the number of columns in the record
+        /// \return Number of columns in the result set record
         [[nodiscard]] virtual size_t getColumns() const noexcept = 0;
 
-        /// \brief 在当前记录中获取一个整型值
-        /// \param index 索引
-        /// \return 整型值
+        /// \brief Get an integer value from the current record
+        /// \param index Index
+        /// \return Integer value
         [[nodiscard]] virtual int32_t getInteger(size_t index) const noexcept = 0;
-        /// \brief 在当前记录中获取一个长整型值
-        /// \param index 索引
-        /// \return 长整型值
+        /// \brief Get a long integer value from the current record
+        /// \param index Index
+        /// \return Long integer value
         [[nodiscard]] virtual int64_t getLong(size_t index) const noexcept = 0;
-        /// \brief 在当前记录中获取一个字符串
-        /// \param index 索引
-        /// \return 字符串
+        /// \brief Get a string from the current record
+        /// \param index Index
+        /// \return String
         [[nodiscard]] virtual std::string_view getString(size_t index) const noexcept = 0;
-        /// \brief 在当前记录中获取一个双精度浮点值
-        /// \param index 索引
-        /// \return 双精度浮点值
+        /// \brief Get a double-precision floating-point value from the current record
+        /// \param index Index
+        /// \return Double-precision floating-point value
         [[nodiscard]] virtual double getDouble(size_t index) const noexcept = 0;
-        /// \brief 在当前记录中获取一个单精度浮点值
-        /// \param index 索引
-        /// \return 单精度浮点值
+        /// \brief Get a single-precision floating-point value from the current record
+        /// \param index Index
+        /// \return Single-precision floating-point value
         [[nodiscard]] virtual float getFloat(size_t index) const noexcept = 0;
-        /// \brief 在当前记录中获取一个时间数据结构
-        /// \param index 索引
-        /// \return 时间数据结构
+        /// \brief Get a time data structure from the current record
+        /// \param index Index
+        /// \return Time data structure
         [[nodiscard]] virtual std::optional<sese::DateTime> getDateTime(size_t index) const noexcept = 0;
-        /// \brief 判断返回的结果是否为空
-        /// \param index 索引
-        /// \return 是否为空
+        /// \brief Determine if the returned result is null
+        /// \param index Index
+        /// \return Whether it is null
         [[nodiscard]] virtual bool isNull(size_t index) const noexcept = 0;
     };
 }

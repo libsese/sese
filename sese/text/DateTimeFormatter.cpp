@@ -213,7 +213,7 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &date_tim
                 }
                 builder.append(std::to_string(year)); // GCOVR_EXCL_LINE
             } else {
-                // 此处时间通常不会小于 10，因为 DateTime 时间戳默认是无符号整数
+                // The time here is usually no less than 10 because the DateTime timestamp is an unsigned integer by default
                 // GCOVR_EXCL_START
                 auto year = date_time.getYears() % 10000;
                 if (year < 1000) {
@@ -335,7 +335,7 @@ int sese::text::DateTimeFormatter::mon2number(const std::string &str) {
     }
 }
 
-// 此处不处理错误的格式
+// Wrong formatting is not handled here
 // GCOVR_EXCL_START
 
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
@@ -343,7 +343,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
     auto mon = text.substr(8, 3);
     tm.tm_mon = mon2number(mon);
     if (text[7] == '-') {
-        // 另一种时间格式
+        // Another time format
         // auto date = StringBuilder::split(text, " ");
         // char _h[3]{0};
         // char _m[3]{0};

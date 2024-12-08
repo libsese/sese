@@ -14,7 +14,7 @@
 
 /**
  * @file BaseEventConvert.h
- * @brief 基础网络事件转换器接口
+ * @brief Basic network event converter interface
  * @author kaoru
  */
 
@@ -23,7 +23,7 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-/// 基础网络事件转换器接口
+/// Basic network event converter interface
 class BaseEventConvert {
 public:
     virtual ~BaseEventConvert() = default;

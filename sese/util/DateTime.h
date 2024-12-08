@@ -15,9 +15,10 @@
 /**
  * @file DateTime.h
  * @author kaoru
- * @brief 日期时间类
- * @date 2022年03月28日
+ * @brief Date time class
+ * @date March 28, 2022
  */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -28,30 +29,22 @@
 #pragma warning(disable : 4819)
 #endif
 
-// /**
-//  * 通用的时间 API
-//  * @param tp timeval 结构体
-//  * @param tzp timezone 结构体
-//  * @return 成功（0）， 失败（-1）
-//  */
-// inline int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp = nullptr);
-
 namespace sese {
 
 /**
- * @brief 日期时间类
+ * @brief Date time class
  */
 class DateTime {
 public:
     using Ptr = std::unique_ptr<DateTime>;
 
     /**
-     * @brief 日期创建策略
+     * @brief Date creation strategy
      */
     enum class Policy {
-        /// 仅仅创建时间戳而不解析为人类可阅读的时间格式
+        /// Timestamps are created without parsing to a human-readable time format
         ONLY_CREATE,
-        /// 创建时间戳的同时解析成可阅读的格式
+        /// Create timestamps and parse them into a readable format
         FORMAT
     };
 
@@ -82,13 +75,12 @@ public:
     TimeSpan operator-(const DateTime &date_time) const noexcept;
     DateTime operator-(const TimeSpan &time_span) const noexcept;
     DateTime operator+(const TimeSpan &time_span) const noexcept;
-    /// 精细比较
+    /// Fine comparisons
     [[nodiscard]] int32_t compareTo(const DateTime &date_time) const noexcept;
-    /// 粗略比较
+    /// Rough comparisons
     [[nodiscard]] int32_t unclearCompareTo(const DateTime &date_time) const noexcept;
 
 private:
-    // 初次计算的数据
     int32_t years = 1970;
     int32_t months = 1;
     int32_t days = 1;
@@ -102,7 +94,7 @@ private:
     int32_t milliseconds = 0;
     int32_t microseconds = 0;
 
-    // 核心数据
+    // Core data
     int32_t utc = 0;
     uint64_t timestamp = 0;
 };

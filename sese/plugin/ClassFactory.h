@@ -14,7 +14,7 @@
 
 /**
  * @file ClassFactory.h
- * @brief 类工厂内建实现
+ * @brief Class factory built-in implementation
  * @author kaoru
  * @version 1.0
  */
@@ -34,10 +34,10 @@ namespace sese::plugin {
 
 // GCOVR_EXCL_START
 
-/// 类工厂内建接口
+/// Class factory built-in implementation
 class ClassFactory {
 public:
-    /// 注册信息
+    /// Registration Information
     struct RegisterInfo {
         const std::type_info *info;
         std::function<std::shared_ptr<BaseClass>()> builder;
@@ -51,14 +51,16 @@ public:
 
     virtual void init() = 0;
 
-    /// 创建某个已注册类的实例
-    /// \param id 类注册名
+    /// \brief Create an instance of a registered class
+    /// \param id Class registration name
+    /// \retval nullptr Class not found
+    /// \return Class instance
     BaseClass::Ptr createClassWithName(const std::string &id) noexcept;
 
     Result<BaseClass::Ptr, ErrorCode> createClassWithNameEx(const std::string &id) noexcept;
 
-    /// 获取已注册类的类型信息
-    /// \return 类信息映射表
+    /// \brief Get the type information of a registered class
+    /// \return Class information map
     const RegisterInfoMapType &getRegisterClassInfo() noexcept;
 
 protected:

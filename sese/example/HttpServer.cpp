@@ -90,13 +90,13 @@ int main(int argc, char **argv) {
     server.regController<MyController>();
     server.regService(sese::net::IPv4Address::any(443), std::move(ssl->copy()));
     server.regService(sese::net::IPv4Address::any(80), nullptr);
-    // 返回值代表是否需要继续作为普通请求处理，此处 false 代表直接返回并响应
+    // The return value represents whether it needs to continue to be processed as a normal request, where false represents a direct return and response
     server.regFilter("/data1", [](Request &req, Response &resp) -> bool {
         SESE_INFO("filter /data1: %s", req.getUri().c_str());
         resp.setCode(404);
         return false;
     });
-    // true 代表继续处理
+    // `true` stands for continued processing
     server.regFilter("/data2", [](Request &req, Response &resp) -> bool {
         SESE_INFO("filter /data2: %s", req.getUri().c_str());
         resp.set("myfilter", "data2");
@@ -113,11 +113,11 @@ int main(int argc, char **argv) {
         auto string = address->getAddress();
         if (string == "192.168.31.230") {
             SESE_INFO("connection from ban ip, closed");
-            // 断开连接
+            // disconnect
             return false;
         }
         SESE_INFO("address %s", string.c_str());
-        // 继续处理
+        // Continue processing
         return true;
     });
 

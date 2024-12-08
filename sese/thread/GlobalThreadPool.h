@@ -14,8 +14,8 @@
 
 /// \file GlobalThreadPool.h
 /// \author kaoru
-/// \brief 全局线程池
-/// \date 2023年8月6日
+/// \brief Global thread pool
+/// \date August 6, 2023
 
 #pragma once
 
@@ -25,8 +25,8 @@
 
 namespace sese {
 
-/// 全局线程池，在 Windows 上使用系统线程池，而在 UNIX 平台上则使用懒汉单例模式的线程池
-class  GlobalThreadPool {
+/// Global thread pools, which use system thread pools on Windows, and slacker singleton thread pools on UNIX platforms
+class GlobalThreadPool {
 public:
     static void postTask(const std::function<void()> &func);
 
