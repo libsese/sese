@@ -1,12 +1,12 @@
-# 单元测试
+# Unit Testing
 
-| 目录    | 注解            |
-|-------|---------------|
-| Data  | 存放单元测试需要的数据目录 |
-| Test* | 独立的测试环境目录     |
+| Directory | Description                   |
+|-----------|-------------------------------|
+| Data      | Directory for test data       |
+| Test*     | Independent test environments |
 
-| 测试目标名称 | 注解          |
-|:-------|:------------|
-| *      | 测试可执行文件     |
-| *.m    | 测试模块文件      |
-| *.d    | 测试守护进程可执行文件 |
+| Test Target Name | Description             |
+|:-----------------|:------------------------|
+| *                | Test executable files   |
+| *.m              | Test module files       |
+| *.d              | Test daemon executables |

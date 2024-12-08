@@ -1,6 +1,6 @@
-# 使用
+# Usage
 
-禁用由 CMake 拓展带来的 CTest 索引并自动启用 TestMate 需要修改用户的配置文件，添加如下配置
+To disable the CTest index brought by the CMake extension and automatically enable TestMate, you need to modify the user's configuration file by adding the following settings:
 
 ```json
 {
@@ -9,8 +9,8 @@
 }
 ```
 
-# 注意
+# Note
 
-此文件夹仅用于 codespaces 和本地开发中的 vscode 默认配置
+This folder is only for default configurations in codespaces and local development with VSCode.
 
-如果你在任何场景中使用 vscode，都不应该提交或更改此文件夹
+If you use VSCode in any scenario, you should not commit or change this folder.

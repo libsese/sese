@@ -1,163 +1,147 @@
-# 贡献指南
+# Contribution Guide
 
-## 配置项目
+## Project Configuration
 
-项目配置使用 CMake + vcpkg 的形式。CMake 负责构建，vcpkg 负责管理依赖。
+Project configuration uses CMake + vcpkg. CMake is responsible for building, and vcpkg is responsible for managing dependencies.
 
-现在也同样部分支持 unix-like 原生包管理。
+### Typical Configuration Steps:
 
-对于 debian/ubuntu:
+- **Download the project**
 
-```bash
-./scripts/install_ubuntu_deps.sh
-```
-
-对于 macOS:
-
-```bash
-./scripts/install_drawin_deps.sh
-```
-
-通常的配置步骤:
-
-- 下载项目
-
-  你需要选择使用 git clone 该项目而不是直接下载源代码压缩包，因为我们需要版本管理.
+  You should choose to use `git clone` to download the project rather than directly downloading the source code archive because we need version management.
   ```bash
   git clone https://github.com/libsese/sese.git
   ```
 
-- 配置 CMake
+- **Configure CMake**
 
-  注：使用原生包管理则无需配置 vcpkg 和指定 CMAKE_TOOLCHAIN_FILE，只需要设置 SESE_USE_NATIVE_MANAGER=ON 即可。
+  Note: If you use a native package manager, you do not need to configure vcpkg or specify CMAKE_TOOLCHAIN_FILE. Just set `SESE_USE_NATIVE_MANAGER=ON`.
 
-  首先你需要确保你的机器上有配置完成的 vcpkg 工具。
-  配置 CMake 有几种方案可以选择，如果你在使用 vscode，你可能需要安装 CMake 插件并在项目配置中添加选项
+  First, make sure that you have the vcpkg tool configured on your machine.
+  There are several ways to configure CMake. If you are using VSCode, you might need to install the CMake plugin and add the following option to your project configuration:
 
-  `-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake`
+  `-DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake`
 
-  使用 visual studio 或者 clion 也和 vscode 的配置大差不差，除了该选项以外还需要添加
+  Using Visual Studio or CLion is similar to configuring VSCode. Besides the above option, you also need to add:
 
   `-DSESE_BUILD_TEST=ON`
 
-  以打开构建单元测试的开关，这会自动添加 google test 的依赖项并添加项目的单元测试目标。
+  This will enable the build unit tests, which will automatically add the Google Test dependency and include the project's unit test targets.
 
-  完整的 CMake 构建命令看起来应该是这样的：
+  The complete CMake build command should look like this:
   ```bash
-  cmake -DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake -DSESE_BUILD_TEST=ON
+  cmake -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/vcpkg/scripts/buildsystems/vcpkg.cmake -DSESE_BUILD_TEST=ON
   ```
 
-  如果你不希望使用 vcpkg 的清单模式，你可以将 `VCPKG_MANIFEST_MODE` 设置为 OFF 以强制使用经典模式。
+- **Code Standards**
 
-- 代码规范
+  Style, format, and checks should be enabled. The project includes **.clang-format**, **.clang-tidy**, and **.editconfig** files.
+  These are necessary for the maintenance and development of new features in the project.
 
-  风格、格式、检查等配置应当是被启用的，项目中的有 **.clang-format** / **.clang-tidy** / **.editconfig** 等。
-  这对于项目的维护和新功能的开发是必要的。
+## Preset Development Environment
 
-## 预设的开发环境
+Preset configurations should now refer to **CMakePresets.json**. If you are using an outdated version of CMake or an IDE, you might need to manually configure these development options.
 
-预设配置现在应该参考 **CMakePresets.json**，如果你使用的 CMake 或 IDE 版本过低，你可能需要手动配置这些开发选项。
+For those who prefer using development containers, the project provides development containers. Just enable the Unix workspace within the container.
 
-对于喜欢使用开发容器的人来说，项目同样提供了开发容器，~~只需在容器内启用 unix 工作区即可~~。
-
-值得注意的是，在 macOS 中你可能需要重新指定工作区中 CMake 生成器的位置，因为使用 brew 安装的 ninja 通常不在 /usr/bin/ninja。使用
+Please note that on macOS, you might need to re-specify the location of the CMake generator in the workspace because Ninja installed via Homebrew is usually not located at /usr/bin/ninja. Use
 
 ```bash
 where ninja
 ```
-查看 ninja 完整路径。
+to find the full path to Ninja.
 
-## 关于 ARM 架构
+## About ARM Architecture
 
 > [!WARNING]
-> ARM 目前并不属于主要适配的架构，在一定程度上项目能在 ARM 上运行。
-> 如果你执意使用相关设备进行开发和运行，产生的效果我们概不负责，当然也欢迎有相关方面经验的开发者贡献兼容性代码。
-> 下面的内容将**简单的**、**不严谨的**为在 x86_64/amd64 的开发者提供一种可行的 ARM64 模拟方案。
+> ARM is not the primary supported architecture at the moment. The project can run on ARM to a certain extent.
+> If you insist on using related devices for development and operation, we are not responsible for the results. However, we welcome developers with relevant experience to contribute compatibility code.
+> The following content provides a **simple** and **non-rigorous** feasible ARM64 emulation scheme for x86_64/amd64 developers.
 
-为 docker 添加跨架构支持，这**可能**需要你手动安装 `qemu` 的相关组件，此处不进行演示。详细信息请参考 [tonistiigi/binfmt](https://github.com/tonistiigi/binfmt)。
+Add cross-architecture support for Docker, which **may** require you to manually install `qemu` components. This is not demonstrated here. For more details, please refer to [tonistiigi/binfmt](https://github.com/tonistiigi/binfmt).
 
 ```bash
 docker run --privileged --rm tonistiigi/binfmt --install arm64
 ```
 
-[ubuntu-arm64.dockerfile](./docker/ubuntu-arm64.dockerfile) 提供了基于 ARM64 Ubuntu 的基础运行环境（不包括数据库软件），可以使用 docker 直接构建镜像。
+[ubuntu-arm64.dockerfile](./docker/ubuntu-arm64.dockerfile) provides a basic runtime environment based on ARM64 Ubuntu (excluding database software). You can build the image directly using Docker.
 
 ```bash
 docker build -f docker/ubuntu-arm64.dockerfile .
 ```
 
-使用此镜像可以完整构建并运行相关测试用例。
+Using this image, you can fully build and run related test cases.
 
-## 分支管理
+## Branch Management
 
-`main` 是本项目的主分支，大多数时候不允许贡献代码在未经许可的情况下上传到这里。
+`main` is the main branch of this project. Most of the time, contributions are not allowed to be uploaded here without permission.
 
-需要修改代码可以选择 fork 本项目到个人账户下，并在完成开发后向上游发起 pull request；
-或者你可能是组织成员，那么你有权限在本仓库新建一个开发分支，分支名称通常应该应该符合以下形式
+To modify the code, you can choose to fork the project to your personal account and initiate a pull request to the upstream after completing development.
+If you are an organization member, you have permission to create a new development branch in this repository. The branch name should typically follow these formats:
 
-`dev-[username]`、
-`dev-feature`、
-`dev-new-feature`、
-`fix-bug` 等
+`dev-[username]`,
+`dev-feature`,
+`dev-new-feature`,
+`fix-bug`, etc.
 
-## 提交流程
+## Submission Process
 
-在完成开发后，如果你的本地或个人仓库中的 commit 过于复杂繁琐，那么你应该先将 commit 进行适当压缩再向上游发起 pr。
+After completing development, if the commits in your local or personal repository are too complex or cumbersome, you should compress the commits appropriately before initiating a pull request to the upstream.
 
-当你完成新功能或者是修复等工作时，你应该确保项目中所有的单元测试是能够正常通过的；尤其是在 github 的 workflow
-中，网络、系统等环境和本机不一定一致有可能会导致单元测试能在本机通过但将在 workflow 中失败。
+When you complete new features or fixes, you should ensure that all unit tests in the project pass successfully. Especially in GitHub workflows, network, system, and other environments may not be consistent with your local machine, which may cause unit tests to pass locally but fail in the workflow.
 
-确认无误后你可以向上游发起 pull request，你需要描述清楚你对现有代码的更改很新增代码的功能。你也可以选择向项目已有的贡献者或者工作人员发送电子邮件以详细描述你所完成的工作。
+Once confirmed, you can initiate a pull request to the upstream, describing clearly the changes you made to the existing code and the new code's functionality. You can also choose to send an email to existing contributors or staff of the project, detailing the work you have completed.
 
-提交信息格式可以归纳如下
+The format of the commit message can be summarized as follows:
 
 > { commit type }: { title }
 >
-> { detail(option) }
+> { detail (optional) }
 
-其中 commit type 通常有以下几种选择:
+Common commit types include:
 
-- feat - 新功能
-- fix - 修复
-- perf - 性能改进
-- refactor - 重构
-- build - 构建变更
-- chore - 杂项
-- docs - 文档
-- style - 代码风格变更
-- test - 测试用例变更
+- feat - New feature
+- fix - Bug fix
+- perf - Performance improvement
+- refactor - Refactoring
+- build - Build changes
+- chore - Chores
+- docs - Documentation
+- style - Code style changes
+- test - Test case changes
 
-## 问题和需求
+## Issues and Requirements
 
-在编写具体代码前，你应该分析你要解决的问题，明确的你需求是什么，然后分析现有的代码是否已经包含类似的功能。
+Before writing specific code, you should analyze the problem you want to solve and clarify your requirements. Then analyze whether the existing code already contains similar functionality.
 
-对于新的功能你需要确保这符合项目所提供的功能的职责范围。对于旧的实现变更，你需要确保这些变更不会对已有的实现产生较大的不兼容。
-不得不对一些底层代码进行一些破坏性变更时，你应该重新实现一个版本，通过 **namespace** + **using/typedef** 等方式保留旧的、添加新的实现。
+For new features, you need to ensure they fall within the scope of the project's functionality. For changes to existing implementations, you need to ensure that these changes do not cause significant incompatibility with existing implementations.
+If you have to make some destructive changes to some underlying code, you should reimplement a version, retaining the old and adding new implementations through **namespace** + **using/typedef**, etc.
 
-通常一次更改应该是原子的、局部的，也就是说每次你应该只修改一个功能、遇到实现 A 不得不改 B 的时候，你应该先联系相关人员征求意见，测试对 B 的更改不会影响 B 原有的使用。
+Typically, a change should be atomic and local, meaning you should only modify one function at a time. If you have to modify B when implementing A, you should first contact the relevant personnel for their opinion and test that the changes to B will not affect the original use of B.
 
-项目通常不允许直接为其添加新的依赖，引入新的依赖需要经过详细研究和充分讨论决定。
+The project typically does not allow new dependencies to be directly added. Introducing new dependencies requires detailed research and thorough discussion.
 
-## 贡献类型
+## Contribution Types
 
-贡献的类型大致可以参考 [提交流程](#提交流程)
+The types of contributions can be broadly referred to in the [Submission Process](#submission-process).
 
-## 测试要求
+## Testing Requirements
 
-项目使用 googletest 进行测试，测试并不要求 100% 的覆盖率，而是应该针对最常用的功能添加最全面的覆盖，作用相对不大的功能可以酌情不测试一些非极端场景。
+The project uses GoogleTest for testing. Tests do not require 100% coverage but should provide the most comprehensive coverage for the most commonly used features. Relatively insignificant features can selectively not be tested for some non-extreme scenarios.
 
-对于一些可能难以测试的函数或分支，最好是添加详细的注释表明此处为何没有做到覆盖，可能存在的风险，以及出现该情况的应对方案。
+For some functions or branches that may be difficult to test, it is best to add detailed comments to indicate why coverage was not achieved, potential risks, and the response plan if the situation occurs.
 
-## 发行流程
+## Release Process
 
-此部分规范适用于项目核心管理人员，需要严格安装下列操作进行
+This part of the specification applies to core project administrators and needs to be strictly followed:
 
-1. 变更项目版本号，修改 `CMakeLists.txt` 和 `vcpkg.json`，打上 tag，提交将会自动触发 `update_portfile.py` 并进行发版前的测试。
-2. 测试未通过将会终止发版，此时命名新 tag 请遵循 `alpha.$(n + 1)` 形势，正式发版则增加补丁号或撤回当前版本。
-3. tag 中包含 `beta` 或者 `alpha` 将不会设置为最终版本。
+1. Change the project version number, modify `CMakeLists.txt` and `vcpkg.json`, tag the commit, and it will automatically trigger `update_portfile.py` and perform pre-release testing.
+2. Failure of the test will terminate the release. At this time, name the new tag following the `alpha.$(n + 1)` format. For official releases, increase the patch number or withdraw the current version.
+3. Tags containing `beta` or `alpha` will not be set as the final version.
+4. Maintaining a new version (if necessary, mostly rolling release) requires creating a new branch. The branch name format is as follows `release-$(version)`, and administrators need to manually release it.
 
-## 联系方式
+## Contact Information
 
-对部分代码存在疑问或者是其它问题时，你可以先尝试联系代码片段的贡献者以获取帮助。
+If you have questions about some parts of the code or other issues, you can first try to contact the contributor of the code snippet for help.
 
-或联系项目[原作者](https://github.com/shiinasama/)咨询与获取可提供的帮助。
+Or contact the project's [original author](https://github.com/shiinasama/) for inquiries and available assistance.
