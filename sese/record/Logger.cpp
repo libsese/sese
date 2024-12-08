@@ -43,7 +43,7 @@ void Logger::addAppender(const AbstractAppender::Ptr &appender) noexcept {
 }
 
 void Logger::removeAppender(const AbstractAppender::Ptr &appender) noexcept {
-    // 此处删除逻辑无需验证
+    // No validation is required to remove the logic here
     // GCOVR_EXCL_START
     for (auto iterator = appenderVector.begin(); iterator < appenderVector.end(); iterator++) {
         if (*iterator == appender) {
@@ -58,7 +58,7 @@ void Logger::log(const Event::Ptr &event) noexcept {
     std::string content = formatter->dump(event);
     if (builtInAppender->getLevel() <= event->getLevel()) {
         setbuf(stdout, nullptr);
-        // 此处逻辑本身就是完备的
+        // No validation is required to remove the logic here
         switch (event->getLevel()) {
             case Level::DEBUG:
                 ConsoleAppender::setDebugColor();
@@ -105,7 +105,7 @@ void Logger::dump(const void *buffer, size_t length) noexcept {
 Logger *getLogger() noexcept { return logger; }
 
 int32_t LoggerInitiateTask::init() noexcept {
-    // 初始化 Logger
+    // Initialize the logger
 #ifdef USE_ASYNC_LOGGER
     logger = new AsyncLogger();
 #else

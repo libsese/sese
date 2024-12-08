@@ -15,9 +15,10 @@
 /**
  * @file FileAppender.h
  * @author kaoru
- * @brief 日志文件输出源类
- * @date 2022年3月28日
+ * @brief Log file appender class
+ * @date March 28, 2022
  */
+
 #pragma once
 
 #include "sese/record/AbstractAppender.h"
@@ -30,7 +31,7 @@
 
 namespace sese::record {
 /**
- * @brief 日志文件输出源类
+ * @brief Log file appender class
  */
 class  FileAppender final : public sese::record::AbstractAppender {
 public:

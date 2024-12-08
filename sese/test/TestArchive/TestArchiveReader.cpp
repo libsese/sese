@@ -52,7 +52,8 @@ TEST(TestArchiveReader, Info_wrong_password) {
     auto file = File::create(PROJECT_PATH "/sese/test/Data/archive.zip", sese::io::FileStream::B_READ);
     ArchiveReader reader(file.get());
     EXPECT_EQ(reader.setPassword("wrong password"), 0);
-    /// 此处不会出错，能获取到压缩包信息，但理论上无法进行解压
+    /// There will be no error here, and the compressed package information can be obtained,
+    /// but theoretically it is not possible to decompress it
     EXPECT_TRUE(reader.extract(
             [](const std::filesystem::path &wpath,
                sese::archive::Config::EntryType type,

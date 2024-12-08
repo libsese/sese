@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file SHA384Context.h
-* @author kaoru
-* @version 0.1
-* @brief EVP SHA384 算法上下文
-* @date 2023年9月13日
-*/
+ * @file SHA384Context.h
+ * @author kaoru
+ * @version 0.1
+ * @brief EVP SHA384 algorithm context
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -26,8 +26,8 @@
 
 namespace sese::security::evp {
 
-/// EVP SHA384 算法上下文
-class  SHA384Context : public Context {
+/// EVP SHA384 algorithm context
+class SHA384Context : public Context {
 public:
     SHA384Context() noexcept;
     ~SHA384Context() noexcept override;

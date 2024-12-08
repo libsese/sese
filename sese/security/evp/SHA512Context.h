@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file SHA512Context.h
-* @author kaoru
-* @version 0.1
-* @brief EVP SHA512 算法上下文
-* @date 2023年9月13日
-*/
+ * @file SHA512Context.h
+ * @author kaoru
+ * @version 0.1
+ * @brief EVP SHA512 algorithm context
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -26,8 +26,8 @@
 
 namespace sese::security::evp {
 
-/// EVP SHA512 算法上下文
-class  SHA512Context : public Context {
+/// EVP SHA512 algorithm context
+class SHA512Context : public Context {
 public:
     SHA512Context() noexcept;
     ~SHA512Context() noexcept override;

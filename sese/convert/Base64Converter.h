@@ -15,9 +15,10 @@
 /**
  * @file Base64Converter.h
  * @author kaoru
- * @date 2022年4月18日
- * @brief BASE64 转换器
+ * @date April 18, 2022
+ * @brief BASE64 converter
  */
+
 #pragma once
 
 #include "sese/io/Stream.h"
@@ -30,9 +31,9 @@
 namespace sese {
 
 /**
- * @brief BASE64 转换器
+ * @brief BASE64 converter
  */
-class  Base64Converter final : public NotInstantiable {
+class Base64Converter final : public NotInstantiable {
 public:
     using OutputStream = sese::io::OutputStream;
     using InputStream = sese::io::InputStream;
@@ -48,17 +49,17 @@ public:
 public:
     using CodePage = const unsigned char *;
 
-    /// 按照 Base62 码表编码
-    /// \warning 注意此函数的编码方式类似于 Base64，并不是标准的 Base62编码
-    /// \param input 输入流
-    /// \param output 输出流
-    /// \return 编码结果
+    /// Encode according to the Base62 code table
+    /// \warning Note that the encoding method of this function is similar to Base64, but it is not standard Base62 encoding
+    /// \param input Input stream
+    /// \param output Output stream
+    /// \return Encoding result
     static bool encodeBase62(InputStream *input, OutputStream *output) noexcept;
-    /// 按照 Base62 码表解码
-    /// \warning 注意此函数的解码方式类似于 Base64，并不是标准的 Base62解码
-    /// \param input 输入流
-    /// \param output 输出流
-    /// \return 编码结果
+    /// \brief Decode according to the Base62 code table
+    /// \warning Note that the decoding method of this function is similar to Base64, but it is not standard Base62 decoding
+    /// \param input Input stream
+    /// \param output Output stream
+    /// \return Encoding result
     static bool decodeBase62(InputStream *input, OutputStream *output) noexcept;
 
 public:

@@ -40,7 +40,8 @@ TEST(TestSSL, Auth) {
         ASSERT_NE(context->getContext(), nullptr);
 
         EXPECT_TRUE(context->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt"));
-        /// 如果密钥和证书不匹配，在导入密钥时就会发生错误
+        /// If the key and certificate do not match,
+        /// an error will occur when importing the key
         EXPECT_FALSE(context->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key-failed.pem"));
         ASSERT_FALSE(context->authPrivateKey());
         auto error = context->getErrorCode();

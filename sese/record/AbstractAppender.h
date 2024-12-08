@@ -15,8 +15,8 @@
 /**
  * @file AbstractAppender.h
  * @author kaoru
- * @date 2022年3月28日
- * @brief 日志输出源基类
+ * @date March 28, 2022
+ * @brief Base class for log appenders
  */
 
 #pragma once
@@ -32,7 +32,7 @@
 namespace sese::record {
 
 /**
- * @brief 日志输出源基类
+ * @brief Base class for log appenders
  */
 class  AbstractAppender {
 public:
@@ -51,7 +51,7 @@ public:
     void setLevel(Level lv) noexcept { this->level = lv; }
 
 protected:
-    /// 输出阈值
+    /// Output threshold
     Level level = Level::DEBUG;
 };
 

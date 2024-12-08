@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file MessageDigest.h
-/// \brief 基于 OPENSSL::CRYPTO 的信息摘要接口
+/// \brief Message digest interface based on OPENSSL::CRYPTO
 /// \author kaoru
 /// \version 0.1
-/// \date 2023年7月25日
+/// \date July 25, 2023
 
 #pragma once
 
@@ -27,7 +27,7 @@
 #include <string>
 
 namespace sese::security {
-/// 基于 OPENSSL::CRYPTO 的信息摘要接口
+/// Message digest interface based on OPENSSL::CRYPTO
 class MessageDigest final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;

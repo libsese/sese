@@ -132,7 +132,7 @@ TEST(TestYaml, Deserialize_0) {
     ASSERT_NE(port, nullptr);
     EXPECT_EQ(port->getInt(), 8080);
 
-    // /// 数据为 null
+    // /// The data is null
     // SESE_YAML_GET_STRING(s0, mapping_obj, "null1", "undef");
     // EXPECT_EQ(s0, "undef");
     // SESE_YAML_GET_BOOLEAN(b0, mapping_obj, "null1", false);
@@ -150,7 +150,7 @@ TEST(TestYaml, Deserialize_0) {
     auto i0 = mapping_obj_dict.find("null1");
     EXPECT_TRUE(i0->isNull());
 
-    // /// 数据不存在
+    // /// The data does not exist
     // SESE_YAML_GET_STRING(s1, mapping_obj, "A", "undef");
     // EXPECT_EQ(s1, "undef");
     // SESE_YAML_GET_BOOLEAN(b1, mapping_obj, "A", false);
@@ -163,7 +163,7 @@ TEST(TestYaml, Deserialize_0) {
     EXPECT_EQ(s1, nullptr);
 }
 
-/// 字符串转义
+/// String escape
 TEST(TestYaml, Deserialize_1) {
     constexpr char STR[]{R"(str: "\n\r\'\"\a")"};
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
@@ -174,7 +174,7 @@ TEST(TestYaml, Deserialize_1) {
 }
 
 /// createObject
-/// 不存在下一行且当前元素为 null
+/// The next line does not exist and the current element is null
 TEST(TestYaml, Deserialize_2) {
     constexpr char STR[]{"root:\n"
                          "  null: "};
@@ -186,7 +186,8 @@ TEST(TestYaml, Deserialize_2) {
 }
 
 /// createObject
-/// 当前行元素是 null，下一个元素依然是本对象所属
+/// The current row element is null,
+/// and the next element is still the object to which it belongs
 TEST(TestYaml, Deserialize_3) {
     constexpr char STR[]{"root:\n"
                          "  a:\n"
@@ -199,7 +200,7 @@ TEST(TestYaml, Deserialize_3) {
 }
 
 /// createArray
-/// 不存在下一行，跳过该对象
+/// If the next line does not exist, skip the object
 TEST(TestYaml, Deserialize_4) {
     constexpr char STR[]{"root:\n"
                          "  - ele:"};
@@ -211,7 +212,7 @@ TEST(TestYaml, Deserialize_4) {
 }
 
 /// createArray
-/// 数组嵌套数组
+/// Nested arrays within arrays
 TEST(TestYaml, Deserialize_5) {
     constexpr char STR[]{"- root:\n"
                          "  - ele:"};
@@ -234,7 +235,7 @@ TEST(TestYaml, Deserialize_6) {
     ASSERT_FALSE(OBJECT.isNull());
 }
 
-/// 对象无子元素
+/// The object has no child elements
 TEST(TestYaml, Deserialize_7) {
     constexpr char STR[]{"root:"};
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
@@ -395,7 +396,7 @@ TEST(TestYaml, Value) {
     puts(CONTENT.c_str());
 }
 
-/// 数组嵌套数组超出深度限制
+/// Arrays nested arrays exceed the depth limit
 TEST(TestYaml, Error_0) {
     constexpr char STR[]{"- root:\n"
                          "    - ele:"};
@@ -406,7 +407,7 @@ TEST(TestYaml, Error_0) {
     ASSERT_TRUE(OBJECT.isNull());
 }
 
-/// 数组嵌套对象超出深度限制
+/// The array nested object exceeds the depth limit
 TEST(TestYaml, Error_1) {
     constexpr char STR[]{"- root:\n"
                          "    ele:"};
@@ -417,7 +418,7 @@ TEST(TestYaml, Error_1) {
     ASSERT_TRUE(OBJECT.isNull());
 }
 
-/// 对象嵌套数组超出深度限制
+/// The nested array of objects exceeds the depth limit
 TEST(TestYaml, Error_3) {
     constexpr char STR[]{"root:\n"
                          "  - ele:"};
@@ -428,7 +429,7 @@ TEST(TestYaml, Error_3) {
     ASSERT_TRUE(OBJECT.isNull());
 }
 
-/// 对象嵌套对象超出深度限制
+/// Object nesting objects exceeds the depth limit
 TEST(TestYaml, Error_4) {
     constexpr char STR[]{"root:\n"
                          "   ele:"};

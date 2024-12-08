@@ -28,7 +28,7 @@ namespace sese::security::evp {
 /// @deprecated The DES algorithm has been removed from OpenSSL
 class SESE_DEPRECATED_WITH("The DES algorithm has been removed from OpenSSL") DESEncrypter final : public Crypter {
 public:
-    /// @brief DES 算法类型
+    /// \brief DES algorithm type
     enum class Type {
         ECB,
         CBC,

@@ -15,10 +15,12 @@
 /**
  * @file PercentConverter.h
  * @author kaoru
- * @date 2022年4月18日
- * @brief 百分号编码转换器
+ * @date April 18, 2022
+ * @brief Percent sign encoding converter
  */
+
 #pragma once
+
 #include "sese/io/OutputStream.h"
 #include "sese/util/NotInstantiable.h"
 
@@ -31,7 +33,7 @@
 namespace sese {
 
 /**
- * @brief 百分号编码转换器
+ * @brief Percent sign encoding converter
  */
 class  PercentConverter final : public NotInstantiable {
 public:
@@ -49,9 +51,9 @@ public:
 
     static std::string encode(const char *src);
 
-    /// 解码字符串
-    /// \param src 带解码字符串
-    /// \retval {} 解码失败
+    /// Decode string
+    /// \param src String to be decoded
+    /// \retval {} Decoding failed
     static std::string decode(const char *src);
 
 private:
