@@ -37,13 +37,13 @@ struct HttpStream : Handleable {
 
     explicit HttpStream(uint32_t id, uint32_t write_window_size, const sese::net::IPAddress::Ptr &addr) noexcept;
 
-    /// 初始化当前文件区间并迭代迭代器
+    /// Initialize the current file compartment and iterate over the iterator
     void prepareRange();
 
     uint32_t id;
-    /// 写入到对端窗口大小
+    /// Write to the peer window size
     uint32_t endpoint_window_size;
-    /// 本地读取窗口
+    /// Local read window
     uint32_t window_size = 0;
     uint16_t continue_type = 0;
     bool end_headers = false;
@@ -80,30 +80,31 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     uint32_t accept_stream_count = 0;
     uint32_t latest_stream_ident = 0;
 
-    // 本地最大帧大小
+    // The maximum local frame size
     static constexpr uint32_t MAX_FRAME_SIZE = 16384;
-    // 本地初始窗口值
+    // Local initial window value
     static constexpr uint32_t INIT_WINDOW_SIZE = 65535;
-    // 默认动态表大小
+    // Default dynamic table size
     static constexpr uint32_t HEADER_TABLE_SIZE = 8192;
-    // 单连接并发大小
+    // The size of a single connection concurrency
     static constexpr uint32_t MAX_CONCURRENT_STREAMS = 16;
 
     sese::net::http::Http2FrameInfo frame{};
-    // 临时缓存，用于读取初始连接魔数、帧头，取最大帧大小
+    // Temporary cache, which is used to read the initial connection magic number and frame header,
+    // and take the maximum frame size
     char temp_buffer[MAX_FRAME_SIZE]{};
     uint32_t header_table_size = 4096;
     uint32_t enable_push = 0;
     uint32_t max_concurrent_stream = 0;
-    // 对端初始窗口值
+    // The value of the initial window on the peer
     uint32_t endpoint_init_window_size = 65535;
-    // 写入到对端窗口大小
+    // Write to the peer window size
     uint32_t endpoint_window_size = 65535;
-    // 本地读取窗口大小
+    // The size of the local read window
     uint32_t window_size = 65535;
-    // 对端帧最大大小
+    // The maximum size of the peer frame
     uint32_t endpoint_max_frame_size = 16384;
-    // 采用的帧大小
+    // The frame size used
     uint32_t max_frame_size = 16384;
     uint32_t max_header_list_size = 0;
     sese::net::http::DynamicTable req_dynamic_table;
@@ -111,36 +112,39 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
     std::map<uint32_t, HttpStream::Ptr> streams;
     std::set<uint32_t> closed_streams;
 
-    /// 发送队列
+    /// Send queues
     std::vector<sese::net::http::Http2Frame::Ptr> pre_vector;
     std::vector<sese::net::http::Http2Frame::Ptr> vector;
     std::vector<asio::const_buffer> asio_buffers;
 
-    /// 关闭流
-    /// @param id 流 ID
+    /// Close stream
+    /// @param id Stream ID
     void close(uint32_t id);
 
     virtual void checkKeepalive() = 0;
 
     void disponse();
 
-    /// 写入块函数，此函数会确保写入完指定的缓存，出现意外则直接回调
-    /// @param buffers 缓存
-    /// @param callback 完成回调函数
+    /// Write block function. This function ensures that the specified buffer is completely written,
+    /// and calls back immediately if an error occurs
+    /// @param buffers Buffer
+    /// @param callback Completion callback function
     virtual void writeBlocks(const std::vector<asio::const_buffer> &buffers,
                              const std::function<void(const asio::error_code &code)> &callback) = 0;
 
-    /// 写入块函数，此函数会确保写入完单块缓存，出现意外则直接回调
-    /// @param buffer 单块缓存
-    /// @param size 缓存大小
-    /// @param callback 完成回调函数
+    /// Write block function. This function ensures that a single block of buffer is completely written,
+    /// and calls back immediately if an error occurs
+    /// @param buffer Single block buffer
+    /// @param size Size of the buffer
+    /// @param callback Completion callback function
     virtual void writeBlock(const void *buffer, size_t size,
                             const std::function<void(const asio::error_code &code)> &callback) = 0;
 
-    /// 读取块函数，此函数会确保读取完指定大小的缓存，出现意外则直接回调
-    /// @param buffer 缓存指针
-    /// @param length 缓存大小
-    /// @param callback 完成回调函数
+    /// Read block function. This function ensures that the specified size of the buffer is completely read,
+    /// and calls back immediately if an error occurs
+    /// @param buffer Pointer to the buffer
+    /// @param length Size of the buffer
+    /// @param callback Completion callback function
     virtual void readBlock(char *buffer, size_t length,
                            const std::function<void(const asio::error_code &code)> &callback) = 0;
 
@@ -195,32 +199,32 @@ struct HttpConnectionEx : std::enable_shared_from_this<HttpConnectionEx> {
         uint32_t window_size
     );
 
-    /// 写入 HEADERS 帧
-    /// @param stream 操作流
-    /// @param verify_end_stream 是否需要通过 response body 判断 END_STREAM
-    /// @return 当前流是否已经完整处理
+    /// Write HEADERS frame
+    /// @param stream Operating stream
+    /// @param verify_end_stream Whether to determine END_STREAM through response body
+    /// @return Whether the current stream has been fully processed
     bool writeHeadersFrame(const HttpStream::Ptr &stream, bool verify_end_stream = true);
 
-    /// 将控制器响应 body 写入 DATA 帧
-    /// @param stream stream 操作流
-    /// @return 当前流是否已经完整处理
+    /// Write the controller's response body into a DATA frame
+    /// @param stream Operating stream
+    /// @return Whether the current stream has been fully processed
     bool writeDataFrame4Body(const HttpStream::Ptr &stream);
 
-    /// 将单区间文件响应写入 DATA 帧
-    /// @param stream stream 操作流
-    /// @return 当前流是否处理完成
+    /// Write single-range file response into a DATA frame
+    /// @param stream Operating stream
+    /// @return Whether the current stream has been fully processed
     bool writeDataFrame4SingleRange(const HttpStream::Ptr &stream);
 
-    /// 将多区间文件响应写入 DATA 帧
-    /// @param stream stream 操作流
-    /// @return 当前流是否已经处理完成
+    /// Write multi-range file response into a DATA frame
+    /// @param stream Operating stream
+    /// @return Whether the current stream has been fully processed
     bool writeDataFrame4Ranges(const HttpStream::Ptr &stream);
 
-    /// 处理区间的首个 DATA 帧
-    /// @warning 此函数高度耦合，为复用而设
-    /// @param stream stream 操作流
-    /// @param subheader 区间头
-    /// @param remind 除去区间头剩余的窗口大小
+    /// Process the first DATA frame of the range
+    /// @warning This function is highly coupled and intended for reuse
+    /// @param stream Operating stream
+    /// @param subheader Range header
+    /// @param remind Remaining window size after removing the range header
     /// @see writeDataFrame4Ranges
     void writeSubheaderAndData(const HttpStream::Ptr &stream, const std::string &subheader, size_t remind);
 };

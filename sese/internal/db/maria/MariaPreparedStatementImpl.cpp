@@ -48,7 +48,7 @@ sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexce
     }
 }
 
-// 为结果集可能的数据类型分配内存
+// Allocate memory for the possible data types of the result set
 bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *meta, MYSQL_BIND **bind) noexcept {
     *bind = static_cast<MYSQL_BIND *>(malloc(sizeof(MYSQL_BIND) * meta->field_count));
     memset(*bind, 0, sizeof(MYSQL_BIND) * meta->field_count);
@@ -57,7 +57,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *met
         item.is_null = static_cast<decltype(item.is_null)>(malloc(sizeof(char)));
         *item.is_null = 0;
 
-        // 非定长数据
+        // Non-fixed-length data
         switch (meta->fields[i].type) {
             case MYSQL_TYPE_BLOB:
             case MYSQL_TYPE_TINY_BLOB:
@@ -289,8 +289,8 @@ bool sese::db::impl::MariaPreparedStatementImpl::getColumnType(uint32_t index, s
 }
 
 int64_t sese::db::impl::MariaPreparedStatementImpl::getColumnSize(uint32_t index) noexcept {
-    // 当类型为二进制数据或者字符串时，该值才具有参考意义
-    // 注意单位是字节，字符串需要考虑字符集问题
+    // When the type is binary data or string, the value has reference meaning
+    // Note that the unit is bytes, and strings need to consider the character set
     if ((nullptr == meta) || (meta->field_count <= index)) {
         return -1;
     }

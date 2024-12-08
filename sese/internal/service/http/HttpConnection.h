@@ -26,7 +26,7 @@
 namespace sese::internal::service::http {
 class HttpServiceImpl;
 
-/// Http 连接基础实现
+/// Base implementation of Http connection
 struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
@@ -60,27 +60,28 @@ struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection>
 
     void writeBody();
 
-    /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
-    /// @note 此函数必须实现
-    /// @param buffer 缓存指针
-    /// @param length 缓存大小
-    /// @param callback 完成回调函数
+    /// Write block function. This function ensures that all buffers are completely written,
+    /// and the connection will be disconnected if an unexpected error occurs
+    /// @note This function must be implemented
+    /// @param buffer Pointer to the buffer
+    /// @param length Size of the buffer
+    /// @param callback Completion callback function
     virtual void writeBlock(const char *buffer, size_t length,
                             const std::function<void(const asio::error_code &code)> &callback) = 0;
 
-    /// 读取函数，此函数会调用对应的 asio::async_read_some
+    /// Read function. This function will call the corresponding asio::async_read_some
     /// @param buffer asio::buffer
-    /// @param callback 回调函数
+    /// @param callback Callback function
     virtual void asyncReadSome(const asio::mutable_buffers_1 &buffer,
                                const std::function<void(const asio::error_code &error, std::size_t bytes_transferred)> &
                                callback) = 0;
 
-    /// 当一个请求处理完成后被调用，用于判断是否断开当前连接
-    /// @note 此函数必须被实现
+    /// Called when a request is completed to determine whether to disconnect the current connection
+    /// @note This function must be implemented
     virtual void checkKeepalive() = 0;
 
-    /// 连接被彻底释放前调用，用于做一些成员变量的收尾工作
-    /// @note 此函数是可选实现的
+    /// Called before the connection is completely released to perform some cleanup of member variables
+    /// @note This function is optional to implement
     virtual void disponse();
 
     void writeSingleRange();
@@ -88,7 +89,7 @@ struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection>
     void writeRanges();
 };
 
-/// Http 普通连接实现
+/// Http regular connection implementation
 struct HttpConnectionImpl final : HttpConnection {
     using Ptr = std::shared_ptr<HttpConnectionImpl>;
     using Socket = asio::ip::tcp::socket;
@@ -111,7 +112,7 @@ struct HttpConnectionImpl final : HttpConnection {
     void checkKeepalive() override;
 };
 
-/// Http SSL 连接实现
+/// Http SSL connection implementation
 struct HttpsConnectionImpl final : HttpConnection {
     using Ptr = std::shared_ptr<HttpsConnectionImpl>;
     using Stream = asio::ssl::stream<asio::ip::tcp::socket>;

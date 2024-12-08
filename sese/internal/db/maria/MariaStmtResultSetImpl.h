@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file MariaStmtResultSetImpl.h
-/// \brief Maria 预处理结果集实现
+/// \brief Maria prepared result set implementation
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief Maria 预处理结果集实现
+    /// \brief Maria prepared result set implementation
     class  MariaStmtResultSet final : public ResultSet {
     public:
         explicit MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept;

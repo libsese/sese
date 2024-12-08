@@ -14,10 +14,11 @@
 
 /**
  * @file StringBuffer.h
- * @brief 线程安全的字符串缓存类
+ * @brief Thread-safe string buffer class
  * @author kaoru
- * @date 2022年4月5日
+ * @date April 5, 2022
  */
+
 #pragma once
 
 #include "sese/text/AbstractStringBuffer.h"
@@ -33,9 +34,9 @@
 namespace sese::text {
 
 /**
- * @brief 线程安全的字符串缓存类
+ * @brief Thread-safe string buffer class
  */
-class  StringBuffer final : private AbstractStringBuffer {
+class StringBuffer final : private AbstractStringBuffer {
 public:
     using Ptr = std::unique_ptr<StringBuffer>;
 

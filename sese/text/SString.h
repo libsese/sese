@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file SString.h
-/// \date 2022-9-27
+/// \date September 27, 2022
 /// \version 0.1
 /// \author kaoru
-/// \brief 包含 SString 核心功能， SChar、SStringView 和 SString
+/// \brief Contains the core functionalities of SString, SChar, SStringView, and SString
 
 #pragma once
 
@@ -26,8 +26,8 @@
 
 namespace sstr {
 
-/// Unicode 字符
-struct  SChar final {
+/// Unicode character
+struct SChar final {
     uint32_t code = 0;
 
     explicit SChar(uint32_t code) noexcept;
@@ -46,40 +46,40 @@ struct  SChar final {
     explicit operator uint32_t() const;
 };
 
-/// 获取 UTF-8 字符代码
-/// \param u8char UTF-8 字符
-/// \return 字符代码
+/// Get UTF-8 character code
+/// \param u8char UTF-8 character
+/// \return Character code
  SChar getUnicodeFromUTF8Char(const char *u8char);
 
-/// 获取 UTF-8 字符串长度
-/// \param str 字符串
-/// \return 字符串长度
+/// Get UTF-8 string length
+/// \param str String
+/// \return String length
  size_t getStringLengthFromUTF8String(const char *str);
 
-/// 获取 UTF-8 字符串字节长度
-/// \param str 目标字符串
-/// \return 字符串字节长度
+/// Get UTF-8 string byte length
+/// \param str Target string
+/// \return Byte length of the string
  size_t getByteLengthFromUTF8String(const char *str);
 
-/// 获取 UTF-8 字符占位字节数
-/// \param ch 目标字符
-/// \return 字符占位字节数
+/// Get the number of bytes occupied by a UTF-8 character
+/// \param ch Target character
+/// \return Number of bytes occupied by the character
  char getSizeFromUTF8Char(char ch);
 
-/// 从 SChar 中获取该字符在 UTF-8 中的字节占位字节数
-/// \param ch Unicode 字符
-/// \return 占位字节数
+/// Get the number of bytes a character occupies in UTF-8 from SChar
+/// \param ch Unicode character
+/// \return Number of bytes occupied
  char getUTF8SizeFromUnicodeChar(SChar ch);
 
-/// 从 UTF-8 字符串中获取 Unicode 字符
-/// \param size 该 UTF-8 占位字节数
-/// \param ch UTF-8 字符起始位置
-/// \return Unicode 字符
+/// Get Unicode character from UTF-8 string
+/// \param size Number of bytes this UTF-8 character occupies
+/// \param ch Starting position of the UTF-8 character
+/// \return Unicode character
  SChar getUnicodeCharFromUTF8Char(char size, const char *ch);
 
 class SString;
 
-/// 字符串视图
+/// String view
 class  SStringView {
 public:
     SStringView() noexcept = default;
@@ -87,7 +87,7 @@ public:
     virtual ~SStringView() = default;
 
 public:
-    /// Unicode 字符迭代器
+    /// Unicode character iterator
     class Iterator {
     public:
         using difference_type = SChar;
@@ -118,111 +118,111 @@ public:
     Iterator begin();
     Iterator end();
 
-    /// data 是否为 nullptr
+    /// Check if data is nullptr
     /// \retval true
     /// \retval false
     [[nodiscard]] bool null() const;
 
-    /// 字符串是否为空
-    /// \retval true 字符串为空
-    /// \retval false 字符串不为空
+    /// Check if the string is empty
+    /// \retval true String is empty
+    /// \retval false String is not empty
     [[nodiscard]] bool empty() const;
 
-    /// 获取字符串中字符个数
-    /// \return 字符个数
+    /// Get the number of characters in the string
+    /// \return Number of characters
     [[nodiscard]] size_t len() const;
 
-    /// 获取字符串字节数
-    /// \return 字符串字节数
+    /// Get the number of bytes in the string
+    /// \return Number of bytes in the string
     [[nodiscard]] virtual size_t size() const;
 
-    /// 获取缓冲区指针
-    /// \return 缓冲区指针
+    /// Get buffer pointer
+    /// \return Buffer pointer
     [[nodiscard]] const char *data() const;
 
-    /// 查找字符串，索引单位是字数
-    /// \param str 子串
-    /// \return 子串位置
+    /// Find substring, with index units in characters
+    /// \param str Substring
+    /// \return Substring position
     [[nodiscard]] int32_t find(const SStringView &str) const;
 
-    /// 查找字符串，索引单位是字数
-    /// \param u8str 子串
-    /// \return 子串位置
+    /// Find substring, with index units in characters
+    /// \param u8str Substring
+    /// \return Substring position
     int32_t find(const char *u8str) const;
 
-    /// 查找字节串，索引单位是字节
-    /// \param bytes 子串
-    /// \return 子串位置
+    /// Find byte string, with index units in bytes
+    /// \param bytes Substring
+    /// \return Substring position
     int32_t findByBytes(const char *bytes) const;
 
-    /// 除去字符串两端空格
-    /// \note 注意是空格
-    /// \return 处理后对象
+    /// Trim whitespace from both ends of the string
+    /// \note Note that it's whitespace
+    /// \return Processed object
     [[nodiscard]] SString trim() const;
 
-    /// 反转字符串
-    /// \return 反转后对象
+    /// Reverse the string
+    /// \return Reversed object
     [[nodiscard]] SString reverse() const;
 
-    /// 尾加字符串
-    /// \param str 待尾加字符串
-    /// \return 尾加结果字符串
+    /// Append string to the end
+    /// \param str String to append
+    /// \return Resulting appended string
     [[nodiscard]] SString append(const SStringView &str) const;
 
-    /// 尾加字符串
-    /// \param u8str 待尾加字符串
-    /// \return 尾加结果字符串
-    /// \deprecated 尾加对象的字符串编码必须也是 UTF-8，否则不建议使用
+    /// Append string to the end
+    /// \param u8str String to append
+    /// \return Resulting appended string
+    /// \deprecated The appended string must also be UTF-8 encoded, otherwise use is not recommended
     SString append(const char *u8str) const;
 
-    /// 切割字符串
-    /// \param str 切割标识符
-    /// \return 切割结果
+    /// Split the string
+    /// \param str Delimiter
+    /// \return Split result
     [[nodiscard]] std::vector<SString> split(const SStringView &str) const;
 
-    /// 切割字符串
-    /// \param str 切割标识符
-    /// \return 切割结果
+    /// Split the string
+    /// \param str Delimiter
+    /// \return Split result
     std::vector<SString> split(const char *str) const;
 
-    /// 截取子串[begin, len - 1]
-    /// @param begin 起始字符串索引
-    /// @return 子串
+    /// Extract substring [begin, len - 1]
+    /// @param begin Starting index of the substring
+    /// @return Substring
     [[nodiscard]] SString substring(size_t begin) const;
-    /// \brief 截取子串 [begin, begin + len - 1]
-    /// \param begin 起始字符索引
-    /// \param len 截取长度
-    /// \return 子串
+    /// \brief Extract substring [begin, begin + len - 1]
+    /// \param begin Starting index of the substring
+    /// \param len Length to extract
+    /// \return Substring
     [[nodiscard]] SString substring(size_t begin, size_t len) const;
 
-    /// \brief 字符串是否以某个子串结尾
-    /// \param suffix 匹配子串
-    /// \return 结果
+    /// \brief Check if the string ends with a given substring
+    /// \param suffix Matching substring
+    /// \return Result
     [[nodiscard]] bool endsWith(const SStringView &suffix) const;
 
-    /// \brief 字符串是否以某个子串结尾
-    /// \param suffix 匹配子串
-    /// \return 结果
+    /// \brief Check if the string ends with a given substring
+    /// \param suffix Matching substring
+    /// \return Result
     [[nodiscard]] bool endsWith(const std::string_view &suffix) const;
 
-    /// \brief 字符串是否以某个子串开头
-    /// \param prefix 匹配子串
-    /// \return 结果
+    /// \brief Check if the string starts with a given substring
+    /// \param prefix Matching substring
+    /// \return Result
     [[nodiscard]] bool startsWith(const SStringView &prefix) const;
 
-    /// \brief 字符串是否以某个子串开头
-    /// \param prefix 匹配子串
-    /// \return 结果
+    /// \brief Check if the string starts with a given substring
+    /// \param prefix Matching substring
+    /// \return Result
     [[nodiscard]] bool startsWith(const std::string_view &prefix) const;
 
-    /// 字母是否为全小写
+    /// Check if the letter is entirely lowercase
     [[nodiscard]] bool isLower() const;
-    /// 字母是否为全大写
+    /// Check if the letter is entirely uppercase
     [[nodiscard]] bool isUpper() const;
 
-    /// 创建字母转为全小写的副本
+    /// Create a copy with all letters converted to lowercase
     [[nodiscard]] SString toLower() const;
-    /// 创建字母转为全大写的副本
+    /// Create a copy with all letters converted to uppercase
     [[nodiscard]] SString toUpper() const;
 
     [[nodiscard]] SChar at(size_t index) const;
@@ -245,8 +245,8 @@ protected:
     size_t _size = 0;
 };
 
-/// 字符串
-class  SString final : public SStringView {
+/// String
+class SString final : public SStringView {
 public:
     friend class SStringView;
 
@@ -262,20 +262,20 @@ public:
     static SString fromUCS2LE(const wchar_t *str);
 
 public:
-    /// 获取缓存区容量
-    /// \return 缓冲区容量
+    /// Get buffer capacity
+    /// \return Buffer capacity
     [[nodiscard]] size_t cap() const;
-    /// 获取缓冲区已用大小
-    /// \return 缓冲区已用大小
+    /// Get used buffer size
+    /// \return Used buffer size
     [[nodiscard]] size_t size() const override;
 
-    /// 将字符串转换为全小写的形式
+    /// Convert the string to lowercase
     void toLower();
-    /// 将字符串转换为全大写的形式
+    /// Convert the string to uppercase
     void toUpper();
 
-    /// \brief 获取 data 指针
-    /// \deprecated 通常不应该使用该函数
+    /// \brief Get data pointer
+    /// \deprecated This function should generally not be used
     char *data();
 
 public:

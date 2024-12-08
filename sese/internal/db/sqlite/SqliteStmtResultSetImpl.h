@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file SqliteStmtResultSetImpl.h
-/// \brief SQLite 预处理语句结果集
+/// \brief SQLite prepared statement result set
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief SQLite 预处理语句结果集
+    /// \brief SQLite prepared statement result set
     class  SqliteStmtResultSetImpl final : public ResultSet {
     public:
         explicit SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexcept;

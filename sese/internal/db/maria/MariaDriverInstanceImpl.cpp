@@ -47,13 +47,13 @@ PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char
     size_t len = strlen(sql);
     if (mysql_stmt_prepare(stmt, sql, static_cast<unsigned long>(len))) return nullptr;
 
-    // 此处需要手动计算 '?' 个数
+    // The number of '?' needs to be manually counted here
     size_t count = 0;
     for (size_t i = 0; i < len; ++i) {
         if (sql[i] == '?') count++;
     }
 
-    // 获取结果集元数据，对于非 DQL 而言这可能是 nullptr，不应作为错误处理
+    // Get the result set metadata, which may be nullptr for non-DQL and should not be handled as an error
     auto meta = mysql_stmt_result_metadata(stmt);
 
     return std::make_unique<impl::MariaPreparedStatementImpl>(stmt, meta, count);

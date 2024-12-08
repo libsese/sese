@@ -54,17 +54,17 @@ struct FormatOption {
             return false;
         }
 
-        // 这种情况只可能是拓展类型
+        // This can only be the extended type
         if (value.size() == 2 && !is_align(value[1])) {
             ext_type = value[1];
             return true;
         }
 
-        // 对齐相关判断
+        // Align relevant judgments
         bool has_align = false;
         auto pos = value.begin() + 1;
         if (pos == value.end()) {
-            // 不存在手动指定的对齐方式，直接退出
+            // There is no manually specified alignment, just exit
             align = Align::LEFT;
             return true;
         }
@@ -88,13 +88,13 @@ struct FormatOption {
         wide = static_cast<uint16_t>(std::strtol(value.data() + (pos - value.begin()), &end, 10));
         pos = value.begin() + (end - value.data());
 
-        // end 不为 \0 将直接返回，无需额外判断
-        // 浮点精度相关判断
+        // If end is not \0, it will be returned directly, without additional judgment
+        // Judgment related to floating-point precision
         if (*end == '.') {
             char *new_end;
             float_placeholder = static_cast<uint16_t>(std::strtol(end + 1, &new_end, 10));
             if (end == new_end) {
-                // 缺少精度
+                // Lack of precision
                 return false;
             }
             end = new_end;
@@ -104,7 +104,7 @@ struct FormatOption {
             return true;
         }
 
-        // 拓展类型判断
+        // Expand type judgment
         ext_type = *pos;
         if (pos + 1 == value.end()) {
             return true;

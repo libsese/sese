@@ -82,10 +82,10 @@ char sstr::getUTF8SizeFromUnicodeChar(SChar ch) {
 }
 // NOLINTEND
 
-/// 从 wchar_t 中获取该字符在 UTF-8 中的字节占位字节数
-/// \warning 该函数仅在 *nix 上可用
-/// \param ch 宽字节
-/// \return 占位字节数
+/// Get the number of bytes that the character occupies in UTF-8 from wchar_t
+/// \warning This function is only available on *nix
+/// \param ch Wide character
+/// \return Number of bytes occupied
 inline char getUTF8SizeFromWChat(wchar_t ch) {
     return getUTF8SizeFromUnicodeChar(static_cast<SChar>(ch));
 }
@@ -105,11 +105,11 @@ SChar sstr::getUnicodeCharFromUTF8Char(char size, const char *ch) {
     }
 }
 
-/// 向字节流中写入 UTF-8 编码的 Unicode 字符
-/// \param destination 写入位置
-/// \param code Unicode 字符
-/// \param n 该字符在 UTF-8 占位字节数
-/// \return 是否成功
+/// Write UTF-8 encoded Unicode character to a byte stream
+/// \param destination Write position
+/// \param code Unicode character
+/// \param n Number of bytes this character occupies in UTF-8
+/// \return Success status
 static bool insertUnicodeChar2UTF8String(char *destination, uint32_t code, size_t n) {
     if (1 == n) {
         *(destination + 0) = static_cast<char>(0b01111111 & code);
@@ -135,10 +135,10 @@ SChar sstr::getUnicodeFromUTF8Char(const char *u8char) {
     return getUnicodeCharFromUTF8Char(getSizeFromUTF8Char(*u8char), u8char);
 }
 
-/// \brief 获取指定字符的起始指针
-/// \param str 字符串
-/// \param begin 起始位置(单位 UTF-8 字符)
-/// \return 指定字符的起始指针，超出范围返回 nullptr
+/// \brief Get the starting pointer of the specified character
+/// \param str String
+/// \param begin Starting position (in UTF-8 characters)
+/// \return Pointer to the specified character, returns nullptr if out of range
 static const char *at(const char *str, size_t begin) {
     auto p = str;
     auto i = -1;
@@ -324,7 +324,7 @@ SString SString::fromSChars(SChar ch[], size_t size) {
 SString SString::fromSChars(std::vector<SChar> &chars) {
     SString string;
     for (auto i: chars) {
-        // 暂时不处理损坏的字符
+        // Corrupted characters are not processed for the time being
         string._size += getUTF8SizeFromUnicodeChar(i);
     }
     string._capacity = (string._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
@@ -354,7 +354,7 @@ SString SString::fromUCS2LE(const wchar_t *str) {
     }
     s_string._capacity = (s_string._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
     s_string._data = static_cast<char *>(malloc(s_string._capacity));
-    // 无法转换部分字符串
+    // Partial strings cannot be converted
     // wcstombs(sString._data, str, sString._size);
 
 #ifdef _WIN32

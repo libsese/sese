@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file MariaResultSetImpl.h
-/// \brief Maria 结果集实现
+/// \brief Maria result set implementation
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -25,7 +25,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief Maria 结果集实现
+    /// \brief Maria result set implementation
     class  MariaResultSetImpl final : public ResultSet {
     public:
         explicit MariaResultSetImpl(MYSQL_RES *res) noexcept;

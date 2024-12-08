@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file HttpClientImpl.h
-/// \brief 基于ASIO实现的HTTP/1.1客户端
+/// \brief HTTP/1.1 client based on ASIO
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -29,7 +29,7 @@
 
 namespace sese::internal::net::http {
 
-/// \brief 基于ASIO实现的HTTP/1.1客户端
+/// \brief HTTP/1.1 client based on ASIO
 class HttpClientImpl : public sese::net::http::Requestable {
 public:
     HttpClientImpl(const sese::net::IPAddress::Ptr &addr, sese::net::http::Request::Ptr req);

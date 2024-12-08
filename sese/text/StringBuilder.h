@@ -15,10 +15,12 @@
 /**
  * @file StringBuilder.h
  * @author kaoru
- * @date 2022年3月28日
- * @brief 线程不安全的字符串缓存类
+ * @date March 28, 2022
+ * @brief Non-thread-safe string buffer class
  */
+
 #pragma once
+
 #include "sese/text/AbstractStringBuffer.h"
 #include "sese/Config.h"
 
@@ -29,9 +31,9 @@
 namespace sese::text {
 
 /**
- * @brief 线程不安全的字符串缓存类
+ * @brief Non-thread-safe string buffer class
  */
-class  StringBuilder final : public AbstractStringBuffer {
+class StringBuilder final : public AbstractStringBuffer {
 public:
     using Ptr = std::unique_ptr<StringBuilder>;
 

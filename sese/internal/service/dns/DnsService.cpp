@@ -119,7 +119,7 @@ void DnsService::handle() {
         auto &&answers = send_package->getAnswers();
         handleBySelf(recv_package->getQuestions(), send_package);
         handleByUpstream(recv_package->getQuestions(), send_package);
-        // todo 上游也不一定有记录
+        // todo There is also no need to have a record upstream
 
         auto index = send_package->buildIndex();
         length = buffer.size();
@@ -181,7 +181,7 @@ void DnsService::handleByUpstream(
     std::vector<sese::net::dns::DnsPackage::Question> &questions,
     sese::net::dns::DnsPackage::Ptr &send_package
 ) {
-    // todo 未来还需要处理 ttl 问题
+    // todo TTL issues will also need to be dealt with in the future
     auto &answers = send_package->getAnswers();
     for (auto q_iterator = questions.begin(); q_iterator != questions.end();) {
         auto &&name = q_iterator->name;

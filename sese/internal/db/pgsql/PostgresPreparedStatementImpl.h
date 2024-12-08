@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file PostgresPreparedStatementImpl.h
-/// \brief PSQL 预处理语句实现
-/// \author kaoru
-/// \date 2024年04月10日
+/// \brief PSQL prepared statement implementation
+/// \author kaoru, DreammerQcl
+/// \date April 10, 2024
 
 #pragma once
 
@@ -26,7 +26,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief PSQL 预处理语句实现
+    /// \brief PSQL prepared statement implementation
     class  PostgresPreparedStatementImpl : public PreparedStatement {
     public:
         explicit PostgresPreparedStatementImpl(std::string stmt_name, std::string stmt_string, uint32_t count, PGconn *conn) noexcept;

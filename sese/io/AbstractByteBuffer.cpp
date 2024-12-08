@@ -59,14 +59,12 @@ AbstractByteBuffer::AbstractByteBuffer(const AbstractByteBuffer &src) noexcept {
     //         }
     //     }
     // }
-    /// 根节点属性
     this->root = new Node(src.root->cap);
     this->root->length = src.root->length;
     memcpy(this->root->buffer, src.root->buffer, src.root->length);
     this->currentWriteNode = this->root;
     this->currentReadNode = this->root;
 
-    /// 拷贝子节点
     Node *p_last_node = this->root;
     const Node *p_node = src.root->next;
     while (p_node) {
@@ -87,7 +85,6 @@ AbstractByteBuffer::AbstractByteBuffer(const AbstractByteBuffer &src) noexcept {
         p_node = p_node->next;
     }
 
-    /// 拷贝全局属性
     this->cap = src.cap;
     this->length = src.length;
     this->currentReadPos = src.currentReadPos;
@@ -162,7 +159,7 @@ size_t AbstractByteBuffer::getReadableSize() const {
 }
 
 size_t AbstractByteBuffer::freeCapacity() {
-    // 还原 root，删除 root 之后的节点
+    // Restore root and delete the node after root
     size_t free_cap = 0;
     auto p_node = root->next;
     while (p_node) {
@@ -195,25 +192,24 @@ void AbstractByteBuffer::swap(AbstractByteBuffer &other) noexcept {
 int64_t AbstractByteBuffer::read(void *buffer, size_t need_read) {
     int64_t actual_read = 0;
     while (true) {
-        // 当前单元能提供的剩余读取量
-        // 当前单元能满足读取需求
+        // The current unit is capable of meeting the read requirements
         if (const size_t CURRENT_READ_NODE_REMAINING = currentReadNode->length - currentReadPos ;need_read <= CURRENT_READ_NODE_REMAINING) {
             memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(currentReadNode->buffer) + currentReadPos, need_read);
             actual_read += static_cast<int64_t>(need_read);
             currentReadPos += need_read;
             break;
         }
-        // 当前单元不能满足读取需求
+        // The current unit does not meet the read requirements
         else {
             memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(currentReadNode->buffer) + currentReadPos, CURRENT_READ_NODE_REMAINING);
             actual_read += static_cast<int64_t>(CURRENT_READ_NODE_REMAINING);
             need_read -= CURRENT_READ_NODE_REMAINING;
             currentReadPos += CURRENT_READ_NODE_REMAINING;
             if (currentReadNode == currentWriteNode) {
-                // 已经没有剩余节点可供读取
+                // There are no more remaining nodes to read
                 break;
             } else {
-                // 切换下一个节点继续读取
+                // Switch to the next node to continue reading
                 currentReadNode = currentReadNode->next;
                 currentReadPos = 0;
                 continue;
@@ -226,8 +222,7 @@ int64_t AbstractByteBuffer::read(void *buffer, size_t need_read) {
 int64_t AbstractByteBuffer::write(const void *buffer, size_t need_write) {
     int64_t actual_write = 0;
     while (true) {
-        // 当前单元能提供的剩余写入量
-        // 当前单元能满足写入需求
+        // The current unit can meet the write requirements
         if (const size_t CURRENT_WRITE_NODE_REMAINING = currentWriteNode->cap - currentWriteNode->length; need_write <= CURRENT_WRITE_NODE_REMAINING) {
             memcpy(static_cast<char *>(currentWriteNode->buffer) + currentWritePos, static_cast<const char *>(buffer) + actual_write, need_write);
             actual_write += static_cast<int64_t>(need_write);
@@ -235,17 +230,17 @@ int64_t AbstractByteBuffer::write(const void *buffer, size_t need_write) {
             currentWriteNode->length += need_write;
             break;
         }
-        // 当前单元不能满足读取需求
+        // The current unit does not meet the read requirements
         else {
             memcpy(static_cast<char *>(currentWriteNode->buffer) + currentWritePos, static_cast<const char *>(buffer) + actual_write, CURRENT_WRITE_NODE_REMAINING);
             actual_write += static_cast<int64_t>(CURRENT_WRITE_NODE_REMAINING);
             need_write -= CURRENT_WRITE_NODE_REMAINING;
             currentWriteNode->length = currentWriteNode->cap;
 
-            // 更新全局信息
+            // Update the global information
             length += currentWriteNode->cap;
             cap += factor;
-            // 直接切换至下一个单元
+            // Switch directly to the next unit
             currentWritePos = 0;
             currentWriteNode->next = new Node(factor); // GCOVR_EXCL_LINE
             currentWriteNode = currentWriteNode->next;
@@ -262,25 +257,24 @@ int64_t AbstractByteBuffer::peek(void *buffer, size_t need_read) {
 
     int64_t actual_read = 0;
     while (true) {
-        // 当前单元能提供的剩余读取量
-        // 当前单元能满足读取需求
+        // The current unit is capable of meeting the read requirements
         if (const size_t CURRENT_READ_NODE_REMAINING = current_read_node->length - current_read_pos ;need_read <= CURRENT_READ_NODE_REMAINING) {
             memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(current_read_node->buffer) + current_read_pos, need_read);
             actual_read += static_cast<int64_t>(need_read);
             current_read_pos += need_read;
             break;
         }
-        // 当前单元不能满足读取需求
+        // The current unit does not meet the read requirements
         else {
             memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(current_read_node->buffer) + current_read_pos, CURRENT_READ_NODE_REMAINING);
             actual_read += static_cast<int64_t>(CURRENT_READ_NODE_REMAINING);
             need_read -= CURRENT_READ_NODE_REMAINING;
             current_read_pos += CURRENT_READ_NODE_REMAINING;
             if (current_read_node == current_write_node) {
-                // 已经没有剩余节点可供读取
+                // There are no more remaining nodes to read
                 break;
             } else {
-                // 切换下一个节点继续读取
+                // Switch to the next node to continue reading
                 current_read_node = current_read_node->next;
                 current_read_pos = 0;
                 continue;
@@ -293,25 +287,24 @@ int64_t AbstractByteBuffer::peek(void *buffer, size_t need_read) {
 int64_t AbstractByteBuffer::trunc(size_t need_read) {
     int64_t actual_read = 0;
     while (true) {
-        // 当前单元能提供的剩余读取量
-        // 当前单元能满足读取需求
+        // The current unit is capable of meeting the read requirements
         if (const size_t CURRENT_READ_NODE_REMAINING = currentReadNode->length - currentReadPos ;need_read <= CURRENT_READ_NODE_REMAINING) {
             // memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, length);
             actual_read += static_cast<int64_t>(need_read);
             currentReadPos += need_read;
             break;
         }
-        // 当前单元不能满足读取需求
+        // The current unit does not meet the read requirements
         else {
             // memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, currentReadNodeRemaining);
             actual_read += static_cast<int64_t>(CURRENT_READ_NODE_REMAINING);
             need_read -= CURRENT_READ_NODE_REMAINING;
             currentReadPos += CURRENT_READ_NODE_REMAINING;
             if (currentReadNode == currentWriteNode) {
-                // 已经没有剩余节点可供读取
+                // There are no more remaining nodes to read
                 break;
             } else {
-                // 切换下一个节点继续读取
+                // Switch to the next node to continue reading
                 currentReadNode = currentReadNode->next;
                 currentReadPos = 0;
                 continue;

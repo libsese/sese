@@ -31,7 +31,7 @@ void sese::internal::service::http::HttpConnection::readHeader() {
             conn->timer.cancel();
         }
         if (error) {
-            // 出现错误，应该断开连接
+            // There was an error and it should be disconnected
             conn->disponse();
             conn->node = nullptr;
             return;
@@ -50,15 +50,15 @@ void sese::internal::service::http::HttpConnection::readHeader() {
             conn->is0x0a = static_cast<char *>(conn->node->buffer)[i] == '\n';
         }
         if (!recv_status) {
-            // 接收不完整，保存现有结果并继续接收
+            // Receive incomplete, save existing results and continue receiving
             // SESE_WARN("read again");
             conn->io_buffer.push(std::move(conn->node));
             conn->readHeader();
             return;
         }
         if (!parse_status) {
-            // 解析失败，应该断开连接
-            // SESE_ERROR("解析失败");
+            // Parsing failed and should be disconnected
+            // SESE_ERROR("Parsing failed");
             conn->disponse();
             return;
         }
@@ -69,7 +69,7 @@ void sese::internal::service::http::HttpConnection::readHeader() {
         conn->expect_length = toInteger(conn->request.get("content-length", "0"));
         conn->real_length = conn->io_buffer.getReadableSize();
         if (conn->real_length && conn->conn_type != ConnType::FILTER) {
-            // 部分 body
+            // Part of the body
             streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
         }
         conn->io_buffer.clear();
@@ -86,7 +86,7 @@ void sese::internal::service::http::HttpConnection::readBody() {
     node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
     asyncReadSome(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
-            // 出现错误，应该断开连接
+            // There was an error and it should be disconnected
             conn->disponse();
             return;
         }
@@ -98,7 +98,8 @@ void sese::internal::service::http::HttpConnection::readBody() {
             streamMove(&conn->request.getBody(), &conn->io_buffer, node_size);
         }
         if (conn->real_length >= conn->expect_length) {
-            // 理论上 real_length 不可能大于 expect_length，此处预防万一
+            // Theoretically, real_length can't be greater than expect_length,
+            // and here is a precaution
             conn->io_buffer.clear();
             conn->node = nullptr;
             conn->handleRequest();
@@ -124,7 +125,7 @@ void sese::internal::service::http::HttpConnection::writeHeader() {
     this->real_length += l;
     this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
-            // 出现错误，应该断开连接
+            // There was an error and it should be disconnected
             conn->disponse();
             return;
         }
@@ -135,7 +136,7 @@ void sese::internal::service::http::HttpConnection::writeHeader() {
             conn->expect_length = 0;
             conn->real_length = 0;
             if (conn->ranges.size() == 1) {
-                // 单区间文件
+                // Single range file
                 conn->expect_length = conn->range_iterator->len;
                 if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
                     conn->disponse();
@@ -143,10 +144,10 @@ void sese::internal::service::http::HttpConnection::writeHeader() {
                 }
                 conn->writeSingleRange();
             } else if (conn->ranges.size() > 1) {
-                // 多区间文件
+                // Multi range file
                 conn->writeRanges();
             } else if ((conn->expect_length = conn->response.getBody().getReadableSize())) {
-                // body 响应
+                // body resp
                 conn->writeBody();
             } else {
                 // keepalive
@@ -162,7 +163,7 @@ void sese::internal::service::http::HttpConnection::writeBody() {
     this->real_length += l;
     this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
-            // 出现错误，应该断开连接
+            // There was an error and it should be disconnected
             conn->disponse();
             return;
         }
@@ -196,7 +197,7 @@ void sese::internal::service::http::HttpConnection::writeSingleRange() {
 void sese::internal::service::http::HttpConnection::writeRanges() {
     if (this->real_length >= this->expect_length) {
         if (this->range_iterator == this->ranges.begin()) {
-            // 首个区间
+            // The first range
             auto subheader = std::string("--") + HTTPD_BOUNDARY + "\r\n" +
                              "content-type: " + this->content_type + "\r\n" +
                              "content-range: " + this->range_iterator->toString(this->filesize) + "\r\n\r\n";
@@ -219,7 +220,7 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
             return;
         }
         if (this->range_iterator == this->ranges.end()) {
-            // 最后一个区间
+            // The last range
             auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "--\r\n";
             std::memcpy(this->send_buffer, subheader.data(), subheader.length());
             assert(subheader.length() <= MTU_VALUE);
@@ -231,7 +232,7 @@ void sese::internal::service::http::HttpConnection::writeRanges() {
                 conn->checkKeepalive();
             });
         } else {
-            // 中间的区间
+            // The ranges in between
             auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "\r\n" +
                              "content-type: " + this->content_type + "\r\n" +
                              "content-range: " + this->range_iterator->toString(this->filesize) + "\r\n\r\n";

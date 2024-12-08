@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file MariaDriverInstanceImpl.h
-/// \brief Maria 驱动实现
+/// \brief Maria driver implementation
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief Maria 驱动实现
+    /// \brief Maria driver implementation
     class  MariaDriverInstanceImpl final : public DriverInstance {
     public:
         explicit MariaDriverInstanceImpl(MYSQL *conn) noexcept;

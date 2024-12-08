@@ -104,7 +104,7 @@ bool sese::internal::service::http::HttpServiceImpl::shutdown() {
     sese::sleep(0s);
     connections.clear();
     connections2.clear();
-    // 使用 asio::post 确保线程是正常退出的，判断是否可 join
+    // Use asio::post to ensure the thread exits normally and determines whether it can be joined
     if (thread->joinable()) {
         thread->join();
     }
@@ -140,7 +140,7 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
     auto &&resp = conn->response;
     std::filesystem::path filename;
 
-    // 过滤器匹配
+    // Filter matching
     // for (auto &&[uri_prefix, callback]: filters) {
     //     if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
     //         conn->conn_type = ConnType::FILTER;
@@ -150,13 +150,13 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
     //     }
     // }
 
-    // 挂载点匹配
+    // Mount point matching
     if (conn->conn_type == ConnType::NONE) {
         for (auto &&[uri_prefix, mount_point]: mount_points) {
             if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
                 conn->conn_type = ConnType::FILE_DOWNLOAD;
                 filename = mount_point + "/" + req.getUri().substr(uri_prefix.length());
-                // 确认文件名后进行下一步操作
+                // Confirm the file name and proceed to the next step
                 break;
             }
         }
@@ -203,16 +203,16 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
         conn->filesize = file_size(filename);
         conn->ranges = sese::net::http::Range::parse(req.get("Range", ""), conn->filesize);
         if (conn->ranges.empty()) {
-            // 无区间文件，手动设置区间
+            // No range file, manually set range
             conn->ranges.emplace_back(0, conn->filesize);
             conn->range_iterator = conn->ranges.begin();
-            // 普通文件
+            // Normal documents
             resp.set("content-length", std::to_string(conn->filesize));
             resp.setCode(200);
         } else if (conn->ranges.size() == 1) {
-            // 单区间文件
+            // Single range file
             conn->range_iterator = conn->ranges.begin();
-            // 校验区间
+            // Check ranges
             if (conn->ranges[0].begin + conn->ranges[0].len > conn->filesize) {
                 resp.setCode(416);
                 resp.set("content-length", std::to_string(resp.getBody().getLength()));
@@ -222,10 +222,10 @@ void sese::internal::service::http::HttpServiceImpl::handleRequest(const Handlea
             resp.set("content-length", std::to_string(conn->ranges[0].len));
             resp.setCode(206);
         } else {
-            // 多区间文件
+            // Multi-range file
             conn->range_iterator = conn->ranges.begin();
             size_t content_length = 0;
-            // 校验区间并计算总长度
+            // Validate ranges and calculate total length
             for (auto &&item: conn->ranges) {
                 if (item.begin + item.len > conn->filesize) {
                     resp.setCode(416);

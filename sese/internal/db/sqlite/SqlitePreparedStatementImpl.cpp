@@ -223,8 +223,8 @@ bool impl::SqlitePreparedStatementImpl::getColumnType(uint32_t index, MetadataTy
         return false;
     }
 
-    // 这并不是最好的确定 SQLite 结果集元数据的最好的方法，
-    // 但目前的官方提供的 API 使得我暂时只能这么做
+    // This is not the best way to determine SQLite result set metadata,
+    // but the currently available official API leaves me with no better option for now
     auto target = splitBefore(raw);
     // SESE_DEBUG("raw: %s, target: %s", raw, target.c_str());
     if (in(INTEGER_AFFINITY_SET, 9, target.c_str())) {
@@ -256,7 +256,6 @@ int64_t impl::SqlitePreparedStatementImpl::getColumnSize(uint32_t index) noexcep
         return -1;
     }
 
-    // 同上
     auto pos = raw.find_first_of('(');
     if (pos == std::string::npos) {
         return 0;

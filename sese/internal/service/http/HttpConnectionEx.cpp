@@ -71,7 +71,7 @@ void sese::internal::service::http::HttpConnectionEx::readMagic() {
             disponse();
             return;
         }
-        // 魔数错误
+        // The magic number is wrong
         if (0 != strncmp(temp_buffer, sese::net::http::MAGIC_STRING, 24)) {
             disponse();
             return;
@@ -114,8 +114,8 @@ void sese::internal::service::http::HttpConnectionEx::readFrameHeader() {
 void sese::internal::service::http::HttpConnectionEx::handleFrameHeader() {
     using namespace sese::net::http;
     auto iterator = streams.find(frame.ident);
-    // CONTINUATION 帧不连续
-    // 判断前序帧2
+    // CONTINUATION frames are not continuous
+    // Judgment pre-sequence frame 2
     if (iterator != streams.end()) {
         if (frame.type != FRAME_TYPE_CONTINUATION &&
             iterator->second->continue_type == FRAME_TYPE_CONTINUATION &&
@@ -144,8 +144,8 @@ void sese::internal::service::http::HttpConnectionEx::handleFrameHeader() {
             handleGoawayFrame();
             break;
         }
-        // 对于服务器而言，只需要处理 HEADERS 后的 CONTINUATION
-        // 判断前序帧1
+        // For the server, only CONTINUATION after HEADERS needs to be processed
+        // Determine the previous frame 1
         case FRAME_TYPE_CONTINUATION: {
             if (frame.ident == 0) {
                 writeGoawayFrame(0, 0, GOAWAY_PROTOCOL_ERROR, "");
@@ -532,7 +532,8 @@ void sese::internal::service::http::HttpConnectionEx::handleDataFrame() {
 
     if (frame.flags & FRAME_FLAG_END_STREAM) {
         if (stream->conn_type != ConnType::FILTER) {
-            // 被拦截的情况下不会读取 body，自然也不需要验证长度
+            // If it is intercepted, the body will not be read,
+            // and there is no need to verify the length
             if (stream->request.exist("content-length")) {
                 auto content_length = toInteger(stream->request.get("content-length"));
                 if (content_length != stream->request.getBody().getReadableSize()) {
@@ -615,7 +616,7 @@ void sese::internal::service::http::HttpConnectionEx::handlePriorityFrame() {
     }
     stream->continue_type = frame.type;
 
-    // 读取负载但不处理
+    // Read the load but don't process it
     uint8_t exclusive_flag = 0; // NOLINT
     uint32_t stream_dependency = 0;
     uint8_t weight = 0;
@@ -688,12 +689,12 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
 
     for (auto &&current = streams.begin(); current != streams.end();) {
         auto stream = current->second;
-        // 流未进入响应状态
+        // The flow did not enter a response state
         if (!stream->do_response) {
             ++current;
             continue;
         }
-        // 常规响应
+        // General responses
         if (stream->conn_type == ConnType::NONE ||
             stream->conn_type == ConnType::FILTER ||
             stream->conn_type == ConnType::CONTROLLER) {
@@ -719,14 +720,14 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
             current = streams.erase(current);
             closed_streams.emplace(stream->id);
         }
-        // 文件下载
+        // File downloads
         else if (stream->conn_type == ConnType::FILE_DOWNLOAD) {
             if (!stream->temp_buffer.eof()) {
                 writeHeadersFrame(stream, false); // NOLINT
                 ++current;
                 continue;
             }
-            // 单区间文件
+            // Single range file
             if (stream->ranges.size() == 1) {
                 if (writeDataFrame4SingleRange(stream)) {
                     current = streams.erase(current);
@@ -735,7 +736,7 @@ void sese::internal::service::http::HttpConnectionEx::handleWrite() {
                     ++current;
                 }
             }
-            // 多区间文件
+            // Multi-range file
             else if (stream->ranges.size() > 1) {
                 if (writeDataFrame4Ranges(stream)) {
                     current = streams.erase(current);
@@ -900,7 +901,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeHeadersFrame(const Ht
 }
 
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Body(const HttpStream::Ptr &stream) {
-    // 窗口大小不足
+    // The window size is insufficient
     if (endpoint_window_size == 0 ||
         stream->endpoint_window_size == 0) {
         return false;
@@ -922,13 +923,13 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Body(const 
 }
 
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange(const HttpStream::Ptr &stream) {
-    // 窗口大小不足
+    // The window size is insufficient
     if (endpoint_window_size == 0 ||
         stream->endpoint_window_size == 0) {
         return false;
     }
 
-    // 初次准备
+    // Initial preparation
     if (stream->expect_length == 0) {
         stream->prepareRange();
     }
@@ -952,8 +953,8 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4SingleRange
 
 
 bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(const HttpStream::Ptr &stream) {
-    // 此函数的所有直接返回 false 均为窗口大小不足所导致
-    // 通过 result 返回均为正常处理
+    // All direct returns of false in this function are caused by insufficient window size
+    // Returns through result are considered normal processing
     if (endpoint_window_size == 0 ||
         stream->endpoint_window_size == 0) {
         return false;
@@ -962,7 +963,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
     size_t remind = std::min({endpoint_window_size, stream->endpoint_window_size, max_frame_size});
     if (stream->real_length >= stream->expect_length) {
         if (stream->range_iterator == stream->ranges.begin()) {
-            // 首个区间
+            // First range
             auto subheader = std::string("--") + HTTPD_BOUNDARY + "\r\n" +
                              "content-type: " + stream->content_type + "\r\n" +
                              "content-range: " + stream->range_iterator->toString(stream->filesize) + "\r\n\r\n";
@@ -973,7 +974,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
             stream->prepareRange();
             writeSubheaderAndData(stream, subheader, remind);
         } else if (stream->range_iterator == stream->ranges.end()) {
-            // 最后一个区间已结束
+            // Last range has ended
             auto end_boundary = std::string("\r\n--") + HTTPD_BOUNDARY + "--\r\n";
             if (end_boundary.length() > remind) {
                 return false;
@@ -988,7 +989,7 @@ bool sese::internal::service::http::HttpConnectionEx::writeDataFrame4Ranges(cons
             pre_vector.push_back(std::move(frame));
             return true;
         } else {
-            // 中间的区间和最后一个区间
+            // Middle range and last range
             auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "\r\n" +
                              "content-type: " + stream->content_type + "\r\n" +
                              "content-range: " + stream->range_iterator->toString(stream->filesize) + "\r\n\r\n";

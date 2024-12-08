@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file String.h
-* @author kaoru
-* @version 0.1
-* @brief UTF-8 字符串
-* @date 2023年9月13日
-*/
+ * @file String.h
+ * @author kaoru
+ * @version 0.1
+ * @brief UTF-8 String
+ * @date September 13, 2023
+ */
 
 #pragma once
 

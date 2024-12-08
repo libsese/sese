@@ -16,7 +16,7 @@
 /// \date 2022-9-27
 /// \version 0.1
 /// \author kaoru
-/// \brief 包含 SStringBuilder
+/// \brief Includes SStringBuilder
 
 #pragma once
 
@@ -25,16 +25,14 @@
 
 namespace sstr {
 
-/// SString 构造器
-class  SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBuilder final {
-    // 构造相关
+/// SStringBuilder
+class SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBuilder final {
 public:
     SStringBuilder(const SStringBuilder &builder);     // NOLINT
     SStringBuilder(SStringBuilder &&builder) noexcept; // NOLINT
     explicit SStringBuilder(size_t buffer_size);
     ~SStringBuilder();
 
-    // 基础功能
 public:
     [[nodiscard]] const uint32_t *data() const;
     [[nodiscard]] size_t size() const;
@@ -51,7 +49,7 @@ public:
     void append(const char *str);
     void append(const SStringView &str);
 
-    // 不会支持
+    // Not supported
     // std::vector<SString> split(const char *str) const;
     // std::vector<SString> split(const SString &str) const;
 
@@ -72,11 +70,11 @@ public:
     [[nodiscard]] SString toString() const;
 
 private:
-    /// 数据指针
+    /// Data pointer
     uint32_t *_data = nullptr;
-    /// 字符个数
+    /// Number of characters
     size_t _size = 0;
-    /// 容量（单位 uint32_t 即 4 bytes）
+    /// Capacity (unit is uint32_t, i.e., 4 bytes)
     size_t _cap = 0;
 };
 
