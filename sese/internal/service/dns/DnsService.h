@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file DnsService.h
-/// @brief DNS 服务
+/// @brief DNS service
 /// @author kaoru
-/// @date 2024年10月30日
+/// @date October 30, 2024
 
 #pragma once
 
@@ -29,7 +29,7 @@
 
 namespace sese::internal::net::service::dns {
 
-/// @brief DNS 服务
+/// @brief DNS service
 class DnsService final : public sese::service::Service {
     asio::io_service io_service;
     asio::ip::udp::socket socket;
@@ -56,47 +56,46 @@ class DnsService final : public sese::service::Service {
 
 public:
 
-    /// @brief 构造函数
     DnsService();
 
-    /// @brief 绑定地址
-    /// @param address 地址
-    /// @return 是否绑定成功
+    /// @brief Bind address
+    /// @param address The address
+    /// @return Whether binding was successful
     bool bind(const sese::net::IPAddress::Ptr &address);
 
-    /// @brief 设置回调，回调函数先于域名判断逻辑，类似于过滤器，返回值代表是否需要下一步处理
-    /// @param callback 回调
+    /// @brief Set callback, the callback function precedes domain judgment logic, similar to a filter. The return value indicates whether further processing is needed
+    /// @param callback The callback function
     void setCallback(const sese::service::dns::Callback &callback);
 
-    /// @brief 添加上游域名服务器
-    /// @param address 地址
+    /// @brief Add upstream DNS server
+    /// @param address The address
     void addUpstreamNameServer(const sese::net::IPAddress::Ptr &address);
 
-    /// @brief 添加上游域名服务器
-    /// @param ip IP
-    /// @param port 端口
-    /// @return 是否添加成功，这取决于填写的IP地址格式
+    /// @brief Add upstream DNS server
+    /// @param ip IP address
+    /// @param port Port number
+    /// @return Whether the addition was successful, which depends on the format of the provided IP address
     bool addUpstreamNameServer(const std::string &ip, uint16_t port = 53);
 
-    /// @brief 添加记录
-    /// @param name 域名
-    /// @param address 地址
+    /// @brief Add record
+    /// @param name Domain name
+    /// @param address Address
     void addRecord(const std::string &name, const sese::net::IPAddress::Ptr &address);
 
-    /// @brief 启动服务
-    /// @return 是否成功
+    /// @brief Start service
+    /// @return Whether it was successful
     bool startup() override;
 
-    /// @brief 停止服务
-    /// @return 是否成功
+    /// @brief Stop service
+    /// @return Whether it was successful
     bool shutdown() override;
 
-    /// @brief 获取错误码
-    /// @return 错误码
+    /// @brief Get error code
+    /// @return Error code
     int getLastError() override;
 
-    /// @brief 获取错误信息
-    /// @return 错误信息
+    /// @brief Get error message
+    /// @return Error message
     std::string getLastErrorMessage() override;
 
 private:

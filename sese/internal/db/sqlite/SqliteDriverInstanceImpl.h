@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file SqliteDriverInstanceImpl.h
-/// \brief SQLite 驱动实现
+/// \brief SQLite driver implementation
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief SQLite 驱动实现
+    /// \brief SQLite driver implementation
     class  SqliteDriverInstanceImpl final : public DriverInstance {
     public:
         explicit SqliteDriverInstanceImpl(sqlite3 *conn) noexcept;

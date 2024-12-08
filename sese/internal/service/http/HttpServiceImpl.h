@@ -22,7 +22,7 @@
 
 namespace sese::internal::service::http {
 
-/// Http 服务实现
+/// HTTP service implementation
 class HttpServiceImpl final : public sese::service::http::HttpService,
                               public std::enable_shared_from_this<HttpServiceImpl> {
 public:

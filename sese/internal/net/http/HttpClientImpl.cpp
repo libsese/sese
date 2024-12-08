@@ -49,7 +49,7 @@ std::string HttpClientImpl::getLastErrorString() {
 // GCOVR_EXCL_STOP
 
 bool HttpClientImpl::request() {
-    // 处理内容长度
+    // Handle the length of the content
     char *end;
     if (expect_total) {
         req->set("content-length", std::to_string(expect_total));
@@ -57,7 +57,7 @@ bool HttpClientImpl::request() {
         req->set("content-length", std::to_string(req->getBody().getLength()));
     }
 
-    // 允许重连一次
+    // Allow one reconnection attempt
     int times = 0;
     if (first) {
         times += 1;
@@ -86,7 +86,7 @@ bool HttpClientImpl::request() {
         }
     }
 
-    // 判断如何读取 body
+    // Determine how to read the body
     if (expect_total && read_callback) {
         if (!writeBodyByCallback()) {
             reset();
@@ -110,7 +110,7 @@ bool HttpClientImpl::request() {
         return false;
     }
 
-    // 判断如何写入 body
+    // Determine how to write to the body
     auto expect = std::strtol(resp->get("content-length", "0").c_str(), &end, 10);
     if (req->getType() != RequestType::HEAD && expect > 0) {
         if (write_callback && !readBodyByCallback(expect)) {
@@ -130,7 +130,7 @@ bool HttpClientImpl::request() {
         socket.close();
     }
 
-    // 自动应用 cookie
+    // Automatic application of cookies
     const auto DEST = req->getCookies();
     for (auto &&item: *resp->getCookies()) {
         DEST->add(item.second);
