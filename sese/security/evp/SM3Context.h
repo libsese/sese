@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file SM3Context.h
-/// \brief EVP SM3 算法上下文
+/// \brief EVP SM3 algorithm context
 /// \author kaoru
-/// \date 2024年04月11日
+/// \date April 11, 2024
 
 #pragma once
 
@@ -23,7 +23,7 @@
 
 namespace sese::security::evp {
 
-/// EVP SM3 算法上下文
+/// EVP SM3 algorithm context
 class SM3Context : public Context {
 public:
     SM3Context() noexcept;

@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file SHA1Context.h
-* @author kaoru
-* @version 0.1
-* @brief EVP SHA1 算法上下文
-* @date 2023年9月13日
-*/
+ * @file SHA1Context.h
+ * @author kaoru
+ * @version 0.1
+ * @brief EVP SHA1 algorithm context
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -26,8 +26,8 @@
 
 namespace sese::security::evp {
 
-/// EVP SHA1 算法上下文
-class  SHA1Context : public Context {
+/// EVP SHA1 algorithm context
+class SHA1Context : public Context {
 public:
     SHA1Context() noexcept;
     ~SHA1Context() noexcept override;

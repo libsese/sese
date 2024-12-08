@@ -14,8 +14,8 @@
 
 /// \file BlockAppender.h
 /// \author kaoru
-/// \date 2022年8月6日
-/// \brief 分块文件日志输出源类
+/// \date August 6, 2022
+/// \brief Block file log appender class
 /// \version 0.1
 
 #pragma once
@@ -28,12 +28,12 @@
 
 namespace sese::record {
 
-/// 分块文件日志输出源类
-class  BlockAppender final : public AbstractAppender {
+/// Block file log appender class
+class BlockAppender final : public AbstractAppender {
 public:
-    /// 初始化分块参数
-    /// \param block_max_size 分块的预定大小，此参数在非 DEBUG 模式下具有最小值限制，至少为 1000 * 1024，即 1MB
-    /// \param level 等级阈值
+    /// Initialize block parameters
+    /// \param block_max_size Preset size of the block. This parameter has a minimum value limit in non-DEBUG mode, at least 1000 * 1024, which is 1MB
+    /// \param level Threshold level
     explicit BlockAppender(size_t block_max_size, Level level = Level::DEBUG);
 
     ~BlockAppender() noexcept override;

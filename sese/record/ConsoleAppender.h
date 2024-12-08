@@ -15,9 +15,10 @@
 /**
  * @file ConsoleAppender.h
  * @author kaoru
- * @date 2022年3月28日
- * @brief 控制台日志输出源类
+ * @date March 28, 2022
+ * @brief Console log appender class
  */
+
 #pragma once
 
 #include "sese/record/AbstractAppender.h"
@@ -26,7 +27,7 @@
 
 namespace sese::record {
 /**
- * @brief 控制台输出源类
+ * @brief Console log appender class
  */
 class  ConsoleAppender final : public AbstractAppender {
 public:

@@ -14,10 +14,11 @@
 
 /**
  * @file SimpleFormatter.h
- * @brief 简单格式化类
+ * @brief Simple formatter class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
+
 #pragma once
 
 #include "sese/record/AbstractFormatter.h"
@@ -26,25 +27,25 @@
 
 namespace sese::record {
 /**
- * @brief 简单格式化类
+ * @brief Simple formatter class
  */
-class  SimpleFormatter final : public AbstractFormatter {
+class SimpleFormatter final : public AbstractFormatter {
 public:
     /**
-     * 默认构造函数
-     * @param text_pattern 格式字符串，默认为 RECORD_DEFAULT_TEXT_PATTERN
+     * Default constructor
+     * @param text_pattern Format string, default is RECORD_DEFAULT_TEXT_PATTERN
      * @see RECORD_DEFAULT_TEXT_PATTERN
      * @verbatim
-       %    转义符号
-       li  行号
-       lv  日志等级
-       fn  文件名
-       th  线程 ID
-       tn  线程名称
-       c   完整时间
-       m   内容
-     @endverbatim
-     * @param time_pattern 时间格式字符串
+     * %    Escape symbol
+     * li   Line number
+     * lv   Log level
+     * fn   File name
+     * th   Thread ID
+     * tn   Thread name
+     * c    Complete time
+     * m    Content
+     * @endverbatim
+     * @param time_pattern Time format string
      */
     explicit SimpleFormatter(const std::string &text_pattern = RECORD_DEFAULT_TEXT_PATTERN, const std::string &time_pattern = RECORD_DEFAULT_TIME_PATTERN) noexcept;
 

@@ -20,8 +20,7 @@ using sese::SHA1Context;
 using sese::SHA1Util;
 using sese::io::ByteBuilder;
 
-// 声明：
-// 此文件实现参考 https://github.com/vog/sha1
+/// \note Implementation of this file is based on https://github.com/vog/sha1
 
 static const size_t BLOCK_INTS = 16; /* number of 32bit integers per SHA1 block */
 // static const size_t BLOCK_BYTES = BLOCK_INTS * 4;
@@ -189,7 +188,7 @@ void SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
         transform(&ctx, block);
     }
 
-    // 处理尾部
+    // Handle the tail
     if (size > 55) {
         ctx.total += size;
         buffer[size] = 0x80;
@@ -198,7 +197,7 @@ void SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
         buffer_to_block(buffer, block);
         transform(&ctx, block);
 
-        // 最后填充一次
+        // Fill it once at the last time
         uint64_t total = ToBigEndian64(ctx.total * 8);
         memset(buffer, 0, 56);
         memcpy(buffer + 56, &total, 8);

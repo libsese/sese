@@ -65,11 +65,11 @@ TEST(TestArchiveWriter, Password) {
     auto file = File::create(PROJECT_BINARY_PATH "/password.zip", File::B_TRUNC);
     ArchiveWriter writer(file.get());
     writer.setFormatZip();
-    // 此选项在 vcpkg 导入的 libarchive 中不受支持，参考链接
+    // This option is not supported in libarchive imported by vcpkg, refer to the link
     // https://github.com/microsoft/vcpkg/issues/21001
     // https://github.com/libarchive/libarchive/issues/1607
     // https://github.com/libarchive/libarchive/issues/1669
-    // 此问题后续将通过远程 ports 将其修复
+    // This issue will be fixed via remote ports in the future
     // EXPECT_EQ(writer.setOptions("zip:encryption=aes256"), 0) << writer.getErrorString();
     EXPECT_EQ(writer.setOptions("zip:encryption=zipcrypt"), 0) << writer.getErrorString();
     EXPECT_EQ(writer.setPassword("123456"), 0);

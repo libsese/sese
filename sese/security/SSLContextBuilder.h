@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file SSLContextBuilder.h
-/// \brief SSL 上下文构建器
+/// \brief SSL context builder
 /// \version 0.1
 /// \author kaoru
-/// \date 2023年7月25日
+/// \date July 25, 2023
 
 #pragma once
 
@@ -25,22 +25,22 @@
 
 namespace sese::security {
 
-/// SSL 上下文构建器
+/// SSL context builder
 class  SSLContextBuilder final : public NotInstantiable {
 public:
     SSLContextBuilder() = delete;
 
-    /// @brief 为客户端构建 SSL 上下文
-    /// @return 客户端 SSL 上下文
+    /// \brief Build SSL context for client
+    /// \return Client SSL context
     static SSLContext::Ptr SSL4Client() noexcept;
-    /// @brief 为服务端构建 SSL 上下文
-    /// @return 服务的 SSL 上下文
+    /// \brief Build SSL context for server
+    /// \return Server SSL context
     static SSLContext::Ptr SSL4Server() noexcept;
-    /// @brief 为客户端构建 SSL 上下文
-    /// @return 客户端 SSL 上下文
+    /// \brief Build SSL context for client
+    /// \return Client SSL context
     static std::unique_ptr<SSLContext> UniqueSSL4Client() noexcept;
-    /// @brief 为服务端构建 SSL 上下文
-    /// @return 服务的 SSL 上下文
+    /// \brief Build SSL context for server
+    /// \return Server SSL context
     static std::unique_ptr<SSLContext> UniqueSSL4Server() noexcept;
 };
 } // namespace sese::security

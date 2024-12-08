@@ -15,12 +15,13 @@
 /**
  * \file SHA256Util.h
  * \author kaoru
- * \date 2022/11/15
+ * \date November 15, 2022
  * \version 0.1
- * \brief 非硬件指令加速的 SHA256 摘要算法
+ * \brief SHA256 digest algorithm without hardware instruction acceleration
  */
 
 #pragma once
+
 #include "sese/io/Stream.h"
 
 #ifdef _WIN32
@@ -31,8 +32,9 @@ namespace sese {
 
 struct Bitset32;
 
-/// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
-class  SHA256Util {
+/// \brief SHA256 digest algorithm without hardware instruction acceleration,
+/// do not use this utility class if performance is a concern
+class SHA256Util {
 public:
     using OutputStream = sese::io::OutputStream;
     using InputStream = sese::io::InputStream;
@@ -44,7 +46,7 @@ public:
     static std::unique_ptr<char[]> encode(InputStream *input, bool is_cap = true) noexcept;
 
 private:
-    /// 常数序列
+    /// Constant sequences
     static const Bitset32 K[64];
 
     static void structure(Bitset32 *block) noexcept;

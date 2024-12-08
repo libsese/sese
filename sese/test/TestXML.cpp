@@ -50,7 +50,7 @@ TEST(TestXML, File) {
     output->write("\n", 1);
 }
 
-/// 不合法的元素结尾
+/// Illegal element ending
 TEST(TestXML, Error_0) {
     const char STR[] = {"<root>\n"
                         "    <item1>Hello</item2>\n"
@@ -60,7 +60,7 @@ TEST(TestXML, Error_0) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 不合法的元素结尾
+/// Illegal element ending
 TEST(TestXML, Error_1) {
     const char STR[] = {"<root>\n"
                         "    <item1>Hello<item1>\n"
@@ -70,7 +70,7 @@ TEST(TestXML, Error_1) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 不合法的元素结尾
+/// Illegal element ending
 TEST(TestXML, Error_2) {
     const char STR[] = {"<root>\n"
                         "    <item1>Hello</item1\n"
@@ -80,7 +80,7 @@ TEST(TestXML, Error_2) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 不合法的注释
+/// \brief Invalid comment
 TEST(TestXML, Error_3) {
     const char STR[] = {"<root>\n"
                         "    <!-- Content ->\n"
@@ -90,7 +90,7 @@ TEST(TestXML, Error_3) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 不合法的注释
+/// \brief Invalid comment
 TEST(TestXML, Error_4) {
     const char STR[] = {"<root>\n"
                         "    <!-- Content --\n"
@@ -100,7 +100,7 @@ TEST(TestXML, Error_4) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 错误子元素
+/// Error child element
 TEST(TestXML, Error_5) {
     const char STR[] = {"<root>\n"
                         "    <item>\n"
@@ -114,7 +114,7 @@ TEST(TestXML, Error_5) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 根节点注释错误
+/// The root node is annotated incorrectly
 TEST(TestXML, Error_6) {
     const char STR[] = {"<!-- CM ->\n"
                         "<root>\n"
@@ -124,7 +124,7 @@ TEST(TestXML, Error_6) {
     ASSERT_EQ(element, nullptr);
 }
 
-/// 节点深度超过限制
+/// The node depth exceeds the limit
 TEST(TestXML, Error_7) {
     const char STR[] = {"<root>\n"
                         "    <object>\n"

@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file SHA256Context.h
-* @author kaoru
-* @version 0.1
-* @brief EVP SHA256 算法上下文
-* @date 2023年9月13日
-*/
+ * @file SHA256Context.h
+ * @author kaoru
+ * @version 0.1
+ * @brief EVP SHA256 algorithm context
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -26,8 +26,8 @@
 
 namespace sese::security::evp {
 
-/// EVP SHA256 算法上下文
-class  SHA256Context : public Context {
+/// EVP SHA256 algorithm context
+class SHA256Context : public Context {
 public:
     SHA256Context() noexcept;
     ~SHA256Context() noexcept override;

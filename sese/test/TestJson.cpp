@@ -18,7 +18,7 @@
 #include <sese/io/FileStream.h>
 #include <sese/io/InputBufferWrapper.h>
 
-/// 从文件解析 Json 格式
+/// Parse the JSON format from the file
 TEST(TestJson, FromFile) {
     auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
     // auto object = sese::json::JsonUtil::deserialize(file_stream, 3);
@@ -97,7 +97,7 @@ TEST(TestJson, Getter) {
     ASSERT_EQ(object.getDict().find("int")->getInt(), 1);
     ASSERT_EQ(object.getDict().find("double")->getDouble(), 3.14);
 
-    // 测试不存在的基本数据
+    // Test basic data that doesn't exist
     // SESE_JSON_GET_STRING(str0, object, "A", "undef");
     // EXPECT_EQ(str0, "undef");
     // SESE_JSON_GET_BOOLEAN(bool0, object, "A", true);
@@ -107,13 +107,13 @@ TEST(TestJson, Getter) {
     // SESE_JSON_GET_INTEGER(int0, object, "A", 0);
     // EXPECT_EQ(int0, 0);
 
-    // 测试不存在的对象
+    // Test non-existent objects
     // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("A"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("A"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("A"), nullptr);
     EXPECT_EQ(object.getDict().find("A"), nullptr);
 
-    // 测试 null 元素
+    // Test null elements
     // SESE_JSON_GET_BOOLEAN(b, object, "nullable", false);
     // EXPECT_EQ(b, false);
     // SESE_JSON_GET_STRING(s, object, "nullable", "undef");
@@ -124,7 +124,7 @@ TEST(TestJson, Getter) {
     // EXPECT_EQ(d, 0);
     EXPECT_TRUE(object.getDict().find("nullable")->isNull());
 
-    // 测试不匹配的数据类型
+    // Test for unmatched data types
     // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("str1"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("str1"), nullptr);
     // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("object"), nullptr);
@@ -146,7 +146,7 @@ TEST(TestJson, Getter) {
 //     data->setNotNull("Hello", true);
 //     object->set("str2", data);
 
-//     // 测试数组宏
+//     // Test array macros
 //     auto array = std::make_shared<sese::json::ArrayData>();
 //     object->set("array", array);
 //     SESE_JSON_PUT_STRING(array, "Hello");
@@ -174,7 +174,7 @@ TEST(TestJson, Value) {
     // output->close();
 }
 
-/// 键值对分割错误
+/// Key-value pair splitting error
 TEST(TestJson, Error_0) {
     const char STR[] = "{\n"
                        "  \"Hello\", \"World\"\n"
@@ -186,7 +186,7 @@ TEST(TestJson, Error_0) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 对象起始符错误
+/// The object start character is incorrect
 TEST(TestJson, Error_1) {
     const char STR[] = "  \"Hello\": \"World\"\n"
                        "}";
@@ -197,7 +197,7 @@ TEST(TestJson, Error_1) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 逗号后不存在下一个对象
+/// There is no next object after the comma
 TEST(TestJson, Error_2) {
     const char STR[] = "{\n"
                        "  \"Hello\": \"World\",\n"
@@ -209,7 +209,7 @@ TEST(TestJson, Error_2) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 字符串转义不完整
+/// String escape is incomplete
 TEST(TestJson, Error_3) {
     const char STR[] = "{\n"
                        "  \"Hello\": \"\\";
@@ -220,7 +220,7 @@ TEST(TestJson, Error_3) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// tokens 为空
+/// tokens are empty
 TEST(TestJson, Error_4) {
     const char STR[] = "";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
@@ -230,7 +230,7 @@ TEST(TestJson, Error_4) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 子数组错误
+/// Subarray error
 TEST(TestJson, Error_5) {
     const char STR[] = "{\n"
                        "  \"str1\": [\n"
@@ -244,7 +244,7 @@ TEST(TestJson, Error_5) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 子对象错误
+/// The child object is incorrect
 TEST(TestJson, Error_6) {
     const char STR[] = "{\n"
                        "  \"str1\": {\n"
@@ -259,7 +259,7 @@ TEST(TestJson, Error_6) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 不完整对象
+/// Incomplete objects
 TEST(TestJson, Error_7) {
     const char STR[] = "{\n"
                        "  \"str1\": {\n"
@@ -271,7 +271,7 @@ TEST(TestJson, Error_7) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 不完整数组
+/// Incomplete arrays
 TEST(TestJson, Error_8) {
     const char STR[] = "{\n"
                        "  \"str1\": [\n"
@@ -283,7 +283,7 @@ TEST(TestJson, Error_8) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 构造对象时，子数组深度超过限制
+/// When constructing an object, the subarray depth exceeds the limit
 TEST(TestJson, Error_9) {
     const char STR[] = "{\n"
                        "  \"arr\": []\n"
@@ -295,7 +295,7 @@ TEST(TestJson, Error_9) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 构造对象时，子对象深度超过限制
+/// When constructing an object, the depth of the sub-object exceeds the limit
 TEST(TestJson, Error_10) {
     const char STR[] = "{\n"
                        "  \"obj\": {}\n"
@@ -307,7 +307,7 @@ TEST(TestJson, Error_10) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 构造数组时，子数组深度超过限制
+/// When constructing an array, the depth of the subarray exceeds the limit
 TEST(TestJson, Error_11) {
     const char STR[] = "{\n"
                        "  \"arr\": [[]]\n"
@@ -319,7 +319,7 @@ TEST(TestJson, Error_11) {
     EXPECT_TRUE(value.isNull());
 }
 
-/// 构造数组时，子对象深度超过限制
+/// When constructing an array, the depth of the sub-objects exceeds the limit
 TEST(TestJson, Error_12) {
     const char STR[] = "{\n"
                        "  \"arr\": [{}]\n"

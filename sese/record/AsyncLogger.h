@@ -14,10 +14,11 @@
 
 /// \file AsyncLogger.h
 /// \author kaoru
-/// \date 2023年6月11日
-/// \brief 异步日志器
+/// \date June 11, 2023
+/// \brief Asynchronous logger
 /// \version 0.1.0
-/// \note 此处使用 valgrind 测试必定产生内存泄漏，使用 -fsanitize=leak 选项进行测试则一切正常
+/// \bug Using valgrind tests will definitely produce memory leaks here,
+/// but using the -fsanitize=leak option for testing everything works fine
 
 #pragma once
 
@@ -31,7 +32,7 @@
 
 namespace sese::record {
 
-/// 异步日志器
+/// Asynchronous logger
 class  AsyncLogger final : public Logger {
 public:
     AsyncLogger();
@@ -47,7 +48,7 @@ public:
 protected:
     io::FixedBuilder *currentBuffer;
     io::FixedBuilder *nextBuffer;
-    // 此队列存放准备提交的 buffer
+    // This queue holds buffers that are ready to be committed
     std::vector<io::FixedBuilder *> buffer2Ready;
 
     std::mutex mutex;

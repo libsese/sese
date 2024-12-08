@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file Marco.h
-* @author kaoru
-* @version 0.1
-* @brief 日志宏
-* @date 2023年9月13日
-*/
+ * @file Marco.h
+ * @author kaoru
+ * @version 0.1
+ * @brief Log macros
+ * @date September 13, 2023
+ */
 
 #pragma once
 

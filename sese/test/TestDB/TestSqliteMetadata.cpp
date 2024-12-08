@@ -53,7 +53,7 @@ TEST_F(TestSqliteMetadata, CheckType) {
         EXPECT_EQ(sese::db::MetadataType::UNKNOWN, type);
     }
     {
-        // 越界
+        // Crossed
         sese::db::MetadataType type;
         ASSERT_EQ(false, stmt->getColumnType(4, type));
     }

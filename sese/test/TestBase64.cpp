@@ -180,7 +180,7 @@ TEST(TestBase62, Base62Decode_2) {
     ASSERT_EQ(std::string_view("core"), std::string_view(buffer));
 }
 
-/// encode 输出缓存不足
+/// \brief Encode output buffer insufficient
 TEST(TestBase62, Error_0) {
     char buffer[1]{};
     std::string str = "hello";
@@ -189,7 +189,7 @@ TEST(TestBase62, Error_0) {
     ASSERT_FALSE(sese::Base64Converter::encodeBase62(&input, &output));
 }
 
-/// decode 输出缓存不足
+/// \brief Decode output buffer insufficient
 TEST(TestBase62, Error_1) {
     char buffer[1]{};
     std::string str = "bVQWBn";

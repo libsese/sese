@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* \file SHA1Util.h
-* \author kaoru
-* \date 2022/12/26
-* \version 0.1
-* \brief 非硬件指令加速的 SHA1 摘要算法
-*/
+ * \file SHA1Util.h
+ * \author kaoru
+ * \date December 26, 2022
+ * \version 0.1
+ * \brief SHA1 digest algorithm without hardware instruction acceleration
+ */
 
 #pragma once
 
@@ -26,13 +26,13 @@
 
 namespace sese {
 
-/// SHA1 上下文
+/// SHA1 context
 struct SHA1Context {
     uint32_t h[5]{0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0};
     uint64_t total = 0;
 };
 
-/// SHA1 算法工具
+/// SHA1 algorithm tool
 class  SHA1Util {
 public:
     using OutputStream = sese::io::OutputStream;

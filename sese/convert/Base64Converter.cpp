@@ -23,7 +23,7 @@
 using sese::Base64Converter;
 using sese::io::Stream;
 
-/// 标准 BASE64 码表
+/// Standard BASE64 Lookup Table
 sese::Base64Converter::CodePage base64_code_page = reinterpret_cast<sese::Base64Converter::CodePage>("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
 
 sese::Base64Converter::CodePage base62_code_page = reinterpret_cast<sese::Base64Converter::CodePage>("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
@@ -81,7 +81,6 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
     while ((len = src->read(buffer, 4)) != 0) {
         int offset = 0;
         for (auto i = 0; i < len; i++) {
-            // 此处已是逻辑完备的
             // GCOVR_EXCL_START
             if (buffer[i] >= 'A' && buffer[i] <= 'Z') {
                 buffer[i] -= 65;

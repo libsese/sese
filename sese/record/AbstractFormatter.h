@@ -14,10 +14,11 @@
 
 /**
  * @file AbstractFormatter.h
- * @brief 日志格式化类
+ * @brief Log formatter class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
+
 #pragma once
 #include <string>
 #include "sese/record/Event.h"
@@ -28,7 +29,7 @@
 
 namespace sese::record {
 /**
- * @brief 日志格式化类
+ * @brief Log formatter class
  */
 class  AbstractFormatter {
 public:

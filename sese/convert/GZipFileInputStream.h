@@ -14,9 +14,9 @@
 
 /// \file GZipFileInputStream.h
 /// \author kaoru
-/// \brief GZip 文件输入流（解压）
+/// \brief GZip file input stream (decompression)
 /// \version 0.1
-/// \date 2023年3月15日
+/// \date March 15, 2023
 
 #pragma once
 
@@ -24,16 +24,16 @@
 
 namespace sese {
 
-/// GZip 文件输入流（解压）
+/// GZip file input stream (decompression)
 class  GZipFileInputStream : public io::InputStream {
 public:
     static void deleter(GZipFileInputStream *data) noexcept;
 
     using Ptr = std::shared_ptr<GZipFileInputStream>;
 
-    /// 创建文件输入流对象
-    /// \param file 文件的相对或者绝对路径
-    /// \retval nullptr 打开文件失败
+    /// Create file input stream object
+    /// \param file Relative or absolute path of the file
+    /// \retval nullptr Failed to open file
     static GZipFileInputStream::Ptr create(const char *file) noexcept;
 
     ~GZipFileInputStream() override = default;

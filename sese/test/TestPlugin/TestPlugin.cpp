@@ -47,13 +47,13 @@ TEST(TestPlugin, SUCCESS) {
     ASSERT_EQ(p3, nullptr);
 }
 
-// 文件不存在
+// The file does not exist
 TEST(TestPlugin, Error_0) {
     auto m = sese::plugin::Module::open("NullModule");
     ASSERT_EQ(m, nullptr);
 }
 
-// 文件存在但不包含模块信息
+// The file exists but does not contain module information
 TEST(TestPlugin, Error_1) {
     auto m = sese::plugin::Module::open(PATH_TO_CORE);
     ASSERT_EQ(m, nullptr);

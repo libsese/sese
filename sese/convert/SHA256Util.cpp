@@ -21,7 +21,7 @@
 using namespace sese;
 using sese::io::ByteBuilder;
 
-/// endian 无关的 32 位
+/// Endian-independent 32-bit
 struct sese::Bitset32 {
     uint8_t byte0{};
     uint8_t byte1{};
@@ -243,9 +243,9 @@ void sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept
     Bitset32 buffer[64];
     auto *block = reinterpret_cast<uint8_t *>(buffer);
 
-    // 最终结果
+    // End Result
     Bitset32 hash[8]{0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
-    // 中间值
+    // Median value
     Bitset32 value[8];
 
     while ((size = input->read(block, 64)) == 64) {
@@ -267,7 +267,7 @@ void sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept
         hash[7] = hash[7] + value[7];
     }
 
-    // 填充再处理一遍
+    // Fill and process again
     if (size <= 55 && size >= 0) {
         total += size;
         total *= 8;
@@ -294,7 +294,7 @@ void sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept
         hash[7] = hash[7] + value[7];
     }
 
-    // 处理倒数第二次，填充并处理最后一次
+    // Deal with the penultimate time, fill and deal with the last
     else if (size > 55) {
         block[size] = ToLittleEndian(0x80);
         memset(block + size + 1, 0, 63 - size);

@@ -101,7 +101,7 @@ void AsyncLogger::loop() noexcept {
                 buffer2 = nullptr;
             }
         }
-        // buffer 过多，触发几率极小
+        // Too many buffers make the chance of triggering very small
         // GCOVR_EXCL_START
         if (buffer2_write.size() > 25) {
             std::for_each(buffer2_write.begin() + 2, buffer2_write.end(), [](io::FixedBuilder *buffer) {
@@ -120,7 +120,7 @@ void AsyncLogger::loop() noexcept {
             }
         }
 
-        // 移除过多的缓冲区，避免堆积过多
+        // Remove excess buffers to avoid excessive build-up
         if (buffer2_write.size() > 2) {
             std::for_each(buffer2_write.begin() + 2, buffer2_write.end(), [](io::FixedBuilder *buffer) {
                 delete buffer; // GCOVR_EXCL_LINE
@@ -144,7 +144,8 @@ void AsyncLogger::loop() noexcept {
         buffer2_write.clear();
     }
 
-    // 此处需要输出剩余的 buffer，触发几率较小
+    // The remaining buffer needs to be output here,
+    // and the chance of triggering is small
     // GCOVR_EXCL_START
     for (const auto &buffer: buffer2Ready) {
         builtInAppender->dump(buffer->data(), buffer->getReadableSize());

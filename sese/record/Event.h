@@ -14,10 +14,11 @@
 
 /**
  * @file Event.h
- * @brief 日志事件类
+ * @brief Log event class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -31,20 +32,16 @@
 #endif
 namespace sese::record {
 
-/// @brief 日志等级
+/// \brief Log level
 enum class Level {
-    /// @brief 调试
     DEBUG = 0,
-    /// @brief 信息
     INFO = 1,
-    /// @brief 警告
     WARN = 2,
-    /// @brief 错误
     ERR = 3
 };
 
 /**
- * @brief 日志事件类
+ * @brief Log event class
  */
 class  Event {
 public:

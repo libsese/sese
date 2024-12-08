@@ -19,7 +19,8 @@
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
-/// 控制台句柄由 Windows 负责自动关闭，程序不管理其生命周期
+/// Windows is responsible for the automatic closure of the console handle,
+/// and the program does not manage its lifecycle
 static HANDLE console_handle = INVALID_HANDLE_VALUE;
 #endif
 

@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file Context.h
-* @author kaoru
-* @version 0.1
-* @brief EVP 上下文基类
-* @date 2023年9月13日
-*/
+ * @file Context.h
+ * @author kaoru
+ * @version 0.1
+ * @brief Base class for EVP context
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -26,7 +26,7 @@
 
 namespace sese::security::evp {
 
-/// EVP 上下文基类
+/// Base class for EVP context
 class  Context {
 public:
     using Ptr = std::unique_ptr<Context>;

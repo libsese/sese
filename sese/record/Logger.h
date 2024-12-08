@@ -15,9 +15,10 @@
 /**
  * @file Logger.h
  * @author kaoru
- * @date 2022年3月28日
- * @brief 日志输出类
+ * @date March 28, 2022
+ * @brief Logger class
  */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -35,7 +36,7 @@
 
 namespace sese::record {
 
-/// 日志器初始化任务
+/// Logger initialization task
 class LoggerInitiateTask final : public InitiateTask {
 public:
     LoggerInitiateTask() : InitiateTask(__FUNCTION__) {}
@@ -47,40 +48,38 @@ public:
 class ConsoleAppender;
 
 /**
- * @brief 日志输出类
+ * @brief Logger class
  */
 class  Logger {
 public:
-    /// 智能指针
     typedef std::shared_ptr<Logger> Ptr;
 
-    /// 初始化
     Logger() noexcept;
 
     virtual ~Logger() noexcept = default;
 
     /**
-     * 添加日志输出源
-     * @param appender 日志输出源
+     * Add log appender
+     * @param appender Log appender
      */
     void addAppender(const AbstractAppender::Ptr &appender) noexcept;
 
     /**
-     * 移除日志输出源
-     * @param appender 日志输出源
+     * Remove log appender
+     * @param appender Log appender
      */
     void removeAppender(const AbstractAppender::Ptr &appender) noexcept;
 
     /**
-     * 输出日志
-     * @param event 日志事件
+     * Output log
+     * @param event Log event
      */
     virtual void log(const Event::Ptr &event) noexcept;
 
     /**
-     * 输出原始内容
-     * @param buffer
-     * @param length
+     * Output raw content
+     * @param buffer Buffer
+     * @param length Length of buffer
      */
     virtual void dump(const void *buffer, size_t length) noexcept;
 
@@ -90,18 +89,18 @@ protected:
     std::vector<AbstractAppender::Ptr> appenderVector;
 
 public:
-    /// 为全局日志器添加日志输出源
-    /// \param appender 日志输出源
+    /// Add log appender to global logger
+    /// \param appender Log appender
     static void addGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept;
 
-    /// 为全局日志器移除日志输出源
-    /// \param appender 日志输出源
+    /// Remove log appender from global logger
+    /// \param appender Log appender
     static void removeGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept;
 };
 
 /**
- * 获取全局 Logger 指针
- * @return Logger 指针
+ * Get global Logger pointer
+ * @return Logger pointer
  */
 extern  record::Logger *getLogger() noexcept;
 } // namespace sese::record

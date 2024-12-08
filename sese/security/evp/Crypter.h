@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/// @file Crypter.h
-/// @brief 加解器接口
-/// @author kaoru
-/// @date 2024年04月22日
-/// @deprecated 请直接使用 OpenSSL 对应的 EVP 方法
+/// \file Crypter.h
+/// \brief Crypter interface
+/// \author kaoru
+/// \date April 22, 2024
+/// \deprecated Please use the corresponding OpenSSL EVP methods directly
 
 #pragma once
 
@@ -24,37 +24,36 @@
 
 namespace sese::security::evp {
 
-/// EVP 加解密接口
+/// Crypter interface
 class Crypter {
 public:
     virtual ~Crypter() = default;
 
-    /// 处理数据
-    /// @param out 输出缓冲区指针
-    /// @param out_len 输出缓存的字节数
-    /// @param in 输入缓冲区指针
-    /// @param in_len 输入缓存区的大小
-    /// @return 返回处理的字节数，失败返回负数
+    /// \brief Process data
+    /// \param out Pointer to the output buffer
+    /// \param out_len Number of bytes in the output buffer
+    /// \param in Pointer to the input buffer
+    /// \param in_len Size of the input buffer
+    /// \return Number of bytes processed, negative if failed
     virtual int update(void *out, int &out_len, const void *in, int in_len) const noexcept = 0;
 
-    /// 处理最后的数据
-    /// @param out 输出缓冲区指针
-    /// @param out_len 输出缓存的字节数
-    /// @return 返回处理的字节数，失败返回负数
+    /// \brief Process final data
+    /// \param out Pointer to the output buffer
+    /// \param out_len Number of bytes in the output buffer
+    /// \return Number of bytes processed, negative if failed
     virtual int final(void *out, int &out_len) const noexcept = 0;
 };
 
-/// EVP 加解密上下文
+/// \brief EVP encryption and decryption context
 struct CrypterContext {
     using Ptr = std::unique_ptr<CrypterContext>;
 
     io::InputBuffer key;
     io::InputBuffer vector;
-    /// 加密器指针，请勿手动修改该属性
     const void *crypter_pointer{};
 };
 
-/// @brief 解密器
+/// \brief Decrypter
 class Decrypter final : public Crypter {
 public:
     explicit Decrypter(const CrypterContext::Ptr &crypter_context);
@@ -70,7 +69,7 @@ private:
     const CrypterContext::Ptr &crypter_context_;
 };
 
-/// @brief 加密器
+/// \brief Encrypter
 class Encrypter final : public Crypter {
 public:
     explicit Encrypter(const CrypterContext::Ptr &crypter_context);

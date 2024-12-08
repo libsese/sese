@@ -13,11 +13,12 @@
 // limitations under the License.
 
 /**
-* @file MD5Util.h
-* @brief MD5 算法类
-* @author kaoru
-* @date 2022年4月22日
-*/
+ * @file MD5Util.h
+ * @brief MD5 Algorithm Class
+ * @author kaoru
+ * @date April 22, 2022
+ */
+
 #pragma once
 
 #include "sese/io/Stream.h"
@@ -25,45 +26,42 @@
 namespace sese {
 
 /**
-    * @brief MD5 算法类
-    */
+ * @brief MD5 Algorithm Class
+ */
 class  MD5Util {
 public:
-    /// 工具所用输出流
     using OutputStream = sese::io::OutputStream;
-    /// 工具所用输入流
     using InputStream = sese::io::InputStream;
 
     /**
-        * @brief 生成 MD5 信息
-        * @param input 摘要来源
-        * @param output MD5 数据输出
-        */
+     * @brief Generate MD5 information
+     * @param input Source of digest
+     * @param output MD5 data output
+     */
     static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
     /**
-        * @brief 生成 MD5 信息
-        * @param input 摘要来源
-        * @param output MD5 数据输出
-        */
+     * @brief Generate MD5 information
+     * @param input Source of digest
+     * @param output MD5 data output
+     */
     static void encode(InputStream *input, OutputStream *output) noexcept;
 
     /**
-        * @brief 生成 32 位大写 MD5 字符串
-        * @param input 摘要来源
-        * @param is_cap 指示字符串字母是否大写
-        * @return 返回生成的字符串，生成失败则为 nullptr
-        */
+     * @brief Generate a 32-bit uppercase MD5 string
+     * @param input Source of digest
+     * @param is_cap Indicates whether the string letters are uppercase
+     * @return Returns the generated string, or nullptr if generation fails
+     */
     static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool is_cap = true) noexcept;
     /**
-        * @brief 生成 32 位大写 MD5 字符串
-        * @param input 摘要来源
-        * @param is_cap 指示字符串字母是否大写
-        * @return 返回生成的字符串，生成失败则为 nullptr
-        */
+     * @brief Generate a 32-bit uppercase MD5 string
+     * @param input Source of digest
+     * @param is_cap Indicates whether the string letters are uppercase
+     * @return Returns the generated string, or nullptr if generation fails
+     */
     static std::unique_ptr<char[]> encode(InputStream *input, bool is_cap = true) noexcept;
 
 private:
-    /// 用于进行变换操作
     static void transform(uint32_t *res, uint8_t *buffer) noexcept;
 
     static const uint32_t A = 0x67452301;

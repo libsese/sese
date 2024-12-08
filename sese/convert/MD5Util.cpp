@@ -41,25 +41,25 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
             length += len;
         } else if (len == 0) {
             memcpy(&buffer[len], PADDING, 64 - len - 8);
-            length *= 8; /// 单位为 位
+            length *= 8; /// The unit is bits
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
-            /// 执行完本次后不再执行
+            /// The execution will not be performed after the current execution is completed
             is_break = true;
         } else if (len < 56) {
             length += len;
             memcpy(&buffer[len], PADDING, 64 - len - 8);
-            length *= 8; /// 单位为 位
+            length *= 8; /// The unit is bits
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
             is_break = true;
         } else {
             length += len;
             memcpy(&buffer[len], PADDING, 64 - len);
-            // 倒数第二次变换
+            // Penultimate transformation
             MD5Util::transform(result, buffer);
             memset(buffer, 0, 56);
-            length *= 8; /// 单位为 位
+            length *= 8; /// The unit is bits
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
             is_break = true;
@@ -98,7 +98,7 @@ void MD5Util::transform(uint32_t *result, uint8_t *buffer) noexcept {
     uint32_t c = result[2];
     uint32_t d = result[3];
 
-    //第1轮循环变换
+    // Round 1 Cyclic Transformation
     a = FF(a, b, c, d, x[0], S11, 0xd76aa478);  /* 1 */
     d = FF(d, a, b, c, x[1], S12, 0xe8c7b756);  /* 2 */
     c = FF(c, d, a, b, x[2], S13, 0x242070db);  /* 3 */
@@ -116,7 +116,7 @@ void MD5Util::transform(uint32_t *result, uint8_t *buffer) noexcept {
     c = FF(c, d, a, b, x[14], S13, 0xa679438e); /* 15 */
     b = FF(b, c, d, a, x[15], S14, 0x49b40821); /* 16 */
 
-    //第2轮循环变换
+    // Round 2 Cyclic Transformation
     a = GG(a, b, c, d, x[1], S21, 0xf61e2562);  /* 17 */
     d = GG(d, a, b, c, x[6], S22, 0xc040b340);  /* 18 */
     c = GG(c, d, a, b, x[11], S23, 0x265e5a51); /* 19 */
@@ -133,7 +133,7 @@ void MD5Util::transform(uint32_t *result, uint8_t *buffer) noexcept {
     d = GG(d, a, b, c, x[2], S22, 0xfcefa3f8);  /* 30 */
     c = GG(c, d, a, b, x[7], S23, 0x676f02d9);  /* 31 */
     b = GG(b, c, d, a, x[12], S24, 0x8d2a4c8a); /* 32 */
-    //第3轮循环变换
+    // Round 3 Cyclic Transformation
     a = HH(a, b, c, d, x[5], S31, 0xfffa3942);  /* 33 */
     d = HH(d, a, b, c, x[8], S32, 0x8771f681);  /* 34 */
     c = HH(c, d, a, b, x[11], S33, 0x6d9d6122); /* 35 */
@@ -150,7 +150,7 @@ void MD5Util::transform(uint32_t *result, uint8_t *buffer) noexcept {
     d = HH(d, a, b, c, x[12], S32, 0xe6db99e5); /* 46 */
     c = HH(c, d, a, b, x[15], S33, 0x1fa27cf8); /* 47 */
     b = HH(b, c, d, a, x[2], S34, 0xc4ac5665);  /* 48 */
-    //第4轮循环变换
+    // Round 4 Cyclic Transformation
     a = II(a, b, c, d, x[0], S41, 0xf4292244);  /* 49 */
     d = II(d, a, b, c, x[7], S42, 0x432aff97);  /* 50 */
     c = II(c, d, a, b, x[14], S43, 0xab9423a7); /* 51 */

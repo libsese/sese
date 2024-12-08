@@ -80,7 +80,7 @@ TEST(TestHttp, UrlHelper_4) {
     EXPECT_EQ(info.getQuery(), "?a=b");
 }
 
-// 测试根目录转义
+// Test root escape
 TEST(TestHttp, RequestHeader_root) {
     auto req = net::http::RequestHeader();
     req.setQueryArg("ssl", "enable");
@@ -89,14 +89,14 @@ TEST(TestHttp, RequestHeader_root) {
     EXPECT_EQ(req.getUrl(), "/?pwd=0x7c00&ssl=enable&user=root");
 }
 
-// 测试多级目录转义
+// Test multi-level directory escaping
 TEST(TestHttp, RequestHeader_dirs) {
     auto req = net::http::RequestHeader();
     req.setUri("/你好233/index");
     EXPECT_EQ(req.getUrl(), "/%E4%BD%A0%E5%A5%BD233/index");
 }
 
-// 查询参数转义
+// Query parameters are escaped
 TEST(TestHttp, RequestHeader_args) {
     auto req = net::http::RequestHeader();
     req.setUrl("/?key1=&%e4%bd%a0%e5%a5%bd233=value2");
@@ -131,7 +131,7 @@ TEST(TestHttp, Header_misc) {
     EXPECT_TRUE(header.empty());
 }
 
-/// 非法的 HTTP 头部结尾
+/// Illegal HTTP header ending
 TEST(TestHttpUtil, GetLine_0) {
     auto str = "GET / HTTP/1.1";
     auto input = sese::io::InputBufferWrapper(str, strlen(str));
@@ -140,7 +140,7 @@ TEST(TestHttpUtil, GetLine_0) {
     ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
 }
 
-/// 超过单行长度限制的 HTTP 头部
+/// HTTP headers that exceed the single-line length limit
 TEST(TestHttpUtil, GetLine_1) {
     char buffer[HTTP_MAX_SINGLE_LINE + 1]{};
     auto input = sese::io::InputBufferWrapper(buffer, sizeof(buffer));
@@ -149,7 +149,7 @@ TEST(TestHttpUtil, GetLine_1) {
     ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
 }
 
-/// 非法的 FirstLine
+/// Illegal FirstLine
 TEST(TestHttpUtil, RecvRequest_0) {
     auto str = "GET / HTTP/1.1 Hello\r\n";
     auto input = sese::io::InputBufferWrapper(str, strlen(str));
@@ -158,7 +158,7 @@ TEST(TestHttpUtil, RecvRequest_0) {
     ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
 }
 
-/// 非法的 HTTP 版本
+/// \brief Invalid HTTP version
 TEST(TestHttpUtil, RecvRequest_1) {
     auto str = "GET / HTTP/0.9\r\n\r\n";
     auto input = sese::io::InputBufferWrapper(str, strlen(str));
@@ -168,7 +168,7 @@ TEST(TestHttpUtil, RecvRequest_1) {
     ASSERT_EQ(req.getVersion(), sese::net::http::HttpVersion::VERSION_UNKNOWN);
 }
 
-/// 接收字段失败
+/// \brief Failed to receive field
 TEST(TestHttpUtil, RecvRequest_2) {
     auto str = "GET / HTTP/1.1\r\n"
                "Version: 0.0.1";
@@ -200,7 +200,7 @@ TEST(TestHttpUtil, SendRequest_0) {
     ASSERT_TRUE(sese::net::http::HttpUtil::sendRequest(&output, &req));
 }
 
-/// 发送字段失败
+/// \brief Failed to send field
 TEST(TestHttpUtil, SendRequest_1) {
     char buffer[18]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
@@ -212,7 +212,7 @@ TEST(TestHttpUtil, SendRequest_1) {
     ASSERT_FALSE(sese::net::http::HttpUtil::sendRequest(&output, &req));
 }
 
-/// 非法的 HTTP 头部结尾
+/// \brief Invalid HTTP header ending
 TEST(TestHttpUtil, RecvResponse_0) {
     auto str = "HTTP/1.1 200";
     auto input = sese::io::InputBufferWrapper(str, strlen(str));
@@ -221,7 +221,7 @@ TEST(TestHttpUtil, RecvResponse_0) {
     ASSERT_FALSE(sese::net::http::HttpUtil::recvResponse(&input, &resp));
 }
 
-/// 非法的 HTTP 版本
+/// \brief Invalid HTTP version
 TEST(TestHttpUtil, RecvResponse_1) {
     auto str = "HTTP/0.1 200\r\n\r\n";
     auto input = sese::io::InputBufferWrapper(str, strlen(str));
@@ -231,7 +231,7 @@ TEST(TestHttpUtil, RecvResponse_1) {
     ASSERT_EQ(resp.getVersion(), sese::net::http::HttpVersion::VERSION_UNKNOWN);
 }
 
-/// 接收字段错误
+/// \brief Error receiving field
 TEST(TestHttpUtil, RecvResponse_2) {
     auto str = "HTTP/1.1 200\r\n"
                "Version: 0.0.1";
@@ -252,7 +252,7 @@ TEST(TestHttpUtil, RecvResponse_3) {
     ASSERT_EQ(resp.getVersion(), sese::net::http::HttpVersion::VERSION_1_1);
 }
 
-/// 非法的 HTTP 版本
+/// \brief Invalid HTTP version
 TEST(TestHttpUtil, SendResponse_0) {
     char buffer[1024]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
@@ -262,7 +262,7 @@ TEST(TestHttpUtil, SendResponse_0) {
     ASSERT_FALSE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
 }
 
-/// 发送字段失败
+/// \brief Failed to send field
 TEST(TestHttpUtil, SendResponse_1) {
     char buffer[18]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
@@ -274,7 +274,7 @@ TEST(TestHttpUtil, SendResponse_1) {
     ASSERT_FALSE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
 }
 
-/// 发送版本失败
+/// \brief Failed to send version
 TEST(TestHttpUtil, SendResponse_2) {
     char buffer[5]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));

@@ -22,17 +22,17 @@ SESE_ADD_RES("world.txt", strlen("World"), "World")
 SESE_DEF_RES_MANAGER_END(TestResource)
 
 TEST(TestResource, Manager) {
-    // 获取资源管理器实例
+    // Get the Resource Manager instance
     auto instance = TestResourceInstance::getInstance();
     EXPECT_NE(instance, nullptr);
 
-    // 获取资源实例
+    // Obtain a resource instance
     auto res = instance->getResource("hello.txt");
     EXPECT_NE(res, nullptr);
 
     EXPECT_EQ(instance->getResource("hello"), nullptr);
 
-    // 获取资源流
+    // Get the resource flow
     auto stream = res->getStream();
     EXPECT_NE(stream, nullptr);
 
