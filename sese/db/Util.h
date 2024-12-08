@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /// \file Util.h
-/// \brief 工具集合
+/// \brief Utility Collection
 /// \author kaoru
 /// \version 0.1
 
@@ -24,8 +24,8 @@
 
 namespace sese::db {
 
-    /// \brief 对字符串进行简单的分词
-    /// \param string 目标字符串
-    /// \return 分词结果
+    /// \brief Perform simple tokenization on a string
+    /// \param string Target string
+    /// \return Tokenization result
     std::map<std::string, std::string> tokenize(const char *string) noexcept;
 }

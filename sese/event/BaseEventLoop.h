@@ -14,7 +14,7 @@
 
 /**
  * @file BaseEventLoop.h
- * @brief 基础网络事件循环接口
+ * @brief Basic network event loop interface
  * @author kaoru
  */
 
@@ -26,7 +26,7 @@
 
 namespace sese::event {
 
-/// 基础网络事件循环接口
+/// Basic network event loop interface
 class BaseEventLoop {
 public:
     virtual bool init() = 0;
@@ -54,7 +54,7 @@ public:
     virtual void setListenFd(int fd) = 0;
 
 protected:
-    /// 指示当前循环是否处理关闭事件
+    /// Indicates whether the current loop is handling a close event
     bool handleClose = true;
 };
 

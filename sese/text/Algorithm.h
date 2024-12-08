@@ -16,7 +16,7 @@
 /// \date 2022-9-27
 /// \version 0.1
 /// \author kaoru
-/// \brief 库所需的外部算法，查找、位移等
+/// \brief External algorithms needed by the library, such as searching, shifting, etc.
 
 #pragma once
 #include <cstddef>
@@ -39,13 +39,13 @@ extern int NORMAL(const char *str, const char *sub);
 
 // GCOVR_EXCL_START
 
-/// 对目标缓存的元素左移
-/// \warning 使用时务必判断数组是否可能越界
-/// \tparam T 元素类型
-/// \param header 目标缓存
-/// \param len 目标缓存原始大小（已经使用的）
-/// \param begin 操作起始位置
-/// \param count 移动距离
+/// Shift elements of the target buffer to the left
+/// \warning Ensure to check for possible array bounds overflow when using
+/// \tparam T Element type
+/// \param header Target buffer
+/// \param len Original size of the target buffer (already used)
+/// \param begin Starting position of the operation
+/// \param count Shift distance
 template<typename T>
 inline void LeftShiftElement(T *header, size_t len, size_t begin, size_t count) {
     for (size_t i = 0; i < len - begin; i++) {
@@ -53,13 +53,13 @@ inline void LeftShiftElement(T *header, size_t len, size_t begin, size_t count) 
     }
 }
 
-/// 对目标缓存的元素左移
-/// \warning 使用时务必判断数组是否可能越界
-/// \tparam T 元素类型
-/// \param header 目标缓存
-/// \param len 目标缓存原始大小（已经使用的）
-/// \param begin 操作起始位置
-/// \param count 移动距离
+/// Shift elements of the target buffer to the left
+/// \warning Ensure to check for possible array bounds overflow when using
+/// \tparam T Element type
+/// \param header Target buffer
+/// \param len Original size of the target buffer (already used)
+/// \param begin Starting position of the operation
+/// \param count Shift distance
 template<typename T>
 inline void RightShiftElement(T *header, size_t len, size_t begin, size_t count) {
     for (size_t i = 0; i < len - begin; i++) {

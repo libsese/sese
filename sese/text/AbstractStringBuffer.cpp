@@ -94,7 +94,7 @@ bool AbstractStringBuffer::endsWith(const std::string_view &text, const std::str
 
 void AbstractStringBuffer::append(const char *data, size_t l) noexcept {
     if (l > cap - this->len) {
-        // 触发扩容
+        // toggle expansion
         const auto NEW_SIZE = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
         this->expansion(NEW_SIZE);
     }
@@ -224,7 +224,7 @@ bool AbstractStringBuffer::insertAt(int index, const char *data, size_t l) {
         return false;
     }
     if (l > cap - this->len) {
-        // 触发扩容
+        // toggle expansion
         const auto NEW_SIZE = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
         this->expansion(NEW_SIZE);
     }

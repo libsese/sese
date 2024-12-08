@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file BufferedQueue.h
-/// \brief 缓存队列
+/// \brief Buffered queue
 /// \author kaoru
-/// \date 2024年2月16日
+/// \date February 16, 2024
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese {
 
-/// 缓存队列（多生产者-多消费者）
+/// Cache queue (multi producer-multi consumer)
 template<class T>
 class BufferedQueueNn {
 public:
@@ -78,15 +78,15 @@ private:
     size_t writeLimit;
 };
 
-/// 缓存队列（多生产者-单消费者）
+/// Cache queue (multi producer-single consumer)
 template<class T>
 using BufferedQueueN1 = BufferedQueueNn<T>;
 
-/// 缓存队列（单生产者-多消费者）
+/// Cache queue (single producer-multi consumer)
 template<class T>
 using BufferedQueue1N = BufferedQueueNn<T>;
 
-/// 缓存队列（单生产者-单消费者）
+/// Cache queue (single producer-single consumer)
 template<class T>
 class BufferedQueue11 {
 public:

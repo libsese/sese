@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Resource.h
-/// \brief 静态资源
+/// \brief Static resources
 /// \author kaoru
-/// \date 2024年02月4日
+/// \date February 4, 2024
 
 #pragma once
 
@@ -23,23 +23,23 @@
 
 namespace sese::res {
 
-/// 静态资源
+/// Static resources
 class Resource { // GCOVR_EXCL_LINE
 public:
     using Ptr = std::shared_ptr<Resource>;
 
     Resource(std::string name, const void *buf, size_t size);
 
-    /// 获取静态资源流
-    /// \return 流
+    /// \brief Get static resource stream
+    /// \return Stream
     ResourceStream::Ptr getStream();
 
-    /// 获取资源名称
-    /// \return 资源名称
+    /// \brief Get the resource name
+    /// \return Resource name
     [[nodiscard]] const std::string &getName() const { return name; }
 
-    /// 获取资源大小
-    /// \return 资源大小
+    /// \brief Get the resource size
+    /// \return Resource size
     [[nodiscard]] size_t getSize() const { return size; }
 
 protected:

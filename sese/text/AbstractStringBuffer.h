@@ -14,11 +14,12 @@
 
 /**
  * @file AbstractStringBuffer.h
- * @brief 字符串缓冲类
+ * @brief String buffer class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  * @version 0.2
  */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -29,17 +30,17 @@
 namespace sese::text {
 
 /**
- * @brief 字符串缓冲类
+ * @brief String buffer class
  */
 class  AbstractStringBuffer {
 public:
     /**
-     * @param cap 初始容量
+     * @param cap Initial capacity
      */
     explicit AbstractStringBuffer(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept;
     /**
-     * @brief 以字符串为初始化参数
-     * @param str 字符串
+     * @brief Initialize with a string
+     * @param str String
      */
     explicit AbstractStringBuffer(const char *str) noexcept;
     virtual ~AbstractStringBuffer() noexcept;
@@ -52,14 +53,13 @@ public:
     static bool endsWith(const std::string_view &text, const std::string_view &suffix) noexcept;
 
 protected:
-    size_t cap{};           /// 实际容量
-    size_t len = 0;         /// 字符串长度
-    char *buffer = nullptr; /// 字符串缓存
+    size_t cap{};           /// Actual capacity
+    size_t len = 0;         /// String length
+    char *buffer = nullptr; /// String caching
 
-protected:
     /**
-     * 扩容
-     * @param new_size 扩容后大小
+     * Expansion
+     * @param new_size Size after expansion
      */
     void expansion(size_t new_size) noexcept;
 
@@ -88,7 +88,7 @@ public:
     virtual bool insertAt(int index, const std::string_view &str);
     virtual bool insertAt(int index, const String &str);
     virtual bool insertAt(int index, const StringView &view);
-    /// 去除两端空格
+    /// Remove whitespace at both ends
     virtual void trim() noexcept;
     [[nodiscard]] virtual std::vector<std::string> split(const std::string_view &str) const noexcept;
     [[nodiscard]] virtual bool startsWith(const std::string_view &prefix) const noexcept;

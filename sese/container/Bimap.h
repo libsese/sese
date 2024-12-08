@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Bimap.h
-/// \brief 双向映射表
+/// \brief Bidirectional map
 /// \author kaoru
-/// \date 2024年01月24日
+/// \date January 24, 2024
 
 #pragma once
 
@@ -25,9 +25,9 @@
 
 namespace sese {
 
-/// \brief 双向映射表
-/// \tparam K 键类型
-/// \tparam V 值类型
+/// \brief Bidirectional map
+/// \tparam K Key type
+/// \tparam V Value type
 template<class K, class V>
 class Bimap final {
 public:

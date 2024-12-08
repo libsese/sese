@@ -11,13 +11,25 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
 
 import os
 import sys
 import shutil
 
 
-# 测试当前目录
+# Test the current directory
 def test_root_path(path: str):
     fileA = open(path + "FileA.txt", "wt")
     fileB = open(path + "FileB.txt", "a")
@@ -28,7 +40,7 @@ def test_root_path(path: str):
     os.rename(path + "FileB.txt", path + "FileD.txt")
 
 
-# 测试子目录
+# Test subdirectories
 def test_sub_path(path: str):
     subdir = path + "subdir/"
     os.makedirs(subdir)
@@ -39,13 +51,13 @@ def test_sub_path(path: str):
     subA.close()
 
 
-# 拷贝子目录文件至根目录
+# Copy the subdirectory file to the root directory
 # copy $src/subA.txt to $dst/FileE.txt
 def test_copy_cross_path(src: str, dst: str):
     shutil.copyfile(src + "subA.txt", dst + "FileE.txt")
 
 
-# 清理
+# cleanup
 def cleanup(path: str):
     os.remove(path + "FileA.txt")
     os.remove(path + "FileC.txt")

@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file DateTimeParser.h
-/// \brief 日期解析器
+/// \brief Date parser
 /// \author kaoru
-/// \date 2023年12月29日
-
+/// \date December 29, 2023
 
 #pragma once
 
@@ -27,27 +26,27 @@
 
 namespace sese::text {
 
-/// 日期解析器
-class  DateTimeParser {
+/// Date parser
+class DateTimeParser {
 public:
     /**
-     * 尝试将字符串还原为数据结构
-     * \param format 时间匹配格式
+     * Attempt to restore the string to a data structure
+     * \param format Time match format
      * \verbatim
-     * yyyy 完整年份
-     * MM   完整月份
-     * dd   完整某一个月的一天
-     * HH   24小时制小时
-     * mm   完整分钟数
-     * ss   完整秒数
-     * fff  完整毫秒数
-     * rrr  完整微秒数
-     * %    转义符号
-     * '*'  单词
-     * z    UTC 偏移量
+     * yyyy Full year
+     * MM   Full month
+     * dd   Full day of the month
+     * HH   24-hour format hour
+     * mm   Full minute
+     * ss   Full second
+     * fff  Full millisecond
+     * rrr  Full microsecond
+     * %    Escape character
+     * '*'  Word
+     * z    UTC offset
      * \endverbatim
-     * \param datetime 时间字符串
-     * \return 时间数据结构
+     * \param datetime Time string
+     * \return Time data structure
      */
     static std::optional<DateTime> parse(const std::string &format, const std::string &datetime);
 

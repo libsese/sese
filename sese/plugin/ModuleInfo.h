@@ -14,7 +14,7 @@
 
 /**
  * @file ModuleInfo.h
- * @brief 模块基础信息
+ * @brief Basic module information
  * @author kaoru
  * @version 0.2
  */
@@ -24,13 +24,13 @@
 #include "sese/plugin/ClassFactory.h"
 
 namespace sese::plugin {
-/// 模块基础信息
+/// Basic module information
 struct ModuleInfo {
-    /// 模块名称
+    /// The name of the module
     const char *moduleName = nullptr;
-    /// 模块版本
+    /// Module version
     const char *versionString = nullptr;
-    /// 模块描述
+    /// Module description
     const char *description = nullptr;
 };
 } // namespace sese::plugin

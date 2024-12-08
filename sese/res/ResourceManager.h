@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file ResourceManager.h
-/// \brief 静态资源管理器
+/// \brief Static resource manager
 /// \author kaoru
-/// \date 2024年02月4日
-
+/// \date February 4, 2024
 
 #pragma once
 
@@ -26,7 +25,7 @@
 
 namespace sese::res {
 
-/// 静态资源管理器
+/// Static resource manager
 class ResourceManager {
 public:
     using MapType = std::map<std::string, Resource::Ptr>;
@@ -35,9 +34,9 @@ public:
 
     virtual ~ResourceManager() = default; // GCOVR_EXCL_LINE
 
-    /// 根据资源名称获取资源
-    /// \param name 资源名称
-    /// \retval nullptr 资源不存在
+    /// \brief Get resource by name
+    /// \param name Resource name
+    /// \retval nullptr Resource does not exist
     [[nodiscard]] Resource::Ptr getResource(const std::string &name) const;
 
     [[nodiscard]] decltype(auto) begin() const { return resourceMap.begin(); }

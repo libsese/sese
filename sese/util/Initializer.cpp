@@ -53,7 +53,7 @@ const std::string &sese::InitiateTask::getName() const {
 }
 
 Initializer::~Initializer() {
-    /// 保证初始化器按顺序销毁
+    /// Initializers are guaranteed to be destroyed sequentially
     while (!tasks.empty()) {
         auto &&top = tasks.top();
         auto rt = top->destroy();
@@ -74,7 +74,7 @@ void Initializer::addTask(const InitiateTask::Ptr &task) noexcept {
 }
 
 void sese::initCore(int argc, const char *const *argv) noexcept {
-    // 不会出错，不需要判断
+    // There is no error, no judgment required
     // GCOVR_EXCL_START
     Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(argc, argv));
     Initializer::addTask(std::make_shared<PathsInitiateTask>());

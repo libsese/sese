@@ -14,7 +14,7 @@
 
 /**
  * @file BaseEvent.h
- * @brief 网络事件基类
+ * @brief Base class for network events
  * @author kaoru
  */
 
@@ -26,7 +26,7 @@
 #define EVENT_ERROR 0x4u
 
 namespace sese::event {
-/// 网络事件基类
+/// Base class for network events
 struct BaseEvent {
     virtual ~BaseEvent() = default;
 

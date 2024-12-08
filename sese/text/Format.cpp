@@ -30,11 +30,11 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
     while (pos1 != pattern.end()) {
         pos2 = std::find_if(pos1, pattern.end(), isKeyWord);
         if (in_args) {
-            // 缺少闭包 '}'
+            // Missing closure '}'
             if (pos2 == pattern.end()) {
                 return false;
             }
-            // 转义字符
+            // Escape characters
             if (pos2 != pattern.begin() && *(pos2 - 1) == '\\') {
                 if (args_builder == nullptr) {
                     args_builder = std::make_unique<StringBuilder>();
@@ -44,7 +44,7 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
                 pos1 = pos2 + 1;
                 continue;
             }
-            // 闭包字符
+            // Closure characters
             if (*pos2 == '}') {
                 in_args = false;
                 if (args_builder) {
@@ -56,20 +56,20 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
                 break;
             }
         } else {
-            // 没有开包
+            // Does not have start of closure
             if (pos2 == pattern.end()) {
                 builder.append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1);
                 pos = pattern.end();
                 return true;
             }
-            // 转义字符
+            // Escape characters
             if (pos2 != pattern.begin() && *(pos2 - 1) == '\\') {
                 builder.append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1 - 1);
                 builder.append(*pos2);
                 pos1 = pos2 + 1;
                 continue;
             }
-            // 开包字符
+            // Start of closure characters
             if (*pos2 == '{') {
                 builder.append(pattern.data() + (pos1 - pattern.begin()), pos2 - pos1);
                 pos1 = pos2 + 1;

@@ -14,7 +14,7 @@
 
 /**
  * @file Marco.h
- * @brief 模块工具宏
+ * @brief Module utility macros
  * @author kaoru
  * @version 1.0
  */

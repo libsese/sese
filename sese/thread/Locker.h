@@ -15,9 +15,10 @@
 /**
  * @file Locker.h
  * @author kaoru
- * @brief 自定义的 std::mutex 包装器
- * @date 2022年4月5日
+ * @brief Custom std::mutex wrapper
+ * @date April 5, 2022
  */
+
 #pragma once
 #include "sese/Config.h"
 #include <memory>
@@ -26,7 +27,7 @@
 namespace sese {
 
 /**
- * @brief std::mutex 包装器
+ * @brief std::mutex wrapper
  * @tparam T std::mutex
  */
 template<typename T = std::mutex>
