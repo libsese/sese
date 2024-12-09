@@ -89,7 +89,7 @@ private:
             SESE_DEBUG("strings[{}] = {}", k, str);
         }
         for (auto &[k, v]: binaries) {
-            auto bin = v->getString();
+            auto bin = base_path +  "/" + v->getString();
             this->binaries[k] = bin;
             SESE_DEBUG("binaries[{}] = {}", k, bin);
         }
@@ -103,10 +103,10 @@ private:
         auto file = result.get();
         sese::text::StringBuilder builder(1024);
         int index = 0;
-        for (auto &[k, v]: binaries) {
+        for (auto &[_, v]: binaries) {
             index += 1;
             builder << std::to_string(index) << " ";
-            builder << k << " ";
+            builder << "114 ";
             builder << "\"" << v << "\"";
             builder << "\n";
             auto string = builder.toString();
@@ -116,10 +116,9 @@ private:
         file->write("\n", 1);
 
         file->write("STRINGTABLE\nBEGIN\n", 18);
-        for (auto &[k, v]: strings) {
+        for (auto &[_, v]: strings) {
             index += 1;
             builder << "\t" << std::to_string(index) << " ";
-            builder << k << " ";
             builder << "\"" << v << "\"";
             builder << "\n";
             auto string = builder.toString();

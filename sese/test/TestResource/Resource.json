@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/libsese/sese/refs/heads/dev-bunlder/sese/bundler/resource.schema.json",
+  "class": "Resource",
+  "binaries": {
+    "hello": "Data/data.ini"
+  },
+  "strings": {
+    "hello": "Hello World"
+  }
+}
