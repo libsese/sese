@@ -15,10 +15,11 @@
 /**
  * \file InputBufferWrapper.h
  * \author kaoru
- * \date 2022.12.14
+ * \date December 14, 2022
  * \version 0.1
- * \brief 输入缓存包装器
+ * \brief Input buffer wrapper
  */
+
 #pragma once
 
 #include "sese/io/InputStream.h"
@@ -29,7 +30,7 @@ namespace sese::io {
 
 // GCOVR_EXCL_START
 
-/// \brief 输入缓存包装器
+/// \brief Input buffer wrapper
 class  InputBufferWrapper final : public InputStream, public PeekableStream {
 public:
     InputBufferWrapper(const char *buffer, size_t cap);

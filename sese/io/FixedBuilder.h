@@ -14,8 +14,8 @@
 
 /// \file FixedBuilder.h
 /// \author kaoru
-/// \brief 线程不安全的固定大小缓存
-/// \date 2023年6月11日
+/// \brief Non-thread-safe fixed-size buffer
+/// \date June 11, 2023
 /// \version 0.1.0
 
 #pragma once
@@ -24,8 +24,8 @@
 
 namespace sese::io {
 
-/// 线程不安全的固定大小缓存
-class  FixedBuilder final : public AbstractFixedBuffer {
+/// Non-thread-safe fixed-size buffer
+class FixedBuilder final : public AbstractFixedBuffer {
 public:
     explicit FixedBuilder(size_t size) noexcept : AbstractFixedBuffer(size) {}
 };

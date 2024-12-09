@@ -19,7 +19,8 @@ sese::io::InputStreamReader::InputStreamReader(sese::io::PeekableStream *input) 
 
 std::string sese::io::InputStreamReader::readLine() noexcept {
     builder.clear();
-    // 表示这是由于无内容可供继续读取导致的退出，无论 builder 中是否存在内容都应该返回
+    // Indicates that this is an exit due to no content to continue reading,
+    // and should be returned regardless of whether there is content in the builder
     bool end = false;
     char ch;
 retry:
@@ -53,7 +54,7 @@ retry:
     }
 
     if (builder.empty() && !end) {
-        // 空行重试
+        // Blank lines retry
         goto retry;
     }
 

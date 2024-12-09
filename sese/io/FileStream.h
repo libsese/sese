@@ -13,11 +13,12 @@
 // limitations under the License.
 
 /**
-* @file FileStream.h
-* @brief 文件流类（包装）
-* @date 2022年4月11日
-* @author kaoru
-*/
+ * @file FileStream.h
+ * @brief File stream class (wrapper)
+ * @date April 11, 2022
+ * @author kaoru
+ */
+
 #pragma once
 
 #include "sese/io/Stream.h"
@@ -29,18 +30,18 @@
 
 namespace sese::io {
 
-/// Seek 基址
+/// Seek Base
 enum class Seek {
-    /// 当前指针
+    /// The current pointer
     CUR = SEEK_CUR,
-    /// 起始位置指针
+    /// Start position pointer
     BEGIN = SEEK_SET,
-    /// 末尾位置指针
+    /// End position pointer
     END = SEEK_END
 };
 
 /**
- * @brief 文件流类
+ * @brief File stream class
  */
 class FileStream final : public Stream, public Closeable, public PeekableStream {
 public:
@@ -69,17 +70,17 @@ public:
 
     using Ptr = std::shared_ptr<FileStream>;
 
-    /// 打开一个文件流
-    /// \param file_path 文件路径
-    /// \param mode 打开模式
-    /// \retval nullptr 打开失败
-    /// \retval 文件流对象
+    /// Open a file stream
+    /// \param file_path File path
+    /// \param mode Open mode
+    /// \retval nullptr Failed to open
+    /// \retval File stream object
     static FileStream::Ptr create(const std::string &file_path, const char *mode) noexcept;
 
-    /// 以 UNIX-LIKE 风格打开一个文件
-    /// \param path UNIX-LIKE 路径
-    /// \param mode 打开模式
-    /// \retval nullptr 打开失败
+    /// Open a file in UNIX-LIKE style
+    /// \param path UNIX-LIKE path
+    /// \param mode Open mode
+    /// \retval nullptr Failed to open
     static FileStream::Ptr createWithPath(const system::Path &path, const char *mode) noexcept;
 
     static Result<Ptr, ErrorCode> createEx(const std::string &file_path, const char *mode) noexcept;
@@ -94,9 +95,9 @@ public:
     int64_t peek(void *buffer, size_t length) override;
     int64_t trunc(size_t length) override;
 
-    /// 此函数用于判断是否已经读取到文件末尾
-    /// @warning 这首先需要先触发一次读取失败才能获取有效值
-    /// @return 结果s
+    /// This function is used to determine if the end of the file has been reached
+    /// \warning This requires an initial read failure to obtain a valid value
+    /// \return Result
     [[nodiscard]] bool eof() const;
 
     [[nodiscard]] int64_t getSeek() const;

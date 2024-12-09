@@ -14,7 +14,7 @@
 
 #include <sese/io/FakeStream.h>
 
-// 标准库流实现封装，不负责校验
+// The standard library stream is encapsulated and is not responsible for verification
 // GCOVR_EXCL_START
 
 sese::io::StdInputStreamWrapper::StdInputStreamWrapper(std::istream &stream) : stream(stream) {}
@@ -42,7 +42,8 @@ sese::io::StdOutputStreamWrapper::StdOutputStreamWrapper(std::ostream &stream) :
 int64_t sese::io::StdOutputStreamWrapper::write(const void *buffer, size_t length) {
     stream.write(static_cast<const char *>(buffer), static_cast<std::streamsize>(length));
     if (latest == -1) {
-        // latest 为 -1 则表示流类型不支持获取写入大小，只能假设写入完成
+        // If the latest value is -1, the stream type does not support getting the write size,
+        // and the write can only be assumed to be complete
         return static_cast<int64_t>(length);
     }
     auto now = stream.tellp();

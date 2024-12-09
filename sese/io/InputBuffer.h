@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// @file InputBuffer.h
-/// @brief 输入缓存包装器
+/// @brief Input buffer wrapper
 /// @author kaoru
-/// @date 2024年04月20日
-
+/// @date April 20, 2024
 
 #pragma once
 
@@ -24,7 +23,7 @@
 
 namespace sese::io {
 
-/// \brief 输入缓存包装器
+/// \brief Input buffer wrapper
 using InputBuffer = InputBufferWrapper;
 
 }

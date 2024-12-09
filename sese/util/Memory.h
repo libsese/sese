@@ -15,9 +15,10 @@
 /**
  * @file Memory.h
  * @author kaoru
- * @brief 内存相关 API 的包装
- * @date 2022年6月5日
+ * @brief Wrapper for memory-related APIs
+ * @date June 5, 2022
  */
+
 #pragma once
 #include <memory>
 
@@ -37,10 +38,10 @@ template<typename T>
 using WeakType = std::weak_ptr<T>;
 
 /**
- * 实例化 SharedType
- * @tparam RETURN_TYPE SharedType 模板参数
- * @tparam ARGS 模板参数的构造函数参数类型
- * @param args 模板参数的构造函数参数
+ * Instantiate SharedType
+ * @tparam RETURN_TYPE Template parameter for SharedType
+ * @tparam ARGS Constructor parameter types for the template parameter
+ * @param args Constructor parameters for the template parameter
  * @return SharedType<ReturnType>
  */
 template<typename RETURN_TYPE, typename... ARGS>
@@ -49,12 +50,11 @@ inline SharedType<RETURN_TYPE> makeShared(ARGS &&...args) {
 }
 
 /**
- * 实例化 UniqueType
- * @tparam RETURN_TYPE UniqueType 模板参数
- * @tparam ARGS 模板参数的构造函数参数类型
- * @param args 模板参数的构造函数参数
- * @return UniqueType<ReturnType>
- */
+ * Instantiate UniqueType
+ * @tparam RETURN_TYPE Template parameter for UniqueType
+ * @tparam ARGS Constructor parameter types for the template parameter
+ * @param args Constructor parameters for the template parameter
+ * @return Unique
 template<typename RETURN_TYPE, typename... ARGS>
 inline SharedType<RETURN_TYPE> makeUnique(ARGS &&...args) {
     return std::make_unique<RETURN_TYPE>(args...);
@@ -65,10 +65,10 @@ inline SharedType<RETURN_TYPE> makeUnique(ARGS &&...args) {
 #define MAKE_UNIQUE_PRIVATE(RETURN_TYPE, ...) sese::UniqueType<RETURN_TYPE>(new RETURN_TYPE(__VA_ARGS__))
 
 /**
- * std::make_shared 搭配 std::initializer_list 使用
- * @tparam RETURN_TYPE 预计返回 std::shared_ptr 的模板类型
- * @tparam INIT_TYPE std::initializer_list 模板参数
- * @param list 初始化列表
+ * Using std::make_shared with std::initializer_list
+ * @tparam RETURN_TYPE Template type expected to return std::shared_ptr
+ * @tparam INIT_TYPE Template parameter for std::initializer_list
+ * @param list Initialization list
  * @return std::shared_ptr<ReturnType>
  */
 template<typename RETURN_TYPE, typename INIT_TYPE>
@@ -77,10 +77,10 @@ SharedType<RETURN_TYPE> makeSharedFromList(std::initializer_list<INIT_TYPE> list
 }
 
 /**
- * std::make_unique 搭配 std::initializer_list 使用
- * @tparam RETURN_TYPE 预计返回 std::unique_ptr 的模板参数
- * @tparam INIT_TYPE std::initializer_list 的模板参数
- * @param list 初始化列表
+ * Using std::make_unique with std::initializer_list
+ * @tparam RETURN_TYPE Template parameter expected to return std::unique_ptr
+ * @tparam INIT_TYPE Template parameter for std::initializer_list
+ * @param list Initialization list
  * @return std::unique_ptr<ReturnType>
  */
 template<typename RETURN_TYPE, typename INIT_TYPE>
@@ -89,10 +89,10 @@ UniqueType<RETURN_TYPE> makeUniqueFromList(std::initializer_list<INIT_TYPE> list
 }
 
 /**
- * std::shared_ptr 的类型转换
- * @tparam RETURN_TYPE 预计返回 std::shared_ptr 的模板参数
- * @tparam RAW_TYPE 原始的 std::shared_ptr 的模板参数
- * @param raw_type 需要转换的 std::shared_ptr
+ * Type casting for std::shared_ptr
+ * @tparam RETURN_TYPE Template parameter expected to return std::shared_ptr
+ * @tparam RAW_TYPE Template parameter of the original std::shared_ptr
+ * @param raw_type std::shared_ptr to convert
  * @return std::shared_ptr<ReturnType>
  */
 template<typename RETURN_TYPE, typename RAW_TYPE>
@@ -101,10 +101,10 @@ inline SharedType<RETURN_TYPE> dynamicPointerCast(SharedType<RAW_TYPE> raw_type)
 }
 
 /**
- * std::unique_ptr 的类型转换
- * @tparam RETURN_TYPE 预计返回 std::unique_ptr 的模板参数
- * @tparam RAW_TYPE 原始的 std::unique_ptr 的模板参数
- * @param raw_type 需要转换的 std::unique_ptr
+ * Type casting for std::unique_ptr
+ * @tparam RETURN_TYPE Template parameter expected to return std::unique_ptr
+ * @tparam RAW_TYPE Template parameter of the original std::unique_ptr
+ * @param raw_type std::unique_ptr to convert
  * @return std::unique_ptr<ReturnType>
  */
 template<typename RETURN_TYPE, typename RAW_TYPE>

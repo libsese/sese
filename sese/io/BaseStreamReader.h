@@ -15,9 +15,10 @@
 /**
  * @file BaseStreamReader.h
  * @author kaoru
- * @brief 输出流包装类
- * @date 2022年4月13日
+ * @brief Output stream wrapper class
+ * @date April 13, 2022
  */
+
 #pragma once
 
 #include "sese/io/ByteBuilder.h"
@@ -32,7 +33,7 @@
 
 namespace sese::io {
 /**
- * @brief 输出流包装类，Windows 下 UTF-8 需要特殊处理
+ * @brief Output stream wrapping class, UTF-8 under Windows requires special handling
  */
 template<typename T = char>
 class  BaseStreamReader {
@@ -41,8 +42,8 @@ public:
 
 public:
     /**
-     * @brief 构造函数
-     * @param source 欲包装流
+     * @brief Constructor
+     * @param source Stream to be wrapped
      */
     explicit BaseStreamReader(const Stream::Ptr &source) {
         this->sourceStream = source;
@@ -50,27 +51,25 @@ public:
     }
 
     /**
-     * @brief 读取一个字符
-     * @param ch 字符容器
-     * @return 读取是否成功
+     * @brief Read a character
+     * @param ch Character container
+     * @return Whether the read was successful
      */
     bool read(T &ch) {
         if (bufferStream->read(&ch, sizeof(T)) == 0) {
-            /// 未命中缓存，尝试从源中读取
+            /// Cache missed, trying to read from the source
             auto len = preRead();
             if (0 == len) {
-                /// FileStream 读至文件尾返回值为 0
-                /// 源已被读完
+                /// The source has been read
                 return false;
             }
         }
-        /// 嘿嘿，读取到一个字符
         return true;
     }
 
     /**
-     * @brief 读取一行
-     * @return 返回读取的字符串，长度为零测读取完成
+     * @brief Read a line
+     * @return Returns the read string; a length of zero indicates completion
      */
     std::basic_string<T> readLine() {
         std::basic_stringstream<T> string;
@@ -81,7 +80,6 @@ public:
         }
 
         if (can_read_size > 0) {
-            /// 有东西可读
             T ch;
             while (read(ch)) {
                 if (ch == '\r' || ch == '\n') {
@@ -100,18 +98,19 @@ public:
     }
 
     /**
-     *  @brief 由于 BaseStreamReader 的缓存机制，导致缓存尾部数据可能丢失，该函数返回超前未被读取部分数据长度
-     * @return 超前数据长度
-     */
-    // [[nodiscard]] size_t getAheadLength() const { return bufferStream->getLength() - bufferStream->getCurrentReadPos(); }
-
-    /**
-     * 用于缓存超前部分数据
-     * @return 缓存
+     * Used to cache ahead-of-time data
+     * @return Cache
      */
     const ByteBuilder::Ptr &getBuffer() noexcept { return this->bufferStream; }
 
 private:
+
+    /**
+     * @brief Cache ahead-of-time data
+     * @details This method is used to cache the data of the source stream in advance.
+     *          It is used to improve the performance of the readLine method.
+     * @return The number of bytes cached
+     */
     int64_t preRead() {
         char buffer[STREAM_BYTE_STREAM_SIZE_FACTOR];
         auto len = sourceStream->read(buffer, STRING_BUFFER_SIZE_FACTOR);

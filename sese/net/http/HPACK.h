@@ -14,12 +14,12 @@
 
 /**
  * @file HPACK.h
- * @brief HTTP2 静态数据
-   @verbatim
-   此文件来源于
-   https://github.com/jnferguson/hpack-rfc7541.git
-   部分
-   @endverbatim
+ * @brief HTTP2 static data
+ * @verbatim
+ * This file is sourced from
+ * https://github.com/jnferguson/hpack-rfc7541.git
+ * partially
+ * @endverbatim
  */
 
 #pragma once

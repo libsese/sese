@@ -13,10 +13,11 @@
 // limitations under the License.
 
 /// \file BufferedInputStream.h
-/// \brief 输入流缓存类
+/// \brief Buffered input stream class
 /// \version 0.1
 /// \author kaoru
-/// \date 2022.11.20
+/// \date November 20, 2022
+
 #pragma once
 
 #include <sese/Config.h>
@@ -24,8 +25,8 @@
 
 namespace sese::io {
 
-/// 输入流缓存类
-class  BufferedInputStream : public InputStream {
+/// Buffered input stream class
+class BufferedInputStream : public InputStream {
 public:
     using Ptr = std::shared_ptr<BufferedInputStream>;
 

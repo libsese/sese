@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file OutputBuffer.h
-/// @brief 输出缓存包装器
+/// @brief Output buffer wrapper
 /// @author kaoru
-/// @date 2024年04月20日
+/// @date April 20, 2024
 
 #pragma once
 
@@ -23,7 +23,7 @@
 
 namespace sese::io {
 
-/// \brief 输出缓存包装器
+/// \brief Output buffer wrapper
 using OutputBuffer = OutputBufferWrapper;
 
 }

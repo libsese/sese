@@ -14,9 +14,9 @@
 
 /**
  * @file Stream.h
- * @date 2022年11月14日
+ * @date November 14, 2022
  * @author kaoru
- * @brief 流式接口类
+ * @brief Stream interface class
  * @version 0.2
  */
 
@@ -28,9 +28,9 @@
 namespace sese::io {
 
 /**
- * @brief 流式接口类
+ * @brief Stream interface class
  */
-class  Stream : public InputStream, public OutputStream {
+class Stream : public InputStream, public OutputStream {
 public:
     typedef std::shared_ptr<Stream> Ptr;
 };

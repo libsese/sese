@@ -14,8 +14,8 @@
 
 /// \file InputStreamReader.h
 /// \author kaoru
-/// \brief 可读流读取器
-/// \date 2023年9月11日
+/// \brief Readable stream reader
+/// \date September 11, 2023
 
 #pragma once
 
@@ -24,14 +24,14 @@
 
 namespace sese::io {
 
-/// 可读流读取器
+/// Readable stream reader
 class  InputStreamReader {
 public:
     explicit InputStreamReader(io::PeekableStream *input) noexcept;
 
-    /// 读取一行
-    /// \note 支持 CR、LF、CRLF 换行分隔符
-    /// \return 如果内容全部读完（例如文件流的 EOF），则返回 std::string {}
+    /// Read a line
+    /// \note Supports CR, LF, CRLF line separators
+    /// \return Returns std::string {} if all content is read (e.g., EOF of a file stream)
     std::string readLine() noexcept;
 
 protected:

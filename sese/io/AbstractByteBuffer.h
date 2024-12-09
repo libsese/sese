@@ -14,9 +14,9 @@
 
 /**
  * @file AbstractByteBuffer.h
- * @brief 字节缓冲区类
+ * @brief Byte buffer class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
 
 #pragma once
@@ -27,68 +27,65 @@
 namespace sese::io {
 
 /**
- * @brief 字节缓冲区类
+ * @brief Byte buffer class
  */
 class  AbstractByteBuffer : public Stream, public PeekableStream {
 private:
     /**
-     * @brief 缓冲节点
+     * @brief Buffer node
      */
     struct Node {
-        /// 缓存内存
+        /// Buffer memory
         void *buffer = nullptr;
-        /// 下一个节点
+        /// Next node
         Node *next = nullptr;
-        /// 节点已用内存
+        /// Memory used by the node
         size_t length = 0;
-        /// 节点容量
+        /// Capacity of the node
         size_t cap = 0;
         /**
-         * 初始化节点
-         * @param buffer_size 节点分配内存大小
+         * Initialize node
+         * @param buffer_size Size of memory allocated for the node
          */
         explicit Node(size_t buffer_size);
-        /// 析构
+        /// Destructor
         ~Node();
     };
 
 public:
     /**
-     * @param base_size 初始节点内存大小
-     * @param factor 追加内存节点大小
+     * @param base_size Initial node memory size
+     * @param factor Size of additional memory nodes
      */
     explicit AbstractByteBuffer(size_t base_size = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
 
-    /// 拷贝
+    /// Copy
     AbstractByteBuffer(const AbstractByteBuffer &abstract_byte_buffer) noexcept;
-    /// 移动语义
+    /// Mobile semantics
     AbstractByteBuffer(AbstractByteBuffer &&abstract_byte_buffer) noexcept;
 
-    /// 析构
     ~AbstractByteBuffer() override;
-    /// 重置读取位置
+    /// Reset the read position
     virtual void resetPos();
-    /// 是否有可读数据
+    /// Whether there is readable data
     virtual bool eof();
 
     /**
-     * @return 所有节点已用内存总数
+     * @return Total memory used by all nodes
      */
     [[nodiscard]] virtual size_t getLength() const;
     /**
-     *
-     * @return 所有节点容量总数
+     * @return Total capacity of all nodes
      */
     [[nodiscard]] virtual size_t getCapacity() const;
     /**
-     *
-     * @return 可读字节总数
+     * @return Total readable bytes
      */
     [[nodiscard]] virtual size_t getReadableSize() const;
 
     /**
-     * 释放 CurrentReadNode 前的所有节点
-     * @return 实际释放空间，单位 “字节”
+     * Release all nodes before CurrentReadNode
+     * @return Actual released space in bytes
      */
     virtual size_t freeCapacity();
 
@@ -113,7 +110,7 @@ private:
     Node *currentReadNode = nullptr;
     size_t currentReadPos = 0;
 
-    /// length 不计算最后一个 Node 的，真实长度应为
+    /// length does not count the last node, the real length should be:
     /// realLength = length + currentWriteNode->length
     size_t length = 0;
     size_t cap = 0;

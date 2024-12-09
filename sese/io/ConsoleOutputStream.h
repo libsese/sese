@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file ConsoleOutputStream.h
-/// \brief 控制台输出流类 - 仅用于测试
+/// \brief Console output stream class - for testing purposes only
 /// \author kaoru
 /// \version 0.1
-/// \date 2022.11.20
+/// \date November 20, 2022
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::io {
 
-/// 控制台输出流类 - 仅用于测试
+/// Console output stream class - for testing purposes only
 class  ConsoleOutputStream final : public OutputStream {
 public:
     int64_t write(const void *buffer, size_t length) override;

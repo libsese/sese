@@ -14,10 +14,10 @@
 
 /**
  * @file Controller.h
- * @brief 控制器
+ * @brief Controller
  * @author kaoru
  * @version 0.1
- * @date 2023年9月13日
+ * @date September 13, 2023
  */
 
 #pragma once
@@ -31,7 +31,7 @@
 
 namespace sese::net::http {
 
-/// HTTP 应用
+/// HTTP applications
 class Servlet {
 public:
     using Ptr = std::shared_ptr<Servlet>;
@@ -63,19 +63,19 @@ public:
     }
 
 private:
-    /// 注册路径
+    /// Registration path
     std::string uri;
-    /// 预期的请求类型，不满足则 403
+    /// Expected request type, 403 if not met
     RequestType expect_type;
-    /// 预期的查询字符串参数，不满足则 400
+    /// Expected query string parameters, 400 if not met
     std::set<std::string> expect_query_args;
-    /// 预期的头部参数，不满足则 400
+    /// Expected header parameters, 400 if not met
     std::set<std::string> expect_headers;
-    /// 请求处理回调函数，不满足则 500
+    /// Request handling callback function, 500 if not met
     Callback callback;
 };
 
-/// HTTP 控制器
+/// HTTP controller
 class Controller {
 public:
     using Ptr = std::shared_ptr<Controller>;
@@ -94,9 +94,9 @@ protected:
 
 } // namespace sese::net::http
 
-/// 定义一个控制器
-/// @param name 控制器名称
-/// @param ... 控制器成员
+/// Define a controller
+/// \param name Controller name
+/// \param ... Controller members
 #define SESE_CTRL(name, ...)                                \
     class name final : public sese::net::http::Controller { \
     public:                                                 \
@@ -110,11 +110,12 @@ protected:
     };                                                      \
     void name::init()
 
-/// 注册一个 URL 路径
-/// @param name 内部名称
-/// @param method 期望的 http 方法
-/// @param url 注册 URL 链接
-/// @note \<key\> 需求参数 key 作为 http header 传递， {key} 需求参数 key 作为 query 参数传递
+/// Register a URL path
+/// \param name Internal name
+/// \param method Expected HTTP method
+/// \param url Registered URL link
+/// \note \<key\> Required parameter key is passed as an HTTP header,
+/// {key} required parameter key is passed as a query parameter
 #define SESE_URL(name, method, url)                                 \
     this->servlets.emplace_back(method, url);                       \
     sese::net::http::Servlet &name = servlets[servlets.size() - 1]; \
