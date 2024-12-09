@@ -14,11 +14,12 @@
 
 /**
  * \file OutputStream.h
- * \date 2022年11月14日
+ * \date November 14, 2022
  * \author kaoru
- * \brief 流式输出接口类
+ * \brief Stream output interface class
  * \version 0.1
  */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -30,9 +31,11 @@ namespace sese::io {
 
 // GCOVR_EXCL_START
 
-/// \brief 流式输出接口类
-/// \warning 支持写入 std::vector、std::array、std::span 等类型，但需要注意 T 是否为 POD 类型，非 POD 类型写入将会导致不可预期事件
-class  OutputStream {
+/// \brief Stream output interface class
+/// \details Supports writing to std::vector, std::array, std::span, etc.,
+/// but be cautious about whether T is a POD type.
+/// Writing non-POD types may lead to unexpected events
+class OutputStream {
 public:
     typedef std::shared_ptr<OutputStream> Ptr;
 

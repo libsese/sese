@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* \file OutputBufferWrapper.h
-* \author kaoru
-* \date 2022.12.14
-* \version 0.1
-* \brief 输出缓存包装器
-*/
+ * \file OutputBufferWrapper.h
+ * \author kaoru
+ * \date December 14, 2022
+ * \version 0.1
+ * \brief Output buffer wrapper
+ */
 
 #pragma once
 
@@ -30,7 +30,7 @@ namespace sese::io {
 
 // GCOVR_EXCL_START
 
-/// \brief 输出缓存包装器
+/// \brief Output buffer wrapper
 class  OutputBufferWrapper final : public OutputStream {
 public:
     OutputBufferWrapper(char *buffer, size_t cap);

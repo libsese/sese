@@ -14,9 +14,9 @@
 
 /**
  * @file Util.h
- * @brief 工具杂项函数
+ * @brief Miscellaneous utility functions
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
 
 #pragma once
@@ -32,22 +32,21 @@ using namespace std::chrono_literals;
 
 namespace sese {
 
-// 使用预声明减少头文件引用
 enum class Level;
 
-/// 无视错误的整形转换函数
-/// @param string 表示整形的字符串
-/// @param radix 进制
-/// @return 整形
+/// Integer conversion function that ignores errors
+/// @param string String representing the integer
+/// @param radix Base
+/// @return Integer
 int64_t toInteger(const std::string &string, int radix = 10);
 
-/// 获取类的名称
+/// Get the name of the class
 /// @param type Class
-/// @return 类的名称
+/// @return Name of the class
 std::string getClassName(const std::type_info *type);
 
 /**
- * @brief 字符比较器
+ * @brief Character comparator
  */
 struct StrCmp {
     int operator()(char const *lv, char const *rv) const;
@@ -55,7 +54,7 @@ struct StrCmp {
 };
 
 /**
- * @brief 字符比较器（忽略大小写）
+ * @brief Character comparator (case-insensitive)
  */
 struct StrCmpI {
     int operator()(char const *lv, char const *rv) const;
@@ -63,51 +62,52 @@ struct StrCmpI {
 };
 
 /**
- * 比较两个字符串是否相同
- * \param lv 字符串1
- * \param rv 字符串2
- * \return 比较结果
+ * Compare two strings for equality
+ * \param lv String 1
+ * \param rv String 2
+ * \return Comparison result
  */
 bool strcmp(char const *lv, char const *rv) noexcept;
 
 /**
- * 比较两个字符串是否相同（忽略大小写）
- * \param lv 字符串1
- * \param rv 字符串2
- * \return 比较结果
+ * Compare two strings for equality (case-insensitive)
+ * \param lv String 1
+ * \param rv String 2
+ * \return Comparison result
  */
 bool strcmpDoNotCase(char const *lv, char const *rv) noexcept;
 
 /**
- * 判断字符是否属于空白
- * @param ch 欲判断的字符
- * @return 是否属于空白
+ * Determine if a character is a whitespace
+ * @param ch Character to be checked
+ * @return Whether it is a whitespace
  */
 bool isSpace(char ch) noexcept;
 
 /**
- * 根据日志等级返回对应的字符串
- * @param level 日志等级
- * @return 字符串
+ * Return corresponding string based on log level
+ * @param level Log level
+ * @return String
  */
 const char *getLevelString(Level level) noexcept;
 
 /**
- * 查找某字符在字符串中第一次出现的位置
- * @param str 在哪个字符串中
- * @param ch 欲查找的字符
- * @return 第一次出现的位置，没有则返回 -1
+ * Find the first occurrence of a character in a string
+ * @param str The string to search in
+ * @param ch The character to find
+ * @return The position of the first occurrence, or -1 if not found
  */
 int32_t findFirstAt(const char *str, char ch);
 
 /**
- * 使当前线程休眠一段时间，NATIVE API 实现
- * @param second 秒
+ * Make the current thread sleep for a while, implemented using NATIVE API
+ * @param second Seconds
  */
 void sleep(uint32_t second);
 
 /**
- * 使当前线程休眠一段时间，std 实现
+ * Make the current thread sleep for a while, implemented using std::this_thread::sleep_for
+ * @param duration The duration to sleep
  */
 template<class REP, class PERIOD>
 void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
@@ -115,31 +115,31 @@ void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
 }
 
 /**
- * 获取报错信息
- * @param error 错误代码
- * @return 错误描述
+ * Retrieve error message
+ * @param error Error code
+ * @return Error description
  */
 std::string getErrorString(int64_t error = errno);
 
 /**
- * 获取 error 代码
- * @return error 代码
+ * Retrieve error code
+ * @return Error code
  */
 int32_t  getErrorCode();
 
-/// 移动流数据
-/// \param out 输出流
-/// \param in 输入流
-/// \param size 移动大小
-/// \return 实际移动大小
+/// Move stream data
+/// \param out Output stream
+/// \param in Input stream
+/// \param size Size to move
+/// \return Actual size moved
 size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
 
-/// 获取数字转字符串后所需的字节长度
-/// @note 只能转换整数
-/// @tparam T 入参整数类型
-/// @param num 待转换的数字
-/// @param radix 进制
-/// @return 数字字符串所需长度
+/// Get the byte length required to convert a number to a string
+/// @note Only integers can be converted
+/// @tparam T Input integer type
+/// @param num Number to be converted
+/// @param radix Base
+/// @return Length required for the number string
 template<class T>
 size_t number2StringLength(T num, size_t radix = 10) {
     static_assert(!std::is_same_v<T, double>, "Must be an integer");
@@ -157,12 +157,12 @@ size_t number2StringLength(T num, size_t radix = 10) {
     return length;
 }
 
-/// 获取数字转字符串后所需的字节长度
-/// @note 只能转换浮点数
-/// @tparam T 入参浮点数类型
-/// @param num 待转换的数字
-/// @param placeholder 精度
-/// @return 数字字符串所需长度
+/// Get the byte length required to convert a number to a string
+/// @note Only floating-point numbers can be converted
+/// @tparam T Input floating-point number type
+/// @param num Number to be converted
+/// @param placeholder Precision
+/// @return Length required for the number string
 template<class T>
 size_t floating2StringLength(T num, uint16_t placeholder) {
     static_assert(std::is_same_v<T, double> || std::is_same_v<T, float>, "Must be a floating number");
@@ -174,11 +174,11 @@ size_t floating2StringLength(T num, uint16_t placeholder) {
 }
 
 // GCOVR_EXCL_START
-/// 时间类型转换
+/// Time type conversion
 /// @see https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
-/// @tparam TP 转换对象类型
-/// @param tp 转换对象
-/// @return std::time_t 类型的时间
+/// @tparam TP Type of the object to convert
+/// @param tp Object to convert
+/// @return Time in std::time_t type
 template<typename TP>
 std::time_t to_time_t(TP tp) {
     using namespace std::chrono;
@@ -187,7 +187,7 @@ std::time_t to_time_t(TP tp) {
 }
 // GCOVR_EXCL_STOP
 
- /// 加法溢出检测
+ /// Additive spill detection
 template <typename T>
 bool isAdditionOverflow(T a, T b) {
     if constexpr (std::is_unsigned_v<T>) {
@@ -201,7 +201,7 @@ bool isAdditionOverflow(T a, T b) {
     return false;
 }
 
-/// 减法溢出检测
+/// Subtractive spill detection
 template <typename T>
 bool isSubtractionOverflow(T a, T b) {
     if constexpr (std::is_unsigned<T>::value) {
@@ -218,8 +218,8 @@ bool isSubtractionOverflow(T a, T b) {
 } // namespace sese
 
 /**
- * 获取详细的信息(C 接口)
- * @return 版本信息字符串
+ * Retrieve detailed information (C interface)
+ * @return Version information string
  */
 extern "C" const char *getSpecificVersion();
 
@@ -228,11 +228,11 @@ extern "C" const char *getSpecificVersion();
 #endif
 
 /**
- * @brief 更快速的边界检查 - [0, max)
+ * @brief Faster boundary check - [0, max)
  */
 #define CheckRange(x, max) ((unsigned int) (x) < (max))
 
 /**
- * @brief 更快速的边界检查 - [min, max]
+ * @brief Faster boundary check - [min, max]
  */
 #define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) >= 0)

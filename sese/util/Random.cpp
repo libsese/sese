@@ -56,8 +56,8 @@ uint64_t Random::noise() noexcept {
 #endif
 #else
     // CASE: SESE_ARCH_ARM64
-    // 不再返回 cntfrq_el0 的原因是，此调用在 ARM 会进入内核态
-    // 反复调用可能导致性能下降，x86 则不存在这个问题
+    // The reason for not returning cntfrq_el0 is that this call on ARM enters kernel mode
+    // Repeated calls may lead to performance degradation, which is not an issue on x86
     // uint64_t value;
     // __asm__ volatile("mrs %0, cntfrq_el0" : "=r" (value));
     // return value;

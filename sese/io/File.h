@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file File.h
-* @author kaoru
-* @version 0.1
-* @brief 文件类
-* @date 2023年9月13日
-*/
+ * @file File.h
+ * @author kaoru
+ * @version 0.1
+ * @brief File class
+ * @date September 13, 2023
+ */
 
 #pragma once
 

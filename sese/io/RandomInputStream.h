@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /// \file RandomInputStream.h
-/// \brief 随机输入流
+/// \brief Random input stream
 /// \author kaoru
 
 #pragma once
@@ -26,7 +26,7 @@
 
 namespace sese::io {
 
-/// 随机输入流
+/// Random input stream
 class  RandomInputStream : public InputStream {
 public:
     int64_t read(void *buffer, size_t length) override;

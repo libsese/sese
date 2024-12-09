@@ -13,19 +13,19 @@
 // limitations under the License.
 
 /**
- * HPACK 的键值对处理规则
- *      0.索引的 HEADER 字段
+ * HPACK Key-Value Pair Processing Rules
+ *      0. Indexed HEADER Field
  *          1 + index -> indexedName + indexedValue
- *      1.带索引的字面 HEADER 字段
- *          01 + index -> indexedName + 编码 value
- *          01 + 0     -> 编码 key + 编码 value
- *      2.不带索引的字面 HEADER 字段
- *          0000 + index -> indexedName + 编码 value
- *          0000 + 0     -> 编码 key + 编码 value
- *      3.从不索引的字面 HEADER 字段
- *          0001 + index -> indexedName + 编码 value
- *          0001 + 0     -> 编码 key + 编码 value
- *      4.更新动态表大小
+ *      1. Literal HEADER Field with Incremental Indexing
+ *          01 + index -> indexedName + Encoded value
+ *          01 + 0     -> Encoded key + Encoded value
+ *      2. Literal HEADER Field without Indexing
+ *          0000 + index -> indexedName + Encoded value
+ *          0000 + 0     -> Encoded key + Encoded value
+ *      3. Literal HEADER Field never Indexed
+ *          0001 + index -> indexedName + Encoded value
+ *          0001 + 0     -> Encoded key + Encoded value
+ *      4. Update Dynamic Table Size
  *          001 + size
  */
 
@@ -108,7 +108,7 @@ uint32_t HPackUtil::decode(
             return GOAWAY_COMPRESSION_ERROR;
         }
         len += 1;
-        /// 对应第 0 种情况
+        /// Corresponds to case 0
         if (buf & 0b1000'0000) {
             uint32_t index = 0;
             auto l = decodeInteger(buf, src, index, 7);
@@ -141,7 +141,7 @@ uint32_t HPackUtil::decode(
                 }
             }
         }
-        // 对应第4种情况
+        // Corresponding to the fourth case
         else if ((buf & 0b1110'0000) == 0b0010'0000) {
             uint32_t new_size;
             auto l = decodeInteger(buf, src, new_size, 5);
@@ -156,9 +156,9 @@ uint32_t HPackUtil::decode(
         } else {
             uint32_t index = 0;
             bool is_store;
-            /// 对应第 1 种情况
+            /// Corresponding to case 1
             if ((buf & 0b1100'0000) == 0b0100'0000) {
-                // 添加至动态表
+                // Add to a dynamic table
                 auto l = decodeInteger(buf, src, index, 6);
                 if (-1 == l) {
                     return GOAWAY_COMPRESSION_ERROR;
@@ -166,9 +166,9 @@ uint32_t HPackUtil::decode(
                 len += l;
                 is_store = true;
             }
-            /// 对应第 2 种和第 3 种情况
+            /// Corresponding to the 2nd and 3rd cases
             else {
-                // 不添加至动态表
+                // Not added to a dynamic table
                 auto l = decodeInteger(buf, src, index, 4);
                 if (-1 == l) {
                     return GOAWAY_COMPRESSION_ERROR;
@@ -231,9 +231,9 @@ uint32_t HPackUtil::decode(
 size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header,
                          Header &indexed_header) noexcept {
     size_t size = 0;
-    // 处理索引的 HEADERS
+    // HANDLES INDEXED HEADERS
     for (const auto &item: indexed_header) {
-        // 动态表查询
+        // Dynamic table queries
         {
             auto iterator_key = table.end();
             auto iterator_all = table.end();
@@ -249,25 +249,25 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
 
             // auto iterator = std::find_if(table.begin(), table.end(), isHitAll);
             if (iterator_all != table.end()) {
-                /// 对应第 0 种情况
+                /// Corresponds to case 0
                 size_t index = table.getCount() - 1 - (iterator_all - table.begin()) + PREDEFINED_HEADERS.size();
                 size += encodeIndexCase0(dest, index);
                 continue;
             }
 
             // iterator = std::find_if(table.begin(), table.end(), isHit);
-            // 存在动态表中
+            // Exists in a dynamic table
             if (iterator_key != table.end()) {
                 size_t index = table.getCount() - 1 - (iterator_key - table.begin()) + PREDEFINED_HEADERS.size();
-                /// 对应第 1 种情况
+                /// Corresponding to case 1
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);
-                /// 添加动态表
+                /// Add a dynamic table
                 table.set(item.first, item.second);
                 continue;
             }
         }
-        // 静态表查询
+        // Static table queries
         {
             auto iterator_key = PREDEFINED_HEADERS.end();
             auto iterator_all = PREDEFINED_HEADERS.end();
@@ -283,7 +283,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
 
             // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHitAll);
             if (iterator_all != PREDEFINED_HEADERS.end()) {
-                /// 对应第 0 种情况
+                /// Corresponds to case 0
                 size_t index = iterator_all - PREDEFINED_HEADERS.begin();
                 size += encodeIndexCase0(dest, index);
                 continue;
@@ -292,16 +292,16 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
             // iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
             if (iterator_key != PREDEFINED_HEADERS.end()) {
                 size_t index = iterator_key - PREDEFINED_HEADERS.begin();
-                /// 对应第 1 种情况
+                /// Corresponding to case 1
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);
-                /// 添加动态表
+                /// Add a dynamic table
                 table.set(item.first, item.second);
                 continue;
             }
         }
 
-        /// 添加动态表
+        /// Add a dynamic table
         {
             size += encodeIndexCase1(dest, 0);
             size += encodeString(dest, item.first);
@@ -311,9 +311,9 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
         }
     }
 
-    // 处理一次性 HEADERS
+    // DISPOSE OF SINGLE-USE HEADERS
     for (const auto &item: once_header) {
-        // 动态表查询
+        // Dynamic table queries
         {
             auto iterator_key = table.end();
             auto iterator_all = table.end();
@@ -329,20 +329,20 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
 
             // auto iterator = std::find_if(table.begin(), table.end(), isHit);
             if (iterator_all != table.end()) {
-                /// 第 0 种情况
+                /// Case 0
                 size += encodeIndexCase0(dest, iterator_all - table.begin() + 62);
                 continue;
             }
 
             if (iterator_key != table.end()) {
-                /// 第 2 种情况
+                /// Case 2
                 size += encodeIndexCase2(dest, iterator_key - table.begin() + 62);
                 size += encodeString(dest, item.second);
                 continue;
             }
         }
 
-        // 静态表查询
+        // Static table queries
         {
             auto iterator_key = PREDEFINED_HEADERS.end();
             auto iterator_all = PREDEFINED_HEADERS.end();
@@ -358,19 +358,19 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
 
             // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
             if (iterator_all != PREDEFINED_HEADERS.end()) {
-                /// 第 0 种情况
+                /// Case 0
                 size += encodeIndexCase0(dest, iterator_all - PREDEFINED_HEADERS.begin());
                 continue;
             }
             if (iterator_key != PREDEFINED_HEADERS.end()) {
-                /// 第 2 种情况
+                /// Case 2
                 size += encodeIndexCase2(dest, iterator_key - PREDEFINED_HEADERS.begin());
                 size += encodeString(dest, item.second);
                 continue;
             }
         }
 
-        // 无任何索引数据
+        // There is no indexed data
         {
             size += encodeIndexCase3(dest, 0);
             size += encodeString(dest, item.first);
@@ -379,7 +379,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_h
         }
     }
 
-    /// 此处未对 Cookies 进行压缩
+    /// Cookies are not compressed here
     auto once_cookies = once_header.getCookies();
     auto indexed_cookies = indexed_header.getCookies();
     if (once_cookies) {

@@ -15,8 +15,8 @@
 /**
  * @file Cookie.h
  * @author kaoru
- * @brief Cookie 类
- * @date 2023年9月13日
+ * @brief Cookie class
+ * @date September 13, 2023
  * @version 0.1
  */
 
@@ -30,7 +30,7 @@
 
 namespace sese::net::http {
 
-/// Cookie 类
+/// Cookie class
 class  Cookie {
 public:
     using Ptr = std::shared_ptr<Cookie>;

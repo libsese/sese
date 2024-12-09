@@ -14,9 +14,9 @@
 
 /**
  * @file ByteBuilder.h
- * @brief 线程不安全的字节缓冲类
+ * @brief Non-thread-safe byte buffer class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
 
 #pragma once
@@ -27,7 +27,7 @@
 namespace sese::io {
 
 /**
- * @brief 线程不安全的字节缓冲类
+ * @brief Non-thread-safe byte buffer class
  */
 class  ByteBuilder final : public AbstractByteBuffer {
 public:
