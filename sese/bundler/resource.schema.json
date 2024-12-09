@@ -7,21 +7,9 @@
       "type": "string"
     },
     "class": {
-      "type": "string",
-      "enum": [
-        "Resource"
-      ]
+      "type": "string"
     },
     "binaries": {
-      "type": "object",
-      "patternProperties": {
-        "^.*$": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "strings": {
       "type": "object",
       "patternProperties": {
         "^.*$": {
@@ -33,7 +21,6 @@
   },
   "required": [
     "class",
-    "binaries",
-    "strings"
+    "binaries"
   ]
 }
