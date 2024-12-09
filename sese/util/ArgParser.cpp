@@ -19,7 +19,7 @@
 #include <algorithm>
 #include <cstring>
 
-bool sese::ArgParser::parse(int32_t argc, char **argv) noexcept {
+bool sese::ArgParser::parse(int32_t argc, const char *const *argv) noexcept {
 #ifdef SESE_PLATFORM_WINDOWS
     std::string s(argv[0]);
     std::replace(s.begin(), s.end(), '\\', '/');
@@ -53,6 +53,10 @@ bool sese::ArgParser::exist(const std::string &key) const noexcept {
 
 const std::map<std::string, std::string> &sese::ArgParser::getKeyValSet() const noexcept {
     return this->keyValSet;
+}
+
+const std::string &sese::ArgParser::getValueByKey(const std::string &key) const {
+    return this->keyValSet.at(key);
 }
 
 const std::string &sese::ArgParser::getValueByKey(const std::string &key,

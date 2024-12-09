@@ -1,0 +1,10 @@
+{
+  "$schema": "resource.schema.json",
+  "class": "Resource",
+  "binaries": {
+    "sese": "sese"
+  },
+  "strings": {
+    "sese": "sese"
+  }
+}

@@ -58,8 +58,8 @@ public:
         return tmp;
     }
 
-    /// @brief 判断是否有错误
-    /// @return 是否有错误
+    /// @brief  Whether it is an error
+    /// @return Whether it is an error
     explicit operator bool() const noexcept {
         return is_success;
     }
@@ -173,7 +173,7 @@ public:
     /// @brief 判断是否有错误
     /// @return 是否有错误
     explicit operator bool() const noexcept {
-        return result.has_value();
+        return !result.has_value();
     }
 
     /// @brief 获取结果
@@ -215,7 +215,7 @@ public:
     /// @brief 判断是否有错误
     /// @return 是否有错误
     explicit operator bool() const noexcept {
-        return !e.has_value();
+        return e.has_value();
     }
 
     /// @brief 获取错误
@@ -228,7 +228,7 @@ public:
     /// @brief 获取错误
     /// @return 错误
     E err() const noexcept {
-        assert(e.has_value);
+        assert(e.has_value());
         return e.value();
     }
 };
@@ -259,7 +259,7 @@ public:
     /// @brief 判断是否有错误
     /// @return 是否有错误
     explicit operator bool() const noexcept {
-        return is_success;
+        return !is_success;
     }
 };
 
