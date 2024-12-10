@@ -1,2 +1,3 @@
-/Resource.h
-/Resource.rc
+/Resource.*
+
+!/Resource.json

@@ -56,7 +56,7 @@ add_dependencies(AllTestsInMain Module.m)
 
 # TestResource
 include(../bundler/Bundler.cmake)
-target_include_resource(AllTestsInMain TestResource TestResource/resource.json)
+target_include_resource(AllTestsInMain TestResource TestResource/Resource.json)
 
 # TestSharedMemory
 add_executable(Memory.d TestSharedMemory/Memory.d.cpp)

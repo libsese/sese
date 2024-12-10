@@ -17,7 +17,9 @@
 #include <sese/Config.h>
 #include "ResourceStream.h"
 
+#ifdef SESE_PLATFORM_WINDOWS
 #include <map>
+#endif
 
 namespace sese::res {
 
@@ -66,6 +68,24 @@ ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     LPVOID pResData = LockResource(hResInfo);
     binariesMap[id] = {hResInfo, pResData, dwSize};
     return std::make_unique<ResourceStream>(static_cast<const char *>(pResData) + 32, dwSize);
+}
+
+#else
+
+template<class R>
+BundlerResource<R>::BundlerResource() {
+}
+
+template<class R>
+BundlerResource<R>::~BundlerResource() {}
+
+template<class R>
+ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
+    auto index = static_cast<int>(id);
+    auto start = R::syms[index * 2 + 0];
+    auto end = R::syms[index * 2 + 1];
+    auto size = end - start;
+    return std::make_unique<ResourceStream>(start, size);
 }
 
 #endif
