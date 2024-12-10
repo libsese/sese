@@ -61,7 +61,13 @@ public:
     /// @brief  Whether it is an error
     /// @return Whether it is an error
     explicit operator bool() const noexcept {
-        return is_success;
+        return !is_success;
+    }
+
+    /// @brief  Whether it is an error
+    /// @return Whether it is an error
+    bool has_error() const noexcept {
+        return !is_success;
     }
 
     /// @brief 获取错误
@@ -114,9 +120,15 @@ public:
         return tmp;
     }
 
-    /// @brief 判断是否有错误
-    /// @return 是否有错误
+    /// @brief  Whether it is an error
+    /// @retval ture has error
     explicit operator bool() const noexcept {
+        return std::holds_alternative<E>(result);
+    }
+
+    /// @brief  Whether it is an error
+    /// @retval ture has error
+    bool has_error() const noexcept {
         return std::holds_alternative<E>(result);
     }
 
@@ -170,9 +182,15 @@ public:
         return tmp;
     }
 
-    /// @brief 判断是否有错误
-    /// @return 是否有错误
+    /// @brief  Whether it is an error
+    /// @retval ture has error
     explicit operator bool() const noexcept {
+        return !result.has_value();
+    }
+
+    /// @brief  Whether it is an error
+    /// @retval ture has error
+    bool has_error() const noexcept {
         return !result.has_value();
     }
 
@@ -212,9 +230,15 @@ public:
         return {};
     }
 
-    /// @brief 判断是否有错误
-    /// @return 是否有错误
+    /// @brief  Whether it is an error
+    /// @retval ture has error
     explicit operator bool() const noexcept {
+        return e.has_value();
+    }
+
+    /// @brief  Whether it is an error
+    /// @retval ture has error
+    bool has_error() const noexcept {
         return e.has_value();
     }
 
@@ -256,9 +280,15 @@ public:
         return tmp;
     }
 
-    /// @brief 判断是否有错误
-    /// @return 是否有错误
+    /// @brief  Whether it is an error
+    /// @retval ture has error
     explicit operator bool() const noexcept {
+        return !is_success;
+    }
+
+    /// @brief  Whether it is an error
+    /// @retval ture has error
+    bool has_error() const noexcept {
         return !is_success;
     }
 };
