@@ -6,9 +6,6 @@
     "$schema": {
       "type": "string"
     },
-    "class": {
-      "type": "string"
-    },
     "binaries": {
       "type": "object",
       "patternProperties": {
@@ -20,7 +17,6 @@
     }
   },
   "required": [
-    "class",
     "binaries"
   ]
 }

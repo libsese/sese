@@ -15,12 +15,6 @@
 #pragma once
 
 #include <sese/Log.h>
-#include <sese/system/CommandLine.h>
-#include <sese/util/ArgParser.h>
-#include <sese/util/Exception.h>
-#include <sese/config/Json.h>
-#include <sese/io/File.h>
-#include <sese/text/StringBuilder.h>
 
 #include <string>
 #include <map>
@@ -35,6 +29,7 @@ private:
     std::string generate_code_path;
 
     std::string class_name;
+    std::string method_name;
     std::map<std::string, std::string> binaries;
 
     void parse_config();

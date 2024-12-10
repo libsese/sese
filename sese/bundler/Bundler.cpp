@@ -13,6 +13,13 @@
 // limitations under the License.
 
 #include "Bundler.h"
+#include "sese/config/Json.h"
+#include "sese/io/FileStream.h"
+#include "sese/system/CommandLine.h"
+#include "sese/util/ArgParser.h"
+#include "sese/util/Exception.h"
+
+#include <filesystem>
 
 void Bundler::parse_config() {
     sese::ArgParser parser;
@@ -37,6 +44,14 @@ void Bundler::parse_config() {
     }
     generate_code_path = parser.getValueByKey("--generate_code_path");
     SESE_INFO("generate_code_path = {}", generate_code_path);
+
+    if (!parser.exist("--method_name")) {
+        throw sese::Exception("`method_name` not found in command line arguments");
+    }
+    method_name = parser.getValueByKey("--method_name");
+    SESE_INFO("method_name = {}", method_name);
+
+    class_name = std::filesystem::path(resource_file_path).stem().string();
 }
 
 void Bundler::parse_resource_file() {
@@ -46,7 +61,6 @@ void Bundler::parse_resource_file() {
     }
     auto value = sese::Json::parse(result.get().get(), 4);
     auto &root = value.getDict();
-    class_name = root.find("class")->getString();
     auto &binaries = root.find("binaries")->getDict();
     for (auto &[k, v]: binaries) {
         auto bin = base_path + "/" + v->getString();
@@ -60,14 +74,16 @@ int Bundler::main() {
         Bundler bundler;
         bundler.parse_config();
         bundler.parse_resource_file();
-#ifdef SESE_PLATFORM_WINDOWS
-        bundler.write_rc_resource_file();
-        bundler.write_rc_file();
-#else
-        bundler.write_ld_header_file();
-        bundler.write_ld_source_file();
-        bundler.make_ld_resources();
-#endif
+        if (bundler.method_name == "rc") {
+            bundler.write_rc_resource_file();
+            bundler.write_rc_file();
+        } else if (bundler.method_name == "ld") {
+            bundler.write_ld_header_file();
+            bundler.write_ld_source_file();
+            bundler.make_ld_resources();
+        } else {
+            throw sese::Exception("Unknown method name");
+        }
     } catch (sese::Exception &e) {
         e.printStacktrace();
     }

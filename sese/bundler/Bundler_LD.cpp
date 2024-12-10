@@ -13,8 +13,9 @@
 // limitations under the License.
 
 #include "Bundler.h"
+#include "sese/io/FileStream.h"
 #include "sese/util/Exception.h"
-#include <sese/system/Process.h>
+#include "sese/system/Process.h"
 
 #include <queue>
 
