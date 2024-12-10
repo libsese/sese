@@ -81,11 +81,8 @@ BundlerResource<R>::~BundlerResource() {}
 
 template<class R>
 ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
-    auto index = static_cast<int>(id);
-    auto start = R::syms[index * 2 + 0];
-    auto end = R::syms[index * 2 + 1];
-    auto size = end - start;
-    return std::make_unique<ResourceStream>(start, size);
+    auto res = R::syms[static_cast<int>(id)];
+    return std::make_unique<ResourceStream>(res.start, res.size);
 }
 
 #endif

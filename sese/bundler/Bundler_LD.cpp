@@ -32,7 +32,11 @@ void Bundler::write_ld_header_file() {
         "enum class Binaries {\n";
     std::string str3 =
         "};\n"
-        "static char* syms[";
+        "struct ResInfo {\n"
+        "\tconst char* start;\n"
+        "\tunsigned long size;\n"
+        "};\n"
+        "static ResInfo syms[";
     std::string str4 =
         "];\n"
         "};";
@@ -53,7 +57,7 @@ void Bundler::write_ld_header_file() {
     }
 
     file->write(str3.data(), str3.length());
-    std::string count = std::to_string(binaries.size() * 2);
+    std::string count = std::to_string(binaries.size());
     file->write(count.data(), count.length());
     file->write(str4.data(), str4.length());
     file->close();
@@ -84,13 +88,14 @@ void Bundler::write_ld_source_file() {
         file->write(str.data(), str.length());
     }
 
-    builder << "\nchar * " << class_name << "::syms[" << std::to_string(binaries.size() * 2) << "] {\n";
+    builder << "\n" << class_name << "::ResInfo " << class_name << "::syms[" << std::to_string(binaries.size()) << "] {\n";
     header = builder.toString();
     builder.clear();
     file->write(header.data(), header.length());
     while (!names.empty()) {
-        builder << "\t_binary_" << names.front() << "_start,\n";
-        builder << "\t_binary_" << names.front() << "_end,\n";
+        auto start = "_binary_" + names.front() + "_start";
+        auto end = "_binary_" + names.front() + "_end";
+        builder << "\t{" << start << ", (unsigned long)(" << end << " - " << start << ")},\n";
         names.pop();
         auto str = builder.toString();
         builder.clear();
