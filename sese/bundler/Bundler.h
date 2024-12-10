@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <sese/Enter.h>
 #include <sese/Log.h>
 #include <sese/system/CommandLine.h>
 #include <sese/util/ArgParser.h>
