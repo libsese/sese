@@ -22,6 +22,7 @@ sese_auto_enable_feature(SESE_REPLACE_EXECINFO "replace-execinfo")
 sese_auto_enable_feature(SESE_DB_USE_SQLITE "sqlite3")
 sese_auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
 sese_auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
+sese_auto_enable_feature(SESE_RESOURCE "resource")
 
 option(SESE_ENABLE_ASAN "build with asan" OFF)
 option(SESE_ENABLE_COVERAGE "build for coverage test" OFF)

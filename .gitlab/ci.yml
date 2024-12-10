@@ -66,6 +66,7 @@ gtest:
       -DSESE_DB_USE_MARIADB=ON
       -DSESE_DB_USE_POSTGRES=ON
       -DSESE_REPLACE_EXECINFO=ON
+      -DSESE_RESOURCE=ON
       -DSESE_DB_SQLITE_CONNECTION_STRING="/tmp/db_test.db"
       -DSESE_DB_MYSQL_CONNECTION_STRING="host=mysql\;port=3306\;user=root\;pwd=libsese\;db=db_test\;"
       -DSESE_DB_PSQL_CONNECTION_STRING="host=postgres\;port=5432\;user=postgres\;pwd=libsese\;db=db_test\;"

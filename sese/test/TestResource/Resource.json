@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/libsese/sese/refs/heads/dev-bunlder/sese/bundler/resource.schema.json",
+  "$schema": "https://raw.githubusercontent.com/libsese/sese/refs/heads/main/sese/bundler/resource.schema.json",
   "class": "Resource",
   "binaries": {
     "hello": "Data/data.xml"

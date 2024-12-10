@@ -55,8 +55,10 @@ target_compile_definitions(AllTestsInMain PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FIL
 add_dependencies(AllTestsInMain Module.m)
 
 # TestResource
-include(../bundler/Bundler.cmake)
-target_include_resource(AllTestsInMain TestResource TestResource/Resource.json)
+if (SESE_RESOURCE)
+    include(../bundler/Bundler.cmake)
+    target_include_resource(AllTestsInMain TestResource TestResource/Resource.json)
+endif ()
 
 # TestSharedMemory
 add_executable(Memory.d TestSharedMemory/Memory.d.cpp)

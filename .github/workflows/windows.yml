@@ -53,6 +53,7 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
+          -DSESE_RESOURCE=ON
           -Bbuild
 
       - name: Always Save Cache
