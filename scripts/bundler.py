@@ -14,8 +14,11 @@
 
 import argparse
 import json
+import os
+import queue
+import string
+import subprocess
 from pathlib import Path
-
 
 note = """
 // Please do not modify this file manually
@@ -30,9 +33,18 @@ def parse_file(filename: str) -> dict[str, str]:
         return data["binaries"]
 
 
+def sanitize_filename(name: str) -> str:
+    invalid_chars = "-+*/@%&!?=^~:;,."
+    sanitized = ''.join(
+        c if c not in invalid_chars and c not in string.whitespace and c.isprintable() else '_'
+        for c in name
+    )
+
+    return sanitized
+
+
 def write_windows_rc(binaries: dict[str, str], class_name: str, args) -> None:
     filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
-    print(f"Writing {filename}")
     with open(filename + ".rc", "w") as file:
         file.write("#include \"{}.h\"\n".format(class_name))
         for k, v in binaries.items():
@@ -55,18 +67,60 @@ def write_windows_rc(binaries: dict[str, str], class_name: str, args) -> None:
         file.write("};\n};")
         file.flush()
 
+
 def write_elf_object(binaries: dict[str, str], class_name: str, args) -> None:
-    pass
+    filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
+    with open(filename + ".h", "w") as file:
+        file.write(note)
+        file.write("#pragma once\n")
+        file.write("class {} {{\npublic:\nenum class Binaries : int {{\n".format(class_name))
+        i = 0
+        for k, v in binaries.items():
+            file.write("\t{} = {},\n".format(k, i))
+            i += 1
+        file.write(
+            "};\nstruct ResInfo {{\n\tconst char* start;\n\tunsigned long size;\n};\nstatic ResInfo syms[{}];\n};"
+            .format(len(binaries)))
+
+    with open(filename + ".cpp", "w") as file:
+        file.write("#include \"{}.h\"\n".format(class_name))
+
+        q: queue.Queue = queue.Queue()
+        for k, v in binaries.items():
+            name = sanitize_filename(v)
+            file.write("extern char _binary_{0}_start[];\nextern char _binary_{0}_end[];\n".format(name))
+            q.put(name)
+
+        file.write("\n{0}::ResInfo {0}::syms[{1}] {{\n".format(class_name, len(binaries)))
+        while not q.empty():
+            name = q.get()
+            file.write("\t{{ _binary_{0}_start, (unsigned long)(_binary_{0}_end - _binary_{0}_start) },\n".format(name))
+        file.write("};\n")
+
+    cmd_parts = ["ld", "-r", "-b", "binary"]
+    for _, v in binaries.items():
+        cmd_parts.append(v)
+    output_file = os.path.join(args.base_path, args.generate_code_path, f"{class_name}.o")
+    cmd_parts.append("-o")
+    cmd_parts.append(output_file)
+    cmd = " ".join(cmd_parts)
+
+    result = subprocess.run(cmd)
+    if result.returncode != 0:
+        raise Exception(f"ld returned with non-zero value: {result.returncode}")
+
 
 def write_mach_o_object(binaries: dict[str, str], class_name: str, args) -> None:
+    filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
     pass
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--base_path', type=str, required=True, help="Base path")
     parser.add_argument('--resource_file_path', type=str, required=True, help="Path to the resource file")
     parser.add_argument('--generate_code_path', type=str, required=True, help="Path to generate code")
-    parser.add_argument('--method_name', type=str, required=True, help="Method name")
+    parser.add_argument('--method_name', type=str, required=True, help="Method name(rc|elf|mach-o)")
     args = parser.parse_args()
 
     file_path = Path(args.resource_file_path)
