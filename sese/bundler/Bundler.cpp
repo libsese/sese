@@ -78,9 +78,11 @@ int Bundler::main() {
             bundler.write_rc_resource_file();
             bundler.write_rc_file();
         } else if (bundler.method_name == "ld") {
-            bundler.write_ld_header_file();
-            bundler.write_ld_source_file();
-            bundler.make_ld_resources();
+            bundler.write_elf_header_file();
+            bundler.write_elf_source_file();
+            bundler.make_elf_resources();
+        } else if (bundler.method_name == "mash-o") {
+            bundler.write_mach_o_header_file();
         } else {
             throw sese::Exception("Unknown method name");
         }

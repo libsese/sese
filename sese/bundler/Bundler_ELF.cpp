@@ -29,7 +29,7 @@ std::string Bundler::sanitizeFilename(const std::string &name) {
     return output;
 }
 
-void Bundler::write_ld_header_file() {
+void Bundler::write_elf_header_file() {
     auto result = sese::io::File::createEx(generate_code_path + "/" + class_name + ".h", "wt");
     if (result) {
         throw sese::Exception("Failed to open LD header file to write");
@@ -78,7 +78,7 @@ void Bundler::write_ld_header_file() {
     file->close();
 }
 
-void Bundler::write_ld_source_file() {
+void Bundler::write_elf_source_file() {
     auto result = sese::io::File::createEx(generate_code_path + "/" + class_name + ".cpp", "wt");
     if (result) {
         throw sese::Exception("Failed to open LD source file to write");
@@ -119,7 +119,7 @@ void Bundler::write_ld_source_file() {
     file->write("};\n", 3);
 }
 
-void Bundler::make_ld_resources() {
+void Bundler::make_elf_resources() {
     // ld -r -b binary ...${inputs} -o ${dest}
     sese::text::StringBuilder builder(4096);
     builder << "ld -r -b binary";

@@ -17,8 +17,10 @@
 #include <sese/Config.h>
 #include "ResourceStream.h"
 
-#ifdef SESE_PLATFORM_WINDOWS
+#if defined (SESE_PLATFORM_WINDOWS)
 #include <map>
+#elif defined (SESE_PLATFORM_APPLE)
+#include <mach-o/getsect.h>
 #endif
 
 namespace sese::res {
@@ -47,7 +49,7 @@ private:
 #endif
 };
 
-#ifdef SESE_PLATFORM_WINDOWS
+#if defined (SESE_PLATFORM_WINDOWS)
 
 template<class R>
 BundlerResource<R>::BundlerResource() {
@@ -70,11 +72,10 @@ ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     return std::make_unique<ResourceStream>(static_cast<const char *>(pResData) + 32, dwSize);
 }
 
-#else
+#elif defined (SESE_PLATFORM_LINUX)
 
 template<class R>
-BundlerResource<R>::BundlerResource() {
-}
+BundlerResource<R>::BundlerResource() {}
 
 template<class R>
 BundlerResource<R>::~BundlerResource() {}
@@ -83,6 +84,22 @@ template<class R>
 ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     auto res = R::syms[static_cast<int>(id)];
     return std::make_unique<ResourceStream>(res.start, res.size);
+}
+
+#elif defined (SESE_PLATFORM_APPLE)
+
+template<class R>
+BundlerResource<R>::BundlerResource() {}
+
+template<class R>
+BundlerResource<R>::~BundlerResource() {}
+
+template<class R>
+ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
+    auto name = R::syms[static_cast<int>(id)];
+    unsigned long size;
+    auto start = getsectdata("__DATA", name, &size);
+    return std::make_unique<ResourceStream>(start, size);
 }
 
 #endif

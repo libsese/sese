@@ -39,7 +39,10 @@ private:
     void write_rc_resource_file();
 
     static std::string sanitizeFilename(const std::string &name);
-    void write_ld_header_file();
-    void write_ld_source_file();
-    void make_ld_resources();
+
+    void write_elf_header_file();
+    void write_elf_source_file();
+    void make_elf_resources();
+
+    void write_mach_o_header_file();
 };
