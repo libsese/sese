@@ -56,7 +56,7 @@ add_dependencies(AllTestsInMain Module.m)
 
 # TestResource
 if (SESE_RESOURCE)
-    include(../bundler/Bundler.cmake)
+    include(${PROJECT_SOURCE_DIR}/cmake/Bundler.cmake)
     target_include_resource(AllTestsInMain TestResource TestResource/Resource.json)
 endif ()
 
