@@ -19,6 +19,7 @@ import queue
 import string
 import subprocess
 from pathlib import Path
+from typing import Dict
 
 note = """
 // Please do not modify this file manually
@@ -27,7 +28,7 @@ note = """
 """
 
 
-def parse_file(filename: str) -> dict[str, str]:
+def parse_file(filename: str) -> Dict[str, str]:
     with open(filename, "r") as file:
         data = json.load(file)
         return data["binaries"]
@@ -39,11 +40,12 @@ def sanitize_filename(name: str) -> str:
         c if c not in invalid_chars and c not in string.whitespace and c.isprintable() else '_'
         for c in name
     )
-
     return sanitized
 
+def get_last_16_chars(s: str) -> str:
+    return s[-16:] if len(s) >= 16 else s
 
-def write_windows_rc(binaries: dict[str, str], class_name: str, args) -> None:
+def write_windows_rc(binaries: Dict[str, str], class_name: str, args) -> None:
     filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
     with open(filename + ".rc", "w") as file:
         file.write("#include \"{}.h\"\n".format(class_name))
@@ -65,10 +67,9 @@ def write_windows_rc(binaries: dict[str, str], class_name: str, args) -> None:
             file.write("\t{} = {},\n".format(k, i))
             i += 1
         file.write("};\n};")
-        file.flush()
 
 
-def write_elf_object(binaries: dict[str, str], class_name: str, args) -> None:
+def write_elf_object(binaries: Dict[str, str], class_name: str, args) -> None:
     filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
     with open(filename + ".h", "w") as file:
         file.write(note)
@@ -109,9 +110,34 @@ def write_elf_object(binaries: dict[str, str], class_name: str, args) -> None:
         raise Exception(f"ld returned with non-zero value: {result.returncode}")
 
 
-def write_mach_o_object(binaries: dict[str, str], class_name: str, args) -> None:
+def write_mach_o_object(binaries: Dict[str, str], class_name: str, args) -> None:
     filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
-    pass
+    q: queue.Queue = queue.Queue()
+    with open(filename + ".h", "w") as file:
+        file.write(note)
+        file.write("#pragma once\n\n")
+        file.write("class {} {{\npublic:\nenum class Binaries {{\n".format(class_name))
+        i = 0
+        for k, v in binaries.items():
+            file.write("\t{} = {},\n".format(k, i))
+            i += 1
+        file.write("}};\nstatic const char *syms[{0}];\n}};\nconst char *{1}::syms[{0}] {{\n".format(len(binaries), class_name))
+
+        for k, v in binaries.items():
+            name = sanitize_filename(get_last_16_chars(v))
+            q.put(name)
+            file.write(f"\t\"{name}\",\n")
+        file.write("};")
+
+    with open(filename + ".link_options", "w") as file:
+        first = True
+        for k, v in binaries.items():
+            if first:
+                first = False
+                file.write("{},{}".format(q.get(), args.base_path + "/" + v))
+            else:
+                file.write(";{},{}".format(q.get(), args.base_path + "/" + v))
+
 
 
 def main():
@@ -122,8 +148,8 @@ def main():
     parser.add_argument('--method_name', type=str, required=True, help="Method name(rc|elf|mach-o)")
     args = parser.parse_args()
 
-    file_path = Path(args.resource_file_path)
-    class_name = file_path.stem
+    class_name = Path(args.resource_file_path).stem
+    print(args)
     binaries = parse_file(args.resource_file_path)
     if args.method_name == "rc":
         write_windows_rc(binaries, class_name, args)
