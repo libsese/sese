@@ -72,18 +72,17 @@ def write_elf_object(binaries: dict[str, str], class_name: str, args) -> None:
     filename = args.base_path + "/" + args.generate_code_path + "/" + class_name
     with open(filename + ".h", "w") as file:
         file.write(note)
-        file.write("#pragma once\n")
+        file.write("#pragma once\n\n")
         file.write("class {} {{\npublic:\nenum class Binaries : int {{\n".format(class_name))
         i = 0
         for k, v in binaries.items():
             file.write("\t{} = {},\n".format(k, i))
             i += 1
         file.write(
-            "};\nstruct ResInfo {{\n\tconst char* start;\n\tunsigned long size;\n};\nstatic ResInfo syms[{}];\n};"
-            .format(len(binaries)))
+            f"}};\nstruct ResInfo {{\n\tconst char* start;\n\tunsigned long size;\n}};\nstatic ResInfo syms[{len(binaries)}];\n}};")
 
     with open(filename + ".cpp", "w") as file:
-        file.write("#include \"{}.h\"\n".format(class_name))
+        file.write("#include \"{}.h\"\n\n".format(class_name))
 
         q: queue.Queue = queue.Queue()
         for k, v in binaries.items():
@@ -94,7 +93,7 @@ def write_elf_object(binaries: dict[str, str], class_name: str, args) -> None:
         file.write("\n{0}::ResInfo {0}::syms[{1}] {{\n".format(class_name, len(binaries)))
         while not q.empty():
             name = q.get()
-            file.write("\t{{ _binary_{0}_start, (unsigned long)(_binary_{0}_end - _binary_{0}_start) },\n".format(name))
+            file.write("\t{{ _binary_{0}_start, (unsigned long)(_binary_{0}_end - _binary_{0}_start) }},\n".format(name))
         file.write("};\n")
 
     cmd_parts = ["ld", "-r", "-b", "binary"]
@@ -105,7 +104,7 @@ def write_elf_object(binaries: dict[str, str], class_name: str, args) -> None:
     cmd_parts.append(output_file)
     cmd = " ".join(cmd_parts)
 
-    result = subprocess.run(cmd)
+    result = subprocess.run(cmd, shell=True, check=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     if result.returncode != 0:
         raise Exception(f"ld returned with non-zero value: {result.returncode}")
 
