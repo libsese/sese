@@ -29,5 +29,6 @@ var searchData=
   ['asiosslcontextconvert_2eh_26',['AsioSSLContextConvert.h',['../_asio_s_s_l_context_convert_8h.html',1,'']]],
   ['async_2eh_27',['Async.h',['../_async_8h.html',1,'']]],
   ['asynclogger_2ecpp_28',['AsyncLogger.cpp',['../_async_logger_8cpp.html',1,'']]],
-  ['asynclogger_2eh_29',['AsyncLogger.h',['../_async_logger_8h.html',1,'']]]
+  ['asynclogger_2eh_29',['AsyncLogger.h',['../_async_logger_8h.html',1,'']]],
+  ['authors_2emd_30',['AUTHORS.md',['../_a_u_t_h_o_r_s_8md.html',1,'']]]
 ];

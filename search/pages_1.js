@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readme_0',['README',['../index.html',1,'']]]
+  ['bug_20list_0',['Bug List',['../bug.html',1,'']]]
 ];

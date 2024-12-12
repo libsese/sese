@@ -23,12 +23,12 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"首页",url:"index.html"},
-{text:"相关页面",url:"pages.html"},
-{text:"命名空间",url:"namespaces.html",children:[
-{text:"命名空间列表",url:"namespaces.html"},
-{text:"命名空间成员",url:"namespacemembers.html",children:[
-{text:"全部",url:"namespacemembers.html",children:[
+{text:"Main Page",url:"index.html"},
+{text:"Related Pages",url:"pages.html"},
+{text:"Namespaces",url:"namespaces.html",children:[
+{text:"Namespace List",url:"namespaces.html"},
+{text:"Namespace Members",url:"namespacemembers.html",children:[
+{text:"All",url:"namespacemembers.html",children:[
 {text:"a",url:"namespacemembers.html#index_a"},
 {text:"b",url:"namespacemembers.html#index_b"},
 {text:"c",url:"namespacemembers.html#index_c"},
@@ -49,7 +49,7 @@ var menudata={children:[
 {text:"u",url:"namespacemembers.html#index_u"},
 {text:"v",url:"namespacemembers.html#index_v"},
 {text:"w",url:"namespacemembers.html#index_w"}]},
-{text:"函数",url:"namespacemembers_func.html",children:[
+{text:"Functions",url:"namespacemembers_func.html",children:[
 {text:"a",url:"namespacemembers_func.html#index_a"},
 {text:"b",url:"namespacemembers_func.html#index_b"},
 {text:"c",url:"namespacemembers_func.html#index_c"},
@@ -64,7 +64,7 @@ var menudata={children:[
 {text:"r",url:"namespacemembers_func.html#index_r"},
 {text:"s",url:"namespacemembers_func.html#index_s"},
 {text:"t",url:"namespacemembers_func.html#index_t"}]},
-{text:"变量",url:"namespacemembers_vars.html",children:[
+{text:"Variables",url:"namespacemembers_vars.html",children:[
 {text:"c",url:"namespacemembers_vars.html#index_c"},
 {text:"f",url:"namespacemembers_vars.html#index_f"},
 {text:"g",url:"namespacemembers_vars.html#index_g"},
@@ -75,7 +75,7 @@ var menudata={children:[
 {text:"p",url:"namespacemembers_vars.html#index_p"},
 {text:"s",url:"namespacemembers_vars.html#index_s"},
 {text:"t",url:"namespacemembers_vars.html#index_t"}]},
-{text:"类型定义",url:"namespacemembers_type.html",children:[
+{text:"Typedefs",url:"namespacemembers_type.html",children:[
 {text:"b",url:"namespacemembers_type.html#index_b"},
 {text:"c",url:"namespacemembers_type.html#index_c"},
 {text:"f",url:"namespacemembers_type.html#index_f"},
@@ -89,13 +89,13 @@ var menudata={children:[
 {text:"u",url:"namespacemembers_type.html#index_u"},
 {text:"v",url:"namespacemembers_type.html#index_v"},
 {text:"w",url:"namespacemembers_type.html#index_w"}]},
-{text:"枚举",url:"namespacemembers_enum.html"}]}]},
-{text:"类",url:"annotated.html",children:[
-{text:"类列表",url:"annotated.html"},
-{text:"类索引",url:"classes.html"},
-{text:"类继承关系",url:"hierarchy.html"},
-{text:"类成员",url:"functions.html",children:[
-{text:"全部",url:"functions.html",children:[
+{text:"Enumerations",url:"namespacemembers_enum.html"}]}]},
+{text:"Classes",url:"annotated.html",children:[
+{text:"Class List",url:"annotated.html"},
+{text:"Class Index",url:"classes.html"},
+{text:"Class Hierarchy",url:"hierarchy.html"},
+{text:"Class Members",url:"functions.html",children:[
+{text:"All",url:"functions.html",children:[
 {text:"_",url:"functions.html#index__5F"},
 {text:"a",url:"functions_a.html#index_a"},
 {text:"b",url:"functions_b.html#index_b"},
@@ -124,7 +124,7 @@ var menudata={children:[
 {text:"y",url:"functions_y.html#index_y"},
 {text:"z",url:"functions_z.html#index_z"},
 {text:"~",url:"functions_~.html#index__7E"}]},
-{text:"函数",url:"functions_func.html",children:[
+{text:"Functions",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func_b.html#index_b"},
 {text:"c",url:"functions_func_c.html#index_c"},
@@ -150,7 +150,7 @@ var menudata={children:[
 {text:"w",url:"functions_func_w.html#index_w"},
 {text:"x",url:"functions_func_x.html#index_x"},
 {text:"~",url:"functions_func_~.html#index__7E"}]},
-{text:"变量",url:"functions_vars.html",children:[
+{text:"Variables",url:"functions_vars.html",children:[
 {text:"_",url:"functions_vars.html#index__5F"},
 {text:"a",url:"functions_vars_a.html#index_a"},
 {text:"b",url:"functions_vars_b.html#index_b"},
@@ -176,7 +176,7 @@ var menudata={children:[
 {text:"w",url:"functions_vars_w.html#index_w"},
 {text:"y",url:"functions_vars_y.html#index_y"},
 {text:"z",url:"functions_vars_z.html#index_z"}]},
-{text:"类型定义",url:"functions_type.html",children:[
+{text:"Typedefs",url:"functions_type.html",children:[
 {text:"a",url:"functions_type.html#index_a"},
 {text:"b",url:"functions_type.html#index_b"},
 {text:"c",url:"functions_type.html#index_c"},
@@ -196,13 +196,13 @@ var menudata={children:[
 {text:"t",url:"functions_type.html#index_t"},
 {text:"v",url:"functions_type.html#index_v"},
 {text:"w",url:"functions_type.html#index_w"}]},
-{text:"枚举",url:"functions_enum.html"},
-{text:"枚举值",url:"functions_eval.html"},
-{text:"相关符号",url:"functions_rela.html"}]}]},
-{text:"文件",url:"files.html",children:[
-{text:"文件列表",url:"files.html"},
-{text:"文件成员",url:"globals.html",children:[
-{text:"全部",url:"globals.html",children:[
+{text:"Enumerations",url:"functions_enum.html"},
+{text:"Enumerator",url:"functions_eval.html"},
+{text:"Related Symbols",url:"functions_rela.html"}]}]},
+{text:"Files",url:"files.html",children:[
+{text:"File List",url:"files.html"},
+{text:"File Members",url:"globals.html",children:[
+{text:"All",url:"globals.html",children:[
 {text:"_",url:"globals.html#index__5F"},
 {text:"a",url:"globals_a.html#index_a"},
 {text:"b",url:"globals_b.html#index_b"},
@@ -225,7 +225,7 @@ var menudata={children:[
 {text:"w",url:"globals_w.html#index_w"},
 {text:"x",url:"globals_x.html#index_x"},
 {text:"z",url:"globals_z.html#index_z"}]},
-{text:"函数",url:"globals_func.html",children:[
+{text:"Functions",url:"globals_func.html",children:[
 {text:"a",url:"globals_func.html#index_a"},
 {text:"b",url:"globals_func.html#index_b"},
 {text:"c",url:"globals_func.html#index_c"},
@@ -240,7 +240,7 @@ var menudata={children:[
 {text:"s",url:"globals_func.html#index_s"},
 {text:"t",url:"globals_func.html#index_t"},
 {text:"w",url:"globals_func.html#index_w"}]},
-{text:"变量",url:"globals_vars.html",children:[
+{text:"Variables",url:"globals_vars.html",children:[
 {text:"b",url:"globals_vars.html#index_b"},
 {text:"c",url:"globals_vars.html#index_c"},
 {text:"d",url:"globals_vars.html#index_d"},
@@ -254,9 +254,9 @@ var menudata={children:[
 {text:"s",url:"globals_vars.html#index_s"},
 {text:"t",url:"globals_vars.html#index_t"},
 {text:"z",url:"globals_vars.html#index_z"}]},
-{text:"类型定义",url:"globals_type.html"},
-{text:"枚举",url:"globals_enum.html"},
-{text:"宏定义",url:"globals_defs.html",children:[
+{text:"Typedefs",url:"globals_type.html"},
+{text:"Enumerations",url:"globals_enum.html"},
+{text:"Macros",url:"globals_defs.html",children:[
 {text:"_",url:"globals_defs.html#index__5F"},
 {text:"a",url:"globals_defs.html#index_a"},
 {text:"b",url:"globals_defs.html#index_b"},

@@ -26,49 +26,74 @@ var NAVTREE =
 [
   [ "Sese Framework", "index.html", [
     [ "README", "index.html", "index" ],
-    [ "目录说明", "md_sese_2_c_a_t_a_l_o_g.html", null ],
-    [ "加解密功能", "md_sese_2security_2evp_2_r_e_a_d_m_e.html", null ],
-    [ "字符串格式化", "md_sese_2text_2_f_o_r_m_a_t.html", null ],
-    [ "错误处理", "md_sese_2util_2_e_r_r_o_r.html", [
-      [ "sese::Result<T>", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md14", null ],
-      [ "sese::Exception", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md15", null ],
-      [ "Classic", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md16", null ]
+    [ "AUTHORS", "md__a_u_t_h_o_r_s.html", null ],
+    [ "Contribution Guide", "md__c_o_n_t_r_i_b_u_t_i_n_g.html", [
+      [ "Project Configuration", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md12", [
+        [ "Typical Configuration Steps:", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md13", null ]
+      ] ],
+      [ "Preset Development Environment", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md14", null ],
+      [ "About ARM Architecture", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md15", null ],
+      [ "Branch Management", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md16", null ],
+      [ "Submission Process", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md17", null ],
+      [ "Issues and Requirements", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md18", null ],
+      [ "Contribution Types", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md19", null ],
+      [ "Testing Requirements", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md20", null ],
+      [ "Release Process", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md21", null ],
+      [ "Contact Information", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md22", null ]
     ] ],
-    [ "弃用列表", "deprecated.html", null ],
-    [ "Bug 列表", "bug.html", null ],
-    [ "命名空间", "namespaces.html", [
-      [ "命名空间列表", "namespaces.html", "namespaces_dup" ],
-      [ "命名空间成员", "namespacemembers.html", [
-        [ "全部", "namespacemembers.html", null ],
-        [ "函数", "namespacemembers_func.html", null ],
-        [ "变量", "namespacemembers_vars.html", null ],
-        [ "类型定义", "namespacemembers_type.html", null ],
-        [ "枚举", "namespacemembers_enum.html", null ]
+    [ "Roadmap publicity", "md__r_o_a_d_m_a_p.html", [
+      [ "Short intro", "md__r_o_a_d_m_a_p.html#autotoc_md24", null ],
+      [ "Version 2.1.0", "md__r_o_a_d_m_a_p.html#autotoc_md25", null ],
+      [ "Version 2.1.1", "md__r_o_a_d_m_a_p.html#autotoc_md26", null ],
+      [ "Version 2.3.0", "md__r_o_a_d_m_a_p.html#autotoc_md27", null ],
+      [ "Version 2.4.0", "md__r_o_a_d_m_a_p.html#autotoc_md28", null ]
+    ] ],
+    [ "Security Policy", "md__s_e_c_u_r_i_t_y.html", [
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.html#autotoc_md30", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.html#autotoc_md31", null ]
+    ] ],
+    [ "Directory Explanation", "md_sese_2_c_a_t_a_l_o_g.html", null ],
+    [ "String Formatting", "md_sese_2text_2_f_o_r_m_a_t.html", null ],
+    [ "Error Handling", "md_sese_2util_2_e_r_r_o_r.html", [
+      [ "sese::Result<T>", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md36", null ],
+      [ "sese::Exception", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md37", null ],
+      [ "Classic", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md38", null ]
+    ] ],
+    [ "Deprecated List", "deprecated.html", null ],
+    [ "Bug List", "bug.html", null ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
-    [ "类", "annotated.html", [
-      [ "类列表", "annotated.html", "annotated_dup" ],
-      [ "类索引", "classes.html", null ],
-      [ "类继承关系", "hierarchy.html", "hierarchy" ],
-      [ "类成员", "functions.html", [
-        [ "全部", "functions.html", "functions_dup" ],
-        [ "函数", "functions_func.html", "functions_func" ],
-        [ "变量", "functions_vars.html", "functions_vars" ],
-        [ "类型定义", "functions_type.html", null ],
-        [ "枚举", "functions_enum.html", null ],
-        [ "枚举值", "functions_eval.html", null ],
-        [ "相关符号", "functions_rela.html", null ]
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ],
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
-    [ "文件", "files.html", [
-      [ "文件列表", "files.html", "files_dup" ],
-      [ "文件成员", "globals.html", [
-        [ "全部", "globals.html", "globals_dup" ],
-        [ "函数", "globals_func.html", null ],
-        [ "变量", "globals_vars.html", null ],
-        [ "类型定义", "globals_type.html", null ],
-        [ "枚举", "globals_enum.html", null ],
-        [ "宏定义", "globals_defs.html", null ]
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", "globals_dup" ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -106,12 +131,12 @@ var NAVTREEINDEX =
 "classsese_1_1text_1_1_date_time_formatter.html#a81de170685d54a3bb7ae2962aa660e04",
 "classsstr_1_1_s_string_view.html#a111c7d006dd8e4d61e63f2b1c0da4d7f",
 "functions_vars.html",
-"namespacesese_1_1net_1_1http.html#a40b2e7b6393076fa7cd672ca055b8632",
-"res_2_marco_8h_source.html",
-"structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a7f274adb0757bbbcbe8c489555e10f86",
-"structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html#aee5fb2a44a748ff2ff28eeaf32b50f36",
-"structsese_1_1system_1_1_file_notify_option.html"
+"namespacesese_1_1net_1_1http.html#a05de23272d037c89009416dd3c657643",
+"record_2_marco_8h.html#a77b7117d61063ae74e9498af412bb101",
+"structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a24b95a564dafc6fb86281737a91819cb",
+"structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html",
+"structsese_1_1service_1_1_user_balance_loader_1_1_socket_status.html"
 ];
 
-var SYNCONMSG = '点击 关闭 面板同步';
-var SYNCOFFMSG = '点击 开启 面板同步';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';

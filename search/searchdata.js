@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijklmnopqrstuvwxyz~列加字对弃文构测目示简许贡错",
+  0: "01234_abcdefghijklmnopqrstuvwxyz~",
   1: "abcdefghijklmnopqrstuvwxy",
   2: "s",
   3: "abcdefghijklmnoprstuvwxyz",
@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "abcdefghilmnoprstuvwz",
   9: "dhinst",
   10: "_abcdefghilmnprstvwx",
-  11: "br列加字弃目错"
+  11: "abcdefghlprs"
 };
 
 var indexSectionNames =
@@ -32,17 +32,17 @@ var indexSectionNames =
 
 var indexSectionLabels =
 {
-  0: "全部",
-  1: "类",
-  2: "命名空间",
-  3: "文件",
-  4: "函数",
-  5: "变量",
-  6: "类型定义",
-  7: "枚举",
-  8: "枚举值",
-  9: "友元",
-  10: "宏定义",
-  11: "页"
+  0: "All",
+  1: "Classes",
+  2: "Namespaces",
+  3: "Files",
+  4: "Functions",
+  5: "Variables",
+  6: "Typedefs",
+  7: "Enumerations",
+  8: "Enumerator",
+  9: "Friends",
+  10: "Macros",
+  11: "Pages"
 };
 

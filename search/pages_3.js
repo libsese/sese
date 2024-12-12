@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['加解密功能_0',['加解密功能',['../md_sese_2security_2evp_2_r_e_a_d_m_e.html',1,'']]]
+  ['deprecated_20list_0',['Deprecated List',['../deprecated.html',1,'']]],
+  ['directory_20explanation_1',['Directory Explanation',['../md_sese_2_c_a_t_a_l_o_g.html',1,'']]]
 ];

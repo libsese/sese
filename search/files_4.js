@@ -13,7 +13,7 @@ var searchData=
   ['error_2emd_10',['ERROR.md',['../_e_r_r_o_r_8md.html',1,'']]],
   ['errorcode_2ecpp_11',['ErrorCode.cpp',['../_error_code_8cpp.html',1,'']]],
   ['errorcode_2eh_12',['ErrorCode.h',['../_error_code_8h.html',1,'']]],
-  ['event_2eh_13',['Event.h',['../event_2_event_8h.html',1,'(全局命名空间)'],['../record_2_event_8h.html',1,'(全局命名空间)']]],
+  ['event_2eh_13',['Event.h',['../event_2_event_8h.html',1,'(Global Namespace)'],['../record_2_event_8h.html',1,'(Global Namespace)']]],
   ['exception_2ecpp_14',['Exception.cpp',['../_exception_8cpp.html',1,'']]],
   ['exception_2eh_15',['Exception.h',['../_exception_8h.html',1,'']]]
 ];

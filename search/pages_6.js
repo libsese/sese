@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['目录说明_0',['目录说明',['../md_sese_2_c_a_t_a_l_o_g.html',1,'']]]
+  ['guide_0',['Contribution Guide',['../md__c_o_n_t_r_i_b_u_t_i_n_g.html',1,'']]]
 ];

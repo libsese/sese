@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['列表_0',['Bug 列表',['../bug.html',1,'']]]
+  ['contribution_20guide_0',['Contribution Guide',['../md__c_o_n_t_r_i_b_u_t_i_n_g.html',1,'']]]
 ];
