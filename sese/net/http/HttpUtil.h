@@ -14,9 +14,9 @@
 
 /**
  * @file HttpUtil.h
- * @brief HTTP 工具类
+ * @brief HTTP Utility Class
  * @author kaoru
- * @date 2022年5月17日
+ * @date May 17, 2022
  */
 
 #pragma once
@@ -28,46 +28,46 @@
 
 namespace sese::net::http {
 
-/// @brief HTTP 工具类
-class  HttpUtil {
+/// @brief HTTP Utility Class
+class HttpUtil {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;
 
     /**
-     * @brief 从流中接收一个请求
+     * @brief Receive a request from a stream
      *
-     * @param source 目标源
-     * @param request 请求
-     * @return true 接收请求成功
-     * @return false 接收请求失败
+     * @param source Target source
+     * @param request Request
+     * @return true If the request is successfully received
+     * @return false If the request fails to be received
      */
     static bool recvRequest(InputStream *source, RequestHeader *request) noexcept;
     /**
-     * @brief 向流中发送一个请求
+     * @brief Send a request to a stream
      *
-     * @param dest 目的流
-     * @param request 请求
-     * @return true 发送请求成功
-     * @return false 发送请求失败
+     * @param dest Destination stream
+     * @param request Request
+     * @return true If the request is successfully sent
+     * @return false If the request fails to be sent
      */
     static bool sendRequest(OutputStream *dest, RequestHeader *request) noexcept;
     /**
-     * @brief 从流中接收一个响应
+     * @brief Receive a response from a stream
      *
-     * @param source 目标源
-     * @param response 响应
-     * @return true 接收响应成功
-     * @return false 接收响应失败
+     * @param source Target source
+     * @param response Response
+     * @return true If the response is successfully received
+     * @return false If the response fails to be received
      */
     static bool recvResponse(InputStream *source, ResponseHeader *response) noexcept;
     /**
-     * @brief 向流中发送一个响应
+     * @brief Send a response to a stream
      *
-     * @param dest 目的流
-     * @param response 响应
-     * @return true 发送响应成功
-     * @return false 发送响应失败
+     * @param dest Destination stream
+     * @param response Response
+     * @return true If the response is successfully sent
+     * @return false If the response fails to be sent
      */
     static bool sendResponse(OutputStream *dest, ResponseHeader *response) noexcept;
 
@@ -75,7 +75,7 @@ public:
 
     static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
 
-    /// content-type 拓展名映射
+    /// Content-Type extension mapping
     static std::map<std::string, std::string> content_type_map;
 
 private:

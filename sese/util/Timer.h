@@ -14,9 +14,9 @@
 
 /**
  * @file Timer.h
- * @brief 低精度计时器类
+ * @brief Low-Precision Timer Class
  * @author kaoru
- * @date 2022年7月11日
+ * @date July 11, 2022
  * @version 0.3
  */
 #pragma once
@@ -31,53 +31,53 @@
 
 namespace sese {
 
-class  Timer;
-/// 定时任务
-class  TimerTask final : public std::enable_shared_from_this<TimerTask> {
+class Timer;
+/// Timer Task
+class TimerTask final : public std::enable_shared_from_this<TimerTask> {
 public:
     friend class Timer;
     using Ptr = std::shared_ptr<TimerTask>;
 
-    /// 取消当前定时任务
+    /// Cancel the current timer task
     void cancel() noexcept;
 
 private:
-    // 私有构造函数
+    // Private constructor
     TimerTask() = default;
-    // 对应定时长度
+    // Corresponding sleep duration
     int64_t sleepTimestamp = 0;
-    // 对应定时器的时间
+    // Corresponding target timestamp
     int64_t targetTimestamp = 0;
-    // 是否重复执行
+    // Whether to repeat
     bool isRepeat = false;
-    // 定时回调函数
+    // Timer callback function
     std::function<void()> callback;
-    // 取消回调函数
+    // Cancel callback function
     std::function<void()> cancelCallback;
 };
 
-/// 低精度计时器类
-class  Timer final : public std::enable_shared_from_this<Timer> {
+/// Low-Precision Timer Class
+class Timer final : public std::enable_shared_from_this<Timer> {
 public:
     using Ptr = std::shared_ptr<Timer>;
 
-    /// 初始化一个定时器
-    /// \param number 定时器的时间轮轮片数量
+    /// Initialize a timer
+    /// \param number Number of slots in the timer wheel
     static Timer::Ptr create(size_t number = TIMER_WHEEL_NUMBER) noexcept;
-    /// 定时器析构
+    /// Timer destructor
     ~Timer() noexcept;
 
-    /// 设定延时任务
-    /// \param callback 回调函数
-    /// \param relative_timestamp 定时时间
-    /// \param is_repeat 是否重复
-    /// \return 任务句柄
+    /// Set a delayed task
+    /// \param callback Callback function
+    /// \param relative_timestamp Delay duration
+    /// \param is_repeat Whether to repeat
+    /// \return Task handle
     TimerTask::Ptr delay(const std::function<void()> &callback, int64_t relative_timestamp, bool is_repeat = false) noexcept;
-    /// 结束定时器并终止定时线程
+    /// Shutdown the timer and terminate the timer thread
     void shutdown() noexcept;
 
 public:
-    /// 私有构造函数
+    /// Private constructor
     Timer() = default;
     void loop() noexcept;
     static void cancelCallback(const std::weak_ptr<Timer> &weak_timer, const std::weak_ptr<TimerTask> &weak_task) noexcept;

@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file WebsocketAuthenticator.h
-/// \brief Websocket 验证套件
+/// \brief Websocket Authentication Suite
 /// \author kaoru
 /// \version 0.1
-/// \date 2023年8月10日
+/// \date August 10, 2023
 
 #pragma once
 
@@ -26,30 +26,30 @@
 
 namespace sese::net::ws {
 
-/// Websocket 验证器
+/// Websocket Authenticator
 class  WebsocketAuthenticator final : public NotInstantiable {
 public:
     WebsocketAuthenticator() = delete;
 
-    /// 生成密钥对
-    /// \return 密钥对
+    /// Generate key pair
+    /// \return Key pair
     static std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> generateKeyPair() noexcept;
 
-    /// 验证密钥对
-    /// \param key 密钥
-    /// \param result 结果
-    /// \return 验证结果
+    /// Validate key pair
+    /// \param key Key
+    /// \param result Result
+    /// \return Validation result
     static bool verify(const char *key, const char *result) noexcept;
 
-    /// 由密钥生成结果
-    /// \param key 密钥
-    /// \return 结果
+    /// Generate result from key
+    /// \param key Key
+    /// \return Result
     static std::unique_ptr<char[]> toResult(const char *key) noexcept;
 
 private:
     static const char *append_string;
 
-    /// 生成二进制 key
+    /// Generate a binary key
     static void generateKey(uint8_t key[16]);
 };
 } // namespace sese::net::ws

@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file ProcessBuilder.h
-/// @brief 进程构建器
+/// @brief Process Builder
 /// @author kaoru
-/// @date 2024年06月26日
+/// @date June 26, 2024
 
 #pragma once
 
@@ -27,31 +27,31 @@ namespace sese::system {
 
 // GCOVR_EXCL_START
 
-/// @brief 进程构建器
-class  ProcessBuilder {
+/// @brief Process Builder
+class ProcessBuilder {
 public:
     /**
-     * @brief 根据进程可执行文件路径初始化进程构建器
-     * @param exec 可执行文件路径
+     * @brief Initialize the process builder with the path of the executable file
+     * @param exec Executable file path
      */
     explicit ProcessBuilder(const std::string &exec);
 
     /**
-     * @brief 为构建器指定单个参数
-     * @param arg 参数
+     * @brief Specify a single argument for the builder
+     * @param arg Argument
      * @return ProcessBuilder&&
      */
     ProcessBuilder &&args(const std::string &arg) &&;
 
     /**
-     * @brief 构建进程
+     * @brief Build the process
      * @see sese::system::Process::create()
      * @return Process::Ptr
      */
     Process::Ptr create();
 
     /**
-     * @brief 构建进程
+     * @brief Build the process
      * @see sese::system::Process::createEx()
      * @return Result<Process::Ptr>
      */

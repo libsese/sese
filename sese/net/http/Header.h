@@ -14,9 +14,9 @@
 
 /**
  * @file Header.h
+ * @brief HTTP Header Key-Value Collection
  * @author kaoru
- * @brief HTTP 头部键值集合
- * @date 2022年05月17日
+ * @date May 17, 2022
  */
 
 #pragma once
@@ -31,7 +31,7 @@
 
 namespace sese::net::http {
 
-/// @brief HTTP 版本
+/// @brief HTTP Version
 enum class HttpVersion {
     VERSION_1_1,
     VERSION_2,
@@ -39,9 +39,9 @@ enum class HttpVersion {
 };
 
 /**
- * @brief HTTP 头部键值集合
+ * @brief HTTP Header Key-Value Collection
  */
-class  Header {
+class Header {
 public:
     using Ptr = std::unique_ptr<Header>;
     using KeyValueType = std::pair<std::string, std::string>;
@@ -63,29 +63,29 @@ public:
     [[nodiscard]] bool empty() const { return headers.empty(); }
     [[nodiscard]] size_t size() const { return headers.size(); }
 
-    /// 判断某个字段是否存在
-    /// @param key 头部字段名称
-    /// @return 结果
+    /// Determine if a field exists
+    /// @param key Header field name
+    /// @return Result
     bool exist(const std::string &key) { return headers.find(key) != headers.end(); }
-    /// 当确定一定存在此字段时可以调用
+    /// Call this when certain the field exists
     /// @see sese::net::http::Header::exist
-    /// @param key 头部字段名称
-    /// @return 值
+    /// @param key Header field name
+    /// @return Value
     const std::string &get(const std::string &key) { return headers.at(key); }
 
-    /// 获取当前 Cookie 映射集
-    /// \retval nullptr 当前映射集为空
+    /// Get the current Cookie map
+    /// \retval nullptr if the current map is empty
     [[nodiscard]] const CookieMap::Ptr &getCookies() const;
-    /// 设置当前 Cookie 映射集
-    /// \param cookies 欲设置的映射集
+    /// Set the current Cookie map
+    /// \param cookies Map to set
     void setCookies(const CookieMap::Ptr &cookies);
 
-    /// 通过名称获取 Cookie
-    /// \param name Cookie 名称
-    /// \retval nullptr Cookie 不存在
+    /// Get a Cookie by name
+    /// \param name Cookie name
+    /// \retval nullptr if the Cookie does not exist
     [[nodiscard]] Cookie::Ptr getCookie(const std::string &name) const;
-    /// 添加一个 Cookie
-    /// \param cookie 欲添加的 Cookie
+    /// Add a Cookie
+    /// \param cookie Cookie to add
     void setCookie(const Cookie::Ptr &cookie);
 
 protected:

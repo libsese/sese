@@ -29,10 +29,10 @@ void TimerTask::cancel() noexcept {
 
 Timer::Ptr Timer::create(size_t number) noexcept {
     auto timer = MAKE_SHARED_PRIVATE(sese::Timer);
-    // number 至少为 5
+    // The number is at least 5
     timer->number = std::max<size_t>(5, number);
     timer->timerTasks = new std::list<TimerTask::Ptr>[timer->number]; // GCOVR_EXCL_LINE
-    // 启动线程
+    // Start the thread
     timer->thread = std::make_unique<Thread>([timer] { timer->loop(); }, "Timer");
     timer->thread->start();
     return timer;
@@ -46,7 +46,7 @@ Timer::~Timer() noexcept {
 }
 
 TimerTask::Ptr Timer::delay(const std::function<void()> &callback, int64_t relative_timestamp, bool is_repeat) noexcept {
-    // 初始化任务
+    // Initialize the task
     auto task = std::shared_ptr<TimerTask>(new TimerTask);
     task->callback = callback;
     task->sleepTimestamp = relative_timestamp;
@@ -54,7 +54,7 @@ TimerTask::Ptr Timer::delay(const std::function<void()> &callback, int64_t relat
     task->targetTimestamp = currentTimestamp + relative_timestamp;
     task->cancelCallback = [capture0 = weak_from_this(), capture1 = task->weak_from_this()] { return Timer::cancelCallback(capture0, capture1); };
 
-    // 添加至对应轮片
+    // Add to the corresponding wheel
     size_t index = task->targetTimestamp % number;
     mutex.lock();
     timerTasks[index].emplace_back(task);
@@ -73,7 +73,7 @@ void Timer::loop() noexcept {
         mutex.lock();
         for (auto iterator = timerTasks[index].begin(); iterator != timerTasks[index].end();) {
             TimerTask::Ptr task = *iterator;
-            // 此处条件需要长时间测试才能检测
+            // The condition here requires a long test to detect
             if (currentTimestamp == task->targetTimestamp) { // GCOVR_EXCL_LINE
                 task->callback();
                 iterator = timerTasks[index].erase(iterator);
@@ -94,7 +94,8 @@ void Timer::loop() noexcept {
 void Timer::cancelCallback(const std::weak_ptr<Timer> &weak_timer, const std::weak_ptr<TimerTask> &weak_task) noexcept {
     auto timer = weak_timer.lock();
     auto task = weak_task.lock();
-    // 此处条件为了预防万一而设，通常不会失败
+    // The conditions here are designed as a precautionary measure,
+    // and they usually do not fail
     if (timer && task) { // GCOVR_EXCL_LINE
         size_t index = task->targetTimestamp % timer->number;
         timer->mutex.lock();

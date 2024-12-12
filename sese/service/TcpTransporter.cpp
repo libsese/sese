@@ -180,7 +180,8 @@ void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
 
 void sese::service::TcpTransporter::onClose(sese::event::BaseEvent *event) {
     auto conn = static_cast<TcpConnection *>(event->data);
-    /// \brief 若连接进行异步处理，则不应由对端关闭事件对此连接进行资源释放
+    /// \brief If a connection is processed asynchronously,
+    /// the peer closure event should not release resources for the connection
     /// \see tcp_connection_delay_close_by_async
     if (!conn->isAsync) {
         if (conn->timeoutEvent) {

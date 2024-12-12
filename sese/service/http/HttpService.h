@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file HttpService.h
-/// @brief Http v3 服务接口
+/// @brief HTTP v3 Service Interface
 /// @author kaoru
-/// @date 2024年05月1日
+/// @date May 1, 2024
 
 #pragma once
 
@@ -29,7 +29,7 @@
 
 namespace sese::service::http {
 
-/// Http 服务接口
+/// HTTP v3 Service Interface
 class HttpService : public Service {
 public:
     using Ptr = std::shared_ptr<HttpService>;

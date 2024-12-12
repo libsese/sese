@@ -14,9 +14,9 @@
 
 /**
  * @file LibraryLoader.h
+ * @brief External Library Loader
  * @author kaoru
- * @brief 外部库加载器
- * @date 2022年4月22日
+ * @date April 22, 2022
  */
 
 #pragma once
@@ -33,9 +33,9 @@
 namespace sese::system {
 
 /**
- * @brief 库对象
+ * @brief Library Object
  */
-class  LibraryObject {
+class LibraryObject {
 public:
     using Ptr = std::shared_ptr<LibraryObject>;
 #ifdef _WIN32
@@ -44,31 +44,31 @@ public:
     using Module = void *;
 #endif
     /**
-     * @brief 加载一个外部库
-     * @param name 库名称
-     * @return 库对象，打开失败返回 nullptr
+     * @brief Load an external library
+     * @param name Library name
+     * @return Library object, returns nullptr if loading fails
      */
     static LibraryObject::Ptr create(const std::string &name) noexcept;
 
     /**
-     * @brief 加载一个外部库
-     * @param name 库名称
-     * @return 结果
+     * @brief Load an external library
+     * @param name Library name
+     * @return Result
      */
     static Result<Ptr, ErrorCode> createEx(const std::string &name) noexcept;
 
     /**
-     * @brief 加载一个外部库
-     * @param path 库路径
-     * @return 库对象，打开失败返回 nullptr
+     * @brief Load an external library
+     * @param path Library path
+     * @return Library object, returns nullptr if loading fails
      */
     static LibraryObject::Ptr createWithPath(const system::Path &path) noexcept;
 
     ~LibraryObject() noexcept;
     /**
-     * @brief 根据名称返回库中函数指针
-     * @param name 函数名称
-     * @return 函数指针，找不到为 nullptr
+     * @brief Return a function pointer from the library by name
+     * @param name Function name
+     * @return Function pointer, returns nullptr if not found
      */
     [[nodiscard]] const void *findFunctionByName(const std::string &name) const;
 

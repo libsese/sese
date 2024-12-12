@@ -21,80 +21,80 @@
 
 namespace sese::system {
 
-/// 指示共享内存的基本信息
+/// Indicates basic information of shared memory
 struct MemInfo {
-    /// 共享内存指示完整大小，不包含当前结构体的大小
+    /// The total size of the shared memory, excluding the size of this structure
     size_t total_size;
-    /// 指示队列元素入队位置，不包含当前结构体的偏移
+    /// The enqueue position of the queue elements, excluding the offset of this structure
     size_t tail;
 };
 
-/// 消息实体
+/// Message entity
 class Message {
 public:
-    /// 实例化信息结构体
+    /// Instantiate message structure
     /// \param message buffer
     explicit Message(std::string message);
 
-    /// 将当前数据作为字符串返回
-    /// \return 字符串
+    /// Return current data as a string
+    /// \return String
     [[nodiscard]] const std::string &getDataAsString() const;
 
-    /// 获取数据指针
-    /// \return 数据
+    /// Get data pointer
+    /// \return Data
     [[nodiscard]] const void *data() const;
 
-    /// 获取数据长度
-    /// \return 数据长度
+    /// Get data length
+    /// \return Data length
     [[nodiscard]] size_t length() const;
 
 private:
     std::string message;
 };
 
-/// 信息迭代器
+/// Message iterator
 struct MessageIterator {
     uint32_t id;
     uint32_t length;
     void *buffer;
 };
 
-/// IPC 通道
+/// IPC Channel
 class IPCChannel {
 public:
     using Ptr = std::unique_ptr<IPCChannel>;
 
-    /// 创建 IPC 通道
-    /// \param name 通道名称
-    /// \param buffer_size 共享内存大小
-    /// \return IPC 通道
+    /// Create an IPC channel
+    /// \param name Channel name
+    /// \param buffer_size Size of the shared memory
+    /// \return IPC channel
     static IPCChannel::Ptr create(const std::string &name, size_t buffer_size);
 
     static Result<Ptr, ErrorCode> createEx(const std::string &name, size_t buffer_size);
 
-    /// 使用现有的 IPC 通道
-    /// \param name 通道名称
-    /// \return IPC 通道
+    /// Use an existing IPC channel
+    /// \param name Channel name
+    /// \return IPC channel
     static IPCChannel::Ptr use(const std::string &name);
 
     static Result<Ptr, ErrorCode> useEx(const std::string &name);
 
-    /// 向 IPC 通道写入编号为 id 的数据
-    /// \param id 编号
-    /// \param data 数据
-    /// \param length 数据大小
-    /// \return 是否写入成功
+    /// Write data to the IPC channel with the specified id
+    /// \param id Identifier
+    /// \param data Data
+    /// \param length Data size
+    /// \return Whether the write was successful
     bool write(uint32_t id, const void *data, uint32_t length);
 
-    /// 向 IPC 通道写入编号为 id 的数据
-    /// \param id 编号
-    /// \param message 数据
-    /// \return
+    /// Write data to the IPC channel with the specified id
+    /// \param id Identifier
+    /// \param message Data
+    /// \return Whether the write was successful
     bool write(uint32_t id, const std::string &message);
 
-    /// 从 IPC 通道读取编号为 id 的信息
-    /// \param id 编号
-    /// \return 数据集合
+    /// Read data from the IPC channel with the specified id
+    /// \param id Identifier
+    /// \return Data set
     std::list<Message> read(uint32_t id);
 
 private:

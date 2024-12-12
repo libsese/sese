@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file DnsPackage.h
-/// @brief DNS 包对象
+/// @brief DNS Package Object
 /// @author kaoru
-/// @date 2024年10月30日
+/// @date October 30, 2024
 
 #pragma once
 
@@ -28,10 +28,10 @@
 
 namespace sese::net::dns {
 
-/// \brief DNS 包对象
+/// \brief DNS Package Object
 class DnsPackage {
 public:
-    /// \brief DNS Flags 工具
+    /// \brief DNS Flags Utility
     struct Flags {
         bool qr = false;
         uint8_t opcode = 0;
@@ -49,14 +49,14 @@ public:
 
     class Index;
 
-    /// \brief DNS 请求
+    /// \brief DNS Question
     struct Question {
         std::string name;
         uint16_t type;
         uint16_t class_;
     };
 
-    /// \brief DNS 应答
+    /// \brief DNS Answer
     struct Answer {
         std::string name;
         uint16_t type;
@@ -66,9 +66,9 @@ public:
         std::unique_ptr<uint8_t[]> data{};
     };
 
-    /// \brief DNS 权威应答
+    /// \brief DNS Authority Answer
     using Authority = Answer;
-    /// \brief DNS 附加应答
+    /// \brief DNS Additional Answer
     using Additional = Answer;
 
 private:
@@ -84,12 +84,12 @@ private:
 
     DnsPackage() = default;
 
-    /// 解码 DNS 名称
-    /// @warning 注意此函数会进行递归调用解码多级指针
-    /// @param buffer 完整 buffer
-    /// @param length buffer 大小
-    /// @param offset 需要解码的偏移位置，解码完成后停留在 00 位置
-    /// @return 解码后字符串
+    /// Decode DNS name
+    /// @warning This function performs recursive decoding of multi-level pointers
+    /// @param buffer Complete buffer
+    /// @param length Size of buffer
+    /// @param offset Offset to be decoded, ends at 00 position after decoding
+    /// @return Decoded string
     static std::string decodeWords(const uint8_t *buffer, size_t length, size_t &offset); // NOLINT
 
     static bool decodeAnswers(std::vector<Answer> &answers, size_t expect_size, const uint8_t *buffer, size_t length, size_t &pos);
@@ -101,7 +101,7 @@ private:
     static bool encodeAnswers(const std::vector<Answer> &answers, void *buffer, size_t &length, Index &index, size_t offset);
 
 public:
-    /// \brief DNS 打包压缩索引
+    /// \brief DNS Package Compression Index
     class Index {
         friend class DnsPackage;
         using CompressMapping = std::set<uint16_t>;
@@ -135,24 +135,24 @@ public:
 
     using Ptr = std::shared_ptr<DnsPackage>;
 
-    /// @return 空 DNS 打包压缩索引
+    /// @return Empty DNS Package Compression Index
     static Ptr new_();
 
-    /// 解析 DNS 原始包
-    /// @param buffer DNS 包缓存
-    /// @param length 缓存大小
-    /// @return 成功返回对象，反之返回nullptr
+    /// Parse DNS raw package
+    /// @param buffer DNS package buffer
+    /// @param length Buffer size
+    /// @return Returns object on success, otherwise returns nullptr
     static Ptr decode(const uint8_t *buffer, size_t length);
 
-    /// 获取 DNS 打包压缩索引
-    /// @return 索引
+    /// Get DNS Package Compression Index
+    /// @return Index
     Index buildIndex();
 
-    /// 将 DNS 包编码至缓存
-    /// @param buffer 输出缓存
-    /// @param length 输出缓存大小，执行成功将返回实际所用大小；若输入0则计算所需缓存大小，不执行实际打包操作
-    /// @param index DNS 打包压缩索引
-    /// @return 是否执行成功
+    /// Encode DNS package to buffer
+    /// @param buffer Output buffer
+    /// @param length Output buffer size, returns actual size used on success; if input is 0, calculates required buffer size without actual packaging
+    /// @param index DNS Package Compression Index
+    /// @return Whether encoding was successful
     bool encode(void *buffer, size_t &length, Index &index) const;
 
     [[nodiscard]] std::vector<Question> &getQuestions() { return questions; }
@@ -165,5 +165,6 @@ public:
     void setId(uint16_t id) { header.id = id; }
     void setFlags(uint16_t flags) { header.flags = flags; }
 };
+
 
 } // namespace sese::net::dns

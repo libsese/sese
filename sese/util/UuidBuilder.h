@@ -15,9 +15,9 @@
 /**
  * \file UuidBuilder.h
  * \author kaoru
- * \date 2022.12.24
+ * \date December 24, 2022
  * \version 0.1
- * \brief UUID 生成相关
+ * \brief UUID Generation Related
  */
 
 #pragma once
@@ -31,18 +31,19 @@
 #include "sese/util/Uuid.h"
 
 namespace sese {
-/// Uuid 生成器
+/// Uuid Builder
 class UuidBuilder {
 public:
-    /// 构造函数
+    /// Constructor
     explicit UuidBuilder() noexcept;
 
-    /// 生成 UUID
-    /// \param dest 存放结果的 UUID
-    /// \return 是否生成成功
+    /// Generate UUID
+    /// \param dest UUID to store the result
+    /// \return Whether generation is successful
     bool generate(sese::Uuid &dest) noexcept;
 
 protected:
     sese::TimestampHandler timestampHandler;
 };
 } // namespace sese
+

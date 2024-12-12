@@ -553,7 +553,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
     const auto PREFIX = static_cast<uint8_t>(std::pow(2, 7) - 1);
     auto str_len = str.length();
     if (str_len > 8) {
-        /// 需要 Huffman 压缩
+        /// Huffman compression is required
         uint8_t buf;
         auto code = encoder.encode(str);
         if (code.size() < PREFIX) {
@@ -580,7 +580,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
             return size + code.size();
         }
     } else {
-        /// 不需要 Huffman 压缩
+        /// Huffman compression is not required
         uint8_t buf;
         if (str.size() < PREFIX) {
             buf = 0b0000'0000 | static_cast<uint8_t>(str.size());

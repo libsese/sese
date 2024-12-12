@@ -35,7 +35,7 @@ namespace sese {
 /**
  * @brief Command line argument parsing class
  */
-class  ArgParser {
+class ArgParser {
 public:
     typedef std::unique_ptr<ArgParser> Ptr;
 
@@ -48,7 +48,7 @@ public:
      * @param argv Actual arguments
      * @return Whether parsing was successful
      */
-    bool parse(int32_t argc, char **argv) noexcept;
+    bool parse(int32_t argc, const char *const *argv) noexcept;
 
     /**
      * @return Returns the entire parameter map
@@ -69,7 +69,7 @@ public:
      * @return The value of the parameter if it exists.
      * @exception std::out_of_range If the key does not exist.
      */
-    const std::string &getValueByKey(const std::string &key) const;
+    [[nodiscard]] const std::string &getValueByKey(const std::string &key) const;
 
     /**
      * Determine whether the current parameter exists based on the parameter name, applicable for some individual switches that do not need specified values

@@ -23,7 +23,6 @@ std::unique_ptr<Requestable> RequestableFactory::createHttpRequest(const std::st
     bool ssl;
     auto url_result = RequestParser::parse(url);
     IPAddress::Ptr address;
-    // 不方便CI测试
     // GCOVR_EXCL_START
     if (!proxy.empty()) {
         auto proxy_result = RequestParser::parse(proxy);

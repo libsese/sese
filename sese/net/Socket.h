@@ -181,21 +181,21 @@ public:
 };
 
 /**
- * 随机在 (1024, 65535) 范围内选择一个端口
- * @return 随机端口
+ * Randomly select a port in the range (1024, 65535)
+ * @return Random port
  */
 uint16_t createRandomPort() noexcept;
 
 /**
- * @brief 获取网络相关 error 代码
- * @return error 代码
+ * @brief Get network-related error codes
+ * @return Error codes
  */
 extern int getNetworkError() noexcept;
 
 /**
- * @brief 获取网络相关错误描述
- * @param error 代码
- * @return 错误描述
+ * @brief Get network-related error description
+ * @param error Code
+ * @return Error description
  */
 std::string getNetworkErrorString(int error = getNetworkError()) noexcept;
 

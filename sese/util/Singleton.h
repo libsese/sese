@@ -14,23 +14,24 @@
 
 /**
  * @file Singleton.h
- * @brief 单例模板类
+ * @brief Singleton Template Class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
+
 #pragma once
 #include "sese/Config.h"
 
 namespace sese {
 
 /**
- * @brief 裸指针单例模板类
+ * @brief Raw Pointer Singleton Template Class
  * @tparam T
  * @tparam X
  * @tparam N
  */
 template<typename T, class X = void, int N = 0>
-class  Singleton {
+class Singleton {
 public:
     static T *getInstance() {
         static T v;
@@ -39,13 +40,13 @@ public:
 };
 
 /**
- * @brief 智能指针单例模板类
+ * @brief Smart Pointer Singleton Template Class
  * @tparam T
  * @tparam X
  * @tparam N
  */
 template<typename T, class X = void, int N = 0>
-class  SingletonPtr {
+class SingletonPtr {
 public:
     static std::shared_ptr<T> getInstance() {
         static std::shared_ptr<T> v(new T); // GCOVR_EXCL_LINE

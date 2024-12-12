@@ -144,7 +144,7 @@ void sese::service::UserBalanceLoader::master() noexcept {
             auto fd = masterEventLoop->socketQueue.front();
             masterEventLoop->socketQueue.pop();
 #ifdef WIN32
-            // Windows Socket 值普遍重复利用且是 4 的整数倍
+            // Windows Socket values are generally reused and are multiples of 4
             int factor = 7;
             if (last == fd) {
                 factor = 3;
@@ -177,7 +177,7 @@ void sese::service::UserBalanceLoader::slave(sese::event::EventLoop *event_loop,
                 auto client = slave_queue->front();
                 slave_queue->pop();
                 if (client.data == nullptr) {
-                    // 此处假装是某一种实现提供的接入客户端
+                    // This pretends to be an access client provided by one of the implementations
                     event_loop->onAccept(static_cast<int>(client.fd));
                 } else if (onDispatchedCallbackFunction) {
                     onDispatchedCallbackFunction(static_cast<int>(client.fd), event_loop, client.data);

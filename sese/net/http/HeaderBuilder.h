@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file HeaderBuilder.h
-/// \brief 头部键值集合构造器
+/// \brief Header Key-Value Collection Builder
 /// \author kaoru
-/// \date 2023年10月31日
+/// \date October 31, 2023
 
 #pragma once
 
@@ -23,7 +23,7 @@
 
 namespace sese::net::http {
 
-/// 头部键值集合构造器
+/// Header Key-Value Collection Builder
 class HeaderBuilder {
     Header &header;
 

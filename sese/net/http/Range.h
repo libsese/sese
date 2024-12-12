@@ -14,10 +14,10 @@
 
 /**
 * @file Range.h
+* @brief HTTP Content Range Class
 * @author kaoru
 * @version 0.1
-* @brief HTTP 内容区间类
-* @date 2023年9月13日
+* @date September 13, 2023
 */
 
 #pragma once
@@ -28,20 +28,20 @@
 
 namespace sese::net::http {
 
-/// HTTP 内容区间类
+/// HTTP Content Range Class
 struct Range {
     size_t begin = 0;
     size_t len = 0;
 
     Range(size_t begin, size_t len) noexcept;
 
-    /** @brief 解析 Range 字段
-     *  @param str Range 值
+    /** @brief Parse Range field
+     *  @param str Range value
      *  @verbatim
         bytes=0-1023
         bytes=0-50, 100-150, 200-
      *  @endverbatim
-     *  @param total 区间总大小
+     *  @param total Total size of the range
      *  @return Range
      **/
     static std::vector<Range> parse(const std::string &str, size_t total) noexcept;

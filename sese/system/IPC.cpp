@@ -116,18 +116,18 @@ sese::Result<IPCChannel::Ptr, sese::ErrorCode> IPCChannel::useEx(const std::stri
 
 bool IPCChannel::write(uint32_t id, const void *data, uint32_t length) {
     Locker locker(*semaphore);
-    // 确认共享内存空间是否足够入队一条信息
+    // Check whether the shared memory space is sufficient to enlist a message
     if (mem_info->tail + HEADER_SIZE + length > mem_info->total_size + 4) {
         return false;
     }
 
-    // 拷贝信息至共享内存
+    // Copy information to shared memory
     auto buf = static_cast<char *>(buffer);
     memcpy(buf + mem_info->tail + 0, &id, sizeof(id));
     memcpy(buf + mem_info->tail + 4, &length, sizeof(length));
     memcpy(buf + mem_info->tail + 8, data, length);
 
-    // 更新头部内存信息
+    // Update the header memory information
     mem_info->tail += 8 + length;
     return true;
 }

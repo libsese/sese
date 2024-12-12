@@ -14,8 +14,8 @@
 
 /// \file RequestParser.h
 /// \author kaoru
-/// \brief 请求解析器
-/// \date 2023年10月14日
+/// \brief Request Parser
+/// \date October 14, 2023
 
 #pragma once
 
@@ -25,10 +25,10 @@
 
 namespace sese::net::http {
 
-/// 请求解析器
+/// Request Parser
 class RequestParser {
 public:
-    /// 请求解析结果
+    /// Request Parse Result
     struct Result {
         Url url;
         IPAddress::Ptr address{};

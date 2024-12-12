@@ -14,10 +14,12 @@
 
 /**
  * @file ResponseHeader.h
+ * @brief Response Header Class
  * @author kaoru
- * @brief 响应头类
- * @date 2022年05月17日
+ * @date May 17, 2022
  */
+
+
 #pragma once
 #include <sese/net/http/Header.h>
 
@@ -26,7 +28,7 @@ namespace sese::net::http {
 // GCOVR_EXCL_START
 
 /**
- * @brief 响应头类
+ * @brief Response Header Class
  */
 class  ResponseHeader : public Header {
 public:

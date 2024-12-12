@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file StackInfo.h
-/// \brief 堆栈信息类
+/// \brief Stack Information Class
 /// \author kaoru
-/// \date 2023年9月9日
+/// \date September 9, 2023
 
 #pragma once
 
@@ -29,18 +29,18 @@
 
 namespace sese::system {
 
-/// 子堆栈信息
+/// Sub-Stack Information
 struct SubStackInfo {
     uint64_t address{};
     std::string func{};
 };
 
-/// 堆栈信息
-class  StackInfo {
+/// Stack Information
+class StackInfo {
 public:
-    /// 创建一个容器以存储当前的堆栈信息
-    /// \param limit 堆栈深度上限
-    /// \param skip 跳过深度大小
+    /// Create a container to store the current stack information
+    /// \param limit Stack depth limit
+    /// \param skip Skip depth size
     explicit StackInfo(uint16_t limit, uint16_t skip) noexcept;
 
     SESE_STD_WRAPPER(begin, stacks)
@@ -53,10 +53,11 @@ public:
     static uint16_t offset;
 
 protected:
-    /// 此函数在 Windows 上用于去除模板实参信息，其他系统则用于解析符号名称
+    /// This function is used to remove template parameter information on Windows, and to decode symbol names on other systems
     static std::string decodeSymbolName(const std::string &str) noexcept;
 
     std::vector<SubStackInfo> stacks;
 };
 
 } // namespace sese::system
+

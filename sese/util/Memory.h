@@ -55,6 +55,7 @@ inline SharedType<RETURN_TYPE> makeShared(ARGS &&...args) {
  * @tparam ARGS Constructor parameter types for the template parameter
  * @param args Constructor parameters for the template parameter
  * @return Unique
+ */
 template<typename RETURN_TYPE, typename... ARGS>
 inline SharedType<RETURN_TYPE> makeUnique(ARGS &&...args) {
     return std::make_unique<RETURN_TYPE>(args...);

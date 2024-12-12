@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file RequestableFactory.h
-/// \brief 可请求类型工厂
+/// \brief Requestable Factory
 /// \author kaoru
-/// \date 2024年02月23日
+/// \date February 23, 2024
 
 #pragma once
 
@@ -23,15 +23,15 @@
 #include <sese/util/NotInstantiable.h>
 
 namespace sese::net::http {
-/// 可请求类型工厂
+/// Requestable Factory
 class RequestableFactory final : public NotInstantiable {
 public:
     RequestableFactory() = delete;
 
-    /// 创建普通可请求类型
-    /// \param url 请求地址，支持 https/http 协议
-    /// \param proxy 代理地址，支持 https/http 协议，为空则不使用代理
-    /// \return 可请求类型，创建失败返回 nullptr
+    /// Create a standard requestable type
+    /// \param url Request URL, supports https/http protocols
+    /// \param proxy Proxy URL, supports https/http protocols, if empty, no proxy is used
+    /// \return Requestable type, returns nullptr if creation fails
     static std::unique_ptr<Requestable> createHttpRequest(const std::string &url, const std::string &proxy = "");
 };
 } // namespace sese::net::http

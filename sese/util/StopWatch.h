@@ -14,7 +14,7 @@
 
 /**
  * @file StopWatch.h
- * @brief 停表类
+ * @brief Stopwatch Class
  * @author kaoru
  * @version 0.1
  */
@@ -26,19 +26,19 @@
 
 namespace sese {
 
-/// 停表类
-class  StopWatch {
+/// Stopwatch Class
+class StopWatch {
 public:
     StopWatch();
 
     /**
-     * 按下停表并返回距离上一次停止的时间间隔
-     * @return 时间间隔
+     * Press the stopwatch and return the time interval since the last stop
+     * @return Time interval
      */
     TimeSpan stop();
 
     /**
-     * 重置停表
+     * Reset the stopwatch
      */
     void reset();
 

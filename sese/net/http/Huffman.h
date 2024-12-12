@@ -14,13 +14,13 @@
 
 /**
  * @file Huffman.h
- * @brief HTTP2 Huffman 解码与编码实现
+ * @brief HTTP2 Huffman Decoding and Encoding Implementation
  * @verbatim
-   此文件来源于
+   This file is sourced from
    https://github.com/jnferguson/hpack-rfc7541.git
-   部分
+   in part
    @endverbatim
- * @bug 原实现存在数据截断的 bug，此处已经修复，参考 huffman_tree_t::decode
+ * @bug The original implementation had a data truncation bug, which has been fixed here, see huffman_tree_t::decode
  */
 
 #pragma once
@@ -32,7 +32,7 @@
 
 namespace sese::net::http {
 
-/// Huffman 解码节点
+/// Huffman node
 class huffman_node_t {
 protected:
     huffman_node_t *m_left;
@@ -61,7 +61,7 @@ public:
     void right(huffman_node_t *r) { m_right = r; }
 };
 
-/// Huffman 树
+/// Huffman Tree
 class huffman_tree_t {
 protected:
     huffman_node_t *m_root;
@@ -76,7 +76,7 @@ public:
     std::optional<std::string> decode(const char *src, size_t len) const;
 };
 
-/// Huffman 编码器
+/// Huffman Encoder
 class huffman_encoder_t {
 private:
     uint8_t m_byte;

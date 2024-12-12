@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file Result.h
-/// @brief 结果类
+/// @brief Result Class
 /// @author kaoru
-/// @date 2024年11月28日
+/// @date November 28, 2024
 
 #pragma once
 
@@ -26,9 +26,9 @@
 
 namespace sese {
 
-/// @brief 结果类
-/// @tparam T 结果类型
-/// @tparam E 错误类型
+/// @brief Result Class
+/// @tparam T Result Type
+/// @tparam E Error Type
 template<class T, class E, class Enable = void>
 class Result;
 
@@ -70,29 +70,29 @@ public:
         return !is_success;
     }
 
-    /// @brief 获取错误
-    /// @return 错误
+    /// @brief Get the error
+    /// @return The error
     E err() const noexcept {
         assert(!is_success);
         return result;
     }
 
-    /// @brief 获取错误
-    /// @return 错误
+    /// @brief Get the error
+    /// @return The error
     E &err() noexcept {
         assert(!is_success);
         return result;
     }
 
-    /// @brief 获取结果
-    /// @return 结果
+    /// @brief Get the result
+    /// @return The result
     T get() const noexcept {
         assert(is_success);
         return result;
     }
 
-    /// @brief 获取结果
-    /// @return 结果
+    /// @brief Get the result
+    /// @return The result
     T &get() noexcept {
         assert(is_success);
         return result;
@@ -132,29 +132,29 @@ public:
         return std::holds_alternative<E>(result);
     }
 
-    /// @brief 获取错误
-    /// @return 错误
+    /// @brief Get the error
+    /// @return The error
     [[nodiscard]] E &err() noexcept {
         assert(std::holds_alternative<E>(result));
         return std::get<E>(result);
     }
 
-    /// @brief 获取错误
-    /// @return 错误
+    /// @brief Get the error
+    /// @return The error
     E err() const noexcept {
         assert(std::holds_alternative<E>(result));
         return std::get<E>(result);
     }
 
-    /// @brief 获取结果
-    /// @return 结果
+    /// @brief Get the result
+    /// @return The result
     T &get() noexcept {
         assert(std::holds_alternative<T>(result));
         return std::get<T>(result);
     }
 
-    /// @brief 获取结果
-    /// @return 结果
+    /// @brief Get the result
+    /// @return The result
     T get() const noexcept {
         assert(std::holds_alternative<T>(result));
         return std::get<T>(result);
@@ -194,15 +194,15 @@ public:
         return !result.has_value();
     }
 
-    /// @brief 获取结果
-    /// @return 结果
+    /// @brief Get the result
+    /// @return The result
     T &get() noexcept {
         assert(result.has_value());
         return result.value();
     }
 
-    /// @brief 获取结果
-    /// @return 结果
+    /// @brief Get the result
+    /// @return The result
     T get() const noexcept {
         assert(result.has_value());
         return result.value();
@@ -242,15 +242,15 @@ public:
         return e.has_value();
     }
 
-    /// @brief 获取错误
-    /// @return 错误
+    /// @brief Get the error
+    /// @return The error
     [[nodiscard]] E &err() noexcept {
         assert(e.has_value());
         return e.value();
     }
 
-    /// @brief 获取错误
-    /// @return 错误
+    /// @brief Get the error
+    /// @return The error
     E err() const noexcept {
         assert(e.has_value());
         return e.value();
