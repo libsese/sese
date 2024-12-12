@@ -14,13 +14,14 @@
 
 #pragma once
 
-#include <mach-o/loader.h>
 #include <sese/Config.h>
 #include "ResourceStream.h"
 
-#if defined (SESE_PLATFORM_WINDOWS)
+#if defined(SESE_PLATFORM_WINDOWS)
 #include <map>
-#elif defined (SESE_PLATFORM_APPLE)
+#elif defined(SESE_PLATFORM_APPLE)
+// ref https://stackoverflow.com/questions/77640444/what-is-the-first-argument-to-apples-getsectiondata-function
+#include <dlfcn.h>
 #include <mach-o/getsect.h>
 #endif
 
@@ -38,7 +39,7 @@ public:
     ResourceStream::Ptr getBinary(BinaryIds id);
 
 private:
-#ifdef SESE_PLATFORM_WINDOWS
+#if defined(SESE_PLATFORM_WINDOWS)
     struct RC {
         HRSRC hResInfo;
         LPVOID pResData;
@@ -47,10 +48,12 @@ private:
     std::map<BinaryIds, RC> binariesMap;
 
     HINSTANCE hInstance;
+#elif defined(SESE_PLATFORM_APPLE)
+    Dl_info img_info{};
 #endif
 };
 
-#if defined (SESE_PLATFORM_WINDOWS)
+#if defined(SESE_PLATFORM_WINDOWS)
 
 template<class R>
 BundlerResource<R>::BundlerResource() {
@@ -73,7 +76,7 @@ ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     return std::make_unique<ResourceStream>(static_cast<const char *>(pResData) + 32, dwSize);
 }
 
-#elif defined (SESE_PLATFORM_LINUX)
+#elif defined(SESE_PLATFORM_LINUX)
 
 template<class R>
 BundlerResource<R>::BundlerResource() {}
@@ -87,10 +90,15 @@ ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     return std::make_unique<ResourceStream>(res.start, res.size);
 }
 
-#elif defined (SESE_PLATFORM_APPLE)
+#elif defined(SESE_PLATFORM_APPLE)
+
+static int rcs_addr_handle = 0;
 
 template<class R>
-BundlerResource<R>::BundlerResource() {}
+BundlerResource<R>::BundlerResource() {
+    auto index = dladdr(&rcs_addr_handle, &img_info);
+    assert(index != 0);
+}
 
 template<class R>
 BundlerResource<R>::~BundlerResource() {}
@@ -98,10 +106,9 @@ BundlerResource<R>::~BundlerResource() {}
 template<class R>
 ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     auto name = R::syms[static_cast<int>(id)];
+    auto header = static_cast<struct mach_header_64 *>(img_info.dli_fbase);
     unsigned long size;
-    struct mach_header_64 header{};
-    // auto start = getsectdata("__DATA", name, &size);
-    auto start = getsectiondata(&header, "__DATA", name, &size);
+    auto start = getsectiondata(header, "__DATA", name, &size);
     return std::make_unique<ResourceStream>(start, size);
 }
 

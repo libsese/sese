@@ -14,7 +14,8 @@
         "SESE_BUILD_EXAMPLE": true,
         "SESE_USE_ARCHIVE": true,
         "SESE_DB_USE_MARIADB": true,
-        "SESE_DB_USE_POSTGRES": true
+        "SESE_DB_USE_POSTGRES": true,
+        "SESE_DB_USE_SQLITE": true
       }
     }
   ]
