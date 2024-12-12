@@ -155,8 +155,11 @@ Public 类型</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a9c67a9c72c217500901e334fa7eb0ba1" id="r_a9c67a9c72c217500901e334fa7eb0ba1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c67a9c72c217500901e334fa7eb0ba1">operator bool</a> () const noexcept</td></tr>
-<tr class="memdesc:a9c67a9c72c217500901e334fa7eb0ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断是否有错误  <br /></td></tr>
+<tr class="memdesc:a9c67a9c72c217500901e334fa7eb0ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether it is an error  <br /></td></tr>
 <tr class="separator:a9c67a9c72c217500901e334fa7eb0ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93c9d447bfc01c20ff34eb69a65f8e6a" id="r_a93c9d447bfc01c20ff34eb69a65f8e6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93c9d447bfc01c20ff34eb69a65f8e6a">has_error</a> () const noexcept</td></tr>
+<tr class="memdesc:a93c9d447bfc01c20ff34eb69a65f8e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether it is an error  <br /></td></tr>
+<tr class="separator:a93c9d447bfc01c20ff34eb69a65f8e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fa8a34930caf2129e77351ae8dab4d3" id="r_a8fa8a34930caf2129e77351ae8dab4d3"><td class="memItemLeft" align="right" valign="top">E &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fa8a34930caf2129e77351ae8dab4d3">err</a> () noexcept</td></tr>
 <tr class="memdesc:a8fa8a34930caf2129e77351ae8dab4d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取错误  <br /></td></tr>
 <tr class="separator:a8fa8a34930caf2129e77351ae8dab4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -334,6 +337,43 @@ template&lt;class E &gt; </div>
 
 </div>
 </div>
+<a id="a93c9d447bfc01c20ff34eb69a65f8e6a" name="a93c9d447bfc01c20ff34eb69a65f8e6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93c9d447bfc01c20ff34eb69a65f8e6a">&#9670;&#160;</a></span>has_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class E &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classsese_1_1_result.html">sese::Result</a>&lt; void, E &gt;::has_error </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether it is an error </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">ture</td><td>has error </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>.</p>
+
+</div>
+</div>
 <a id="a9c67a9c72c217500901e334fa7eb0ba1" name="a9c67a9c72c217500901e334fa7eb0ba1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9c67a9c72c217500901e334fa7eb0ba1">&#9670;&#160;</a></span>operator bool()</h2>
 
@@ -359,8 +399,13 @@ template&lt;class E &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>判断是否有错误 </p>
-<dl class="section return"><dt>返回</dt><dd>是否有错误 </dd></dl>
+<p>Whether it is an error </p>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">ture</td><td>has error </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>.</p>
 
@@ -427,7 +472,7 @@ template&lt;class E &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_result_3_01void_00_01_e_01_4.html">Result&lt; void, E &gt;</a></li>
-    <li class="footer">生成于 2024年 十一月 28日 星期四 10:03:09 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十二月 12日 星期四 08:22:02 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

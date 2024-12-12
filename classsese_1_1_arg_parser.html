@@ -155,12 +155,14 @@ Public 类型</h2></td></tr>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a517eeb84b2363d7d4921f4cd3e071a6c" id="r_a517eeb84b2363d7d4921f4cd3e071a6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a517eeb84b2363d7d4921f4cd3e071a6c">ArgParser</a> ()=default</td></tr>
 <tr class="separator:a517eeb84b2363d7d4921f4cd3e071a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78a07ecaa8f31a1d2f78044fd1f34710" id="r_a78a07ecaa8f31a1d2f78044fd1f34710"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78a07ecaa8f31a1d2f78044fd1f34710">parse</a> (int32_t argc, char **argv) noexcept</td></tr>
-<tr class="separator:a78a07ecaa8f31a1d2f78044fd1f34710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46523134617daf934a94ab5ca9c7023" id="r_af46523134617daf934a94ab5ca9c7023"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af46523134617daf934a94ab5ca9c7023">parse</a> (int32_t argc, const char *const *argv) noexcept</td></tr>
+<tr class="separator:af46523134617daf934a94ab5ca9c7023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2d60327a1c2022b43d7462e732558a7" id="r_af2d60327a1c2022b43d7462e732558a7"><td class="memItemLeft" align="right" valign="top">const std::map&lt; std::string, std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2d60327a1c2022b43d7462e732558a7">getKeyValSet</a> () const noexcept</td></tr>
 <tr class="separator:af2d60327a1c2022b43d7462e732558a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a236d62d6facaa1285829d3f103053895" id="r_a236d62d6facaa1285829d3f103053895"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a236d62d6facaa1285829d3f103053895">getValueByKey</a> (const std::string &amp;key, const std::string &amp;default_value) const noexcept</td></tr>
 <tr class="separator:a236d62d6facaa1285829d3f103053895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5188db50a8472165a1b211e11a4e30" id="r_a1d5188db50a8472165a1b211e11a4e30"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d5188db50a8472165a1b211e11a4e30">getValueByKey</a> (const std::string &amp;key) const</td></tr>
+<tr class="separator:a1d5188db50a8472165a1b211e11a4e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9a803a923b4e7d67a10fbb9091126c1" id="r_ac9a803a923b4e7d67a10fbb9091126c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9a803a923b4e7d67a10fbb9091126c1">exist</a> (const std::string &amp;key) const noexcept</td></tr>
 <tr class="separator:ac9a803a923b4e7d67a10fbb9091126c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a89de1b0e0cf6e8d0c175bb81702c7c" id="r_a6a89de1b0e0cf6e8d0c175bb81702c7c"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a89de1b0e0cf6e8d0c175bb81702c7c">getCurrentPath</a> () const</td></tr>
@@ -369,8 +371,38 @@ Private 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a1d5188db50a8472165a1b211e11a4e30" name="a1d5188db50a8472165a1b211e11a4e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5188db50a8472165a1b211e11a4e30">&#9670;&#160;</a></span>getValueByKey() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::ArgParser::getValueByKey </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retrieves the value associated with the given key. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The name of the parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>The value of the parameter if it exists. </dd></dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If the key does not exist. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a236d62d6facaa1285829d3f103053895" name="a236d62d6facaa1285829d3f103053895"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a236d62d6facaa1285829d3f103053895">&#9670;&#160;</a></span>getValueByKey()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a236d62d6facaa1285829d3f103053895">&#9670;&#160;</a></span>getValueByKey() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -406,8 +438,8 @@ Private 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a78a07ecaa8f31a1d2f78044fd1f34710" name="a78a07ecaa8f31a1d2f78044fd1f34710"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78a07ecaa8f31a1d2f78044fd1f34710">&#9670;&#160;</a></span>parse()</h2>
+<a id="af46523134617daf934a94ab5ca9c7023" name="af46523134617daf934a94ab5ca9c7023"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46523134617daf934a94ab5ca9c7023">&#9670;&#160;</a></span>parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,7 +455,7 @@ Private 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
+          <td class="paramtype">const char *const *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -550,7 +582,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_arg_parser.html">ArgParser</a></li>
-    <li class="footer">生成于 2024年 十一月 28日 星期四 10:03:09 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">生成于 2024年 十二月 12日 星期四 08:22:01 , 为 Sese Framework使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

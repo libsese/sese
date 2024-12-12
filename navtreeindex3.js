@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"_result_8h_source.html":[9,0,0,20,22],
+"_result_set_8h.html":[9,0,0,5,6],
 "_result_set_8h_source.html":[9,0,0,5,6],
 "_reusable_socket_8cpp.html":[9,0,0,10,13],
 "_reusable_socket_8h.html":[9,0,0,10,14],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "_w_s_a_event_8h_source.html":[9,0,0,9,3,1,0],
 "_w_s_a_event_convert_8cpp.html":[9,0,0,9,3,1,1],
 "_w_s_a_event_convert_8h.html":[9,0,0,9,3,1,2],
-"_w_s_a_event_convert_8h_source.html":[9,0,0,9,3,1,2],
-"_w_s_a_event_loop_8cpp.html":[9,0,0,9,3,1,3],
-"_w_s_a_event_loop_8h.html":[9,0,0,9,3,1,4]
+"_w_s_a_event_convert_8h_source.html":[9,0,0,9,3,1,2]
 };

@@ -8,6 +8,7 @@ var classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is_
     [ "error", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#adc2c08c15dd8537049247538a9906a1e", null ],
     [ "get", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#a56bb647f93d84133ba7f13584bbc3bba", null ],
     [ "get", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#a28d2d82f072d3a5ebe68b2bb82c6fe97", null ],
+    [ "has_error", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#ae9d7b582feb6659b14c41c647f196dfc", null ],
     [ "operator bool", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#a4aa266ba10883adb38d9b3f90b9acf55", null ],
     [ "success", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#abe272698d338fa851dda6902005ef78b", null ],
     [ "is_success", "classsese_1_1_result_3_01_t_00_01_e_00_01std_1_1enable__if__t_3_01std_1_1is__same__v_3_01_t_00_03e72778b82d22886f3d931ff42a22ba0.html#a1b43b63d21bfc98f2972b33d8110bdb0", null ],

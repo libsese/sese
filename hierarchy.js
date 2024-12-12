@@ -42,6 +42,7 @@ var hierarchy =
     [ "sese::Bitset32", "structsese_1_1_bitset32.html", null ],
     [ "sese::BufferedQueue11< T >", "classsese_1_1_buffered_queue11.html", null ],
     [ "sese::BufferedQueueNn< T >", "classsese_1_1_buffered_queue_nn.html", null ],
+    [ "sese::res::BundlerResource< R >", "classsese_1_1res_1_1_bundler_resource.html", null ],
     [ "sese::plugin::ClassFactory", "classsese_1_1plugin_1_1_class_factory.html", null ],
     [ "sese::io::Closeable", "classsese_1_1io_1_1_closeable.html", [
       [ "sese::io::ClosableFakeStream< T >", "classsese_1_1io_1_1_closable_fake_stream.html", null ],

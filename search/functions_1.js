@@ -26,6 +26,7 @@ var searchData=
   ['buildindex_23',['buildIndex',['../classsese_1_1net_1_1dns_1_1_dns_package.html#a81c5fee46f5c414f62c99734a8db36b3',1,'sese::net::dns::DnsPackage']]],
   ['buildstacktrace_24',['buildStacktrace',['../classsese_1_1_exception.html#a1a100e5b4e7d58ab9d88e44f744ac92b',1,'sese::Exception']]],
   ['builtinmakesocket_25',['builtinMakeSocket',['../classsese_1_1net_1_1_reusable_socket.html#af3a9275ae3d2190798831d3f34be62a0',1,'sese::net::ReusableSocket']]],
-  ['bytebuffer_26',['ByteBuffer',['../classsese_1_1io_1_1_byte_buffer.html#a1f0b37cddd7b4539b6441b121ae30779',1,'sese::io::ByteBuffer']]],
-  ['bytebuilder_27',['ByteBuilder',['../classsese_1_1io_1_1_byte_builder.html#a46726325ca898c73f089feec98a6cfb0',1,'sese::io::ByteBuilder']]]
+  ['bundlerresource_26',['BundlerResource',['../classsese_1_1res_1_1_bundler_resource.html#ac77ab6e927d46f0bd206badd1adc4977',1,'sese::res::BundlerResource']]],
+  ['bytebuffer_27',['ByteBuffer',['../classsese_1_1io_1_1_byte_buffer.html#a1f0b37cddd7b4539b6441b121ae30779',1,'sese::io::ByteBuffer']]],
+  ['bytebuilder_28',['ByteBuilder',['../classsese_1_1io_1_1_byte_builder.html#a46726325ca898c73f089feec98a6cfb0',1,'sese::io::ByteBuilder']]]
 ];
