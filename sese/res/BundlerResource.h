@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <mach-o/loader.h>
 #include <sese/Config.h>
 #include "ResourceStream.h"
 
@@ -98,7 +99,9 @@ template<class R>
 ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     auto name = R::syms[static_cast<int>(id)];
     unsigned long size;
-    auto start = getsectdata("__DATA", name, &size);
+    struct mach_header_64 header{};
+    // auto start = getsectdata("__DATA", name, &size);
+    auto start = getsectiondata(&header, "__DATA", name, &size);
     return std::make_unique<ResourceStream>(start, size);
 }
 

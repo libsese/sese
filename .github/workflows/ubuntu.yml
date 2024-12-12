@@ -89,7 +89,6 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
           -DSESE_BUILD_TEST=ON
           -DSESE_USE_ARCHIVE=ON
-          -DSESE_RESOURCE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON
           -DSESE_DB_MYSQL_CONNECTION_STRING="host=127.0.0.1\;port=18806\;user=root\;pwd=libsese\;db=db_test\;"

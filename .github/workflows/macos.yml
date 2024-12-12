@@ -56,7 +56,6 @@ jobs:
           -DSESE_USE_ARCHIVE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON
-          -DSESE_RESOURCE=ON
           -Bbuild
 
       - name: Always Save Cache
