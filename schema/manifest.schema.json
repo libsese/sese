@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "productName": {
+      "type": "string"
+    },
+    "internalName": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "copyright": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "author",
+    "productName",
+    "internalName",
+    "version",
+    "copyright"
+  ]
+}

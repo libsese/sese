@@ -1,4 +1,6 @@
 set(CMAKE_ENABLE_EXPORTS ON)
+include(${PROJECT_SOURCE_DIR}/cmake/Bundler.cmake)
+include(${PROJECT_SOURCE_DIR}/cmake/Manifest.cmake)
 if(MSVC)
     add_compile_options(/utf-8)
 endif()
@@ -44,7 +46,6 @@ target_compile_definitions(AllTestsInMain PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FIL
 add_dependencies(AllTestsInMain Module.m)
 
 # TestResource
-include(${PROJECT_SOURCE_DIR}/cmake/Bundler.cmake)
 target_include_resource(AllTestsInMain TestResource TestResource/Resource.json)
 
 # TestSharedMemory
@@ -101,3 +102,5 @@ if(SESE_DB_USE_POSTGRES)
         )
     endif()
 endif()
+
+target_manifest(AllTestsInMain manifest.json)

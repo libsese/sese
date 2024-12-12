@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/libsese/sese/refs/heads/main/schema/manifest.schema.json",
+  "author": "Kaoru - SHIINASAMA2001@gmail.com",
+  "productName": "Sese Core",
+  "internalName": "Sese Core",
+  "version": "2.3.0",
+  "description": "Sese Framework - https://github.com/libsese/sese-core.git",
+  "copyright": "(c) 2022-2024 libsese"
+}

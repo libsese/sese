@@ -74,6 +74,9 @@ set_target_properties(
                WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
+include(${PROJECT_SOURCE_DIR}/cmake/Manifest.cmake)
+target_manifest(Core manifest.json)
+
 if(MSVC AND NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
     target_compile_options(Core PRIVATE /Zi)
     set_target_properties(Core PROPERTIES LINK_FLAGS "/DEBUG /OPT:REF /OPT:ICF")
@@ -153,10 +156,7 @@ endif()
 # ######################################################################################################################
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     file(GLOB_RECURSE NATIVE_WIN_SRC "native/win/*.cpp" "native/win/*.h")
-    set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
-    configure_file(WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
-    target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
     target_compile_definitions(Core PRIVATE -D_WIN32_WINNT=0x0601)
 

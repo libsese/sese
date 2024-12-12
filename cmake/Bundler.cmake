@@ -19,7 +19,7 @@ macro(target_include_resource target dest resource_file)
         message(FATAL_ERROR "Unsupported file formats!!!")
     endif()
     get_filename_component(name ${resource_file} NAME_WE)
-    message(STATUS "(Bundler) Pre-built for resources: ${resource_file}")
+    message(STATUS "(Bundler) Pre-built for resources: ${target}(${CMAKE_CURRENT_LIST_DIR}/${resource_file})")
     execute_process(
         COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/scripts/bundler.py "--base_path=${CMAKE_CURRENT_LIST_DIR}"
                 "--resource_file_path=${resource_file}" "--generate_code_path=${dest}" "--method_name=${method}"
