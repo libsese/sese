@@ -35,8 +35,8 @@ const Random::ResultType Random::ADDEND = 11L;
 const Random::ResultType Random::MASK = (1LL << 48) - 1;
 
 /**
-     * @brief 数据分割用结构体
-     */
+ * @brief Structure for data splitting
+ */
 struct LongLongSplitter {
     uint32_t low;
     [[maybe_unused]] uint32_t high;

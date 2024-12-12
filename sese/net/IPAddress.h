@@ -15,9 +15,10 @@
 /**
  * @file IPAddress.h
  * @author kaoru
- * @brief IP 地址类
- * @date 2022年4月4日
+ * @brief IP address class
+ * @date April 4, 2022
  */
+
 #pragma once
 
 #include "sese/net/Address.h"
@@ -26,7 +27,7 @@
 namespace sese::net {
 
 /**
- * @brief IP 地址类
+ * @brief IP address class
  */
 class  IPAddress : public Address {
 public:

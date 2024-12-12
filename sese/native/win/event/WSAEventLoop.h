@@ -14,7 +14,7 @@
 
 /**
  * @file WSAEventLoop.h
- * @brief WSAEventSelect 事件循环
+ * @brief WSAEventSelect event loop
  * @author kaoru
  */
 
@@ -29,7 +29,7 @@
 #define MAX_EVENT_SIZE 64
 
 namespace sese::event {
-/// WSAEventSelect 事件循环
+/// WSAEventSelect event loop
 class WSAEventLoop : public BaseEventLoop {
 public:
     ~WSAEventLoop() override;
@@ -66,7 +66,8 @@ protected:
     unsigned long numbers = 0;
     unsigned long long sockets[MAX_EVENT_SIZE]{};
     void *wsaEvents[MAX_EVENT_SIZE]{};
-    WSAEvent *events[MAX_EVENT_SIZE]{}; // 此处生命周期应由用户负责
+    // Here, the lifecycle should be the responsibility of the user
+    WSAEvent *events[MAX_EVENT_SIZE]{};
 };
 
 } // namespace sese::event

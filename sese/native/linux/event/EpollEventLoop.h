@@ -14,7 +14,7 @@
 
 /**
 *  @file EpollEventLoop.h
-*  @brief epoll 事件循环
+*  @brief epoll event loop
 *  @author kaoru
 */
 
@@ -26,7 +26,7 @@
 #include "sese/native/linux/event/EpollEventConvert.h"
 
 namespace sese::event {
-/// epoll 事件循环
+/// epoll event loop
 class EpollEventLoop : public sese::event::BaseEventLoop {
 public:
     bool init() override;

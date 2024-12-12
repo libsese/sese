@@ -14,8 +14,8 @@
 
 /// \file BalanceLoader.h
 /// \author kaoru
-/// \date 2023年6月9日
-/// \brief 均衡加载器
+/// \date June 9, 2023
+/// \brief Balanced Loader
 
 #pragma once
 

@@ -13,11 +13,12 @@
 // limitations under the License.
 
 /**
-* @file Config.h
-* @brief Linux 平台配置文件
-* @author kaoru
-* @date 2022年3月28日
-*/
+ * @file Config.h
+ * @brief Linux platform configuration file
+ * @author kaoru
+ * @date March 28, 2022
+ */
+
 #pragma once
 
 #if defined(__x86_64__)
@@ -28,13 +29,13 @@
 #error only support x86_64 & arm64
 #endif
 
-/// C++ 版本标识符
+/// C++ version identifier
 #define SESE_CXX_STANDARD __cplusplus
-/// 可导出类型标识符
+/// Type identifiers can be exported
 #define API
-/// pid_t 格式化占位符
+/// pid_t Formatting placeholders
 #define PRIdTid "d"
-/// 忽略大小写比较
+/// Ignore case comparisons
 #define strcmpi strcasecmp
 
 #include <cstring>
@@ -44,7 +45,7 @@
 #define SESE_FILENAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
 namespace sese {
-/// Native Socket 类型
+/// Native Socket type
 using socket_t = int32_t;
 using tid_t = uint32_t;
 using pid_t = ::pid_t;

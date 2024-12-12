@@ -14,9 +14,9 @@
 
 /**
  * @file Random.h
- * @brief 基于线性同余发生器的随机类
+ * @brief Random class based on linear congruential generator
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
 
 #pragma once
@@ -26,7 +26,7 @@
 
 namespace sese {
 /**
- * @brief 基于线性同余发生器的随机类
+ * @brief Random class based on linear congruential generator
  */
 class SESE_DEPRECATED_WITH("Unsafe") Random : public Noncopyable {
     // for std::random_device

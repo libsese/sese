@@ -29,7 +29,6 @@ bool sese::event::EpollEventLoop::init() {
     if (0 >= listenFd) return true;
 
     this->listenEvent = this->createEvent(listenFd, EVENT_READ | EVENT_ERROR, nullptr);
-    // 通常不会失败
     if (!this->listenEvent) return false;
     return true;
 }

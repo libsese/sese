@@ -14,7 +14,7 @@
 
 /**
  * @file KqueueEvent.h
- * @brief kqueue 事件
+ * @brief kqueue event
  * @author kaoru
  */
 
@@ -23,7 +23,7 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-/// kqueue 事件
+/// kqueue event
 class KqueueEvent : public BaseEvent {
 };
 } // namespace sese::event

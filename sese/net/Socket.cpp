@@ -91,7 +91,7 @@ int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int f
     return ::recv(socket, buffer, len, flags);
 }
 
-// 一般不会发生错误
+// Errors generally do not occur
 // GCOVR_EXCL_START
 int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
     auto option = fcntl(socket, F_GETFL);

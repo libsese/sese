@@ -15,8 +15,8 @@
 /**
  * @file Address.h
  * @author kaoru
- * @date 2022年4月4日
- * @brief 地址类
+ * @date April 4, 2022
+ * @brief Address class
  */
 
 #pragma once
@@ -47,7 +47,7 @@ static T CreateMask(uint32_t bits) {
 }
 
 /**
- * @brief 地址类
+ * @brief Address class
  */
 class  Address {
 public:

@@ -14,7 +14,7 @@
 
 /**
  * @file WSAEvent.h
- * @brief WSAEventSelect 事件
+ * @brief WSAEventSelect event
  * @author kaoru
  */
 
@@ -23,7 +23,7 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-/// WSAEventSelect 事件
+/// WSAEventSelect event
 class WSAEvent : public BaseEvent {
 public:
     void *wsaEvent{nullptr};

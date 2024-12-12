@@ -161,7 +161,7 @@ void sese::event::WSAEventLoop::freeEvent(sese::event::BaseEvent *event) {
         memmove(&events[i], &events[i], (numbers - i - 1) * sizeof(WSAEvent *));
         numbers -= 1;
     } else {
-        // 这一般不会发生
+        // This generally doesn't happen
     }
 
     delete event;

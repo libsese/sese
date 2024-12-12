@@ -15,9 +15,10 @@
 /**
  * @file IPv4Address.h
  * @author kaoru
- * @brief IPv4 地址类
- * @date 2022年4月4日
+ * @brief IPv4 address class
+ * @date April 4, 2022
  */
+
 #pragma once
 
 #include "sese/net/IPAddress.h"
@@ -25,8 +26,8 @@
 namespace sese::net {
 
 /**
-     * @brief IPv4 地址类
-     */
+ * @brief IPv4 address class
+ */
 class  IPv4Address final : public IPAddress {
 public:
     using Ptr = std::shared_ptr<IPv4Address>;

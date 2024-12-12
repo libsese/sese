@@ -82,7 +82,7 @@ void sese::service::TcpTransporter::onAccept(int fd) {
                 }
             } else {
                 conn->ssl = client_ssl;
-                // 此选项允许 OpenSSL 在尝试重试 SSL_write 时使用不完全相同的 buffer 参数
+                // This option allows OpenSSL to use different buffer parameters when trying to retry SSL_write
                 // https://stackoverflow.com/questions/2997218/why-am-i-getting-error1409f07fssl-routinesssl3-write-pending-bad-write-retr
                 SSL_set_mode(client_ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
                 // ALPN Callback

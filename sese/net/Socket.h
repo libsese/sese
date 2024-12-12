@@ -15,8 +15,8 @@
 /**
  * @file Socket.h
  * @author kaoru
- * @brief Native Socket 类
- * @date 2022年4月9日
+ * @brief Native Socket class
+ * @date April 9, 2022
  */
 
 #pragma once
@@ -47,21 +47,21 @@ public:
 #endif
 
 /**
- * @brief Native Socket 类
+ * @brief Native Socket class
  */
 class  Socket : public io::Stream, public io::PeekableStream, public io::Closeable {
 public:
     using Ptr = std::shared_ptr<Socket>;
 
-    /// \brief 套接字类型
+    /// \brief Socket type
     enum class Type {
-        /// \brief TCP 套接字
+        /// \brief TCP socket
         TCP = SOCK_STREAM,
-        /// \brief UDP 套接字
+        /// \brief UDP socket
         UDP = SOCK_DGRAM
     };
 
-    /// \brief 协议族
+    /// \brief Address family
     enum class Family {
         /// \brief IPv4
         IPv4 = AF_INET,
@@ -69,20 +69,20 @@ public:
         IPv6 = AF_INET6
     };
 
-    /// \brief 断开模式
+    /// \brief Shutdown mode
     enum class ShutdownMode {
 #ifdef _WIN32
-        /// \brief 断开读端
+        /// \brief Shutdown read side
         READ = 0,
-        /// \brief 断开写端
+        /// \brief Shutdown write side
         WRITE = 1,
-        /// \brief 断开读写端
+        /// \brief Shutdown both read and write sides
         BOTH = 2
-#else
+    #else
         READ = SHUT_RD,
         WRITE = SHUT_WR,
         BOTH = SHUT_RDWR
-#endif
+    #endif
     };
 
 public:
@@ -98,35 +98,35 @@ public:
     virtual int32_t shutdown(ShutdownMode mode) const; /* NOLINT */
     bool setNonblocking() const noexcept;              /* NOLINT */
     /**
-     * TCP 接收字节
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际接收字节数
+     * TCP receive bytes
+     * @param buffer Buffer
+     * @param length Buffer size
+     * @return Actual number of bytes received
      */
     int64_t read(void *buffer, size_t length) override;
     /**
-     * TCP 发送字节
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际发送字节数
+     * TCP send bytes
+     * @param buffer Buffer
+     * @param length Buffer size
+     * @return Actual number of bytes sent
      */
     int64_t write(const void *buffer, size_t length) override;
     /**
-     * UDP 发送字节
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @param to 目标地址
-     * @param flags 标志
-     * @return 实际发送字节数
+     * UDP send bytes
+     * @param buffer Buffer
+     * @param length Buffer size
+     * @param to Destination address
+     * @param flags Flags
+     * @return Actual number of bytes sent
      */
     int64_t send(void *buffer, size_t length, const IPAddress::Ptr &to, int32_t flags) const;
     /**
-     * UDP 接收字节
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @param from 来源地址
-     * @param flags 标志
-     * @return 实际接收字节数
+     * UDP receive bytes
+     * @param buffer Buffer
+     * @param length Buffer size
+     * @param from Source address
+     * @param flags Flags
+     * @return Actual number of bytes received
      */
     int64_t recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const;
 

@@ -14,7 +14,7 @@
 
 /**
 *  @file EpollEventConvert.h
-*  @brief epoll 事件转换器
+*  @brief epoll event convert
 *  @author kaoru
 */
 
@@ -23,7 +23,7 @@
 #include "sese/event/BaseEventConvert.h"
 
 namespace sese::event {
-/// epoll 事件转换器
+/// epoll epoll event convert
 class EpollEventConvert : public BaseEventConvert {
 public:
     unsigned int fromNativeEvent(int event) override;

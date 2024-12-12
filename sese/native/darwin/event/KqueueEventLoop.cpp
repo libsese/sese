@@ -34,7 +34,6 @@ bool sese::event::KqueueEventLoop::init() {
 
     struct kevent kevent {};
     EV_SET(&kevent, listenFd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, this->listenEvent);
-    // 通常不会失败
     if (-1 == ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr)) {
         delete this->listenEvent;
         this->listenEvent = nullptr;
@@ -137,26 +136,6 @@ sese::event::BaseEvent *sese::event::KqueueEventLoop::createEvent(int fd, unsign
     // event->oldEvents = events;
     event->data = data;
 
-    // if (events & EVENT_READ) {
-    //     if (!addNativeEvent(fd, EVFILT_READ, event)) {
-    //         // 通常不会出错
-    //         delete event;
-    //         return nullptr;
-    //     }
-    // }
-
-    // if (!addNativeEvent(fd, EVFILT_READ, event)) {
-    //     // 通常不会出错
-    //     delete event;
-    //     return nullptr;
-    // }
-    // if (events & EVENT_WRITE) {
-    //     if (!addNativeEvent(fd, EVFILT_WRITE, event)) {
-    //         // 通常不会出错
-    //         delete event;
-    //         return nullptr;
-    //     }
-    // }
     struct kevent kevent {};
     if (events & EVENT_READ) {
         EV_SET(&kevent, event->fd, EVFILT_READ, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);
@@ -187,29 +166,6 @@ void sese::event::KqueueEventLoop::freeEvent(sese::event::BaseEvent *event) {
 bool sese::event::KqueueEventLoop::setEvent(sese::event::BaseEvent *event) {
     auto e = reinterpret_cast<KqueueEvent *>(event);
     auto events = e->events;
-    // bool rt1 = true;
-    // bool rt2 = true;
-
-    // if (e->oldEvents & EVENT_READ && !(e->events & EVENT_READ)) {
-    //     // 原先存在的事件，现在需要删除
-    //     rt1 = delNativeEvent(e->fd, EVFILT_READ, event);
-    // } else if (e->events & EVENT_READ) {
-    //     // 原先存在的事件，需要重新启用
-    //     // 原先不存在的事件，需要添加
-    //     rt1 = addNativeEvent(e->fd, EVFILT_READ, event);
-    // }
-
-    // if (e->oldEvents & EVENT_WRITE && !(e->events & EVENT_WRITE)) {
-    //     // 原先存在的事件，现在需要删除
-    //     rt2 = delNativeEvent(e->fd, EVFILT_WRITE, event);
-    // } else if (e->events & EVENT_WRITE) {
-    //     // 原先存在的事件，需要重新启用
-    //     // 原先不存在的事件，需要添加
-    //     rt2 = addNativeEvent(e->fd, EVFILT_WRITE, event);
-    // }
-
-    // e->oldEvents = e->events;
-    // return rt1 && rt2;
 
     struct kevent kevent {};
     if (events & EVENT_READ) {

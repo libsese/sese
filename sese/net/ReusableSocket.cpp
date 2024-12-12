@@ -39,7 +39,7 @@ std::optional<Socket> ReusableSocket::builtinMakeSocket() noexcept {
 
     return socket;
 #else
-    // 此处一般不会触发错误
+    // Errors are generally not triggered here
     // GCOVR_EXCL_START
     auto socket = Socket(
             addr->getRawAddress()->sa_family == AF_INET ? Socket::Family::IPv4 : Socket::Family::IPv6,

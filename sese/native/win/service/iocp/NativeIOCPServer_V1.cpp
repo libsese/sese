@@ -364,8 +364,8 @@ void NativeIOCPServer::eventThreadProc() {
         if (p_wrapper == nullptr) {
             continue;
         } else if (lp_number_of_bytes_transferred == 0 && p_wrapper->ctx.type != NativeContext::Type::CONNECT) {
-            // 主动释放模式对端关闭
-            // 任何模式下的非主动关闭
+            // Active release mode is turned off on the peer
+            // Involuntary shutdown in any mode
             if (activeReleaseMode || p_wrapper->ctx.type != NativeContext::Type::CLOSE) {
                 releaseContext(&p_wrapper->ctx);
             }

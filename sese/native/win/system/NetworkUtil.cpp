@@ -35,7 +35,8 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
         &size
     );
 
-    // 此处必为 ERROR_BUFFER_OVERFLOW，作用仅为获取实际所需大小
+    // This must be ERROR_BUFFER_OVERFLOW,
+    // and the purpose is only to get the actual size you need
     if (rt != ERROR_BUFFER_OVERFLOW) {
         return result;
     }
@@ -51,7 +52,6 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
             &size
     );
 
-    // 此处为 ERROR_SUCCESS 为成功
     if (rt != ERROR_SUCCESS) {
         return result;
     }

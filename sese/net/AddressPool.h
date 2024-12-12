@@ -14,9 +14,9 @@
 
 /// \file AddressPool.h
 /// \author kaoru
-/// \date 2022.07.28
+/// \date July 28, 2022
 /// \version 0.1
-/// \brief IP 地址池
+/// \brief IP address pool
 
 #pragma once
 
@@ -30,14 +30,14 @@
 
 namespace sese::net {
 
-/// IP 地址池
+/// IP address pool
 template<class ADDRESS>
 class  AddressPool final {
 public:
-    /// 获取域名与 IP 地址的映射关系
-    /// \param domain 域名
-    /// \retval nullptr 未命中缓存且查找失败
-    /// \retval other 查找到地址
+    /// Get the mapping between domain name and IP address
+    /// \param domain The domain name
+    /// \retval nullptr Not found in cache and lookup failed
+    /// \retval other Address found
     static std::shared_ptr<ADDRESS> lookup(const std::string &domain) noexcept;
 
 private:
@@ -63,7 +63,7 @@ std::shared_ptr<ADDRESS> sese::net::AddressPool<ADDRESS>::lookup(const std::stri
     if (iterator == pool.addressMap.end()) {
         auto address = ADDRESS::lookUpAny(domain, inet, IPPROTO_IP);
         if (nullptr == address) {
-            // 未命中缓存且查找失败
+            // The cache was missed and the lookup failed
             return nullptr;
         } else {
             auto ip = dynamicPointerCast<ADDRESS>(address);

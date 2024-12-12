@@ -22,7 +22,7 @@ using namespace sese::system;
 Path::Path(const std::string_view &unix_path) noexcept {
     Path::unix_path = unix_path;
 
-    // 带盘符的绝对路径
+    // Absolute path with a drive letter
     if (!Path::unix_path.empty() && Path::unix_path.at(0) == '/') {
         auto pos = Path::unix_path.find('/', 1);
         if (pos == std::string::npos) {
@@ -37,7 +37,7 @@ Path::Path(const std::string_view &unix_path) noexcept {
         native_path = driver + ':' + (Path::unix_path.c_str() + 2);
         valid = true;
     }
-    // 相对路径
+    // Relative paths
     else {
         native_path = unix_path;
         valid = true;
@@ -48,7 +48,7 @@ Path::Path(const char *unix_path) noexcept : Path(std::string_view(unix_path)) {
 }
 
 Path Path::fromNativePath(const std::string &native_path) noexcept {
-    // 带盘符的绝对路径
+    // Absolute path with a drive letter
     if (native_path.size() >= 3 && native_path.compare(1, 2, ":/") == 0 && isalpha(native_path.at(0))) {
         text::StringBuilder string_builder;
         string_builder.append('/');
@@ -61,7 +61,7 @@ Path Path::fromNativePath(const std::string &native_path) noexcept {
         result.valid = true;
         return result;
     }
-    // 相对路径
+    // Relative paths
     else if (!native_path.empty() && native_path.at(0) != '/') {
         Path result;
         result.unix_path = native_path;
@@ -69,7 +69,7 @@ Path Path::fromNativePath(const std::string &native_path) noexcept {
         result.valid = true;
         return result;
     }
-    // 非法路径
+    // Illegal paths
     else {
         return {};
     }

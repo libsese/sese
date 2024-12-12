@@ -14,7 +14,7 @@
 
 /**
  * @file KqueueEventLoop.h
- * @brief kqueue 事件循环
+ * @brief kqueue event loop
  * @author kaoru
  */
 
@@ -26,7 +26,7 @@
 #include <atomic>
 
 namespace sese::event {
-/// kqueue 事件循环
+/// kqueue event loop
 class KqueueEventLoop : public BaseEventLoop {
 public:
     bool init() override;
