@@ -1,6 +1,6 @@
-if (${MSVC})
+if(${MSVC})
     add_compile_options(/utf-8)
-endif ()
+endif()
 
 add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")

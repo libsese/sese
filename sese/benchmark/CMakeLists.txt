@@ -1,17 +1,13 @@
 find_package(benchmark CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 
-if (MSVC)
+if(MSVC)
     add_compile_options(/utf-8)
-endif ()
+endif()
 
-macro (bm_link_libraries target)
-    target_link_libraries(${target} PRIVATE
-            benchmark::benchmark
-            GTest::gtest
-            Core
-    )
-endmacro ()
+macro(bm_link_libraries target)
+    target_link_libraries(${target} PRIVATE benchmark::benchmark GTest::gtest Core)
+endmacro()
 
 add_executable(BM_StringBuilder BM_StringBuilder.cpp)
 bm_link_libraries(BM_StringBuilder)

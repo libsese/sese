@@ -9,9 +9,9 @@ option(SESE_DB_USE_SQLITE "add sqlite support" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
 
-if (SESE_USE_NATIVE_MANAGER)
-    MESSAGE(FATAL_ERROR "The `SESE_USE_NATIVE_MANAGER` option has been deprecated.")
-endif ()
+if(SESE_USE_NATIVE_MANAGER)
+    message(FATAL_ERROR "The `SESE_USE_NATIVE_MANAGER` option has been deprecated.")
+endif()
 
 include(cmake/MiniSeseTools.cmake)
 
