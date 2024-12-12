@@ -19,6 +19,7 @@ add_executable(
         TestSharedMemory/TestSharedMemory.cpp
         TestPlugin/TestPlugin.cpp
         TestIPC/TestIPC.cpp
+        TestResource/TestResource.cpp
 )
 
 target_link_libraries(AllTestsInMain Core GTest::gtest GTest::gtest_main)
@@ -52,6 +53,11 @@ set_target_properties(
 target_compile_definitions(AllTestsInMain PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module.m>\"")
 target_compile_definitions(AllTestsInMain PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FILE:Core>\"")
 add_dependencies(AllTestsInMain Module.m)
+
+# TestResource
+include(${PROJECT_SOURCE_DIR}/cmake/Bundler.cmake)
+target_include_resource(AllTestsInMain TestResource TestResource/Resource.json)
+
 
 # TestSharedMemory
 add_executable(Memory.d TestSharedMemory/Memory.d.cpp)

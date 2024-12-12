@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
   <settings default="libsese Default Copyright">
     <module2copyright>
-      <element module="Project Files" copyright="libsese Default Copyright" />
+      <element module="Sources" copyright="libsese Default Copyright" />
     </module2copyright>
     <LanguageOptions name="C++">
       <option name="fileTypeOverride" value="3" />

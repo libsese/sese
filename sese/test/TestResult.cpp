@@ -25,9 +25,9 @@ TEST(TestResult, ResultIsVoid) {
     };
 
     auto rt = func1();
-    EXPECT_FALSE(rt);
+    EXPECT_TRUE(rt);
     EXPECT_EQ(rt.err(), 10);
-    EXPECT_TRUE(func2());
+    EXPECT_FALSE(func2());
 }
 
 TEST(TestResult, ErrorIsVoid) {
@@ -38,9 +38,9 @@ TEST(TestResult, ErrorIsVoid) {
         return sese::Result<int, void>::success(114);
     };
 
-    EXPECT_FALSE(func1());
+    EXPECT_TRUE(func1());
     auto rt = func2();
-    EXPECT_TRUE(rt);
+    EXPECT_FALSE(rt);
     EXPECT_EQ(rt.get(), 114);
 }
 
@@ -51,6 +51,6 @@ TEST(TestResult, BothAreVoid) {
     auto func2 = [] {
         return sese::Result<void, void>::success();
     };
-    EXPECT_FALSE(func1());
-    EXPECT_TRUE(func2());
+    EXPECT_TRUE(func1());
+    EXPECT_FALSE(func2());
 }

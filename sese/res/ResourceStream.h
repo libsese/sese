@@ -26,11 +26,11 @@
 namespace sese::res {
 
 /// 静态资源流
-class  ResourceStream : public io::PeekableStream, public io::InputStream {
+class ResourceStream : public io::PeekableStream, public io::InputStream {
 public:
     using Ptr = std::unique_ptr<ResourceStream>;
 
-    ResourceStream(const void *buf, size_t size);
+    ResourceStream(const void *data, size_t size);
 
     int64_t read(void *buffer, size_t length) override;
 
@@ -47,7 +47,7 @@ public:
     [[nodiscard]] size_t getSize() const { return size; }
 
 protected:
-    const void *buf{};
+    const void *data{};
     size_t size{};
     size_t pos{};
 };

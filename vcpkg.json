@@ -32,6 +32,9 @@
     "sqlite3"
   ],
   "features": {
+    "resource": {
+      "description": "add binary packaging support"
+    },
     "archive": {
       "description": "add archive support",
       "dependencies": [

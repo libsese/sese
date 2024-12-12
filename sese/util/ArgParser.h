@@ -34,7 +34,7 @@ namespace sese {
 /**
  * @brief 命令行参数解析类
  */
-class  ArgParser {
+class ArgParser {
 public:
     typedef std::unique_ptr<ArgParser> Ptr;
 
@@ -47,7 +47,7 @@ public:
      * @param argv 实际参数
      * @return 解析是否成功
      */
-    bool parse(int32_t argc, char **argv) noexcept;
+    bool parse(int32_t argc, const char *const *argv) noexcept;
 
     /**
      * @return 返回整个参数 Map
@@ -61,6 +61,14 @@ public:
      * @return 返回参数值，参数不存在返回默认值
      */
     [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &default_value) const noexcept;
+
+    /**
+     * Retrieves the value associated with the given key.
+     * @param key The name of the parameter.
+     * @return The value of the parameter if it exists.
+     * @exception std::out_of_range If the key does not exist.
+     */
+    const std::string &getValueByKey(const std::string &key) const;
 
     /**
      * 根据参数名称判断当前参数是否存在，适用于一些单独的不需要指定值的开关
