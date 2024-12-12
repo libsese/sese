@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file CSVWriter.h
-/// \brief CSV 流写入器
-/// \author kaoru
+/// \brief CSV stream writer
+/// \author Kaoru
 /// \version 0.1
-/// \date 2023年3月30日
+/// \date March 30, 2023
 
 #pragma once
 
@@ -27,25 +27,24 @@
 
 namespace sese {
 
-/// CSV 流写入器
+/// CSV stream writer
 class  CSVWriter {
 public:
-    /// 工具支持的输出流
+    /// Output stream supported by the utility
     using OutputStream = io::OutputStream;
-    /// 行
     using Row = std::vector<std::string>;
 
     static const char *crlf;
     static const char *lf;
 
-    /// 构造函数
-    /// \param dest 目的流
-    /// \param split_char 分割字符
-    /// \param crlf 是否使用 CRLF 作为行分隔符
+    /// Constructor
+    /// \param dest The destination stream
+    /// \param split_char The delimiter character
+    /// \param crlf Whether to use CRLF as the line separator
     explicit CSVWriter(OutputStream *dest, char split_char = ',', bool crlf = true) noexcept;
 
-    /// 写入流
-    /// \param row 待写入行
+    /// Write to the stream
+    /// \param row The row to be written
     void write(const Row &row) noexcept;
 
 protected:

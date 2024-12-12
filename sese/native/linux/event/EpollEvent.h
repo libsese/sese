@@ -14,7 +14,7 @@
 
 /**
  *  @file EpollEvent.h
- *  @brief epoll 事件
+ *  @brief epoll event
  *  @author kaoru
  */
 
@@ -23,7 +23,7 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-/// epoll 事件
+/// epoll event
 class EpollEvent : public BaseEvent {
 };
 } // namespace sese::event

@@ -14,11 +14,12 @@
 
 /**
  * \file CookieMap.h
- * \brief Cookie 映射集合类
- * \date 2022.12.20
+ * \brief Cookie mapping collection class
+ * \date December 20, 2022
  * \author kaoru
  * \version 0.1
  */
+
 #pragma once
 
 #include <sese/net/http/Cookie.h>
@@ -30,26 +31,26 @@
 
 namespace sese::net::http {
 
-/// \brief Cookie 映射集合类
+/// \brief Cookie mapping collection class
 class  CookieMap {
 public:
     using Ptr = std::shared_ptr<CookieMap>;
     using Map = std::map<std::string, Cookie::Ptr>;
 
-    /// 添加一个 Cookie
-    /// \param cookie 欲添加的 Cookie
+    /// Add a cookie
+    /// \param cookie Cookie to add
     void add(const Cookie::Ptr &cookie) noexcept;
-    /// 获取一个现有的 Cookie
-    /// \param name Cookie 名称
-    /// \retval nullptr 不存在指定名称的 Cookie
+    /// Retrieve an existing Cookie
+    /// \param name Cookie name
+    /// \retval nullptr If the specified Cookie does not exist
     Cookie::Ptr find(const std::string &name) noexcept;
 
-    /// 检查并移除过期的 Cookie
-    /// \param now 单位秒
+    /// Check and remove expired cookies
+    /// \param now Time in seconds
     void expired(uint64_t now);
 
-    /// 将集合中 max age 字段转换成 expires
-    /// \param offset 单位秒
+    /// Convert max-age field in the collection to expires
+    /// \param offset Time in seconds
     void updateExpiresFrom(uint64_t offset);
 
     [[nodiscard]] size_t size() const { return map.size(); }

@@ -46,14 +46,13 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                 pwd_iterator == config.end() ||
                 db_iterator == config.end() ||
                 port_iterator == config.end()) {
-                // 缺少必要字段
+                // Required fields are missing
                 return nullptr;
             }
 
             MYSQL *conn = mysql_init(nullptr);
-            // 此处通常是不可恢复错误触发，例如内存不足
+            // This is usually where an unrecoverable error is triggered, such as out of memory
             if (conn == nullptr) return nullptr; // GCOVR_EXCL_LINE
-
 
             mysql_real_connect(
                     conn,
@@ -90,7 +89,7 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                 pwd_iterator == config.end() ||
                 db_iterator == config.end() ||
                 port_iterator == config.end()) {
-                // 缺少必要字段
+                // Required fields are missing
                 return nullptr;
             }
             const char *keywords[] = {"host", "user", "password", "dbname", "port", nullptr};

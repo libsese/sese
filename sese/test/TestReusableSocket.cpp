@@ -52,7 +52,7 @@ private:
     sese::Thread::Ptr th{nullptr};
 };
 
-// 此测试应当只针对 Linux
+// This test should only be for Linux
 #ifdef SESE_PLATFORM_LINUX
 
 static sese::net::IPAddress::Ptr createAddress() {

@@ -13,12 +13,13 @@
 // limitations under the License.
 
 /**
-* @file Request.h
-* @author kaoru
-* @version 0.1
-* @brief HTTP 请求类
-* @date 2023年9月13日
-*/
+ * @file Request.h
+ * @brief HTTP Request Class
+ * @author kaoru
+ * @version 0.1
+ * @date September 13, 2023
+ */
+
 
 #pragma once
 
@@ -27,7 +28,7 @@
 
 namespace sese::net::http {
 
-/// HTTP 请求类
+/// HTTP Request Class
 class Request final : public RequestHeader {
 public:
     using Ptr = std::unique_ptr<Request>;

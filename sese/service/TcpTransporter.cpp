@@ -82,7 +82,7 @@ void sese::service::TcpTransporter::onAccept(int fd) {
                 }
             } else {
                 conn->ssl = client_ssl;
-                // 此选项允许 OpenSSL 在尝试重试 SSL_write 时使用不完全相同的 buffer 参数
+                // This option allows OpenSSL to use different buffer parameters when trying to retry SSL_write
                 // https://stackoverflow.com/questions/2997218/why-am-i-getting-error1409f07fssl-routinesssl3-write-pending-bad-write-retr
                 SSL_set_mode(client_ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
                 // ALPN Callback
@@ -180,7 +180,8 @@ void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
 
 void sese::service::TcpTransporter::onClose(sese::event::BaseEvent *event) {
     auto conn = static_cast<TcpConnection *>(event->data);
-    /// \brief 若连接进行异步处理，则不应由对端关闭事件对此连接进行资源释放
+    /// \brief If a connection is processed asynchronously,
+    /// the peer closure event should not release resources for the connection
     /// \see tcp_connection_delay_close_by_async
     if (!conn->isAsync) {
         if (conn->timeoutEvent) {

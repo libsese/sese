@@ -16,8 +16,8 @@
  * @file DynamicTable.h
  * @author kaoru
  * @version 0.2
- * @brief HTTP 2 动态表
- * @date 2023年9月13日
+ * @brief HTTP 2 dynamic table
+ * @date September 13, 2023
  */
 
 #pragma once
@@ -28,7 +28,7 @@
 
 namespace sese::net::http {
 
-/// HTTP2 动态表
+/// HTTP 2 dynamic table
 class DynamicTable {
 public:
     using Header = std::pair<std::string, std::string>;

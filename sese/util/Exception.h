@@ -14,9 +14,9 @@
 
 /**
  * @file Exception.h
- * @brief 异常类
+ * @brief Exception class
  * @author kaoru
- * @date 2023年9月26日
+ * @date September 26, 2023
  */
 
 #pragma once
@@ -38,7 +38,7 @@ namespace sese {
 #if defined(_MSC_VER)
 using NativeException = std::exception;
 #else
-/// Unix 异常包装类
+/// Unix exception wrapper class
 class UnixException : public std::exception {
 public:
     explicit UnixException(const char *message) : std::exception(), msg(message) {
@@ -55,32 +55,32 @@ private:
 using NativeException = UnixException;
 #endif
 
-/// 异常类
+/// Exception class
 class Exception : public NativeException {
 public:
     explicit Exception(std::string message);
 
     ~Exception() override;
 
-    /// 向标准输出打印堆栈跟踪
+    /// Print stack traces to stdout
     void printStacktrace();
 
-    /// 向日志器打印堆栈跟踪
-    /// \param logger 日志器
+    /// Print stack trace to logger
+    /// \param logger Logger
     void printStacktrace(sese::record::Logger *logger);
 
-    /// 向输出流打印堆栈跟踪
-    /// \param output 输出流
+    /// Print stack trace to output stream
+    /// \param output Output stream
     void printStacktrace(sese::io::OutputStream *output);
 
     static uint16_t offset;
 
-    /// @brief 获取异常的文本信息
-    /// @return 异常的文本信息
+    /// @brief Get the text information of the exception
+    /// @return Text information of the exception
     [[nodiscard]] const char *what() const noexcept override;
 
-    /// @brief 获取异常的文本信息
-    /// @return 异常的文本信息
+    /// @brief Get the text information of the exception
+    /// @return Text information of the exception
     [[nodiscard]] std::string message() const noexcept;
 
 protected:

@@ -36,7 +36,7 @@ bool HttpUtil::getLine(InputStream *source, StringBuilder &builder) noexcept {
         if (ch != '\r') {
             builder.append(ch);
         } else {
-            // 剩下的 '\n'，读取的结果已经不重要
+            // The remaining '\n', the result of the read is no longer important
             source->read(&ch, 1);
             return true;
         }
@@ -202,7 +202,7 @@ bool HttpUtil::recvHeader(InputStream *source, StringBuilder &builder, Header *h
             return false;
         }
 
-        // \r\n${无内容}\r\n
+        // \r\n${No content}\r\n
         if (builder.empty()) {
             break;
         } else {
@@ -359,7 +359,7 @@ Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) noexcept {
             is_first = false;
         } else {
             if (index != std::string::npos) {
-                // 键值对
+                // Key-value pairs
                 if (COMPARE(one.substr(0, index), "max-age")) {
                     cookie->setMaxAge(std::stoll(one.substr(index + 1)));
                 } else if (COMPARE(one.substr(0, index), "expires")) {
@@ -370,7 +370,7 @@ Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) noexcept {
                     cookie->setDomain(one.substr(index + 1));
                 }
             } else {
-                // 属性
+                // attribute
                 if (COMPARE(one, "secure")) {
                     cookie->setSecure(true);
                 } else if (COMPARE(one, "httponly")) {

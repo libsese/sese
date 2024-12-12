@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file ArchiveOutputStream.h
-/// \brief 存档输出流
-/// \author kaoru
-/// \date 2024年01月9日
-
+/// \brief Archive output stream
+/// \author Kaoru
+/// \date January 9, 2024
 
 #pragma once
 
@@ -24,7 +23,7 @@
 
 namespace sese::archive {
 
-    ///存档输出流
+    /// Archive output stream
     class ArchiveOutputStream : public io::OutputStream {
     public:
         explicit ArchiveOutputStream(void *archive_write);

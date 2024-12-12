@@ -28,7 +28,7 @@ using sese::system::Semaphore;
 
 Semaphore::Ptr Semaphore::create(std::string name, uint32_t initial_count) {
     auto sem = sem_open(name.c_str(), O_CREAT | O_RDWR, 0666, initial_count);
-    // 系统错误无法模拟
+    // System errors cannot be simulated
     // GCOVR_EXCL_START
     if (sem == SEM_FAILED) {
         return nullptr;

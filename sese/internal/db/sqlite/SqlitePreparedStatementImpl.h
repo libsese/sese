@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file SqlitePreparedStatementImpl.h
-/// \brief SQLite 预处理语句实现
+/// \brief SQLite prepared statement implementation
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -27,7 +27,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief SQLite 预处理语句实现
+    /// \brief SQLite prepared statement implementation
     class  SqlitePreparedStatementImpl final : public PreparedStatement {
     public:
         explicit SqlitePreparedStatementImpl(sqlite3_stmt *stmt, size_t count) noexcept;

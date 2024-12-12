@@ -39,7 +39,6 @@ TEST(TestSqliteTransaction, Begin) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    // 事务的回滚操作
     ASSERT_EQ(true, instance->begin());
 
     auto count = instance->executeUpdate("insert into tb_begin (id, name) values (3, 'mike');");
@@ -61,7 +60,6 @@ TEST(TestSqliteTransaction, Begin) {
     }
     ASSERT_EQ(false, results->next());
 
-    // 事务的提交操作
     ASSERT_EQ(true, instance->begin());
 
     auto count1 = instance->executeUpdate("insert into tb_begin (id, name) values (3, 'mike');");

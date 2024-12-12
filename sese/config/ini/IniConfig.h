@@ -15,8 +15,8 @@
 /**
  * \file IniConfig.h
  * \author kaoru
- * \brief INI 配置类
- * \date 2023年9月13日
+ * \brief INI Configuration Class
+ * \date September 13, 2023
  */
 
 #pragma once
@@ -31,7 +31,7 @@
 
 namespace sese::ini {
 
-/// INI 配置类
+/// INI Configuration Class
 struct  IniConfig {
 public:
     /// INI SECTION
@@ -39,9 +39,7 @@ public:
     /// INI SECTION MAPPING
     using SectionMap = std::map<std::string, Section>;
 
-    /// 默认节
     Section defSection;
-    /// 节映射
     SectionMap sectionMap;
 };
 

@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// @file Format.h
-/// @brief 字符串格式化
+/// @brief String formatting
 /// @author kaoru
-/// @date 2024年06月29日
-
+/// @date June 29, 2024
 
 #pragma once
 
@@ -43,22 +42,22 @@ struct FmtCtx {
     bool parsing(std::string &args);
 };
 
-/// 解析并校验字符串格式化选项
-/// \param opt 选项
-/// \param opt_str 选项字符串
-/// \return 解析是否成功
+/// Parse and validate string formatting options
+/// \param opt Option
+/// \param opt_str Option string
+/// \return Whether the parsing was successful
 bool FormatOption_StringParse(FormatOption &opt, const std::string &opt_str);
 
-/// 按照格式化选项格式化字符串（对齐）
-/// \param ctx 上下文
-/// \param opt 选项
-/// \param value 字符串
+/// Format string according to formatting options (alignment)
+/// \param ctx Context
+/// \param opt Options
+/// \param value String
 void FormatOption_StringFormat(FmtCtx &ctx, FormatOption &opt, const std::string &value);
 
-/// 解析并校验字符串格式化选项
-/// \param opt 选项
-/// \param opt_str 选项字符串
-/// \return 解析是否成功
+/// Parse and validate string formatting options
+/// \param opt Option
+/// \param opt_str Option string
+/// \return Whether the parsing was successful
 bool FormatOption_NumberParse(FormatOption &opt, const std::string &opt_str);
 
 template<typename T>
@@ -87,11 +86,11 @@ SESE_ALWAYS_INLINE void FormatOption_NumberFormatAlgin(FmtCtx &ctx, FormatOption
     }
 }
 
-/// 按照整形格式化标准格式化字符串，包括对齐
-/// \tparam T 整形类型
-/// \param ctx 格式化上下文
-/// \param opt 选项
-/// \param number 整形
+/// Format string according to integer formatting standards, including alignment
+/// \tparam T Integer type
+/// \param ctx Formatting context
+/// \param opt Options
+/// \param number Integer
 template<typename T>
 void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     auto radix = opt.ext_type;
@@ -108,11 +107,11 @@ void FormatOption_NumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     }
 }
 
-/// 按照浮点格式化标准格式化字符串
-/// \tparam T 浮点类型
-/// \param ctx 格式化上下文
-/// \param opt 选项
-/// \param number 浮点数
+/// Format string according to floating-point formatting standards
+/// \tparam T Floating-point type
+/// \param ctx Formatting context
+/// \param opt Options
+/// \param number Floating-point number
 template<typename T>
 void FormatOption_FloatNumberFormat(FmtCtx &ctx, FormatOption &opt, T number) {
     if (opt.float_placeholder == 0) {
@@ -368,10 +367,10 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
     }
 }
 
-/// 字符串格式化
-/// \tparam ARGS 形参
-/// \param pattern 匹配格式
-/// \return 匹配完成的字符串
+/// String formatting
+/// \tparam ARGS Template parameters
+/// \param pattern Match pattern
+/// \return Formatted string
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...) {
     if (FormatParameterCounter(pattern.data())) {
@@ -380,11 +379,11 @@ std::string fmt(std::string_view pattern, ARGS &&...) {
     return {pattern.begin(), pattern.end()};
 }
 
-/// 字符串格式化
-/// \tparam ARGS 形参
-/// \param pattern 匹配格式
-/// \param args 实参
-/// \return 匹配完成的字符串
+/// String formatting
+/// \tparam ARGS Template parameters
+/// \param pattern Match pattern
+/// \param args Arguments
+/// \return Formatted string
 template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...args) {
     auto param = FormatParameterCounter(pattern.data());

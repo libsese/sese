@@ -15,8 +15,8 @@
 /**
  * @file EncodingConverter.h
  * @author kaoru
- * @date 2022年4月15日
- * @brief 字符串编码转换
+ * @date April 15, 2022
+ * @brief String encoding conversion
  */
 
 #pragma once
@@ -33,9 +33,9 @@
 namespace sese {
 
 /**
- * @brief 字符串编码转换
+ * @brief String encoding conversion
  */
-class  SESE_DEPRECATED EncodingConverter final : public NotInstantiable {
+class SESE_DEPRECATED EncodingConverter final : public NotInstantiable {
 public:
     EncodingConverter() = delete;
 
@@ -43,7 +43,7 @@ public:
     [[maybe_unused]] static std::wstring toWstring(const std::string &string) noexcept;
 };
 
-/// 编码转换器初始化任务
+/// Encoding converter initialization task
 class EncodingConverterInitiateTask final : public InitiateTask {
 public:
     EncodingConverterInitiateTask() : InitiateTask(__FUNCTION__) {}

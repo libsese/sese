@@ -14,8 +14,8 @@
 
 /**
  * @file ThreadPool.h
- * @brief 线程池类
- * @date 2022年4月7日
+ * @brief Thread pool class
+ * @date April 7, 2022
  * @author kaoru
  */
 
@@ -36,39 +36,39 @@
 namespace sese {
 
 /**
- * @brief 线程池类
+ * @brief Thread pool class
  */
 class  ThreadPool : public Noncopyable {
 public:
     using Ptr = std::unique_ptr<ThreadPool>;
 
     /**
-     * 初始化线程池
-     * @param thread_pool_name 线程池名称（影响池内线程名称）
-     * @param threads 线程数量
+     * \brief Initialize the thread pool
+     * \param thread_pool_name Name of the thread pool (affects the names of the threads in the pool)
+     * \param threads Number of threads
      */
     explicit ThreadPool(std::string thread_pool_name = THREAD_DEFAULT_NAME, size_t threads = 4);
     ~ThreadPool() override;
 
 public:
     /**
-     * 向线程池添加单个任务
-     * @param task 欲执行的任务
+     * \brief Add a single task to the thread pool
+     * \param task The task to be executed
      */
     void postTask(const std::function<void()> &task);
 
     /**
-     * 向线程池批量添加任务
-     * @param tasks 欲执行的任务集合
+     * \brief Add multiple tasks to the thread pool
+     * \param tasks Collection of tasks to be executed
      */
     void postTask(const std::vector<std::function<void()>> &tasks);
 
     /**
-     * 向线程池添加任务并绑定参数
-     * @tparam FUNCTION 函数模板
-     * @tparam ARGS 参数模板
-     * @param f 函数
-     * @param args 参数
+     * \brief Add a task to the thread pool and bind parameters
+     * \tparam FUNCTION Function template
+     * \tparam ARGS Argument template
+     * \param f Function
+     * \param args Arguments
      */
     template<typename FUNCTION, typename... ARGS>
     void postTaskEx(FUNCTION &&f, ARGS &&...args) {
@@ -79,16 +79,16 @@ public:
     }
 
     /**
-     * 向线程池添加有返回值的任务
-     * \tparam RETURN_TYPE 返回值类型
-     * \param tasks 欲执行的任务
-     * \return std::shared_future 对象
+     * \brief Add a task with a return value to the thread pool
+     * \tparam RETURN_TYPE Return type
+     * \param tasks Tasks to be executed
+     * \return std::shared_future object
      */
     template<class RETURN_TYPE>
     std::shared_future<RETURN_TYPE> postTask(const std::function<RETURN_TYPE()> &tasks);
 
     /**
-     * @brief 关闭当前线程池并阻塞至子线程退出
+     * \brief Shutdown the current thread pool and block until all child threads exit
      */
     void shutdown();
 
@@ -102,7 +102,7 @@ private:
     size_t threads = 0;
     std::vector<Thread *> threadGroup;
 
-    /// 线程池运行数据
+    /// Runtime data of thread pool
     struct RuntimeData {
         std::mutex mutex;
         std::condition_variable conditionVariable;
@@ -119,10 +119,12 @@ private:
 template<class RETURN_TYPE>
 std::shared_future<RETURN_TYPE> sese::ThreadPool::postTask(const std::function<RETURN_TYPE()> &task) {
     /**
-     * 注意：
-     * 由于 std::packaged_task 属于不可拷贝对象，
-     * 并且 std::function 会对参数类型进行擦除，导致 std::move 也无法作用于不可拷贝对象，
-     * 所以此处选择了使用 std::shared_ptr 对 std::packaged_task 进行封装
+     * \brief
+     * @verbatim
+     * Since std::packaged_task is a non-copyable object,
+     * and std::function erases the type information of its arguments, making std::move ineffective on non-copyable objects,
+     * the solution here is to use std::shared_ptr to wrap std::packaged_task.
+     * @endverbatim
      */
     using TaskPtr = std::shared_ptr<std::packaged_task<RETURN_TYPE()>>;
     TaskPtr packaged_task = std::make_shared<std::packaged_task<RETURN_TYPE()>>(task);

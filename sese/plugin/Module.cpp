@@ -35,7 +35,7 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
 
     auto info = get_module_info();
     auto factory = get_factory();
-    // 按照标准，此步不应该出错
+    // By standard, this step should not go wrong
     // if (!info || !factory) {
     //    return nullptr;
     // }

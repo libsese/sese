@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file Process.h
-/// \brief 进程类
+/// \brief Process Class
 /// \author kaoru
 /// \version 0.1
-/// \date 2023年3月13日
+/// \date March 13, 2023
 
 #pragma once
 
@@ -26,33 +26,32 @@
 
 namespace sese::system {
 
-/// 进程类
+/// Process Class
 class Process {
 public:
     using Ptr = std::unique_ptr<Process>;
 
-    /// 创建一个新的进程对象
-    /// \param command 命令
-    /// \retval nullptr 创建失败
+    /// Create a new process object
+    /// \param command Command
+    /// \retval nullptr Creation failed
     static Process::Ptr create(const char *command) noexcept;
-
 
     static Result<Process::Ptr, ErrorCode> createEx(const char *command) noexcept;
 
-    /// 获取当前进程 ID
-    /// \return 当前进程 ID
+    /// Get the current process ID
+    /// \return Current process ID
     [[nodiscard]] static pid_t getCurrentProcessId() noexcept;
 
-    /// 等待进程结束
-    /// \return 进程退出码
+    /// Wait for the process to end
+    /// \return Process exit code
     [[nodiscard]] int wait() const noexcept;
 
-    /// 结束进程
-    /// \return 操作结果
+    /// Kill the process
+    /// \return Operation result
     [[nodiscard]] bool kill() const noexcept;
 
-    /// 获取进程 ID
-    /// \return 获取进程对象 ID
+    /// Get the process ID
+    /// \return Process object ID
     [[nodiscard]] pid_t getProcessId() const noexcept;
 
 private:
@@ -70,11 +69,11 @@ public:
     virtual ~Process() noexcept = default;
 
 private:
-    // Unix-like 执行新进程实现
+    // Unix-like implementation of executing a new process
     static void exec(char *p_command) noexcept;
-    // 计算字符串中参数的个数
+    // Count the number of parameters in a string
     static size_t count(const char *p_command) noexcept;
-    // 将下一个空格设置为 '\0'，并返回空格下一个字符的指针
+    // Set the next space to '\0' and return a pointer to the next character
     static char *spilt(char *p_command) noexcept;
 
     pid_t id = -1;

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /// \file RingQueue.h
-/// \brief 环形队列
+/// \brief Ring queue
 /// \author kaoru
 /// \date 2024/02/17
 /// \version 1.0
@@ -25,14 +25,14 @@
 namespace sese {
 
 /**
- * @brief 环形队列
- * @tparam T 元素类型
- * @tparam N 队列大小
+ * @brief Ring queue
+ * @tparam T Element type
+ * @tparam N Queue size
  */
 template<typename T, int N>
 class RingQueue {
 public:
-    // 获取队头元素，元素不足则抛出异常
+    /// @exception std::out_of_range queue is empty
     T &front() {
         if (empty()) {
             throw std::out_of_range("queue is empty");
@@ -40,7 +40,7 @@ public:
         return _data[_head];
     }
 
-    // 出队，元素不足则抛出异常
+    /// @exception std::out_of_range queue is empty
     void pop() {
         if (empty()) {
             throw std::out_of_range("queue is empty");
@@ -49,7 +49,7 @@ public:
         _size -= 1;
     }
 
-    // 入队，队列已满则抛出异常
+    /// @exception std::out_of_range queue is full
     void push(const T &data) {
         if (full()) {
             throw std::out_of_range("queue is full");
@@ -59,17 +59,17 @@ public:
         _size += 1;
     }
 
-    // 判断队列是否为空
+    /// Is the queue empty
     [[nodiscard]] bool empty() const {
         return _size == 0;
     }
 
-    // 判断队列是否已满
+    /// Is the queue full
     [[nodiscard]] bool full() const {
         return _size == N;
     }
 
-    // 获取队列大小
+    /// Get queue size
     [[nodiscard]] size_t size() const {
         return _size;
     }

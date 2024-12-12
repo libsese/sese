@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Value.h
-/// \brief 值容器类，设计参考 https://github.com/chromium/chromium/blob/main/base/values.h
+/// \brief Value Container Class, inspired by https://github.com/chromium/chromium/blob/main/base/values.h
 /// \author kaoru
-/// \date 2023年10月29日
+/// \date October 29, 2023
 
 #pragma once
 
@@ -30,7 +30,7 @@
 
 namespace sese {
 
-/// \brief 值容器类
+/// \brief Value Container Class
 class Value {
 public:
     enum class Type {
@@ -51,10 +51,10 @@ public:
     class List;
     class Dict;
 
-    /// \brief 空值容器类型
+    /// \brief Null Value Container Type
     class Null {};
 
-    /// \brief 列表值容器类型
+    /// \brief List Value Container Type
     class List {
     public:
         using Raw = std::vector<Value>;
@@ -124,7 +124,7 @@ public:
         Raw vector;
     };
 
-    /// \brief 字典值容器类型
+    /// \brief Dictionary Value Container Type
     class Dict {
     public:
         using Raw = std::map<String, Value *>;
@@ -229,14 +229,14 @@ public:
     [[nodiscard]] bool isList() const;
     [[nodiscard]] bool isDict() const;
 
-    /// 允许数值类型转换为布尔型
-    /// \return 布尔型
+    /// Allow numeric types to be converted to boolean
+    /// \return Boolean value
     [[nodiscard]] std::optional<bool> getIfBool() const;
-    /// 允许从数数值类型转换成整形
-    /// \return 整形
+    /// Allow numeric types to be converted to integer
+    /// \return Integer value
     [[nodiscard]] std::optional<Integer> getIfInt() const;
-    /// 允许从数值类型转换成双精度浮点型
-    /// \return 双精度浮点型
+    /// Allow numeric types to be converted to double
+    /// \return Double value
     [[nodiscard]] std::optional<double> getIfDouble() const;
     [[nodiscard]] String *getIfString();
     [[nodiscard]] Blob *getIfBlob();

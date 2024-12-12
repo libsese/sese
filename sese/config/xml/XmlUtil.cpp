@@ -104,7 +104,7 @@ bool XmlUtil::removeComment(sese::xml::XmlUtil::Tokens &tokens) noexcept {
     }
     if (tokens.empty()) return false; // GCOVR_EXCL_LINE
     // if (tokens.front() != "--") return false;
-    // 能执行到此处 tokens.front() 一定是 "--"，不需要判断
+    // Execute to this point tokens.front() is "--", no need to judge
     tokens.pop(); // "--"
 
     if (tokens.empty()) return false; // GCOVR_EXCL_LINE
@@ -127,7 +127,7 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
             tokens.pop();
 
             if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
-            // 根节点注释
+            // root node comment
             if (tokens.front() == "!--") {
                 if (!removeComment(tokens)) {
                     return nullptr;
@@ -175,12 +175,12 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
         } else if (tokens.front() == ">") {
             tokens.pop(); // '>'
             if (tokens.empty()) return nullptr;
-            // 子对象
+            // sub element
             if (tokens.front() == "<") {
                 while (tokens.front() == "<") {
                     tokens.pop(); // '<'
                     if (tokens.front() == "/") {
-                        // 父对象结尾
+                        // end of parent object
                         tokens.pop(); // '/'
                         // if (tokens.empty()) return nullptr;
                         // if (tokens.front() != element->getName()) return nullptr;

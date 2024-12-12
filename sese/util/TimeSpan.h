@@ -14,9 +14,9 @@
 
 /**
  * @file TimeSpan.h
- * @brief 时间间隔类
+ * @brief Time Interval Class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  * @version 0.2
  */
 
@@ -32,12 +32,12 @@
 
 namespace sese {
 /**
- * @brief 时间间隔类
+ * @brief Time Interval Class
  */
-class  TimeSpan {
+class TimeSpan {
 public:
     /**
-     * @brief 零时间间隔
+     * @brief Zero time interval
      */
     static const TimeSpan ZERO;
 
@@ -46,85 +46,85 @@ public:
     explicit TimeSpan(uint64_t timestamp) noexcept;
 
     /**
-     * 获取当前结构所表示的时间间隔的天数
-     * @return 天数
+     * Get the number of days represented by the current structure
+     * @return Number of days
      */
     [[nodiscard]] int32_t getDays() const noexcept;
 
     /**
-     * 获取当前结构所表示的时间间隔的小时数
-     * @return 小时数
+     * Get the number of hours represented by the current structure
+     * @return Number of hours
      */
     [[nodiscard]] int32_t getHours() const noexcept;
 
     /**
-     * 获取当前结构所表示的时间间隔的分钟数
-     * @return 分钟数
+     * Get the number of minutes represented by the current structure
+     * @return Number of minutes
      */
     [[nodiscard]] int32_t getMinutes() const noexcept;
 
     /**
-     * 获取当前结构所表示的时间间隔的秒数
-     * @return 秒数
+     * Get the number of seconds represented by the current structure
+     * @return Number of seconds
      */
     [[nodiscard]] int32_t getSeconds() const noexcept;
 
     /**
-     * 获取当前结构所表示的时间间隔的毫秒数
-     * @return 毫秒数
+     * Get the number of milliseconds represented by the current structure
+     * @return Number of milliseconds
      */
     [[nodiscard]] int32_t getMilliseconds() const noexcept;
 
     /**
-     * 获取当前结构所表示的时间间隔的微秒数
-     * @return 微秒数
+     * Get the number of microseconds represented by the current structure
+     * @return Number of microseconds
      */
     [[nodiscard]] int32_t getMicroseconds() const noexcept;
 
     /**
-     * 获取当前结构以总和形式表示的天数
-     * @return 天数
+     * Get the total number of days represented by the current structure
+     * @return Total number of days
      */
     [[nodiscard]] double getTotalDays() const noexcept;
 
     /**
-     * 获取当前结构以总和形式表示的小时数
-     * @return 小时数
+     * Get the total number of hours represented by the current structure
+     * @return Total number of hours
      */
     [[nodiscard]] double getTotalHours() const noexcept;
 
     /**
-     * 获取当前结构以总和形式表示的分钟数
-     * @return 分钟数
+     * Get the total number of minutes represented by the current structure
+     * @return Total number of minutes
      */
     [[nodiscard]] double getTotalMinutes() const noexcept;
 
     /**
-     * 获取当前结构以总和形式表示的秒数
-     * @return 秒数
+     * Get the total number of seconds represented by the current structure
+     * @return Total number of seconds
      */
     [[nodiscard]] double getTotalSeconds() const noexcept;
 
     /**
-     * 获取当前结构以总和形式表示的毫秒数
-     * @return 毫秒数
+     * Get the total number of milliseconds represented by the current structure
+     * @return Total number of milliseconds
      */
     [[nodiscard]] double getTotalMilliseconds() const noexcept;
 
     /**
-     * 获取当前结构以总和形式表示的微秒数
-     * @return 微秒数
+     * Get the total number of microseconds represented by the current structure
+     * @return Total number of microseconds
      */
     [[nodiscard]] uint64_t getTotalMicroseconds() const noexcept;
 
     /**
-     * 获取以微妙为时间单位的时间戳
-     * @return 时间戳
+     * Get the timestamp with microseconds as the unit of time
+     * @return Timestamp
      */
     [[nodiscard]] uint64_t getTimestamp() const noexcept { return timestamp; }
 
 private:
-    /// 以微秒为单位的时间戳
+    /// Timestamp in microseconds
     uint64_t timestamp = 0;
 };
 } // namespace sese

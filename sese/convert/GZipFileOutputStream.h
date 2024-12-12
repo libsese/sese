@@ -14,9 +14,9 @@
 
 /// \file GZipFileOutputStream.h
 /// \author kaoru
-/// \brief GZip 文件输出流（压缩）
+/// \brief GZip file output stream (compression)
 /// \version 0.1
-/// \date 2023年3月15日
+/// \date March 15, 2023
 
 #pragma once
 
@@ -24,17 +24,17 @@
 
 namespace sese {
 
-/// GZip 文件输出流（压缩）
+/// GZip file output stream (compression)
 class  GZipFileOutputStream : public io::OutputStream {
 public:
     static void deleter(GZipFileOutputStream *data) noexcept;
 
     using Ptr = std::shared_ptr<GZipFileOutputStream>;
 
-    /// 创建文件输出流对象
-    /// \param file 文件的相对或者绝对路径
-    /// \param level 压缩等级(取值范围为0~9，自动处理数值区间)
-    /// \retval nullptr 打开文件失败
+    /// Create file output stream object
+    /// \param file Relative or absolute path of the file
+    /// \param level Compression level (range 0-9, automatically handles value range)
+    /// \retval nullptr Failed to open file
     static GZipFileOutputStream::Ptr create(const char *file, size_t level) noexcept;
 
     int64_t write(const void *buffer, size_t length) override;

@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file DnsServer.h
-/// @brief DNS 服务器
+/// @brief DNS Server
 /// @author kaoru
-/// @date 2024年10月30日
+/// @date October 30, 2024
 
 #pragma once
 
@@ -25,53 +25,54 @@
 
 namespace sese::service::dns {
 
-/// @brief DNS 服务器
+/// @brief DNS Server
 class DnsServer final {
     Service::Ptr service;
 
 public:
-    /// @brief 构造函数
+    /// @brief Constructor
     DnsServer();
 
-    /// @brief 绑定地址
-    /// @param address 地址
-    /// @return 是否绑定成功
+    /// @brief Bind address
+    /// @param address Address
+    /// @return Whether binding is successful
     bool bind(const net::IPAddress::Ptr &address);
 
-    /// @brief 设置回调
-    /// @param callback 回调
+    /// @brief Set callback
+    /// @param callback Callback
     void setCallback(const Callback &callback);
 
-    /// @brief 添加上游服务器
-    /// @param address 地址
+    /// @brief Add upstream server
+    /// @param address Address
     void addUpstreamNameServer(const net::IPAddress::Ptr &address);
 
-    /// @brief 添加上游服务器
-    /// @param ip 地址
-    /// @param port 端口
-    /// @return 是否添加成功
+    /// @brief Add upstream server
+    /// @param ip Address
+    /// @param port Port
+    /// @return Whether adding is successful
     bool addUpstreamNameServer(const std::string &ip, uint16_t port = 53);
 
-    /// @brief 添加记录
-    /// @param name 域名
-    /// @param address 地址
+    /// @brief Add record
+    /// @param name Domain name
+    /// @param address Address
     void addRecord(const std::string &name, const net::IPAddress::Ptr &address);
 
-    /// @brief 启动
-    /// @return 是否启动成功
+    /// @brief Startup
+    /// @return Whether startup is successful
     bool startup();
 
-    /// @brief 停止
-    /// @return 是否停止成功
+    /// @brief Shutdown
+    /// @return Whether shutdown is successful
     bool shutdown();
 
-    /// @brief 获取错误码
-    /// @return 错误码
+    /// @brief Get error code
+    /// @return Error code
     int getLastError();
 
-    /// @brief 获取错误信息
-    /// @return 错误信息
+    /// @brief Get error message
+    /// @return Error message
     std::string getLastErrorMessage();
 };
 
 } // namespace sese::service::dns
+

@@ -14,8 +14,8 @@
 
 /// \file TimerableService_V2.h
 /// \author kaoru
-/// \date 2023年9月19日
-/// \brief 可定时服务
+/// \date September 19, 2023
+/// \brief Timerable Service
 /// \version 0.2.0
 
 #pragma once
@@ -29,36 +29,36 @@
 
 namespace sese::service::v2 {
 
-/// 超时事件结构
+/// Timeout event structure
 struct TimeoutEvent {
     sese::TimeoutEvent *event{nullptr};
-    /// 额外数据
+    /// Additional data
     void *data{nullptr};
 };
 
-/// 可定时服务
-class  TimerableService : public event::EventLoop {
+/// Timerable Service
+class TimerableService : public event::EventLoop {
 public:
-    /// 分发事件
-    /// \param timeout 超时时间
+    /// Dispatch events
+    /// \param timeout Timeout duration
     void dispatch(uint32_t timeout) override;
 
-    /// 超时回调函数
-    /// \param event 事件
+    /// Timeout callback function
+    /// \param event Event
     virtual void onTimeout(v2::TimeoutEvent *event);
 
-    /// 设置超时事件
-    /// \param seconds 超时事件
-    /// \param data 附加数据
-    /// \return 超时事件结构
+    /// Set a timeout event
+    /// \param seconds Timeout duration
+    /// \param data Additional data
+    /// \return Timeout event structure
     v2::TimeoutEvent *setTimeoutEvent(int64_t seconds, void *data);
 
-    /// 取消并释放超时事件
-    /// \param event 超时事件
+    /// Cancel and free the timeout event
+    /// \param event Timeout event
     void cancelTimeoutEvent(v2::TimeoutEvent *event);
 
 private:
-    /// 时间轮
+    /// Time wheel
     TimeWheel timeWheel{};
 };
 

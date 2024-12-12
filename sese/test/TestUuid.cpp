@@ -37,7 +37,9 @@ TEST(TestUuid, Chrono) {
     std::cout << "std::chrono::steady_clock -> " << point3.time_since_epoch().count() << "\n";
 }
 
-/// \note 此处仅简单的调用一下接口。若要复现在时间回拨时的处理，需要另外编写测试程序，并且手动使操作系统时间回拨，其他基于 TimestampHandler 的功能同理
+/// \note Here is a simple call to the interface. To reproduce the handling of time callbacks,
+/// you need to write a separate test program and manually make the operating system time callbacks,
+/// as are other TimestampHandler-based features
 TEST(TestUuid, TimestampHandler) {
     sese::TimestampHandler timestamp_handler(std::chrono::system_clock::now());
 

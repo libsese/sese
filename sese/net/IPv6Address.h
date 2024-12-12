@@ -15,9 +15,10 @@
 /**
  * @file IPv6Address.h
  * @author kaoru
- * @brief IPv6 地址类
- * @date 2022年4月4日
+ * @brief IPv6 address class
+ * @date April 4, 2022
  */
+
 #pragma once
 
 #include "sese/net/IPv4Address.h"
@@ -25,7 +26,7 @@
 namespace sese::net {
 
 /**
- * @brief IPv6 地址类
+ * @brief IPv6 address class
  */
 class  IPv6Address final : public IPAddress {
 public:

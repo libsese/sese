@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file PostgresResultSetImpl.h
-/// \brief PSQL 结果集实现
-/// \author kaoru
-/// \date 2024年04月10日
+/// \brief PSQL result set implementation
+/// \author kaoru, DreammerQcl
+/// \date April 10, 2024
 
 #pragma once
 
@@ -23,7 +23,7 @@
 #include <libpq-fe.h>
 
 namespace sese::db::impl {
-    /// \brief PSQL 结果集实现
+    /// \brief PSQL result set implementation
     class  PostgresResultSetImpl : public ResultSet {
     public:
         explicit PostgresResultSetImpl(PGresult *res) noexcept;

@@ -118,12 +118,12 @@ char *Process::spilt(char *p_command) noexcept {
             continue;
         } else if (*p == ' ') {
             if (count % 2 == 0) {
-                // 字符串外
+                // Outside the string
                 *p = 0;
                 p++;
                 return p;
             } else {
-                // 字符串内
+                // Inside the string
                 p++;
             }
         } else {

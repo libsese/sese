@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file Resolver.h
-/// @brief 域名解析器
+/// @brief DNS Resolver
 /// @author kaoru
-/// @date 2024年10月30日
+/// @date October 30, 2024
 
 #pragma once
 
@@ -25,7 +25,7 @@
 #include <random>
 
 namespace sese::net::dns {
-/// \brief 域名解析器
+/// \brief DNS Resolver
 class Resolver {
     std::vector<IPAddress::Ptr> name_servers;
 
@@ -36,20 +36,20 @@ class Resolver {
 public:
     Resolver();
 
-    /// 添加 NameServer
+    /// Add NameServer
     /// @param ip IP
-    /// @param port 端口
-    /// @return 是否添加成功，这取决于填写的IP地址格式
+    /// @param port Port
+    /// @return Whether adding was successful, depending on the format of the provided IP address
     bool addNameServer(const std::string &ip, uint16_t port = 53);
 
-    /// 添加 NameServer
+    /// Add NameServer
     /// @param ip_address IP
     void addNameServer(const IPAddress::Ptr &ip_address);
 
-    /// 解析域名
-    /// @param hostname 域名
-    /// @param type 类型 (sese::net::dns::TYPE_A || sese::net::dns::TYPE_AAAA)
-    /// @return 解析结果
+    /// Resolve domain name
+    /// @param hostname Domain name
+    /// @param type Type (sese::net::dns::TYPE_A || sese::net::dns::TYPE_AAAA)
+    /// @return Resolution results
     std::vector<IPAddress::Ptr> resolve(const std::string &hostname, uint16_t type);
 };
 } // namespace sese::net::dns

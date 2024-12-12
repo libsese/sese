@@ -14,10 +14,10 @@
 
 /**
  * @file Thread.h
- * @brief 线程类
+ * @brief Thread class
  * @author kaoru
- * @date 2022年3月28日
- * @bug 使用线程的分离功能处理不当有可能导致内存泄漏，对于分离线程这种情况推荐考虑使用标准库线程
+ * @date March 28, 2022
+ * @bug Improper handling of thread detachment functionality may lead to memory leaks. For detached threads, it is recommended to consider using standard library threads.
  */
 
 #pragma once
@@ -42,7 +42,7 @@
 
 namespace sese {
 
-/// 内建线程类的初始化任务
+/// \brief Initialization task for the built-in thread class
 class ThreadInitiateTask final : public InitiateTask {
 public:
     ThreadInitiateTask() : InitiateTask(__FUNCTION__) {};
@@ -53,7 +53,7 @@ public:
 };
 
 /**
- * @brief 线程类
+ * @brief Thread class
  */
 class Thread final : public Noncopyable { // GCOVR_EXCL_LINE
 public:
@@ -76,7 +76,7 @@ public:
     [[nodiscard]] const std::string &getThreadName() const noexcept { return this->data->name; }
 
 public:
-    /// 线程运行数据
+    /// Runtime data of threads
     struct RuntimeData {
         tid_t id = 0;
 
@@ -91,8 +91,8 @@ public:
     static tid_t getMainThreadId() noexcept;
 
     /**
-     * 获取当前线程实例
-     * @return 当前线程实例，当前线程为主线程时返回 nullptr
+     * \brief Get the current thread instance
+     * \return The current thread instance, returns nullptr if the current thread is the main thread
      */
     static Thread::RuntimeData *getCurrentThreadData() noexcept;
 

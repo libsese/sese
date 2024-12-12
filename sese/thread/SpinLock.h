@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /// \file SpinLock.h
-/// \brief 自旋锁
+/// \brief Spin Lock
 /// \author kaoru
 
 #pragma once
@@ -27,7 +27,7 @@
 #endif
 
 namespace sese {
-/// 自旋锁
+/// Spin Lock
 class  SpinLock {
 public:
     void lock();

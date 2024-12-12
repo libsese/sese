@@ -14,10 +14,11 @@
 
 /**
  * @file Config.h
- * @brief Windows 平台配置文件
+ * @brief Windows Platform Configuration File
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
+
 #pragma once
 
 #if !defined(_WIN32_WINNET) || _WIN32_WINNI < 0x0602
@@ -48,17 +49,17 @@
 #error only support x86_64 & arm64
 #endif
 
-/// C++ 版本标识符
+/// C++ version identifier
 #define SESE_CXX_STANDARD _MSVC_LANG
 
-/// 可导出类型标识符 - 现在已弃用
+/// Exportable Type Identifier - Now deprecated
 #define API
 
-/// pid_t 格式化占位符
+/// pid_t Formatting placeholders
 #define PRIdTid "u"
 
 #ifndef __MINGW32__
-/// 忽略大小写比较
+/// Ignore case comparisons
 #define strcasecmp strcmpi
 #endif
 
@@ -73,15 +74,15 @@
 #endif
 
 namespace sese {
-/// 进程 ID 标识符
+/// Process ID identifier
 using pid_t = DWORD;
-/// 线程 ID 标识符
+/// Thread ID identifier
 using tid_t = uint32_t;
-/// Native Socket 类型
+/// Native Socket type
 using socket_t = SOCKET;
 } // namespace sese
 
-/// WSA 错误映射
+/// WSA Error Mapping
 
 #undef EINTR
 #undef EBADF

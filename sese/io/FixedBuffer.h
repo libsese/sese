@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file FixedBuffer.h
-/// \brief 线程安全的固定大小缓存
+/// \brief Thread-safe fixed-size buffer
 /// \author kaoru
 /// \version 0.1.0
-/// \date 2023年6月11日
+/// \date June 11, 2023
 
 #pragma once
 
@@ -26,8 +26,8 @@
 
 namespace sese::io {
 
-/// 线程安全的固定大小缓存
-class  FixedBuffer final : public AbstractFixedBuffer {
+/// Thread-safe fixed-size buffer
+class FixedBuffer final : public AbstractFixedBuffer {
 public:
     explicit FixedBuffer(size_t size) noexcept;
 

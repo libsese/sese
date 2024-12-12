@@ -55,12 +55,12 @@ void sese::Compressor::input(const void *input, unsigned int input_size) {
 // GCOVR_EXCL_START
 int sese::Compressor::deflate(OutputStream *out) {
     auto stm = static_cast<z_stream *>(stream);
-    // 输出 buffer 未能完全输出，继续输出
+    // The output buffer fails to fully output and continues to output
     if (length != 0) {
         auto last = length - read;
         auto real_wrote = out->write(buffer + read, last);
         if (last != real_wrote) {
-            // 输出 buffer 未能全部输出
+            // The output buffer is not fully output
             read += real_wrote;
             return Z_BUF_ERROR;
         } else {
@@ -72,7 +72,7 @@ int sese::Compressor::deflate(OutputStream *out) {
         }
     }
 
-    // 输入 buffer 未解析完全，继续解析
+    // Enter buffer is not parsed completely, continue parsing
     int ret;
     do {
         ret = ::deflate(stm, Z_FINISH);
@@ -82,7 +82,7 @@ int sese::Compressor::deflate(OutputStream *out) {
         auto wrote = static_cast<int>(cap) - stm->avail_out;
         auto real_wrote = out->write(buffer, wrote);
         if (wrote != real_wrote) {
-            // 输出 buffer 未能全部输出
+            // The output buffer is not fully output
             length = wrote;
             read = real_wrote;
             return Z_BUF_ERROR;

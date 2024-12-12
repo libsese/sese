@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Paths.h
-/// \brief 运行时路径
+/// \brief Runtime Paths
 /// \author kaoru
-/// \date 2023年11月5日
+/// \date November 5, 2023
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::system {
 
-/// 运行时路径初始化任务
+/// Runtime path initialization task
 class PathsInitiateTask : public InitiateTask {
 public:
     PathsInitiateTask();
@@ -34,7 +34,7 @@ public:
     int32_t destroy() noexcept override;
 };
 
-/// 运行时路径
+/// Runtime Paths
 class Paths {
 public:
     static const Path &getWorkDir();

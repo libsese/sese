@@ -14,9 +14,9 @@
 
 /**
  * @file RequestHeader.h
+ * @brief Request Header Class
  * @author kaoru
- * @brief 请求头类
- * @date 2022年05月17日
+ * @date May 17, 2022
  */
 #pragma once
 
@@ -28,7 +28,7 @@
 
 namespace sese::net::http {
 
-/// @brief 请求类型
+/// @brief Request Type
 enum class RequestType {
     OPTIONS,
     GET,
@@ -95,8 +95,8 @@ inline RequestType stringToRequestType(const std::string &request_type_str) {
 // GCOVR_EXCL_START
 
 /**
- * @brief 请求头类
- * @warning 字段 uri 未进行任何处理（URL + QueryString）
+ * @brief Request Header Class
+ * @warning The uri field is not processed (URL + QueryString)
  */
 class RequestHeader : public Header {
 public:
@@ -119,10 +119,10 @@ public:
     [[nodiscard]] bool queryArgsEmpty() const { return query_args.empty(); }
     void queryArgsClear() { return query_args.clear(); }
     bool queryArgsExist(const std::string &key) { return query_args.find(key) != query_args.end(); }
-    /// 当确定一定存在此字段时可以调用
+    /// Call this when certain the field exists
     /// @see sese::net::http::RequestHeader::queryArgsExist
-    /// @param key 查询字符串字段名称
-    /// @return 值
+    /// @param key Query string field name
+    /// @return Value
     const std::string &getQueryArg(const std::string &key) { return query_args.at(key); }
 
     [[nodiscard]] HttpVersion getVersion() const { return version; }

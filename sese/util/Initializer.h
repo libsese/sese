@@ -15,8 +15,8 @@
 /**
  * @file Initializer.h
  * @author kaoru
- * @date 2022年4月24日
- * @brief 初始化器
+ * @date April 24, 2022
+ * @brief Initializer
  */
 
 #pragma once
@@ -30,16 +30,16 @@
 
 namespace sese {
 
-/// 初始化任务基类
-class  InitiateTask {
+/// \brief Initialization task base class
+class InitiateTask {
 public:
     /**
-     * \brief 初始化任务智能指针
+     * \brief Initialization task smart pointer
      * \note
-     * std::stack 使用 std::deque 实现，
-     * 其中 std::deque::top 使用 '=' 运算符，
-     * 与 std::unique_ptr 冲突。
-     * 所以，InitiateTask::Ptr 使用 std::shared_ptr
+     * std::stack is implemented using std::deque,
+     * and std::deque::top uses the '=' operator,
+     * which conflicts with std::unique_ptr.
+     * Therefore, InitiateTask::Ptr uses std::shared_ptr.
      */
     using Ptr = std::shared_ptr<InitiateTask>;
 
@@ -55,7 +55,7 @@ private:
     std::string name;
 };
 
-/// 初始化器
+/// Initializer
 class Initializer final { // GCOVR_EXCL_LINE
 public:
     ~Initializer();
@@ -64,8 +64,8 @@ private:
     std::stack<InitiateTask::Ptr> tasks;
 
 public:
-    /// 添加任务至初始化器
-    /// \param task 初始化任务
+    /// \brief Add a task to the initializer
+    /// \param task Initialization task
     static void addTask(const InitiateTask::Ptr &task) noexcept;
 
     template<class T>
@@ -73,15 +73,17 @@ public:
         Initializer::addTask(std::make_unique<T>());
     }
 
-    /// 获取初始化器指针
-    /// \note 将 sese 作为使用静态链接库使用时，请务必使用该函数手动进行初始化
-    /// \return 初始化指针，此返回值无用
+    /// \brief Get the initializer pointer
+    /// \note When using "sese" as a static library, make sure to use this function to initialize manually
+    /// \return Initialization pointer, this return value is useless
+    /// \deprecated Must manually initialize
+    /// \see sese::initCore
     [[maybe_unused]] SESE_DEPRECATED static void *getInitializer() noexcept;
 };
 
-/// 初始化 sese-core
-/// \param argc 参数个数
-/// \param argv 参数数组
+/// \brief Initialize sese-core
+/// \param argc Number of arguments
+/// \param argv Array of arguments
 [[maybe_unused]] void initCore(int argc, const char *const *argv) noexcept;
 
 } // namespace sese

@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file TcpTransporter.h
-/// \brief TCP 传输器
+/// \brief TCP Transporter
 /// \author kaoru
-/// \version 0.1
-/// \date 日期
+/// \version
 
 #pragma once
 
@@ -32,16 +31,17 @@
 
 namespace sese::service {
 
-/// TCP 连接
+/// TCP Connection
 struct TcpConnection {
     virtual ~TcpConnection() = default;
 
     /// \anchor tcp_connection_delay_close_by_async
     /// \brief
-    /// 设置此变量表明此连接正在进行异步处理，
-    /// 遇到对端关闭事件（onClose）时，不进行资源释放处理，
-    /// 释放操作至少会延迟至写入事件或读取事件（onWrite、onRead）时检测到连接断开处理，
-    /// 异步操作结束时，应当重新将此标志设置为 false
+    /// Set this variable to indicate that this connection is being asynchronously processed.
+    /// When an onClose event occurs, resource release operations will not be performed.
+    /// The release operation will be delayed at least until the disconnection is detected
+    /// during a write or read event (onWrite, onRead).
+    /// After asynchronous operations are completed, this flag should be set back to false.
     std::atomic_bool isAsync = false;
 
     void *ssl = nullptr;
@@ -51,8 +51,8 @@ struct TcpConnection {
     io::ByteBuilder buffer2write{8192};
 };
 
-/// TCP 传输器配置
-struct  TcpTransporterConfig {
+/// TCP transporter configuration
+struct TcpTransporterConfig {
     uint32_t keepalive = 30;
     security::SSLContext::Ptr servCtx = nullptr;
 
@@ -61,8 +61,8 @@ struct  TcpTransporterConfig {
     virtual void freeConnection(TcpConnection *conn);
 };
 
-/// TCP 传输器
-class  TcpTransporter : public v1::TimerableService {
+/// TCP transporter
+class TcpTransporter : public v1::TimerableService {
 public:
     explicit TcpTransporter(TcpTransporterConfig *transporter_config) noexcept;
     ~TcpTransporter() override;

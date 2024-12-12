@@ -66,9 +66,9 @@ TEST_F(TestMariaMetadata, CheckType) {
 TEST_F(TestMariaMetadata, CheckSize) {
     auto stmt = instance->createStatement("select * from tb_metadata;");
     ASSERT_NE(nullptr, stmt);
-    EXPECT_EQ(stmt->getColumnSize(0), 11);    // 默认显示位
-    EXPECT_EQ(stmt->getColumnSize(1), 31 * 4);// 字符集为 utf8mb4
-    EXPECT_EQ(stmt->getColumnSize(2), 12);    // 默认显示位
-    EXPECT_EQ(stmt->getColumnSize(3), 22);    // 默认显示位
-    EXPECT_EQ(stmt->getColumnSize(4), 255);   // 二进制向上取整
+    EXPECT_EQ(stmt->getColumnSize(0), 11);    //
+    EXPECT_EQ(stmt->getColumnSize(1), 31 * 4);// The character set is utf8mb4
+    EXPECT_EQ(stmt->getColumnSize(2), 12);    //
+    EXPECT_EQ(stmt->getColumnSize(3), 22);    //
+    EXPECT_EQ(stmt->getColumnSize(4), 255);   // Binary rounded up
 }

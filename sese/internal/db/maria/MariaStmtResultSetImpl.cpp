@@ -67,7 +67,7 @@ float sese::db::impl::MariaStmtResultSet::getFloat(size_t index) const noexcept 
 }
 
 std::optional<sese::DateTime> sese::db::impl::MariaStmtResultSet::getDateTime(size_t index) const noexcept {
-    // 未来需要详细的 DateTime 构造函数
+    //todo: A detailed DateTime constructor will be required in the future
     auto datetime = static_cast<MYSQL_TIME *>(row[index].buffer);
     std::tm tm{};
     tm.tm_year = datetime->year - 1900;

@@ -14,10 +14,10 @@
 
 /**
 * @file NetworkUtil.h
+* @brief Network Utility Class
 * @author kaoru
 * @version 0.1
-* @brief 网络工具类
-* @date 2023年9月13日
+* @date September 13, 2023
 */
 
 #pragma once
@@ -28,7 +28,7 @@
 
 namespace sese::system {
 
-/// 网络接口信息
+/// Network Interface Information
 struct NetworkInterface {
     std::string name;
     std::vector<sese::net::IPv4Address::Ptr> ipv4Addresses;
@@ -36,7 +36,7 @@ struct NetworkInterface {
     std::array<unsigned char, 6> mac;
 };
 
-/// 网络工具类
+/// Network Utility Class
 class NetworkUtil {
 public:
     static std::vector<NetworkInterface> getNetworkInterface() noexcept;

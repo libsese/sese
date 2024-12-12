@@ -14,7 +14,7 @@
 
 /// \file NullOutputStream.h
 /// \author kaoru
-/// \brief 黑洞输出流
+/// \brief Black hole output stream
 
 #pragma once
 
@@ -27,8 +27,8 @@
 
 namespace sese::io {
 
-/// 黑洞输出流
-class  NullOutputStream : public OutputStream {
+/// Black hole output stream
+class NullOutputStream : public OutputStream {
 public:
     int64_t write(const void *buffer, size_t length) override;
 };

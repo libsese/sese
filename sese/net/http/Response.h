@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file Response.h
-* @author kaoru
-* @version 0.1
-* @brief HTTP 响应类
-* @date 2023年9月13日
-*/
+ * @file Response.h
+ * @brief HTTP Response Class
+ * @author kaoru
+ * @version 0.1
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -27,7 +27,7 @@
 
 namespace sese::net::http {
 
-/// HTTP 响应类
+/// HTTP Response Class
 class Response final : public ResponseHeader {
 public:
     using Ptr = std::unique_ptr<Response>;

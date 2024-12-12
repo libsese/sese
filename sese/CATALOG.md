@@ -1,22 +1,22 @@
-# 目录说明
+# Directory Explanation
 
-**internal** 为 **内部实现目录** ，
-内容将不会暴露至 Core 以外的任何项目，可以专门用于实现接口。
+**internal** is the **Internal Implementation Directory**.
+Its contents are not exposed to any project outside of Core and can be specifically used for implementing interfaces.
 
-**native** 为 **系统平台实现目录** ，
-其中存放部分用于实现特定平台的实现，通常只向特定平台暴露。
+**native** is the **System Platform Implementation Directory**,
+which contains implementations specific to certain platforms and is typically only exposed to those platforms.
 
-- darwin 通常指 Apple 下的 macOS 平台
-- win    通常指 Microsoft 下的 Windows 平台
-- linux  通常指各个 Linux 发行版
-- unix   则表示 darwin 和 linux 的交集部分
+- darwin usually refers to Apple's macOS platform.
+- win generally refers to Microsoft's Windows platform.
+- linux typically refers to various Linux distributions.
+- unix represents the intersection of darwin and linux.
 
-**test** 为 **单元测试目录** ，
-其根目录下存放测试主入口和普通测试文件，
-TestXXX 目录则存放多个源文件或者目标组成的测试用例，
-Data 目录存放测试需要的非源代码数据。
+**test** is the **Unit Test Directory**.
+The root directory contains the main entry point for tests and ordinary test files.
+The TestXXX directory contains test cases composed of multiple source files or targets.
+The Data directory stores non-source code data needed for testing.
 
-**benchmark** 为 **性能测试目录** ，
-所有测试以 BM_Xxx 格式命名，与单元测试共享启用条件。
+**benchmark** is the **Performance Test Directory**.
+All tests are named in the format BM_Xxx and share the enablement conditions with unit tests.
 
-**types** 为 **模板类型萃取相关** 的工具目录，代码风格与项目主体不同。
+**types** is the **Template Type Extraction Tools Directory**, with a different code style from the main project.

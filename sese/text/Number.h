@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file Number.h
-/// \brief 数字转字符串工具
+/// \brief Number to String Utility
 /// \author kaoru
-/// \date 2023年11月1日
-
+/// \date November 1, 2023
 
 #pragma once
 
@@ -30,7 +29,7 @@
 #endif
 
 namespace sese::text {
-/// 数字转字符串工具
+/// Number to String Utility
 class Number final : public NotInstantiable {
 public:
     Number() = delete;
@@ -66,7 +65,7 @@ public:
             count += 1;
         } while (number > 0);
 
-        // 直接反转 builder 中部分内存
+        // Directly invert part of the memory in the builder
         std::reverse(static_cast<char *>(builder.buf()) + builder.length() - count, static_cast<char *>(builder.buf()) + builder.length());
     }
 

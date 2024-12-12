@@ -15,8 +15,8 @@
 /**
  * @file Endian.h
  * @author kaoru
- * @brief 字节序转换
- * @date 2022年4月3日
+ * @brief Endianness conversion
+ * @date April 3, 2022
  */
 
 #pragma once

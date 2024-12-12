@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file CommandLine.h
-/// \brief 命令行参数类
+/// \brief Command line argument class
 /// \author kaoru
-/// \date 2023年10月26日
+/// \date October 26, 2023
 
 
 #pragma once
@@ -26,7 +26,7 @@
 
 namespace sese::system {
 
-/// 命令行参数初始化任务
+/// Command line arguments initialize the task
 class CommandLineInitiateTask final : public InitiateTask {
 public:
     explicit CommandLineInitiateTask(int argc, const char *const *argv);
@@ -36,8 +36,8 @@ public:
     int32_t destroy() noexcept override;
 };
 
-/// 命令行参数类
-class  CommandLine final : public NotInstantiable {
+/// Command line argument class
+class CommandLine final : public NotInstantiable {
 public:
     CommandLine() = delete;
 

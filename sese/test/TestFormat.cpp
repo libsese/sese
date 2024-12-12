@@ -41,14 +41,14 @@ struct sese::text::overload::Formatter<Point> {
 
 TEST(TestFormat, FmtCtx) {
     {
-        // 最简格式
+        // Minimal format
         std::string args;
         FmtCtx ctx("{}");
         EXPECT_TRUE(ctx.parsing(args));
         EXPECT_EQ("", args);
     }
     {
-        // 参数外转义字符1
+        // Parameter escape character 1
         std::string args;
         FmtCtx ctx("\\{\\} {}");
         EXPECT_TRUE(ctx.parsing(args));
@@ -56,7 +56,7 @@ TEST(TestFormat, FmtCtx) {
         EXPECT_EQ("{} ", ctx.builder.toString());
     }
     {
-        // 参数外转义字符2
+        // Parameter escape character 2
         std::string args;
         FmtCtx ctx("\\}\\{ {}");
         EXPECT_TRUE(ctx.parsing(args));
@@ -64,7 +64,7 @@ TEST(TestFormat, FmtCtx) {
         EXPECT_EQ("}{ ", ctx.builder.toString());
     }
     {
-        // 参数外转义字符3
+        // Parameter escape character 3
         std::string args;
         FmtCtx ctx("ABC\\}EDF\\{ {}");
         EXPECT_TRUE(ctx.parsing(args));
@@ -72,14 +72,14 @@ TEST(TestFormat, FmtCtx) {
         EXPECT_EQ("ABC}EDF{ ", ctx.builder.toString());
     }
     {
-        // 参数内转义字符1
+        // Escape characters within parameters 1
         std::string args;
         FmtCtx ctx("{\\{,\\}}");
         EXPECT_TRUE(ctx.parsing(args));
         EXPECT_EQ("{,}", args);
     }
     {
-        // 参数内转义字符2
+        // Escape characters within parameters 2
         std::string args;
         FmtCtx ctx("{ABC\\},EFG\\{}");
         EXPECT_TRUE(ctx.parsing(args));

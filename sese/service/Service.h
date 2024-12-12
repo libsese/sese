@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Service.h
-/// \brief 服务接口
+/// \brief Service Interface
 /// \author kaoru
-/// \date 2024年03月4日
+/// \date March 4, 2024
 
 #pragma once
 
@@ -26,7 +26,7 @@
 
 namespace sese::service {
 
-/// @brief 服务接口类
+/// @brief Service Interface
 class Service {
 public:
     using Ptr = std::unique_ptr<Service>;

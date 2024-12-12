@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file Http2Frame.h
-* @author kaoru
-* @version 0.1
-* @brief HTTP 2 帧信息
-* @date 2023年9月13日
-*/
+ * @file Http2Frame.h
+ * @author kaoru
+ * @version 0.1
+ * @brief HTTP 2 Frame Information
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -71,7 +71,7 @@ constexpr static uint8_t SETTINGS_FLAGS_ACK = 0x1;
 
 constexpr static auto MAGIC_STRING = "PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n";
 
-/// HTTP 2 帧信息
+/// HTTP 2 Frame Information
 struct Http2FrameInfo {
     uint32_t length;
     uint8_t type;
@@ -79,7 +79,7 @@ struct Http2FrameInfo {
     uint32_t ident;
 };
 
-/// HTTP 2 帧信息（包含缓存）
+/// HTTP 2 Frame Information (including buffer)
 struct Http2Frame {
     using Ptr = std::unique_ptr<Http2Frame>;
 
@@ -92,24 +92,25 @@ struct Http2Frame {
 
     explicit Http2Frame(size_t frame_size);
 
-    /// 获取包括帧头在内的缓存
-    /// @return 缓存
+    /// Get buffer including frame header
+    /// @return Buffer
     [[nodiscard]] char *getFrameBuffer() const;
 
-    /// 获取包括帧头在内的缓存大小
-    /// @return 缓存大小
+    /// Get buffer length including frame header
+    /// @return Buffer length
     [[nodiscard]] size_t getFrameLength() const;
 
-    /// 获取不包括帧头在内的缓存
-    /// @return 缓存
+    /// Get buffer excluding frame header
+    /// @return Buffer
     [[nodiscard]] char *getFrameContentBuffer() const;
 
-    /// 获取不包括帧头在内的缓存大小
-    /// @return 缓存大小
+    /// Get buffer length excluding frame header
+    /// @return Buffer length
     [[nodiscard]] size_t getFrameContentLength() const;
 
-    /// 根据已有信息构建帧头
+    /// Build frame header based on existing information
     void buildFrameHeader() const;
 };
+
 
 } // namespace sese::net::http

@@ -13,19 +13,16 @@
 // limitations under the License.
 
 /// \file Semaphore.h
-/// \brief 命名信号量
+/// \brief Named Semaphore
 /// \author kaoru
-/// \date 2024年03月29日
-
+/// \date March 29, 2024
 
 #ifndef SESE_CORE_SEMAPHORE_H
 #define SESE_CORE_SEMAPHORE_H
 
-
 #include <sese/Config.h>
 
 #include <chrono>
-
 
 #ifndef SESE_PLATFORM_WINDOWS
 #include <semaphore.h>
@@ -33,28 +30,28 @@
 
 namespace sese::system {
 
-/// 命名信号量
+/// Named Semaphore
 class Semaphore final {
 public:
     using Ptr = std::unique_ptr<Semaphore>;
 
-    /// 创建一个命名信号量
-    /// \param name 名称
-    /// \param initial_count 初始计数，默认为 1 行为与互斥量一致
-    /// \retval nullptr 创建失败
+    /// Create a named semaphore
+    /// \param name Name
+    /// \param initial_count Initial count, default is 1 behaving like a mutex
+    /// \retval nullptr Creation failed
     static Semaphore::Ptr create(std::string name, uint32_t initial_count = 1);
 
     ~Semaphore();
 
-    /// 阻塞并等待至获取到资源
+    /// Block and wait until resource is acquired
     bool lock();
 
-    /// 释放当前资源
+    /// Release the current resource
     bool unlock();
 
-    /// 在一定时间内尝试获取资源
-    /// \param ms 单位为毫秒的等待时间，处于 APPLE 平台下时此参数无效
-    /// \return 是否获取成功
+    /// Try to acquire resource within a certain time
+    /// \param ms Waiting time in milliseconds, invalid on APPLE platforms
+    /// \return Whether acquisition is successful
     bool tryLock(std::chrono::milliseconds ms);
 
 private:
@@ -71,3 +68,4 @@ private:
 }
 
 #endif //SESE_CORE_SEMAPHORE_H
+

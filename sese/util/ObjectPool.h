@@ -15,8 +15,8 @@
 /**
  * @file ObjectPool.h
  * @author kaoru
- * @date 2022年7月8日
- * @brief 对象池
+ * @date July 8, 2022
+ * @brief Object pool
  * @version 0.2
  */
 
@@ -36,8 +36,8 @@
 
 namespace sese {
 
-/// \brief 对象池
-/// \tparam T 复用对象
+/// \brief Object pool
+/// \tparam T Reusable object type
 template<typename T>
 class ObjectPool
     : public std::enable_shared_from_this<ObjectPool<T>>,

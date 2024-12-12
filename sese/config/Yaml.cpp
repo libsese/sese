@@ -55,7 +55,7 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
         return {};
 
     auto result = Value::Dict();
-    // 对象无子元素
+    // object does not have children
     if (tokens_queue.empty())
         return Value(std::move(result));
     int count = std::get<0>(tokens_queue.front());
@@ -70,34 +70,32 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
                 if (current_tokens[1] != ":") {
                     return {};
                 }
-                // 普通键值对
+                // normal key-value
                 const std::string &key = current_tokens[0];
                 const std::string &value = current_tokens[2];
                 result.set(key, Yaml::parseBasic(value));
                 tokens_queue.pop();
             } else if (current_tokens.size() == 2) {
-                // 可能是空对象，也可能是新对象或新数组
+                // may be empty object or new object or new array
                 auto current_count_and_tokens = tokens_queue.front();
                 tokens_queue.pop();
                 if (tokens_queue.empty()) {
-                    // 不存在下一行且当前元素为 null
+                    // dose not exist next line, and current element is null
                     result.set(current_tokens[0], Value());
                 } else {
-                    // 存在下一行
+                    // the next line is exist
                     auto next_count_and_tokens = tokens_queue.front();
                     auto next_count = std::get<0>(next_count_and_tokens);
                     auto next_tokens = std::get<1>(next_count_and_tokens);
                     if (next_count == count) {
-                        // 当前行元素是 null
-                        // 下一个元素依然是本对象所属
+                        // current element is null, and next element is belong to this object
                         result.set(current_tokens[0], Value());
                     } else if (next_count < count) {
-                        // 当前行元素是 null
-                        // 下一个元素不是本对象所属
+                        // current element is null, and next element is not belong to this object
                         result.set(current_tokens[0], Value());
                         return Value(std::move(result));
                     } else if (next_count > count) {
-                        // 新的数组
+                        // new array
                         if (next_tokens[0] == "-") {
                             if (auto value_object = parseArray(tokens_queue, level - 1); value_object.isList()) {
                                 result.set(current_tokens[0], std::move(value_object));
@@ -105,7 +103,7 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
                                 return {};
                             }
                         }
-                        // 新的对象
+                        // new object
                         else {
                             if (auto value_object = parseObject(tokens_queue, level - 1); value_object.isDict()) {
                                 result.set(current_tokens[0], std::move(value_object));
@@ -117,10 +115,10 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
                 }
             }
         } else if (count > current_count) {
-            // 当前对象结束
+            // end of current object
             return Value(std::move(result));
         }
-        // 错误 - 这几乎不可能发生
+        // it should not happen
         // GCOVR_EXCL_START
         else {
             tokens_queue.pop();
@@ -136,7 +134,7 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
         return {};
 
     auto result = Value::List();
-    // 对象无子元素
+    // object does not have children
     if (tokens_queue.empty())
         return Value(std::move(result));
     int count = std::get<0>(tokens_queue.front());
@@ -161,11 +159,11 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                 // result->push(valueObject);
                 tokens_queue.pop();
             } else if (current_tokens.size() == 3) {
-                // 新的对象或数组
+                // new object or new array
                 auto current_count_and_tokens = tokens_queue.front();
                 tokens_queue.pop();
                 if (tokens_queue.empty()) {
-                    // 不存在下一行，跳过该对象
+                    // does not exist next line, skip this object
                     return Value(std::move(result));
                 } else {
                     auto next_count_and_tokens = tokens_queue.front();
@@ -186,7 +184,7 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                             }
                         }
                     }
-                    // 错误 - 这几乎不会发生
+                    // it should not happen
                     // GCOVR_EXCL_START
                     else {
                         tokens_queue.pop();
@@ -208,10 +206,10 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
                 return {};
             }
         } else if (count > current_count) {
-            // 当前数组结束
+            // end of current array
             return Value(std::move(result));
         }
-        // 错误 - 这几乎不会发生
+        // is shuld not happen
         // GCOVR_EXCL_START
         else {
             tokens_queue.pop();
@@ -262,10 +260,10 @@ ret:
 std::vector<std::string> sese::Yaml::tokenizer(const std::string &line) noexcept {
     std::vector<std::string> vector;
     sese::text::StringBuilder builder(1024);
-    bool is_str = false; // 是否是字符串
-    bool quot1 = false;  // 单引号 - 不转义
-    bool quot2 = false;  // 双引号 - 转义
-    bool tran = false;   // 是否转义
+    bool is_str = false; // Is a string?
+    bool quot1 = false;  // Is single quotes?
+    bool quot2 = false;  // Is double quotes?
+    bool tran = false;   // Is escape characters?
     for (decltype(auto) ch: line) {
         if (quot1) {
             if (ch == '\'') {
@@ -278,7 +276,7 @@ std::vector<std::string> sese::Yaml::tokenizer(const std::string &line) noexcept
             }
         } else if (quot2) {
             if (tran) {
-                // 不再自动处理转义字符
+                // Do not automatically handle escape characters
                 // switch (ch) {
                 //     case 'n':
                 //         stream << '\n';
@@ -370,10 +368,10 @@ Value Yaml::parse(sese::io::InputStream *input, size_t level) {
     if (top_tokens.empty())
         return {};
     if (top_tokens[0] == "-") {
-        // 根元素是数组
+        // The root element is an array
         return parseArray(tokens_queue, level);
     } else {
-        // 根元素是对象
+        // The root element is an object
         return parseObject(tokens_queue, level);
     }
 }

@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Version.h
-/// \brief 版本类
+/// \brief Version Class
 /// \author kaoru
-/// \date 2023年10月28日
+/// \date October 28, 2023
 
 #pragma once
 
@@ -25,7 +25,7 @@
 
 namespace sese {
 
-/// \brief 版本类
+/// \brief Version Class
 class Version {
     uint16_t major_;
     uint16_t minor_;
@@ -46,12 +46,12 @@ public:
 
     static std::optional<Version> parse(const std::string &version);
 
-    /// 获取完整的版本号字符串
-    /// \return 完整的版本号字符串
+    /// Get the full version string
+    /// \return Full version string
     [[nodiscard]] std::string toString() const;
 
-    /// 获取简短的版本号字符串，只包含非零部分，例如 "0.2.3"、"1.2"
-    /// \return 简短的版本号字符串
+    /// Get the short version string, containing only non-zero parts, e.g., "0.2.3", "1.2"
+    /// \return Short version string
     [[nodiscard]] std::string toShortString() const;
 
     bool operator==(const Version &other) const;
@@ -63,3 +63,4 @@ public:
 };
 
 } // namespace sese
+

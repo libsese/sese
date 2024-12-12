@@ -21,9 +21,9 @@ using sese::Value;
 
 // GCOVR_EXCL_START
 
-/// 判断一个 token 是否为 json 关键字
-/// \param str token
-/// \return 结果
+/// Checks if a token is a JSON keyword
+/// \param str The token
+/// \return The result
 inline bool isKeyword(const char *str) {
     if (str[0] == '}' || str[0] == ']' || str[0] == ':' || str[0] == ',') {
         return true;
@@ -45,17 +45,17 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
             case ']':
             case ',':
             case ':':
-                // 一般的 token
+                // General token
                 tokens.push({ch});
                 break;
             case '\"':
                 builder.append("\"");
-                // 字符串 token，需要处理转义符号
+                // String token, need to handle escape characters
                 while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
-                    // 说明是转义字符
+                    // Is escape character
                     if (ch == '\\') {
                         if (input_stream->read(&ch, 1 * sizeof(char)) == 0) {
-                            // 字符串不完整
+                            // String is incomplete
                             return false;
                         }
                         builder << '\\';
@@ -71,21 +71,24 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
                 }
                 break;
             default:
-                // 普通的值 token
-                if (sese::isSpace(ch)) break;
+                // Normal token
+                if (sese::isSpace(ch))
+                    break;
                 builder.append(ch);
                 while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
-                    //fix: 此处多加关键字判断
+                    // fix: There need to be more keywords
                     if (isKeyword(&ch)) {
                         tokens.push(builder.toString());
                         builder.clear();
                         tokens.push({ch});
                         break;
-                    } else if (sese::isSpace(ch)) {
+                    }
+                    if (sese::isSpace(ch)) {
                         tokens.push(builder.toString());
                         builder.clear();
                         break;
-                    } else if (ch == ',') {
+                    }
+                    if (ch == ',') {
                         tokens.push(builder.toString());
                         builder.clear();
                         tokens.emplace(",");
@@ -101,7 +104,9 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
 
 Value Json::parseObject(Json::Tokens &tokens, size_t level) {
     bool has_end = false;
-    if (level == 0) { return {}; }
+    if (level == 0) {
+        return {};
+    }
     auto object = Value::Dict();
     while (!tokens.empty()) {
         auto name = tokens.front();
@@ -110,63 +115,68 @@ Value Json::parseObject(Json::Tokens &tokens, size_t level) {
             has_end = true;
             break;
         } else if (name == ",") {
-            // token 为 ',' 说明接下来还有键值对
-            if (tokens.empty()) return {};
+            // token is ',' means there are more key-value pairs
+            if (tokens.empty())
+                return {};
             name = tokens.front();
             tokens.pop();
         }
         name = name.substr(1, name.size() - 2);
 
-        if (tokens.empty()) return {};
-        // 此处 token 必是 ":"
-        if (tokens.front() != ":") return {};
+        if (tokens.empty())
+            return {};
+        // The token must be ":"
+        if (tokens.front() != ":")
+            return {};
         tokens.pop();
 
-        if (tokens.empty()) return {};
+        if (tokens.empty())
+            return {};
         auto value = tokens.front();
         tokens.pop();
 
         if (value == "{") {
-            // 值是一个 ObjectData
+            // value is a ObjectData
             level--;
             auto sub_object = parseObject(tokens, level);
             if (sub_object.isNull()) {
-                // 解析错误，直接返回
+                // parse error, just return
                 return {};
             } else {
                 object.set(name, std::move(sub_object));
             }
             level++;
         } else if (value == "[") {
-            // 值是一个 ArrayData
+            // value is an ArrayData
             level--;
             auto array = parseArray(tokens, level);
             if (array.isNull()) {
-                // 解析错误，直接返回
+                // parse error, just return
                 return {};
             } else {
                 object.set(name, std::move(array));
             }
             level++;
         } else {
-            // 本应存在值的地方实际上是关键字
-            if (isKeyword(value.c_str())) return {};
-            // 值是一个 BasicData
+            // value should be a BasicData, but it may be a keyword
+            if (isKeyword(value.c_str()))
+                return {};
             object.set(name, parseBasic(value));
         }
     }
 
     if (has_end) {
         return Value(std::move(object));
-    } else {
-        return {};
     }
+    return {};
 }
 
 Value Json::parseArray(sese::Json::Tokens &tokens, size_t level) {
-    // 数组存在关键字检查，不会触发 end with 检查
+    // the array exists keyword check, will not trigger end with check
     // bool hasEnd = false;
-    if (level == 0) { return {}; }
+    if (level == 0) {
+        return {};
+    }
     auto array = Value::List();
     while (!tokens.empty()) {
         auto token = tokens.front();
@@ -175,38 +185,39 @@ Value Json::parseArray(sese::Json::Tokens &tokens, size_t level) {
             // hasEnd = true;
             break;
         } else if (token == ",") {
-            // token 为 ',' 说明接下来还有值
-            if (tokens.empty()) return {};
+            // token is ',' means there are more values
+            if (tokens.empty())
+                return {};
             token = tokens.front();
             tokens.pop();
         }
 
         if (token == "{") {
-            // 值是一个 ObjectData
+            // value is a ObjectData
             level--;
             auto sub_object = parseObject(tokens, level);
             if (sub_object.isNull()) {
-                // 解析错误，直接返回
+                // parse error, just return
                 return {};
             } else {
                 array.append(std::move(sub_object));
             }
             level++;
         } else if (token == "[") {
-            // 值是一个 ArrayData
+            // value is an ArrayData
             level--;
             auto sub_array = parseArray(tokens, level);
             if (sub_array.isNull()) {
-                // 解析错误，直接返回
+                // parse error, just return
                 return {};
             } else {
                 array.append(std::move(sub_array));
             }
             level++;
         } else {
-            // 本应存在值的地方实际上是关键字
-            if (isKeyword(token.c_str())) return {};
-            // 值是一个 BasicData
+            // value should be a BasicData, but it may be a keyword
+            if (isKeyword(token.c_str()))
+                return {};
             array.append(parseBasic(token));
         }
     }
@@ -307,8 +318,9 @@ Value Json::parse(io::InputStream *input, size_t level) {
         return {};
     }
 
-    // 第一个 token 必是 '{'，直接弹出
-    if (tokens.front() != "{") return {};
+    // The first token must be '{', pop it
+    if (tokens.front() != "{")
+        return {};
     tokens.pop();
     return parseObject(tokens, level);
 }

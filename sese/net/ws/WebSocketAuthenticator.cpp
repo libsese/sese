@@ -40,10 +40,10 @@ void sese::net::ws::WebsocketAuthenticator::generateKey(uint8_t *key) {
 }
 
 std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> sese::net::ws::WebsocketAuthenticator::generateKeyPair() noexcept {
-    // 生成二进制 key
+    // Generate a binary key
     uint8_t buffer[16];
     generateKey(buffer);
-    // 生成字符串 key
+    // Generate a string key
     auto key_string = std::unique_ptr<char[]>(new char[25]);
     key_string.get()[24] = 0;
     {
@@ -52,7 +52,6 @@ std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> sese::net::ws::Webso
         Base64Converter::encode(&in, &out);
     }
 
-    // 拼接 key
     char buffer0[24 + 36];
     memcpy(buffer0 + 0, key_string.get(), 24);
     memcpy(buffer0 + 24, append_string, 36);
@@ -76,7 +75,6 @@ std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> sese::net::ws::Webso
 }
 
 bool sese::net::ws::WebsocketAuthenticator::verify(const char *key, const char *result) noexcept {
-    // 拼接 key
     char buffer0[24 + 36];
     memcpy(buffer0 + 0, key, 24);
     memcpy(buffer0 + 24, append_string, 36);
@@ -100,7 +98,6 @@ bool sese::net::ws::WebsocketAuthenticator::verify(const char *key, const char *
 }
 
 std::unique_ptr<char[]> sese::net::ws::WebsocketAuthenticator::toResult(const char *key) noexcept {
-    // 拼接 key
     char buffer0[24 + 36];
     memcpy(buffer0 + 0, key, 24);
     memcpy(buffer0 + 24, append_string, 36);

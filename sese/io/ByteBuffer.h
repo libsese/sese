@@ -14,10 +14,11 @@
 
 /**
  * @file ByteBuffer.h
- * @brief 线程安全的字节缓冲类
+ * @brief Thread-safe byte buffer class
  * @author kaoru
- * @date 2022年4月5日
+ * @date April 5, 2022
  */
+
 #pragma once
 
 #include "sese/io/AbstractByteBuffer.h"
@@ -30,7 +31,7 @@
 namespace sese::io {
 
 /**
- * @brief 线程安全的字节缓冲类
+ * @brief Thread-safe byte buffer class
  */
 class  ByteBuffer final : AbstractByteBuffer {
 public:

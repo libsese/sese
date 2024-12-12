@@ -14,9 +14,9 @@
 
 /**
  * @file UrlHelper.h
- * @date 2022年6月6日
+ * @date June 6, 2022
  * @author kaoru
- * @brief Url 解析器
+ * @brief URL Parser
  */
 
 #pragma once
@@ -29,8 +29,8 @@
 
 namespace sese::net::http {
 
-/// Url 解析器
-class  Url final {
+/// URL Parser
+class Url final {
 public:
     Url() = default;
 
@@ -53,13 +53,13 @@ public:
     }
 
 private:
-    /// 协议
+    /// Protocol
     std::string protocol;
-    /// 域名
+    /// Host
     std::string host;
-    /// 资源
+    /// Resource
     std::string url;
-    /// 查询
+    /// Query
     std::string query;
 };
 } // namespace sese::net::http

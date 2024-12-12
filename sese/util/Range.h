@@ -14,8 +14,8 @@
 
 /// \file Range.h
 /// \author kaoru
-/// \brief 区间类
-/// \date 2023年9月7日
+/// \brief Range class
+/// \date September 7, 2023
 /// \version 0.1
 
 #pragma once
@@ -24,22 +24,22 @@
 
 namespace sese {
 
-/// \brief 区间类
-/// \tparam TYPE 值类型
+/// \brief Range class
+/// \tparam TYPE Value type
 template<class TYPE>
 class Range {
 public:
-    /// 该构造函数只能用于正数且递增的区间
-    /// \param count 区间大小
+    /// This constructor is only for positive and incrementing ranges
+    /// \param count The size of the range
     /// \note [1, count]
     explicit Range(TYPE count) {
         this->beginNumber = 1;
         this->endNumber = count;
     }
 
-    /// 该构造函数用于任意区间无关递增或递减的区间
-    /// \param begin 起始
-    /// \param end 结束
+    /// This constructor is for any range, regardless of whether it is incrementing or decrementing
+    /// \param begin Start
+    /// \param end End
     /// \note [begin, end]
     Range(TYPE begin, TYPE end) {
         if (begin > end) {
@@ -50,7 +50,7 @@ public:
         this->endNumber = end;
     }
 
-    /// 迭代器
+    /// Iterators
     class Iterator {
     public:
         using difference_type = int64_t;
@@ -88,7 +88,7 @@ public:
         TYPE curNumber = 0;
     };
 
-    /// 反向迭代器
+    /// Reverse Iterator
     class ReverseIterator {
     public:
         using difference_type = int64_t;
@@ -142,9 +142,9 @@ public:
         return ReverseIterator(beginNumber - 1);
     }
 
-    /// 判断一个值是否处于区间内
-    /// \param num 欲判断的值
-    /// \return 结果
+    /// Check if a value is within the range
+    /// \param num The value to check
+    /// \return The result
     bool exist(const TYPE &num) const {
         return this->beginNumber <= num && this->endNumber >= num;
     }

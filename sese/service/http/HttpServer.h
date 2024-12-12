@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file HttpServer.h
-/// @brief Http 服务器
+/// @brief HTTP Server
 /// @author kaoru
-/// @date 2024年05月1日
+/// @date May 1, 2024
 
 #pragma once
 
@@ -24,61 +24,61 @@
 
 namespace sese::service::http {
 
-/// Http 服务器
-/// @note 调用优先级 Filter > Mount Point(Filter) > Controller = Servlet，互相独立不可转换
+/// HTTP Server
+/// @note Invocation priority: Filter > Mount Point (Filter) > Controller = Servlet, independent and non-convertible
 class HttpServer final {
 public:
-    /// 注册控制器
-    /// @tparam CTL 控制器类型
-    /// @tparam ARGS 实例化参数类型
-    /// @param args 实例化参数
+    /// Register controller
+    /// @tparam CTL Controller type
+    /// @tparam ARGS Instantiation parameter types
+    /// @param args Instantiation parameters
     template<class CTL, class... ARGS>
     void regController(ARGS &&...args);
 
-    /// 注册文件系统挂载点
-    /// @param uri_prefix URI 前缀
-    /// @param local 本地路径
+    /// Register file system mount point
+    /// @param uri_prefix URI prefix
+    /// @param local Local path
     void regMountPoint(const std::string &uri_prefix, const std::string &local);
 
-    /// 注册过滤器
-    /// \param uri_prefix URI 前缀
-    /// \param callback 回调函数，函数返回 true 需要下一步处理即继续判断之后的 Mount Point 以及 Controller 等，反之则拦截当前请求并直接响应
+    /// Register filter
+    /// \param uri_prefix URI prefix
+    /// \param callback Callback function. If the function returns true, it needs further processing, i.e., continue to determine subsequent mount points, controllers, etc. Otherwise, intercept the current request and respond directly.
     void regFilter(const std::string &uri_prefix, const HttpService::FilterCallback &callback);
 
-    /// 注册 Http 应用
-    /// @param servlet Http 应用
+    /// Register HTTP application
+    /// @param servlet HTTP application
     void regServlet(const net::http::Servlet &servlet);
 
-    /// 此方法用于注册一个后置 Filter，它将在其他所有 Servlet、控制器和挂载点处理异常之后执行。
-    /// 如果需要对响应进行最终修改或处理（自定义404等页面），可以使用此功能。
-    /// 返回值表示是否拦截做了处理，拦截后响应类型将会变为 Controller，并接受相关处理。
-    /// \param tail_filter 待注册的后置 Http Filter，用于处理请求
+    /// This method is used to register a post-processing filter that will be executed after other all servlets, controllers, and mount points process exceptions.
+    /// If you need to finally modify or process the response (e.g., custom 404 pages), you can use this feature.
+    /// The return value indicates whether the interception has been processed. After interception, the response type will change to Controller and accept the relevant processing.
+    /// \param tail_filter The post-processing HTTP filter to register, used to handle requests
     void regTailFilter(const HttpService::FilterCallback &tail_filter);
 
-    /// 设置 Keepalive
-    /// @param seconds Keepalive 时间，最小值为 5
+    /// Set keepalive
+    /// @param seconds Keepalive duration, minimum value is 5
     void setKeepalive(uint32_t seconds);
 
-    /// 注册 Http 服务
-    /// @param address 监听地址
-    /// @param context SSL 服务上下文，为空则不启用 SSL
+    /// Register HTTP service
+    /// @param address Listening address
+    /// @param context SSL service context, if null, SSL is not enabled
     void regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context);
 
-    /// 设置服务器名称
-    /// @param name 服务器名称
+    /// Set server name
+    /// @param name Server name
     void setName(const std::string &name);
 
-    /// 设置连接回调函数，函数会在连接对象被创建前调用，SSL 连接尚未握手
-    /// @param callback 连接回调函数，函数返回 true 将继续正常处理，反之则直接丢弃该连接
+    /// Set connection callback function, the function will be called before the connection object is created, and the SSL connection has not yet been established
+    /// @param callback Connection callback function. If the function returns true, normal processing will continue, otherwise the connection will be discarded directly.
     void setConnectionCallback(const HttpService::ConnectionCallback &callback);
 
-    /// 启动服务
-    /// @return 结果
-    bool startup()const;
+    /// Start service
+    /// @return Result
+    bool startup() const;
 
-    /// 终止服务
-    /// @return 结果
-    bool shutdown()const;
+    /// Stop service
+    /// @return Result
+    bool shutdown() const;
 
 private:
     std::string name;

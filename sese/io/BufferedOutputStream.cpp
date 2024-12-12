@@ -30,19 +30,19 @@ BufferedOutputStream::~BufferedOutputStream() noexcept {
 
 int64_t BufferedOutputStream::write(const void *buf, size_t length) {
     /*
-     * 如果写入所需字节数需要刷新缓存两次一下，
-     * 则暂时写入缓存，避免频繁的IO操作；
-     * 如果写入所需字节数需要刷新缓存两次及两次以上，
-     * 则处理原先的缓存后，直接操作裸流，减少拷贝次数
+     * If the number of bytes required to write needs to flush the cache less than twice,
+     * then temporarily write to the cache to avoid frequent I/O operations;
+     * If the number of bytes required to write needs to flush the cache two times or more,
+     * then after processing the original cache, operate directly on the raw stream to reduce the number of copies
      */
     if (length <= this->cap) {
         if (this->cap - this->len >= length) {
-            // 字节数足够 - 不需要刷新
+            // The number of bytes is sufficient - no refresh is required
             memcpy(static_cast<char *>(this->buffer) + this->len, buf, length);
             this->len += length;
             return static_cast<int64_t>(length);
         } else {
-            // 字节数不足 - 需要刷新
+            // Insufficient bytes - needs to be refreshed
             size_t expect = len - pos;
             if (expect == flush()) {
                 memcpy(this->buffer, (char *) buf, length);
@@ -50,17 +50,16 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
                 expect = length;
                 return static_cast<int64_t>(expect);
             } else {
-                // flush 失败
+                // Failed to flush
                 return -1;
             }
         }
     } else {
-        // 直接写入
         if (this->len != this->pos) {
-            // 缓存区有剩余，需要刷新
+            // There is a surplus in the buffer and needs to be flush
             size_t expect = len - pos;
             if (expect != flush()) {
-                // flush 失败
+                // Failed to flush
                 return -1;
             }
         }
@@ -78,7 +77,7 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
 }
 
 int64_t BufferedOutputStream::flush() noexcept {
-    // 将已有未处理数据立即写入流
+    // Write existing unprocessed data to the stream immediately
     auto wrote = source->write(static_cast<char *>(buffer) + pos, len - pos);
     pos = 0;
     len = 0;

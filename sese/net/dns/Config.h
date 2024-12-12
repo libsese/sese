@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file Config.h
-/// @brief DNS 配置
+/// @brief DNS Configuration
 /// @author kaoru
-/// @date 2024年10月30日
+/// @date October 30, 2024
 
 #pragma once
 

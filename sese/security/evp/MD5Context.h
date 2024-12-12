@@ -13,12 +13,12 @@
 // limitations under the License.
 
 /**
-* @file MD5Context.h
-* @author kaoru
-* @version 0.1
-* @brief EVP MD5 算法上下文
-* @date 2023年9月13日
-*/
+ * @file MD5Context.h
+ * @author kaoru
+ * @version 0.1
+ * @brief EVP MD5 algorithm context
+ * @date September 13, 2023
+ */
 
 #pragma once
 
@@ -26,7 +26,7 @@
 
 namespace sese::security::evp {
 
-/// EVP MD5 算法上下文
+/// EVP MD5 algorithm context
 class  MD5Context : public Context {
 public:
     MD5Context() noexcept;

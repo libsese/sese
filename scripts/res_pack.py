@@ -11,6 +11,30 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
 
 
 import os
@@ -60,16 +84,16 @@ def escape_special_chars(ch: bytes) -> bytes:
 
 def write_binary(output, data, length):
     for i in range(0, length):
-        # 方案1
+        # Solution 1
         # output.write(('\\x{:02x}'.format(data[i])).encode('utf-8'))
-        # 方案2
-        # 如果比特是可打印的，则直接输出字符，否则转义
+        # Solution 2
+        # If the bits are printable, the characters are output directly, otherwise they are escaped
         # if 32 <= data[i] <= 126:
         #     output.write(data[i:i + 1])
         # else:
         #     output.write('\\x{:02x}'.format(data[i]).encode('utf-8'))
-        # 方案3
-        # 转义字符为字符串的转义形式
+        # Solution 3
+        # An escape character is an escape form of a string
         if 7 <= data[i] <= 13 or data[i] == 34 or data[i] == 92:
             output.write(escape_special_chars(data[i : i + 1]))
         else:

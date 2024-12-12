@@ -14,10 +14,10 @@
 
 /**
  * @file RandomUtil.h
- * @brief 随机工具类
+ * @brief Random utility class
  * @author kaoru
  * @version 0.1
- * @date 2023年10月1日
+ * @date October 1, 2023
  */
 
 #pragma once
@@ -26,7 +26,7 @@
 #include <random>
 
 namespace sese {
-/// 随机工具类
+/// Random utility class
 class RandomUtil {
 public:
     static constexpr int REQUIRED_UPPER_LETTER = 1;

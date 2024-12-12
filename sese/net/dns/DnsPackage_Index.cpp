@@ -23,7 +23,7 @@
 using sese::net::dns::DnsPackage;
 
 DnsPackage::Index::Index(std::vector<Question> &questions, std::vector<Answer> &answers, std::vector<Authority> &authorities, std::vector<Additional> &additionals) {
-    // 建立索引
+    // Indexing
     std::map<std::string, CompressIndex> compress_string_index;
     uint16_t index = 0;
 #define BUILD_INDEX(object_list)                                                              \
@@ -59,7 +59,7 @@ DnsPackage::Index::Index(std::vector<Question> &questions, std::vector<Answer> &
     BUILD_INDEX(authorities);
     BUILD_INDEX(additionals);
 #undef BUILD_INDEX
-    // 索引换键
+    // Index keying
     compress_index.reserve(compress_string_index.size());
     std::transform(
         compress_string_index.begin(),

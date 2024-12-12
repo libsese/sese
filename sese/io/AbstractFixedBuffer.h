@@ -14,9 +14,9 @@
 
 /**
  * @file AbstractFixedBuffer.h
- * @brief 固定大小的字节缓冲区类
+ * @brief Fixed-size byte buffer class
  * @author kaoru
- * @date 2023年9月13日
+ * @date September 13, 2023
  */
 
 #pragma once
@@ -26,8 +26,8 @@
 
 namespace sese::io {
 
-/// 固定大小的字节缓冲区类
-class  AbstractFixedBuffer : public Stream, public PeekableStream {
+/// Fixed-size byte buffer class
+class AbstractFixedBuffer : public Stream, public PeekableStream {
 public:
     explicit AbstractFixedBuffer(size_t size) noexcept;
     ~AbstractFixedBuffer() noexcept override;

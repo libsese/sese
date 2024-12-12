@@ -32,13 +32,14 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     std::map<std::string, NetworkInterface> map;
     struct ifaddrs *p_if_address = nullptr;
 
-    // 这些信息仅用于获取网卡名称、 IPv4 和 mac 信息
-    // glibc 2.3.3 以下不支持使用其获取 IPv6 相关信息
+    // These informations are used only to retrieve network card name, IPv4, and MAC information
+    // glibc versions below 2.3.3 do not support retrieving IPv6-related information
     getifaddrs(&p_if_address);
 
     auto p_address = p_if_address;
     while (p_address) {
-        // 此处触发概率低，目前仅能在有隧道接口的服务器上复现
+        // The trigger probability here is low,
+        // and it can only be reproduced on servers with tunnel interfaces
         // GCOVR_EXCL_START
         if (p_address->ifa_addr == nullptr) {
             p_address = p_address->ifa_next;
@@ -68,9 +69,9 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
 
     freeifaddrs(p_if_address);
 
-    // 用于获取 IPv6 信息
+    // Used to obtain IPv6 information
     FILE *f = fopen("/proc/net/if_inet6", "r");
-    // 此处为假则表示不存在该配置文件，取消获取 IPv6 信息
+    // If it is false, the configuration file does not exist, and the IPv6 information is not obtained
     if (f != nullptr) { // GCOVR_EXCL_LINE
         int scope, prefix;
         unsigned char ipv6[16];
@@ -99,7 +100,7 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
                       &scope,
                       name)) {
             auto iterator = map.find(name);
-            // 此处不可能为假，因为一定会存在 mac 地址信息
+            // It can't be false here, because there must be MAC address information
             // if (iterator != map.end()) {
             inet_ntop(AF_INET6, ipv6, address, sizeof(address));
             auto addr = sese::net::IPv6Address::create(address, 0);
@@ -110,10 +111,9 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
         fclose(f);
     }
 
-    // 整合信息
     interfaces.reserve(map.size());
     for (decltype(auto) i: map) {
-        // 防止出现空 name
+        // Prevent empty names
         i.second.name = i.first;
         interfaces.emplace_back(i.second);
     }

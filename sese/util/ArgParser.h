@@ -14,11 +14,12 @@
 
 /**
  * @file ArgParser.h
- * @brief 命令行参数解析类
+ * @brief Command line argument parsing class
  * @author kaoru
- * @date 2023年2月22日
+ * @date February 22, 2023
  * @version 0.2
  */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -32,7 +33,7 @@
 namespace sese {
 
 /**
- * @brief 命令行参数解析类
+ * @brief Command line argument parsing class
  */
 class ArgParser {
 public:
@@ -42,23 +43,23 @@ public:
     ArgParser() = default;
 
     /**
-     * 初始化解析器
-     * @param argc 参数个数
-     * @param argv 实际参数
-     * @return 解析是否成功
+     * Initialize parser
+     * @param argc Number of arguments
+     * @param argv Actual arguments
+     * @return Whether parsing was successful
      */
     bool parse(int32_t argc, const char *const *argv) noexcept;
 
     /**
-     * @return 返回整个参数 Map
+     * @return Returns the entire parameter map
      */
     [[nodiscard]] const std::map<std::string, std::string> &getKeyValSet() const noexcept;
 
     /**
-     * 根据参数名称获取参数值
-     * @param key 参数名称
-     * @param default_value 参数默认值
-     * @return 返回参数值，参数不存在返回默认值
+     * Get the parameter value by parameter name
+     * @param key Parameter name
+     * @param default_value Default parameter value
+     * @return Returns the parameter value, or the default value if the parameter does not exist
      */
     [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &default_value) const noexcept;
 
@@ -68,30 +69,30 @@ public:
      * @return The value of the parameter if it exists.
      * @exception std::out_of_range If the key does not exist.
      */
-    const std::string &getValueByKey(const std::string &key) const;
+    [[nodiscard]] const std::string &getValueByKey(const std::string &key) const;
 
     /**
-     * 根据参数名称判断当前参数是否存在，适用于一些单独的不需要指定值的开关
-     * @param key 参数名称
-     * @return 该参数是否存在
+     * Determine whether the current parameter exists based on the parameter name, applicable for some individual switches that do not need specified values
+     * @param key Parameter name
+     * @return Whether the parameter exists
      */
     [[nodiscard]] bool exist(const std::string &key) const noexcept;
 
     /**
-     * 获取程序工作目录
-     * @return 工作目录字符串，结尾不带目录分割符
+     * Get the program working directory
+     * @return Working directory string, without a trailing directory separator
      */
     [[nodiscard]] const std::string &getCurrentPath() const { return currentPath; }
 
     /**
-     * 获取程序当前名称
-     * @return 程序当前名称
+     * Get the current program name
+     * @return Current program name
      */
     [[nodiscard]] const std::string &getFileName() const { return fileName; }
 
     /**
-     * 获取程序当前的绝对路径
-     * @return 程序路径
+     * Get the current absolute path of the program
+     * @return Program path
      */
     [[nodiscard]] const std::string &getFullPath() const { return fullPath; }
 

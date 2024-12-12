@@ -14,10 +14,10 @@
 
 /**
  * @file NativeIOCPServer_V1.h
- * @brief Windows 原生 IOCP 服务器
+ * @brief Native IOCP Server for Windows
  * @author kaoru
  * @version 0.1
- * @date 2023年9月25日
+ * @date September 25, 2023
  */
 
 #pragma once
@@ -38,7 +38,7 @@ namespace sese::_windows::iocp::v1 {
 class NativeIOCPServer;
 struct OverlappedWrapper;
 
-/// 原生 IOCP 操作上下文
+/// Native IOCP operational context
 class NativeContext final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
     friend class NativeIOCPServer;
     using IOBuf = sese::iocp::IOBuf;
@@ -68,57 +68,56 @@ class NativeContext final : public io::InputStream, public io::OutputStream, pub
 
 public:
     /**
-     * 上下文初始化
-     * @param p_wrapper Overlapped 包装器
+     * Context initialization
+     * @param p_wrapper Overlapped wrapper
      */
     explicit NativeContext(OverlappedWrapper *p_wrapper);
-    /// 析构函数
     ~NativeContext() override;
     /**
-     * 从当前连接中读取内容
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际读取大小
+     * Read content from the current connection
+     * @param buffer The buffer
+     * @param length The size of the buffer
+     * @return The actual amount of data read
      */
     int64_t read(void *buffer, size_t length) override;
     /**
-     * 向当前连接中写入内容
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际写入大小
+     * Write content to the current connection
+     * @param buffer The buffer
+     * @param length The size of the buffer
+     * @return The actual amount of data written
      */
     int64_t write(const void *buffer, size_t length) override;
     /**
-     * 从当前连接中读取内容，但不步进
-     * @param buffer 缓存
-     * @param length 缓存大小
-     * @return 实际读取大小
+     * Read content from the current connection without advancing
+     * @param buffer The buffer
+     * @param length The size of the buffer
+     * @return The actual amount of data read
      */
     int64_t peek(void *buffer, size_t length) override;
     /**
-     * 在当前连接中步进，不读取内容
-     * @param length 步进大小
-     * @return 实际步进大小
+     * Advance in the current connection without reading content
+     * @param length The amount to advance
+     * @return The actual amount advanced
      */
     int64_t trunc(size_t length) override;
     /**
-     * 获取当前上下文连接文件描述符
-     * @return 文件描述符
+     * Get the file descriptor of the current context connection
+     * @return The file descriptor
      */
     [[nodiscard]] int32_t getFd() const { return static_cast<int32_t>(NativeContext::fd); }
     /**
-     * 获取当前上下文额外数据
-     * @return 额外数据
+     * Get the additional data of the current context
+     * @return The additional data
      */
     [[nodiscard]] void *getData() const { return NativeContext::data; }
     /**
-     * 设置当前上下文额外数据
-     * @param p_data 额外数据
+     * Set the additional data of the current context
+     * @param p_data The additional data
      */
     void setData(void *p_data) { NativeContext::data = p_data; }
 };
 
-/// Overlapped 包装器
+/// Overlapped Wrapper
 struct OverlappedWrapper final {
     OVERLAPPED overlapped{};
     NativeContext ctx;
@@ -126,110 +125,109 @@ struct OverlappedWrapper final {
     OverlappedWrapper();
 };
 
-/// Windows 原生 IOCP 服务器
+/// Native IOCP Server for Windows
 class NativeIOCPServer {
 public:
     using Context = NativeContext;
     using DeleteContextCallback = std::function<void(Context *data)>;
 
-    /// 析构函数
     virtual ~NativeIOCPServer() = default;
 
     /**
-     * 初始化并启动服务器
-     * @return 初始化结果
+     * Initialize and start the server
+     * @return The result of initialization
      */
     bool init();
     /**
-     * 终止工作线程、释放系统资源并结束服务器
+     * Terminate worker threads, release system resources, and shut down the server
      */
     void shutdown();
     /**
-     * 投递读事件
-     * @param ctx 操作上下文
+     * Post a read event
+     * @param ctx The operation context
      */
     void postRead(Context *ctx);
     /**
-     * 投递写事件
-     * @param ctx 操作上下文
+     * Post a write event
+     * @param ctx The operation context
      */
     void postWrite(Context *ctx);
     /**
-     * 投递关闭事件
-     * @param ctx 操作上下文
+     * Post a close event
+     * @param ctx The operation context
      */
     void postClose(Context *ctx);
     /**
-     * 投递连接事件
-     * @param to 连接地址
-     * @param cli_ctx ssl 客户端上下文
-     * @param data 额外数据
+     * Post a connection event
+     * @param to The connection address
+     * @param cli_ctx The SSL client context
+     * @param data The additional data
      */
     void postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cli_ctx, void *data = nullptr);
     /**
-     * 设置超时事件
-     * @param ctx 操作上下文
-     * @param seconds 超时时间
+     * Set a timeout event
+     * @param ctx The operation context
+     * @param seconds The timeout duration
      */
     void setTimeout(Context *ctx, int64_t seconds);
     /**
-     * 取消超时事件
-     * @param ctx 操作上下文
+     * Cancel a timeout event
+     * @param ctx The operation context
      */
     void cancelTimeout(Context *ctx);
     /**
-     * 默认的上下文释放回调函数
+     * Default context release callback function
      */
     static void onDeleteContext(Context *) {}
     /**
-     * 连接握手完成回调函数
-     * @param ctx 操作上下文
+     * Connection handshake completion callback function
+     * @param ctx The operation context
      */
     virtual void onAcceptCompleted(Context *ctx) {}
     /**
-     * 读取事件触发回调函数
-     * @param ctx 操作上下文
+     * Read event trigger callback function
+     * @param ctx The operation context
      */
     virtual void onPreRead(Context *ctx) {}
     /**
-     * 读取事件完成回调函数
-     * @param ctx 操作上下文
+     * Read event completion callback function
+     * @param ctx The operation context
      */
     virtual void onReadCompleted(Context *ctx) {}
     /**
-     * 写入事件完成回调函数
-     * @param ctx 操作上下文
+     * Write event completion callback function
+     * @param ctx The operation context
      */
     virtual void onWriteCompleted(Context *ctx) {}
     /**
-     * 超时事件回调函数
-     * @param ctx 操作上下文
+     * Timeout event callback function
+     * @param ctx Operation context
      */
     virtual void onTimeout(Context *ctx) {}
     /**
-     * 连接前事件回调函数
-     * @param ctx 操作上下文
+     * Pre-connection event callback function
+     * @param ctx The operation context
      */
     virtual void onPreConnect(Context *ctx) {}
     /**
-     * 连接事件回调函数
-     * @param ctx 操作上下文
+     * Connection event callback function
+     * @param ctx The operation context
      */
     virtual void onConnected(Context *ctx){};
     /**
-     * ALPN 协议协商完成回调函数
-     * @param ctx 上下文
-     * @param in 协商内容
-     * @param in_length 协商内容长度
+     * ALPN protocol negotiation completion callback function
+     * @param ctx The context
+     * @param in The negotiation content
+     * @param in_length The length of the negotiation content
      */
     virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t in_length){};
     /**
-     * ALPN 协商回调函数
-     * @param out 对端期望内容
-     * @param out_length 对端期望内容长度
-     * @param in 响应内容
-     * @param in_length 响应内容长度
-     * @return ALPN 状态码
+     * ALPN negotiation callback function
+     * @param out The expected content from the peer
+     * @param out_length The length of the expected content from the peer
+     * @param in The response content
+     * @param in_length The length of the response content
+     * @return The ALPN status code
      */
     int onAlpnSelect(
             const uint8_t **out, uint8_t *out_length,
@@ -238,60 +236,60 @@ public:
 
 public:
     /**
-     * 设置当前服务绑定的 IP 地址，设置此选项服务器将会自动监听对应地址的端口
-     * @param addr 目标 IP
+     * Set the IP address bound to the current service. By setting this option, the server will automatically listen on the corresponding address's port.
+     * @param addr Target IP
      */
     void setAddress(const net::IPAddress::Ptr &addr) { NativeIOCPServer::address = addr; }
     /**
-     * 设置服务期望线程数量
-     * @param number_of_threads 线程数量
+     * Set the expected number of threads for the service
+     * @param number_of_threads Number of threads
      */
     void setThreads(size_t number_of_threads) { NativeIOCPServer::threads = number_of_threads; }
     /**
-     * 设置服务器监听所使用的 SSL 上下文
-     * @param ctx SSL 上下文
+     * Set the SSL context used for server listening
+     * @param ctx SSL context
      */
     void setServCtx(const security::SSLContext::Ptr &ctx) { NativeIOCPServer::sslCtx = ctx; }
     /**
-     * 设置服务器 ALPN 协商内容
-     * @param protos 协议协商内容
+     * Set the ALPN protocol negotiation content for the server
+     * @param protos Protocol negotiation content
      */
     void setServProtos(const std::string &protos) { NativeIOCPServer::servProtos = protos; }
     /**
-     * 设置客户端 ALPN 协商内容
-     * @param protos 协议协商内容
+     * Set the ALPN protocol negotiation content for the client
+     * @param protos Protocol negotiation content
      */
     void setClientProtos(const std::string &protos) { NativeIOCPServer::clientProtos = protos; }
     /**
-     * 设置服务器操作上下文销毁回调函数
-     * @param callback 回调函数
+     * Set the server operation context destruction callback function
+     * @param callback Callback function
      */
     void setDeleteContextCallback(const DeleteContextCallback &callback) { NativeIOCPServer::deleteContextCallback = callback; }
     /**
-     * 获取当前服务器监听 SSL 上下文
-     * @return SSL 上下文
+     * Get the current server listening SSL context
+     * @return SSL context
      */
     [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return NativeIOCPServer::sslCtx; }
     /**
-     * 获取当前服务的操作上下文销毁回调函数
-     * @return 回调函数
+     * Get the current service operation context destruction callback function
+     * @return Callback function
      */
     [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return NativeIOCPServer::deleteContextCallback; };
     /**
-     * 获取主动释放模式状态
-     * @return 主动释放模式状态
+     * Get the active release mode status
+     * @return Active release mode status
      */
     bool isActiveReleaseMode() const { return NativeIOCPServer::activeReleaseMode; }
 
 protected:
     /**
-     * 设置主动释放模式
-     * @param enable 是否启用
+     * Set the active release mode
+     * @param enable Whether to enable
      */
     void setActiveReleaseMode(bool enable) { NativeIOCPServer::activeReleaseMode = enable; }
     /**
-     * 释放操作上下文
-     * @param ctx 欲释放操作上下文
+     * Release the operation context
+     * @param ctx The operation context to be released
      */
     void releaseContext(Context *ctx);
 

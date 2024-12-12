@@ -14,9 +14,9 @@
 
 /**
  * @file UniReader.h
- * @brief 跨平台的文件读取器，主要适配 Windows，支持 UNICODE
- * @author kaoru
- * @date 2022年4月15日
+ * @brief Cross-platform file reader, primarily adapted for Windows, supports UNICODE
+ * @author Kaoru
+ * @date April 15, 2022
  */
 
 #pragma once
@@ -34,8 +34,8 @@
 namespace sese {
 
 /**
- * @brief 跨平台的文件读取器，主要适配 Windows，支持 UTF-8
- * @deprecated 请考虑使用 sese::text::TextReader
+ * @brief Cross-platform file reader, primarily adapted for Windows, supports UTF-8
+ * @deprecated Please consider using sese::text::TextReader
  */
 class  UniReader final {
 public:
@@ -44,15 +44,15 @@ public:
     ~UniReader();
 
     /**
-     * 打开文件
-     * @param fileName 文件名称
-     * @retval nullptr 打开失败
+     * Opens a file
+     * @param fileName The file name
+     * @retval nullptr If opening fails
      */
     static std::shared_ptr<UniReader> create(const std::string &fileName) noexcept;
 
     /**
-     * 读取一行
-     * @return 读取到的文本，当 string.empty() 为 true 时表示没有内容可供再读取
+     * Reads a line
+     * @return The text read. When string.empty() is true, it indicates no more content to read
      */
     std::string readLine();
 

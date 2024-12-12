@@ -13,10 +13,11 @@
 // limitations under the License.
 
 /// \file BufferedOutputStream.h
-/// \brief 输出流缓存类
+/// \brief Buffered output stream class
 /// \version 0.1
 /// \author kaoru
-/// \date 2022.11.20
+/// \date November 20, 2022
+
 #pragma once
 
 #include "sese/Config.h"
@@ -24,8 +25,8 @@
 
 namespace sese::io {
 
-/// 输出流缓存类
-class  BufferedOutputStream : public OutputStream {
+/// Buffered output stream class
+class BufferedOutputStream : public OutputStream {
 public:
     using Ptr = std::shared_ptr<BufferedOutputStream>;
 

@@ -14,9 +14,9 @@
 
 /// \file Module.h
 /// \author kaoru
-/// \date 2023年3月21日
+/// \date March 21, 2023
 /// \version 0.1.0
-/// \brief 插件模块对象，适配 sese-plugin 相关接口
+/// \brief Plugin module object, adapted to sese-plugin related interfaces
 
 #pragma once
 
@@ -29,45 +29,45 @@
 
 namespace sese::plugin {
 
-/// 插件模块对象
-class  Module {
+/// Plugin module object
+class Module {
 public:
     using Ptr = std::unique_ptr<Module>;
     using LibraryObject = sese::system::LibraryObject;
 
-    /// 尝试从动态链接库中加载一个模块
-    /// \param path 动态链接库路径
-    /// \retval nullptr 加载错误
+    /// \brief Attempt to load a module from a dynamic library
+    /// \param path Dynamic library path
+    /// \retval nullptr Loading error
     static Module::Ptr open(const std::string &path) noexcept;
 
     static Result<Ptr, ErrorCode> openEx(const std::string &path) noexcept;
 
-    /// 尝试从动态链接库中加载一个模块
-    /// \param path 动态链接库路径
-    /// \retval nullptr 加载错误
+    /// \brief Attempt to load a module from a dynamic library
+    /// \param path Dynamic library path
+    /// \retval nullptr Loading error
     static Module::Ptr openWithPath(const system::Path &path) noexcept;
 
-    /// 获取模块名称
-    /// \return 模块名称
+    /// \brief Get the module name
+    /// \return Module name
     const char *getName() noexcept;
 
-    /// 获取模块版本
-    /// \return 模块版本
+    /// \brief Get the module version
+    /// \return Module version
     const char *getVersion() noexcept;
 
-    /// 获取模块描述
-    /// \return 模块描述
+    /// \brief Get the module description
+    /// \return Module description
     const char *getDescription() noexcept;
 
-    /// 使用模块的类工厂构建一个对象
-    /// \param id 对象标识符
-    /// \retval nullptr 实例化错误
+    /// \brief Construct an object using the class factory of the module
+    /// \param id Object identifier
+    /// \retval nullptr Instantiation error
     BaseClass::Ptr createClass(const std::string &id) noexcept;
 
-    /// 使用模块的类工厂构建一个对象并转换为指定类型
-    /// \tparam TYPE 指定类型
-    /// \param name 对象标识符
-    /// \retval nullptr 实例化错误
+    /// \brief Construct an object using the class factory of the module and cast to a specified type
+    /// \tparam TYPE Specified type
+    /// \param name Object identifier
+    /// \retval nullptr Instantiation error or type error
     template<typename TYPE>
     std::shared_ptr<TYPE> createClassAs(const std::string &name) {
         auto p = createClass(name);
@@ -77,8 +77,8 @@ public:
         return nullptr;
     }
 
-    /// 获取模块已注册类类型信息
-    /// \return 类型信息
+    /// \brief Get the type information of registered classes in the module
+    /// \return Type information
     const ClassFactory::RegisterInfoMapType &
     getRegisterClassInfo() noexcept;
 

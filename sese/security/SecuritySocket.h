@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file SecuritySocket.h
-/// \brief 安全套接字类
+/// \brief Security socket class
 /// \author kaoru
 /// \version 0.2
-/// \date 2023年7月25日
+/// \date July 25, 2023
 
 #pragma once
 
@@ -26,8 +26,8 @@ namespace sese::security {
 
 class  SSLContext;
 
-/// 安全套接字
-class  SecuritySocket final : public sese::net::Socket {
+/// Security socket class
+class SecuritySocket final : public sese::net::Socket {
 public:
     using Socket = sese::net::Socket;
     using Address = sese::net::Address;

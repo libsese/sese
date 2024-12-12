@@ -14,7 +14,7 @@
 
 /**
  * @file WSAEventConvert.h
- * @brief WSAEventSelect 事件转换器
+ * @brief WSAEventSelect event convert
  * @author kaoru
  */
 
@@ -23,7 +23,7 @@
 #include "sese/event/BaseEventConvert.h"
 
 namespace sese::event {
-/// WSAEventSelect 事件转换器
+/// WSAEventSelect event convert
 class WSAEventConvert : public BaseEventConvert {
 public:
     unsigned int fromNativeEvent(int event) override;

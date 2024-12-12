@@ -14,16 +14,17 @@
 
 /**
  * @file NotInstantiable.h
- * @brief 不可实例化类
+ * @brief Non-instantiable class
  * @author kaoru
- * @date 2022年3月28日
+ * @date March 28, 2022
  */
+
 #pragma once
 
 namespace sese {
 
 /**
- * @brief 不可实例化类
+ * @brief Non-instantiable class
  */
 class NotInstantiable {
 public:

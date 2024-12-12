@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file SqliteResultSetImpl.h
-/// \brief SQLite 结果集实现
+/// \brief SQLite result set implementation
 /// \author kaoru
-/// \date 2024年04月10日
+/// \date April 10, 2024
 
 #pragma once
 
@@ -24,7 +24,7 @@
 
 namespace sese::db::impl {
 
-    /// \brief SQLite 结果集实现
+    /// \brief SQLite result set implementation
     class  SqliteResultSetImpl final : public ResultSet {
     public:
         SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;

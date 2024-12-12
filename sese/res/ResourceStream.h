@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file ResourceStream.h
-/// \brief 静态资源流
+/// \brief Static resource stream
 /// \author kaoru
-/// \date 2024年02月4日
+/// \date February 4, 2024
 
 #pragma once
 
@@ -25,7 +25,7 @@
 
 namespace sese::res {
 
-/// 静态资源流
+/// Static resource stream
 class ResourceStream : public io::PeekableStream, public io::InputStream {
 public:
     using Ptr = std::unique_ptr<ResourceStream>;

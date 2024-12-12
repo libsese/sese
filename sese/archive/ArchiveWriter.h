@@ -13,10 +13,9 @@
 // limitations under the License.
 
 /// \file ArchiveWriter.h
-/// \brief 存档写入器
-/// \author kaoru
-/// \date 2024年01月9日
-
+/// \brief Archive writer
+/// \author Kaoru
+/// \date January 9, 2024
 
 #pragma once
 
@@ -27,11 +26,11 @@
 
 namespace sese::archive {
 
-    /// 存档写入器
+    /// Archive writer
     class ArchiveWriter {
     public:
-        /// 构造写入器
-        /// \param output 输出流
+        /// Constructs the writer
+        /// \param output The output stream
         explicit ArchiveWriter(io::OutputStream *output);
 
         virtual ~ArchiveWriter();
@@ -68,60 +67,56 @@ namespace sese::archive {
 
         int setFormatISO();
 
-        /// 设置写入存档所使用的密码
-        /// \param pwd 密码
-        /// \return 成功返回 0
+        /// Sets the password used for writing to the archive
+        /// \param pwd The password
+        /// \return Returns 0 if successful
         int setPassword(const std::string &pwd);
 
-        /// 设置存档的 libarchive 选项
-        /// \param opt 选项
-        /// \return 成功返回 0
+        /// Sets the libarchive options for the archive
+        /// \param opt The options
+        /// \return Returns 0 if successful
         int setOptions(const std::string &opt);
 
-        /// 获取当前错误码
-        /// \return 错误码
+        /// Retrieves the current error code
+        /// \return The error code
         int getError();
 
-        /// 获取当前错误信息
-        /// \return 错误信息
+        /// Retrieves the current error message
+        /// \return The error message
         const char *getErrorString();
 
-        /// 开始添加实体
-        /// \return 操作结果
+        /// Starts the entity addition
+        /// \return The result of the operation
         bool begin();
 
-        /// 结束添加实体
-        /// \return 操作结果
+        /// Ends the entity addition
+        /// \return The result of the operation
         bool done();
 
-        /// 实体操作函数，添加一个文件或者一个文件夹到当前存档根目录中
-        /// \param path 目标路径
-        /// \return 是否成功
+        /// Entity operation function, adds a file or folder to the root directory of the current archive
+        /// \param path The target path
+        /// \return Whether the operation was successful
         bool addPath(const std::filesystem::path &path);
 
-        /// 实体操作函数，添加一个文件或者文件夹到当前存档指定路径中
-        /// \param base 存档内路径
-        /// \param path 目标路径
-        /// \return 是否成功
+        /// Entity operation function, adds a file or folder to the specified path in the current archive
+        /// \param base The path within the archive
+        /// \param path The target path
+        /// \return Whether the operation was successful
         bool addPath(const std::filesystem::path &base, const std::filesystem::path &path);
 
-        /// 实体操作函数，不推荐使用
         bool addFile(const std::filesystem::path &file);
 
-        /// 实体操作函数，不推荐使用
         bool addFile(const std::filesystem::path &base, const std::filesystem::path &file);
 
-        /// 实体操作函数，不推荐使用
         bool addDirectory(const std::filesystem::path &dir);
 
-        /// 实体操作函数，不推荐使用
         bool addDirectory(const std::filesystem::path &base, const std::filesystem::path &dir);
 
-        /// 实体操作函数，从流中读取内容并写入到存档指定路径中
-        /// \param path 存档内路径
-        /// \param input 输入流
-        /// \param len 写入大小
-        /// \return 是否成功
+        /// Entity operation function, reads content from the stream and writes it to the specified path in the archive
+        /// \param path The path within the archive
+        /// \param input The input stream
+        /// \param len The size to be written
+        /// \return Whether the operation was successful
         bool addStream(const std::filesystem::path &path, io::InputStream *input, size_t len);
 
         static int openCallback(void *archive, ArchiveWriter *archive_this);

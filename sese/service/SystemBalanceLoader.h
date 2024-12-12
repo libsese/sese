@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /// \file SystemBalanceLoader.h
-/// \brief 系统均衡负载器
+/// \brief System Balance Loader
 /// \author kaoru
 /// \version 0.1
-/// \date 2023年6月3日
+/// \date June 3, 2023
 
 #pragma once
 
@@ -30,50 +30,50 @@
 
 namespace sese::service {
 
-/// \brief 系统均衡负载器（无用户调度的负载器）
-/// \warning 此负载器仅在 Linux 上生效
+/// \brief System Balance Loader (non-user scheduled loader)
+/// \warning This loader is effective only on Linux
 /// \see sese::service::BalanceLoader
-class  SystemBalanceLoader final {
+class SystemBalanceLoader final {
 public:
     ~SystemBalanceLoader() noexcept;
 
-    /// 设置负载器使用线程数量
-    /// \param th 线程数量
+    /// Set the number of threads used by the loader
+    /// \param th Number of threads
     void setThreads(size_t th) noexcept;
 
-    /// 设置服务启动地址
+    /// Set the service startup address
     /// \param addr IP Address
     void setAddress(const net::IPAddress::Ptr &addr) noexcept { SystemBalanceLoader::address = addr; }
 
-    /// 设置从线程派遣超时时间
-    /// \param to 超时时间，单位毫秒
+    /// Set the timeout for dispatching from threads
+    /// \param to Timeout in milliseconds
     void setAcceptTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
 
-    /// 设置从线程派遣超时时间
-    /// \param to 超时时间，单位毫秒
+    /// Set the timeout for dispatching from threads
+    /// \param to Timeout in milliseconds
     void setDispatchTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
 
-    /// 获取当前负载器状态
-    /// \return 负载器状态状态
+    /// Get the current loader status
+    /// \return The status of the loader
     [[nodiscard]] bool isStarted() const { return _isStart; }
 
-    /// 初始化负载器资源
-    /// \tparam SERVICE 需要启动的服务
-    /// \return 是否初始化成功
+    /// Initialize loader resources
+    /// \tparam SERVICE The service to be started
+    /// \return Whether the initialization was successful
     template<class SERVICE>
     bool init() noexcept;
 
-    /// 初始化均衡器资源
-    /// \tparam SERVICE 需要启动的服务
-    /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
-    /// \return 是否初始化成功
+    /// Initialize balancer resources
+    /// \tparam SERVICE The service to be started
+    /// \param creator Service creation function, which returns an instance pointer if creation is successful, otherwise should return nullptr indicating failure
+    /// \return Whether the initialization was successful
     template<class SERVICE>
     bool init(std::function<SERVICE *()> creator) noexcept;
 
-    /// 启动当前负载器和服务
+    /// Start the current loader and service
     void start() noexcept;
 
-    /// 关闭当前负载器并卸载服务
+    /// Shut down the current loader and unload the service
     void stop() noexcept;
 
 protected:
@@ -94,7 +94,6 @@ bool sese::service::SystemBalanceLoader::init() noexcept {
     return sese::service::SystemBalanceLoader::init<SERVICE>([]() -> SERVICE * { return new SERVICE; });
 }
 
-// 此处测试代码不便于模拟
 // GCOVR_EXCL_START
 
 template<class SERVICE>

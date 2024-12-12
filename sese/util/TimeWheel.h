@@ -14,10 +14,10 @@
 
 /**
  * @file TimeWheel.h
+ * @brief Low-Precision Time Wheel Algorithm
  * @author kaoru
- * @brief 低精度时间轮算法
  * @version 0.2
- * @date 2023年9月15日
+ * @date September 15, 2023
  */
 
 #pragma once
@@ -30,57 +30,57 @@
 namespace sese {
 
 /**
- * @brief 超时事件
+ * @brief Timeout Event
  */
 struct TimeoutEvent {
-    /// 超时事件发生时的回调函数类型
+    /// Type of the callback function when a timeout event occurs
     using Callback = std::function<void()>;
 
-    /// 超时事件定时事件总长
+    /// Total duration of the timeout event
     int64_t range{};
-    /// 超时事件具体将会发生的时间
+    /// Specific time the timeout event will occur
     int64_t target{};
-    /// 超时事件发生后，是否进行下一次定时
+    /// Whether to repeat the timeout event after it occurs
     bool repeat{false};
-    /// 超时事件发生时的回调函数
+    /// Callback function when the timeout event occurs
     Callback callback{};
 };
 
 /**
- * @brief 超时事件槽（时间轮轮片）
+ * @brief Timeout Event Slot (Time Wheel Slice)
  */
 struct TimeoutEventSlot {
-    /// 存放于此的超时事件列表
+    /// List of timeout events stored here
     std::list<TimeoutEvent *> events{};
-    /// 指向下一个超时事件槽
+    /// Pointer to the next timeout event slot
     TimeoutEventSlot *next{nullptr};
 };
 
 /**
- * @brief 时间轮
+ * @brief Time Wheel
  */
-class  TimeWheel {
+class TimeWheel {
 public:
     TimeWheel();
 
     virtual ~TimeWheel();
 
-    /// 添加一个超时事件
-    /// \param callback 超时回调函数
-    /// \param seconds 超时时间
-    /// \param repeat 事件是否重复触发
-    /// \return 超时事件
+    /// Add a timeout event
+    /// \param callback Timeout callback function
+    /// \param seconds Timeout duration
+    /// \param repeat Whether the event triggers repeatedly
+    /// \return Timeout event
     TimeoutEvent *delay(
             const TimeoutEvent::Callback &callback,
             int64_t seconds,
             bool repeat = false
     );
 
-    /// 取消一个超时事件，事件将变得不可用
-    /// \param event 超时事件
+    /// Cancel a timeout event, making it unavailable
+    /// \param event Timeout event
     void cancel(TimeoutEvent *event);
 
-    /// 检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件
+    /// Check for any timeout events that need to be triggered, and trigger the corresponding callback functions and destroy the events as needed
     void check();
 
 protected:

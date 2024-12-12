@@ -14,8 +14,8 @@
 
 /// \file ReusableSocket.h
 /// \author kaoru
-/// \brief 可重用地址和端口的套接字构建器
-/// \date 2023年6月2日
+/// \brief Reusable socket builder for address and port
+/// \date June 2, 2023
 /// \version 0.1
 
 #pragma once
@@ -28,26 +28,26 @@
 
 namespace sese::net {
 
-/// \brief 可重用地址和端口的套接字构建器
-/// \warning 用此构建器构建出来的 Socket 在不同平台上行为不一致 <p>
-/// Linux: 内核会负责负载均衡，多个 Socket 都能接收到连接 <p>
-/// Darwin: 无负载均衡，只有最后一个 Socket 能接收到连接 <p>
-/// Windows: 无负载均衡，只有第一个 Socket 能接收到连接
+/// \brief Reusable socket builder for address and port
+/// \warning The behavior of sockets built with this builder is inconsistent across platforms <p>
+/// Linux: The kernel handles load balancing, and multiple sockets can receive connections <p>
+/// Darwin: No load balancing, only the last socket can receive connections <p>
+/// Windows: No load balancing, only the first socket can receive connections
 /// \see https://www.cnblogs.com/xybaby/p/7341579.html
 class ReusableSocket { // GCOVR_EXCL_LINE
 public:
-    /// 初始化可重用地址和端口的套接字模板
-    /// \param address 地址
-    /// \param type 类型
+    /// Initialize the reusable socket template for address and port
+    /// \param address The address
+    /// \param type The type
     explicit ReusableSocket(IPAddress::Ptr address, Socket::Type type = Socket::Type::TCP);
 
-    /// 按照模板构建一个 native socket
-    /// \retval -1 创建失败
-    /// \return native socket
+    /// Build a native socket according to the template
+    /// \retval -1 Creation failed
+    /// \return Native socket
     socket_t makeRawSocket() noexcept;
 
-    /// 按照模板构建一个 sese::net::Socket
-    /// \retval nullptr 创建失败
+    /// Build a sese::net::Socket according to the template
+    /// \retval nullptr Creation failed
     /// \return sese::net::Socket
     std::optional<Socket> makeSocket() noexcept;
 

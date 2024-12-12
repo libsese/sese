@@ -229,10 +229,10 @@ bool DnsPackage::encodeQuestions(const std::vector<Question> &questions, void *b
         auto cache = index.compress_mapping.find(item.name);
         std::string name;
         if (cache != index.compress_mapping.end()) {
-            // 命中缓存捏
+            // Hit cache
             name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length + offset));
         } else {
-            // 无缓存直接写入
+            // Write directly without caching
             name = encodeWords(item.name);
         }
         if (max == 0) {
@@ -268,10 +268,10 @@ bool DnsPackage::encodeAnswers(const std::vector<Answer> &answers, void *buffer,
         auto cache = index.compress_mapping.find(item.name);
         std::string name;
         if (cache != index.compress_mapping.end()) {
-            // 命中缓存捏
+            // Hit cache
             name = index.encodeWords(item.name, cache->second, static_cast<uint16_t>(length + offset));
         } else {
-            // 无缓存直接写入
+            // Write directly without caching
             name = encodeWords(item.name);
         }
         if (max == 0) {

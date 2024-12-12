@@ -14,9 +14,9 @@
 
 /**
  * \file SharedMemory.h
+ * \brief Shared Memory Class
  * \author kaoru
- * \date 2022.12.08
- * \brief 共享内存类
+ * \date December 8, 2022
  * \version 0.1
  */
 #pragma once
@@ -31,32 +31,32 @@
 
 namespace sese::system {
 
-/// \brief 共享内存类
+/// \brief Shared Memory Class
 class SharedMemory final {
 public:
     using Ptr = std::unique_ptr<SharedMemory>;
 
-    /// 创建一块共享内存
-    /// \param name 共享内存名称
-    /// \param size 共享内存大小
-    /// \return 共享内存对象指针
-    /// \retval nullptr 创建失败
+    /// Create a shared memory block
+    /// \param name Shared memory name
+    /// \param size Shared memory size
+    /// \return Pointer to the shared memory object
+    /// \retval nullptr Creation failed
     static SharedMemory::Ptr create(const char *name, size_t size) noexcept;
 
     static Result<Ptr, ErrorCode> createEx(const char *name, size_t size) noexcept;
 
-    /// 使用一块现有的共享内存
-    /// \param name 共享内存名称
-    /// \return 共享内存对象指针
-    /// \retval nullptr 获取失败
+    /// Use an existing shared memory block
+    /// \param name Shared memory name
+    /// \return Pointer to the shared memory object
+    /// \retval nullptr Acquisition failed
     static SharedMemory::Ptr use(const char *name) noexcept;
 
     static Result<Ptr, ErrorCode> useEx(const char *name) noexcept;
 
-    /// 析构函数
+    /// Destructor
     ~SharedMemory() noexcept;
-    /// 获取共享内存实际地址
-    /// \return 共享内存块
+    /// Get the actual address of the shared memory
+    /// \return Shared memory block
     void *getBuffer() noexcept;
 
 private:

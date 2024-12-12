@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file Yaml.h
-/// \brief Yaml 解析器
-/// \author kaoru
-/// \date 2023年11月4日
+/// \brief YAML parser
+/// \author Kaoru
+/// \date November 4, 2023
 
 #pragma once
 
@@ -26,7 +26,7 @@
 #include <queue>
 
 namespace sese {
-/// Yaml 解析器
+/// YAML parser
 class Yaml {
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;
@@ -54,15 +54,15 @@ class Yaml {
 
 public:
 
-    /// 从流中反序列化 yaml 对象
-    /// \param input 输入流
-    /// \param level 解析深度
-    /// \return 解析失败则 Value::isNull 为真
+    /// Deserialize yaml object from stream
+    /// \param input Input stream
+    /// \param level Parsing depth
+    /// \return If parsing fails, Value::isNull is true
     static Value parse(io::InputStream *input, size_t level);
 
-    /// 向流中序列化 yaml 对象
-    /// \param output 输出流
-    /// \param value yaml 对象
+    /// Serialize yaml object to stream
+    /// \param output Output stream
+    /// \param value yaml object
     static void streamify(io::OutputStream *output, const Value &value);
 };
 } // namespace sese

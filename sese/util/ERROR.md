@@ -1,16 +1,16 @@
-# 错误处理
+# Error Handling
 
-目前框架存在三种细分类别的错误处理方式，以下做详细介绍和演示。
+Currently, the framework has three subcategories of error handling methods. Here's a detailed introduction and demonstration.
 
 ## sese::Result\<T\>
 
-这是框架推荐使用的错误处理方式，它支持返回正确结果或者错误码。
+This is the recommended error handling method for the framework. It supports returning either the correct result or an error code.
 
 ```c++
 #include <sese/util/Result.h>
 #include <sese/Init.h>
 
-// 设计一个使用 Resutl<T> 的 API
+// Design an API using Result<T>
 sese::Result<long long> to_int(const std::string &str) {
     char *end;
     auto num = std::strtol(str.c_str(), &end, 10);
@@ -20,10 +20,10 @@ sese::Result<long long> to_int(const std::string &str) {
     return num;
 }
 
-// 处理 Result<T> 返回值
+// Handle the Result<T> return value
 int main(int argc, char **argv) {
     sese::initCore(argc, argv);
-    auto result = to_init("114514homo");
+    auto result = to_int("114514homo");
     if (result) {
         SESE_ERROR("{}", result.err().message());
         return result.err().value();
@@ -36,8 +36,8 @@ int main(int argc, char **argv) {
 
 ## sese::Exception
 
-这是 `C++` 中标准的错误处理方式，通过 try/catch 的方式捕获异常并且处理异常。
-**虽然框架API不会抛出异常**，但在此基础上，框架提供了功能更多的 `sese::Expection`。
+This is the standard error handling method in `C++`, which captures and handles exceptions through try/catch.
+**Although the framework API does not throw exceptions**, it provides a more functional `sese::Exception`.
 
 ```c++
 #include <sese/Init.h>
@@ -46,17 +46,17 @@ int main(int argc, char **argv) {
 int main(int argc, char **argv) {
     sese::initCore(argc, argv);
     try {
-        throw sese::Expection(std::string("Hello ") + std::to_string(1919810));
-    } catch (sese::Expection &e) {
+        throw sese::Exception(std::string("Hello ") + std::to_string(1919810));
+    } catch (sese::Exception &e) {
         e.printStacktrace();
     }
     return 0;
 }
 ```
 
-由框架提供的异常支持携带调用栈信息和动态构建的字符串。
+The exceptions provided by the framework support carrying call stack information and dynamically constructed strings.
 
 ## Classic
 
-这是 `C` 中常见的错误处理方式以直接返回整形或者指针判空作为判断错误的依据。
-在框架设计之初，保留了相当一部分这种设计。
+This is a common error handling method in `C`, which uses direct return of integers or null pointer checks as error judgment criteria.
+A significant portion of this design was retained in the initial design of the framework.

@@ -15,7 +15,7 @@
 /**
  * @file FileLocker.h
  * @brief kaoru
- * @author 文件锁
+ * @author File locker
  */
 
 #pragma once
@@ -25,34 +25,34 @@
 namespace sese::system {
 
 /**
- * @brief 文件锁
+ * @brief File locker
  */
-class  FileLocker {
+class FileLocker {
 public:
-    /// 根据文件描述符初始化一个文件锁
-    /// \param fd 文件描述符
+    /// Initialize a file lock based on the file descriptor
+    /// \param fd File descriptor
     explicit FileLocker(int32_t fd) : fd(fd) {}
 
-    /// 为当前文件上写锁
-    /// \param start 起始偏移
-    /// \param len 长度
-    /// \return 是否加锁成功
+    /// Apply a write lock to the current file
+    /// \param start Starting offset
+    /// \param len Length
+    /// \return Whether the lock was successfully applied
     [[nodiscard]] bool lockWrite(int64_t start, int64_t len);
 
-    /// 为当前文件上读锁
-    /// \param start 起始偏移
-    /// \param len 长度
-    /// \return 是否加锁成功
+    /// Apply a read lock to the current file
+    /// \param start Starting offset
+    /// \param len Length
+    /// \return Whether the lock was successfully applied
     [[nodiscard]] bool lockRead(int64_t start, int64_t len);
 
-    /// 为当前文件上锁
-    /// \param start 起始偏移
-    /// \param len 长度
-    /// \return 是否加锁成功
+    /// Apply a lock to the current file
+    /// \param start Starting offset
+    /// \param len Length
+    /// \return Whether the lock was successfully applied
     [[nodiscard]] bool lock(int64_t start, int64_t len);
 
-    /// 为当前文件解锁
-    /// \return 是否解锁成功
+    /// Unlock the current file
+    /// \return Whether the unlock operation was successful
     [[nodiscard]] bool unlock();
 
 private:

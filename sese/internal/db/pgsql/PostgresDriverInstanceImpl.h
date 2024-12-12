@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// \file PostgresDriverInstanceImpl.h
-/// \brief PSQL 驱动实现
-/// \author kaoru
-/// \date 2024年04月10日
+/// \brief PSQL driver implementation
+/// \author kaoru, DreammerQcl
+/// \date April 10, 2024
 
 #pragma once
 
@@ -24,8 +24,8 @@
 
 namespace sese::db::impl {
 
-    /// \brief PSQL 驱动实现
-    class  PostgresDriverInstanceImpl : public DriverInstance {
+    /// \brief PSQL driver implementation
+    class PostgresDriverInstanceImpl : public DriverInstance {
     public:
         explicit PostgresDriverInstanceImpl(PGconn *conn) noexcept;
         ~PostgresDriverInstanceImpl() noexcept override;

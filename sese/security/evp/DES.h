@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /// @file DES.h
-/// @brief DES 加解密
+/// @brief DES algorithm
 /// @author kaoru
-/// @date 2024年04月13日
+/// @date April 13, 2024
 
 #pragma once
 
@@ -24,11 +24,11 @@
 
 namespace sese::security::evp {
 
-/// @brief DES 加密
-/// @deprecated DES 加密已从 OpenSSL 中移除
-class SESE_DEPRECATED_WITH("DES 加密已从 OpenSSL 中移除") DESEncrypter final : public Crypter {
+/// @brief DES algorithm
+/// @deprecated The DES algorithm has been removed from OpenSSL
+class SESE_DEPRECATED_WITH("The DES algorithm has been removed from OpenSSL") DESEncrypter final : public Crypter {
 public:
-    /// @brief DES 加密类型
+    /// \brief DES algorithm type
     enum class Type {
         ECB,
         CBC,
@@ -54,9 +54,9 @@ private:
     unsigned char key[8];
 };
 
-/// @brief DES 解密
-/// @deprecated DES 加密已从 OpenSSL 中移除
-class SESE_DEPRECATED_WITH("DES 加密已从 OpenSSL 中移除") DESDecrypter final : public Crypter {
+/// @brief DES algorithm
+/// @deprecated The DES algorithm has been removed from OpenSSL
+class SESE_DEPRECATED_WITH("The DES algorithm has been removed from OpenSSL") DESDecrypter final : public Crypter {
 public:
 #if defined(__clang__)
 #pragma clang diagnostic push
