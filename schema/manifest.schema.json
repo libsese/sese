@@ -9,6 +9,9 @@
     "author": {
       "type": "string"
     },
+    "description": {
+      "type": "string"
+    },
     "productName": {
       "type": "string"
     },
@@ -24,6 +27,7 @@
   },
   "required": [
     "author",
+    "description",
     "productName",
     "internalName",
     "version",

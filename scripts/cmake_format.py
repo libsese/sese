@@ -32,8 +32,8 @@ def find_cmake_files(paths):
 
 
 def format_cmake_files(cmake_files):
-    for cmake_file in cmake_files:
-        subprocess.run(['cmake-format', '-c', '.cmake-format.yaml', '-i', cmake_file])
+    cmd = ['cmake-format', '-c', '.cmake-format.yaml', '-i'] + cmake_files
+    subprocess.run(cmd)
 
 
 if __name__ == "__main__":
@@ -45,4 +45,3 @@ if __name__ == "__main__":
     cmake_files = find_cmake_files(paths)
     cmake_files.append('CMakeLists.txt')
     format_cmake_files(cmake_files)
-

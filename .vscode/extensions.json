@@ -8,6 +8,7 @@
         "ms-python.python",
         "editorconfig.editorconfig",
         "github.vscode-github-actions",
-        "jeff-hykin.better-cpp-syntax"
+        "jeff-hykin.better-cpp-syntax",
+        "cheshirekow.cmake-format"
     ]
 }
