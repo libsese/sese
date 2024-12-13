@@ -41,7 +41,7 @@ var NAVTREE =
       [ "Release Process", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md21", null ],
       [ "Contact Information", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md22", null ]
     ] ],
-    [ "Roadmap publicity", "md__r_o_a_d_m_a_p.html", [
+    [ "Roadmap Publicity", "md__r_o_a_d_m_a_p.html", [
       [ "Short intro", "md__r_o_a_d_m_a_p.html#autotoc_md24", null ],
       [ "Version 2.1.0", "md__r_o_a_d_m_a_p.html#autotoc_md25", null ],
       [ "Version 2.1.1", "md__r_o_a_d_m_a_p.html#autotoc_md26", null ],
@@ -53,11 +53,20 @@ var NAVTREE =
       [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.html#autotoc_md31", null ]
     ] ],
     [ "Directory Explanation", "md_sese_2_c_a_t_a_l_o_g.html", null ],
+    [ "Embedded Resource", "md_sese_2res_2_r_e_s_o_u_r_c_e.html", [
+      [ "Bundler (Recommended)", "md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md34", [
+        [ "Feature Overview", "md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md36", null ],
+        [ "Usage", "md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md38", null ],
+        [ "Feature Details", "md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md40", null ],
+        [ "Notes", "md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md42", null ]
+      ] ],
+      [ "Classic Mode", "md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md44", null ]
+    ] ],
     [ "String Formatting", "md_sese_2text_2_f_o_r_m_a_t.html", null ],
     [ "Error Handling", "md_sese_2util_2_e_r_r_o_r.html", [
-      [ "sese::Result<T>", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md36", null ],
-      [ "sese::Exception", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md37", null ],
-      [ "Classic", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md38", null ]
+      [ "sese::Result<T>", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md56", null ],
+      [ "sese::Exception", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md57", null ],
+      [ "Classic", "md_sese_2util_2_e_r_r_o_r.html#autotoc_md58", null ]
     ] ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bug List", "bug.html", null ],
@@ -131,11 +140,11 @@ var NAVTREEINDEX =
 "classsese_1_1text_1_1_date_time_formatter.html#a81de170685d54a3bb7ae2962aa660e04",
 "classsstr_1_1_s_string_view.html#a111c7d006dd8e4d61e63f2b1c0da4d7f",
 "functions_vars.html",
-"namespacesese_1_1net_1_1http.html#a05de23272d037c89009416dd3c657643",
-"record_2_marco_8h.html#a77b7117d61063ae74e9498af412bb101",
-"structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a24b95a564dafc6fb86281737a91819cb",
-"structsese_1_1internal_1_1service_1_1http_1_1_https_connection_ex_impl.html",
-"structsese_1_1service_1_1_user_balance_loader_1_1_socket_status.html"
+"namespacesese_1_1net_1_1dns.html#ae2fdbfe305540dc257b4b422c977868f",
+"record_2_event_8h.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277",
+"structsese_1_1internal_1_1service_1_1http_1_1_handleable.html#afccf1f1dd665ba714a0e618ebeed264e",
+"structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html#ac551554adbf45bd11f6536149825f4e7",
+"structsese_1_1service_1_1_tcp_transporter_config.html#a5a7988e9e24fce2c9802a6d9dd4bc3f6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
