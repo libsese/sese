@@ -70,10 +70,11 @@ ResourceStream::Ptr BundlerResource<R>::getBinary(BinaryIds id) {
     }
     HRSRC hResInfo = FindResource(hInstance, MAKEINTRESOURCE(static_cast<int>(id)), RT_RCDATA);
     assert(hResInfo);
+    HGLOBAL hGlobal = LoadResource(hInstance, hResInfo);
     DWORD dwSize = SizeofResource(hInstance, hResInfo);
-    LPVOID pResData = LockResource(hResInfo);
-    binariesMap[id] = {hResInfo, pResData, dwSize};
-    return std::make_unique<ResourceStream>(static_cast<const char *>(pResData) + 32, dwSize);
+    LPVOID _RESOURCE_HEADER = LockResource(hResInfo);
+    binariesMap[id] = {hResInfo, hGlobal, dwSize};
+    return std::make_unique<ResourceStream>(static_cast<const char *>(hGlobal), dwSize);
 }
 
 #elif defined(SESE_PLATFORM_LINUX)
