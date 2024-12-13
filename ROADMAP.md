@@ -28,5 +28,7 @@
 ## Version 2.4.0
 
 - ⭕️ DNS module decoupling and refactoring
-- 🛠️ Better Exception
-- 🛠️ Support ~~std::error_code~~ sese::ErrorCode & sese::Result<T>
+- ⭕️️ Better Exception
+- ⭕️️ Support ~~std::error_code~~ sese::ErrorCode & sese::Result<T>
+- ⭕️ Binary description manifest
+- ⭕️ Embedded resource management
