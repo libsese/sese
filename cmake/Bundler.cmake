@@ -4,7 +4,11 @@ find_package(
     REQUIRED
 )
 
-macro(target_include_resource target dest resource_file)
+function(target_include_resource target dest resource_file)
+    set(script ${SESE_PACKAGE_DIR}/bundler.py)
+    if(SESE_ROOT_PROJECT)
+        set(script ${PROJECT_SOURCE_DIR}/scripts/bundler.py)
+    endif()
     get_target_property(type ${target} TYPE)
     if(NOT type STREQUAL "EXECUTABLE")
         message(FATAL_ERROR "(Bundler) The target must be an executable!!!")
@@ -21,7 +25,7 @@ macro(target_include_resource target dest resource_file)
     get_filename_component(name ${resource_file} NAME_WE)
     message(STATUS "(Bundler) Pre-built for resources: ${target}(${CMAKE_CURRENT_LIST_DIR}/${resource_file})")
     execute_process(
-        COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/scripts/bundler.py "--base_path=${CMAKE_CURRENT_LIST_DIR}"
+        COMMAND ${Python3_EXECUTABLE} ${script} "--base_path=${CMAKE_CURRENT_LIST_DIR}"
                 "--resource_file_path=${resource_file}" "--generate_code_path=${dest}" "--method_name=${method}"
         WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
         OUTPUT_QUIET
@@ -44,4 +48,5 @@ macro(target_include_resource target dest resource_file)
         endforeach()
     endif()
     target_include_directories(${target} PRIVATE ${dest})
-endmacro()
+    unset(script)
+endfunction()

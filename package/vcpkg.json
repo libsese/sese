@@ -5,8 +5,7 @@
       "features": [
         "archive",
         "mysql",
-        "psql",
-        "resource"
+        "psql"
       ]
     }
   ]

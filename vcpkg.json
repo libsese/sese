@@ -3,6 +3,7 @@
   "version": "2.3.0",
   "description": "A cross-platform framework for basic components.",
   "homepage": "https://github.com/libsese/sese",
+  "documentation": "https://libsese.github.io/sese",
   "license": "Apache-2.0",
   "supports": "x64 & (windows | osx | linux) & !uwp",
   "builtin-baseline": "c82f74667287d3dc386bce81e44964370c91a289",
@@ -22,11 +23,7 @@
       "name": "vcpkg-cmake-config",
       "host": true
     },
-    "zlib",
-    {
-      "name": "vcpkg-tool-ninja",
-      "host": true
-    }
+    "zlib"
   ],
   "default-features": [
     "sqlite3"

@@ -7,6 +7,7 @@ project(
     LANGUAGES CXX
 )
 set(CMAKE_CXX_STANDARD 20)
+set(SESE_ROOT_PROJECT ON)
 include(cmake/Dependencies.cmake)
 include(cmake/Git.cmake)
 include(cmake/Coverage.cmake)
