@@ -4,6 +4,8 @@ include(CMakeFindDependencyMacro)
 #     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
 # endif ()
 
+set(SESE_PACKAGE_DIR ${CMAKE_CURRENT_LIST_DIR})
+
 if (NOT BUILD_SHARED_LIBS)
     find_dependency(OpenSSL)
     find_dependency(ZLIB)

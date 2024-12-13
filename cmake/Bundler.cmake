@@ -5,7 +5,7 @@ find_package(
 )
 
 function(target_include_resource target dest resource_file)
-    set(script ${CMAKE_CURRENT_LIST_DIR}/bundler.py)
+    set(script ${SESE_PACKAGE_DIR}/bundler.py)
     if(SESE_ROOT_PROJECT)
         set(script ${PROJECT_SOURCE_DIR}/scripts/bundler.py)
     endif()

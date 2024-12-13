@@ -5,7 +5,7 @@ find_package(
 )
 
 function(target_manifest target manifest_file)
-    set(script ${CMAKE_CURRENT_LIST_DIR}/manifest.py)
+    set(script ${SESE_PACKAGE_DIR}/manifest.py)
     if(SESE_ROOT_PROJECT)
         set(script ${PROJECT_SOURCE_DIR}/scripts/manifest.py)
     endif()
