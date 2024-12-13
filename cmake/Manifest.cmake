@@ -13,10 +13,8 @@ function(target_manifest target manifest_file)
         message(STATUS "(Manifest) Pre-built for manifest: ${target}(${CMAKE_CURRENT_LIST_DIR}/${manifest_file})")
         get_target_property(filename ${target} OUTPUT_NAME)
         execute_process(
-            COMMAND
-                ${Python3_EXECUTABLE} ${script}
-                "--manifest_file_path=${CMAKE_CURRENT_LIST_DIR}/${manifest_file}"
-                "--output_file_path=${CMAKE_BINARY_DIR}/${target}-manifest.rc" "--filename=${filename}"
+            COMMAND ${Python3_EXECUTABLE} ${script} "--manifest_file_path=${CMAKE_CURRENT_LIST_DIR}/${manifest_file}"
+                    "--output_file_path=${CMAKE_BINARY_DIR}/${target}-manifest.rc" "--filename=${filename}"
             WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
             OUTPUT_QUIET
             RESULT_VARIABLE exit_code

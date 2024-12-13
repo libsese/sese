@@ -17,11 +17,6 @@ install(
     PUBLIC_HEADER DESTINATION include
 )
 
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/Manifest.cmake" "${PROJECT_SOURCE_DIR}/scripts/manifest.py"
-              "${PROJECT_SOURCE_DIR}/cmake/Bundler.cmake" "${PROJECT_SOURCE_DIR}/scripts/bundler.py"
-        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/cmake/${PROJECT_NAME}"
-)
-
 install(
     DIRECTORY "${PROJECT_SOURCE_DIR}/sese"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
@@ -36,6 +31,11 @@ install(
 install(FILES "${PROJECT_BINARY_DIR}/sese-config.cmake" DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(FILES "${PROJECT_BINARY_DIR}/sese-config.cmake" DESTINATION debug/lib/cmake/${PROJECT_NAME})
+
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/Manifest.cmake" "${PROJECT_SOURCE_DIR}/scripts/manifest.py"
+              "${PROJECT_SOURCE_DIR}/cmake/Bundler.cmake" "${PROJECT_SOURCE_DIR}/scripts/bundler.py"
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
+)
 
 install(
     EXPORT SeseTargets
