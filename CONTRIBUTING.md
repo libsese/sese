@@ -135,7 +135,7 @@ For some functions or branches that may be difficult to test, it is best to add 
 
 This part of the specification applies to core project administrators and needs to be strictly followed:
 
-1. Change the project version number, modify `CMakeLists.txt` and `vcpkg.json`, tag the commit, and it will automatically trigger `update_portfile.py` and perform pre-release testing.
+1. ~~Change the project version number, modify `CMakeLists.txt` and `vcpkg.json`~~, uses the `scripts/update_versions.py` to update all version fields at one time , tag the commit, and it will automatically trigger `update_portfile.py` and perform pre-release testing.
 2. Failure of the test will terminate the release. At this time, name the new tag following the `alpha.$(n + 1)` format. For official releases, increase the patch number or withdraw the current version.
 3. Tags containing `beta` or `alpha` will not be set as the final version.
 4. Maintaining a new version (if necessary, mostly rolling release) requires creating a new branch. The branch name format is as follows `release-$(version)`, and administrators need to manually release it.
