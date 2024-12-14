@@ -50,6 +50,7 @@ def main():
         ["vcpkg.json", "version", "\d+\.\d+\.\d+"],
         ["CMakeLists.txt", r'^\s{4}VERSION', "\d+\.\d+\.\d+"],
         ["sese/manifest.json", "version", "\d+\.\d+\.\d+"],
+        ["docs/Doxyfile", "PROJECT_NUMBER" ,"\d+\.\d+\.\d+"]
     ]
     for file in files:
         modify_field_in_file(file[0], file[1], file[2], args.version)
