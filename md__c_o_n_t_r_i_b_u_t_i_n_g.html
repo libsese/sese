@@ -217,7 +217,7 @@ Testing Requirements</h1>
 Release Process</h1>
 <p>This part of the specification applies to core project administrators and needs to be strictly followed:</p>
 <ol type="1">
-<li>Change the project version number, modify <code>CMakeLists.txt</code> and <code>vcpkg.json</code>, tag the commit, and it will automatically trigger <code>update_portfile.py</code> and perform pre-release testing.</li>
+<li><strike>Change the project version number, modify <code>CMakeLists.txt</code> and <code>vcpkg.json</code></strike>, uses the <code>scripts/update_versions.py</code> to update all version fields at one time , tag the commit, and it will automatically trigger <code>update_portfile.py</code> and perform pre-release testing.</li>
 <li>Failure of the test will terminate the release. At this time, name the new tag following the <code>alpha.$(n + 1)</code> format. For official releases, increase the patch number or withdraw the current version.</li>
 <li>Tags containing <code>beta</code> or <code>alpha</code> will not be set as the final version.</li>
 <li>Maintaining a new version (if necessary, mostly rolling release) requires creating a new branch. The branch name format is as follows <code>release-$(version)</code>, and administrators need to manually release it.</li>
@@ -232,7 +232,7 @@ Contact Information</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Dec 13 2024 16:33:34 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sat Dec 14 2024 11:03:52 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
