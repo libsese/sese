@@ -108,7 +108,8 @@ pages:
     OUTPUT_FOLDER: build/html
   script:
     - /usr/local/bin/entrypoint.sh
-    - python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Extra.txt
+    - python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
+    - mv static/image/logo.svg build/html/logo.drawio.svg
     - mv build/html public
   artifacts:
     paths:
@@ -116,7 +117,7 @@ pages:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes:
-        - 'docs/Doxyfile'
+        - 'docs/**'
         - 'sese/**'
         - 'static/**'
         - 'README.md'

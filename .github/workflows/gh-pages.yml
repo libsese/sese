@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'docs/Doxyfile'
+      - 'docs/**'
       - 'sese/**'
       - 'static/**'
       - 'README.md'
@@ -31,8 +31,8 @@ jobs:
 
       - name: Add extra resources
         run: |
-          sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Extra.txt
-          sudo npx svg-to-ico static/image/logo.svg build/html/favicon.ico
+          sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
+          sudo mv static/image/logo.svg build/html/logo.drawio.svg
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
