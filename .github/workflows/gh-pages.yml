@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4.1.2
 
       - name: Build docs
-        uses: SHIINASAMA/roxy@1.1
+        uses: SHIINASAMA/roxy@1.2
         with:
           DOXYFILE: 'docs/Doxyfile'
           RESOURCE_FOLDER: 'static'
