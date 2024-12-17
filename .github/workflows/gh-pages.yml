@@ -29,9 +29,9 @@ jobs:
           RESOURCE_FOLDER: 'static'
           OUTPUT_FOLDER: 'build/html'
 
-      - name: Add meta & icon
+      - name: Add extra resources
         run: |
-          sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
+          sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Extra.txt
           sudo npx svg-to-ico static/image/logo.svg build/html/favicon.ico
 
       - name: Deploy pages
