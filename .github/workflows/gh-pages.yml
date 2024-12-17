@@ -32,7 +32,7 @@ jobs:
       - name: Add meta & icon
         run: |
           sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
-          sudo npx svg-to-ico static/image/logo.svg build/html/favicon.icon
+          sudo npx svg-to-ico static/image/logo.svg build/html/favicon.ico
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
