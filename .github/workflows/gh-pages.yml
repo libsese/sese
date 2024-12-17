@@ -30,7 +30,7 @@ jobs:
 
       - name: Add meta tag
         run:
-          python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
+          sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
