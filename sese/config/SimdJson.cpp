@@ -36,12 +36,12 @@ sese::Value Json::parse(const simdjson::dom::element &json) {
             for (auto child: arr) {
                 switch (child.type()) {
                     case element_type::ARRAY: {
-                        auto v = listRef.appendRef(Value::list());
+                        auto v = listRef.appendRef(Value::list()).get();
                         stack.push({child, v});
                         break;
                     }
                     case element_type::OBJECT: {
-                        auto v = listRef.appendRef(Value::dict());
+                        auto v = listRef.appendRef(Value::dict()).get();
                         stack.push({child, v});
                         break;
                     }
@@ -79,12 +79,12 @@ sese::Value Json::parse(const simdjson::dom::element &json) {
                 std::string key(_key.begin(), _key.end());
                 switch (value.type()) {
                     case element_type::ARRAY: {
-                        auto v = dictRef.setRef(key, Value::list());
+                        auto v = dictRef.setRef(key, Value::list()).get();
                         stack.push({value, v});
                         break;
                     }
                     case element_type::OBJECT: {
-                        auto v = dictRef.setRef(key, Value::dict());
+                        auto v = dictRef.setRef(key, Value::dict()).get();
                         stack.push({value, v});
                         break;
                     }

@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/kaoru/sese",
+    "clangd.arguments": [
+      "--compile-commands-dir=/home/kaoru/sese/build/base"
+    ]
+}

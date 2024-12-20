@@ -20,6 +20,7 @@
 #pragma once
 
 #include <map>
+#include <memory>
 #include <variant>
 #include <vector>
 #include <optional>
@@ -57,13 +58,11 @@ public:
     /// \brief List Value Container Type
     class List {
     public:
-        using Raw = std::vector<Value *>;
+        using Raw = std::vector<std::shared_ptr<Value>>;
         using Iterator = Raw::iterator;
         using ConstIterator = Raw::const_iterator;
         using ReverseIterator = Raw::reverse_iterator;
         using ConstReverseIterator = Raw::const_reverse_iterator;
-
-        ~List();
 
         [[nodiscard]] size_t empty() const;
         [[nodiscard]] size_t size() const;
@@ -71,10 +70,10 @@ public:
         void resize(size_t size);
         void clear();
 
-        const Value *operator[](size_t index) const;
-        Value *operator[](size_t index);
+        const std::shared_ptr<Value> operator[](size_t index) const;
+        std::shared_ptr<Value> operator[](size_t index);
 
-        // size_t erase(const Value *value);
+        size_t erase(const std::shared_ptr<Value> &value);
         Iterator erase(Iterator it);
         ConstIterator erase(ConstIterator it);
         Iterator erase(const Iterator &first, const Iterator &last);
@@ -93,12 +92,12 @@ public:
         ReverseIterator rend();
         [[nodiscard]] ConstReverseIterator rend() const;
 
-        [[nodiscard]] const Value *front() const;
-        Value *front();
-        [[nodiscard]] const Value *back() const;
-        Value *back();
+        [[nodiscard]] const std::shared_ptr<Value> front() const;
+        std::shared_ptr<Value> front();
+        [[nodiscard]] const std::shared_ptr<Value> back() const;
+        std::shared_ptr<Value> back();
 
-        Value *appendRef(Value &&value);
+        std::shared_ptr<Value> appendRef(Value &&value);
         void append(Value &&value) &;
         void append(bool value) &;
         void append(Integer value) &;
@@ -130,7 +129,7 @@ public:
     /// \brief Dictionary Value Container Type
     class Dict {
     public:
-        using Raw = std::map<String, Value *>;
+        using Raw = std::map<String, std::shared_ptr<Value>>;
         using Iterator = Raw::iterator;
         using ConstIterator = Raw::const_iterator;
         using ReverseIterator = Raw::reverse_iterator;
@@ -166,10 +165,10 @@ public:
         Iterator erase(const Iterator &it);
         Iterator erase(const ConstIterator &it);
 
-        [[nodiscard]] const Value *find(const String &key) const;
-        Value *find(const String &key);
+        [[nodiscard]] const std::shared_ptr<Value> find(const String &key) const;
+        std::shared_ptr<Value> find(const String &key);
 
-        Value *setRef(const String &key, Value &&value);
+        std::shared_ptr<Value> setRef(const String &key, Value &&value);
         void set(const String &key, Value &&value) &;
         void set(const String &key, bool value) &;
         void set(const String &key, Integer value) &;

@@ -123,7 +123,7 @@ TEST(TestYaml, Deserialize_0) {
     ASSERT_TRUE(element1_obj->isString());
     EXPECT_EQ(element1_obj->getString(), "element1");
 
-    auto element7_obj = *array_obj->getList().end() - 1;
+    auto element7_obj = *(array_obj->getList().end() - 1);
     ASSERT_TRUE(element7_obj->isDict());
     auto ip = element7_obj->getDict().find("ip");
     ASSERT_NE(ip, nullptr);

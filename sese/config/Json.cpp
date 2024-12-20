@@ -296,7 +296,7 @@ void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
     out->write("]", 1);
 }
 
-void Json::streamifyBasic(io::OutputStream *out, const sese::Value *value) {
+void Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value) {
     assert(value);
     if (value->isNull()) {
         out->write("null", 4);

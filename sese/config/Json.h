@@ -45,7 +45,7 @@ class Json final : public NotInstantiable {
 
     static void streamifyArray(io::OutputStream *out, const Value::List &array);
 
-    static void streamifyBasic(io::OutputStream *out, const Value *value);
+    static void streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value);
 
     static bool tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept;
 
