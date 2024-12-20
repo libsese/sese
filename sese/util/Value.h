@@ -57,11 +57,13 @@ public:
     /// \brief List Value Container Type
     class List {
     public:
-        using Raw = std::vector<Value>;
+        using Raw = std::vector<Value *>;
         using Iterator = Raw::iterator;
         using ConstIterator = Raw::const_iterator;
         using ReverseIterator = Raw::reverse_iterator;
         using ConstReverseIterator = Raw::const_reverse_iterator;
+
+        ~List();
 
         [[nodiscard]] size_t empty() const;
         [[nodiscard]] size_t size() const;
@@ -69,10 +71,10 @@ public:
         void resize(size_t size);
         void clear();
 
-        const Value &operator[](size_t index) const;
-        Value &operator[](size_t index);
+        const Value *operator[](size_t index) const;
+        Value *operator[](size_t index);
 
-        size_t erase(const Value &value);
+        // size_t erase(const Value *value);
         Iterator erase(Iterator it);
         ConstIterator erase(ConstIterator it);
         Iterator erase(const Iterator &first, const Iterator &last);
@@ -91,10 +93,10 @@ public:
         ReverseIterator rend();
         [[nodiscard]] ConstReverseIterator rend() const;
 
-        [[nodiscard]] const Value &front() const;
-        Value &front();
-        [[nodiscard]] const Value &back() const;
-        Value &back();
+        [[nodiscard]] const Value *front() const;
+        Value *front();
+        [[nodiscard]] const Value *back() const;
+        Value *back();
 
         Value *appendRef(Value &&value);
         void append(Value &&value) &;

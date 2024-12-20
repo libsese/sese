@@ -299,7 +299,7 @@ void Value::toString(text::StringBuilder &string_builder, size_t level) const no
                     } else {
                         string_builder << ',';
                     }
-                    item.toString(string_builder, level);
+                    item->toString(string_builder, level);
                 }
             } else {
                 string_builder << "...";
@@ -330,6 +330,12 @@ void Value::toString(text::StringBuilder &string_builder, size_t level) const no
     }
 }
 
+List::~List() {
+    for (auto &it: vector) {
+        delete it;
+    }
+}
+
 size_t List::empty() const { return vector.empty(); }
 
 size_t List::size() const { return vector.size(); }
@@ -340,29 +346,29 @@ void List::resize(size_t size) { vector.resize(size); }
 
 void List::clear() { vector.clear(); }
 
-const Value &List::operator[](size_t index) const { return vector[index]; }
+const Value *List::operator[](size_t index) const { return vector[index]; }
 
-Value &List::operator[](size_t index) { return vector[index]; }
+Value *List::operator[](size_t index) { return vector[index]; }
 
-size_t List::erase(const sese::Value &value) {
-    size_t count = 0;
-    vector.erase(
-            std::remove_if(
-                    vector.begin(),
-                    vector.end(),
-                    [&value, &count](const Value &v) {
-                        if (v == value) {
-                            count += 1;
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-            ),
-            vector.end()
-    );
-    return count;
-}
+// size_t List::erase(const sese::Value &value) {
+//     size_t count = 0;
+//     vector.erase(
+//             std::remove_if(
+//                     vector.begin(),
+//                     vector.end(),
+//                     [&value, &count](const Value &v) {
+//                         if (v == value) {
+//                             count += 1;
+//                             return true;
+//                         } else {
+//                             return false;
+//                         }
+//                     }
+//             ),
+//             vector.end()
+//     );
+//     return count;
+// }
 
 List::Iterator List::erase(Iterator it) { return vector.erase(std::move(it)); }
 
@@ -396,103 +402,104 @@ List::ReverseIterator List::rend() { return vector.rend(); }
 
 List::ConstReverseIterator List::rend() const { return vector.rend(); }
 
-const Value &List::front() const {
+const Value *List::front() const {
     assert(!vector.empty());
     return vector.front();
 }
 
-Value &List::front() {
+Value *List::front() {
     assert(!vector.empty());
     return vector.front();
 }
 
-const Value &List::back() const {
+const Value *List::back() const {
     assert(!vector.empty());
     return vector.back();
 }
 
-Value &List::back() {
+Value *List::back() {
     assert(!vector.empty());
     return vector.back();
 }
 
 Value *List::appendRef(Value &&value) {
-    vector.emplace_back(std::move(value));
-    return &vector[vector.size() - 1];
+    auto ptr = new Value(std::move(value));
+    vector.emplace_back(ptr);
+    return ptr;
 }
 
-void List::append(Value &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(Value &&value) & { vector.emplace_back(new Value(std::move(value))); }
 
-void List::append(bool value) & { vector.emplace_back(value); }
+void List::append(bool value) & { vector.emplace_back(new Value(value)); }
 
-void List::append(Integer value) & { vector.emplace_back(value); }
+void List::append(Integer value) & { vector.emplace_back(new Value(value)); }
 
-void List::append(double value) & { vector.emplace_back(value); }
+void List::append(double value) & { vector.emplace_back(new Value(value)); }
 
-void List::append(const char *value) & { vector.emplace_back(value); }
+void List::append(const char *value) & { vector.emplace_back(new Value(value)); }
 
-void List::append(String &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(String &&value) & { vector.emplace_back(new Value(std::move(value))); }
 
-void List::append(const char *bytes, size_t length) & { vector.emplace_back(bytes, length); }
+void List::append(const char *bytes, size_t length) & { vector.emplace_back(new Value(bytes, length)); }
 
-void List::append(Blob &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(Blob &&value) & { vector.emplace_back(new Value(std::move(value))); }
 
-void List::append(List &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(List &&value) & { vector.emplace_back(new Value(std::move(value))); }
 
-void List::append(Dict &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(Dict &&value) & { vector.emplace_back(new Value(std::move(value))); }
 
 List &&List::append(Value &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(bool value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(Integer value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(double value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(const char *value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(String &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(Blob &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(const char *bytes, size_t length) && {
-    vector.emplace_back(bytes, length);
+    vector.emplace_back(new Value(bytes, length));
     return std::move(*this);
 }
 
 List &&List::append(List &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(Dict &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(new Value(std::move(value)));
     return std::move(*this);
 }
 
-List::Iterator List::insert(sese::Value::List::Iterator it, sese::Value &&value) {
-    return vector.insert(std::move(it), std::move(value));
+List::Iterator List::insert(Iterator it, Value &&value) {
+    return vector.insert(std::move(it), new Value(std::move(value)));
 }
 
 Dict::~Dict() {

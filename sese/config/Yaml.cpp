@@ -417,8 +417,8 @@ void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, si
 void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, size_t level) {
     auto count = 0;
     for (decltype(auto) item: list) {
-        if (item.getType() == Value::Type::DICT) {
-            if (auto &&sub = item.getDict(); !sub.empty()) {
+        if (item->getType() == Value::Type::DICT) {
+            if (auto &&sub = item->getDict(); !sub.empty()) {
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 Yaml::writeSpace(level * 2, output);
@@ -427,8 +427,8 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
                 output->write(":\n", 2);
                 streamifyObject(output, sub, level + 1);
             }
-        } else if (item.getType() == Value::Type::LIST) {
-            auto &&sub = item.getList();
+        } else if (item->getType() == Value::Type::LIST) {
+            auto &&sub = item->getList();
             if (!sub.empty()) {
                 auto name = "element_" + std::to_string(count);
                 count += 1;
@@ -442,16 +442,16 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
             auto &&sub = item;
             Yaml::writeSpace(level * 2, output);
             output->write("- ", 2);
-            if (sub.isNull()) {
+            if (sub->isNull()) {
                 output->write("~", 1);
-            } else if (sub.isBool()) {
-                auto data = sub.getBool() ? "true" : "false";
+            } else if (sub->isBool()) {
+                auto data = sub->getBool() ? "true" : "false";
                 output->write(data, strlen(data));
-            } else if (sub.isInt() || sub.isDouble()) {
-                auto data = sub.toString();
+            } else if (sub->isInt() || sub->isDouble()) {
+                auto data = sub->toString();
                 output->write(data.c_str(), data.length());
-            } else if (sub.isString()) {
-                auto &&data = sub.getString();
+            } else if (sub->isString()) {
+                auto &&data = sub->getString();
                 output->write(data.c_str(), data.length());
             }
             output->write("\n", 1);

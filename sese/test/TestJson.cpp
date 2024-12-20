@@ -21,30 +21,28 @@
 /// Parse the JSON format from the file
 TEST(TestJson, FromFile) {
     auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
-    // auto object = sese::json::JsonUtil::deserialize(file_stream, 3);
-    // ASSERT_TRUE(object != nullptr);
-
-    // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("A"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("A"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("A"), nullptr);
-
-    // EXPECT_NE(object->getDataAs<sese::json::ObjectData>("object"), nullptr);
-    // EXPECT_NE(object->getDataAs<sese::json::ArrayData>("mixin_array"), nullptr);
-    // EXPECT_NE(object->getDataAs<sese::json::BasicData>("value"), nullptr);
-
-    // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("mixin_array"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("object"), nullptr);
-
-    // auto boolean_value = object->getDataAs<sese::json::BasicData>("boolean");
-    // ASSERT_TRUE(boolean_value != nullptr);
-    // ASSERT_TRUE(boolean_value->getDataAs<bool>(false));
-    // boolean_value->setDataAs<bool>(false);
-
-    // auto output = std::make_shared<sese::io::ConsoleOutputStream>();
-    // sese::json::JsonUtil::serialize(object, output);
-    // output->write("\n", 1);
 
     auto object = sese::Json::parse(file_stream.get(), 3);
+    ASSERT_TRUE(object.isDict());
+
+    EXPECT_EQ(object.getDict().find("A"), nullptr);
+
+    EXPECT_TRUE(object.getDict().find("object")->isDict());
+    EXPECT_TRUE(object.getDict().find("mixin_array")->isList());
+    EXPECT_FALSE(object.getDict().find("value")->isNull());
+
+    EXPECT_TRUE(object.getDict().find("boolean")->isBool());
+    EXPECT_TRUE(object.getDict().find("boolean")->getBool());
+
+    auto output = sese::io::ConsoleOutputStream();
+    sese::Json::streamify(&output, object.getDict());
+    output.write("\n", 1);
+}
+
+TEST(TestJson, FromFileSimd) {
+    auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::B_READ);
+
+    auto object = sese::Json::simdParse(file_stream.get());
     ASSERT_TRUE(object.isDict());
 
     EXPECT_EQ(object.getDict().find("A"), nullptr);

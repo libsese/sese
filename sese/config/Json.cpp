@@ -285,12 +285,12 @@ void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
             out->write(",", 1);
         }
 
-        if (data.getType() == Value::Type::DICT) {
-            streamifyObject(out, data.getDict());
-        } else if (data.getType() == Value::Type::LIST) {
-            streamifyArray(out, data.getList());
+        if (data->getType() == Value::Type::DICT) {
+            streamifyObject(out, data->getDict());
+        } else if (data->getType() == Value::Type::LIST) {
+            streamifyArray(out, data->getList());
         } else {
-            streamifyBasic(out, &data);
+            streamifyBasic(out, data);
         }
     }
     out->write("]", 1);

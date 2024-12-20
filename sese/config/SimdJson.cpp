@@ -24,7 +24,7 @@ using sese::Json;
 sese::Value Json::parse(const simdjson::dom::element &json) {
     using simdjson::dom::element_type;
     std::stack<std::pair<simdjson::dom::element, Value *>> stack;
-    Value rootValue;
+    auto rootValue = Value::dict();
     stack.push({json, &rootValue});
 
     while (!stack.empty()) {
@@ -123,17 +123,20 @@ sese::Value Json::parse(const simdjson::dom::element &json) {
 }
 
 sese::Value Json::simdParse(io::InputStream *input) {
-    text::StringBuilder builder(8 * 1024);
-    char buffer[1024];
+    text::StringBuilder builder(1024 * 4);
+    char buffer[1024 * 4];
     size_t read;
     while ((read = input->read(buffer, sizeof(buffer))) > 0) {
         builder.append(buffer, read);
     }
+    memset(buffer, 0, simdjson::SIMDJSON_PADDING);
+    builder.append(buffer, simdjson::SIMDJSON_PADDING);
+    simdjson::padded_string_view padded_string(static_cast<const char *>(builder.buf()), builder.length());
 
     simdjson::dom::element json;
     simdjson::dom::parser parser;
-    auto result = parser.parse(static_cast<const char *>(builder.buf()), builder.size());
-    if (result.get(json)) {
+    auto result = parser.parse(padded_string);
+    if (result.error() || result.get(json)) {
         return {};
     }
 
