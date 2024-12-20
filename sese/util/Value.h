@@ -96,6 +96,7 @@ public:
         [[nodiscard]] const Value &back() const;
         Value &back();
 
+        Value *appendRef(Value &&value);
         void append(Value &&value) &;
         void append(bool value) &;
         void append(Integer value) &;
@@ -166,6 +167,7 @@ public:
         [[nodiscard]] const Value *find(const String &key) const;
         Value *find(const String &key);
 
+        Value *setRef(const String &key, Value &&value);
         void set(const String &key, Value &&value) &;
         void set(const String &key, bool value) &;
         void set(const String &key, Integer value) &;

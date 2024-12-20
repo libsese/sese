@@ -416,6 +416,11 @@ Value &List::back() {
     return vector.back();
 }
 
+Value *List::appendRef(Value &&value) {
+    vector.emplace_back(std::move(value));
+    return &vector[vector.size() - 1];
+}
+
 void List::append(Value &&value) & { vector.emplace_back(std::move(value)); }
 
 void List::append(bool value) & { vector.emplace_back(value); }
@@ -566,6 +571,11 @@ const Value *Dict::find(const Value::String &key) const {
         return nullptr;
     }
     return it->second;
+}
+
+Value *Dict::setRef(const String &key, Value &&value) {
+    auto [fst, _] = map.emplace(key, new Value(std::move(value)));
+    return fst->second;
 }
 
 void Dict::set(const Value::String &key, Value &&value) & {

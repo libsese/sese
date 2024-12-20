@@ -4,6 +4,7 @@ find_package(Git)
 find_package(OpenSSL REQUIRED)
 find_package(ZLIB REQUIRED)
 find_package(asio CONFIG REQUIRED)
+find_package(simdjson CONFIG REQUIRED)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)

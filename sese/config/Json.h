@@ -26,6 +26,10 @@
 
 #include <queue>
 
+namespace simdjson::dom {
+class element;
+}
+
 namespace sese {
 /// JSON parser
 class Json final : public NotInstantiable {
@@ -44,6 +48,9 @@ class Json final : public NotInstantiable {
     static void streamifyBasic(io::OutputStream *out, const Value *value);
 
     static bool tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept;
+
+    static Value parse(const simdjson::dom::element &json);
+
 public:
     Json() = delete;
 
@@ -57,5 +64,7 @@ public:
     /// \param out The output stream
     /// \param dict The JSON object
     static void streamify(io::OutputStream *out, const Value::Dict &dict);
+
+    static Value simdParse(io::InputStream *input);
 };
 } // namespace sese

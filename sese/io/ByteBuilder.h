@@ -29,7 +29,7 @@ namespace sese::io {
 /**
  * @brief Non-thread-safe byte buffer class
  */
-class  ByteBuilder final : public AbstractByteBuffer {
+class ByteBuilder final : public AbstractByteBuffer {
 public:
     using Ptr = std::unique_ptr<ByteBuilder>;
 
