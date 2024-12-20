@@ -331,9 +331,10 @@ void Value::toString(text::StringBuilder &string_builder, size_t level) const no
 }
 
 List::~List() {
-    for (auto &it: vector) {
-        delete it;
-    }
+    // for (auto it: vector) {
+    //     delete it;
+    // }
+    // vector.clear();
 }
 
 size_t List::empty() const { return vector.empty(); }
