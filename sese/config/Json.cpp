@@ -27,9 +27,8 @@ using sese::Value;
 inline bool isKeyword(const char *str) {
     if (str[0] == '}' || str[0] == ']' || str[0] == ':' || str[0] == ',') {
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
 
 bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
@@ -102,151 +101,156 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
     return true;
 }
 
-Value Json::parseObject(Json::Tokens &tokens, size_t level) {
+bool Json::parseObject(Tokens &tokens, std::stack<Value *> &stack) {
     bool has_end = false;
-    if (level == 0) {
-        return {};
-    }
-    auto object = Value::Dict();
+    auto object = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
     while (!tokens.empty()) {
         auto name = tokens.front();
         tokens.pop();
         if (name == "}") {
             has_end = true;
             break;
-        } else if (name == ",") {
+        }
+        if (name == ",") {
             // token is ',' means there are more key-value pairs
             if (tokens.empty())
-                return {};
+                return false;
             name = tokens.front();
             tokens.pop();
         }
         name = name.substr(1, name.size() - 2);
 
         if (tokens.empty())
-            return {};
+            return false;
         // The token must be ":"
         if (tokens.front() != ":")
-            return {};
+            return false;
         tokens.pop();
 
         if (tokens.empty())
-            return {};
+            return false;
         auto value = tokens.front();
         tokens.pop();
 
         if (value == "{") {
             // value is a ObjectData
-            level--;
-            auto sub_object = parseObject(tokens, level);
-            if (sub_object.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                object.set(name, std::move(sub_object));
-            }
-            level++;
-        } else if (value == "[") {
-            // value is an ArrayData
-            level--;
-            auto array = parseArray(tokens, level);
-            if (array.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                object.set(name, std::move(array));
-            }
-            level++;
-        } else {
-            // value should be a BasicData, but it may be a keyword
-            if (isKeyword(value.c_str()))
-                return {};
-            object.set(name, parseBasic(value));
+            auto sub_object = object_ref.setRef(name, Value::dict()).get();
+            stack.push(object);
+            stack.push(sub_object);
+            return true;
         }
+        if (value == "[") {
+            // value is an ArrayData
+            auto sub_array = object_ref.setRef(name, Value::list()).get();
+            stack.push(object);
+            stack.push(sub_array);
+            return true;
+        }
+        // value should be a BasicData, but it may be a keyword
+        if (isKeyword(value.c_str()))
+            return false;
+        object_ref.set(name, parseBasic(value));
     }
 
     if (has_end) {
-        return Value(std::move(object));
+        return true;
     }
-    return {};
+    return false;
 }
 
-Value Json::parseArray(sese::Json::Tokens &tokens, size_t level) {
+bool Json::parseArray(Tokens &tokens, std::stack<Value *> &stack) {
     // the array exists keyword check, will not trigger end with check
-    // bool hasEnd = false;
-    if (level == 0) {
-        return {};
-    }
-    auto array = Value::List();
+    auto array = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
     while (!tokens.empty()) {
         auto token = tokens.front();
         tokens.pop();
         if (token == "]") {
             // hasEnd = true;
             break;
-        } else if (token == ",") {
+        }
+        if (token == ",") {
             // token is ',' means there are more values
             if (tokens.empty())
-                return {};
+                return false;
             token = tokens.front();
             tokens.pop();
         }
 
         if (token == "{") {
             // value is a ObjectData
-            level--;
-            auto sub_object = parseObject(tokens, level);
-            if (sub_object.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                array.append(std::move(sub_object));
-            }
-            level++;
-        } else if (token == "[") {
+            auto sub_object = array_ref.appendRef(Value::dict()).get();
+            stack.push(array);
+            stack.push(sub_object);
+            return true;
+        }
+        if (token == "[") {
             // value is an ArrayData
-            level--;
-            auto sub_array = parseArray(tokens, level);
-            if (sub_array.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                array.append(std::move(sub_array));
-            }
-            level++;
-        } else {
-            // value should be a BasicData, but it may be a keyword
-            if (isKeyword(token.c_str()))
-                return {};
-            array.append(parseBasic(token));
+            auto sub_object = array_ref.appendRef(Value::list()).get();
+            stack.push(array);
+            stack.push(sub_object);
+            return true;
+        }
+        // value should be a BasicData, but it may be a keyword
+        if (isKeyword(token.c_str()))
+            return false;
+        array_ref.append(parseBasic(token));
+    }
+
+    return true;
+}
+
+Value Json::parse(Tokens &tokens) {
+    Value root_value;
+    if (tokens.front() == "{") {
+        root_value = Value::dict();
+    } else if (tokens.front() == "[") {
+        root_value = Value::list();
+    } else {
+        return {};
+    }
+
+    tokens.pop();
+    std::stack<Value *> stack;
+    stack.push(&root_value);
+
+    while (!stack.empty()) {
+        auto current_value = stack.top();
+        bool rt = false;
+        if (current_value->isDict()) {
+            rt = parseObject(tokens, stack);
+        } else if (current_value->isList()) {
+            rt = parseArray(tokens, stack);
+        }
+        if (!rt) {
+            return {};
         }
     }
 
-    // if (hasEnd) {
-    return Value(std::move(array));
-    // } else {
-    //    return nullptr;
-    // }
+    return root_value;
 }
 
 Value Json::parseBasic(const std::string &value) {
     if (value == "null") {
         return {};
-    } else if (value == "true") {
-        // data = std::make_shared<BasicData>(value);
-        return Value(true);
-    } else if (value == "false") {
-        return Value(false);
-    } else if (value.compare(0, 1, "\"") == 0) {
-        return Value(value.substr(1, value.size() - 2));
-    } else {
-        auto is_float = value.find('.', 1);
-        if (is_float != std::string::npos) {
-            return Value(std::stod(value));
-        } else {
-            return Value(static_cast<Value::Integer>(std::stoll(value)));
-        }
     }
+    if (value == "true") {
+        return Value(true);
+    }
+    if (value == "false") {
+        return Value(false);
+    }
+    if (value.compare(0, 1, "\"") == 0) {
+        return Value(value.substr(1, value.size() - 2));
+    }
+    auto is_float = value.find('.', 1);
+    if (is_float != std::string::npos) {
+        return Value(std::stod(value));
+    }
+    return Value(static_cast<Value::Integer>(std::stoll(value)));
 }
 
 void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
@@ -308,7 +312,7 @@ void Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &v
     }
 }
 
-Value Json::parse(io::InputStream *input, size_t level) {
+Value Json::parse(io::InputStream *input) {
     Tokens tokens;
     if (!tokenizer(input, tokens)) {
         return {};
@@ -318,11 +322,7 @@ Value Json::parse(io::InputStream *input, size_t level) {
         return {};
     }
 
-    // The first token must be '{', pop it
-    if (tokens.front() != "{")
-        return {};
-    tokens.pop();
-    return parseObject(tokens, level);
+    return parse(tokens);
 }
 
 void Json::streamify(io::OutputStream *out, const Value::Dict &dict) {

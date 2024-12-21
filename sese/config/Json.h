@@ -24,6 +24,7 @@
 #include <sese/io/InputStream.h>
 #include <sese/io/OutputStream.h>
 
+#include <stack>
 #include <queue>
 
 namespace simdjson::dom {
@@ -35,9 +36,11 @@ namespace sese {
 class Json final : public NotInstantiable {
     using Tokens = std::queue<std::string>;
 
-    static Value parseObject(Tokens &tokens, size_t level);
+    static Value parse(Tokens &tokens);
 
-    static Value parseArray(Tokens &tokens, size_t level);
+    static bool parseObject(Tokens &tokens, std::stack<Value *> &stack);
+
+    static bool parseArray(Tokens &tokens, std::stack<Value *> &stack);
 
     static Value parseBasic(const std::string &value);
 
@@ -56,9 +59,8 @@ public:
 
     /// \brief Deserialize a JSON object from the stream
     /// \param input The input stream
-    /// \param level The JSON parsing depth
     /// \return If parsing fails, Value::isNull will be true
-    static Value parse(io::InputStream *input, size_t level);
+    static Value parse(io::InputStream *input);
 
     /// \brief Serialize a JSON object to the stream
     /// \param out The output stream

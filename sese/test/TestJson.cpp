@@ -22,7 +22,7 @@
 TEST(TestJson, FromFile) {
     auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
 
-    auto object = sese::Json::parse(file_stream.get(), 3);
+    auto object = sese::Json::parse(file_stream.get());
     ASSERT_TRUE(object.isDict());
 
     EXPECT_EQ(object.getDict().find("A"), nullptr);
@@ -73,7 +73,7 @@ TEST(TestJson, Getter) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_NE(object, nullptr);
-    auto object = sese::Json::parse(&input, 5);
+    auto object = sese::Json::parse(&input);
     ASSERT_TRUE(object.isDict());
 
     // SESE_JSON_GET_STRING(str1, object, "str1", "undef");
@@ -161,7 +161,7 @@ TEST(TestJson, Getter) {
 
 TEST(TestJson, Value) {
     auto input = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
-    auto object = sese::Json::parse(input.get(), 4);
+    auto object = sese::Json::parse(input.get());
     input->close();
     ASSERT_FALSE(object.isNull());
 
@@ -180,7 +180,7 @@ TEST(TestJson, Error_0) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -191,7 +191,7 @@ TEST(TestJson, Error_1) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -203,7 +203,7 @@ TEST(TestJson, Error_2) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -214,7 +214,7 @@ TEST(TestJson, Error_3) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -224,7 +224,7 @@ TEST(TestJson, Error_4) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -238,7 +238,7 @@ TEST(TestJson, Error_5) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -253,7 +253,7 @@ TEST(TestJson, Error_6) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -265,7 +265,7 @@ TEST(TestJson, Error_7) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -277,54 +277,6 @@ TEST(TestJson, Error_8) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an object, the subarray depth exceeds the limit
-TEST(TestJson, Error_9) {
-    const char STR[] = "{\n"
-                       "  \"arr\": []\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 1);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 1);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an object, the depth of the sub-object exceeds the limit
-TEST(TestJson, Error_10) {
-    const char STR[] = "{\n"
-                       "  \"obj\": {}\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 1);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 1);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an array, the depth of the subarray exceeds the limit
-TEST(TestJson, Error_11) {
-    const char STR[] = "{\n"
-                       "  \"arr\": [[]]\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 2);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 2);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an array, the depth of the sub-objects exceeds the limit
-TEST(TestJson, Error_12) {
-    const char STR[] = "{\n"
-                       "  \"arr\": [{}]\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 2);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 2);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }

@@ -24,93 +24,101 @@ using sese::Json;
 sese::Value Json::parse(const simdjson::dom::element &json) {
     using simdjson::dom::element_type;
     std::stack<std::pair<simdjson::dom::element, Value *>> stack;
-    auto rootValue = Value::dict();
-    stack.push({json, &rootValue});
+
+    Value root_value;
+    if (json.type() == element_type::OBJECT) {
+        root_value = Value::dict();
+    } else if (json.type() == element_type::ARRAY) {
+        root_value = Value::list();
+    } else {
+        return {};
+    }
+    stack.emplace(json, &root_value);
 
     while (!stack.empty()) {
         auto [element, currentValue] = stack.top();
         stack.pop();
         if (element.type() == element_type::ARRAY) {
             auto arr = element.get_array();
-            auto &listRef = currentValue->getList();
+            auto &list_ref = currentValue->getList();
             for (auto child: arr) {
                 switch (child.type()) {
                     case element_type::ARRAY: {
-                        auto v = listRef.appendRef(Value::list()).get();
-                        stack.push({child, v});
+                        auto v = list_ref.appendRef(Value::list()).get();
+                        stack.emplace(child, v);
                         break;
                     }
                     case element_type::OBJECT: {
-                        auto v = listRef.appendRef(Value::dict()).get();
-                        stack.push({child, v});
+                        auto v = list_ref.appendRef(Value::dict()).get();
+                        stack.emplace(child, v);
                         break;
                     }
                     case element_type::INT64: {
-                        listRef.append(child.get_int64());
+                        list_ref.append(child.get_int64());
                         break;
                     }
                     case element_type::UINT64: {
-                        listRef.append(static_cast<int64_t>(child.get_uint64()));
+                        list_ref.append(static_cast<int64_t>(child.get_uint64()));
                         break;
                     }
                     case element_type::DOUBLE: {
-                        listRef.append(child.get_double());
+                        list_ref.append(child.get_double());
                         break;
                     }
                     case element_type::STRING: {
                         std::string str(child.get_string().take_value());
-                        listRef.append(std::move(str));
+                        list_ref.append(std::move(str));
                         break;
                     }
                     case element_type::BOOL: {
-                        listRef.append(child.get_bool().value());
+                        list_ref.append(child.get_bool().value());
                         break;
                     }
                     case element_type::NULL_VALUE: {
-                        listRef.append(Value());
+                        list_ref.append(Value());
                         break;
                     }
                 }
             }
         } else if (element.type() == element_type::OBJECT) {
             auto obj = element.get_object();
-            auto &dictRef = currentValue->getDict();
+            auto &dict_ref = currentValue->getDict();
             for (auto &[_key, value]: obj) {
                 std::string key(_key.begin(), _key.end());
                 switch (value.type()) {
                     case element_type::ARRAY: {
-                        auto v = dictRef.setRef(key, Value::list()).get();
-                        stack.push({value, v});
+                        auto v = dict_ref.setRef(key, Value::list()).get();
+                        stack.emplace(value, v);
                         break;
                     }
                     case element_type::OBJECT: {
-                        auto v = dictRef.setRef(key, Value::dict()).get();
-                        stack.push({value, v});
+                        auto v = dict_ref.setRef(key, Value::dict()).get();
+                        stack.emplace(value, v);
                         break;
                     }
                     case element_type::INT64: {
-                        dictRef.set(key, value.get_int64());
+                        dict_ref.set(key, value.get_int64());
                         break;
                     }
                     case element_type::UINT64: {
-                        dictRef.set(key, static_cast<int64_t>(value.get_uint64()));
+                        dict_ref.set(key, static_cast<int64_t>(value.get_uint64()));
                         break;
                     }
                     case element_type::DOUBLE: {
-                        dictRef.set(key, value.get_double());
+                        dict_ref.set(key, value.get_double());
                         break;
                     }
                     case element_type::STRING: {
                         std::string str(value.get_string().take_value());
-                        dictRef.set(key, std::move(str));
+                        dict_ref.set(key, std::move(str));
                         break;
                     }
                     case element_type::BOOL: {
-                        dictRef.set(key, value.get_bool());
+                        dict_ref.set(key, value.get_bool());
                         break;
                     }
                     case element_type::NULL_VALUE: {
-                        dictRef.set(key, std::move(Value()));
+                        dict_ref.set(key, std::move(Value()));
                         break;
                     }
                 }
@@ -119,7 +127,7 @@ sese::Value Json::parse(const simdjson::dom::element &json) {
             assert(false);
         }
     }
-    return rootValue;
+    return root_value;
 }
 
 sese::Value Json::simdParse(io::InputStream *input) {

@@ -47,7 +47,7 @@ SESE_CTRL(MyController) {
     SESE_URL(login, RequestType::POST, "/login") {
         auto &req = ctx.getReq();
         auto &resp = ctx.getResp();
-        auto obj = sese::Json::parse(&req.getBody(), 3);
+        auto obj = sese::Json::parse(&req.getBody());
         if (!obj.isDict()) {
             resp.setCode(403);
             return;
