@@ -166,7 +166,7 @@ public:
         ASSERT_NOT_NULL(client);
         auto &req = client->getRequest();
         req->setType(RequestType::POST);
-        auto dict = sese::Value::Dict().set("name", "kaoru").set("pwd", "10086");
+        auto dict = sese::Value(sese::Value::Dict().set("name", "kaoru").set("pwd", "10086"));
         sese::Json::streamify(&req->getBody(), dict);
         auto console = std::make_unique<sese::io::ConsoleOutputStream>();
         client->setWriteData(console.get());

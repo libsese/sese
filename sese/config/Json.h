@@ -44,11 +44,19 @@ class Json final : public NotInstantiable {
 
     static Value parseBasic(const std::string &value);
 
-    static void streamifyObject(io::OutputStream *out, const Value::Dict &object);
+    static bool streamifyObject(
+        io::OutputStream *out,
+        std::stack<std::pair<Value *, unsigned int>> &stack,
+        std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+    );
 
-    static void streamifyArray(io::OutputStream *out, const Value::List &array);
+    static bool streamifyArray(
+        io::OutputStream *out,
+        std::stack<std::pair<Value *, unsigned int>> &stack,
+        std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+    );
 
-    static void streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value);
+    static bool streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value);
 
     static bool tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept;
 
@@ -64,8 +72,9 @@ public:
 
     /// \brief Serialize a JSON object to the stream
     /// \param out The output stream
-    /// \param dict The JSON object
-    static void streamify(io::OutputStream *out, const Value::Dict &dict);
+    /// \param value The JSON object
+    /// \return If serialization fails, false will be returned
+    static bool streamify(io::OutputStream *out, Value &value);
 
     /// \brief Deserialize a JSON object from the stream using SIMD
     /// \param input The input stream

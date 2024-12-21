@@ -253,65 +253,6 @@ Value Json::parseBasic(const std::string &value) {
     return Value(static_cast<Value::Integer>(std::stoll(value)));
 }
 
-void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
-    bool is_first = true;
-    out->write("{", 1);
-    for (const auto &iterator: object) {
-        if (is_first) {
-            is_first = false;
-        } else {
-            out->write(",", 1);
-        }
-        auto data = iterator.second;
-        auto name = iterator.first;
-        out->write("\"", 1);
-        out->write(name.c_str(), name.length());
-        out->write("\":", 2);
-
-        if (data->getType() == Value::Type::DICT) {
-            streamifyObject(out, data->getDict());
-        } else if (data->getType() == Value::Type::LIST) {
-            streamifyArray(out, data->getList());
-        } else {
-            streamifyBasic(out, data);
-        }
-    }
-    out->write("}", 1);
-}
-
-void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
-    bool is_first = true;
-    out->write("[", 1);
-    for (const auto &data: array) {
-        if (is_first) {
-            is_first = false;
-        } else {
-            out->write(",", 1);
-        }
-
-        if (data->getType() == Value::Type::DICT) {
-            streamifyObject(out, data->getDict());
-        } else if (data->getType() == Value::Type::LIST) {
-            streamifyArray(out, data->getList());
-        } else {
-            streamifyBasic(out, data);
-        }
-    }
-    out->write("]", 1);
-}
-
-void Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value) {
-    assert(value);
-    if (value->isNull()) {
-        out->write("null", 4);
-    } else if (value->isBool()) {
-        out->write(value->getBool() ? "true" : "false", 4);
-    } else if (value->isDouble() || value->isInt() || value->isString()) {
-        auto v = value->toString();
-        out->write(v.c_str(), v.size());
-    }
-}
-
 Value Json::parse(io::InputStream *input) {
     Tokens tokens;
     if (!tokenizer(input, tokens)) {
@@ -325,8 +266,145 @@ Value Json::parse(io::InputStream *input) {
     return parse(tokens);
 }
 
-void Json::streamify(io::OutputStream *out, const Value::Dict &dict) {
-    streamifyObject(out, dict);
+#define CONST_WRITE(stream, const_string)                                          \
+    if (stream->write(const_string, strlen(const_string)) != strlen(const_string)) \
+    return false
+
+#define STRING_WRITE(stream, string)                                  \
+    if (stream->write(string.data(), string.size()) != string.size()) \
+    return false
+
+
+bool Json::streamifyObject(
+    io::OutputStream *out,
+    std::stack<std::pair<Value *, unsigned int>> &stack,
+    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+) {
+    auto iter = map_iter_stack.top();
+    map_iter_stack.pop();
+    auto &[object, count] = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
+    if (count == object_ref.size()) {
+        CONST_WRITE(out, "}");
+        return true;
+    }
+    while (iter != object_ref.end()) {
+        auto name = iter->first;
+        auto value = iter->second;
+        if (count == 0) {
+            CONST_WRITE(out, "{");
+        }
+        if (count > 0 && count < object_ref.size()) {
+            CONST_WRITE(out, ",");
+        }
+        ++iter;
+        count += 1;
+        CONST_WRITE(out, "\"");
+        STRING_WRITE(out, name);
+        CONST_WRITE(out, "\":");
+        if (value->isDict()) {
+            stack.emplace(object, count);
+            stack.emplace(value.get(), 0);
+            map_iter_stack.emplace(iter);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            stack.emplace(object, count);
+            stack.emplace(value.get(), 0);
+            map_iter_stack.emplace(iter);
+            return true;
+        }
+        if (!streamifyBasic(out, value)) {
+            return false;
+        }
+        if (count == object_ref.size()) {
+            CONST_WRITE(out, "}");
+        }
+    }
+    return true;
+}
+
+bool Json::streamifyArray(
+    io::OutputStream *out,
+    std::stack<std::pair<Value *, unsigned int>> &stack,
+    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+) {
+    auto &[array, count] = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
+    if (count == array_ref.size()) {
+        CONST_WRITE(out, "]");
+        return true;
+    }
+    while (count < array_ref.size()) {
+        auto value = array_ref[count];
+        if (count == 0) {
+            CONST_WRITE(out, "[");
+        }
+        if (count > 0 && count < array_ref.size()) {
+            CONST_WRITE(out, ",");
+        }
+        count += 1;
+        if (value->isDict()) {
+            stack.emplace(array, count);
+            stack.emplace(value.get(), 0);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            stack.emplace(array, count);
+            stack.emplace(value.get(), 0);
+        }
+        if (!streamifyBasic(out, value)) {
+            return false;
+        }
+        if (count == array_ref.size()) {
+            CONST_WRITE(out, "]");
+        }
+    }
+    return true;
+}
+
+bool Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value) {
+    assert(value);
+    if (value->isNull()) {
+        CONST_WRITE(out, "null");
+    } else if (value->isBool()) {
+        if (value->getBool()) {
+            CONST_WRITE(out, "true");
+        } else {
+            CONST_WRITE(out, "false");
+        }
+    } else if (value->isDouble() || value->isInt() || value->isString()) {
+        auto v = value->toString();
+        STRING_WRITE(out, v);
+    } else {
+        return false;
+    }
+    return true;
+}
+
+bool Json::streamify(io::OutputStream *out, Value &value) {
+    std::stack<std::pair<Value *, unsigned int>> stack;
+    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> map_iter_stack;
+    stack.emplace(&value, 0);
+    if (value.isDict()) {
+        map_iter_stack.emplace(value.getDict().begin());
+    }
+
+    while (!stack.empty()) {
+        auto &[current_value, first] = stack.top();
+        if (current_value->isDict()) {
+            streamifyObject(out, stack, map_iter_stack);
+        } else if (current_value->isList()) {
+            streamifyArray(out, stack, map_iter_stack);
+        } else {
+            return false;
+        }
+    }
+    return true;
 }
 
 // GCOVR_EXCL_STOP

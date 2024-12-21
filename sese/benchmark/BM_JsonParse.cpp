@@ -47,7 +47,7 @@ auto json_string = R"(
 static void BM_BuiltinAlgo(benchmark::State &state) {
     sese::io::InputBufferWrapper wrapper(json_string, strlen(json_string));
     for (auto _: state) {
-        auto v = sese::Json::parse(&wrapper, 8);
+        auto v = sese::Json::parse(&wrapper);
         benchmark::DoNotOptimize(v);
     }
 }
