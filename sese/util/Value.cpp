@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
 #define SESE_C_LIKE_FORMAT
 
 #include <sese/util/Value.h>
@@ -299,7 +300,7 @@ void Value::toString(text::StringBuilder &string_builder, size_t level) const no
                     } else {
                         string_builder << ',';
                     }
-                    item.toString(string_builder, level);
+                    item->toString(string_builder, level);
                 }
             } else {
                 string_builder << "...";
@@ -340,18 +341,18 @@ void List::resize(size_t size) { vector.resize(size); }
 
 void List::clear() { vector.clear(); }
 
-const Value &List::operator[](size_t index) const { return vector[index]; }
+const std::shared_ptr<Value> List::operator[](size_t index) const { return vector[index]; }
 
-Value &List::operator[](size_t index) { return vector[index]; }
+std::shared_ptr<Value> List::operator[](size_t index) { return vector[index]; }
 
-size_t List::erase(const sese::Value &value) {
+size_t List::erase(const std::shared_ptr<Value> &value) {
     size_t count = 0;
     vector.erase(
             std::remove_if(
                     vector.begin(),
                     vector.end(),
-                    [&value, &count](const Value &v) {
-                        if (v == value) {
+                    [&value, &count](const std::shared_ptr<Value> &v) {
+                        if (*value == *v) {
                             count += 1;
                             return true;
                         } else {
@@ -364,9 +365,13 @@ size_t List::erase(const sese::Value &value) {
     return count;
 }
 
-List::Iterator List::erase(Iterator it) { return vector.erase(std::move(it)); }
+List::Iterator List::erase(Iterator it) {
+    return vector.erase(it);
+}
 
-List::ConstIterator List::erase(ConstIterator it) { return vector.erase(std::move(it)); }
+List::ConstIterator List::erase(ConstIterator it) {
+    return vector.erase(it);
+}
 
 List::Iterator List::erase(const Iterator &first, const Iterator &last) {
     return vector.erase(first, last);
@@ -396,98 +401,104 @@ List::ReverseIterator List::rend() { return vector.rend(); }
 
 List::ConstReverseIterator List::rend() const { return vector.rend(); }
 
-const Value &List::front() const {
+const std::shared_ptr<Value> List::front() const {
     assert(!vector.empty());
     return vector.front();
 }
 
-Value &List::front() {
+std::shared_ptr<Value> List::front() {
     assert(!vector.empty());
     return vector.front();
 }
 
-const Value &List::back() const {
+const std::shared_ptr<Value> List::back() const {
     assert(!vector.empty());
     return vector.back();
 }
 
-Value &List::back() {
+std::shared_ptr<Value> List::back() {
     assert(!vector.empty());
     return vector.back();
 }
 
-void List::append(Value &&value) & { vector.emplace_back(std::move(value)); }
+std::shared_ptr<Value> List::appendRef(Value &&value) {
+    auto ptr = std::make_shared<Value>(std::move(value));
+    vector.emplace_back(ptr);
+    return ptr;
+}
 
-void List::append(bool value) & { vector.emplace_back(value); }
+void List::append(Value &&value) & { vector.emplace_back(std::make_shared<Value>(std::move(value))); }
 
-void List::append(Integer value) & { vector.emplace_back(value); }
+void List::append(bool value) & { vector.emplace_back(std::make_shared<Value>(value)); }
 
-void List::append(double value) & { vector.emplace_back(value); }
+void List::append(Integer value) & { vector.emplace_back(std::make_shared<Value>(value)); }
 
-void List::append(const char *value) & { vector.emplace_back(value); }
+void List::append(double value) & { vector.emplace_back(std::make_shared<Value>(value)); }
 
-void List::append(String &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(const char *value) & { vector.emplace_back(std::make_shared<Value>(value)); }
 
-void List::append(const char *bytes, size_t length) & { vector.emplace_back(bytes, length); }
+void List::append(String &&value) & { vector.emplace_back(std::make_shared<Value>(std::move(value))); }
 
-void List::append(Blob &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(const char *bytes, size_t length) & { vector.emplace_back(std::make_shared<Value>(bytes, length)); }
 
-void List::append(List &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(Blob &&value) & { vector.emplace_back(std::make_shared<Value>(std::move(value))); }
 
-void List::append(Dict &&value) & { vector.emplace_back(std::move(value)); }
+void List::append(List &&value) & { vector.emplace_back(std::make_shared<Value>(std::move(value))); }
+
+void List::append(Dict &&value) & { vector.emplace_back(std::make_shared<Value>(std::move(value))); }
 
 List &&List::append(Value &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(std::make_shared<Value>(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(bool value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(std::make_shared<Value>(value));
     return std::move(*this);
 }
 
 List &&List::append(Integer value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(std::make_shared<Value>(value));
     return std::move(*this);
 }
 
 List &&List::append(double value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(std::make_shared<Value>(value));
     return std::move(*this);
 }
 
 List &&List::append(const char *value) && {
-    vector.emplace_back(value);
+    vector.emplace_back(std::make_shared<Value>(value));
     return std::move(*this);
 }
 
 List &&List::append(String &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(std::make_shared<Value>(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(Blob &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(std::make_shared<Value>(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(const char *bytes, size_t length) && {
-    vector.emplace_back(bytes, length);
+    vector.emplace_back(std::make_shared<Value>(bytes, length));
     return std::move(*this);
 }
 
 List &&List::append(List &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(std::make_shared<Value>(std::move(value)));
     return std::move(*this);
 }
 
 List &&List::append(Dict &&value) && {
-    vector.emplace_back(std::move(value));
+    vector.emplace_back(std::make_shared<Value>(std::move(value)));
     return std::move(*this);
 }
 
-List::Iterator List::insert(sese::Value::List::Iterator it, sese::Value &&value) {
-    return vector.insert(std::move(it), std::move(value));
+List::Iterator List::insert(Iterator it, Value &&value) {
+    return vector.insert(it, std::make_shared<Value>(std::move(value)));
 }
 
 Dict::~Dict() {
@@ -512,9 +523,6 @@ size_t Dict::size() const {
 }
 
 void Dict::clear() {
-    for (auto &it: map) {
-        delete it.second;
-    }
     map.clear();
 }
 
@@ -543,16 +551,14 @@ Dict::ReverseIterator Dict::rend() { return map.rend(); }
 Dict::ConstReverseIterator Dict::rend() const { return map.rend(); }
 
 Dict::Iterator Dict::erase(const Dict::Iterator &it) {
-    delete it->second;
     return map.erase(it);
 }
 
 Dict::Iterator Dict::erase(const Dict::ConstIterator &it) {
-    delete it->second;
     return map.erase(it);
 }
 
-Value *Dict::find(const Value::String &key) {
+std::shared_ptr<Value> Dict::find(const Value::String &key) {
     auto it = map.find(key);
     if (it == map.end()) {
         return nullptr;
@@ -560,101 +566,106 @@ Value *Dict::find(const Value::String &key) {
     return it->second;
 }
 
-const Value *Dict::find(const Value::String &key) const {
+const std::shared_ptr<Value> Dict::find(const Value::String &key) const {
     auto it = map.find(key);
     if (it == map.end()) {
         return nullptr;
     }
     return it->second;
+}
+
+std::shared_ptr<Value> Dict::setRef(const String &key, Value &&value) {
+    auto [fst, _] = map.emplace(key, std::make_shared<Value>(std::move(value)));
+    return fst->second;
 }
 
 void Dict::set(const Value::String &key, Value &&value) & {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
 }
 
 void Dict::set(const Value::String &key, bool value) & {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
 }
 
 void Dict::set(const Value::String &key, Integer value) & {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
 }
 
 void Dict::set(const Value::String &key, double value) & {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
 }
 
 void Dict::set(const Value::String &key, const char *value) & {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
 }
 
 void Dict::set(const Value::String &key, String &&value) & {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
 }
 
 void Dict::set(const Value::String &key, Blob &&value) & {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
 }
 
 void Dict::set(const Value::String &key, const char *value, size_t length) & {
-    map[key] = new Value(value, length);
+    map[key] = std::make_shared<Value>(value, length);
 }
 
 void Dict::set(const Value::String &key, List &&value) & {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
 }
 
 void Dict::set(const Value::String &key, Dict &&value) & {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
 }
 
 Dict &&Dict::set(const Value::String &key, Value &&value) && {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, bool value) && {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, Integer value) && {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, double value) && {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, const char *value) && {
-    map[key] = new Value(value);
+    map[key] = std::make_shared<Value>(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, String &&value) && {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, Blob &&value) && {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, const char *value, size_t length) && {
-    map[key] = new Value(value, length);
+    map[key] = std::make_shared<Value>(value, length);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, List &&value) && {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, Dict &&value) && {
-    map[key] = new Value(std::move(value));
+    map[key] = std::make_shared<Value>(std::move(value));
     return std::move(*this);
 }
 

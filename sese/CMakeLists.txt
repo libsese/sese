@@ -94,6 +94,7 @@ endif()
 target_link_libraries(Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 target_link_libraries(Core PRIVATE ZLIB::ZLIB)
 target_link_libraries(Core PRIVATE asio::asio)
+target_link_libraries(Core PRIVATE simdjson::simdjson)
 
 # ######################################################################################################################
 # Internally independent sub-libraries and options

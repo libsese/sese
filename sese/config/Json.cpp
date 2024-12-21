@@ -27,9 +27,8 @@ using sese::Value;
 inline bool isKeyword(const char *str) {
     if (str[0] == '}' || str[0] == ']' || str[0] == ':' || str[0] == ',') {
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
 
 bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
@@ -102,213 +101,159 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
     return true;
 }
 
-Value Json::parseObject(Json::Tokens &tokens, size_t level) {
+bool Json::parseObject(Tokens &tokens, std::stack<Value *> &stack) {
     bool has_end = false;
-    if (level == 0) {
-        return {};
-    }
-    auto object = Value::Dict();
+    auto object = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
     while (!tokens.empty()) {
         auto name = tokens.front();
         tokens.pop();
         if (name == "}") {
             has_end = true;
             break;
-        } else if (name == ",") {
+        }
+        if (name == ",") {
             // token is ',' means there are more key-value pairs
             if (tokens.empty())
-                return {};
+                return false;
             name = tokens.front();
             tokens.pop();
         }
         name = name.substr(1, name.size() - 2);
 
         if (tokens.empty())
-            return {};
+            return false;
         // The token must be ":"
         if (tokens.front() != ":")
-            return {};
+            return false;
         tokens.pop();
 
         if (tokens.empty())
-            return {};
+            return false;
         auto value = tokens.front();
         tokens.pop();
 
         if (value == "{") {
             // value is a ObjectData
-            level--;
-            auto sub_object = parseObject(tokens, level);
-            if (sub_object.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                object.set(name, std::move(sub_object));
-            }
-            level++;
-        } else if (value == "[") {
-            // value is an ArrayData
-            level--;
-            auto array = parseArray(tokens, level);
-            if (array.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                object.set(name, std::move(array));
-            }
-            level++;
-        } else {
-            // value should be a BasicData, but it may be a keyword
-            if (isKeyword(value.c_str()))
-                return {};
-            object.set(name, parseBasic(value));
+            auto sub_object = object_ref.setRef(name, Value::dict()).get();
+            stack.push(object);
+            stack.push(sub_object);
+            return true;
         }
+        if (value == "[") {
+            // value is an ArrayData
+            auto sub_array = object_ref.setRef(name, Value::list()).get();
+            stack.push(object);
+            stack.push(sub_array);
+            return true;
+        }
+        // value should be a BasicData, but it may be a keyword
+        if (isKeyword(value.c_str()))
+            return false;
+        object_ref.set(name, parseBasic(value));
     }
 
     if (has_end) {
-        return Value(std::move(object));
+        return true;
     }
-    return {};
+    return false;
 }
 
-Value Json::parseArray(sese::Json::Tokens &tokens, size_t level) {
+bool Json::parseArray(Tokens &tokens, std::stack<Value *> &stack) {
     // the array exists keyword check, will not trigger end with check
-    // bool hasEnd = false;
-    if (level == 0) {
-        return {};
-    }
-    auto array = Value::List();
+    auto array = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
     while (!tokens.empty()) {
         auto token = tokens.front();
         tokens.pop();
         if (token == "]") {
             // hasEnd = true;
             break;
-        } else if (token == ",") {
+        }
+        if (token == ",") {
             // token is ',' means there are more values
             if (tokens.empty())
-                return {};
+                return false;
             token = tokens.front();
             tokens.pop();
         }
 
         if (token == "{") {
             // value is a ObjectData
-            level--;
-            auto sub_object = parseObject(tokens, level);
-            if (sub_object.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                array.append(std::move(sub_object));
-            }
-            level++;
-        } else if (token == "[") {
+            auto sub_object = array_ref.appendRef(Value::dict()).get();
+            stack.push(array);
+            stack.push(sub_object);
+            return true;
+        }
+        if (token == "[") {
             // value is an ArrayData
-            level--;
-            auto sub_array = parseArray(tokens, level);
-            if (sub_array.isNull()) {
-                // parse error, just return
-                return {};
-            } else {
-                array.append(std::move(sub_array));
-            }
-            level++;
-        } else {
-            // value should be a BasicData, but it may be a keyword
-            if (isKeyword(token.c_str()))
-                return {};
-            array.append(parseBasic(token));
+            auto sub_object = array_ref.appendRef(Value::list()).get();
+            stack.push(array);
+            stack.push(sub_object);
+            return true;
+        }
+        // value should be a BasicData, but it may be a keyword
+        if (isKeyword(token.c_str()))
+            return false;
+        array_ref.append(parseBasic(token));
+    }
+
+    return true;
+}
+
+Value Json::parse(Tokens &tokens) {
+    Value root_value;
+    if (tokens.front() == "{") {
+        root_value = Value::dict();
+    } else if (tokens.front() == "[") {
+        root_value = Value::list();
+    } else {
+        return {};
+    }
+
+    tokens.pop();
+    std::stack<Value *> stack;
+    stack.push(&root_value);
+
+    while (!stack.empty()) {
+        auto current_value = stack.top();
+        bool rt = false;
+        if (current_value->isDict()) {
+            rt = parseObject(tokens, stack);
+        } else if (current_value->isList()) {
+            rt = parseArray(tokens, stack);
+        }
+        if (!rt) {
+            return {};
         }
     }
 
-    // if (hasEnd) {
-    return Value(std::move(array));
-    // } else {
-    //    return nullptr;
-    // }
+    return root_value;
 }
 
 Value Json::parseBasic(const std::string &value) {
     if (value == "null") {
         return {};
-    } else if (value == "true") {
-        // data = std::make_shared<BasicData>(value);
+    }
+    if (value == "true") {
         return Value(true);
-    } else if (value == "false") {
+    }
+    if (value == "false") {
         return Value(false);
-    } else if (value.compare(0, 1, "\"") == 0) {
+    }
+    if (value.compare(0, 1, "\"") == 0) {
         return Value(value.substr(1, value.size() - 2));
-    } else {
-        auto is_float = value.find('.', 1);
-        if (is_float != std::string::npos) {
-            return Value(std::stod(value));
-        } else {
-            return Value(static_cast<Value::Integer>(std::stoll(value)));
-        }
     }
+    auto is_float = value.find('.', 1);
+    if (is_float != std::string::npos) {
+        return Value(std::stod(value));
+    }
+    return Value(static_cast<Value::Integer>(std::stoll(value)));
 }
 
-void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
-    bool is_first = true;
-    out->write("{", 1);
-    for (const auto &iterator: object) {
-        if (is_first) {
-            is_first = false;
-        } else {
-            out->write(",", 1);
-        }
-        auto data = iterator.second;
-        auto name = iterator.first;
-        out->write("\"", 1);
-        out->write(name.c_str(), name.length());
-        out->write("\":", 2);
-
-        if (data->getType() == Value::Type::DICT) {
-            streamifyObject(out, data->getDict());
-        } else if (data->getType() == Value::Type::LIST) {
-            streamifyArray(out, data->getList());
-        } else {
-            streamifyBasic(out, data);
-        }
-    }
-    out->write("}", 1);
-}
-
-void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
-    bool is_first = true;
-    out->write("[", 1);
-    for (const auto &data: array) {
-        if (is_first) {
-            is_first = false;
-        } else {
-            out->write(",", 1);
-        }
-
-        if (data.getType() == Value::Type::DICT) {
-            streamifyObject(out, data.getDict());
-        } else if (data.getType() == Value::Type::LIST) {
-            streamifyArray(out, data.getList());
-        } else {
-            streamifyBasic(out, &data);
-        }
-    }
-    out->write("]", 1);
-}
-
-void Json::streamifyBasic(io::OutputStream *out, const sese::Value *value) {
-    assert(value);
-    if (value->isNull()) {
-        out->write("null", 4);
-    } else if (value->isBool()) {
-        out->write(value->getBool() ? "true" : "false", 4);
-    } else if (value->isDouble() || value->isInt() || value->isString()) {
-        auto v = value->toString();
-        out->write(v.c_str(), v.size());
-    }
-}
-
-Value Json::parse(io::InputStream *input, size_t level) {
+Value Json::parse(io::InputStream *input) {
     Tokens tokens;
     if (!tokenizer(input, tokens)) {
         return {};
@@ -318,15 +263,148 @@ Value Json::parse(io::InputStream *input, size_t level) {
         return {};
     }
 
-    // The first token must be '{', pop it
-    if (tokens.front() != "{")
-        return {};
-    tokens.pop();
-    return parseObject(tokens, level);
+    return parse(tokens);
 }
 
-void Json::streamify(io::OutputStream *out, const Value::Dict &dict) {
-    streamifyObject(out, dict);
+#define CONST_WRITE(stream, const_string)                                          \
+    if (stream->write(const_string, strlen(const_string)) != strlen(const_string)) \
+    return false
+
+#define STRING_WRITE(stream, string)                                  \
+    if (stream->write(string.data(), string.size()) != string.size()) \
+    return false
+
+
+bool Json::streamifyObject(
+    io::OutputStream *out,
+    std::stack<std::pair<Value *, unsigned int>> &stack,
+    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+) {
+    auto iter = map_iter_stack.top();
+    map_iter_stack.pop();
+    auto &[object, count] = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
+    if (count == object_ref.size()) {
+        CONST_WRITE(out, "}");
+        return true;
+    }
+    while (iter != object_ref.end()) {
+        auto name = iter->first;
+        auto value = iter->second;
+        if (count == 0) {
+            CONST_WRITE(out, "{");
+        }
+        if (count > 0 && count < object_ref.size()) {
+            CONST_WRITE(out, ",");
+        }
+        ++iter;
+        count += 1;
+        CONST_WRITE(out, "\"");
+        STRING_WRITE(out, name);
+        CONST_WRITE(out, "\":");
+        if (value->isDict()) {
+            stack.emplace(object, count);
+            stack.emplace(value.get(), 0);
+            map_iter_stack.emplace(iter);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            stack.emplace(object, count);
+            stack.emplace(value.get(), 0);
+            map_iter_stack.emplace(iter);
+            return true;
+        }
+        if (!streamifyBasic(out, value)) {
+            return false;
+        }
+        if (count == object_ref.size()) {
+            CONST_WRITE(out, "}");
+        }
+    }
+    return true;
+}
+
+bool Json::streamifyArray(
+    io::OutputStream *out,
+    std::stack<std::pair<Value *, unsigned int>> &stack,
+    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+) {
+    auto &[array, count] = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
+    if (count == array_ref.size()) {
+        CONST_WRITE(out, "]");
+        return true;
+    }
+    while (count < array_ref.size()) {
+        auto value = array_ref[count];
+        if (count == 0) {
+            CONST_WRITE(out, "[");
+        }
+        if (count > 0 && count < array_ref.size()) {
+            CONST_WRITE(out, ",");
+        }
+        count += 1;
+        if (value->isDict()) {
+            stack.emplace(array, count);
+            stack.emplace(value.get(), 0);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            stack.emplace(array, count);
+            stack.emplace(value.get(), 0);
+        }
+        if (!streamifyBasic(out, value)) {
+            return false;
+        }
+        if (count == array_ref.size()) {
+            CONST_WRITE(out, "]");
+        }
+    }
+    return true;
+}
+
+bool Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value) {
+    assert(value);
+    if (value->isNull()) {
+        CONST_WRITE(out, "null");
+    } else if (value->isBool()) {
+        if (value->getBool()) {
+            CONST_WRITE(out, "true");
+        } else {
+            CONST_WRITE(out, "false");
+        }
+    } else if (value->isDouble() || value->isInt() || value->isString()) {
+        auto v = value->toString();
+        STRING_WRITE(out, v);
+    } else {
+        return false;
+    }
+    return true;
+}
+
+bool Json::streamify(io::OutputStream *out, Value &value) {
+    std::stack<std::pair<Value *, unsigned int>> stack;
+    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> map_iter_stack;
+    stack.emplace(&value, 0);
+    if (value.isDict()) {
+        map_iter_stack.emplace(value.getDict().begin());
+    }
+
+    while (!stack.empty()) {
+        auto &[current_value, first] = stack.top();
+        if (current_value->isDict()) {
+            streamifyObject(out, stack, map_iter_stack);
+        } else if (current_value->isList()) {
+            streamifyArray(out, stack, map_iter_stack);
+        } else {
+            return false;
+        }
+    }
+    return true;
 }
 
 // GCOVR_EXCL_STOP

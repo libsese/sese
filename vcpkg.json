@@ -23,7 +23,13 @@
       "name": "vcpkg-cmake-config",
       "host": true
     },
-    "zlib"
+    "zlib",
+    {
+      "name": "simdjson",
+      "features": [
+        "threads", "utf8-validation"
+      ]
+    }
   ],
   "default-features": [
     "sqlite3"

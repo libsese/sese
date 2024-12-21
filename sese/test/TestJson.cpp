@@ -21,30 +21,8 @@
 /// Parse the JSON format from the file
 TEST(TestJson, FromFile) {
     auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
-    // auto object = sese::json::JsonUtil::deserialize(file_stream, 3);
-    // ASSERT_TRUE(object != nullptr);
 
-    // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("A"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("A"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("A"), nullptr);
-
-    // EXPECT_NE(object->getDataAs<sese::json::ObjectData>("object"), nullptr);
-    // EXPECT_NE(object->getDataAs<sese::json::ArrayData>("mixin_array"), nullptr);
-    // EXPECT_NE(object->getDataAs<sese::json::BasicData>("value"), nullptr);
-
-    // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("mixin_array"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("object"), nullptr);
-
-    // auto boolean_value = object->getDataAs<sese::json::BasicData>("boolean");
-    // ASSERT_TRUE(boolean_value != nullptr);
-    // ASSERT_TRUE(boolean_value->getDataAs<bool>(false));
-    // boolean_value->setDataAs<bool>(false);
-
-    // auto output = std::make_shared<sese::io::ConsoleOutputStream>();
-    // sese::json::JsonUtil::serialize(object, output);
-    // output->write("\n", 1);
-
-    auto object = sese::Json::parse(file_stream.get(), 3);
+    auto object = sese::Json::parse(file_stream.get());
     ASSERT_TRUE(object.isDict());
 
     EXPECT_EQ(object.getDict().find("A"), nullptr);
@@ -57,7 +35,27 @@ TEST(TestJson, FromFile) {
     EXPECT_TRUE(object.getDict().find("boolean")->getBool());
 
     auto output = sese::io::ConsoleOutputStream();
-    sese::Json::streamify(&output, object.getDict());
+    sese::Json::streamify(&output, object);
+    output.write("\n", 1);
+}
+
+TEST(TestJson, FromFileSimd) {
+    auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::B_READ);
+
+    auto object = sese::Json::simdParse(file_stream.get());
+    ASSERT_TRUE(object.isDict());
+
+    EXPECT_EQ(object.getDict().find("A"), nullptr);
+
+    EXPECT_TRUE(object.getDict().find("object")->isDict());
+    EXPECT_TRUE(object.getDict().find("mixin_array")->isList());
+    EXPECT_FALSE(object.getDict().find("value")->isNull());
+
+    EXPECT_TRUE(object.getDict().find("boolean")->isBool());
+    EXPECT_TRUE(object.getDict().find("boolean")->getBool());
+
+    auto output = sese::io::ConsoleOutputStream();
+    sese::Json::streamify(&output, object);
     output.write("\n", 1);
 }
 
@@ -73,23 +71,9 @@ TEST(TestJson, Getter) {
                        "  \"object\": {} \n"
                        "}";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 5);
-    // ASSERT_NE(object, nullptr);
-    auto object = sese::Json::parse(&input, 5);
+    auto object = sese::Json::parse(&input);
     ASSERT_TRUE(object.isDict());
 
-    // SESE_JSON_GET_STRING(str1, object, "str1", "undef");
-    // EXPECT_EQ(str1, "\\b\\f\\t\\n\\r/\\K");
-    // SESE_JSON_GET_STRING(str2, object, "str2", "undef");
-    // EXPECT_EQ(str2, "Hello");
-    // SESE_JSON_GET_BOOLEAN(bool1, object, "bool1", false);
-    // EXPECT_EQ(bool1, true);
-    // SESE_JSON_GET_BOOLEAN(bool2, object, "bool2", false);
-    // EXPECT_EQ(bool2, false);
-    // SESE_JSON_GET_INTEGER(int1, object, "int", 0);
-    // EXPECT_EQ(int1, 1);
-    // SESE_JSON_GET_DOUBLE(double1, object, "double", 0.0);
-    // EXPECT_EQ(double1, 3.14);
     ASSERT_EQ(object.getDict().find("str1")->getString(), "\\b\\f\\t\\n\\r/\\K");
     ASSERT_EQ(object.getDict().find("str2")->getString(), "Hello");
     ASSERT_EQ(object.getDict().find("bool1")->getBool(), true);
@@ -97,81 +81,25 @@ TEST(TestJson, Getter) {
     ASSERT_EQ(object.getDict().find("int")->getInt(), 1);
     ASSERT_EQ(object.getDict().find("double")->getDouble(), 3.14);
 
-    // Test basic data that doesn't exist
-    // SESE_JSON_GET_STRING(str0, object, "A", "undef");
-    // EXPECT_EQ(str0, "undef");
-    // SESE_JSON_GET_BOOLEAN(bool0, object, "A", true);
-    // EXPECT_EQ(bool0, true);
-    // SESE_JSON_GET_DOUBLE(double0, object, "A", 0.0);
-    // EXPECT_EQ(double0, 0);
-    // SESE_JSON_GET_INTEGER(int0, object, "A", 0);
-    // EXPECT_EQ(int0, 0);
-
     // Test non-existent objects
-    // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("A"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("A"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("A"), nullptr);
     EXPECT_EQ(object.getDict().find("A"), nullptr);
 
     // Test null elements
-    // SESE_JSON_GET_BOOLEAN(b, object, "nullable", false);
-    // EXPECT_EQ(b, false);
-    // SESE_JSON_GET_STRING(s, object, "nullable", "undef");
-    // EXPECT_EQ(s, "undef");
-    // SESE_JSON_GET_INTEGER(i, object, "nullable", 0);
-    // EXPECT_EQ(i, 0);
-    // SESE_JSON_GET_DOUBLE(d, object, "nullable", 0);
-    // EXPECT_EQ(d, 0);
     EXPECT_TRUE(object.getDict().find("nullable")->isNull());
 
     // Test for unmatched data types
-    // EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("str1"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("str1"), nullptr);
-    // EXPECT_EQ(object->getDataAs<sese::json::BasicData>("object"), nullptr);
     EXPECT_FALSE(object.getDict().find("str1")->isDict());
     EXPECT_FALSE(object.getDict().find("str1")->isList());
 }
 
-// TEST(TestJson, Setter) {
-//     auto object = std::make_shared<sese::json::ObjectData>();
-//     SESE_JSON_SET_STRING(object, "str1", "\\b\\f\\t\\n\\r/");
-//     SESE_JSON_SET_INTEGER(object, "int", 10);
-//     SESE_JSON_SET_DOUBLE(object, "pi", 3.14);
-//     SESE_JSON_SET_BOOLEAN(object, "t1", true);
-//     SESE_JSON_SET_BOOLEAN(object, "t2", false);
-//     SESE_JSON_SET_NULL(object, "nullable");
-
-//     auto data = std::make_shared<sese::json::BasicData>();
-//     data->setNull(false);
-//     data->setNotNull("Hello", true);
-//     object->set("str2", data);
-
-//     // Test array macros
-//     auto array = std::make_shared<sese::json::ArrayData>();
-//     object->set("array", array);
-//     SESE_JSON_PUT_STRING(array, "Hello");
-//     SESE_JSON_PUT_STRING(array, "World");
-//     SESE_JSON_PUT_BOOLEAN(array, true);
-//     SESE_JSON_PUT_BOOLEAN(array, false);
-//     SESE_JSON_PUT_INTEGER(array, 0);
-//     SESE_JSON_PUT_DOUBLE(array, 0.0);
-//     SESE_JSON_PUT_NULL(array);
-
-//     sese::io::ConsoleOutputStream console;
-//     sese::json::JsonUtil::serialize(object.get(), &console);
-// }
-
 TEST(TestJson, Value) {
     auto input = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
-    auto object = sese::Json::parse(input.get(), 4);
+    auto object = sese::Json::parse(input.get());
     input->close();
     ASSERT_FALSE(object.isNull());
 
     auto content = object.toString(4);
     puts(content.c_str());
-    // auto output = sese::io::FileStream::create("./2967168498.json", TEXT_WRITE_CREATE_TRUNC);
-    // sese::Json::streamify(output.get(), object.getDict());
-    // output->close();
 }
 
 /// Key-value pair splitting error
@@ -180,9 +108,7 @@ TEST(TestJson, Error_0) {
                        "  \"Hello\", \"World\"\n"
                        "}";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 5);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -191,9 +117,7 @@ TEST(TestJson, Error_1) {
     const char STR[] = "  \"Hello\": \"World\"\n"
                        "}";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 5);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -203,9 +127,7 @@ TEST(TestJson, Error_2) {
                        "  \"Hello\": \"World\",\n"
                        "}";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 5);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -214,9 +136,7 @@ TEST(TestJson, Error_3) {
     const char STR[] = "{\n"
                        "  \"Hello\": \"\\";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 5);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -224,9 +144,7 @@ TEST(TestJson, Error_3) {
 TEST(TestJson, Error_4) {
     const char STR[] = "";
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 5);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -240,7 +158,7 @@ TEST(TestJson, Error_5) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -255,7 +173,7 @@ TEST(TestJson, Error_6) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -267,7 +185,7 @@ TEST(TestJson, Error_7) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
 
@@ -279,54 +197,6 @@ TEST(TestJson, Error_8) {
     auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     // auto object = sese::json::JsonUtil::deserialize(&input, 5);
     // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 5);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an object, the subarray depth exceeds the limit
-TEST(TestJson, Error_9) {
-    const char STR[] = "{\n"
-                       "  \"arr\": []\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 1);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 1);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an object, the depth of the sub-object exceeds the limit
-TEST(TestJson, Error_10) {
-    const char STR[] = "{\n"
-                       "  \"obj\": {}\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 1);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 1);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an array, the depth of the subarray exceeds the limit
-TEST(TestJson, Error_11) {
-    const char STR[] = "{\n"
-                       "  \"arr\": [[]]\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 2);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 2);
-    EXPECT_TRUE(value.isNull());
-}
-
-/// When constructing an array, the depth of the sub-objects exceeds the limit
-TEST(TestJson, Error_12) {
-    const char STR[] = "{\n"
-                       "  \"arr\": [{}]\n"
-                       "}";
-    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
-    // auto object = sese::json::JsonUtil::deserialize(&input, 2);
-    // ASSERT_EQ(object, nullptr);
-    auto value = sese::Json::parse(&input, 2);
+    auto value = sese::Json::parse(&input);
     EXPECT_TRUE(value.isNull());
 }
