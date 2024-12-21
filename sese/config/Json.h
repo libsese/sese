@@ -65,6 +65,9 @@ public:
     /// \param dict The JSON object
     static void streamify(io::OutputStream *out, const Value::Dict &dict);
 
+    /// \brief Deserialize a JSON object from the stream using SIMD
+    /// \param input The input stream
+    /// \return If parsing fails, Value::isNull will be true
     static Value simdParse(io::InputStream *input);
 };
 } // namespace sese

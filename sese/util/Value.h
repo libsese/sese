@@ -97,6 +97,9 @@ public:
         [[nodiscard]] const std::shared_ptr<Value> back() const;
         std::shared_ptr<Value> back();
 
+        /// \brief Append a Value to the List, and return a reference to the appended Value
+        /// \param value Value to append
+        /// \return Reference to the appended Value
         std::shared_ptr<Value> appendRef(Value &&value);
         void append(Value &&value) &;
         void append(bool value) &;
@@ -168,6 +171,10 @@ public:
         [[nodiscard]] const std::shared_ptr<Value> find(const String &key) const;
         std::shared_ptr<Value> find(const String &key);
 
+        /// \brief Set a Value to the Dictionary, and return a reference to the set Value
+        /// \param key Key to set
+        /// \param value Value to set
+        /// \return Reference to the set Value
         std::shared_ptr<Value> setRef(const String &key, Value &&value);
         void set(const String &key, Value &&value) &;
         void set(const String &key, bool value) &;
