@@ -133,6 +133,7 @@ $(function(){initNavTree('_json_8cpp.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Json.cpp File Reference</div></div>
 </div><!--header-->
@@ -140,11 +141,69 @@ $(function(){initNavTree('_json_8cpp.html',''); initResizable(true); });
 <div class="textblock"><code>#include &lt;<a class="el" href="_json_8h_source.html">sese/config/Json.h</a>&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6b3c709ec1826faf22ea02c87c8749b5" id="r_a6b3c709ec1826faf22ea02c87c8749b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b3c709ec1826faf22ea02c87c8749b5">CONST_WRITE</a>(stream,  const_string)</td></tr>
+<tr class="separator:a6b3c709ec1826faf22ea02c87c8749b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a668f0b8eb7c9844a2636978698674f0a" id="r_a668f0b8eb7c9844a2636978698674f0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a668f0b8eb7c9844a2636978698674f0a">STRING_WRITE</a>(stream,  string)</td></tr>
+<tr class="separator:a668f0b8eb7c9844a2636978698674f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5b119222e7117b386b8f508154d4516b" id="r_a5b119222e7117b386b8f508154d4516b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b119222e7117b386b8f508154d4516b">isKeyword</a> (const char *str)</td></tr>
 <tr class="separator:a5b119222e7117b386b8f508154d4516b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a6b3c709ec1826faf22ea02c87c8749b5" name="a6b3c709ec1826faf22ea02c87c8749b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b3c709ec1826faf22ea02c87c8749b5">&#9670;&#160;</a></span>CONST_WRITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONST_WRITE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>const_string</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (stream-&gt;write(const_string, strlen(const_string)) != strlen(const_string)) \</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#abff8fa957f7f0f6a6b14137a7646ad5b">sese::Json::streamifyArray()</a>, <a class="el" href="classsese_1_1_json.html#a06c3d29e2ea3a6de572ab0eb8d241ca9">sese::Json::streamifyBasic()</a>, and <a class="el" href="classsese_1_1_json.html#a9b393845a98dbd36c34b5ce4526fea3f">sese::Json::streamifyObject()</a>.</p>
+
+</div>
+</div>
+<a id="a668f0b8eb7c9844a2636978698674f0a" name="a668f0b8eb7c9844a2636978698674f0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668f0b8eb7c9844a2636978698674f0a">&#9670;&#160;</a></span>STRING_WRITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STRING_WRITE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>string</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (stream-&gt;write(<span class="keywordtype">string</span>.data(), <span class="keywordtype">string</span>.size()) != <span class="keywordtype">string</span>.size()) \</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#a06c3d29e2ea3a6de572ab0eb8d241ca9">sese::Json::streamifyBasic()</a>, and <a class="el" href="classsese_1_1_json.html#a9b393845a98dbd36c34b5ce4526fea3f">sese::Json::streamifyObject()</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a5b119222e7117b386b8f508154d4516b" name="a5b119222e7117b386b8f508154d4516b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b119222e7117b386b8f508154d4516b">&#9670;&#160;</a></span>isKeyword()</h2>
@@ -176,7 +235,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#a18483085918207320433e35c2c72051b">sese::Json::parseArray()</a>, <a class="el" href="classsese_1_1_json.html#a847f60d6598374573089e3cc75e73575">sese::Json::parseObject()</a>, and <a class="el" href="classsese_1_1_json.html#aa80c54f8a6131519ba44fa890f5c5121">sese::Json::tokenizer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#ab348f2feb2ef67cd4c53d3be401890b1">sese::Json::parseArray()</a>, <a class="el" href="classsese_1_1_json.html#a4364fe4b9b340aa22c22a4d628f25854">sese::Json::parseObject()</a>, and <a class="el" href="classsese_1_1_json.html#aa80c54f8a6131519ba44fa890f5c5121">sese::Json::tokenizer()</a>.</p>
 
 </div>
 </div>
@@ -186,7 +245,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5ecdf26e97b02d25bfabe621b34c1b3c.html">config</a></li><li class="navelem"><a class="el" href="_json_8cpp.html">Json.cpp</a></li>
-    <li class="footer">Generated on Tue Dec 17 2024 15:13:21 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sat Dec 21 2024 14:26:13 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

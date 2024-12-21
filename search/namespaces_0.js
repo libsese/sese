@@ -38,5 +38,7 @@ var searchData=
   ['sese_3a_3atext_35',['text',['../namespacesese_1_1text.html',1,'sese']]],
   ['sese_3a_3atext_3a_3aoverload_36',['overload',['../namespacesese_1_1text_1_1overload.html',1,'sese::text']]],
   ['sese_3a_3axml_37',['xml',['../namespacesese_1_1xml.html',1,'sese']]],
-  ['sstr_38',['sstr',['../namespacesstr.html',1,'']]]
+  ['simdjson_38',['simdjson',['../namespacesimdjson.html',1,'']]],
+  ['simdjson_3a_3adom_39',['dom',['../namespacesimdjson_1_1dom.html',1,'simdjson']]],
+  ['sstr_40',['sstr',['../namespacesstr.html',1,'']]]
 ];

@@ -10,6 +10,7 @@ var dir_5ecdf26e97b02d25bfabe621b34c1b3c =
     [ "CSVWriter.h", "_c_s_v_writer_8h.html", "_c_s_v_writer_8h" ],
     [ "Json.cpp", "_json_8cpp.html", "_json_8cpp" ],
     [ "Json.h", "_json_8h.html", "_json_8h" ],
+    [ "SimdJson.cpp", "_simd_json_8cpp.html", null ],
     [ "UniReader.h", "_uni_reader_8h.html", "_uni_reader_8h" ],
     [ "Yaml.cpp", "_yaml_8cpp.html", "_yaml_8cpp" ],
     [ "Yaml.h", "_yaml_8h.html", "_yaml_8h" ]

@@ -3,7 +3,7 @@ var classsese_1_1_value_1_1_dict =
     [ "ConstIterator", "classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab", null ],
     [ "ConstReverseIterator", "classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641", null ],
     [ "Iterator", "classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0", null ],
-    [ "Raw", "classsese_1_1_value_1_1_dict.html#a554df893b7ef14bccf7765111efca9d2", null ],
+    [ "Raw", "classsese_1_1_value_1_1_dict.html#a00006575187f29268b841c230f8f9043", null ],
     [ "ReverseIterator", "classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac", null ],
     [ "Dict", "classsese_1_1_value_1_1_dict.html#a60a103d095f1a300550b17efb87cd801", null ],
     [ "~Dict", "classsese_1_1_value_1_1_dict.html#a46561fe694c0bba6e7ed3703c47bf43f", null ],
@@ -20,8 +20,8 @@ var classsese_1_1_value_1_1_dict =
     [ "end", "classsese_1_1_value_1_1_dict.html#ab6a7c4fbe78323574abede261342f04f", null ],
     [ "erase", "classsese_1_1_value_1_1_dict.html#aa20f54576c8c3a495628b9b003307019", null ],
     [ "erase", "classsese_1_1_value_1_1_dict.html#a9e597245e644c57da4daab0438f9e747", null ],
-    [ "find", "classsese_1_1_value_1_1_dict.html#af32f9f39751c0cc0cf97a7701d7be4f1", null ],
-    [ "find", "classsese_1_1_value_1_1_dict.html#a678eeb16368305bf03c9f7116fa8ffd4", null ],
+    [ "find", "classsese_1_1_value_1_1_dict.html#a340cbba3d41cb6debcec25f5a6fa4fc2", null ],
+    [ "find", "classsese_1_1_value_1_1_dict.html#afa377cf29a2f2d2c45962d564a76d5bf", null ],
     [ "operator=", "classsese_1_1_value_1_1_dict.html#ac8d0b19c9690c89d4b5d4985e6f221ce", null ],
     [ "operator=", "classsese_1_1_value_1_1_dict.html#a05ace82fb8ad7e048c42a60ea7c9a9d9", null ],
     [ "rbegin", "classsese_1_1_value_1_1_dict.html#abc43fa6c906c40ad4e379688b2dcb020", null ],
@@ -49,6 +49,7 @@ var classsese_1_1_value_1_1_dict =
     [ "set", "classsese_1_1_value_1_1_dict.html#a066dc0436bbbbc3afdf8f6af007a9ab1", null ],
     [ "set", "classsese_1_1_value_1_1_dict.html#a7ec52533bc34723e25c5aa1d42f51830", null ],
     [ "set", "classsese_1_1_value_1_1_dict.html#a8e68f30dfa2bd4e3a44dbe245ed02fc6", null ],
+    [ "setRef", "classsese_1_1_value_1_1_dict.html#ad1f0650880c303112b8665621bb6d12f", null ],
     [ "size", "classsese_1_1_value_1_1_dict.html#af02a39f06aeb80693c7f2b1ab575fd45", null ],
     [ "map", "classsese_1_1_value_1_1_dict.html#a73203cabb1cfe10ef8a23483fa8edc46", null ]
 ];
