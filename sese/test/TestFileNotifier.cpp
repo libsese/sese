@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/system/FileNotifier.h>
-#include <sese/system/Process.h>
+#include <sese/system/ProcessBuilder.h>
 
 #include <thread>
 
@@ -48,8 +48,10 @@ TEST(TestFileNotifier, Notify) {
     auto notifier = sese::system::FileNotifier::create(PATH, &option);
     notifier->loopNonblocking();
 
-    auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/change_file.py " PATH;
-    auto result = sese::system::Process::createEx(cmd);
+    auto result = sese::system::ProcessBuilder(PY_EXECUTABLE)
+        .arg(PROJECT_PATH "/scripts/change_file.py")
+        .arg(PATH)
+        .createEx();
     if (result) {
         notifier->shutdown();
         FAIL() << "failed to create process";
