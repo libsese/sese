@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN yes | unminimize && \
 #    bash ./tmp/install_deps.sh && \
-    apt install -y --no-install-recommends cmake curl zip unzip tar git g++ mysql-client postgresql-client sqlite3 python3-pip doxygen pkg-config bison flex autoconf ninja-build && \
+    apt install -y --no-install-recommends build-essential cmake curl zip unzip tar git g++ mysql-client postgresql-client sqlite3 python3-pip doxygen pkg-config bison flex autoconf ninja-build && \
     apt autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
