@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/libsese/sese/refs/heads/main/schema/resource.schema.json",
+  "icon": "Data/logo.ico",
   "binaries": {
     "hello": "Data/data.xml"
   }

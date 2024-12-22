@@ -32,7 +32,7 @@ jobs:
       - name: Add extra resources
         run: |
           sudo python3 scripts/insert_meta.py --html_file=build/html/index.html --meta_file=docs/Meta.txt
-          sudo mv static/image/logo.svg build/html/logo.drawio.svg
+          sudo cp static/image/logo.svg build/html/logo.drawio.svg
 
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4

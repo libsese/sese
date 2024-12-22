@@ -13,7 +13,12 @@
           "type": "string"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The binaries to be embedd, the key is the name of the binary and the value is the path to the binary."
+    },
+    "icon": {
+      "type": "string",
+      "description": "Path to the icon file, it's a Windows Only feature."
     }
   },
   "required": [
