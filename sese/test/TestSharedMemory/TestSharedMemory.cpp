@@ -23,8 +23,9 @@ using sese::record::LogHelper;
 using namespace std::chrono_literals;
 
 TEST(TestSharedMemory, MEM_D) {
-    auto process = sese::system::Process::create(PATH_TO_MEM_D);
-    ASSERT_NE(process, nullptr) << "failed to start memory daemon: " << sese::getErrorString();
+    auto result = sese::system::Process::createEx(PATH_TO_MEM_D);
+    ASSERT_FALSE(result) << "failed to start memory daemon: " << sese::getErrorString();;
+    auto &process = result.get();
 
     std::this_thread::sleep_for(500ms);
     auto mem = sese::system::SharedMemory::use("SharedMemoryForSese");

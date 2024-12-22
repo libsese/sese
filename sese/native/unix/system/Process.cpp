@@ -20,23 +20,42 @@
 
 using namespace sese::system;
 
-Process::Ptr Process::create(const char *command) noexcept {
+sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
     auto pid = fork();
     if (pid > 0) {
         // parent process
         auto proc = MAKE_UNIQUE_PRIVATE(Process);
         proc->id = pid;
-        return proc;
+        return Result<Process::Ptr, ErrorCode>::success(std::move(proc));
     } else if (pid == 0) {
         // client process
-        char p_command[1024];
-        std::strcpy(p_command, command);
-        exec(p_command);
-        // never reach
-        return nullptr; // GCOVR_EXCL_LINE
+        auto c_args = new char *[args.size() + 2];
+        auto exec_string = new char[exec.size() + 1];
+        memcpy(exec_string, exec.c_str(), exec.size() + 1);
+        c_args[0] = exec_string;
+        int i = 1;
+        for (auto &arg: args) {
+            auto arg_string = new char[arg.size() + 1];
+            memcpy(arg_string, arg.c_str(), arg.size() + 1);
+            c_args[i] = arg_string;
+            i++;
+        }
+        c_args[args.size() + 1] = nullptr;
+
+        if (execvp(exec.c_str(), c_args) == -1) {
+            for (int i = 0; i < args.size() + 2; ++i) {
+                delete[] c_args[i];
+            }
+            delete[] c_args;
+            exit(errno);
+            return Result<Process::Ptr, ErrorCode>::error({getErrorCode(), getErrorString()}); // GCOVR_EXCL_LINE
+        } else {
+            // never reach
+            return Result<Process::Ptr, ErrorCode>::error({getErrorCode(), getErrorString()}); // GCOVR_EXCL_LINE
+        }
     } else {
         // failed to create
-        return nullptr; // GCOVR_EXCL_LINE
+        return Result<Process::Ptr, ErrorCode>::error({getErrorCode(), getErrorString()}); // GCOVR_EXCL_LINE
     }
 }
 
@@ -54,81 +73,10 @@ int Process::wait() const noexcept {
     }
 }
 
-void Process::exec(char *p_command) noexcept {
-    auto count = Process::count(p_command);
-    auto args = new char *[count + 2];
-    char *p = p_command;
-    char **p_args = args;
-    for (int i = 0; i < count + 1; ++i) {
-        auto new_pos = spilt(p);
-        *p_args = p;
-        p_args++;
-        p = new_pos;
-    }
-    *p_args = nullptr;
-
-    auto code = execvp(args[0], &args[0]);
-
-    // never reach
-    delete[] args;
-
-    if (code == -1) {
-        exit(errno);
-    }
-}
-
 sese::pid_t Process::getProcessId() const noexcept {
     return id;
 }
 
 bool Process::kill() const noexcept {
     return ::kill(id, SIGKILL) == 0;
-}
-
-size_t Process::count(const char *p_command) noexcept {
-    const char *p = p_command;
-    size_t count = 0;
-    size_t space_count = 0;
-    while (*p != 0) {
-        if (*p == '\"') {
-            count++;
-            p++;
-            continue;
-        } else if (*p == ' ') {
-            if (count % 2 == 0) {
-                space_count++;
-                p++;
-            } else {
-                p++;
-            }
-        } else {
-            p++;
-        }
-    }
-    return space_count;
-}
-
-char *Process::spilt(char *p_command) noexcept {
-    char *p = p_command;
-    int count = 0;
-    while (*p != 0) {
-        if (*p == '\"') {
-            count++;
-            p++;
-            continue;
-        } else if (*p == ' ') {
-            if (count % 2 == 0) {
-                // Outside the string
-                *p = 0;
-                p++;
-                return p;
-            } else {
-                // Inside the string
-                p++;
-            }
-        } else {
-            p++;
-        }
-    }
-    return nullptr;
 }

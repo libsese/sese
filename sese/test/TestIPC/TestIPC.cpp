@@ -47,8 +47,9 @@ TEST(TestIPC, Process) {
     auto channel = sese::system::IPCChannel::create("IPCTestForSese", 4096);
     ASSERT_NE(nullptr, channel);
 
-    auto process = sese::system::Process::create(PATH_TO_IPC_D);
-    ASSERT_NE(nullptr, process);
+    auto result = sese::system::Process::createEx(PATH_TO_IPC_D);
+    ASSERT_FALSE(result);
+    auto &process = result.get();
 
     channel->write(1, "Hello");
     channel->write(2, "Hi");

@@ -15,18 +15,14 @@
 #include <sese/system/ProcessBuilder.h>
 
 sese::system::ProcessBuilder::ProcessBuilder(const std::string &exec) {
-    builder << exec;
+    this->exec = exec;
 }
 
-sese::system::ProcessBuilder &&sese::system::ProcessBuilder::args(const std::string &arg) && {
-    builder << " " << arg;
+sese::system::ProcessBuilder &&sese::system::ProcessBuilder::arg(const std::string &arg) && {
+    this->args.emplace_back(arg);
     return std::move(*this);
 }
 
-sese::system::Process::Ptr sese::system::ProcessBuilder::create() {
-    return Process::create(static_cast<const char *>(builder.buf()));
-}
-
 sese::Result<sese::system::Process::Ptr, sese::ErrorCode> sese::system::ProcessBuilder::createEx() {
-    return Process::createEx(static_cast<const char *>(builder.buf()));
+    return Process::createEx(exec, args);
 }

@@ -24,6 +24,8 @@
 #include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
+#include <vector>
+
 namespace sese::system {
 
 /// Process Class
@@ -31,12 +33,7 @@ class Process {
 public:
     using Ptr = std::unique_ptr<Process>;
 
-    /// Create a new process object
-    /// \param command Command
-    /// \retval nullptr Creation failed
-    static Process::Ptr create(const char *command) noexcept;
-
-    static Result<Process::Ptr, ErrorCode> createEx(const char *command) noexcept;
+    static Result<Process::Ptr, ErrorCode> createEx(const std::string &exec, const std::vector<std::string> &args = {}) noexcept;
 
     /// Get the current process ID
     /// \return Current process ID
@@ -69,13 +66,6 @@ public:
     virtual ~Process() noexcept = default;
 
 private:
-    // Unix-like implementation of executing a new process
-    static void exec(char *p_command) noexcept;
-    // Count the number of parameters in a string
-    static size_t count(const char *p_command) noexcept;
-    // Set the next space to '\0' and return a pointer to the next character
-    static char *spilt(char *p_command) noexcept;
-
     pid_t id = -1;
 #endif
 };

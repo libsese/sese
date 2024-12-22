@@ -42,12 +42,13 @@ TEST(TestH2spec, TestH2spec) {
 
     sese::sleep(2s);
 
-    auto process = sese::system::ProcessBuilder(path_to_h2spec)
-                       .args("-j " PROJECT_PATH "/h2spec_report.xml")
-                       .args("-p" + std::to_string(addr->getPort()))
-                       .args("-t")
-                       .args("-k")
-                       .create();
+    auto result = sese::system::ProcessBuilder(path_to_h2spec)
+                       .arg("-j " PROJECT_PATH "/h2spec_report.xml")
+                       .arg("-p" + std::to_string(addr->getPort()))
+                       .arg("-t")
+                       .arg("-k")
+                       .createEx();
+    auto &process = result.get();
 
     SESE_INFO("h2spec exit with {}", process->wait());
     server.shutdown();

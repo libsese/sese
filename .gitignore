@@ -3,6 +3,7 @@ CMakeSettings.json
 CMakeUserPresets.json
 build
 .xmake
+.fleet
 venv
 .venv
 temp

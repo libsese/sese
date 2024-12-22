@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    auto json = sese::Json::parse(src_file.get(), 16);
+    auto json = sese::Json::parse(src_file.get());
     src_file->close();
     if (json.isNull()) {
         SESE_ERROR("Parsing %s failed", src.c_str());
