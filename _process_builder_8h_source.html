@@ -163,29 +163,28 @@ $(function(){initNavTree('_process_builder_8h_source.html',''); initResizable(tr
 <div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process_builder.html">   31</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1system_1_1_process_builder.html" title="Process Builder.">ProcessBuilder</a> {</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#ad6407e440e8e7db076728702daffa427" title="Initialize the process builder with the path of the executable file.">ProcessBuilder</a>(<span class="keyword">const</span> std::string &amp;exec);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#ad6407e440e8e7db076728702daffa427" title="Initialize the process builder with the path of the executable file.">ProcessBuilder</a>(<span class="keyword">const</span> std::string &amp;<a class="code hl_variable" href="classsese_1_1system_1_1_process_builder.html#acf861b9cd9ac220291363c63e03dc5d1">exec</a>);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="classsese_1_1system_1_1_process_builder.html" title="Process Builder.">ProcessBuilder</a> &amp;&amp;<a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#ac4efbefd3cdf6a6da42c3fc457175f99" title="Specify a single argument for the builder.">args</a>(<span class="keyword">const</span> std::string &amp;arg) &amp;&amp;;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="classsese_1_1system_1_1_process_builder.html" title="Process Builder.">ProcessBuilder</a> &amp;&amp;<a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#af5caea45f8d228cdcbffe5ab7d544f7a" title="Specify a single argument for the builder.">arg</a>(<span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#af5caea45f8d228cdcbffe5ab7d544f7a" title="Specify a single argument for the builder.">arg</a>) &amp;&amp;;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_typedef" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a> <a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#af3db4cba16067c5ec41f591aba9c1bf4" title="Build the process.">create</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="classsese_1_1_result.html" title="Result Class.">Result&lt;Process::Ptr, ErrorCode&gt;</a> <a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#aa7e0d7968033e2a742724f8d7abd96b4" title="Build the process.">createEx</a>();</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_class" href="classsese_1_1_result.html" title="Result Class.">Result&lt;Process::Ptr, ErrorCode&gt;</a> <a class="code hl_function" href="classsese_1_1system_1_1_process_builder.html#aa7e0d7968033e2a742724f8d7abd96b4" title="Build the process.">createEx</a>();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process_builder.html#aba700b75f7f36c4ed12531452ed5168d">   61</a></span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="Non-thread-safe string buffer class.">text::StringBuilder</a> <a class="code hl_variable" href="classsese_1_1system_1_1_process_builder.html#aba700b75f7f36c4ed12531452ed5168d">builder</a>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process_builder.html#acf861b9cd9ac220291363c63e03dc5d1">   54</a></span>    std::string <a class="code hl_variable" href="classsese_1_1system_1_1_process_builder.html#acf861b9cd9ac220291363c63e03dc5d1">exec</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classsese_1_1system_1_1_process_builder.html#a03aee5cc56550246818b0cc754f69000">   55</a></span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="classsese_1_1system_1_1_process_builder.html#a03aee5cc56550246818b0cc754f69000">args</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">// namespace sese::system</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>} <span class="comment">// namespace sese::system</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4143f1e6dbe5f494b17fda6fba951f90.html">system</a></li><li class="navelem"><a class="el" href="_process_builder_8h.html">ProcessBuilder.h</a></li>
-    <li class="footer">Generated on Sat Dec 21 2024 14:26:13 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Dec 22 2024 13:17:27 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

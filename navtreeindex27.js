@@ -1,13 +1,5 @@
 var NAVTREEINDEX27 =
 {
-"classsese_1_1text_1_1_abstract_string_buffer.html#af338f81b424c1f5cfa24ce0297372613":[11,0,0,16,1,34],
-"classsese_1_1text_1_1_abstract_string_buffer.html#af338f81b424c1f5cfa24ce0297372613":[12,0,0,16,1,34],
-"classsese_1_1text_1_1_date_time_formatter.html":[11,0,0,16,2],
-"classsese_1_1text_1_1_date_time_formatter.html":[12,0,0,16,2],
-"classsese_1_1text_1_1_date_time_formatter.html#a399eda28b893b513c34e2580cc2e17b2":[11,0,0,16,2,5],
-"classsese_1_1text_1_1_date_time_formatter.html#a399eda28b893b513c34e2580cc2e17b2":[12,0,0,16,2,5],
-"classsese_1_1text_1_1_date_time_formatter.html#a41c15b695870c0fbdb255f548f4c3af8":[11,0,0,16,2,7],
-"classsese_1_1text_1_1_date_time_formatter.html#a41c15b695870c0fbdb255f548f4c3af8":[12,0,0,16,2,7],
 "classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5":[11,0,0,16,2,0],
 "classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5":[12,0,0,16,2,0],
 "classsese_1_1text_1_1_date_time_formatter.html#a7e541cbdd004138509f67a4db5372d5e":[11,0,0,16,2,10],
@@ -249,5 +241,13 @@ var NAVTREEINDEX27 =
 "classsstr_1_1_s_string.html#abaa9c53aa5e179e22cf692366e339dbc":[11,0,2,1,9],
 "classsstr_1_1_s_string.html#abaa9c53aa5e179e22cf692366e339dbc":[12,0,1,1,9],
 "classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539":[11,0,2,1,14],
-"classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539":[12,0,1,1,14]
+"classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539":[12,0,1,1,14],
+"classsstr_1_1_s_string.html#acda210e7953804de77fe4101dec86ab6":[11,0,2,1,4],
+"classsstr_1_1_s_string.html#acda210e7953804de77fe4101dec86ab6":[12,0,1,1,4],
+"classsstr_1_1_s_string.html#afa693ea845ed4823b8ba702f1fe73ace":[11,0,2,1,6],
+"classsstr_1_1_s_string.html#afa693ea845ed4823b8ba702f1fe73ace":[12,0,1,1,6],
+"classsstr_1_1_s_string_view.html":[11,0,2,2],
+"classsstr_1_1_s_string_view.html":[12,0,1,2],
+"classsstr_1_1_s_string_view.html#a050f548f13f529357be63d2f53124e43":[11,0,2,2,22],
+"classsstr_1_1_s_string_view.html#a050f548f13f529357be63d2f53124e43":[12,0,1,2,22]
 };

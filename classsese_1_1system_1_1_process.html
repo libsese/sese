@@ -137,7 +137,6 @@ $(function(){initNavTree('classsese_1_1system_1_1_process.html',''); initResizab
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classsese_1_1system_1_1_process-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">sese::system::Process Class Reference</div></div>
@@ -167,10 +166,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a79e195a84f2b555e3d12ae99b369fdb8" id="r_a79e195a84f2b555e3d12ae99b369fdb8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79e195a84f2b555e3d12ae99b369fdb8">create</a> (const char *command) noexcept</td></tr>
-<tr class="separator:a79e195a84f2b555e3d12ae99b369fdb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace0c38b682da25a1c378cf0518c065e0" id="r_ace0c38b682da25a1c378cf0518c065e0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace0c38b682da25a1c378cf0518c065e0">createEx</a> (const char *command) noexcept</td></tr>
-<tr class="separator:ace0c38b682da25a1c378cf0518c065e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42bb0146e2fbd621c253fa09d7070c95" id="r_a42bb0146e2fbd621c253fa09d7070c95"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42bb0146e2fbd621c253fa09d7070c95">createEx</a> (const std::string &amp;exec, const std::vector&lt; std::string &gt; &amp;args={}) noexcept</td></tr>
+<tr class="separator:a42bb0146e2fbd621c253fa09d7070c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf9ea1c83caea24d7c7af4fc52991473" id="r_abf9ea1c83caea24d7c7af4fc52991473"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese.html#a8d5a76892582879e6f346d943ab2a4bf">pid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf9ea1c83caea24d7c7af4fc52991473">getCurrentProcessId</a> () noexcept</td></tr>
 <tr class="separator:abf9ea1c83caea24d7c7af4fc52991473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -178,15 +175,6 @@ Static Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a1f079d2a5fb0c8f88f13c5a1a9fc1d8c" id="r_a1f079d2a5fb0c8f88f13c5a1a9fc1d8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f079d2a5fb0c8f88f13c5a1a9fc1d8c">Process</a> ()=default</td></tr>
 <tr class="separator:a1f079d2a5fb0c8f88f13c5a1a9fc1d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:abb638054ee26bd6b029f1994e863990e" id="r_abb638054ee26bd6b029f1994e863990e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb638054ee26bd6b029f1994e863990e">exec</a> (char *p_command) noexcept</td></tr>
-<tr class="separator:abb638054ee26bd6b029f1994e863990e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93d03f07bdbc7ae0a49638e4b0f206f4" id="r_a93d03f07bdbc7ae0a49638e4b0f206f4"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93d03f07bdbc7ae0a49638e4b0f206f4">count</a> (const char *p_command) noexcept</td></tr>
-<tr class="separator:a93d03f07bdbc7ae0a49638e4b0f206f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e57b277ea2f15a1fcea8ead351e5111" id="r_a6e57b277ea2f15a1fcea8ead351e5111"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e57b277ea2f15a1fcea8ead351e5111">spilt</a> (char *p_command) noexcept</td></tr>
-<tr class="separator:a6e57b277ea2f15a1fcea8ead351e5111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -262,8 +250,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a93d03f07bdbc7ae0a49638e4b0f206f4" name="a93d03f07bdbc7ae0a49638e4b0f206f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93d03f07bdbc7ae0a49638e4b0f206f4">&#9670;&#160;</a></span>count()</h2>
+<a id="a42bb0146e2fbd621c253fa09d7070c95" name="a42bb0146e2fbd621c253fa09d7070c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42bb0146e2fbd621c253fa09d7070c95">&#9670;&#160;</a></span>createEx()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -272,39 +260,14 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t Process::count </td>
+          <td class="memname"><a class="el" href="classsese_1_1_result.html">sese::Result</a>&lt; <a class="el" href="#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">sese::ErrorCode</a> &gt; Process::createEx </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>p_command</em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>exec</em></span>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">References <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="#abb638054ee26bd6b029f1994e863990e">exec()</a>.</p>
-
-</div>
-</div>
-<a id="a79e195a84f2b555e3d12ae99b369fdb8" name="a79e195a84f2b555e3d12ae99b369fdb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79e195a84f2b555e3d12ae99b369fdb8">&#9670;&#160;</a></span>create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a> Process::create </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>args</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -313,76 +276,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Create a new process object </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">command</td><td>Command </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">nullptr</td><td>Creation failed </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="reference">References <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classsese_1_1system_1_1_process_builder.html#af3db4cba16067c5ec41f591aba9c1bf4">sese::system::ProcessBuilder::create()</a>.</p>
-
-</div>
-</div>
-<a id="ace0c38b682da25a1c378cf0518c065e0" name="ace0c38b682da25a1c378cf0518c065e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace0c38b682da25a1c378cf0518c065e0">&#9670;&#160;</a></span>createEx()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt; sese::system::Process::createEx </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p class="reference">References <a class="el" href="namespacesese.html#af6a7d078baabdfdd1deb7881913d2c11">sese::getErrorCode()</a>, <a class="el" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">sese::getErrorString()</a>, and <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classsese_1_1system_1_1_process_builder.html#aa7e0d7968033e2a742724f8d7abd96b4">sese::system::ProcessBuilder::createEx()</a>.</p>
-
-</div>
-</div>
-<a id="abb638054ee26bd6b029f1994e863990e" name="abb638054ee26bd6b029f1994e863990e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb638054ee26bd6b029f1994e863990e">&#9670;&#160;</a></span>exec()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Process::exec </td>
-          <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>p_command</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">References <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, and <a class="el" href="#a93d03f07bdbc7ae0a49638e4b0f206f4">count()</a>.</p>
 
 </div>
 </div>
@@ -466,33 +363,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6e57b277ea2f15a1fcea8ead351e5111" name="a6e57b277ea2f15a1fcea8ead351e5111"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e57b277ea2f15a1fcea8ead351e5111">&#9670;&#160;</a></span>spilt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * Process::spilt </td>
-          <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>p_command</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">References <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
-
-</div>
-</div>
 <a id="a26576173c8042401314803be3d0b4271" name="a26576173c8042401314803be3d0b4271"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26576173c8042401314803be3d0b4271">&#9670;&#160;</a></span>wait()</h2>
 
@@ -546,8 +416,8 @@ Private Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sese/system/<a class="el" href="_process_8h_source.html">Process.h</a></li>
-<li>sese/native/unix/system/<a class="el" href="native_2unix_2system_2_process_8cpp.html">Process.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="native_2win_2system_2_process_8cpp.html">Process.cpp</a></li>
+<li>sese/native/unix/system/<a class="el" href="unix_2system_2_process_8cpp.html">Process.cpp</a></li>
+<li>sese/native/win/system/<a class="el" href="win_2system_2_process_8cpp.html">Process.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -555,7 +425,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_process.html">Process</a></li>
-    <li class="footer">Generated on Sat Dec 21 2024 14:26:14 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Dec 22 2024 13:17:28 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

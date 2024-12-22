@@ -19,7 +19,8 @@ var searchData=
   ['archive_16',['archive',['../classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5',1,'sese::archive::ArchiveReader::archive'],['../classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd',1,'sese::archive::ArchiveWriter::archive']]],
   ['archive_5fread_17',['archive_read',['../classsese_1_1archive_1_1_archive_input_stream.html#ad882bdd03e5206a6cf6e11b0520fe13d',1,'sese::archive::ArchiveInputStream']]],
   ['archive_5fwrite_18',['archive_write',['../classsese_1_1archive_1_1_archive_output_stream.html#aa69eb2eb7decc2e55075e5b1f2dd2ada',1,'sese::archive::ArchiveOutputStream']]],
-  ['asio_5fbuffers_19',['asio_buffers',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acd8ed99a3b04a27de7fa5a928a81652a',1,'sese::internal::service::http::HttpConnectionEx']]],
-  ['attributes_20',['attributes',['../classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3',1,'sese::xml::Element']]],
-  ['authorities_21',['authorities',['../classsese_1_1net_1_1dns_1_1_dns_package.html#af94fe8d44c941fd5a281011d3cf54bb8',1,'sese::net::dns::DnsPackage']]]
+  ['args_19',['args',['../classsese_1_1system_1_1_process_builder.html#a03aee5cc56550246818b0cc754f69000',1,'sese::system::ProcessBuilder']]],
+  ['asio_5fbuffers_20',['asio_buffers',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#acd8ed99a3b04a27de7fa5a928a81652a',1,'sese::internal::service::http::HttpConnectionEx']]],
+  ['attributes_21',['attributes',['../classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3',1,'sese::xml::Element']]],
+  ['authorities_22',['authorities',['../classsese_1_1net_1_1dns_1_1_dns_package.html#af94fe8d44c941fd5a281011d3cf54bb8',1,'sese::net::dns::DnsPackage']]]
 ];
