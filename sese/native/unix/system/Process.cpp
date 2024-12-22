@@ -32,7 +32,6 @@ sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string 
         auto c_args = new char *[args.size() + 2];
         auto exec_string = new char[exec.size() + 1];
         memcpy(exec_string, exec.c_str(), exec.size() + 1);
-        puts(exec_string);
         c_args[0] = exec_string;
         int i = 1;
         for (auto &arg: args) {
@@ -47,6 +46,7 @@ sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string 
             for (int i = 0; i < args.size() + 2; ++i) {
                 delete[] c_args[i];
             }
+            delete[] c_args;
             return Result<Process::Ptr, ErrorCode>::error({getErrorCode(), getErrorString()}); // GCOVR_EXCL_LINE
         } else {
             // never reach
