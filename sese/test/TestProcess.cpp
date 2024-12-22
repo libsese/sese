@@ -21,13 +21,14 @@ TEST(TestProcess, EXEC_LS) {
 #ifdef _WIN32
     char cmd[] = {"powershell ls \"C:/\""};
 #elif __linux__
-    char cmd[] = {"ls / -a"};
+    char cmd[] = {"ls"};
 #elif __APPLE__
-    char cmd[] = {"ls /"};
+    char cmd[] = {"ls"};
 #endif
 
-    auto process = sese::system::Process::create(cmd);
-    ASSERT_TRUE(process != nullptr);
+    auto result = sese::system::Process::createEx(cmd);
+    ASSERT_FALSE(result) << result.err().message();
+    auto &process = result.get();
     auto pid = process->getProcessId();
     SESE_INFO("sub process pid is {}", pid);
     EXPECT_EQ(0, process->wait());
@@ -44,10 +45,10 @@ TEST(TestProcess, PID) {
 TEST(TestProcess, BUILDER) {
     using sese::system::CommandLine;
     using sese::system::ProcessBuilder;
-    auto process = ProcessBuilder(CommandLine::getArgv()[0])
-                           .args("--help")
-                           .create();
-    EXPECT_EQ(0, process->wait());
+    auto result_process = ProcessBuilder(CommandLine::getArgv()[0])
+                           .arg("--help")
+                           .createEx();
+    EXPECT_EQ(0, result_process.get()->wait());
 }
 
 TEST(TestProcess, RESULT) {

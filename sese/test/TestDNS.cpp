@@ -92,11 +92,13 @@ TEST(TestDNS, Resolver) {
     resolver.addNameServer("127.0.0.1", port);
     resolver.addNameServer("8.8.8.8", 53);
 
-    auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
-                       .args(PROJECT_PATH "/scripts/dns_server.py")
-                       .args(std::to_string(port))
-                       .create();
-    ASSERT_NE(nullptr, process);
+    auto result_process = sese::system::ProcessBuilder(PY_EXECUTABLE)
+                       .arg(PROJECT_PATH "/scripts/dns_server.py")
+                       .arg(std::to_string(port))
+                       .createEx();
+
+    ASSERT_FALSE(result_process) << result_process.err().message();
+    auto &process = result_process.get();
     sese::sleep(1s);
 
     auto result = resolver.resolve("www.example.com", 1);
@@ -126,11 +128,12 @@ TEST(TestDNS, Server) {
     ASSERT_TRUE(server.bind(sese::net::IPv4Address::localhost(port)));
     server.startup();
 
-    auto process = sese::system::ProcessBuilder(PY_EXECUTABLE)
-                      .args(PROJECT_PATH "/scripts/dns_client.py")
-                      .args(std::to_string(port))
-                      .create();
-    ASSERT_NE(nullptr, process);
+    auto result = sese::system::ProcessBuilder(PY_EXECUTABLE)
+                      .arg(PROJECT_PATH "/scripts/dns_client.py")
+                      .arg(std::to_string(port))
+                      .createEx();
+    ASSERT_FALSE(result);
+    auto &process = result.get();
     sese::sleep(1s);
     EXPECT_EQ(0, process->wait());
 

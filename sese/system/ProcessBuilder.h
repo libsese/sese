@@ -41,14 +41,7 @@ public:
      * @param arg Argument
      * @return ProcessBuilder&&
      */
-    ProcessBuilder &&args(const std::string &arg) &&;
-
-    /**
-     * @brief Build the process
-     * @see sese::system::Process::create()
-     * @return Process::Ptr
-     */
-    Process::Ptr create();
+    ProcessBuilder &&arg(const std::string &arg) &&;
 
     /**
      * @brief Build the process
@@ -58,7 +51,8 @@ public:
     Result<Process::Ptr, ErrorCode> createEx();
 
 private:
-    text::StringBuilder builder;
+    std::string exec;
+    std::vector<std::string> args;
 };
 
 // GCOVR_EXCL_STOP
