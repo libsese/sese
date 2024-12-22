@@ -33,7 +33,7 @@ class Process {
 public:
     using Ptr = std::unique_ptr<Process>;
 
-    static Result<Process::Ptr, ErrorCode> createEx(const std::string &exec, std::vector<std::string> args = {}) noexcept;
+    static Result<Process::Ptr, ErrorCode> createEx(const std::string &exec, const std::vector<std::string> &args = {}) noexcept;
 
     /// Get the current process ID
     /// \return Current process ID

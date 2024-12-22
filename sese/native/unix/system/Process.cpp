@@ -20,7 +20,7 @@
 
 using namespace sese::system;
 
-sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string &exec, std::vector<std::string> args) noexcept {
+sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
     auto pid = fork();
     if (pid > 0) {
         // parent process
