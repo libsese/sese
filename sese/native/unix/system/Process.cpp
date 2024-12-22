@@ -47,6 +47,7 @@ sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string 
                 delete[] c_args[i];
             }
             delete[] c_args;
+            exit(errno);
             return Result<Process::Ptr, ErrorCode>::error({getErrorCode(), getErrorString()}); // GCOVR_EXCL_LINE
         } else {
             // never reach
