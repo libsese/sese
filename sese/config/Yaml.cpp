@@ -50,7 +50,7 @@ Value Yaml::parseBasic(const std::string &value) {
     return Value{value.c_str()};
 }
 
-bool Yaml::parseObject(TokensQueue &tokens_queue, std::stack<std::pair<Value *, int>> &stack) {
+bool Yaml::parseObject(TokensQueue &tokens_queue, ParseStack &stack) {
     auto [object, count] = stack.top();
     auto &object_ref = object->getDict();
     stack.pop();
@@ -128,7 +128,7 @@ bool Yaml::parseObject(TokensQueue &tokens_queue, std::stack<std::pair<Value *, 
     return true;
 }
 
-bool Yaml::parseArray(TokensQueue &tokens_queue, std::stack<std::pair<Value *, int>> &stack) {
+bool Yaml::parseArray(TokensQueue &tokens_queue, ParseStack &stack) {
     auto [array, count] = stack.top();
     auto &array_ref = array->getList();
     stack.pop();
@@ -313,20 +313,6 @@ std::vector<std::string> Yaml::tokenizer(const std::string &line) noexcept {
     return vector;
 }
 
-constexpr auto GET_SPACE_ARRAY = []() {
-    std::array<char, 1024> array{};
-    for (decltype(auto) item: array) {
-        item = ' ';
-    }
-    return array;
-};
-
-void Yaml::writeSpace(size_t count, OutputStream *output) noexcept {
-    const auto BUFFER = GET_SPACE_ARRAY();
-    const auto SIZE = std::min<size_t>(1024, count);
-    output->write(BUFFER.data(), SIZE);
-}
-
 Value Yaml::parse(InputStream *input) {
     TokensQueue tokens_queue;
     while (true) {
@@ -373,99 +359,152 @@ Value Yaml::parse(InputStream *input) {
     return root_value;
 }
 
-void Yaml::streamifyObject(OutputStream *output, const Value::Dict &dict, size_t level) {
-    for (const auto &[fst, snd]: dict) {
-        if (snd->getType() == Value::Type::DICT) {
-            if (auto &&sub = snd->getDict(); !sub.empty()) {
-                writeSpace(level * 2, output);
-                output->write(fst.c_str(), fst.length());
-                output->write(":\n", 2);
-                streamifyObject(output, sub, level + 1);
-            }
-        } else if (snd->getType() == Value::Type::LIST) {
-            if (auto &&sub = snd->getList(); !sub.empty()) {
-                writeSpace(level * 2, output);
-                output->write(fst.c_str(), fst.length());
-                output->write(":\n", 2);
-                streamifyArray(output, sub, level + 1);
-            }
-        } else {
-            const auto SUB = snd;
-            writeSpace(level * 2, output);
-            output->write(fst.c_str(), fst.length());
-            output->write(": ", 2);
-            if (SUB->isNull()) {
-                output->write("~", 1);
-            } else if (SUB->isBool()) {
-                const auto DATA = SUB->getBool() ? "true" : "false";
-                output->write(DATA, strlen(DATA));
-            } else if (SUB->isInt() || SUB->isDouble()) {
-                auto data = SUB->toString();
-                output->write(data.c_str(), data.length());
-            } else if (SUB->isString()) {
-                auto &&data = SUB->getString();
-                output->write(data.c_str(), data.length());
-            }
-            output->write("\n", 1);
+#define CONST_WRITE(stream, const_string)                                          \
+    if (stream->write(const_string, strlen(const_string)) != strlen(const_string)) \
+    return false
+
+#define STRING_WRITE(stream, string)                                  \
+    if (stream->write(string.data(), string.size()) != string.size()) \
+    return false
+
+bool Yaml::writeSpace(OutputStream *output, size_t count) noexcept {
+    char buffer[1024]{};
+    memset(buffer, ' ', sizeof(buffer));
+    count = count % sizeof(buffer);
+    auto times = count / sizeof(buffer);
+    for (auto i = 0; i < times; ++i) {
+        if (output->write(buffer, sizeof(buffer)) != sizeof(buffer)) {
+            return false;
         }
     }
+    if (output->write(buffer, count) != count) {
+        return false;
+    }
+    return true;
 }
 
-void Yaml::streamifyArray(OutputStream *output, const Value::List &list, size_t level) {
-    auto count = 0;
-    for (decltype(auto) item: list) {
-        if (item->getType() == Value::Type::DICT) {
-            if (auto &&sub = item->getDict(); !sub.empty()) {
-                auto name = "element_" + std::to_string(count);
-                count += 1;
-                Yaml::writeSpace(level * 2, output);
-                output->write("- ", 2);
-                output->write(name.c_str(), name.length());
-                output->write(":\n", 2);
-                streamifyObject(output, sub, level + 1);
+bool Yaml::streamifyObject(
+    OutputStream *output,
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
+) {
+    auto iter = map_iter_stack.top();
+    map_iter_stack.pop();
+    auto &[object, count, level, prefix] = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
+    while (iter != object_ref.end()) {
+        auto name = iter->first;
+        auto value = iter->second;
+        ++iter;
+        count += 1;
+        if (count != 1 || prefix) {
+            if (!writeSpace(output, level * 2)) {
+                return false;
             }
-        } else if (item->getType() == Value::Type::LIST) {
-            auto &&sub = item->getList();
-            if (!sub.empty()) {
-                auto name = "element_" + std::to_string(count);
-                count += 1;
-                Yaml::writeSpace(level * 2, output);
-                output->write("- ", 2);
-                output->write(name.c_str(), name.length());
-                output->write(":\n", 2);
-                streamifyArray(output, sub, level + 1);
-            }
-        } else {
-            auto &&sub = item;
-            Yaml::writeSpace(level * 2, output);
-            output->write("- ", 2);
-            if (sub->isNull()) {
-                output->write("~", 1);
-            } else if (sub->isBool()) {
-                auto data = sub->getBool() ? "true" : "false";
-                output->write(data, strlen(data));
-            } else if (sub->isInt() || sub->isDouble()) {
-                auto data = sub->toString();
-                output->write(data.c_str(), data.length());
-            } else if (sub->isString()) {
-                auto &&data = sub->getString();
-                output->write(data.c_str(), data.length());
-            }
-            output->write("\n", 1);
+        }
+        STRING_WRITE(output, name);
+        CONST_WRITE(output, ": ");
+        if (value->isDict()) {
+            CONST_WRITE(output, "\n");
+            stack.emplace(object, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, true);
+            map_iter_stack.emplace(iter);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            CONST_WRITE(output, "\n");
+            stack.emplace(object, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, true);
+            map_iter_stack.emplace(iter);
+            return true;
+        }
+        if (!streamifyBasic(output, value)) {
+            return false;
         }
     }
+    return true;
 }
 
-void Yaml::streamify(io::OutputStream *output, const Value &value) {
-    if (value.getType() == Value::Type::DICT) {
-        auto &&sub = value.getDict();
-        streamifyObject(output, sub, 0);
-    } else if (value.getType() == Value::Type::LIST) {
-        auto &&sub = value.getList();
-        streamifyArray(output, sub, 0);
+bool Yaml::streamifyArray(
+    OutputStream *output,
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
+) {
+    auto &[array, count, level, prefix] = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
+    while (count < array_ref.size()) {
+        auto value = array_ref[count];
+        count += 1;
+        if (count != 1 || prefix) {
+            if (!writeSpace(output, level * 2)) {
+                return false;
+            }
+        }
+        if (value->isDict()) {
+            CONST_WRITE(output, "- ");
+            stack.emplace(array, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, false);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            CONST_WRITE(output, "- ");
+            stack.emplace(array, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, false);
+            return true;
+        }
+        CONST_WRITE(output, "- ");
+        if (!streamifyBasic(output, value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Yaml::streamifyBasic(OutputStream *output, const std::shared_ptr<Value> &value) {
+    if (value->isNull()) {
+        CONST_WRITE(output, "~");
+    } else if (value->isBool()) {
+        decltype(auto) data = value->getBool() ? "true" : "false";
+        CONST_WRITE(output, data);
+    } else if (value->isInt() || value->isDouble()) {
+        decltype(auto) data = value->toString();
+        STRING_WRITE(output, data);
     } else {
-        return;
+        // value->isString()
+        decltype(auto) data = value->getString();
+        STRING_WRITE(output, data);
     }
+    CONST_WRITE(output, "\n");
+    return true;
+}
+
+bool Yaml::streamify(OutputStream *output, Value &value) {
+    StreamifyStack stack;
+    StreamifyIterStack map_iter_stack;
+    stack.emplace(&value, 0, 0, true);
+    if (value.isDict()) {
+        map_iter_stack.emplace(value.getDict().begin());
+    }
+
+    while (!stack.empty()) {
+        auto &[current_value, count, level, prefix] = stack.top();
+        bool rt = false;
+        if (current_value->isDict()) {
+            rt = streamifyObject(output, stack, map_iter_stack);
+        } else if (current_value->isList()) {
+            rt = streamifyArray(output, stack, map_iter_stack);
+        } else {
+            return false;
+        }
+        if (!rt) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // GCOVR_EXCL_STOP

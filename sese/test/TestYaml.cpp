@@ -216,6 +216,9 @@ TEST(TestYaml, Serialize_0) {
                 .append(true)
                 .append("string")
             )
+            .append(Value::Dict()
+                .set("Hello", "World")
+            )
         )
         .set("image", Value::Dict()
             .set("real", INT64_C(1))
@@ -247,26 +250,6 @@ TEST(TestYaml, Serialize_1) {
 }
 
 TEST(TestYaml, Serialize_2) {
-    using sese::Value;
-    sese::io::ConsoleOutputStream output;
-
-    // clang-format off
-    auto root = Value(Value::List()
-        .append("value0")
-        .append(true)
-        .append(false)
-        .append(INT64_C(114514))
-        .append(INT64_C(1919810))
-        .append(3.14)
-        .append(0.15926e-2)
-        .append(Value{})
-    );
-    // clang-format on
-
-    sese::Yaml::streamify(&output, root);
-}
-
-TEST(TestYaml, Serialize_3) {
     sese::io::ConsoleOutputStream output;
     sese::Value data("data");
     sese::Yaml::streamify(&output, data);
