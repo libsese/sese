@@ -24,10 +24,11 @@
 #include <sese/util/Value.h>
 
 #include <queue>
+#include <stack>
 
 namespace sese {
 /// YAML parser
-class Yaml {
+class Yaml final : public NotInstantiable {
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;
     using InputStream = io::InputStream;
@@ -36,9 +37,9 @@ class Yaml {
 
     static Value parseBasic(const std::string &value);
 
-    static Value parseObject(TokensQueue &tokens_queue, size_t level);
+    static bool parseObject(TokensQueue &tokens_queue, std::stack<std::pair<Value *, int>> &stack);
 
-    static Value parseArray(TokensQueue &tokens_queue, size_t level);
+    static bool parseArray(TokensQueue &tokens_queue, std::stack<std::pair<Value *, int>> &stack);
 
     static void streamifyObject(io::OutputStream *output, const Value::Dict &dict, size_t level);
 
@@ -53,12 +54,12 @@ class Yaml {
     static void writeSpace(size_t count, OutputStream *output) noexcept;
 
 public:
+    Yaml() = delete;
 
     /// Deserialize yaml object from stream
     /// \param input Input stream
-    /// \param level Parsing depth
     /// \return If parsing fails, Value::isNull is true
-    static Value parse(io::InputStream *input, size_t level);
+    static Value parse(io::InputStream *input);
 
     /// Serialize yaml object to stream
     /// \param output Output stream
