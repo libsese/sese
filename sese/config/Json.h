@@ -35,25 +35,28 @@ namespace sese {
 /// JSON parser
 class Json final : public NotInstantiable {
     using Tokens = std::queue<std::string>;
+    using ParseStack = std::stack<Value *>;
+    using StreamifyStack = std::stack<std::pair<Value *, unsigned int>>;
+    using StreamifyIterStack = std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator>;
 
     static Value parse(Tokens &tokens);
 
-    static bool parseObject(Tokens &tokens, std::stack<Value *> &stack);
+    static bool parseObject(Tokens &tokens, ParseStack &stack);
 
-    static bool parseArray(Tokens &tokens, std::stack<Value *> &stack);
+    static bool parseArray(Tokens &tokens, ParseStack &stack);
 
     static Value parseBasic(const std::string &value);
 
     static bool streamifyObject(
         io::OutputStream *out,
-        std::stack<std::pair<Value *, unsigned int>> &stack,
-        std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+        StreamifyStack &stack,
+        StreamifyIterStack &map_iter_stack
     );
 
     static bool streamifyArray(
         io::OutputStream *out,
-        std::stack<std::pair<Value *, unsigned int>> &stack,
-        std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+        StreamifyStack &stack,
+        StreamifyIterStack &map_iter_stack
     );
 
     static bool streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &value);

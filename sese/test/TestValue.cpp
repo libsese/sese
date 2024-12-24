@@ -234,7 +234,8 @@ TEST(TestValue, ToString) {
             .append(false)
             .append(INT64_C(114514))
             .append("Blob", 4)
-            .append(Value::Dict()))
+            .append(Value::Dict())
+            .append(Value::List()))
         .set("int", INT64_C(1919810))
         .set("double", 3.14)
         .set("dict", Value::Dict()
@@ -242,5 +243,5 @@ TEST(TestValue, ToString) {
             .set("int", INT64_C(123456)))
     );
     // clang-format on
-    SESE_INFO("{2}", value);
+    SESE_INFO("\n{}", value);
 }

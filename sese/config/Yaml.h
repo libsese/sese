@@ -24,25 +24,47 @@
 #include <sese/util/Value.h>
 
 #include <queue>
+#include <stack>
+#include <tuple>
 
 namespace sese {
 /// YAML parser
-class Yaml {
+class Yaml final : public NotInstantiable {
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;
     using Line = std::tuple<int, std::string>;
 
+    using ParseStack = std::stack<std::pair<Value *, int>>;
+    using StreamifyStack = std::stack<std::tuple<Value *, unsigned int, unsigned int, bool>>;
+    using StreamifyIterStack = std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator>;
+
     static Value parseBasic(const std::string &value);
 
-    static Value parseObject(TokensQueue &tokens_queue, size_t level);
+    static bool parseObject(
+        TokensQueue &tokens_queue,
+        ParseStack &stack
+    );
 
-    static Value parseArray(TokensQueue &tokens_queue, size_t level);
+    static bool parseArray(
+        TokensQueue &tokens_queue,
+        ParseStack &stack
+    );
 
-    static void streamifyObject(io::OutputStream *output, const Value::Dict &dict, size_t level);
+    static bool streamifyObject(
+        OutputStream *output,
+        StreamifyStack &stack,
+        StreamifyIterStack &map_iter_stack
+    );
 
-    static void streamifyArray(io::OutputStream *output, const Value::List &list, size_t level);
+    static bool streamifyArray(
+        OutputStream *output,
+        StreamifyStack &stack,
+        StreamifyIterStack &map_iter_stack
+    );
+
+    static bool streamifyBasic(OutputStream *output, const std::shared_ptr<Value> &value);
 
     static int getSpaceCount(const std::string &line) noexcept;
 
@@ -50,19 +72,20 @@ class Yaml {
 
     static Tokens tokenizer(const std::string &line) noexcept;
 
-    static void writeSpace(size_t count, OutputStream *output) noexcept;
+    static bool writeSpace(OutputStream *output, size_t count) noexcept;
 
 public:
+    Yaml() = delete;
 
     /// Deserialize yaml object from stream
     /// \param input Input stream
-    /// \param level Parsing depth
     /// \return If parsing fails, Value::isNull is true
-    static Value parse(io::InputStream *input, size_t level);
+    static Value parse(io::InputStream *input);
 
     /// Serialize yaml object to stream
     /// \param output Output stream
     /// \param value yaml object
-    static void streamify(io::OutputStream *output, const Value &value);
+    /// \return If serialization fails, return false
+    static bool streamify(io::OutputStream *output, Value &value);
 };
 } // namespace sese

@@ -24,14 +24,14 @@ using sese::Yaml;
 // GCOVR_EXCL_START
 
 Value Yaml::parseBasic(const std::string &value) {
-    if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~" || value.empty()) {
+    if (strcmpDoNotCase(value.c_str(), "null") || value == "~" || value.empty()) {
         return {};
     }
-    if (sese::strcmpDoNotCase(value.c_str(), "true") ||
-        sese::strcmpDoNotCase(value.c_str(), "yes")) {
+    if (strcmpDoNotCase(value.c_str(), "true") ||
+        strcmpDoNotCase(value.c_str(), "yes")) {
         return Value{true};
     }
-    if (sese::strcmpDoNotCase(value.c_str(), "false") || sese::strcmpDoNotCase(value.c_str(), "no")) {
+    if (strcmpDoNotCase(value.c_str(), "false") || sese::strcmpDoNotCase(value.c_str(), "no")) {
         return Value{false};
     }
     if (value.find('.') != std::string::npos) {
@@ -50,15 +50,18 @@ Value Yaml::parseBasic(const std::string &value) {
     return Value{value.c_str()};
 }
 
-Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
-    if (level == 0)
-        return {};
-
-    auto result = Value::Dict();
+bool Yaml::parseObject(TokensQueue &tokens_queue, ParseStack &stack) {
+    auto [object, count] = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
     // object does not have children
-    if (tokens_queue.empty())
-        return Value(std::move(result));
-    int count = std::get<0>(tokens_queue.front());
+    if (tokens_queue.empty()) {
+        return true;
+    }
+    // is the first element?
+    if (count == -1) {
+        count = std::get<0>(tokens_queue.front());
+    }
 
     while (!tokens_queue.empty()) {
         decltype(auto) count_and_tokens = tokens_queue.front();
@@ -68,55 +71,51 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
         if (count == current_count) {
             if (current_tokens.size() == 3) {
                 if (current_tokens[1] != ":") {
-                    return {};
+                    return false;
                 }
                 // normal key-value
                 const std::string &key = current_tokens[0];
                 const std::string &value = current_tokens[2];
-                result.set(key, Yaml::parseBasic(value));
+                object_ref.set(key, parseBasic(value));
                 tokens_queue.pop();
             } else if (current_tokens.size() == 2) {
                 // may be empty object or new object or new array
                 auto current_count_and_tokens = tokens_queue.front();
                 tokens_queue.pop();
                 if (tokens_queue.empty()) {
-                    // dose not exist next line, and current element is null
-                    result.set(current_tokens[0], Value());
+                    // does not exist next line, and current element is null
+                    object_ref.set(current_tokens[0], Value());
                 } else {
                     // the next line is exist
                     auto next_count_and_tokens = tokens_queue.front();
                     auto next_count = std::get<0>(next_count_and_tokens);
                     auto next_tokens = std::get<1>(next_count_and_tokens);
                     if (next_count == count) {
-                        // current element is null, and next element is belong to this object
-                        result.set(current_tokens[0], Value());
+                        // current element is null, and next element is belonged to this object
+                        object_ref.set(current_tokens[0], Value());
                     } else if (next_count < count) {
                         // current element is null, and next element is not belong to this object
-                        result.set(current_tokens[0], Value());
-                        return Value(std::move(result));
+                        object_ref.set(current_tokens[0], Value());
+                        return true;
                     } else if (next_count > count) {
                         // new array
                         if (next_tokens[0] == "-") {
-                            if (auto value_object = parseArray(tokens_queue, level - 1); value_object.isList()) {
-                                result.set(current_tokens[0], std::move(value_object));
-                            } else {
-                                return {};
-                            }
+                            auto value_object = object_ref.setRef(current_tokens[0], Value::list()).get();
+                            stack.emplace(object, count);
+                            stack.emplace(value_object, -1);
+                            return true;
                         }
                         // new object
-                        else {
-                            if (auto value_object = parseObject(tokens_queue, level - 1); value_object.isDict()) {
-                                result.set(current_tokens[0], std::move(value_object));
-                            } else {
-                                return {};
-                            }
-                        }
+                        auto value_object = object_ref.setRef(current_tokens[0], Value::dict()).get();
+                        stack.emplace(object, count);
+                        stack.emplace(value_object, -1);
+                        return true;
                     }
                 }
             }
         } else if (count > current_count) {
             // end of current object
-            return Value(std::move(result));
+            return true;
         }
         // it should not happen
         // GCOVR_EXCL_START
@@ -126,90 +125,66 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokens_queue, size_t level) {
         }
         // GCOVR_EXCL_STOP
     }
-    return Value(std::move(result));
+    return true;
 }
 
-Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
-    if (level == 0)
-        return {};
-
-    auto result = Value::List();
+bool Yaml::parseArray(TokensQueue &tokens_queue, ParseStack &stack) {
+    auto [array, count] = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
     // object does not have children
-    if (tokens_queue.empty())
-        return Value(std::move(result));
-    int count = std::get<0>(tokens_queue.front());
+    if (tokens_queue.empty()) {
+        return true;
+    }
+
+    // is the first element?
+    if (count == -1) {
+        count = std::get<0>(tokens_queue.front());
+    }
 
     while (!tokens_queue.empty()) {
         decltype(auto) count_and_tokens = tokens_queue.front();
         auto &current_count = std::get<0>(count_and_tokens);
         auto &current_tokens = std::get<1>(count_and_tokens);
 
-        if (count == current_count) {
-            if (current_tokens.size() == 1) {
-                result.append(Value());
-                tokens_queue.pop();
-            } else if (current_tokens.size() == 2) {
-                std::string value = current_tokens[1];
-                // auto valueObject = std::make_shared<BasicData>();
-                if (sese::strcmpDoNotCase(value.c_str(), "null") || value == "~") {
-                    result.append(Value());
-                } else {
-                    result.append(std::move(value));
-                }
-                // result->push(valueObject);
-                tokens_queue.pop();
-            } else if (current_tokens.size() == 3) {
-                // new object or new array
-                auto current_count_and_tokens = tokens_queue.front();
-                tokens_queue.pop();
-                if (tokens_queue.empty()) {
-                    // does not exist next line, skip this object
-                    return Value(std::move(result));
-                } else {
-                    auto next_count_and_tokens = tokens_queue.front();
-                    auto next_count = std::get<0>(next_count_and_tokens);
-                    auto next_tokens = std::get<1>(next_count_and_tokens);
-                    if (next_count > count) {
-                        if (next_tokens[0] == "-") {
-                            if (auto value_object = parseArray(tokens_queue, level - 1); value_object.isList()) {
-                                result.append(std::move(value_object));
-                            } else {
-                                return {};
-                            }
-                        } else {
-                            if (auto value_object = parseObject(tokens_queue, level - 1); value_object.isDict()) {
-                                result.append(std::move(value_object));
-                            } else {
-                                return {};
-                            }
-                        }
-                    }
-                    // it should not happen
-                    // GCOVR_EXCL_START
-                    else {
-                        tokens_queue.pop();
-                        continue;
-                    }
-                    // GCOVR_EXCL_STOP
-                }
-            } else if (current_tokens.size() == 4 && current_tokens[0] == "-" && current_tokens[2] == ":") {
-                // result.append(Value::Dict().set(current_tokens[1], std::move(current_tokens[3])));
-                // result.append(Value::Dict().set(current_tokens[1], parseBasic(current_tokens[3])));
-                current_count += 2;
-                current_tokens.erase(current_tokens.begin());
-                if (auto value_object = parseObject(tokens_queue, level - 1); value_object.isDict()) {
-                    result.append(std::move(value_object));
-                } else {
-                    return {};
-                }
-            } else {
-                return {};
-            }
-        } else if (count > current_count) {
+        if (count > current_count) {
             // end of current array
-            return Value(std::move(result));
+            return true;
         }
-        // is shuld not happen
+        // prefix '-' must be erased
+        current_tokens.erase(current_tokens.begin());
+
+        if (count == current_count) {
+            // empty
+            if (current_tokens.empty()) {
+                array_ref.append(Value());
+                tokens_queue.pop();
+            }
+            // basic value
+            else if (current_tokens.size() == 1) {
+                array_ref.append(parseBasic(current_tokens[0]));
+                tokens_queue.pop();
+            }
+            // object
+            else if ((current_tokens.size() == 2 || current_tokens.size() == 3) && current_tokens[1] == ":") {
+                current_count += 2;
+                auto value_object = array_ref.appendRef(Value::dict()).get();
+                stack.emplace(array, count);
+                stack.emplace(value_object, -1);
+                return true;
+            }
+            // array
+            else if (current_tokens[0] == "-") {
+                current_count += 2;
+                auto value_object = array_ref.appendRef(Value::list()).get();
+                stack.emplace(array, count);
+                stack.emplace(value_object, -1);
+                return true;
+            } else {
+                return false;
+            }
+        }
+        // it should not happen
         // GCOVR_EXCL_START
         else {
             tokens_queue.pop();
@@ -217,10 +192,10 @@ Value Yaml::parseArray(Yaml::TokensQueue &tokens_queue, size_t level) {
         }
         // GCOVR_EXCL_STOP
     }
-    return Value(std::move(result));
+    return true;
 }
 
-int sese::Yaml::getSpaceCount(const std::string &line) noexcept {
+int Yaml::getSpaceCount(const std::string &line) noexcept {
     int value = 0;
     for (decltype(auto) ch: line) {
         if (ch == ' ') {
@@ -232,8 +207,8 @@ int sese::Yaml::getSpaceCount(const std::string &line) noexcept {
     return value;
 }
 
-std::tuple<int, std::string> sese::Yaml::getLine(InputStream *input) noexcept {
-    sese::text::StringBuilder builder(1024);
+std::tuple<int, std::string> Yaml::getLine(InputStream *input) noexcept {
+    text::StringBuilder builder(1024);
     char ch;
     while (true) {
         auto l = input->read(&ch, 1);
@@ -257,9 +232,9 @@ ret:
     return {count, str.substr(count)};
 }
 
-std::vector<std::string> sese::Yaml::tokenizer(const std::string &line) noexcept {
+std::vector<std::string> Yaml::tokenizer(const std::string &line) noexcept {
     std::vector<std::string> vector;
-    sese::text::StringBuilder builder(1024);
+    text::StringBuilder builder(1024);
     bool is_str = false; // Is a string?
     bool quot1 = false;  // Is single quotes?
     bool quot2 = false;  // Is double quotes?
@@ -338,137 +313,198 @@ std::vector<std::string> sese::Yaml::tokenizer(const std::string &line) noexcept
     return vector;
 }
 
-constexpr auto GET_SPACE_ARRAY = []() {
-    std::array<char, 1024> array{};
-    for (decltype(auto) item: array) {
-        item = ' ';
-    }
-    return array;
-};
-
-void sese::Yaml::writeSpace(size_t count, OutputStream *output) noexcept {
-    const auto BUFFER = GET_SPACE_ARRAY();
-    const auto SIZE = std::min<size_t>(1024, count);
-    output->write(BUFFER.data(), SIZE);
-}
-
-Value Yaml::parse(sese::io::InputStream *input, size_t level) {
+Value Yaml::parse(InputStream *input) {
     TokensQueue tokens_queue;
     while (true) {
-        decltype(auto) line = Yaml::getLine(input);
+        decltype(auto) line = getLine(input);
         if (std::get<1>(line).empty()) {
             break;
         }
-        auto tokens = Yaml::tokenizer(std::get<1>(line));
+        auto tokens = tokenizer(std::get<1>(line));
         tokens_queue.emplace(std::get<0>(line), tokens);
     }
 
+    if (tokens_queue.empty())
+        return {};
     decltype(auto) top = tokens_queue.front();
     decltype(auto) top_tokens = std::get<1>(top);
+
+    Value root_value;
     if (top_tokens.empty())
         return {};
     if (top_tokens[0] == "-") {
         // The root element is an array
-        return parseArray(tokens_queue, level);
+        root_value = Value::list();
     } else {
         // The root element is an object
-        return parseObject(tokens_queue, level);
+        root_value = Value::dict();
     }
-}
 
-void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, size_t level) {
-    for (const auto &[fst, snd]: dict) {
-        if (snd->getType() == Value::Type::DICT) {
-            if (auto &&sub = snd->getDict(); !sub.empty()) {
-                Yaml::writeSpace(level * 2, output);
-                output->write(fst.c_str(), fst.length());
-                output->write(":\n", 2);
-                streamifyObject(output, sub, level + 1);
-            }
-        } else if (snd->getType() == Value::Type::LIST) {
-            if (auto &&sub = snd->getList(); !sub.empty()) {
-                Yaml::writeSpace(level * 2, output);
-                output->write(fst.c_str(), fst.length());
-                output->write(":\n", 2);
-                streamifyArray(output, sub, level + 1);
-            }
-        } else {
-            const auto SUB = snd;
-            Yaml::writeSpace(level * 2, output);
-            output->write(fst.c_str(), fst.length());
-            output->write(": ", 2);
-            if (SUB->isNull()) {
-                output->write("~", 1);
-            } else if (SUB->isBool()) {
-                const auto DATA = SUB->getBool() ? "true" : "false";
-                output->write(DATA, strlen(DATA));
-            } else if (SUB->isInt() || SUB->isDouble()) {
-                auto data = SUB->toString();
-                output->write(data.c_str(), data.length());
-            } else if (SUB->isString()) {
-                auto &&data = SUB->getString();
-                output->write(data.c_str(), data.length());
-            }
-            output->write("\n", 1);
+    std::stack<std::pair<Value *, int>> stack;
+    stack.emplace(&root_value, -1);
+
+    while (!stack.empty()) {
+        bool rt = false;
+        auto [current_value, _] = stack.top();
+        if (current_value->isDict()) {
+            rt = parseObject(tokens_queue, stack);
+        } else if (current_value->isList()) {
+            rt = parseArray(tokens_queue, stack);
+        }
+        if (!rt) {
+            return {};
         }
     }
+
+    return root_value;
 }
 
-void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, size_t level) {
-    auto count = 0;
-    for (decltype(auto) item: list) {
-        if (item->getType() == Value::Type::DICT) {
-            if (auto &&sub = item->getDict(); !sub.empty()) {
-                auto name = "element_" + std::to_string(count);
-                count += 1;
-                Yaml::writeSpace(level * 2, output);
-                output->write("- ", 2);
-                output->write(name.c_str(), name.length());
-                output->write(":\n", 2);
-                streamifyObject(output, sub, level + 1);
-            }
-        } else if (item->getType() == Value::Type::LIST) {
-            auto &&sub = item->getList();
-            if (!sub.empty()) {
-                auto name = "element_" + std::to_string(count);
-                count += 1;
-                Yaml::writeSpace(level * 2, output);
-                output->write("- ", 2);
-                output->write(name.c_str(), name.length());
-                output->write(":\n", 2);
-                streamifyArray(output, sub, level + 1);
-            }
-        } else {
-            auto &&sub = item;
-            Yaml::writeSpace(level * 2, output);
-            output->write("- ", 2);
-            if (sub->isNull()) {
-                output->write("~", 1);
-            } else if (sub->isBool()) {
-                auto data = sub->getBool() ? "true" : "false";
-                output->write(data, strlen(data));
-            } else if (sub->isInt() || sub->isDouble()) {
-                auto data = sub->toString();
-                output->write(data.c_str(), data.length());
-            } else if (sub->isString()) {
-                auto &&data = sub->getString();
-                output->write(data.c_str(), data.length());
-            }
-            output->write("\n", 1);
+#define CONST_WRITE(stream, const_string)                                          \
+    if (stream->write(const_string, strlen(const_string)) != strlen(const_string)) \
+    return false
+
+#define STRING_WRITE(stream, string)                                  \
+    if (stream->write(string.data(), string.size()) != string.size()) \
+    return false
+
+bool Yaml::writeSpace(OutputStream *output, size_t count) noexcept {
+    char buffer[1024]{};
+    memset(buffer, ' ', sizeof(buffer));
+    count = count % sizeof(buffer);
+    auto times = count / sizeof(buffer);
+    for (auto i = 0; i < times; ++i) {
+        if (output->write(buffer, sizeof(buffer)) != sizeof(buffer)) {
+            return false;
         }
     }
+    if (output->write(buffer, count) != count) {
+        return false;
+    }
+    return true;
 }
 
-void Yaml::streamify(io::OutputStream *output, const Value &value) {
-    if (value.getType() == Value::Type::DICT) {
-        auto &&sub = value.getDict();
-        streamifyObject(output, sub, 0);
-    } else if (value.getType() == Value::Type::LIST) {
-        auto &&sub = value.getList();
-        streamifyArray(output, sub, 0);
+bool Yaml::streamifyObject(
+    OutputStream *output,
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
+) {
+    auto iter = map_iter_stack.top();
+    map_iter_stack.pop();
+    auto &[object, count, level, prefix] = stack.top();
+    auto &object_ref = object->getDict();
+    stack.pop();
+    while (iter != object_ref.end()) {
+        auto name = iter->first;
+        auto value = iter->second;
+        ++iter;
+        count += 1;
+        if (count != 1 || prefix) {
+            if (!writeSpace(output, level * 2)) {
+                return false;
+            }
+        }
+        STRING_WRITE(output, name);
+        CONST_WRITE(output, ": ");
+        if (value->isDict()) {
+            CONST_WRITE(output, "\n");
+            stack.emplace(object, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, true);
+            map_iter_stack.emplace(iter);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            CONST_WRITE(output, "\n");
+            stack.emplace(object, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, true);
+            map_iter_stack.emplace(iter);
+            return true;
+        }
+        if (!streamifyBasic(output, value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Yaml::streamifyArray(
+    OutputStream *output,
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
+) {
+    auto &[array, count, level, prefix] = stack.top();
+    auto &array_ref = array->getList();
+    stack.pop();
+    while (count < array_ref.size()) {
+        auto value = array_ref[count];
+        count += 1;
+        if (count != 1 || prefix) {
+            if (!writeSpace(output, level * 2)) {
+                return false;
+            }
+        }
+        if (value->isDict()) {
+            CONST_WRITE(output, "- ");
+            stack.emplace(array, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, false);
+            map_iter_stack.emplace(value->getDict().begin());
+            return true;
+        }
+        if (value->isList()) {
+            CONST_WRITE(output, "- ");
+            stack.emplace(array, count, level, true);
+            stack.emplace(value.get(), 0, level + 1, false);
+            return true;
+        }
+        CONST_WRITE(output, "- ");
+        if (!streamifyBasic(output, value)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Yaml::streamifyBasic(OutputStream *output, const std::shared_ptr<Value> &value) {
+    if (value->isNull()) {
+        CONST_WRITE(output, "~");
+    } else if (value->isBool()) {
+        decltype(auto) data = value->getBool() ? "true" : "false";
+        CONST_WRITE(output, data);
+    } else if (value->isInt() || value->isDouble()) {
+        decltype(auto) data = value->toStringBasic();
+        STRING_WRITE(output, data);
     } else {
-        return;
+        // value->isString()
+        decltype(auto) data = value->getString();
+        STRING_WRITE(output, data);
     }
+    CONST_WRITE(output, "\n");
+    return true;
+}
+
+bool Yaml::streamify(OutputStream *output, Value &value) {
+    StreamifyStack stack;
+    StreamifyIterStack map_iter_stack;
+    stack.emplace(&value, 0, 0, true);
+    if (value.isDict()) {
+        map_iter_stack.emplace(value.getDict().begin());
+    }
+
+    while (!stack.empty()) {
+        auto &[current_value, count, level, prefix] = stack.top();
+        bool rt = false;
+        if (current_value->isDict()) {
+            rt = streamifyObject(output, stack, map_iter_stack);
+        } else if (current_value->isList()) {
+            rt = streamifyArray(output, stack, map_iter_stack);
+        } else {
+            return false;
+        }
+        if (!rt) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // GCOVR_EXCL_STOP

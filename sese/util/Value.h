@@ -24,6 +24,8 @@
 #include <variant>
 #include <vector>
 #include <optional>
+#include <stack>
+#include <tuple>
 
 #include <sese/Config.h>
 #include <sese/text/StringBuilder.h>
@@ -48,6 +50,9 @@ public:
     using Integer = int64_t;
     using String = std::string;
     using Blob = std::vector<uint8_t>;
+
+    using StreamifyStack = std::stack<std::tuple<const Value *, unsigned int, unsigned int>>;
+    using StreamifyIterStack = std::stack<std::map<std::string, std::shared_ptr<Value>>::const_iterator>;
 
     class List;
     class Dict;
@@ -265,32 +270,38 @@ public:
     [[nodiscard]] const Dict &getDict() const;
     [[nodiscard]] Dict &getDict();
 
-    [[nodiscard]] std::string toString(size_t level = 4) const noexcept;
+    [[nodiscard]] std::string toStringBasic() const noexcept;
+    [[nodiscard]] std::string toString() const noexcept;
+    void toString(text::StringBuilder &string_builder) const noexcept;
 
     bool operator==(const Value &rhs) const;
     bool operator!=(const Value &rhs) const;
 
-    void toString(text::StringBuilder &string_builder, size_t level) const noexcept;
-
 private:
+    static void writeSpace(text::StringBuilder &string_builder, size_t count);
+    static void toStringDict(
+        text::StringBuilder &string_builder,
+        StreamifyStack &stack,
+        StreamifyIterStack &map_iter_stack
+    );
+    static void toStringList(
+        text::StringBuilder &string_builder,
+        StreamifyStack &stack,
+        StreamifyIterStack &map_iter_stack
+    );
+
     std::variant<Null, bool, Integer, double, String, Blob, List, Dict> data;
 };
 
 template<>
 struct text::overload::Formatter<Value> {
-    size_t level = 4;
 
-    bool parse(const std::string &args) {
-        char *end;
-        level = static_cast<size_t>(std::strtol(args.c_str(), &end, 10));
-        if (level == 0) {
-            return false;
-        }
+    bool parse(const std::string &) {
         return true;
     }
 
     void format(FmtCtx &ctx, Value &value) const {
-        value.toString(ctx.builder, level);
+        value.toString(ctx.builder);
     }
 };
 

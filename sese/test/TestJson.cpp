@@ -98,8 +98,18 @@ TEST(TestJson, Value) {
     input->close();
     ASSERT_FALSE(object.isNull());
 
-    auto content = object.toString(4);
+    auto content = object.toString();
     puts(content.c_str());
+}
+
+TEST(TestJson, Streamify) {
+    auto input = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", sese::io::FileStream::T_READ);
+    auto object = sese::Json::parse(input.get());
+    input->close();
+    ASSERT_FALSE(object.isNull());
+
+    sese::io::ConsoleOutputStream console_output_stream;
+    sese::Json::streamify(&console_output_stream, object);
 }
 
 /// Key-value pair splitting error

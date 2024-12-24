@@ -101,7 +101,7 @@ bool Json::tokenizer(io::InputStream *input_stream, Tokens &tokens) noexcept {
     return true;
 }
 
-bool Json::parseObject(Tokens &tokens, std::stack<Value *> &stack) {
+bool Json::parseObject(Tokens &tokens, ParseStack &stack) {
     bool has_end = false;
     auto object = stack.top();
     auto &object_ref = object->getDict();
@@ -160,7 +160,7 @@ bool Json::parseObject(Tokens &tokens, std::stack<Value *> &stack) {
     return false;
 }
 
-bool Json::parseArray(Tokens &tokens, std::stack<Value *> &stack) {
+bool Json::parseArray(Tokens &tokens, ParseStack &stack) {
     // the array exists keyword check, will not trigger end with check
     auto array = stack.top();
     auto &array_ref = array->getList();
@@ -214,7 +214,7 @@ Value Json::parse(Tokens &tokens) {
     }
 
     tokens.pop();
-    std::stack<Value *> stack;
+    ParseStack stack;
     stack.push(&root_value);
 
     while (!stack.empty()) {
@@ -274,17 +274,20 @@ Value Json::parse(io::InputStream *input) {
     if (stream->write(string.data(), string.size()) != string.size()) \
     return false
 
-
 bool Json::streamifyObject(
     io::OutputStream *out,
-    std::stack<std::pair<Value *, unsigned int>> &stack,
-    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
 ) {
     auto iter = map_iter_stack.top();
     map_iter_stack.pop();
     auto &[object, count] = stack.top();
     auto &object_ref = object->getDict();
     stack.pop();
+    if (object_ref.empty()) {
+        CONST_WRITE(out, "{}");
+        return true;
+    }
     if (count == object_ref.size()) {
         CONST_WRITE(out, "}");
         return true;
@@ -321,6 +324,7 @@ bool Json::streamifyObject(
         }
         if (count == object_ref.size()) {
             CONST_WRITE(out, "}");
+            return true;
         }
     }
     return true;
@@ -328,12 +332,16 @@ bool Json::streamifyObject(
 
 bool Json::streamifyArray(
     io::OutputStream *out,
-    std::stack<std::pair<Value *, unsigned int>> &stack,
-    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> &map_iter_stack
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
 ) {
     auto &[array, count] = stack.top();
     auto &array_ref = array->getList();
     stack.pop();
+    if (array_ref.empty()) {
+        CONST_WRITE(out, "[]");
+        return true;
+    }
     if (count == array_ref.size()) {
         CONST_WRITE(out, "]");
         return true;
@@ -356,12 +364,14 @@ bool Json::streamifyArray(
         if (value->isList()) {
             stack.emplace(array, count);
             stack.emplace(value.get(), 0);
+            return true;
         }
         if (!streamifyBasic(out, value)) {
             return false;
         }
         if (count == array_ref.size()) {
             CONST_WRITE(out, "]");
+            return true;
         }
     }
     return true;
@@ -378,7 +388,7 @@ bool Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &v
             CONST_WRITE(out, "false");
         }
     } else if (value->isDouble() || value->isInt() || value->isString()) {
-        auto v = value->toString();
+        auto v = value->toStringBasic();
         STRING_WRITE(out, v);
     } else {
         return false;
@@ -387,8 +397,8 @@ bool Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &v
 }
 
 bool Json::streamify(io::OutputStream *out, Value &value) {
-    std::stack<std::pair<Value *, unsigned int>> stack;
-    std::stack<std::map<std::string, std::shared_ptr<Value>>::iterator> map_iter_stack;
+    StreamifyStack stack;
+    StreamifyIterStack map_iter_stack;
     stack.emplace(&value, 0);
     if (value.isDict()) {
         map_iter_stack.emplace(value.getDict().begin());
@@ -396,11 +406,15 @@ bool Json::streamify(io::OutputStream *out, Value &value) {
 
     while (!stack.empty()) {
         auto &[current_value, first] = stack.top();
+        bool rt = false;
         if (current_value->isDict()) {
-            streamifyObject(out, stack, map_iter_stack);
+            rt = streamifyObject(out, stack, map_iter_stack);
         } else if (current_value->isList()) {
-            streamifyArray(out, stack, map_iter_stack);
+            rt = streamifyArray(out, stack, map_iter_stack);
         } else {
+            return false;
+        }
+        if (!rt) {
             return false;
         }
     }
