@@ -52,7 +52,7 @@ var searchData=
   ['writesettingsframe_49',['writeSettingsFrame',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a49960436727805746d472dd32b18d32d',1,'sese::internal::service::http::HttpConnectionEx']]],
   ['writesinglerange_50',['writeSingleRange',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a845969ee2d125ac91eb774bab3f9de57',1,'sese::internal::service::http::HttpConnection']]],
   ['writesize_51',['writeSize',['../classsese_1_1io_1_1_abstract_fixed_buffer.html#ab2a7136ff1e36aee896352d5b2446e70',1,'sese::io::AbstractFixedBuffer']]],
-  ['writespace_52',['writeSpace',['../classsese_1_1_yaml.html#a39b7569e9de8864b3c31e506c0cc322e',1,'sese::Yaml']]],
+  ['writespace_52',['writeSpace',['../classsese_1_1_yaml.html#acdfd1a76efb686fa6639a78ab06ede10',1,'sese::Yaml::writeSpace()'],['../classsese_1_1_value.html#a111791e36cc39110e8f70136d05da37a',1,'sese::Value::writeSpace()']]],
   ['writesubheaderanddata_53',['writeSubheaderAndData',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html#a59e5af45f4a9a4bd644aa49cf2d78b2a',1,'sese::internal::service::http::HttpConnectionEx']]],
   ['writeuint16_54',['writeUint16',['../classsese_1_1net_1_1_socket.html#affadc0d6aebc8dee63db9fbb06373093',1,'sese::net::Socket']]],
   ['writeuint32_55',['writeUint32',['../classsese_1_1net_1_1_socket.html#ade9d450d914e834bf725182461fb3671',1,'sese::net::Socket']]],

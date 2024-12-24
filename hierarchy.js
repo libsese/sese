@@ -257,6 +257,7 @@ var hierarchy =
       [ "sese::MessageDigest", "classsese_1_1_message_digest.html", null ],
       [ "sese::PercentConverter", "classsese_1_1_percent_converter.html", null ],
       [ "sese::SymbolConverter", "classsese_1_1_symbol_converter.html", null ],
+      [ "sese::Yaml", "classsese_1_1_yaml.html", null ],
       [ "sese::net::http::HPackUtil", "classsese_1_1net_1_1http_1_1_h_pack_util.html", null ],
       [ "sese::net::http::HttpConverter", "classsese_1_1net_1_1http_1_1_http_converter.html", null ],
       [ "sese::net::http::RequestableFactory", "classsese_1_1net_1_1http_1_1_requestable_factory.html", null ],
@@ -383,6 +384,5 @@ var hierarchy =
     [ "sese::Uuid", "classsese_1_1_uuid.html", null ],
     [ "sese::UuidBuilder", "classsese_1_1_uuid_builder.html", null ],
     [ "sese::Value", "classsese_1_1_value.html", null ],
-    [ "sese::Version", "classsese_1_1_version.html", null ],
-    [ "sese::Yaml", "classsese_1_1_yaml.html", null ]
+    [ "sese::Version", "classsese_1_1_version.html", null ]
 ];

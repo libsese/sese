@@ -186,21 +186,27 @@ Static Public Member Functions</h2></td></tr>
 Private Types</h2></td></tr>
 <tr class="memitem:afdd83dc9659ecccaec27aff43b0cdeed" id="r_afdd83dc9659ecccaec27aff43b0cdeed"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> = std::queue&lt;std::string&gt;</td></tr>
 <tr class="separator:afdd83dc9659ecccaec27aff43b0cdeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad546253cf551d709c77123736cab9285" id="r_ad546253cf551d709c77123736cab9285"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad546253cf551d709c77123736cab9285">ParseStack</a> = std::stack&lt;<a class="el" href="classsese_1_1_value.html">Value</a> *&gt;</td></tr>
+<tr class="separator:ad546253cf551d709c77123736cab9285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c10b60bc09dc5d7c456b866a7a8b336" id="r_a8c10b60bc09dc5d7c456b866a7a8b336"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c10b60bc09dc5d7c456b866a7a8b336">StreamifyStack</a> = std::stack&lt;std::pair&lt;<a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int&gt;&gt;</td></tr>
+<tr class="separator:a8c10b60bc09dc5d7c456b866a7a8b336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878d302398d6fd337aba43edb75d5dba" id="r_a878d302398d6fd337aba43edb75d5dba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a878d302398d6fd337aba43edb75d5dba">StreamifyIterStack</a> = std::stack&lt;std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classsese_1_1_value.html">Value</a>&gt;&gt;::iterator&gt;</td></tr>
+<tr class="separator:a878d302398d6fd337aba43edb75d5dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a9cd06ab2e776d6d6d575b636204f06b9" id="r_a9cd06ab2e776d6d6d575b636204f06b9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cd06ab2e776d6d6d575b636204f06b9">parse</a> (<a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> &amp;tokens)</td></tr>
 <tr class="separator:a9cd06ab2e776d6d6d575b636204f06b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4364fe4b9b340aa22c22a4d628f25854" id="r_a4364fe4b9b340aa22c22a4d628f25854"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4364fe4b9b340aa22c22a4d628f25854">parseObject</a> (<a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> &amp;tokens, std::stack&lt; <a class="el" href="classsese_1_1_value.html">Value</a> * &gt; &amp;stack)</td></tr>
-<tr class="separator:a4364fe4b9b340aa22c22a4d628f25854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab348f2feb2ef67cd4c53d3be401890b1" id="r_ab348f2feb2ef67cd4c53d3be401890b1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab348f2feb2ef67cd4c53d3be401890b1">parseArray</a> (<a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> &amp;tokens, std::stack&lt; <a class="el" href="classsese_1_1_value.html">Value</a> * &gt; &amp;stack)</td></tr>
-<tr class="separator:ab348f2feb2ef67cd4c53d3be401890b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f265e85f00b15c4a579cf10f1c5bba8" id="r_a8f265e85f00b15c4a579cf10f1c5bba8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f265e85f00b15c4a579cf10f1c5bba8">parseObject</a> (<a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> &amp;tokens, <a class="el" href="#ad546253cf551d709c77123736cab9285">ParseStack</a> &amp;stack)</td></tr>
+<tr class="separator:a8f265e85f00b15c4a579cf10f1c5bba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ca3f2e71728e23baaeaae55b6311052" id="r_a9ca3f2e71728e23baaeaae55b6311052"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ca3f2e71728e23baaeaae55b6311052">parseArray</a> (<a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> &amp;tokens, <a class="el" href="#ad546253cf551d709c77123736cab9285">ParseStack</a> &amp;stack)</td></tr>
+<tr class="separator:a9ca3f2e71728e23baaeaae55b6311052"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18d7c513513e84cb1c818fd489a6611b" id="r_a18d7c513513e84cb1c818fd489a6611b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18d7c513513e84cb1c818fd489a6611b">parseBasic</a> (const std::string &amp;value)</td></tr>
 <tr class="separator:a18d7c513513e84cb1c818fd489a6611b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b393845a98dbd36c34b5ce4526fea3f" id="r_a9b393845a98dbd36c34b5ce4526fea3f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b393845a98dbd36c34b5ce4526fea3f">streamifyObject</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *out, std::stack&lt; std::pair&lt; <a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int &gt; &gt; &amp;stack, std::stack&lt; std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classsese_1_1_value.html">Value</a> &gt; &gt;::iterator &gt; &amp;map_iter_stack)</td></tr>
-<tr class="separator:a9b393845a98dbd36c34b5ce4526fea3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abff8fa957f7f0f6a6b14137a7646ad5b" id="r_abff8fa957f7f0f6a6b14137a7646ad5b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abff8fa957f7f0f6a6b14137a7646ad5b">streamifyArray</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *out, std::stack&lt; std::pair&lt; <a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int &gt; &gt; &amp;stack, std::stack&lt; std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classsese_1_1_value.html">Value</a> &gt; &gt;::iterator &gt; &amp;map_iter_stack)</td></tr>
-<tr class="separator:abff8fa957f7f0f6a6b14137a7646ad5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b5226d8f3eb50ead6eeb27bb44e220" id="r_ac1b5226d8f3eb50ead6eeb27bb44e220"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1b5226d8f3eb50ead6eeb27bb44e220">streamifyObject</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *out, <a class="el" href="#a8c10b60bc09dc5d7c456b866a7a8b336">StreamifyStack</a> &amp;stack, <a class="el" href="#a878d302398d6fd337aba43edb75d5dba">StreamifyIterStack</a> &amp;map_iter_stack)</td></tr>
+<tr class="separator:ac1b5226d8f3eb50ead6eeb27bb44e220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d89a07951479e444d0e168be7c366b7" id="r_a7d89a07951479e444d0e168be7c366b7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d89a07951479e444d0e168be7c366b7">streamifyArray</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *out, <a class="el" href="#a8c10b60bc09dc5d7c456b866a7a8b336">StreamifyStack</a> &amp;stack, <a class="el" href="#a878d302398d6fd337aba43edb75d5dba">StreamifyIterStack</a> &amp;map_iter_stack)</td></tr>
+<tr class="separator:a7d89a07951479e444d0e168be7c366b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06c3d29e2ea3a6de572ab0eb8d241ca9" id="r_a06c3d29e2ea3a6de572ab0eb8d241ca9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06c3d29e2ea3a6de572ab0eb8d241ca9">streamifyBasic</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a> *out, const std::shared_ptr&lt; <a class="el" href="classsese_1_1_value.html">Value</a> &gt; &amp;value)</td></tr>
 <tr class="separator:a06c3d29e2ea3a6de572ab0eb8d241ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa80c54f8a6131519ba44fa890f5c5121" id="r_aa80c54f8a6131519ba44fa890f5c5121"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa80c54f8a6131519ba44fa890f5c5121">tokenizer</a> (<a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *input_stream, <a class="el" href="#afdd83dc9659ecccaec27aff43b0cdeed">Tokens</a> &amp;tokens) noexcept</td></tr>
@@ -211,6 +217,72 @@ Static Private Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JSON parser. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ad546253cf551d709c77123736cab9285" name="ad546253cf551d709c77123736cab9285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad546253cf551d709c77123736cab9285">&#9670;&#160;</a></span>ParseStack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ad546253cf551d709c77123736cab9285">sese::Json::ParseStack</a> = std::stack&lt;<a class="el" href="classsese_1_1_value.html">Value</a> *&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a878d302398d6fd337aba43edb75d5dba" name="a878d302398d6fd337aba43edb75d5dba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878d302398d6fd337aba43edb75d5dba">&#9670;&#160;</a></span>StreamifyIterStack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a878d302398d6fd337aba43edb75d5dba">sese::Json::StreamifyIterStack</a> = std::stack&lt;std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classsese_1_1_value.html">Value</a>&gt;&gt;::iterator&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c10b60bc09dc5d7c456b866a7a8b336" name="a8c10b60bc09dc5d7c456b866a7a8b336"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c10b60bc09dc5d7c456b866a7a8b336">&#9670;&#160;</a></span>StreamifyStack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a8c10b60bc09dc5d7c456b866a7a8b336">sese::Json::StreamifyStack</a> = std::stack&lt;std::pair&lt;<a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int&gt;&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="afdd83dc9659ecccaec27aff43b0cdeed" name="afdd83dc9659ecccaec27aff43b0cdeed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdd83dc9659ecccaec27aff43b0cdeed">&#9670;&#160;</a></span>Tokens</h2>
 
@@ -346,14 +418,14 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="classsese_1_1_value.html#a006f2c479904fa2bf97ac5d30ee66aee">sese::Value::dict()</a>, <a class="el" href="classsese_1_1_value.html#a41e007683fd504b8a86d0c31cdbf1d54">sese::Value::list()</a>, <a class="el" href="#ab348f2feb2ef67cd4c53d3be401890b1">parseArray()</a>, and <a class="el" href="#a4364fe4b9b340aa22c22a4d628f25854">parseObject()</a>.</p>
+<p class="reference">References <a class="el" href="classsese_1_1_value.html#a006f2c479904fa2bf97ac5d30ee66aee">sese::Value::dict()</a>, <a class="el" href="classsese_1_1_value.html#a41e007683fd504b8a86d0c31cdbf1d54">sese::Value::list()</a>, <a class="el" href="#a9ca3f2e71728e23baaeaae55b6311052">parseArray()</a>, and <a class="el" href="#a8f265e85f00b15c4a579cf10f1c5bba8">parseObject()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a67dc213123c628b6a958786ab3b4faf7">parse()</a>, and <a class="el" href="#ae6b8a9c9cfae03f008322e4546f981cb">simdParse()</a>.</p>
 
 </div>
 </div>
-<a id="ab348f2feb2ef67cd4c53d3be401890b1" name="ab348f2feb2ef67cd4c53d3be401890b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab348f2feb2ef67cd4c53d3be401890b1">&#9670;&#160;</a></span>parseArray()</h2>
+<a id="a9ca3f2e71728e23baaeaae55b6311052" name="a9ca3f2e71728e23baaeaae55b6311052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ca3f2e71728e23baaeaae55b6311052">&#9670;&#160;</a></span>parseArray()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -369,7 +441,7 @@ Static Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::stack&lt; <a class="el" href="classsese_1_1_value.html">Value</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#ad546253cf551d709c77123736cab9285">ParseStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -408,12 +480,12 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="#ab348f2feb2ef67cd4c53d3be401890b1">parseArray()</a>, and <a class="el" href="#a4364fe4b9b340aa22c22a4d628f25854">parseObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a9ca3f2e71728e23baaeaae55b6311052">parseArray()</a>, and <a class="el" href="#a8f265e85f00b15c4a579cf10f1c5bba8">parseObject()</a>.</p>
 
 </div>
 </div>
-<a id="a4364fe4b9b340aa22c22a4d628f25854" name="a4364fe4b9b340aa22c22a4d628f25854"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4364fe4b9b340aa22c22a4d628f25854">&#9670;&#160;</a></span>parseObject()</h2>
+<a id="a8f265e85f00b15c4a579cf10f1c5bba8" name="a8f265e85f00b15c4a579cf10f1c5bba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f265e85f00b15c4a579cf10f1c5bba8">&#9670;&#160;</a></span>parseObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,7 +501,7 @@ Static Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::stack&lt; <a class="el" href="classsese_1_1_value.html">Value</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#ad546253cf551d709c77123736cab9285">ParseStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -518,12 +590,12 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If serialization fails, false will be returned </dd></dl>
 
-<p class="reference">References <a class="el" href="classsese_1_1_value_1_1_dict.html#a695318dbd2bf4ecf01167880e65523aa">sese::Value::Dict::begin()</a>, <a class="el" href="classsese_1_1_value.html#a82c1dcd3e7e557f596aeda64e7a6e951">sese::Value::getDict()</a>, <a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">sese::Value::isDict()</a>, <a class="el" href="#abff8fa957f7f0f6a6b14137a7646ad5b">streamifyArray()</a>, and <a class="el" href="#a9b393845a98dbd36c34b5ce4526fea3f">streamifyObject()</a>.</p>
+<p class="reference">References <a class="el" href="classsese_1_1_value_1_1_dict.html#a695318dbd2bf4ecf01167880e65523aa">sese::Value::Dict::begin()</a>, <a class="el" href="classsese_1_1_value.html#a82c1dcd3e7e557f596aeda64e7a6e951">sese::Value::getDict()</a>, <a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">sese::Value::isDict()</a>, <a class="el" href="#a7d89a07951479e444d0e168be7c366b7">streamifyArray()</a>, and <a class="el" href="#ac1b5226d8f3eb50ead6eeb27bb44e220">streamifyObject()</a>.</p>
 
 </div>
 </div>
-<a id="abff8fa957f7f0f6a6b14137a7646ad5b" name="abff8fa957f7f0f6a6b14137a7646ad5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abff8fa957f7f0f6a6b14137a7646ad5b">&#9670;&#160;</a></span>streamifyArray()</h2>
+<a id="a7d89a07951479e444d0e168be7c366b7" name="a7d89a07951479e444d0e168be7c366b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d89a07951479e444d0e168be7c366b7">&#9670;&#160;</a></span>streamifyArray()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -539,12 +611,12 @@ Static Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::stack&lt; std::pair&lt; <a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int &gt; &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>, </td>
+          <td class="paramtype"><a class="el" href="#a8c10b60bc09dc5d7c456b866a7a8b336">StreamifyStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::stack&lt; std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classsese_1_1_value.html">Value</a> &gt; &gt;::iterator &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>map_iter_stack</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#a878d302398d6fd337aba43edb75d5dba">StreamifyIterStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>map_iter_stack</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -589,12 +661,12 @@ Static Private Member Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="_json_8cpp.html#a6b3c709ec1826faf22ea02c87c8749b5">CONST_WRITE</a>, and <a class="el" href="_json_8cpp.html#a668f0b8eb7c9844a2636978698674f0a">STRING_WRITE</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#abff8fa957f7f0f6a6b14137a7646ad5b">streamifyArray()</a>, and <a class="el" href="#a9b393845a98dbd36c34b5ce4526fea3f">streamifyObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a7d89a07951479e444d0e168be7c366b7">streamifyArray()</a>, and <a class="el" href="#ac1b5226d8f3eb50ead6eeb27bb44e220">streamifyObject()</a>.</p>
 
 </div>
 </div>
-<a id="a9b393845a98dbd36c34b5ce4526fea3f" name="a9b393845a98dbd36c34b5ce4526fea3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b393845a98dbd36c34b5ce4526fea3f">&#9670;&#160;</a></span>streamifyObject()</h2>
+<a id="ac1b5226d8f3eb50ead6eeb27bb44e220" name="ac1b5226d8f3eb50ead6eeb27bb44e220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1b5226d8f3eb50ead6eeb27bb44e220">&#9670;&#160;</a></span>streamifyObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -610,12 +682,12 @@ Static Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::stack&lt; std::pair&lt; <a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int &gt; &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>, </td>
+          <td class="paramtype"><a class="el" href="#a8c10b60bc09dc5d7c456b866a7a8b336">StreamifyStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::stack&lt; std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classsese_1_1_value.html">Value</a> &gt; &gt;::iterator &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>map_iter_stack</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#a878d302398d6fd337aba43edb75d5dba">StreamifyIterStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>map_iter_stack</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -675,7 +747,7 @@ Static Private Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_json.html">Json</a></li>
-    <li class="footer">Generated on Sun Dec 22 2024 14:31:05 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Tue Dec 24 2024 08:52:00 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

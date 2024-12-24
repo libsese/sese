@@ -137,6 +137,7 @@ $(function(){initNavTree('classsese_1_1_value.html',''); initResizable(true); })
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classsese_1_1_value-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">sese::Value Class Reference</div></div>
@@ -181,6 +182,10 @@ Public Types</h2></td></tr>
 <tr class="separator:afe57e460c5419165aeb1cbaae18af5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10369fbcdea644fc88299db66fc07c55" id="r_a10369fbcdea644fc88299db66fc07c55"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10369fbcdea644fc88299db66fc07c55">Blob</a> = std::vector&lt;uint8_t&gt;</td></tr>
 <tr class="separator:a10369fbcdea644fc88299db66fc07c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacf0eb9dcbf750e86c5718fa22796026" id="r_aacf0eb9dcbf750e86c5718fa22796026"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf0eb9dcbf750e86c5718fa22796026">StreamifyStack</a> = std::stack&lt;std::tuple&lt;const <a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int, unsigned int&gt;&gt;</td></tr>
+<tr class="separator:aacf0eb9dcbf750e86c5718fa22796026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3558f0438f389398edf3dce04d16bab" id="r_ac3558f0438f389398edf3dce04d16bab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3558f0438f389398edf3dce04d16bab">StreamifyIterStack</a> = std::stack&lt;std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classsese_1_1_value.html">Value</a>&gt;&gt;::const_iterator&gt;</td></tr>
+<tr class="separator:ac3558f0438f389398edf3dce04d16bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -269,14 +274,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a82c1dcd3e7e557f596aeda64e7a6e951"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1223fa7119b4f7c1d1646cc5fc9e0ba" id="r_aa1223fa7119b4f7c1d1646cc5fc9e0ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1223fa7119b4f7c1d1646cc5fc9e0ba">getDict</a> ()</td></tr>
 <tr class="separator:aa1223fa7119b4f7c1d1646cc5fc9e0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab935c40ab58eacf585b9e97cedf2a9f3" id="r_ab935c40ab58eacf585b9e97cedf2a9f3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab935c40ab58eacf585b9e97cedf2a9f3">toString</a> (size_t level=4) const noexcept</td></tr>
-<tr class="separator:ab935c40ab58eacf585b9e97cedf2a9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3578e882f485b25690f433a56fc4270" id="r_ac3578e882f485b25690f433a56fc4270"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3578e882f485b25690f433a56fc4270">toStringBasic</a> () const noexcept</td></tr>
+<tr class="separator:ac3578e882f485b25690f433a56fc4270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a486c83574963a9957d32b62410ba33a7" id="r_a486c83574963a9957d32b62410ba33a7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a486c83574963a9957d32b62410ba33a7">toString</a> () const noexcept</td></tr>
+<tr class="separator:a486c83574963a9957d32b62410ba33a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9b073b454efc427e419fdfb7eeb6cd" id="r_afd9b073b454efc427e419fdfb7eeb6cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd9b073b454efc427e419fdfb7eeb6cd">toString</a> (<a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;string_builder) const noexcept</td></tr>
+<tr class="separator:afd9b073b454efc427e419fdfb7eeb6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c9eb3e2a8d0eaaf423e7f6324438039" id="r_a0c9eb3e2a8d0eaaf423e7f6324438039"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c9eb3e2a8d0eaaf423e7f6324438039">operator==</a> (const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;rhs) const</td></tr>
 <tr class="separator:a0c9eb3e2a8d0eaaf423e7f6324438039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbbbb9691b81043918719899f11f10a7" id="r_abbbbb9691b81043918719899f11f10a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbbbb9691b81043918719899f11f10a7">operator!=</a> (const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;rhs) const</td></tr>
 <tr class="separator:abbbbb9691b81043918719899f11f10a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ce6a4126620b020aada251732338265" id="r_a4ce6a4126620b020aada251732338265"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ce6a4126620b020aada251732338265">toString</a> (<a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;string_builder, size_t level) const noexcept</td></tr>
-<tr class="separator:a4ce6a4126620b020aada251732338265"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -284,6 +291,15 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a41e007683fd504b8a86d0c31cdbf1d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a006f2c479904fa2bf97ac5d30ee66aee" id="r_a006f2c479904fa2bf97ac5d30ee66aee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a006f2c479904fa2bf97ac5d30ee66aee">dict</a> ()</td></tr>
 <tr class="separator:a006f2c479904fa2bf97ac5d30ee66aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a111791e36cc39110e8f70136d05da37a" id="r_a111791e36cc39110e8f70136d05da37a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a111791e36cc39110e8f70136d05da37a">writeSpace</a> (<a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;string_builder, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
+<tr class="separator:a111791e36cc39110e8f70136d05da37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6652cd23e43e5dfa9dcfd6418b2b3c86" id="r_a6652cd23e43e5dfa9dcfd6418b2b3c86"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6652cd23e43e5dfa9dcfd6418b2b3c86">toStringDict</a> (<a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;string_builder, <a class="el" href="#aacf0eb9dcbf750e86c5718fa22796026">StreamifyStack</a> &amp;stack, <a class="el" href="#ac3558f0438f389398edf3dce04d16bab">StreamifyIterStack</a> &amp;map_iter_stack)</td></tr>
+<tr class="separator:a6652cd23e43e5dfa9dcfd6418b2b3c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b13ed291238d4ce1593689b54b875b" id="r_a92b13ed291238d4ce1593689b54b875b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92b13ed291238d4ce1593689b54b875b">toStringList</a> (<a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;string_builder, <a class="el" href="#aacf0eb9dcbf750e86c5718fa22796026">StreamifyStack</a> &amp;stack, <a class="el" href="#ac3558f0438f389398edf3dce04d16bab">StreamifyIterStack</a> &amp;map_iter_stack)</td></tr>
+<tr class="separator:a92b13ed291238d4ce1593689b54b875b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -315,6 +331,34 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="#a141a34191e4c1ee366539184113e575e">sese::Value::Integer</a> = int64_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3558f0438f389398edf3dce04d16bab" name="ac3558f0438f389398edf3dce04d16bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3558f0438f389398edf3dce04d16bab">&#9670;&#160;</a></span>StreamifyIterStack</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ac3558f0438f389398edf3dce04d16bab">sese::Value::StreamifyIterStack</a> = std::stack&lt;std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classsese_1_1_value.html">Value</a>&gt;&gt;::const_iterator&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aacf0eb9dcbf750e86c5718fa22796026" name="aacf0eb9dcbf750e86c5718fa22796026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacf0eb9dcbf750e86c5718fa22796026">&#9670;&#160;</a></span>StreamifyStack</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#aacf0eb9dcbf750e86c5718fa22796026">sese::Value::StreamifyStack</a> = std::stack&lt;std::tuple&lt;const <a class="el" href="classsese_1_1_value.html">Value</a> *, unsigned int, unsigned int&gt;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -698,7 +742,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a>, and <a class="el" href="#a54644896ae6157228f9e79c3fb63d623">Value()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#ab1746d6da93a290eccf4909b022056de">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_json.html#a9cd06ab2e776d6d6d575b636204f06b9">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_json.html#ab348f2feb2ef67cd4c53d3be401890b1">sese::Json::parseArray()</a>, and <a class="el" href="classsese_1_1_json.html#a4364fe4b9b340aa22c22a4d628f25854">sese::Json::parseObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#ab1746d6da93a290eccf4909b022056de">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_json.html#a9cd06ab2e776d6d6d575b636204f06b9">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_yaml.html#a5bd0d27c64fea2536097583a3b6988a5">sese::Yaml::parse()</a>, <a class="el" href="classsese_1_1_json.html#a9ca3f2e71728e23baaeaae55b6311052">sese::Json::parseArray()</a>, <a class="el" href="classsese_1_1_yaml.html#a86c23e8795079a4071fe5fa867d47379">sese::Yaml::parseArray()</a>, <a class="el" href="classsese_1_1_json.html#a8f265e85f00b15c4a579cf10f1c5bba8">sese::Json::parseObject()</a>, and <a class="el" href="classsese_1_1_yaml.html#a0a6b6c8f746162d308012ee82921ffd9">sese::Yaml::parseObject()</a>.</p>
 
 </div>
 </div>
@@ -835,7 +879,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a170151a6072646e7d0a545ba49bfb4ca">data</a>, and <a class="el" href="#aa43527095e587c5ea673887c25afb58d">isDict()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#a769d587c5faf97a1867f660e9b150e9b">sese::Json::streamify()</a>, and <a class="el" href="classsese_1_1_yaml.html#a48c149efd9b8fde4849402e492446e49">sese::Yaml::streamify()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#a769d587c5faf97a1867f660e9b150e9b">sese::Json::streamify()</a>, and <a class="el" href="classsese_1_1_yaml.html#ab7c05ff10b93b6c77566f37c9636c7e2">sese::Yaml::streamify()</a>.</p>
 
 </div>
 </div>
@@ -1137,8 +1181,6 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a170151a6072646e7d0a545ba49bfb4ca">data</a>, and <a class="el" href="#a4ced4bc0e9c1e732d4f4a98b0843a3e9">isList()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classsese_1_1_yaml.html#a48c149efd9b8fde4849402e492446e49">sese::Yaml::streamify()</a>.</p>
-
 </div>
 </div>
 <a id="ad466366fc88707f5836a5b8821cf5189" name="ad466366fc88707f5836a5b8821cf5189"></a>
@@ -1220,7 +1262,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a170151a6072646e7d0a545ba49bfb4ca">data</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a6aeaecd8a88780be1ab09b06374dd5e2">isBlob()</a>, <a class="el" href="#a25dd9800211ebfcae3a9d5da18344d9d">isBool()</a>, <a class="el" href="#aa43527095e587c5ea673887c25afb58d">isDict()</a>, <a class="el" href="#abef5571d881ee0a201d284a83d8f0835">isDouble()</a>, <a class="el" href="#a4b368dc38b662daf8fa5b692f9ff6684">isInt()</a>, <a class="el" href="#a4ced4bc0e9c1e732d4f4a98b0843a3e9">isList()</a>, <a class="el" href="#a920e68dea455df1b5857cd93790ff98a">isNull()</a>, <a class="el" href="#a000b840d8fca1c09cf4f2d05e333e88a">isString()</a>, <a class="el" href="#a0c9eb3e2a8d0eaaf423e7f6324438039">operator==()</a>, and <a class="el" href="classsese_1_1_yaml.html#a48c149efd9b8fde4849402e492446e49">sese::Yaml::streamify()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a6aeaecd8a88780be1ab09b06374dd5e2">isBlob()</a>, <a class="el" href="#a25dd9800211ebfcae3a9d5da18344d9d">isBool()</a>, <a class="el" href="#aa43527095e587c5ea673887c25afb58d">isDict()</a>, <a class="el" href="#abef5571d881ee0a201d284a83d8f0835">isDouble()</a>, <a class="el" href="#a4b368dc38b662daf8fa5b692f9ff6684">isInt()</a>, <a class="el" href="#a4ced4bc0e9c1e732d4f4a98b0843a3e9">isList()</a>, <a class="el" href="#a920e68dea455df1b5857cd93790ff98a">isNull()</a>, <a class="el" href="#a000b840d8fca1c09cf4f2d05e333e88a">isString()</a>, <a class="el" href="#a0c9eb3e2a8d0eaaf423e7f6324438039">operator==()</a>, and <a class="el" href="#ac3578e882f485b25690f433a56fc4270">toStringBasic()</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1349,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a>, and <a class="el" href="#aefbda58907419a9144099466c836f774">getType()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#aa1223fa7119b4f7c1d1646cc5fc9e0ba">getDict()</a>, <a class="el" href="#a82c1dcd3e7e557f596aeda64e7a6e951">getDict()</a>, <a class="el" href="classsese_1_1_yaml.html#ab720cea47a5be8c478bec54e68c5e354">sese::Yaml::parseArray()</a>, <a class="el" href="classsese_1_1_yaml.html#a8a29c2165e43cc3a3f49a15b0b475da0">sese::Yaml::parseObject()</a>, and <a class="el" href="classsese_1_1_json.html#a769d587c5faf97a1867f660e9b150e9b">sese::Json::streamify()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#aa1223fa7119b4f7c1d1646cc5fc9e0ba">getDict()</a>, <a class="el" href="#a82c1dcd3e7e557f596aeda64e7a6e951">getDict()</a>, <a class="el" href="classsese_1_1_json.html#a769d587c5faf97a1867f660e9b150e9b">sese::Json::streamify()</a>, and <a class="el" href="classsese_1_1_yaml.html#ab7c05ff10b93b6c77566f37c9636c7e2">sese::Yaml::streamify()</a>.</p>
 
 </div>
 </div>
@@ -1394,7 +1436,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#aefbda58907419a9144099466c836f774">getType()</a>, and <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#ac96ab6343628a87dd4a7d3ffef1bb6d3">getList()</a>, <a class="el" href="#a588d5302be939dba1714c8cba0b90ad4">getList()</a>, <a class="el" href="classsese_1_1_yaml.html#ab720cea47a5be8c478bec54e68c5e354">sese::Yaml::parseArray()</a>, and <a class="el" href="classsese_1_1_yaml.html#a8a29c2165e43cc3a3f49a15b0b475da0">sese::Yaml::parseObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ac96ab6343628a87dd4a7d3ffef1bb6d3">getList()</a>, and <a class="el" href="#a588d5302be939dba1714c8cba0b90ad4">getList()</a>.</p>
 
 </div>
 </div>
@@ -1479,7 +1521,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>, and <a class="el" href="#a54644896ae6157228f9e79c3fb63d623">Value()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#ab1746d6da93a290eccf4909b022056de">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_json.html#a9cd06ab2e776d6d6d575b636204f06b9">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_json.html#ab348f2feb2ef67cd4c53d3be401890b1">sese::Json::parseArray()</a>, and <a class="el" href="classsese_1_1_json.html#a4364fe4b9b340aa22c22a4d628f25854">sese::Json::parseObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classsese_1_1_json.html#ab1746d6da93a290eccf4909b022056de">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_json.html#a9cd06ab2e776d6d6d575b636204f06b9">sese::Json::parse()</a>, <a class="el" href="classsese_1_1_yaml.html#a5bd0d27c64fea2536097583a3b6988a5">sese::Yaml::parse()</a>, <a class="el" href="classsese_1_1_json.html#a9ca3f2e71728e23baaeaae55b6311052">sese::Json::parseArray()</a>, <a class="el" href="classsese_1_1_yaml.html#a86c23e8795079a4071fe5fa867d47379">sese::Yaml::parseArray()</a>, <a class="el" href="classsese_1_1_json.html#a8f265e85f00b15c4a579cf10f1c5bba8">sese::Json::parseObject()</a>, and <a class="el" href="classsese_1_1_yaml.html#a0a6b6c8f746162d308012ee82921ffd9">sese::Yaml::parseObject()</a>.</p>
 
 </div>
 </div>
@@ -1519,8 +1561,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab935c40ab58eacf585b9e97cedf2a9f3" name="ab935c40ab58eacf585b9e97cedf2a9f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab935c40ab58eacf585b9e97cedf2a9f3">&#9670;&#160;</a></span>toString() <span class="overload">[1/2]</span></h2>
+<a id="a486c83574963a9957d32b62410ba33a7" name="a486c83574963a9957d32b62410ba33a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486c83574963a9957d32b62410ba33a7">&#9670;&#160;</a></span>toString() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1531,7 +1573,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">std::string Value::toString </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>level</em></span><span class="paramdefsep"> = </span><span class="paramdefval">4</span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1542,14 +1584,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
+<p class="reference">References <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>, and <a class="el" href="#a486c83574963a9957d32b62410ba33a7">toString()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html#ad4a165140fa2b6104f4fd2fe278ceb50">sese::text::overload::Formatter&lt; Value &gt;::format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html#ad4a165140fa2b6104f4fd2fe278ceb50">sese::text::overload::Formatter&lt; Value &gt;::format()</a>, and <a class="el" href="#a486c83574963a9957d32b62410ba33a7">toString()</a>.</p>
 
 </div>
 </div>
-<a id="a4ce6a4126620b020aada251732338265" name="a4ce6a4126620b020aada251732338265"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ce6a4126620b020aada251732338265">&#9670;&#160;</a></span>toString() <span class="overload">[2/2]</span></h2>
+<a id="afd9b073b454efc427e419fdfb7eeb6cd" name="afd9b073b454efc427e419fdfb7eeb6cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9b073b454efc427e419fdfb7eeb6cd">&#9670;&#160;</a></span>toString() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1560,12 +1602,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Value::toString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>string_builder</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>level</em></span>&#160;) const</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>string_builder</em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1575,7 +1613,139 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="classsese_1_1text_1_1_number.html#ae629dc747550bb53f6046c3d305a4ba2">sese::text::Number::toHex()</a>.</p>
+<p class="reference">References <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
+
+</div>
+</div>
+<a id="ac3578e882f485b25690f433a56fc4270" name="ac3578e882f485b25690f433a56fc4270"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3578e882f485b25690f433a56fc4270">&#9670;&#160;</a></span>toStringBasic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Value::toStringBasic </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">BLOB</a>, <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>, <a class="el" href="#a170151a6072646e7d0a545ba49bfb4ca">data</a>, <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>, <a class="el" href="#aefbda58907419a9144099466c836f774">getType()</a>, <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">INT</a>, <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">NONE</a>, and <a class="el" href="#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">STRING</a>.</p>
+
+</div>
+</div>
+<a id="a6652cd23e43e5dfa9dcfd6418b2b3c86" name="a6652cd23e43e5dfa9dcfd6418b2b3c86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6652cd23e43e5dfa9dcfd6418b2b3c86">&#9670;&#160;</a></span>toStringDict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Value::toStringDict </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>string_builder</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aacf0eb9dcbf750e86c5718fa22796026">StreamifyStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ac3558f0438f389398edf3dce04d16bab">StreamifyIterStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>map_iter_stack</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, and <a class="el" href="#a111791e36cc39110e8f70136d05da37a">writeSpace()</a>.</p>
+
+</div>
+</div>
+<a id="a92b13ed291238d4ce1593689b54b875b" name="a92b13ed291238d4ce1593689b54b875b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92b13ed291238d4ce1593689b54b875b">&#9670;&#160;</a></span>toStringList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Value::toStringList </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>string_builder</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aacf0eb9dcbf750e86c5718fa22796026">StreamifyStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stack</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ac3558f0438f389398edf3dce04d16bab">StreamifyIterStack</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>map_iter_stack</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, and <a class="el" href="#a111791e36cc39110e8f70136d05da37a">writeSpace()</a>.</p>
+
+</div>
+</div>
+<a id="a111791e36cc39110e8f70136d05da37a" name="a111791e36cc39110e8f70136d05da37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111791e36cc39110e8f70136d05da37a">&#9670;&#160;</a></span>writeSpace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Value::writeSpace </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_builder.html">text::StringBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>string_builder</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a>, and <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a6652cd23e43e5dfa9dcfd6418b2b3c86">toStringDict()</a>, and <a class="el" href="#a92b13ed291238d4ce1593689b54b875b">toStringList()</a>.</p>
 
 </div>
 </div>
@@ -1600,7 +1770,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="#a92e8f2245aa7dbc71cd06c60016a3839">getBlob()</a>, <a class="el" href="#a58bde5921e12b5bf779870d3f6dc87b1">getBlob()</a>, <a class="el" href="#aff60f49a9031f72e970703660c32520f">getBool()</a>, <a class="el" href="#aa1223fa7119b4f7c1d1646cc5fc9e0ba">getDict()</a>, <a class="el" href="#a82c1dcd3e7e557f596aeda64e7a6e951">getDict()</a>, <a class="el" href="#ac9d0e3df6fbc9032fb3efed1dc12e117">getDouble()</a>, <a class="el" href="#a785c7b5c466ad4bce6725b15748bf321">getIfBlob()</a>, <a class="el" href="#af114abf092e7fd3b91d00470a8769930">getIfBool()</a>, <a class="el" href="#a8a0d82588132e7359b27ecb02b257775">getIfDict()</a>, <a class="el" href="#a2b92fb4d429c067ebf3d4949d66a0f30">getIfDouble()</a>, <a class="el" href="#aac846490b730e985bc5b534b90355159">getIfInt()</a>, <a class="el" href="#a1cea591471b7d47117fcb19e90d5f665">getIfList()</a>, <a class="el" href="#a7253df8b990824b7985390dcfa1c0757">getIfString()</a>, <a class="el" href="#a9cbc4919a414d7f9fe98022cae67e2fa">getInt()</a>, <a class="el" href="#ac96ab6343628a87dd4a7d3ffef1bb6d3">getList()</a>, <a class="el" href="#a588d5302be939dba1714c8cba0b90ad4">getList()</a>, <a class="el" href="#ad466366fc88707f5836a5b8821cf5189">getString()</a>, <a class="el" href="#a55f0a0c41b53adc67eb1395dcc864565">getString()</a>, <a class="el" href="#aefbda58907419a9144099466c836f774">getType()</a>, <a class="el" href="#a0c9eb3e2a8d0eaaf423e7f6324438039">operator==()</a>, <a class="el" href="#adfdfb72416a67e44fc79b0d14f9925d8">Value()</a>, and <a class="el" href="#a1ae9d6151b62cfba2c6ffd9f211da660">Value()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a92e8f2245aa7dbc71cd06c60016a3839">getBlob()</a>, <a class="el" href="#a58bde5921e12b5bf779870d3f6dc87b1">getBlob()</a>, <a class="el" href="#aff60f49a9031f72e970703660c32520f">getBool()</a>, <a class="el" href="#aa1223fa7119b4f7c1d1646cc5fc9e0ba">getDict()</a>, <a class="el" href="#a82c1dcd3e7e557f596aeda64e7a6e951">getDict()</a>, <a class="el" href="#ac9d0e3df6fbc9032fb3efed1dc12e117">getDouble()</a>, <a class="el" href="#a785c7b5c466ad4bce6725b15748bf321">getIfBlob()</a>, <a class="el" href="#af114abf092e7fd3b91d00470a8769930">getIfBool()</a>, <a class="el" href="#a8a0d82588132e7359b27ecb02b257775">getIfDict()</a>, <a class="el" href="#a2b92fb4d429c067ebf3d4949d66a0f30">getIfDouble()</a>, <a class="el" href="#aac846490b730e985bc5b534b90355159">getIfInt()</a>, <a class="el" href="#a1cea591471b7d47117fcb19e90d5f665">getIfList()</a>, <a class="el" href="#a7253df8b990824b7985390dcfa1c0757">getIfString()</a>, <a class="el" href="#a9cbc4919a414d7f9fe98022cae67e2fa">getInt()</a>, <a class="el" href="#ac96ab6343628a87dd4a7d3ffef1bb6d3">getList()</a>, <a class="el" href="#a588d5302be939dba1714c8cba0b90ad4">getList()</a>, <a class="el" href="#ad466366fc88707f5836a5b8821cf5189">getString()</a>, <a class="el" href="#a55f0a0c41b53adc67eb1395dcc864565">getString()</a>, <a class="el" href="#aefbda58907419a9144099466c836f774">getType()</a>, <a class="el" href="#a0c9eb3e2a8d0eaaf423e7f6324438039">operator==()</a>, <a class="el" href="#ac3578e882f485b25690f433a56fc4270">toStringBasic()</a>, <a class="el" href="#adfdfb72416a67e44fc79b0d14f9925d8">Value()</a>, and <a class="el" href="#a1ae9d6151b62cfba2c6ffd9f211da660">Value()</a>.</p>
 
 </div>
 </div>
@@ -1614,7 +1784,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_value.html">Value</a></li>
-    <li class="footer">Generated on Sun Dec 22 2024 14:31:06 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Tue Dec 24 2024 08:52:01 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

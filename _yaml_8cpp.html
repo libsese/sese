@@ -133,7 +133,7 @@ $(function(){initNavTree('_yaml_8cpp.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#var-members">Variables</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Yaml.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -142,41 +142,58 @@ $(function(){initNavTree('_yaml_8cpp.html',''); initResizable(true); });
 <code>#include &lt;<a class="el" href="util_2_util_8h_source.html">sese/util/Util.h</a>&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:abbf37168ab9dce3e7a060e3514587c69" id="r_abbf37168ab9dce3e7a060e3514587c69"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbf37168ab9dce3e7a060e3514587c69">GET_SPACE_ARRAY</a></td></tr>
-<tr class="separator:abbf37168ab9dce3e7a060e3514587c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6b3c709ec1826faf22ea02c87c8749b5" id="r_a6b3c709ec1826faf22ea02c87c8749b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b3c709ec1826faf22ea02c87c8749b5">CONST_WRITE</a>(stream,  const_string)</td></tr>
+<tr class="separator:a6b3c709ec1826faf22ea02c87c8749b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a668f0b8eb7c9844a2636978698674f0a" id="r_a668f0b8eb7c9844a2636978698674f0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a668f0b8eb7c9844a2636978698674f0a">STRING_WRITE</a>(stream,  string)</td></tr>
+<tr class="separator:a668f0b8eb7c9844a2636978698674f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="abbf37168ab9dce3e7a060e3514587c69" name="abbf37168ab9dce3e7a060e3514587c69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbf37168ab9dce3e7a060e3514587c69">&#9670;&#160;</a></span>GET_SPACE_ARRAY</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a6b3c709ec1826faf22ea02c87c8749b5" name="a6b3c709ec1826faf22ea02c87c8749b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b3c709ec1826faf22ea02c87c8749b5">&#9670;&#160;</a></span>CONST_WRITE</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto GET_SPACE_ARRAY</td>
+          <td class="memname">#define CONST_WRITE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>const_string</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= []() {</div>
-<div class="line">    std::array&lt;char, 1024&gt; array{};</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) item: array) {</div>
-<div class="line">        item = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> array;</div>
-<div class="line">}</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (stream-&gt;write(const_string, strlen(const_string)) != strlen(const_string)) \</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="classsese_1_1_yaml.html#a39b7569e9de8864b3c31e506c0cc322e">sese::Yaml::writeSpace()</a>.</p>
+</div>
+</div>
+<a id="a668f0b8eb7c9844a2636978698674f0a" name="a668f0b8eb7c9844a2636978698674f0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668f0b8eb7c9844a2636978698674f0a">&#9670;&#160;</a></span>STRING_WRITE</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STRING_WRITE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>string</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (stream-&gt;write(<span class="keywordtype">string</span>.data(), <span class="keywordtype">string</span>.size()) != <span class="keywordtype">string</span>.size()) \</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
@@ -185,7 +202,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5ecdf26e97b02d25bfabe621b34c1b3c.html">config</a></li><li class="navelem"><a class="el" href="_yaml_8cpp.html">Yaml.cpp</a></li>
-    <li class="footer">Generated on Sun Dec 22 2024 14:31:05 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Tue Dec 24 2024 08:52:00 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>
