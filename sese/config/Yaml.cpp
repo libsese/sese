@@ -471,7 +471,7 @@ bool Yaml::streamifyBasic(OutputStream *output, const std::shared_ptr<Value> &va
         decltype(auto) data = value->getBool() ? "true" : "false";
         CONST_WRITE(output, data);
     } else if (value->isInt() || value->isDouble()) {
-        decltype(auto) data = value->toString();
+        decltype(auto) data = value->toStringBasic();
         STRING_WRITE(output, data);
     } else {
         // value->isString()

@@ -25,12 +25,12 @@ constexpr char STR1[]{R"(
 root:
   mapping:
     str 1: "Hello:-|str1"
-    str\'2: 'Hello str2'
+    str'2: 'Hello str2'
     str\"3: "Hello\\\"str3"
     str|4: 'Hello:-|\"str4'
     str5: Hello str5
-    bool1: true
-    bool2: yes
+    "bool1": true
+    'bool2': yes
     bool3: or
     int1: 114514
     float1: 3.14
@@ -83,7 +83,7 @@ TEST(TestYaml, Deserialize_0) {
         auto &mapping_obj_dict = mapping_obj->getDict();
 
         {
-            auto str2_obj = mapping_obj_dict.find("str\\'2");
+            auto str2_obj = mapping_obj_dict.find("str'2");
             ASSERT_TRUE(str2_obj->isString());
             EXPECT_EQ(str2_obj->getString(), "Hello str2");
 
@@ -259,7 +259,7 @@ TEST(TestYaml, Value) {
     auto input = sese::io::InputBufferWrapper(STR1, sizeof(STR1) - 1);
     const auto VALUE = sese::Yaml::parse(&input);
     ASSERT_FALSE(VALUE.isNull());
-    const auto CONTENT = VALUE.toString(5);
+    const auto CONTENT = VALUE.toString();
     puts(CONTENT.c_str());
 }
 

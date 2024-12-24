@@ -258,78 +258,167 @@ bool Value::operator!=(const sese::Value &rhs) const {
 
 // GCOVR_EXCL_STOP
 
-std::string Value::toString(size_t level) const noexcept {
-    level = std::max<size_t>(level, 1);
+std::string Value::toStringBasic() const noexcept {
+    switch (getType()) {
+        case Type::NONE:
+            return "null";
+        case Type::BOOL:
+            return std::get<bool>(data) ? "true" : "false";
+        case Type::INT:
+            return std::to_string(std::get<Integer>(data));
+        case Type::DOUBLE:
+            return std::to_string(std::get<double>(data));
+        case Type::STRING:
+            return '"' + std::get<String>(data) + '"';
+        case Type::BLOB:
+            return "\"<BLOB>\"";
+        default:
+            // assert(false);
+            return "";
+    }
+}
+
+std::string Value::toString() const noexcept {
     text::StringBuilder string_builder(4096);
-    toString(string_builder, level);
+    toString(string_builder);
     return string_builder.toString();
 }
 
-void Value::toString(text::StringBuilder &string_builder, size_t level) const noexcept {
-    level -= 1;
-    switch (getType()) {
-        case Type::NONE:
-            string_builder << "<NULL>";
-            break;
-        case Type::BOOL:
-            string_builder << (std::get<bool>(data) ? "<TRUE>" : "<FALSE>");
-            break;
-        case Type::INT:
-            string_builder << std::to_string(std::get<Integer>(data));
-            break;
-        case Type::DOUBLE:
-            string_builder << std::to_string(std::get<double>(data));
-            break;
-        case Type::STRING:
-            string_builder << '"' << std::get<String>(data) << '"';
-            break;
-        case Type::BLOB: {
-            const auto BLOB = std::get_if<Blob>(&data);
-            const auto NUMBER = text::Number::toHex(reinterpret_cast<uint64_t>(BLOB->data()));
-            string_builder << "<p:0x" << NUMBER << " l:" << std::to_string(BLOB->size()) << ">";
-            break;
-        }
-        case Type::LIST: {
-            const auto LIST = std::get_if<List>(&data);
-            string_builder << '[';
-            if (level) {
-                auto first = true;
-                for (auto &&item: *LIST) {
-                    if (first) {
-                        first = false;
-                    } else {
-                        string_builder << ',';
-                    }
-                    item->toString(string_builder, level);
-                }
-            } else {
-                string_builder << "...";
-            }
-            string_builder << ']';
-            break;
-        }
-        case Type::DICT: {
-            const auto LIST = std::get_if<Dict>(&data);
-            string_builder << '{';
-            if (level) {
-                auto first = true;
-                for (const auto &[fst, snd]: *LIST) {
-                    if (first) {
-                        first = false;
-                    } else {
-                        string_builder << ',';
-                    }
-                    string_builder << '"' << fst << "\":";
-                    snd->toString(string_builder, level);
-                }
-            } else {
-                string_builder << "...";
-            }
-            string_builder << '}';
-            break;
+void Value::toString(text::StringBuilder &string_builder) const noexcept {
+    StreamifyStack stack;
+    StreamifyIterStack map_iter_stack;
+    stack.emplace(this, 0, 1);
+
+    if (this->isDict()) {
+        map_iter_stack.emplace(this->getDict().begin());
+    }
+
+    while (!stack.empty()) {
+        auto &[current_value, count, level] = stack.top();
+        if (current_value->isDict()) {
+            toStringDict(string_builder, stack, map_iter_stack);
+        } else if (current_value->isList()) {
+            toStringList(string_builder, stack, map_iter_stack);
+        } else {
+            writeSpace(string_builder, level * 2);
+            string_builder << current_value->toStringBasic();
+            string_builder << "\n";
         }
     }
 }
+
+void Value::writeSpace(text::StringBuilder &string_builder, size_t count) {
+    char buffer[1024]{};
+    memset(buffer, ' ', sizeof(buffer));
+    count = count % sizeof(buffer);
+    auto times = count / sizeof(buffer);
+    for (auto i = 0; i < times; ++i) {
+        string_builder.append(buffer, sizeof(buffer));
+    }
+    string_builder.append(buffer, count);
+}
+
+void Value::toStringDict(
+    text::StringBuilder &string_builder,
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
+) {
+    auto &[current_value, count, level] = stack.top();
+    stack.pop();
+    auto iter = map_iter_stack.top();
+    map_iter_stack.pop();
+    auto &object_ref = current_value->getDict();
+    if (object_ref.empty()) {
+        string_builder << "{}";
+        return;
+    }
+    if (count == object_ref.size()) {
+        string_builder << "\n";
+        writeSpace(string_builder, (level - 1) * 2);
+        string_builder << "}";
+    }
+    while (iter != object_ref.end()) {
+        auto name = iter->first;
+        auto value = iter->second;
+        if (count == 0) {
+            string_builder << "{\n";
+        }
+        if (count > 0 && count < object_ref.size()) {
+            string_builder << ",\n";
+        }
+        writeSpace(string_builder, level * 2);
+        string_builder << "\"" << name << "\": ";
+        ++iter;
+        count += 1;
+        if (value->isDict()) {
+            stack.emplace(current_value, count, level);
+            stack.emplace(value.get(), 0, level + 1);
+            map_iter_stack.emplace(iter);
+            map_iter_stack.emplace(value->getDict().begin());
+            return;
+        }
+        if (value->isList()) {
+            stack.emplace(current_value, count, level);
+            stack.emplace(value.get(), 0, level + 1);
+            map_iter_stack.emplace(iter);
+            return;
+        }
+        string_builder << value->toStringBasic();
+        if (count == object_ref.size()) {
+            string_builder << "\n";
+            writeSpace(string_builder, (level - 1) * 2);
+            string_builder << "}";
+        }
+    }
+}
+
+void Value::toStringList(
+    text::StringBuilder &string_builder,
+    StreamifyStack &stack,
+    StreamifyIterStack &map_iter_stack
+) {
+    auto &[current_value, count, level] = stack.top();
+    stack.pop();
+    auto &array_ref = current_value->getList();
+    if (array_ref.empty()) {
+        string_builder << "[]";
+        return;
+    }
+    if (count == array_ref.size()) {
+        string_builder << "\n";
+        writeSpace(string_builder, (level - 1) * 2);
+        string_builder << "]";
+    }
+    while (count < array_ref.size()) {
+        auto value = array_ref[count];
+        if (count == 0) {
+            string_builder << "[\n";
+        }
+        if (count > 0 && count < array_ref.size()) {
+            string_builder << ",\n";
+        }
+        writeSpace(string_builder, level * 2);
+        count += 1;
+        if (value->isDict()) {
+            stack.emplace(current_value, count, level);
+            stack.emplace(value.get(), 0, level + 1);
+            map_iter_stack.emplace(value->getDict().begin());
+            return;
+        }
+        if (value->isList()) {
+            stack.emplace(current_value, count, level);
+            stack.emplace(value.get(), 0, level + 1);
+            return;
+        }
+        string_builder << value->toStringBasic();
+        if (count == array_ref.size()) {
+            string_builder << "\n";
+            writeSpace(string_builder, (level - 1) * 2);
+            string_builder << "]";
+        }
+    }
+}
+
 
 size_t List::empty() const { return vector.empty(); }
 
@@ -348,19 +437,19 @@ std::shared_ptr<Value> List::operator[](size_t index) { return vector[index]; }
 size_t List::erase(const std::shared_ptr<Value> &value) {
     size_t count = 0;
     vector.erase(
-            std::remove_if(
-                    vector.begin(),
-                    vector.end(),
-                    [&value, &count](const std::shared_ptr<Value> &v) {
-                        if (*value == *v) {
-                            count += 1;
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-            ),
-            vector.end()
+        std::remove_if(
+            vector.begin(),
+            vector.end(),
+            [&value, &count](const std::shared_ptr<Value> &v) {
+                if (*value == *v) {
+                    count += 1;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        ),
+        vector.end()
     );
     return count;
 }

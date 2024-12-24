@@ -5,7 +5,9 @@
     "boolean": true,
     "object": {
         "object_value1": "value1",
-        "object_value2": "value2"
+        "object_value2": "value2",
+        "null_array": [],
+        "null_object": {}
     },
     "mixin_array": [
         1,

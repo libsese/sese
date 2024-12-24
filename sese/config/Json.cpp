@@ -284,6 +284,10 @@ bool Json::streamifyObject(
     auto &[object, count] = stack.top();
     auto &object_ref = object->getDict();
     stack.pop();
+    if (object_ref.empty()) {
+        CONST_WRITE(out, "{}");
+        return true;
+    }
     if (count == object_ref.size()) {
         CONST_WRITE(out, "}");
         return true;
@@ -320,6 +324,7 @@ bool Json::streamifyObject(
         }
         if (count == object_ref.size()) {
             CONST_WRITE(out, "}");
+            return true;
         }
     }
     return true;
@@ -333,6 +338,10 @@ bool Json::streamifyArray(
     auto &[array, count] = stack.top();
     auto &array_ref = array->getList();
     stack.pop();
+    if (array_ref.empty()) {
+        CONST_WRITE(out, "[]");
+        return true;
+    }
     if (count == array_ref.size()) {
         CONST_WRITE(out, "]");
         return true;
@@ -355,12 +364,14 @@ bool Json::streamifyArray(
         if (value->isList()) {
             stack.emplace(array, count);
             stack.emplace(value.get(), 0);
+            return true;
         }
         if (!streamifyBasic(out, value)) {
             return false;
         }
         if (count == array_ref.size()) {
             CONST_WRITE(out, "]");
+            return true;
         }
     }
     return true;
@@ -377,7 +388,7 @@ bool Json::streamifyBasic(io::OutputStream *out, const std::shared_ptr<Value> &v
             CONST_WRITE(out, "false");
         }
     } else if (value->isDouble() || value->isInt() || value->isString()) {
-        auto v = value->toString();
+        auto v = value->toStringBasic();
         STRING_WRITE(out, v);
     } else {
         return false;
