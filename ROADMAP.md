@@ -32,3 +32,4 @@
 - ⭕️️ Support ~~std::error_code~~ sese::ErrorCode & sese::Result<T>
 - ⭕️ Binary description manifest
 - ⭕️ Embedded resource management
+- ️️⭕️ Replaces the previous recursive algorithm
