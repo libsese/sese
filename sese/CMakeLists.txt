@@ -3,7 +3,6 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "Rel
 endif()
 
 if(SESE_BUILD_TEST)
-    enable_testing()
     add_subdirectory(benchmark)
     add_subdirectory(test)
 endif()

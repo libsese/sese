@@ -20,5 +20,34 @@
         "SESE_DB_USE_SQLITE": true
       }
     }
+  ],
+  "buildPresets": [
+    {
+      "name": "base",
+      "configurePreset": "base"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test",
+      "description": "Run all tests.",
+      "configurePreset": "base",
+      "environment": {
+        "GTEST_OUTPUT": "xml:build/test_report.xml"
+      },
+      "output": {
+        "verbosity": "verbose"
+      }
+    },
+    {
+      "name": "test-without-db",
+      "description": "Run all tests excluding database-driven test suites.",
+      "environment": {
+        "GTEST_FILTER": "-TestMaria*:TestPostgres*:TestSqlite*"
+      },
+      "inherits": [
+        "test"
+      ]
+    }
   ]
 }

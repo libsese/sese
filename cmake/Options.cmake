@@ -13,6 +13,11 @@ if(SESE_USE_NATIVE_MANAGER)
     message(FATAL_ERROR "The `SESE_USE_NATIVE_MANAGER` option has been deprecated.")
 endif()
 
+if(SESE_BUILD_TEST)
+    # This sentence must be in the root folder.
+    enable_testing()
+endif()
+
 include(cmake/MiniSeseTools.cmake)
 
 sese_auto_enable_feature(SESE_BUILD_TEST "tests")

@@ -47,5 +47,6 @@ if(SESE_BUILD_TEST)
         COMPONENTS Interpreter
         REQUIRED
     )
-    find_package(GTest CONFIG REQUIRED)
+    find_package(GTest REQUIRED)
+    include_directories(GoogleTest)
 endif()

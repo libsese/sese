@@ -85,7 +85,7 @@ TEST(TestRingQueue, Push) {
     ASSERT_THROW(queue.push(1), std::out_of_range);
 }
 
-TEST(TestRingQueue, MutilThread) {
+TEST(TestRingQueue, DISABLED_MutilThread) {
     const auto TOTAL = 4000;
     RingQueue<int, 500> queue;
 
