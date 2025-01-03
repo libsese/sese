@@ -1,4 +1,5 @@
 line_width: 120
+line_ending: windows
 tab_size: 4
 autosort: true
 dangle_parens: true
