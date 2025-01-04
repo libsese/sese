@@ -56,7 +56,7 @@ file(GLOB_RECURSE UNIX_SRC "native/unix/*.cpp" "native/unix/*.h")
 
 file(GLOB_RECURSE INTERNAL_SRC "internal/net/*.cpp" "internal/net/*.h" "internal/service/*.cpp" "internal/service/*.h")
 
-add_library(Core)
+add_library(Core ${PUBLIC_SRC} ${INTERNAL_SRC} Config.h Util.h)
 
 if(SESE_BUILD_TEST)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
@@ -157,7 +157,7 @@ endif()
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     file(GLOB_RECURSE NATIVE_WIN_SRC "internal/win/*.cpp" "native/win/*.cpp" "native/win/*.h")
 
-    target_sources(Core PRIVATE ${NATIVE_WIN_SRC} ${PUBLIC_SRC} ${INTERNAL_SRC} Config.h Util.h)
+    target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
     target_compile_definitions(Core PRIVATE -D_WIN32_WINNT=0x0601)
 
     if(MSVC)
