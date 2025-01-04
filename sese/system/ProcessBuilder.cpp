@@ -23,6 +23,6 @@ sese::system::ProcessBuilder &&sese::system::ProcessBuilder::arg(const std::stri
     return std::move(*this);
 }
 
-sese::Result<sese::system::Process::Ptr, sese::ErrorCode> sese::system::ProcessBuilder::createEx() {
+sese::Result<sese::system::Process::Ptr, sese::ErrorCode> sese::system::ProcessBuilder::createEx() const {
     return Process::createEx(exec, args);
 }

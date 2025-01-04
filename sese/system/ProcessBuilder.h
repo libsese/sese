@@ -19,8 +19,6 @@
 
 #pragma once
 
-#include <sese/Config.h>
-#include <sese/text/StringBuilder.h>
 #include <sese/system/Process.h>
 
 namespace sese::system {
@@ -48,7 +46,7 @@ public:
      * @see sese::system::Process::createEx()
      * @return Result<Process::Ptr>
      */
-    Result<Process::Ptr, ErrorCode> createEx();
+    Result<Process::Ptr, ErrorCode> createEx() const;
 
 private:
     std::string exec;
