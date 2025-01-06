@@ -36,13 +36,13 @@ namespace sys = sese::system;
 #ifdef _WIN32
 #pragma warning(disable : 4819)
 #define SESE_PLATFORM_WINDOWS
-#include "sese/native/win/Config.h"
+#include "WindowsConfig.h"
 #elif __linux__
 #define SESE_PLATFORM_LINUX
-#include "sese/native/linux/Config.h"
+#include "LinuxConfig.h"
 #elif __APPLE__
 #define SESE_PLATFORM_APPLE
-#include "sese/native/darwin/Config.h"
+#include "DarwinConfig.h"
 #endif
 
 #define SESE_MARCO_END \

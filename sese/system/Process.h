@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include "sese/Util.h"
+#include "sese/Config.h"
 #include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
@@ -29,11 +29,13 @@
 namespace sese::system {
 
 /// Process Class
-class Process {
+class Process final {
 public:
     using Ptr = std::unique_ptr<Process>;
 
-    static Result<Process::Ptr, ErrorCode> createEx(const std::string &exec, const std::vector<std::string> &args = {}) noexcept;
+    ~Process();
+
+    static Result<Ptr, ErrorCode> createEx(const std::string &exec, const std::vector<std::string> &args = {}) noexcept;
 
     /// Get the current process ID
     /// \return Current process ID
@@ -54,19 +56,7 @@ public:
 private:
     Process() = default;
 
-#ifdef _WIN32
-public:
-    virtual ~Process() noexcept;
-
-private:
-    void *startup_info = nullptr;
-    void *process_info = nullptr;
-#else
-public:
-    virtual ~Process() noexcept = default;
-
-private:
-    pid_t id = -1;
-#endif
+    class ProcessImpl;
+    std::unique_ptr<ProcessImpl> process_impl;
 };
 } // namespace sese::system

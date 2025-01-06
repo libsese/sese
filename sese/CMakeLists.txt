@@ -52,7 +52,7 @@ file(
     "container/*.h"
 )
 
-file(GLOB_RECURSE UNIX_SRC "native/unix/*.cpp" "native/unix/*.h")
+file(GLOB_RECURSE UNIX_SRC "internal/unix/*.cpp" "internal/unix/*.h" "native/unix/*.cpp" "native/unix/*.h")
 
 file(GLOB_RECURSE INTERNAL_SRC "internal/net/*.cpp" "internal/net/*.h" "internal/service/*.cpp" "internal/service/*.h")
 
@@ -155,7 +155,7 @@ endif()
 # Windows platform configuration
 # ######################################################################################################################
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    file(GLOB_RECURSE NATIVE_WIN_SRC "native/win/*.cpp" "native/win/*.h")
+    file(GLOB_RECURSE NATIVE_WIN_SRC "internal/win/*.cpp" "native/win/*.cpp" "native/win/*.h")
 
     target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
     target_compile_definitions(Core PRIVATE -D_WIN32_WINNT=0x0601)
@@ -182,7 +182,9 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT})
     target_link_libraries(Core PRIVATE ${CMAKE_DL_LIBS})
 
-    file(GLOB_RECURSE NATIVE_LINUX_SRC "native/linux/*.cpp" "native/linux/*.h")
+    file(GLOB_RECURSE NATIVE_LINUX_SRC "internal/linux/*.cpp" "internal/linux/*.h" "native/linux/*.cpp"
+         "native/linux/*.h"
+    )
     target_sources(Core PRIVATE ${NATIVE_LINUX_SRC})
 
     set_target_properties(Core PROPERTIES POSITION_INDEPENDENT_CODE ON)
@@ -195,8 +197,10 @@ endif()
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
-    file(GLOB_RECURSE NATIVE_DRAWIN_SRC "native/darwin/*.cpp" "native/darwin/*.h")
-    target_sources(Core PRIVATE ${NATIVE_DRAWIN_SRC})
+    file(GLOB_RECURSE NATIVE_DARWIN_SRC "internal/darwin/*.cpp" "internal/darwin/*.h" "native/darwin/*.cpp"
+         "native/darwin/*.h"
+    )
+    target_sources(Core PRIVATE ${NATIVE_DARWIN_SRC})
 endif()
 
 # ######################################################################################################################
