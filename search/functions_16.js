@@ -1,7 +1,7 @@
 var searchData=
 [
   ['w_0',['w',['../classsese_1_1record_1_1_log_helper.html#a2b08e1d047644d642111c8ae750b52f8',1,'sese::record::LogHelper']]],
-  ['wait_1',['wait',['../classsese_1_1system_1_1_process.html#a26576173c8042401314803be3d0b4271',1,'sese::system::Process']]],
+  ['wait_1',['wait',['../class_process_1_1_process_impl.html#a590cc93dbad177c6abf40ec10f8f6f42',1,'sese::system::Process::ProcessImpl::wait() const noexcept'],['../class_process_1_1_process_impl.html#a590cc93dbad177c6abf40ec10f8f6f42',1,'sese::system::Process::ProcessImpl::wait() const noexcept'],['../classsese_1_1system_1_1_process.html#a26576173c8042401314803be3d0b4271',1,'sese::system::Process::wait()']]],
   ['warn_2',['warn',['../classsese_1_1record_1_1_log_helper.html#aab58f61746ba97a0ce554c46224c4504',1,'sese::record::LogHelper']]],
   ['websocketauthenticator_3',['WebsocketAuthenticator',['../classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#abd76b414148505bc6b5de132184d9b88',1,'sese::net::ws::WebsocketAuthenticator']]],
   ['what_4',['what',['../classsese_1_1_unix_exception.html#ae645c81dfc987d6aedf8554c70a0238e',1,'sese::UnixException::what()'],['../classsese_1_1_exception.html#aa92630359575979364aa4eaba0583c18',1,'sese::Exception::what()']]],

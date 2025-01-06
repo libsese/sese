@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_5f_5fmusl_5f_5f_0',['__MUSL__',['../native_2linux_2_config_8h.html#a151e960dcf78b258c417953ebe006bf5',1,'Config.h']]],
+  ['_5f_5fmusl_5f_5f_0',['__MUSL__',['../_linux_config_8h.html#a151e960dcf78b258c417953ebe006bf5',1,'LinuxConfig.h']]],
   ['_5f_5fsese_5fdebug_1',['__SESE_DEBUG',['../record_2_marco_8h.html#a9c7b9b055051419896c49a59292b4521',1,'Marco.h']]],
   ['_5f_5fsese_5ferror_2',['__SESE_ERROR',['../record_2_marco_8h.html#ad79c45edd21c8ef28caef8540772334b',1,'Marco.h']]],
   ['_5f_5fsese_5fexcept_3',['__SESE_EXCEPT',['../record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37',1,'Marco.h']]],
@@ -19,5 +19,5 @@ var searchData=
   ['_5fref_16',['_ref',['../classsstr_1_1_s_string_view_1_1_iterator.html#a015e15151bcc21850da2b64587254cc2',1,'sstr::SStringView::Iterator']]],
   ['_5fsize_17',['_size',['../classsese_1_1_ring_queue.html#a02431a739caf6efa11fb16c9e62c8ead',1,'sese::RingQueue::_size'],['../classsstr_1_1_s_string_view_1_1_iterator.html#ac12a5d3a98dc5d87381f93506a0c77f6',1,'sstr::SStringView::Iterator::_size'],['../classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599',1,'sstr::SStringView::_size']]],
   ['_5ftail_18',['_tail',['../classsese_1_1_ring_queue.html#ab2241fe87328bd2c3de8654a1e2e4162',1,'sese::RingQueue']]],
-  ['_5fwin32_5fwinnnt_19',['_WIN32_WINNNT',['../native_2win_2_config_8h.html#a6819d2afd398f4b5c0e55022b27f93d2',1,'Config.h']]]
+  ['_5fwin32_5fwinnnt_19',['_WIN32_WINNNT',['../_windows_config_8h.html#a6819d2afd398f4b5c0e55022b27f93d2',1,'WindowsConfig.h']]]
 ];

@@ -305,6 +305,7 @@ var hierarchy =
     ] ],
     [ "sese::system::Process", "classsese_1_1system_1_1_process.html", null ],
     [ "sese::system::ProcessBuilder", "classsese_1_1system_1_1_process_builder.html", null ],
+    [ "sese::system::Process::ProcessImpl", "class_process_1_1_process_impl.html", null ],
     [ "sese::net::dns::DnsPackage::Question", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html", null ],
     [ "sese::RandomUtil", "classsese_1_1_random_util.html", null ],
     [ "sese::net::http::Range", "structsese_1_1net_1_1http_1_1_range.html", null ],

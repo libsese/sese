@@ -75,7 +75,7 @@ var searchData=
   ['_7epostgrespreparedstatementimpl_72',['~PostgresPreparedStatementImpl',['../classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a9e9006c54a522a81bd914dac1e3e3a02',1,'sese::db::impl::PostgresPreparedStatementImpl']]],
   ['_7epostgresresultsetimpl_73',['~PostgresResultSetImpl',['../classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a19e35b14d9abcf093b0fb2bcd7dfa538',1,'sese::db::impl::PostgresResultSetImpl']]],
   ['_7epreparedstatement_74',['~PreparedStatement',['../classsese_1_1db_1_1_prepared_statement.html#a33a127fdb8b9d6b07c7c046f19fd3935',1,'sese::db::PreparedStatement']]],
-  ['_7eprocess_75',['~Process',['../classsese_1_1system_1_1_process.html#a07ff40a4769b99627fb2e88d467136f0',1,'sese::system::Process']]],
+  ['_7eprocess_75',['~Process',['../classsese_1_1system_1_1_process.html#a990776d181dbbde7ff8ac12713d814b3',1,'sese::system::Process']]],
   ['_7erequestable_76',['~Requestable',['../classsese_1_1net_1_1http_1_1_requestable.html#ad0ff7745cc428ba199d41f670274af69',1,'sese::net::http::Requestable']]],
   ['_7eresourcemanager_77',['~ResourceManager',['../classsese_1_1res_1_1_resource_manager.html#a94b5fd470af47bd4d836cabc68f3cb2b',1,'sese::res::ResourceManager']]],
   ['_7eresultset_78',['~ResultSet',['../classsese_1_1db_1_1_result_set.html#aec49cdfc596a52b30586d36330f70264',1,'sese::db::ResultSet']]],

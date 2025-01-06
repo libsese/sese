@@ -6,7 +6,7 @@ var searchData=
   ['key_20points_20strong_3',['3. &lt;strong&gt;Key Points&lt;/strong&gt;',['../md_sese_2res_2_r_e_s_o_u_r_c_e.html#autotoc_md50',1,'']]],
   ['keyvalset_4',['keyValSet',['../classsese_1_1_arg_parser.html#ad27fd30bd1303c841c45a84c1cb2af83',1,'sese::ArgParser']]],
   ['keyvaluetype_5',['KeyValueType',['../classsese_1_1net_1_1http_1_1_header.html#a6067546e2e5f6685cb194ea47042a2ca',1,'sese::net::http::Header']]],
-  ['kill_6',['kill',['../classsese_1_1system_1_1_process.html#a41b3269066f148355282ea5354c22bc3',1,'sese::system::Process']]],
+  ['kill_6',['kill',['../class_process_1_1_process_impl.html#a8b5bdb7ed48b705c8bada83d28191ff2',1,'sese::system::Process::ProcessImpl::kill() const noexcept'],['../class_process_1_1_process_impl.html#a8b5bdb7ed48b705c8bada83d28191ff2',1,'sese::system::Process::ProcessImpl::kill() const noexcept'],['../classsese_1_1system_1_1_process.html#a41b3269066f148355282ea5354c22bc3',1,'sese::system::Process::kill()']]],
   ['kmp_7',['KMP',['../namespacesstr.html#addb08b0d19d6f5351ddc559e395aaaa1',1,'sstr']]],
   ['kqueue_8',['kqueue',['../classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa',1,'sese::event::KqueueEventLoop']]],
   ['kqueueevent_9',['KqueueEvent',['../classsese_1_1event_1_1_kqueue_event.html',1,'sese::event']]],

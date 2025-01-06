@@ -22,7 +22,10 @@ var dir_3d55ce2c726280f152511f4c3a4644e6 =
     [ "types", "dir_8ef25933d542fcea5e9da5dbd96cede2.html", "dir_8ef25933d542fcea5e9da5dbd96cede2" ],
     [ "util", "dir_fd91985019c0ba8b7143dc49def92180.html", "dir_fd91985019c0ba8b7143dc49def92180" ],
     [ "Config.h", "_config_8h.html", "_config_8h" ],
+    [ "DarwinConfig.h", "_darwin_config_8h.html", "_darwin_config_8h" ],
     [ "Init.h", "_init_8h.html", null ],
+    [ "LinuxConfig.h", "_linux_config_8h.html", "_linux_config_8h" ],
     [ "Log.h", "_log_8h.html", null ],
-    [ "Util.h", "_util_8h.html", null ]
+    [ "Util.h", "_util_8h.html", null ],
+    [ "WindowsConfig.h", "_windows_config_8h.html", "_windows_config_8h" ]
 ];
