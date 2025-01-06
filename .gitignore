@@ -2,6 +2,8 @@
 CMakeSettings.json
 CMakeUserPresets.json
 build
+h2spec
+h2spec.exe
 .xmake
 .fleet
 venv

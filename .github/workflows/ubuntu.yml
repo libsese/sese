@@ -125,7 +125,8 @@ jobs:
         run: |
           source venv/bin/activate
           mkdir -p build/coverage/html
-          junit2html h2spec_report.xml build/coverage/h2spec.html
+          # Reports are not generated properly due to h2spec or unknown environmental reasons
+          # junit2html h2spec_report.xml build/coverage/h2spec.html
           gcovr
 
       - name: Code Coverage Summary Report
