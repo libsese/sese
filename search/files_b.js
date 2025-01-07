@@ -8,7 +8,5 @@ var searchData=
   ['locker_2eh_5',['Locker.h',['../_locker_8h.html',1,'']]],
   ['log_2eh_6',['Log.h',['../_log_8h.html',1,'']]],
   ['logger_2ecpp_7',['Logger.cpp',['../_logger_8cpp.html',1,'']]],
-  ['logger_2eh_8',['Logger.h',['../_logger_8h.html',1,'']]],
-  ['loghelper_2ecpp_9',['LogHelper.cpp',['../_log_helper_8cpp.html',1,'']]],
-  ['loghelper_2eh_10',['LogHelper.h',['../_log_helper_8h.html',1,'']]]
+  ['logger_2eh_8',['Logger.h',['../_logger_8h.html',1,'']]]
 ];

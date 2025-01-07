@@ -9,7 +9,6 @@ var namespacesese_1_1record =
     [ "FileAppender", "classsese_1_1record_1_1_file_appender.html", "classsese_1_1record_1_1_file_appender" ],
     [ "Logger", "classsese_1_1record_1_1_logger.html", "classsese_1_1record_1_1_logger" ],
     [ "LoggerInitiateTask", "classsese_1_1record_1_1_logger_initiate_task.html", "classsese_1_1record_1_1_logger_initiate_task" ],
-    [ "LogHelper", "classsese_1_1record_1_1_log_helper.html", "classsese_1_1record_1_1_log_helper" ],
     [ "SimpleFormatter", "classsese_1_1record_1_1_simple_formatter.html", "classsese_1_1record_1_1_simple_formatter" ],
     [ "Level", "namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5", [
       [ "DEBUG", "namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15", null ],
@@ -17,6 +16,6 @@ var namespacesese_1_1record =
       [ "WARN", "namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277", null ],
       [ "ERR", "namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482", null ]
     ] ],
-    [ "getLogger", "namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87", null ],
+    [ "getLogger", "namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878", null ],
     [ "logger", "namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3", null ]
 ];

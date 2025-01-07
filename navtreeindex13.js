@@ -1,13 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c":[12,0,0,3,1,4],
-"classsese_1_1db_1_1_driver_manager.html":[11,0,0,3,2],
-"classsese_1_1db_1_1_driver_manager.html":[12,0,0,3,2],
-"classsese_1_1db_1_1_driver_manager.html#a96d50e1392cdc06ed665382ccf627777":[11,0,0,3,2,0],
-"classsese_1_1db_1_1_driver_manager.html#a96d50e1392cdc06ed665382ccf627777":[12,0,0,3,2,0],
-"classsese_1_1db_1_1_prepared_statement.html":[11,0,0,3,3],
-"classsese_1_1db_1_1_prepared_statement.html":[12,0,0,3,3],
-"classsese_1_1db_1_1_prepared_statement.html#a01f6496e4c85855b83491c67acdb4834":[11,0,0,3,3,5],
 "classsese_1_1db_1_1_prepared_statement.html#a01f6496e4c85855b83491c67acdb4834":[12,0,0,3,3,5],
 "classsese_1_1db_1_1_prepared_statement.html#a105dd94bf914f6b5a41135c3c469118e":[11,0,0,3,3,2],
 "classsese_1_1db_1_1_prepared_statement.html#a105dd94bf914f6b5a41135c3c469118e":[12,0,0,3,3,2],
@@ -249,5 +241,13 @@ var NAVTREEINDEX13 =
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec":[12,0,0,3,0,5,19],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922":[11,0,0,3,0,5,10],
 "classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922":[12,0,0,3,0,5,10],
-"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f":[11,0,0,3,0,5,22]
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f":[11,0,0,3,0,5,22],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f":[12,0,0,3,0,5,22],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3433bea522dabff795487290cebae6af":[11,0,0,3,0,5,11],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3433bea522dabff795487290cebae6af":[12,0,0,3,0,5,11],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f":[11,0,0,3,0,5,20],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f":[12,0,0,3,0,5,20],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19":[11,0,0,3,0,5,15],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19":[12,0,0,3,0,5,15],
+"classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3a189f1b6fbda0a3bc4693f97c21d305":[11,0,0,3,0,5,6]
 };

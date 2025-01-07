@@ -227,7 +227,6 @@ var hierarchy =
     [ "sese::record::Logger", "classsese_1_1record_1_1_logger.html", [
       [ "sese::record::AsyncLogger", "classsese_1_1record_1_1_async_logger.html", null ]
     ] ],
-    [ "sese::record::LogHelper", "classsese_1_1record_1_1_log_helper.html", null ],
     [ "sese::LongLongSplitter", "structsese_1_1_long_long_splitter.html", null ],
     [ "sese::MD5Util", "classsese_1_1_m_d5_util.html", null ],
     [ "sese::system::MemInfo", "structsese_1_1system_1_1_mem_info.html", null ],
@@ -286,6 +285,7 @@ var hierarchy =
     [ "sese::_windows::iocp::v1::OverlappedWrapper", "structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html", null ],
     [ "sese::system::Path", "classsese_1_1system_1_1_path.html", null ],
     [ "sese::system::Paths", "classsese_1_1system_1_1_paths.html", null ],
+    [ "sese::record::Logger::PatternAndLocation", "structsese_1_1record_1_1_logger_1_1_pattern_and_location.html", null ],
     [ "sese::io::PeekableStream", "classsese_1_1io_1_1_peekable_stream.html", [
       [ "sese::_windows::iocp::v1::NativeContext", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html", null ],
       [ "sese::io::AbstractByteBuffer", "classsese_1_1io_1_1_abstract_byte_buffer.html", null ],

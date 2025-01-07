@@ -8,6 +8,5 @@ var searchData=
   ['locker_5',['Locker',['../classsese_1_1_locker.html',1,'sese']]],
   ['logger_6',['Logger',['../classsese_1_1record_1_1_logger.html',1,'sese::record']]],
   ['loggerinitiatetask_7',['LoggerInitiateTask',['../classsese_1_1record_1_1_logger_initiate_task.html',1,'sese::record']]],
-  ['loghelper_8',['LogHelper',['../classsese_1_1record_1_1_log_helper.html',1,'sese::record']]],
-  ['longlongsplitter_9',['LongLongSplitter',['../structsese_1_1_long_long_splitter.html',1,'sese']]]
+  ['longlongsplitter_8',['LongLongSplitter',['../structsese_1_1_long_long_splitter.html',1,'sese']]]
 ];

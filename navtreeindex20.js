@@ -1,13 +1,5 @@
 var NAVTREEINDEX20 =
 {
-"classsese_1_1net_1_1dns_1_1_dns_package.html#af71d851c4fac3ba0a3c8f47d1a384aab":[12,0,0,9,0,0,19],
-"classsese_1_1net_1_1dns_1_1_dns_package.html#af94fe8d44c941fd5a281011d3cf54bb8":[11,0,0,9,0,0,28],
-"classsese_1_1net_1_1dns_1_1_dns_package.html#af94fe8d44c941fd5a281011d3cf54bb8":[12,0,0,9,0,0,28],
-"classsese_1_1net_1_1dns_1_1_dns_package.html#afe16896b41c1380bd5a36d56586efe22":[11,0,0,9,0,0,10],
-"classsese_1_1net_1_1dns_1_1_dns_package.html#afe16896b41c1380bd5a36d56586efe22":[12,0,0,9,0,0,10],
-"classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html":[11,0,0,9,0,0,3],
-"classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html":[12,0,0,9,0,0,3],
-"classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a42a6b9dfef1f46cb0136f2977fd5c51d":[11,0,0,9,0,0,3,7],
 "classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a42a6b9dfef1f46cb0136f2977fd5c51d":[12,0,0,9,0,0,3,7],
 "classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a5349a064fbe3eb7b7d5350dab0608477":[11,0,0,9,0,0,3,6],
 "classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#a5349a064fbe3eb7b7d5350dab0608477":[12,0,0,9,0,0,3,6],
@@ -249,5 +241,13 @@ var NAVTREEINDEX20 =
 "classsese_1_1net_1_1http_1_1_header.html#aa1e1119ac01933efc5e949cf8c3528af":[12,0,0,9,1,4,1],
 "classsese_1_1net_1_1http_1_1_header.html#aa1f5da1259d14ff3bb3a3c591eaa1d45":[11,0,0,9,1,4,5],
 "classsese_1_1net_1_1http_1_1_header.html#aa1f5da1259d14ff3bb3a3c591eaa1d45":[12,0,0,9,1,4,5],
-"classsese_1_1net_1_1http_1_1_header.html#aaf473148f0a0d9e8580b0161b1d49f3f":[11,0,0,9,1,4,3]
+"classsese_1_1net_1_1http_1_1_header.html#aaf473148f0a0d9e8580b0161b1d49f3f":[11,0,0,9,1,4,3],
+"classsese_1_1net_1_1http_1_1_header.html#aaf473148f0a0d9e8580b0161b1d49f3f":[12,0,0,9,1,4,3],
+"classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61":[11,0,0,9,1,4,12],
+"classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61":[12,0,0,9,1,4,12],
+"classsese_1_1net_1_1http_1_1_header.html#aee26bf81a39563de0799e9451ff9c6bc":[11,0,0,9,1,4,13],
+"classsese_1_1net_1_1http_1_1_header.html#aee26bf81a39563de0799e9451ff9c6bc":[12,0,0,9,1,4,13],
+"classsese_1_1net_1_1http_1_1_header.html#afa34542cc8a8e5f1fdbe5026bbc5b703":[11,0,0,9,1,4,18],
+"classsese_1_1net_1_1http_1_1_header.html#afa34542cc8a8e5f1fdbe5026bbc5b703":[12,0,0,9,1,4,18],
+"classsese_1_1net_1_1http_1_1_header_builder.html":[11,0,0,9,1,5]
 };

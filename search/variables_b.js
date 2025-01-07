@@ -12,7 +12,8 @@ var searchData=
   ['list_9',['list',['../classsese_1_1iocp_1_1_i_o_buf.html#a458a4792017150459c78265560c3d192',1,'sese::iocp::IOBuf']]],
   ['listenevent_10',['listenEvent',['../classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6',1,'sese::event::KqueueEventLoop::listenEvent'],['../classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63',1,'sese::event::EpollEventLoop::listenEvent'],['../classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609',1,'sese::event::WSAEventLoop::listenEvent']]],
   ['listenfd_11',['listenFd',['../classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83',1,'sese::event::KqueueEventLoop::listenFd'],['../classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3',1,'sese::event::EpollEventLoop::listenFd'],['../classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c',1,'sese::event::WSAEventLoop::listenFd'],['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb',1,'sese::_windows::iocp::v1::NativeIOCPServer::listenFd']]],
-  ['logger_12',['logger',['../classsese_1_1record_1_1_log_helper.html#aad3fab3fea1fdb9aeb4a61376a2e804b',1,'sese::record::LogHelper::logger'],['../namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3',1,'sese::record::logger']]],
-  ['low_13',['low',['../structsese_1_1_long_long_splitter.html#a1160a8b62fadeb90c28156b3521094a0',1,'sese::LongLongSplitter']]],
-  ['lower_5fletter_5flist_14',['LOWER_LETTER_LIST',['../classsese_1_1_random_util.html#a513e7cec8890009bd457c01f300931cd',1,'sese::RandomUtil']]]
+  ['location_12',['location',['../structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a76b0eec2aa1f59b561a4e4cc844ec4e2',1,'sese::record::Logger::PatternAndLocation']]],
+  ['logger_13',['logger',['../namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3',1,'sese::record']]],
+  ['low_14',['low',['../structsese_1_1_long_long_splitter.html#a1160a8b62fadeb90c28156b3521094a0',1,'sese::LongLongSplitter']]],
+  ['lower_5fletter_5flist_15',['LOWER_LETTER_LIST',['../classsese_1_1_random_util.html#a513e7cec8890009bd457c01f300931cd',1,'sese::RandomUtil']]]
 ];

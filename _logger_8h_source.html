@@ -156,66 +156,137 @@ $(function(){initNavTree('_logger_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_abstract_formatter_8h.html" title="Log formatter class.">sese/record/AbstractFormatter.h</a>&quot;</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="record_2_event_8h.html" title="Log event class.">sese/record/Event.h</a>&quot;</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="_initializer_8h.html" title="Initializer.">sese/util/Initializer.h</a>&quot;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#pragma warning(disable : 4251)</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1record.html">sese::record</a> {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger_initiate_task.html">   40</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1record_1_1_logger_initiate_task.html" title="Logger initialization task.">LoggerInitiateTask</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_initiate_task.html" title="Initialization task base class.">InitiateTask</a> {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger_initiate_task.html#a1e9bf5883d8fc8a30bdd9d39e4ee7fa3">   42</a></span>    <a class="code hl_function" href="classsese_1_1record_1_1_logger_initiate_task.html#a1e9bf5883d8fc8a30bdd9d39e4ee7fa3">LoggerInitiateTask</a>() : <a class="code hl_class" href="classsese_1_1_initiate_task.html" title="Initialization task base class.">InitiateTask</a>(__FUNCTION__) {}</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    int32_t <a class="code hl_function" href="classsese_1_1record_1_1_logger_initiate_task.html#a97aedf1a38da5c6ece75258741be53bd">init</a>() noexcept override;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    int32_t <a class="code hl_function" href="classsese_1_1record_1_1_logger_initiate_task.html#a034963871b7b5be54381529a01dbb118">destroy</a>() noexcept override;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="_thread_8h.html" title="Thread class.">sese/thread/Thread.h</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;source_location&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#pragma warning(disable : 4251)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#pragma warning(disable : 4544)</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1record.html">sese::record</a> {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger_initiate_task.html">   43</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1record_1_1_logger_initiate_task.html" title="Logger initialization task.">LoggerInitiateTask</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_initiate_task.html" title="Initialization task base class.">InitiateTask</a> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger_initiate_task.html#a1e9bf5883d8fc8a30bdd9d39e4ee7fa3">   45</a></span>    <a class="code hl_function" href="classsese_1_1record_1_1_logger_initiate_task.html#a1e9bf5883d8fc8a30bdd9d39e4ee7fa3">LoggerInitiateTask</a>() : <a class="code hl_class" href="classsese_1_1_initiate_task.html" title="Initialization task base class.">InitiateTask</a>(__FUNCTION__) {}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    int32_t <a class="code hl_function" href="classsese_1_1record_1_1_logger_initiate_task.html#a97aedf1a38da5c6ece75258741be53bd">init</a>() noexcept override;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    int32_t <a class="code hl_function" href="classsese_1_1record_1_1_logger_initiate_task.html#a034963871b7b5be54381529a01dbb118">destroy</a>() noexcept override;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>class <a class="code hl_class" href="classsese_1_1record_1_1_console_appender.html" title="Console log appender class.">ConsoleAppender</a>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="};">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html">   53</a></span>class  <a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a> {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">   55</a></span>    <span class="keyword">typedef</span> std::shared_ptr&lt;Logger&gt; <a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a>() noexcept;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a27b8e0ea679d2cd2ab4ffed5d5395390">   59</a></span>    virtual ~<a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a>() noexcept = default;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> addAppender(const <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;appender) noexcept;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> removeAppender(const <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;appender) noexcept;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    virtual <span class="keywordtype">void</span> log(const <a class="code hl_class" href="classsese_1_1record_1_1_event.html" title="Log event class.">Event</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;event) noexcept;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    virtual <span class="keywordtype">void</span> dump(const <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) noexcept;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>protected:</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">   87</a></span>    std::shared_ptr&lt;<a class="code hl_class" href="classsese_1_1record_1_1_abstract_formatter.html" title="Log formatter class.">AbstractFormatter</a>&gt; formatter;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">   88</a></span>    std::shared_ptr&lt;<a class="code hl_class" href="classsese_1_1record_1_1_console_appender.html" title="Console log appender class.">ConsoleAppender</a>&gt; builtInAppender;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">   89</a></span>    std::vector&lt;<a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a>&gt; appenderVector;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>public:</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    static <span class="keywordtype">void</span> addGlobalLoggerAppender(const <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;appender) noexcept;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    static <span class="keywordtype">void</span> removeGlobalLoggerAppender(const <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;appender) noexcept;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>class <a class="code hl_class" href="classsese_1_1record_1_1_console_appender.html" title="Console log appender class.">ConsoleAppender</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html">   56</a></span>class <a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a> {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">   58</a></span>    <span class="keyword">typedef</span> std::shared_ptr&lt;Logger&gt; <a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a>() noexcept;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a27b8e0ea679d2cd2ab4ffed5d5395390">   62</a></span>    virtual ~<a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a>() noexcept = default;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> addAppender(const <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;appender) noexcept;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> removeAppender(const <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="Base class for log appenders.">AbstractAppender</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;appender) noexcept;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    virtual <span class="keywordtype">void</span> log(const <a class="code hl_class" href="classsese_1_1record_1_1_event.html" title="Log event class.">Event</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a> &amp;event) noexcept;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    virtual <span class="keywordtype">void</span> dump(const <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) noexcept;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="};">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">   89</a></span>    struct <a class="code hl_struct" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">PatternAndLocation</a> {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a81a3a34d5813d45815168d4b421215f4">   90</a></span>        std::string_view <a class="code hl_variable" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a81a3a34d5813d45815168d4b421215f4">pattern</a>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a76b0eec2aa1f59b561a4e4cc844ec4e2">   91</a></span>        std::source_location <a class="code hl_variable" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a76b0eec2aa1f59b561a4e4cc844ec4e2">location</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#afb777e61998eca5db1cd606be6078fbb">   93</a></span>        <a class="code hl_function" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#afb777e61998eca5db1cd606be6078fbb">PatternAndLocation</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pattern, <span class="keyword">const</span> std::source_location &amp;location = std::source_location::current())</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            : pattern(pattern), location(location) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
 </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    };</div>
+</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> debug(PatternAndLocation pattern_and_location, ARGS &amp;&amp;...args);</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>extern  record::<a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a> *<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">getLogger</a>() noexcept;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>} <span class="comment">// namespace sese::record</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> debug(PatternAndLocation pattern_and_location);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> info(PatternAndLocation pattern_and_location, ARGS &amp;&amp;...args);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> info(PatternAndLocation pattern_and_location);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> warn(PatternAndLocation pattern_and_location, ARGS &amp;&amp;...args);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> warn(PatternAndLocation pattern_and_location);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> error(PatternAndLocation pattern_and_location, ARGS &amp;&amp;...args);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> error(PatternAndLocation pattern_and_location);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addGlobalLoggerAppender(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;appender) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeGlobalLoggerAppender(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;appender) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">  127</a></span>    std::shared_ptr&lt;AbstractFormatter&gt; <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a>;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">  128</a></span>    std::shared_ptr&lt;ConsoleAppender&gt; <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">  129</a></span>    std::vector&lt;AbstractAppender::Ptr&gt; <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> prelog(<a class="code hl_struct" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">PatternAndLocation</a> &amp;pattern_and_location, <a class="code hl_enumeration" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5" title="Log level.">Level</a> level, <span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>};</div>
+</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keyword">extern</span> <a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a> *<a class="code hl_function" href="namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878">getLogger</a>() noexcept;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>template&lt;typename... ARGS&gt;</div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#afe2c48a535e9811b29f2cd941e81938c">  142</a></span><span class="keywordtype">void</span> <a class="code hl_class" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a>::debug(<a class="code hl_struct" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">PatternAndLocation</a> pattern_and_location, ARGS &amp;&amp;...args) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keyword">auto</span> message = <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">text::fmt</a>(pattern_and_location.pattern, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    prelog(pattern_and_location, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">Level::DEBUG</a>, message);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#ad5c8c9e9ae0b4a21455619a8dd8f06f1">  148</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1record_1_1_logger.html#ad5c8c9e9ae0b4a21455619a8dd8f06f1">Logger::info</a>(<a class="code hl_struct" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">PatternAndLocation</a> pattern_and_location, ARGS &amp;&amp;...args) {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">auto</span> message = <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">text::fmt</a>(pattern_and_location.<a class="code hl_variable" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a81a3a34d5813d45815168d4b421215f4">pattern</a>, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    prelog(pattern_and_location, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">Level::INFO</a>, message);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#a19c371981e8da6f93c846922ed14d1d5">  154</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1record_1_1_logger.html#a19c371981e8da6f93c846922ed14d1d5">Logger::warn</a>(<a class="code hl_struct" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">PatternAndLocation</a> pattern_and_location, ARGS &amp;&amp;...args) {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">auto</span> message = <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">text::fmt</a>(pattern_and_location.<a class="code hl_variable" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a81a3a34d5813d45815168d4b421215f4">pattern</a>, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    prelog(pattern_and_location, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">Level::WARN</a>, message);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
+</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_logger.html#aff0c7e8b07ad44d3c040f18f4277518c">  160</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1record_1_1_logger.html#aff0c7e8b07ad44d3c040f18f4277518c">Logger::error</a>(<a class="code hl_struct" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">PatternAndLocation</a> pattern_and_location, ARGS &amp;&amp;...args) {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keyword">auto</span> message = <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">text::fmt</a>(pattern_and_location.<a class="code hl_variable" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html#a81a3a34d5813d45815168d4b421215f4">pattern</a>, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    prelog(pattern_and_location, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">Level::ERR</a>, message);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>} <span class="comment">// namespace sese::record</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="_logger_8h.html">Logger.h</a></li>
-    <li class="footer">Generated on Mon Jan 6 2025 12:59:05 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Tue Jan 7 2025 14:40:02 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

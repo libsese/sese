@@ -141,39 +141,22 @@ $(function(){initNavTree('record_2_marco_8h.html',''); initResizable(true); });
 <p>Log macros.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="_logger_8h_source.html">sese/record/Logger.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_format_8h_source.html">sese/text/Format.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="text_2_util_8h_source.html">sese/text/Util.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&gt;</code><br />
 </div>
 <p><a href="record_2_marco_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ae78e46049906a7a818c610f188ad9a5a" id="r_ae78e46049906a7a818c610f188ad9a5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(point_to_logger,  level,  format, ...)</td></tr>
-<tr class="separator:ae78e46049906a7a818c610f188ad9a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d3aba7849a0f5e4e2c98304c4639a8" id="r_af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(point_to_logger,  buffer,  length)</td></tr>
-<tr class="separator:af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a738f59797003131a3d51f95cc24f7e37" id="r_a738f59797003131a3d51f95cc24f7e37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(point_to_logger,  <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td></tr>
-<tr class="separator:a738f59797003131a3d51f95cc24f7e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c7b9b055051419896c49a59292b4521" id="r_a9c7b9b055051419896c49a59292b4521"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c7b9b055051419896c49a59292b4521">__SESE_DEBUG</a>(sese_tmp_logger,  format, ...)</td></tr>
-<tr class="separator:a9c7b9b055051419896c49a59292b4521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82fca32f4aa42f273fb9688b4b638d9e" id="r_a82fca32f4aa42f273fb9688b4b638d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82fca32f4aa42f273fb9688b4b638d9e">__SESE_INFO</a>(sese_tmp_logger,  format, ...)</td></tr>
-<tr class="separator:a82fca32f4aa42f273fb9688b4b638d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99f403c0a68d0fc39e18498ff540d4f1" id="r_a99f403c0a68d0fc39e18498ff540d4f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99f403c0a68d0fc39e18498ff540d4f1">__SESE_WARN</a>(sese_tmp_logger,  format, ...)</td></tr>
-<tr class="separator:a99f403c0a68d0fc39e18498ff540d4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad79c45edd21c8ef28caef8540772334b" id="r_ad79c45edd21c8ef28caef8540772334b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad79c45edd21c8ef28caef8540772334b">__SESE_ERROR</a>(sese_tmp_logger,  format, ...)</td></tr>
-<tr class="separator:ad79c45edd21c8ef28caef8540772334b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae23dce9adff7d55a14a54cb5411d7667" id="r_ae23dce9adff7d55a14a54cb5411d7667"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae23dce9adff7d55a14a54cb5411d7667">SESE_RAW</a>(buffer,  length)&#160;&#160;&#160;    <a class="el" href="#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), buffer, length)</td></tr>
+<tr class="memitem:ae23dce9adff7d55a14a54cb5411d7667" id="r_ae23dce9adff7d55a14a54cb5411d7667"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae23dce9adff7d55a14a54cb5411d7667">SESE_RAW</a>(buffer,  length)&#160;&#160;&#160;    <a class="el" href="namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878">sese::record::getLogger</a>()-&gt;dump(buffer, length)</td></tr>
 <tr class="separator:ae23dce9adff7d55a14a54cb5411d7667"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77b7117d61063ae74e9498af412bb101" id="r_a77b7117d61063ae74e9498af412bb101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b7117d61063ae74e9498af412bb101">SESE_EXCEPT</a>(<a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;<a class="el" href="#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td></tr>
+<tr class="memitem:a77b7117d61063ae74e9498af412bb101" id="r_a77b7117d61063ae74e9498af412bb101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b7117d61063ae74e9498af412bb101">SESE_EXCEPT</a>(<a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;e.printStacktrace(<a class="el" href="namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878">sese::record::getLogger</a>())</td></tr>
 <tr class="separator:a77b7117d61063ae74e9498af412bb101"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a964cda869f112de222e00400f1e3dc79" id="r_a964cda869f112de222e00400f1e3dc79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a964cda869f112de222e00400f1e3dc79">SESE_DEBUG</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:a964cda869f112de222e00400f1e3dc79" id="r_a964cda869f112de222e00400f1e3dc79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a964cda869f112de222e00400f1e3dc79">SESE_DEBUG</a>(sese_tmp_format, ...)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#afe2c48a535e9811b29f2cd941e81938c">sese::record::Logger::debug</a>(sese_tmp_format, ##__VA_ARGS__)</td></tr>
 <tr class="separator:a964cda869f112de222e00400f1e3dc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee0f4393a326979982219d142aa9d067" id="r_aee0f4393a326979982219d142aa9d067"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:aee0f4393a326979982219d142aa9d067" id="r_aee0f4393a326979982219d142aa9d067"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(sese_tmp_format, ...)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#ad5c8c9e9ae0b4a21455619a8dd8f06f1">sese::record::Logger::info</a>(sese_tmp_format, ##__VA_ARGS__)</td></tr>
 <tr class="separator:aee0f4393a326979982219d142aa9d067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a08c4c287ebe371abb3fa9d4a9712fa" id="r_a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:a7a08c4c287ebe371abb3fa9d4a9712fa" id="r_a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(sese_tmp_format, ...)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#a19c371981e8da6f93c846922ed14d1d5">sese::record::Logger::warn</a>(sese_tmp_format, ##__VA_ARGS__)</td></tr>
 <tr class="separator:a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1238b2e7ea6758c6e7bab5310024ed7" id="r_ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(sese_tmp_format, ...)</td></tr>
+<tr class="memitem:ae1238b2e7ea6758c6e7bab5310024ed7" id="r_ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(sese_tmp_format, ...)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#aff0c7e8b07ad44d3c040f18f4277518c">sese::record::Logger::error</a>(sese_tmp_format, ##__VA_ARGS__)</td></tr>
 <tr class="separator:ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -182,212 +165,6 @@ Macros</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>September 13, 2023 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a9c7b9b055051419896c49a59292b4521" name="a9c7b9b055051419896c49a59292b4521"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c7b9b055051419896c49a59292b4521">&#9670;&#160;</a></span>__SESE_DEBUG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_DEBUG</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::Level::DEBUG</a>, format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad79c45edd21c8ef28caef8540772334b" name="ad79c45edd21c8ef28caef8540772334b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad79c45edd21c8ef28caef8540772334b">&#9670;&#160;</a></span>__SESE_ERROR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_ERROR</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::Level::ERR</a>, format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a738f59797003131a3d51f95cc24f7e37" name="a738f59797003131a3d51f95cc24f7e37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a738f59797003131a3d51f95cc24f7e37">&#9670;&#160;</a></span>__SESE_EXCEPT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_EXCEPT</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>point_to_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a></em></span>&#160;)&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a82fca32f4aa42f273fb9688b4b638d9e" name="a82fca32f4aa42f273fb9688b4b638d9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82fca32f4aa42f273fb9688b4b638d9e">&#9670;&#160;</a></span>__SESE_INFO</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_INFO</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::Level::INFO</a>, format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ae78e46049906a7a818c610f188ad9a5a" name="ae78e46049906a7a818c610f188ad9a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae78e46049906a7a818c610f188ad9a5a">&#9670;&#160;</a></span>__SESE_LOG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_LOG</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>point_to_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {                                                                \</div>
-<div class="line">        <span class="keyword">auto</span> sese_tmp_msg = <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">sese::text::fmt</a>(format, ##__VA_ARGS__);  \</div>
-<div class="line">        <span class="keyword">auto</span> sese_tmp_time = <a class="code hl_function" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now</a>();                  \</div>
-<div class="line">        <span class="keyword">auto</span> sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;( \</div>
-<div class="line">                sese_tmp_time,                                       \</div>
-<div class="line">                level,                                               \</div>
-<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName</a>(),                \</div>
-<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId</a>(),                  \</div>
-<div class="line">                <a class="code hl_define" href="_darwin_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>,                                       \</div>
-<div class="line">                __LINE__,                                            \</div>
-<div class="line">                sese_tmp_msg                                         \</div>
-<div class="line">        );                                                           \</div>
-<div class="line">        point_to_logger-&gt;log(sese_tmp_event);                        \</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="af1d3aba7849a0f5e4e2c98304c4639a8" name="af1d3aba7849a0f5e4e2c98304c4639a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1d3aba7849a0f5e4e2c98304c4639a8">&#9670;&#160;</a></span>__SESE_RAW</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_RAW</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>point_to_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    point_to_logger-&gt;dump(buffer, length);          \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a99f403c0a68d0fc39e18498ff540d4f1" name="a99f403c0a68d0fc39e18498ff540d4f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99f403c0a68d0fc39e18498ff540d4f1">&#9670;&#160;</a></span>__SESE_WARN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __SESE_WARN</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sese_tmp_logger</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::Level::WARN</a>, format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a964cda869f112de222e00400f1e3dc79" name="a964cda869f112de222e00400f1e3dc79"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a964cda869f112de222e00400f1e3dc79">&#9670;&#160;</a></span>SESE_DEBUG</h2>
 
@@ -402,13 +179,11 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#afe2c48a535e9811b29f2cd941e81938c">sese::record::Logger::debug</a>(sese_tmp_format, ##__VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::Level::DEBUG</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ae1238b2e7ea6758c6e7bab5310024ed7" name="ae1238b2e7ea6758c6e7bab5310024ed7"></a>
@@ -425,13 +200,11 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#aff0c7e8b07ad44d3c040f18f4277518c">sese::record::Logger::error</a>(sese_tmp_format, ##__VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::Level::ERR</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="classsese_1_1service_1_1http_1_1_http_server.html#a5fa0a115bc2b94d532d7331c72864484">sese::service::http::HttpServer::startup()</a>.</p>
 
 </div>
@@ -446,7 +219,7 @@ Macros</h2></td></tr>
           <td class="memname">#define SESE_EXCEPT</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a></em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td>
+          <td>&#160;&#160;&#160;e.printStacktrace(<a class="el" href="namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878">sese::record::getLogger</a>())</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -467,13 +240,11 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#ad5c8c9e9ae0b4a21455619a8dd8f06f1">sese::record::Logger::info</a>(sese_tmp_format, ##__VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::Level::INFO</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html#ade12d7954799ffa3b1d19a57f411ceed">sese::internal::service::http::HttpServiceImpl::handleRequest()</a>, and <a class="el" href="classsese_1_1service_1_1http_1_1_http_server.html#a5fa0a115bc2b94d532d7331c72864484">sese::service::http::HttpServer::startup()</a>.</p>
 
 </div>
@@ -492,7 +263,7 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)&#160;&#160;&#160;    <a class="el" href="#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), buffer, length)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)&#160;&#160;&#160;    <a class="el" href="namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878">sese::record::getLogger</a>()-&gt;dump(buffer, length)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -513,13 +284,11 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)&#160;&#160;&#160;    <a class="el" href="classsese_1_1record_1_1_logger.html#a19c371981e8da6f93c846922ed14d1d5">sese::record::Logger::warn</a>(sese_tmp_format, ##__VA_ARGS__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#a1752b672fda64352abeab2ecd17f1a87">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::Level::WARN</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
-<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 </div><!-- contents -->
@@ -528,7 +297,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="record_2_marco_8h.html">Marco.h</a></li>
-    <li class="footer">Generated on Mon Jan 6 2025 12:59:05 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Tue Jan 7 2025 14:40:02 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

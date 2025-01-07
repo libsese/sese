@@ -14,8 +14,6 @@ var dir_c6625f544ed0c126aba16ec4b044d27b =
     [ "FileAppender.h", "_file_appender_8h.html", "_file_appender_8h" ],
     [ "Logger.cpp", "_logger_8cpp.html", "_logger_8cpp" ],
     [ "Logger.h", "_logger_8h.html", "_logger_8h" ],
-    [ "LogHelper.cpp", "_log_helper_8cpp.html", null ],
-    [ "LogHelper.h", "_log_helper_8h.html", "_log_helper_8h" ],
     [ "Marco.h", "record_2_marco_8h.html", "record_2_marco_8h" ],
     [ "SimpleFormatter.cpp", "_simple_formatter_8cpp.html", "_simple_formatter_8cpp" ],
     [ "SimpleFormatter.h", "_simple_formatter_8h.html", "_simple_formatter_8h" ]

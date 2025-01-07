@@ -181,7 +181,6 @@ var annotated_dup =
         [ "FileAppender", "classsese_1_1record_1_1_file_appender.html", "classsese_1_1record_1_1_file_appender" ],
         [ "Logger", "classsese_1_1record_1_1_logger.html", "classsese_1_1record_1_1_logger" ],
         [ "LoggerInitiateTask", "classsese_1_1record_1_1_logger_initiate_task.html", "classsese_1_1record_1_1_logger_initiate_task" ],
-        [ "LogHelper", "classsese_1_1record_1_1_log_helper.html", "classsese_1_1record_1_1_log_helper" ],
         [ "SimpleFormatter", "classsese_1_1record_1_1_simple_formatter.html", "classsese_1_1record_1_1_simple_formatter" ]
       ] ],
       [ "res", "namespacesese_1_1res.html", [

@@ -1,13 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"classsese_1_1io_1_1_byte_buffer.html#a2c1cd42014e19737f09b98c9a198f9dd":[12,0,0,7,6,12],
-"classsese_1_1io_1_1_byte_buffer.html#a34d7b60a4341bb8c7710eaa5a897c652":[11,0,0,7,6,9],
-"classsese_1_1io_1_1_byte_buffer.html#a34d7b60a4341bb8c7710eaa5a897c652":[12,0,0,7,6,9],
-"classsese_1_1io_1_1_byte_buffer.html#a424b3448336f0a6684f1c5566fca8dc8":[11,0,0,7,6,6],
-"classsese_1_1io_1_1_byte_buffer.html#a424b3448336f0a6684f1c5566fca8dc8":[12,0,0,7,6,6],
-"classsese_1_1io_1_1_byte_buffer.html#a4b380c9183805818aaa40db8bd667420":[11,0,0,7,6,5],
-"classsese_1_1io_1_1_byte_buffer.html#a4b380c9183805818aaa40db8bd667420":[12,0,0,7,6,5],
-"classsese_1_1io_1_1_byte_buffer.html#a52f3d97ac6fdec48ce889564ef165286":[11,0,0,7,6,13],
 "classsese_1_1io_1_1_byte_buffer.html#a52f3d97ac6fdec48ce889564ef165286":[12,0,0,7,6,13],
 "classsese_1_1io_1_1_byte_buffer.html#a738a8e7ce6f49c564dc424f7216b8ecb":[11,0,0,7,6,0],
 "classsese_1_1io_1_1_byte_buffer.html#a738a8e7ce6f49c564dc424f7216b8ecb":[12,0,0,7,6,0],
@@ -249,5 +241,13 @@ var NAVTREEINDEX17 =
 "classsese_1_1io_1_1_std_output_stream_wrapper.html#aa33e1f46e1c4802f992b0362cdc66253":[12,0,0,7,24,3],
 "classsese_1_1io_1_1_std_output_stream_wrapper.html#ac160337b94e3ecc32323833e8e2405cf":[11,0,0,7,24,2],
 "classsese_1_1io_1_1_std_output_stream_wrapper.html#ac160337b94e3ecc32323833e8e2405cf":[12,0,0,7,24,2],
-"classsese_1_1io_1_1_std_output_stream_wrapper.html#acbc1a72bbed4e3563bb4ad88c5d21f5e":[11,0,0,7,24,1]
+"classsese_1_1io_1_1_std_output_stream_wrapper.html#acbc1a72bbed4e3563bb4ad88c5d21f5e":[11,0,0,7,24,1],
+"classsese_1_1io_1_1_std_output_stream_wrapper.html#acbc1a72bbed4e3563bb4ad88c5d21f5e":[12,0,0,7,24,1],
+"classsese_1_1io_1_1_stream.html":[11,0,0,7,25],
+"classsese_1_1io_1_1_stream.html":[12,0,0,7,25],
+"classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e":[11,0,0,7,25,0],
+"classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e":[12,0,0,7,25,0],
+"classsese_1_1iocp_1_1_i_o_buf.html":[11,0,0,8,1],
+"classsese_1_1iocp_1_1_i_o_buf.html":[12,0,0,8,1],
+"classsese_1_1iocp_1_1_i_o_buf.html#a1a8aa393267b82d295781741f1cb1927":[11,0,0,8,1,5]
 };
