@@ -12,9 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
-#include <sese/record/LogHelper.h>
 #include <sese/record/Marco.h>
 #include <sese/thread/Thread.h>
 #include <sese/util/Timer.h>

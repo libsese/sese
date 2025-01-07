@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/record/LogHelper.h>
+#include <sese/record/Logger.h>
 #include <sese/config/ConfigUtil.h>
 #include <sese/config/xml/XmlUtil.h>
 #include <sese/io/ConsoleOutputStream.h>
@@ -29,9 +29,9 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
-TEST(TestConfig, Config) {
-    sese::record::LogHelper log;
+using sese::record::Logger;
 
+TEST(TestConfig, Config) {
     auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.ini", sese::io::File::T_READ);
     ASSERT_TRUE(file != nullptr);
 
@@ -41,12 +41,12 @@ TEST(TestConfig, Config) {
     auto default_section = config->getDefaultSection();
     ASSERT_TRUE(default_section != nullptr);
     auto default_name = default_section->getValueByKey("name", "unknown");
-    log.info("[default] name = %s", default_name.c_str());
+    Logger::info("[default] name = {}", default_name.c_str());
 
     auto server_section = config->getSectionByName("server");
     ASSERT_TRUE(server_section != nullptr);
-    log.info("[server] address = %s", server_section->getValueByKey("address", "192.168.1.1").c_str());
-    log.info("[server] port = %s", server_section->getValueByKey("port", "8080").c_str());
+    Logger::info("[server] address = {}", server_section->getValueByKey("address", "192.168.1.1").c_str());
+    Logger::info("[server] port = {}", server_section->getValueByKey("port", "8080").c_str());
 
     auto client_section = config->getSectionByName("client");
     ASSERT_TRUE(client_section == nullptr);

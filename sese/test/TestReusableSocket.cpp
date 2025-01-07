@@ -57,7 +57,7 @@ private:
 
 static sese::net::IPAddress::Ptr createAddress() {
     auto port = sese::net::createRandomPort();
-    SESE_INFO("select port %d\n", (int) port);
+    SESE_INFO("select port {}\n", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
@@ -110,7 +110,7 @@ TEST(TestReusableSocket, LoadBalancing) {
     sese::net::Socket::close(sock1);
     sese::net::Socket::close(sock2);
 
-    SESE_INFO("Socket1: %d\nSocket2: %d\n", event1.getNum(), event2.getNum());
+    SESE_INFO("Socket1: {}\nSocket2: {}\n", event1.getNum(), event2.getNum());
 }
 
 #endif

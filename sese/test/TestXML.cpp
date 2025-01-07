@@ -16,11 +16,13 @@
 #include "sese/io/FileStream.h"
 #include "sese/io/ConsoleOutputStream.h"
 #include "sese/io/InputBufferWrapper.h"
-#include "sese/record/LogHelper.h"
+#include "sese/record/Logger.h"
 
 #include <gtest/gtest.h>
 
 #include <filesystem>
+
+using sese::record::Logger;
 
 TEST(TestXML, File) {
     auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", sese::io::FileStream::B_READ);
@@ -28,9 +30,9 @@ TEST(TestXML, File) {
     ASSERT_NE(element, nullptr);
 
     for (decltype(auto) item: element->getElements()) {
-        sese::record::LogHelper::i("name: %s, type: %s", item->getName().c_str(), item->getAttribute("type", "undef").c_str());
-        for (decltype(auto) attr: item->getAttributes()) {
-            sese::record::LogHelper::i("%s: %s", attr.first.c_str(), attr.second.c_str());
+        Logger::info("name: {}, type: {}", item->getName().c_str(), item->getAttribute("type", "undef").c_str());
+        for (const auto &[name, value]: item->getAttributes()) {
+            Logger::info("{}: {}", name.c_str(), value.c_str());
         }
         item->removeAttribute("count");
     }

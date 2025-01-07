@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/archive/ArchiveReader.h>
 #include <sese/record/Marco.h>
 #include <sese/io/File.h>
@@ -41,7 +39,7 @@ TEST(TestArchiveReader, Info) {
                sese::io::InputStream *input,
                size_t size) -> bool {
                 auto path = wpath.string();
-                SESE_INFO("path: %s size: %zu type: %d", path.c_str(), size, static_cast<int>(type));
+                SESE_INFO("path: {} size: {} type: {}", path, size, static_cast<int>(type));
                 return true;
             }
     ));
@@ -60,7 +58,7 @@ TEST(TestArchiveReader, Info_wrong_password) {
                sese::io::InputStream *input,
                size_t size) -> bool {
                 auto path = wpath.string();
-                SESE_INFO("path: %s size: %zu type: %d", path.c_str(), size, static_cast<int>(type));
+                SESE_INFO("path: {} size: {} type: {}", path, size, static_cast<int>(type));
                 return true;
             }
     ));

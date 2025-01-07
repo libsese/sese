@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/net/Socket.h>
 #include <sese/net/AddressPool.h>
 #include <sese/record/Marco.h>
@@ -36,7 +34,7 @@ GTEST_TEST(TestSocket, Client) {
 
     // char buffer[1024]{};
     // client.read(buffer, sizeof(buffer));
-    // SESE_INFO("%s", buffer);
+    // SESE_INFO("{}", buffer);
 
     client.shutdown(sese::net::Socket::ShutdownMode::BOTH);
     client.close();
@@ -76,7 +74,7 @@ GTEST_TEST(TestSocket, Server) {
     char buffer[32]{};
     client.read(buffer, sizeof(buffer));
     client.close();
-    SESE_INFO("Recv Message: %s", buffer);
+    SESE_INFO("Recv Message: {}", buffer);
 
     th.join();
     server.close();
@@ -84,7 +82,7 @@ GTEST_TEST(TestSocket, Server) {
 
 GTEST_TEST(TestSocket, Server_IPv6) {
     auto port = sese::net::createRandomPort();
-    auto address = sese::net::IPv6Address::localhost((uint16_t) port);
+    auto address = sese::net::IPv6Address::localhost(port);
     auto server = sese::net::Socket(sese::net::Socket::Family::IPv6, sese::net::Socket::Type::TCP, IPPROTO_IP);
     ASSERT_EQ(server.bind(address), 0);
     server.listen(SERVER_MAX_CONNECTION);
@@ -117,7 +115,7 @@ GTEST_TEST(TestSocket, Server_IPv6) {
     client.peek(buffer, sizeof(buffer));
     client.trunc(sizeof(buffer));
     client.close();
-    SESE_INFO("Recv Message: %s", buffer);
+    SESE_INFO("Recv Message: {}", buffer);
 
     th.join();
     server.close();
@@ -135,8 +133,8 @@ GTEST_TEST(TestSocket, Server_UDP) {
                 char buffer[1024]{};
                 auto client_address = std::make_shared<sese::net::IPv4Address>();
                 server.recv(buffer, sizeof(buffer), client_address, 0);
-                SESE_INFO("Recv Address: %s:%d", client_address->getAddress().c_str(), client_address->getPort());
-                SESE_INFO("Recv Message: %s", buffer);
+                SESE_INFO("Recv Address: {}:{}", client_address->getAddress().c_str(), client_address->getPort());
+                SESE_INFO("Recv Message: {}", buffer);
                 SESE_INFO("close");
             },
             "Server_UDP"
@@ -186,7 +184,7 @@ GTEST_TEST(TestSocket, NativeAPI) {
     char buffer[32]{};
     sese::net::Socket::read(client, buffer, sizeof(buffer), 0);
     sese::net::Socket::close(client);
-    SESE_INFO("Recv Message: %s", buffer);
+    SESE_INFO("Recv Message: {}", buffer);
 
     th.join();
     sese::net::Socket::close(socket);

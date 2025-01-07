@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/service/BalanceLoader.h>
 #include <sese/system/Process.h>
 #include <sese/record/Marco.h>
@@ -22,14 +20,6 @@
 #include <random>
 
 #include <gtest/gtest.h>
-
-#define printf SESE_INFO
-
-static sese::net::IPv4Address::Ptr createAddress() {
-    auto port = sese::net::createRandomPort();
-    printf("select port %d", (int) port);
-    return sese::net::IPv4Address::create("127.0.0.1", port);
-}
 
 TEST(TestWebsocket, Auth_0) {
     auto key = "dGhlIHNhbXBsZSBub25jZQ==";

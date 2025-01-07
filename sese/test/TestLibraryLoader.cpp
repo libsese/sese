@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/system/LibraryLoader.h"
 #include "sese/Log.h"
 
@@ -29,7 +27,7 @@ TEST(TestLibraryLoader, Sin) {
 #elif __APPLE__
     auto *lib_name = "libstdc++.6.dylib";
 #endif
-    SESE_INFO("loading lib \"%s\"", lib_name);
+    SESE_INFO("loading lib \"{}\"", lib_name);
     const auto OBJECT = sese::system::LibraryObject::create(lib_name);
     ASSERT_NE(OBJECT, nullptr);
     const auto SIN = (Func *) (OBJECT->findFunctionByName("sin"));
@@ -37,14 +35,14 @@ TEST(TestLibraryLoader, Sin) {
 
     const auto A = SIN(1.0f);
     const auto B = SIN(0.0f);
-    SESE_INFO("sin(1.0f) = %f", A);
-    SESE_INFO("sin(0.0f) = %f", B);
+    SESE_INFO("sin(1.0f) = {}", A);
+    SESE_INFO("sin(0.0f) = {}", B);
 }
 
 TEST(TestLibraryLoader, Result) {
     auto result = sese::sys::LibraryObject::createEx("undef.dll");
     if (result) {
-        SESE_INFO("%s", result.err().message().c_str());
+        SESE_INFO("{}", result.err().message());
         return;
     }
     auto lib = result.get();

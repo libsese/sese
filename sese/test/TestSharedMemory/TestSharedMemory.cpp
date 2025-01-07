@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <sese/record/Logger.h>
 #include <sese/system/SharedMemory.h>
 #include <sese/system/Process.h>
-#include <sese/record/LogHelper.h>
 #include <sese/util/Util.h>
 
 #include <gtest/gtest.h>
 
-using sese::record::LogHelper;
+using sese::record::Logger;
 using namespace std::chrono_literals;
 
 TEST(TestSharedMemory, MEM_D) {
@@ -35,7 +35,7 @@ TEST(TestSharedMemory, MEM_D) {
     ASSERT_NE(mem, nullptr) << "failed to use shared memory: " << sese::getErrorString();
 
     auto p_int = static_cast<int64_t *>(mem->getBuffer());
-    LogHelper::i("memory daemon init number is: %" PRId64, *p_int);
+    Logger::info("memory daemon init number is: {}", *p_int);
 
     *p_int += 1;
     EXPECT_EQ(process->wait(), 0);

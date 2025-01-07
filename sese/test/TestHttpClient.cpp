@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <gtest/gtest.h>
 #include <sese/net/http/RequestableFactory.h>
 #include <sese/thread/Async.h>
@@ -29,7 +27,7 @@ TEST(TestHttpClient, WithoutSSL) {
     ASSERT_TRUE(client->request()) << client->getLastError();
 
     for (auto &&[key, value]: *client->getResponse()) {
-        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        SESE_INFO("{}: {}", key, value);
     }
 }
 
@@ -46,7 +44,7 @@ TEST(TestHttpClient, WithSSL) {
     } while (status != std::future_status::ready);
 
     for (auto &&[key, value]: *client->getResponse()) {
-        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        SESE_INFO("{}: {}", key, value);
     }
 }
 
@@ -56,7 +54,7 @@ TEST(TestHttpClient, DISABLED_WithProxy) {
     ASSERT_TRUE(client->request()) << client->getLastError();
 
     for (auto &&[key, value]: *client->getResponse()) {
-        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        SESE_INFO("{}: {}", key, value);
     }
 }
 
@@ -68,7 +66,7 @@ TEST(TestHttpClient, KeepAlive) {
 
     SESE_INFO("first request.");
     for (auto &&[key, value]: *client->getResponse()) {
-        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        SESE_INFO("{}: {}", key, value);
     }
 
     client->getRequest()->setUrl("/index.html");
@@ -76,6 +74,6 @@ TEST(TestHttpClient, KeepAlive) {
 
     SESE_INFO("second request.");
     for (auto &&[key, value]: *client->getResponse()) {
-        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        SESE_INFO("{}: {}", key, value);
     }
 }

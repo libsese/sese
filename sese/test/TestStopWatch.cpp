@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/util/StopWatch.h>
 #include <sese/record/Marco.h>
 
@@ -27,7 +25,7 @@ TEST(TestStopWatch, Construct) {
     sese::StopWatch stop_watch;
     std::this_thread::sleep_for(100ms);
     auto span = stop_watch.stop();
-    SESE_INFO("cost time %f ms", span.getTotalMilliseconds());
+    SESE_INFO("cost time {} ms", span.getTotalMilliseconds());
 }
 
 TEST(TestStopWatch, Stop) {
@@ -35,7 +33,7 @@ TEST(TestStopWatch, Stop) {
     stop_watch.stop();
     std::this_thread::sleep_for(100ms);
     auto span = stop_watch.stop();
-    SESE_INFO("cost time %f ms", span.getTotalMilliseconds());
+    SESE_INFO("cost time {} ms", span.getTotalMilliseconds());
 }
 
 TEST(TestStopWatch, Reset) {
@@ -44,5 +42,5 @@ TEST(TestStopWatch, Reset) {
     stop_watch.reset();
     std::this_thread::sleep_for(100ms);
     auto span = stop_watch.stop();
-    SESE_INFO("cost time %f ms", span.getTotalMilliseconds());
+    SESE_INFO("cost time {} ms", span.getTotalMilliseconds());
 }

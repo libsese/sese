@@ -44,29 +44,17 @@ struct Formatter<Point> {
 };
 }
 // ...
+using sese::record::Logger;
 int a = 1, b = 2;
 Point point{1, 2};
-SESE_INFO("hello world");
-SESE_INFO("a + b = {}", a + b);
-SESE_INFO("point {}", point);
+Logger::info("hello world");
+Logger::info("a + b = {}", a + b);
+Logger::info("point {}", point);
 ```
 
 > 2024-06-27T01:43:05.571Z I main.cpp:7 Main:10376> hello world<br>
 > 2024-06-27T01:43:05.572Z I main.cpp:8 Main:10376> a + b = 3<br>
 > 2024-06-27T01:43:05.572Z I main.cpp:9 Main:10376> point (1,2)
-
-C-Like formatting style
-
-```c++
-#define SESE_C_LIKE_FORMAT
-#include <sese/Log.h>
-// ...
-SESE_INFO("hello world");
-SESE_WARN("error %s", err.what().c_str());
-```
-
-> 2024-05-15T15:54:48.296Z I main.cpp:8 Main:7116> hello world<br>
-> 2024-05-15T15:54:48.296Z W main.cpp:9 Main:7116> error End of file
 
 HTTP Controller
 

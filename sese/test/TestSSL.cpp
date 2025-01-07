@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/net/AddressPool.h>
 #include <sese/util/Random.h>
@@ -45,7 +43,7 @@ TEST(TestSSL, Auth) {
         EXPECT_FALSE(context->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key-failed.pem"));
         ASSERT_FALSE(context->authPrivateKey());
         auto error = context->getErrorCode();
-        SESE_ERROR("%s", error.message().c_str());
+        SESE_ERROR("{}", error.message());
     }
 }
 
@@ -65,7 +63,7 @@ TEST(TestSSL, Client) {
 
     char buffer[1024]{};
     client->read(buffer, sizeof(buffer));
-    // SESE_INFO("%s", buffer);
+    // SESE_INFO("{}", buffer);
 
     client->shutdown(sese::net::Socket::ShutdownMode::BOTH);
     client->close();
@@ -111,7 +109,7 @@ TEST(TestSSL, Server) {
     char buffer[32]{};
     client.read(buffer, sizeof(buffer));
     client.close();
-    SESE_INFO("Recv Message: %s", buffer);
+    SESE_INFO("Recv Message: {}", buffer);
 
     th.join();
     server.close();

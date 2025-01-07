@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/container/Bimap.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
@@ -54,6 +52,6 @@ TEST(TestBimap, Iterator) {
     };
 
     for (const auto& [key, value]: bimap) {
-        SESE_DEBUG("Key: %s Value: %d", key.c_str(), value);
+        SESE_DEBUG("Key: {} Value: {}", key.c_str(), value);
     }
 }

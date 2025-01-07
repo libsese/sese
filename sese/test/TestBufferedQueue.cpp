@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <gtest/gtest.h>
 #include <sese/thread/Thread.h>
 #include <sese/container/BufferedQueue.h>
@@ -33,7 +31,7 @@ TEST(TestBufferedQueue, NN) {
             mutex1.unlock();
         }
         auto time = watch.stop();
-        SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
+        SESE_INFO("time cost: {}ms", static_cast<size_t>(time.getTotalMilliseconds()));
     };
     sese::Thread thread1(proc1, "producer1");
     sese::Thread thread2(proc1, "producer2");
@@ -54,7 +52,7 @@ TEST(TestBufferedQueue, NN) {
             }
         }
         auto time = watch.stop();
-        SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
+        SESE_INFO("time cost: {}ms", static_cast<size_t>(time.getTotalMilliseconds()));
     };
     sese::Thread thread3(proc2, "consumer1");
     sese::Thread thread4(proc2, "consumer2");
@@ -83,7 +81,7 @@ TEST(TestBufferedQueue, 11) {
             mutex1.unlock();
         }
         auto time = watch.stop();
-        SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
+        SESE_INFO("time cost: {}ms", static_cast<size_t>(time.getTotalMilliseconds()));
     };
     sese::Thread thread1(proc1, "producer1");
 
@@ -103,7 +101,7 @@ TEST(TestBufferedQueue, 11) {
             }
         }
         auto time = watch.stop();
-        SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
+        SESE_INFO("time cost: {}ms", static_cast<size_t>(time.getTotalMilliseconds()));
     };
     sese::Thread thread2(proc2, "consumer1");
 

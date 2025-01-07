@@ -12,13 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/internal/db/maria/MariaPreparedStatementImpl.h>
 #include <sese/record/Marco.h>
-
-#undef SESE_DEBUG
-#define SESE_DEBUG(str, ...)
 
 sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
         MYSQL_STMT *stmt,

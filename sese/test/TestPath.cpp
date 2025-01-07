@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/system/Paths.h>
 #include <sese/record/Marco.h>
 
@@ -89,11 +87,11 @@ TEST(TestPath, UnixParse) {
 
 TEST(TestPath, RuntimePaths) {
     auto word_dir = sese::system::Paths::getWorkDir();
-    SESE_INFO("work dir: %s", word_dir.getUnixPath().c_str());
+    SESE_INFO("work dir: {}", word_dir.getUnixPath());
 
     auto exec_dir = sese::system::Paths::getExecutablePath();
-    SESE_INFO("exec path: %s", exec_dir.getUnixPath().c_str());
+    SESE_INFO("exec path: {}", exec_dir.getUnixPath());
 
     auto exec_name = sese::system::Paths::getExecutableName();
-    SESE_INFO("exec name: %s", exec_name.c_str());
+    SESE_INFO("exec name: {}", exec_name);
 }

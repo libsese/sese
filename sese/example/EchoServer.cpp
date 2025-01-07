@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/service/iocp/IOCPServer.h>
 #include <sese/record/Marco.h>
 #include <sese/util/Initializer.h>
@@ -26,35 +24,35 @@ public:
     }
 
     void onAcceptCompleted(sese::iocp::Context *ctx) override {
-        SESE_INFO("onAcceptCompleted %d", ctx->getFd());
+        SESE_INFO("onAcceptCompleted {}", ctx->getFd());
         postRead(ctx);
         setTimeout(ctx, 10);
     }
 
     void onPreRead(sese::iocp::Context *ctx) override {
         cancelTimeout(ctx);
-        SESE_INFO("onPreRead %d", ctx->getFd());
+        SESE_INFO("onPreRead {}", ctx->getFd());
     }
 
     void onReadCompleted(sese::iocp::Context *ctx) override {
-        SESE_INFO("onReadCompleted %d", ctx->getFd());
+        SESE_INFO("onReadCompleted {}", ctx->getFd());
         sese::streamMove(ctx, ctx, IOCP_WSABUF_SIZE);
         postWrite(ctx);
     }
 
     void onWriteCompleted(sese::iocp::Context *ctx) override {
-        SESE_INFO("onWriteCompleted %d", ctx->getFd());
+        SESE_INFO("onWriteCompleted {}", ctx->getFd());
         postRead(ctx);
         setTimeout(ctx, 10);
     }
 
     void onTimeout(sese::iocp::Context *ctx) override {
-        SESE_INFO("onTimeout %d", ctx->getFd());
+        SESE_INFO("onTimeout {}", ctx->getFd());
         postClose(ctx);
     }
 
     static void myDeleter(sese::iocp::Context *ctx) {
-        SESE_INFO("onDeleteCallback %d", ctx->getFd());
+        SESE_INFO("onDeleteCallback {}", ctx->getFd());
     }
 };
 
@@ -70,7 +68,7 @@ int main(int argc, char **argv) {
         SESE_ERROR("server init failed!");
         return 0;
     }
-    SESE_INFO("server listening on %d", address->getPort());
+    SESE_INFO("server listening on {}", address->getPort());
     getchar();
     server.shutdown();
     return 0;

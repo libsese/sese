@@ -14,7 +14,6 @@
 
 #include "sese/io/ByteBuffer.h"
 #include "sese/io/ByteBuilder.h"
-#include <sese/record/LogHelper.h>
 
 #include <gtest/gtest.h>
 

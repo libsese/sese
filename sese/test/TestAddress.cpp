@@ -12,17 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/net/AddressPool.h"
-#include "sese/record/LogHelper.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
 TEST(TestAddress, AddressLookUp) {
     auto address = sese::net::Address::lookUpAny("www.baidu.com");
     ASSERT_TRUE(address != nullptr);
-    SESE_INFO("www.baidu.com: %s", address->getAddress().c_str());
+    SESE_INFO("www.baidu.com: {}", address->getAddress());
 }
 
 TEST(TestAddress, IPv6) {
@@ -31,7 +28,7 @@ TEST(TestAddress, IPv6) {
     address6->setPort(8080);
     EXPECT_EQ(address6->getPort(), 8080);
     EXPECT_EQ(address6->getFamily(), AF_INET6);
-    SESE_INFO("%s", address6->getAddress().c_str());
+    SESE_INFO("{}", address6->getAddress());
 }
 
 TEST(TestAddress, AddressPool) {
@@ -53,11 +50,11 @@ TEST(TestAddress, IPAddress) {
 TEST(TestAddress, IPv4Address) {
     auto any = sese::net::IPv4Address::any();
     ASSERT_NE(any, nullptr);
-    SESE_INFO("any: %s", any->getAddress().c_str());
+    SESE_INFO("any: {}", any->getAddress());
 
     auto local = sese::net::IPv4Address::localhost();
     ASSERT_NE(local, nullptr);
-    SESE_INFO("local: %s", local->getAddress().c_str());
+    SESE_INFO("local: {}", local->getAddress());
 
     auto address0 = sese::net::IPv4Address::create("256.0.0.1", 0);
     ASSERT_EQ(address0, nullptr);
@@ -67,46 +64,46 @@ TEST(TestAddress, IPv4Address) {
 
     auto address2 = local->getBroadcastAddress(24);
     ASSERT_NE(address2, nullptr);
-    SESE_INFO("local broadcast address: %s", address2->getAddress().c_str());
+    SESE_INFO("local broadcast address: {}", address2->getAddress());
 
     auto address3 = local->getNetworkAddress(33);
     ASSERT_EQ(address3, nullptr);
 
     auto address4 = local->getNetworkAddress(24);
     ASSERT_NE(address4, nullptr);
-    SESE_INFO("local network address: %s", address4->getAddress().c_str());
+    SESE_INFO("local network address: {}", address4->getAddress());
 
     auto address5 = local->getSubnetMask(33);
     ASSERT_EQ(address5, nullptr);
 
     auto address6 = local->getSubnetMask(24);
     ASSERT_NE(address6, nullptr);
-    SESE_INFO("local subnet mask: %s", address6->getAddress().c_str());
+    SESE_INFO("local subnet mask: {}", address6->getAddress());
 }
 
 TEST(TestAddress, IPv6Address) {
     auto any = sese::net::IPv6Address::any();
     ASSERT_NE(any, nullptr);
-    SESE_INFO("any: %s", any->getAddress().c_str());
+    SESE_INFO("any: {}", any->getAddress());
 
     auto local = sese::net::IPv6Address::localhost();
     ASSERT_NE(local, nullptr);
-    SESE_INFO("local: %s", local->getAddress().c_str());
+    SESE_INFO("local: {}", local->getAddress());
 
     auto address0 = sese::net::IPv6Address::create("256.0.0.1", 0);
     ASSERT_EQ(address0, nullptr);
 
     auto address1 = local->getBroadcastAddress(10);
     ASSERT_NE(address1, nullptr);
-    SESE_INFO("local broadcast address: %s", address1->getAddress().c_str());
+    SESE_INFO("local broadcast address: {}", address1->getAddress());
 
     auto address2 = local->getNetworkAddress(10);
     ASSERT_NE(address2, nullptr);
-    SESE_INFO("local network address: %s", address2->getAddress().c_str());
+    SESE_INFO("local network address: {}", address2->getAddress());
 
     auto address3 = local->getSubnetMask(10);
     ASSERT_NE(address3, nullptr);
-    SESE_INFO("local subnet mask: %s", address3->getAddress().c_str());
+    SESE_INFO("local subnet mask: {}", address3->getAddress());
 }
 
 TEST(TestAddress, Family) {

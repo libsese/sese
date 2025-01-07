@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/record/Marco.h"
-#include "sese/record/LogHelper.h"
 #include "sese/record/BlockAppender.h"
 #include "sese/record/FileAppender.h"
 #include "sese/record/SimpleFormatter.h"
@@ -27,54 +24,35 @@
 using namespace std::chrono_literals;
 
 TEST(TestLogger, BlockAppender) {
-    sese::record::LogHelper log;
-
+    using sese::record::Logger;
     auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 20, sese::record::Level::INFO);
     appender->size = appender->maxSize - 128;
-    sese::record::Logger::addGlobalLoggerAppender(appender);
+    Logger::addGlobalLoggerAppender(appender);
 
-    log.debug("no display");
-    log.info("No.%d log message", 0);
+    Logger::debug("no display");
+    Logger::info("No.{} log message", 0);
     std::this_thread::sleep_for(100ms);
 
     for (auto i = 1; i < 64; i++) {
-        log.info("No.%d log message", i);
+        Logger::info("No.{} log message", i);
     }
 
-    sese::record::Logger::removeGlobalLoggerAppender(appender);
-}
-
-TEST(TestLogger, Logger) {
-    sese::record::LogHelper log;
-
-    log.debug("Hello");
-    log.info("Hello");
-    log.warn("Hello");
-    log.error("Hello");
-}
-
-TEST(TestLogger, StaticMethod) {
-    using sese::record::LogHelper;
-    LogHelper::d("Hello");
-    LogHelper::i("Hello");
-    LogHelper::w("Hello");
-    LogHelper::e("Hello");
+    Logger::removeGlobalLoggerAppender(appender);
 }
 
 TEST(TestLogger, FileAppender) {
+    using sese::record::Logger;
     {
-        sese::record::LogHelper log;
-
         auto logger = sese::record::getLogger();
         auto file_stream = sese::io::FileStream::create("hello.log", sese::io::FileStream::T_WRITE_TRUNC);
         ASSERT_TRUE(file_stream != nullptr);
         auto file_appender = std::make_shared<sese::record::FileAppender>(file_stream);
         logger->addAppender(file_appender);
 
-        log.debug("Hello");
-        log.info("Hello");
-        log.warn("Hello");
-        log.error("Hello");
+        Logger::debug("Hello");
+        Logger::info("Hello");
+        Logger::warn("Hello");
+        Logger::error("Hello");
 
         logger->removeAppender(file_appender);
     }
@@ -82,37 +60,37 @@ TEST(TestLogger, FileAppender) {
 }
 
 TEST(TestLogger, SimpleFormat) {
+    using sese::record::Logger;
     auto event = std::make_shared<sese::record::Event>(
-            sese::DateTime::now(),
-            sese::record::Level::INFO,
-            "ThreadName",
-            0,
-            SESE_FILENAME,
-            __LINE__,
-            "Hello"
+        sese::DateTime::now(),
+        sese::record::Level::INFO,
+        "ThreadName",
+        0,
+        SESE_FILENAME,
+        __LINE__,
+        "Hello"
     );
 
-
     auto format1 = sese::record::SimpleFormatter("c");
-    sese::record::LogHelper::d(format1.dump(event).c_str());
+    Logger::debug(format1.dump(event).c_str());
 
     auto format2 = sese::record::SimpleFormatter("li lv la");
-    sese::record::LogHelper::d(format2.dump(event).c_str());
+    Logger::debug(format2.dump(event).c_str());
 
     auto format3 = sese::record::SimpleFormatter("fn fi fa");
-    sese::record::LogHelper::d(format3.dump(event).c_str());
+    Logger::debug(format3.dump(event).c_str());
 
     auto format4 = sese::record::SimpleFormatter("th tn ta");
-    sese::record::LogHelper::d(format4.dump(event).c_str());
+    Logger::debug(format4.dump(event).c_str());
 
     auto format5 = sese::record::SimpleFormatter("%m");
-    sese::record::LogHelper::d(format5.dump(event).c_str());
+    Logger::debug(format5.dump(event).c_str());
 }
 
-TEST(TestLogger, Macro) {
-    SESE_DEBUG("Hello");
-    SESE_INFO("Hello");
-    SESE_WARN("Hello");
-    SESE_ERROR("Hello");
-    SESE_RAW("Hello\n", 6);
+TEST(TestLogger, Methods) {
+    using sese::record::Logger;
+    Logger::debug("Hello, {}", "world");
+    Logger::info("Hello");
+    Logger::warn("Hello");
+    Logger::error("Hello");
 }

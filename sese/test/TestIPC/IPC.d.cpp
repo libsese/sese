@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/system/IPC.h>
 #include <sese/record/Marco.h>
 #include <sese/util/Initializer.h>
@@ -29,7 +27,7 @@ int main(int argc, char **argv) {
             continue;
         }
         for (auto &&msg: messages) {
-            SESE_INFO("recv %s", msg.getDataAsString().c_str());
+            SESE_INFO("recv {}", msg.getDataAsString());
 
             if (msg.getDataAsString() == "Exit") {
                 goto end;

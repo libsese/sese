@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/convert/PercentConverter.h>
 #include <sese/io/OutputBufferWrapper.h>
 #include <sese/record/Marco.h>

@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/InputBufferWrapper.h"
 #include "sese/net/http/DynamicTable.h"
@@ -25,37 +23,27 @@
 
 #include "gtest/gtest.h"
 
-#define printf SESE_INFO
-
-static auto makeRandomPortAddr() {
-    auto port = sese::net::createRandomPort();
-    printf("select port %d", port);
-    auto addr = sese::net::IPv4Address::localhost();
-    addr->setPort(port);
-    return addr;
-}
-
 void showStreamHeader(auto &header) noexcept {
     puts("============ Stream Header ============");
     for (decltype(auto) pair: header) {
-        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
+        SESE_INFO("{}: {}", pair.first, pair.second);
     }
 }
 
 void showStreamHeader(auto &once_header, auto &indexed_header) noexcept {
     puts("============ Stream Header ============");
     for (decltype(auto) pair: once_header) {
-        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
+        SESE_INFO("{}: {}", pair.first, pair.second);
     }
     for (decltype(auto) pair: indexed_header) {
-        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
+        SESE_INFO("{}: {}", pair.first, pair.second);
     }
 }
 
 void showDynamicTable(const auto &table) noexcept {
     puts("============ Dynamic Table ============");
     for (decltype(auto) pair: table) {
-        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
+        SESE_INFO("{}: {}", pair.first, pair.second);
     }
 }
 
