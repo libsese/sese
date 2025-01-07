@@ -116,6 +116,22 @@ void Logger::dump(const void *buffer, size_t length) noexcept {
 
 Logger *getLogger() noexcept { return logger; }
 
+void Logger::debug(PatternAndLocation pattern_and_location) {
+    prelog(pattern_and_location, Level::DEBUG, std::string(pattern_and_location.pattern));
+}
+
+void Logger::info(PatternAndLocation pattern_and_location) {
+    prelog(pattern_and_location, Level::INFO, std::string(pattern_and_location.pattern));
+}
+
+void Logger::warn(PatternAndLocation pattern_and_location) {
+    prelog(pattern_and_location, Level::WARN, std::string(pattern_and_location.pattern));
+}
+
+void Logger::error(PatternAndLocation pattern_and_location) {
+    prelog(pattern_and_location, Level::ERR, std::string(pattern_and_location.pattern));
+}
+
 int32_t LoggerInitiateTask::init() noexcept {
     // Initialize the logger
 #ifdef USE_ASYNC_LOGGER

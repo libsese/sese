@@ -95,29 +95,25 @@ public:
         }
     };
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    template<typename... ARGS>
     static void debug(PatternAndLocation pattern_and_location, ARGS &&...args);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-    static void debug(PatternAndLocation pattern_and_location, ARGS &&...);
+    static void debug(PatternAndLocation pattern_and_location);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    template<typename... ARGS>
     static void info(PatternAndLocation pattern_and_location, ARGS &&...args);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-    static void info(PatternAndLocation pattern_and_location, ARGS &&...);
+    static void info(PatternAndLocation pattern_and_location);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    template<typename... ARGS>
     static void warn(PatternAndLocation pattern_and_location, ARGS &&...args);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-    static void warn(PatternAndLocation pattern_and_location, ARGS &&...);
+    static void warn(PatternAndLocation pattern_and_location);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    template<typename... ARGS>
     static void error(PatternAndLocation pattern_and_location, ARGS &&...args);
 
-    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-    static void error(PatternAndLocation pattern_and_location, ARGS &&...);
+    static void error(PatternAndLocation pattern_and_location);
 
     /// Add log appender to global logger
     /// \param appender Log appender
@@ -142,48 +138,28 @@ private:
  */
 extern Logger *getLogger() noexcept;
 
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+template<typename... ARGS>
 void Logger::debug(PatternAndLocation pattern_and_location, ARGS &&...args) {
     auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
     prelog(pattern_and_location, Level::DEBUG, message);
 }
 
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-void Logger::debug(PatternAndLocation pattern_and_location, ARGS &&...) {
-    prelog(pattern_and_location, Level::DEBUG, std::string(pattern_and_location.pattern));
-}
-
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+template<typename... ARGS>
 void Logger::info(PatternAndLocation pattern_and_location, ARGS &&...args) {
     auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
     prelog(pattern_and_location, Level::INFO, message);
 }
 
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-void Logger::info(PatternAndLocation pattern_and_location, ARGS &&...) {
-    prelog(pattern_and_location, Level::INFO, std::string(pattern_and_location.pattern));
-}
-
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+template<typename... ARGS>
 void Logger::warn(PatternAndLocation pattern_and_location, ARGS &&...args) {
     auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
     prelog(pattern_and_location, Level::WARN, message);
 }
 
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-void Logger::warn(PatternAndLocation pattern_and_location, ARGS &&...) {
-    prelog(pattern_and_location, Level::WARN, std::string(pattern_and_location.pattern));
-}
-
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+template<typename... ARGS>
 void Logger::error(PatternAndLocation pattern_and_location, ARGS &&...args) {
     auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
     prelog(pattern_and_location, Level::ERR, message);
-}
-
-template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
-void Logger::error(PatternAndLocation pattern_and_location, ARGS &&...) {
-    prelog(pattern_and_location, Level::ERR, std::string(pattern_and_location.pattern));
 }
 
 } // namespace sese::record
