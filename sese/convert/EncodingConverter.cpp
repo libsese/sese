@@ -13,29 +13,14 @@
 // limitations under the License.
 
 #include "sese/convert/EncodingConverter.h"
-#include <codecvt>
-#include <locale>
-
-// GCOVR_EXCL_START
-
-static std::wstring_convert<std::codecvt_utf8<wchar_t>> *convert; /* NOLINT */
+#include "sese/text/String.h"
 
 std::string sese::EncodingConverter::toString(const std::wstring &wstring) noexcept {
-    return convert->to_bytes(wstring.c_str());
+    auto str = text::String::fromUCS2LE(wstring.c_str());
+    return str.toString();
 }
 
 std::wstring sese::EncodingConverter::toWstring(const std::string &string) noexcept {
-    return convert->from_bytes(string.c_str());
+    auto str = text::String::fromUTF8(string.c_str());
+    return str.toWString();
 }
-
-int32_t sese::EncodingConverterInitiateTask::init() noexcept {
-    convert = new std::wstring_convert<std::codecvt_utf8<wchar_t>>;
-    return 0;
-}
-
-int32_t sese::EncodingConverterInitiateTask::destroy() noexcept {
-    delete convert;
-    return 0;
-}
-
-// GCOVR_EXCL_STOP
