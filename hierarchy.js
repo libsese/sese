@@ -171,7 +171,6 @@ var hierarchy =
     [ "sese::ini::IniConfig", "structsese_1_1ini_1_1_ini_config.html", null ],
     [ "sese::Initializer", "classsese_1_1_initializer.html", null ],
     [ "sese::InitiateTask", "classsese_1_1_initiate_task.html", [
-      [ "sese::EncodingConverterInitiateTask", "classsese_1_1_encoding_converter_initiate_task.html", null ],
       [ "sese::ThreadInitiateTask", "classsese_1_1_thread_initiate_task.html", null ],
       [ "sese::record::LoggerInitiateTask", "classsese_1_1record_1_1_logger_initiate_task.html", null ],
       [ "sese::security::SecurityInitTask", "classsese_1_1security_1_1_security_init_task.html", null ],

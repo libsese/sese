@@ -296,7 +296,6 @@ var annotated_dup =
       [ "DateTime", "classsese_1_1_date_time.html", "classsese_1_1_date_time" ],
       [ "Decompressor", "classsese_1_1_decompressor.html", "classsese_1_1_decompressor" ],
       [ "EncodingConverter", "classsese_1_1_encoding_converter.html", "classsese_1_1_encoding_converter" ],
-      [ "EncodingConverterInitiateTask", "classsese_1_1_encoding_converter_initiate_task.html", "classsese_1_1_encoding_converter_initiate_task" ],
       [ "ErrorCode", "classsese_1_1_error_code.html", "classsese_1_1_error_code" ],
       [ "Exception", "classsese_1_1_exception.html", "classsese_1_1_exception" ],
       [ "GlobalThreadPool", "classsese_1_1_global_thread_pool.html", "classsese_1_1_global_thread_pool" ],

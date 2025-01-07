@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"_value_8cpp.html":[13,0,0,20,40],
 "_value_8cpp.html#a58ef6204ae17a79e0a3c5923fa00e5b1":[13,0,0,20,40,1],
 "_value_8cpp.html#aef270e30898bc5499ce23f6e0c331b0b":[13,0,0,20,40,0],
 "_value_8h.html":[13,0,0,20,41],
@@ -249,5 +248,6 @@ var NAVTREEINDEX4 =
 "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af":[12,0,0,0,0,0,1,39],
 "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a812628f78ee26faa91654f792b753c1c":[11,0,0,0,0,0,1,44],
 "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a812628f78ee26faa91654f792b753c1c":[12,0,0,0,0,0,1,44],
-"classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a84ac9242a7622948b1d0248e5d57bc08":[11,0,0,0,0,0,1,15]
+"classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a84ac9242a7622948b1d0248e5d57bc08":[11,0,0,0,0,0,1,15],
+"classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a84ac9242a7622948b1d0248e5d57bc08":[12,0,0,0,0,0,1,15]
 };

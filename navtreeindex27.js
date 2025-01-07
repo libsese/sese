@@ -1,14 +1,5 @@
 var NAVTREEINDEX27 =
 {
-"classsese_1_1system_1_1_shared_memory.html#a5e7d376a4a7e7b2e7bfc96b914d3969a":[12,0,0,15,19,5],
-"classsese_1_1system_1_1_shared_memory.html#a609004e73674720758b98086799b0748":[11,0,0,15,19,3],
-"classsese_1_1system_1_1_shared_memory.html#a609004e73674720758b98086799b0748":[12,0,0,15,19,3],
-"classsese_1_1system_1_1_shared_memory.html#a6888d13296968df9d86693109090b841":[11,0,0,15,19,2],
-"classsese_1_1system_1_1_shared_memory.html#a6888d13296968df9d86693109090b841":[12,0,0,15,19,2],
-"classsese_1_1system_1_1_shared_memory.html#a70064b1ed2752adbd17f7115d8c02b21":[11,0,0,15,19,6],
-"classsese_1_1system_1_1_shared_memory.html#a70064b1ed2752adbd17f7115d8c02b21":[12,0,0,15,19,6],
-"classsese_1_1system_1_1_shared_memory.html#a9d5d363813eab416f8c4373f4e6d1e85":[11,0,0,15,19,9],
-"classsese_1_1system_1_1_shared_memory.html#a9d5d363813eab416f8c4373f4e6d1e85":[12,0,0,15,19,9],
 "classsese_1_1system_1_1_shared_memory.html#aa2861717e9a6b1682c062328d0ea87e3":[11,0,0,15,19,1],
 "classsese_1_1system_1_1_shared_memory.html#aa2861717e9a6b1682c062328d0ea87e3":[12,0,0,15,19,1],
 "classsese_1_1system_1_1_shared_memory.html#aab05e8c936f11e27ad800af46a391753":[11,0,0,15,19,0],
@@ -249,5 +240,14 @@ var NAVTREEINDEX27 =
 "classsese_1_1text_1_1_string_builder.html#a2a7aeefc7d0e75f048190a6c30d9bec1":[12,0,0,16,8,1],
 "classsese_1_1text_1_1_string_builder.html#a30e931fe7f51da951bc962a6cacf7c84":[11,0,0,16,8,0],
 "classsese_1_1text_1_1_string_builder.html#a30e931fe7f51da951bc962a6cacf7c84":[12,0,0,16,8,0],
-"classsese_1_1text_1_1_string_builder.html#ad40c2fb0d74ce6117aacfb4b704b054a":[11,0,0,16,8,2]
+"classsese_1_1text_1_1_string_builder.html#ad40c2fb0d74ce6117aacfb4b704b054a":[11,0,0,16,8,2],
+"classsese_1_1text_1_1_string_builder.html#ad40c2fb0d74ce6117aacfb4b704b054a":[12,0,0,16,8,2],
+"classsese_1_1text_1_1_text_reader.html":[11,0,0,16,9],
+"classsese_1_1text_1_1_text_reader.html":[12,0,0,16,9],
+"classsese_1_1text_1_1_text_reader.html#a243ddb4a8f13dd5f278b71df43bd892f":[11,0,0,16,9,3],
+"classsese_1_1text_1_1_text_reader.html#a243ddb4a8f13dd5f278b71df43bd892f":[12,0,0,16,9,3],
+"classsese_1_1text_1_1_text_reader.html#a62c6048cdba4db7ecc9f35390284b325":[11,0,0,16,9,4],
+"classsese_1_1text_1_1_text_reader.html#a62c6048cdba4db7ecc9f35390284b325":[12,0,0,16,9,4],
+"classsese_1_1text_1_1_text_reader.html#a6d4b03df4324dc00d19060fb26ed1623":[11,0,0,16,9,5],
+"classsese_1_1text_1_1_text_reader.html#a6d4b03df4324dc00d19060fb26ed1623":[12,0,0,16,9,5]
 };
