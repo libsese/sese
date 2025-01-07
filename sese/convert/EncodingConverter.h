@@ -25,17 +25,13 @@
 #include "sese/util/NotInstantiable.h"
 #include "sese/util/Initializer.h"
 
-#ifdef _WIN32
-#pragma warning(disable : 4996)
-#pragma warning(disable : 4624)
-#endif
 
 namespace sese {
 
 /**
  * @brief String encoding conversion
  */
-class SESE_DEPRECATED EncodingConverter final : public NotInstantiable {
+class EncodingConverter final : public NotInstantiable {
 public:
     EncodingConverter() = delete;
 
@@ -43,12 +39,4 @@ public:
     [[maybe_unused]] static std::wstring toWstring(const std::string &string) noexcept;
 };
 
-/// Encoding converter initialization task
-class EncodingConverterInitiateTask final : public InitiateTask {
-public:
-    EncodingConverterInitiateTask() : InitiateTask(__FUNCTION__) {}
-
-    int32_t init() noexcept override;
-    int32_t destroy() noexcept override;
-};
 } // namespace sese
