@@ -12,14 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/container/StrCaseMap.h>
+#include <sese/record/Marco.h>
 #include <sese/Util.h>
 
 #include <algorithm>
 
-#include <sese/record/Marco.h>
 
 bool sese::StrCaseMapComparer::operator()(const std::string &lv, const std::string &rv) const {
     return sese::StrCmpI()(lv, rv) < 0;

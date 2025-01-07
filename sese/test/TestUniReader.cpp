@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <gtest/gtest.h>
 
 #include <sese/config/UniReader.h>
@@ -25,7 +23,7 @@ TEST(TestUniReader, Open_0) {
 
     std::string str;
     while (!(str = reader->readLine()).empty()) {
-        SESE_INFO("%s", str.c_str());
+        SESE_INFO("{}", str.c_str());
     }
 }
 

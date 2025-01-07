@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <gtest/gtest.h>
 
 #include <sese/service/iocp/IOCPServer.h>
@@ -28,30 +26,30 @@ public:
     }
 
     void onAcceptCompleted(sese::iocp::Context *ctx) override {
-        SESE_INFO("onAcceptCompleted %d", ctx->getFd());
+        SESE_INFO("onAcceptCompleted {}", ctx->getFd());
         postRead(ctx);
     }
 
     void onPreRead(sese::iocp::Context *ctx) override {
-        SESE_INFO("onRreRead %d", ctx->getFd());
+        SESE_INFO("onRreRead {}", ctx->getFd());
     }
 
     void onReadCompleted(sese::iocp::Context *ctx) override {
-        SESE_INFO("onReadCompleted %d", ctx->getFd());
+        SESE_INFO("onReadCompleted {}", ctx->getFd());
         sese::streamMove(ctx, ctx, IOCP_WSABUF_SIZE);
         postWrite(ctx);
     }
 
     void onWriteCompleted(sese::iocp::Context *ctx) override {
-        SESE_INFO("onWriteCompleted %d", ctx->getFd());
+        SESE_INFO("onWriteCompleted {}", ctx->getFd());
     }
 
     void onConnected(sese::iocp::Context *ctx) override {
-        SESE_INFO("onConnected %d", ctx->getFd());
+        SESE_INFO("onConnected {}", ctx->getFd());
     }
 
     static void myDeleter(sese::iocp::Context *ctx) {
-        SESE_INFO("onDeleteCallback %d", ctx->getFd());
+        SESE_INFO("onDeleteCallback {}", ctx->getFd());
     }
 };
 
@@ -63,7 +61,7 @@ TEST(TestIOCP, Server_0) {
     server.setThreads(2);
     server.setServProtos("\x8http/1.1");
     ASSERT_TRUE(server.init());
-    SESE_INFO("server listening on %d", address->getPort());
+    SESE_INFO("server listening on {}", address->getPort());
 
     sese::net::Socket socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
     ASSERT_EQ(socket.connect(address), 0);
@@ -72,7 +70,7 @@ TEST(TestIOCP, Server_0) {
 
     char buffer[32]{};
     socket.read(buffer, sizeof(buffer));
-    SESE_INFO("echo from server, %s", buffer);
+    SESE_INFO("echo from server, {}", buffer);
     socket.close();
 
     server.shutdown();
@@ -92,7 +90,7 @@ TEST(TestIOCP, Server_1) {
     server.setThreads(2);
     server.setServProtos("\x8http/1.1");
     ASSERT_TRUE(server.init());
-    SESE_INFO("server listening on %d", address->getPort());
+    SESE_INFO("server listening on {}", address->getPort());
 
     auto client_ctx = sese::security::SSLContextBuilder::SSL4Client();
     auto socket = client_ctx->newSocketPtr(sese::net::Socket::Family::IPv4, 0);
@@ -102,7 +100,7 @@ TEST(TestIOCP, Server_1) {
 
     char buffer[32]{};
     socket->read(buffer, sizeof(buffer));
-    SESE_INFO("echo from server, %s", buffer);
+    SESE_INFO("echo from server, {}", buffer);
     socket->close();
 
     server.shutdown();

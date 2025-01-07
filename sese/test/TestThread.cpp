@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/thread/Async.h"
-#include "sese/record/LogHelper.h"
 #include "sese/record/Marco.h"
 #include "sese/util/Util.h"
 
@@ -24,46 +21,48 @@
 #include <cmath>
 
 using namespace std::chrono_literals;
+using sese::record::Logger;
 
-static const char *type_main_thread = "Main Thread";
-static const char *type_not_main_thread = "Not Main Thread";
-void proc(int &num, sese::record::LogHelper &helper);
+static auto type_main_thread = "Main Thread";
+static auto type_not_main_thread = "Not Main Thread";
+
+void proc(int &num);
 
 TEST(TestThread, Thread) {
-    sese::record::LogHelper log;
     int num = 0;
-    sese::Thread thread([&num, &log]() { proc(num, log); }, "SubThread");
+    sese::Thread thread([&num] {
+        proc(num);
+    },
+                        "SubThread");
     thread.start();
     if (thread.joinable()) {
         thread.join();
-        log.info("num = %d", num);
+        Logger::debug("num = {}", num);
     }
 
-    log.info("Thread's name = %s, tid = %" PRIdTid, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
+    Logger::debug("Thread's name = {}, tid = {}", sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
 
     auto i = sese::Thread::getCurrentThreadData();
     auto msg = i ? type_not_main_thread : type_main_thread;
-    log.info("Current thread is %s", msg);
+    Logger::debug("Current thread is {}", msg);
 }
 
-void proc(int &num, sese::record::LogHelper &helper) {
-    helper.info("Thread's name = %s, tid = %" PRIdTid, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
+void proc(int &num) {
+    Logger::debug("Thread's name = {}, tid = {}", sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
 
     auto i = sese::Thread::getCurrentThreadData();
     auto msg = i ? type_not_main_thread : type_main_thread;
-    helper.info("Current thread is %s", msg);
+    Logger::debug("Current thread is {}", msg);
 
     ASSERT_TRUE(i != nullptr);
     num = 1;
 }
 
 TEST(TestThread, ThreadPool) {
-    sese::record::LogHelper log;
-
     std::vector<std::function<void()>> tasks(80);
     for (int32_t i = 20; i < 100; i++) {
-        std::function<void()> t = [&log, i] {
-            log.info("rt: %d", i);
+        std::function<void()> t = [i] {
+            Logger::debug("rt: {}", i);
             std::this_thread::sleep_for(2ms);
         };
         tasks.emplace_back(t);
@@ -72,13 +71,15 @@ TEST(TestThread, ThreadPool) {
     sese::ThreadPool pool("ThreadPool", 4);
     EXPECT_EQ(pool.getName(), std::string_view("ThreadPool"));
     EXPECT_EQ(pool.getThreads(), 4);
-    pool.postTask([&log]() { log.info("start!"); });
+    pool.postTask([] {
+        Logger::debug("start!");
+    });
     pool.postTask(tasks);
     pool.postTaskEx(
-            [](int i, int j) {
-                printf("%d\n", i + j);
-            },
-            10, 11
+        [](int i, int j) {
+            printf("%d\n", i + j);
+        },
+        10, 11
     );
     EXPECT_GT(pool.size(), 0);
 
@@ -94,7 +95,7 @@ TEST(TestThread, AutoShutdown) {
 TEST(TestThread, AutoJoin) {
     int i = 0;
     {
-        sese::Thread th([&i]() {
+        sese::Thread th([&i] {
             sese::sleep(2s);
             i = 114514;
         });
@@ -104,10 +105,17 @@ TEST(TestThread, AutoJoin) {
 }
 
 TEST(TestThread, MainThread) {
-    sese::record::LogHelper::i("Message from main thread.");
-    auto th1 = sese::Thread([] { sese::record::LogHelper::i("Message from MyThread."); }, "MyThread");
-    auto th2 = sese::Thread([] { sese::record::LogHelper::i("Message from nameless Thread."); });
-    auto th3 = std::thread([] { sese::record::LogHelper::i("Message from std::thread."); });
+    Logger::info("Message from main thread.");
+    auto th1 = sese::Thread([] {
+        Logger::info("Message from MyThread.");
+    },
+                            "MyThread");
+    auto th2 = sese::Thread([] {
+        Logger::info("Message from nameless Thread.");
+    });
+    auto th3 = std::thread([] {
+        Logger::info("Message from std::thread.");
+    });
     th1.start();
     th2.start();
     th1.join();
@@ -115,11 +123,11 @@ TEST(TestThread, MainThread) {
     th3.join();
 
     auto th4 = sese::Thread(
-            [] {
-                sese::Thread::setCurrentThreadAsMain();
-                ASSERT_NE(sese::Thread::getCurrentThreadId(), sese::Thread::getMainThreadId());
-            },
-            "Sub thread"
+        [] {
+            sese::Thread::setCurrentThreadAsMain();
+            ASSERT_NE(sese::Thread::getCurrentThreadId(), sese::Thread::getMainThreadId());
+        },
+        "Sub thread"
     );
     th4.start();
     th4.join();
@@ -149,7 +157,7 @@ TEST(TestThread, ThreadPool_Future) {
 
     {
         int i = 1, j = 1;
-        auto future = sese::async<int>(pool, [&]() {
+        auto future = sese::async<int>(pool, [&] {
             // auto future = sese::async<int>(pool, [&]() {
             std::this_thread::sleep_for(300ms);
             SESE_INFO("SetValue");
@@ -162,13 +170,13 @@ TEST(TestThread, ThreadPool_Future) {
             SESE_INFO("NoReady");
         } while (status != std::future_status::ready);
         auto rt = future.get();
-        SESE_INFO("Getvalue %d", rt);
+        SESE_INFO("Getvalue {}", rt);
         EXPECT_EQ(rt, 2);
     }
 
     {
         std::string i = "114", j = "514";
-        auto future = sese::async<std::string>(pool, [&]() {
+        auto future = sese::async<std::string>(pool, [&] {
             std::this_thread::sleep_for(300ms);
             return i + j;
         });
@@ -178,8 +186,8 @@ TEST(TestThread, ThreadPool_Future) {
             status = future.wait_for(0.1s);
             SESE_INFO("NoReady");
         } while (status != std::future_status::ready);
-        const auto& rt = future.get();
-        SESE_INFO("Getvalue %s", rt.c_str());
+        const auto &rt = future.get();
+        SESE_INFO("Getvalue {}", rt.c_str());
         EXPECT_EQ(rt, "114514");
     }
 }
@@ -187,7 +195,7 @@ TEST(TestThread, ThreadPool_Future) {
 TEST(TestThread, Thread_Future) {
     {
         int i = 1, j = 1;
-        auto future = sese::async<int>([&]() {
+        auto future = sese::async<int>([&] {
             std::this_thread::sleep_for(200ms);
             SESE_INFO("SetValue");
             return i + j;
@@ -199,7 +207,7 @@ TEST(TestThread, Thread_Future) {
             SESE_INFO("NoReady");
         } while (status != std::future_status::ready);
         auto rt = future.get();
-        SESE_INFO("Getvalue %d", rt);
+        SESE_INFO("Getvalue {}", rt);
         // EXPECT_EQ(rt, 2);
     }
 }
@@ -224,7 +232,7 @@ TEST(TestThread, GlobalThreadPool) {
 
     } while (status != std::future_status::ready);
     auto rt = future.get();
-    SESE_INFO("Getvalue %d", rt);
+    SESE_INFO("Getvalue {}", rt);
     // EXPECT_EQ(rt, 3);
 }
 
@@ -235,7 +243,7 @@ TEST(TestThread, GlobalThreadPool) {
 TEST(TestThread, SpinLock) {
     int i = 0;
     sese::SpinLock spin_lock;
-    auto proc = [&i, &spin_lock]() {
+    auto proc = [&i, &spin_lock] {
         for (int n = 0; n < 10000; ++n) {
             sese::Locker locker(spin_lock);
             i += 1;
@@ -252,14 +260,14 @@ TEST(TestThread, SpinLock) {
     f3.get();
     f4.get();
     auto span = stop_watch.stop();
-    SESE_DEBUG("cost time %" PRIu64 "us", span.getTotalMicroseconds());
+    SESE_DEBUG("cost time {}us", span.getTotalMicroseconds());
     EXPECT_EQ(i, 40000);
 }
 
 TEST(TestThread, Mutex) {
     int i = 0;
     std::mutex mutex;
-    auto proc = [&i, &mutex]() {
+    auto proc = [&i, &mutex] {
         for (int n = 0; n < 10000; ++n) {
             sese::Locker locker(mutex);
             i += 1;
@@ -276,6 +284,6 @@ TEST(TestThread, Mutex) {
     f3.get();
     f4.get();
     auto span = stop_watch.stop();
-    SESE_DEBUG("cost time %" PRIu64 "us", span.getTotalMicroseconds());
+    SESE_DEBUG("cost time {}us", span.getTotalMicroseconds());
     EXPECT_EQ(i, 40000);
 }

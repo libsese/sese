@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/util/DateTime.h"
-#include "sese/record/LogHelper.h"
 #include "sese/record/Marco.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "gtest/gtest.h"
@@ -23,14 +20,14 @@
 #include <thread>
 
 using namespace std::chrono_literals;
+using sese::record::Logger;
 
 TEST(TestDateTime, Info) {
-    sese::record::LogHelper log;
     auto time = sese::DateTime::nowPtr(8);
-    log.info("is leap year: %s", time->isLeapYear() ? "True" : "False");
-    log.info("timestamp: %lld", time->getTimestamp());
-    log.info(
-            "date: %d-%d-%d %d:%d:%d",
+    Logger::info("is leap year: {}", time->isLeapYear() ? "True" : "False");
+    Logger::info("timestamp: {}", time->getTimestamp());
+    Logger::info(
+            "date: {}-{}-{} {}:{}:{}",
             time->getYears(),
             time->getMonths(),
             time->getDays(),
@@ -38,8 +35,8 @@ TEST(TestDateTime, Info) {
             time->getMinutes(),
             time->getSeconds()
     );
-    log.info("day of year: %d", time->getDayOfYear());
-    log.info("day of week: %d", time->getDayOfWeek());
+    Logger::info("day of year: {}", time->getDayOfYear());
+    Logger::info("day of week: {}", time->getDayOfWeek());
 }
 
 TEST(TestDateTime, InfoCheck) {
@@ -146,84 +143,84 @@ TEST(TestDateTime, Format_0) {
     auto time = sese::DateTime(978307261001001, 0);
 
     auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
-    sese::record::LogHelper::i(str1.c_str());
+    Logger::info(str1.c_str());
 
     auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hh:mm:ss.ff.ffff t z");
-    sese::record::LogHelper::i(str2.c_str());
+    Logger::info(str2.c_str());
 
     auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
-    sese::record::LogHelper::i(str3.c_str());
+    Logger::info(str3.c_str());
 
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss");
-    sese::record::LogHelper::i(str4.c_str());
+    Logger::info(str4.c_str());
 }
 
 TEST(TestDateTime, Format_1) {
     auto time = sese::DateTime(61653571010010, -1);
 
     auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
-    sese::record::LogHelper::i(str1.c_str());
+    Logger::info(str1.c_str());
 
     auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hh:mm:ss.ff.ffff t z");
-    sese::record::LogHelper::i(str2.c_str());
+    Logger::info(str2.c_str());
 
     auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
-    sese::record::LogHelper::i(str3.c_str());
+    Logger::info(str3.c_str());
 
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss");
-    sese::record::LogHelper::i(str4.c_str());
+    Logger::info(str4.c_str());
 }
 
 TEST(TestDateTime, Format_2) {
     auto time = sese::DateTime(61613971114514, 0);
 
     auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
-    sese::record::LogHelper::i(str1.c_str());
+    Logger::info(str1.c_str());
 
     auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hh:mm:ss.ff.ffff t z");
-    sese::record::LogHelper::i(str2.c_str());
+    Logger::info(str2.c_str());
 
     auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
-    sese::record::LogHelper::i(str3.c_str());
+    Logger::info(str3.c_str());
 
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
-    sese::record::LogHelper::i(str4.c_str());
+    Logger::info(str4.c_str());
 }
 
 TEST(TestDateTime, Format_3) {
     auto time = sese::DateTime::nowPtr(0);
 
     auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
-    sese::record::LogHelper::i(str1.c_str());
+    Logger::info(str1.c_str());
 
     auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hhh:mmm:sss.ff.ffff t z");
-    sese::record::LogHelper::i(str2.c_str());
+    Logger::info(str2.c_str());
 
     auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
-    sese::record::LogHelper::i(str3.c_str());
+    Logger::info(str3.c_str());
 
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
-    sese::record::LogHelper::i(str4.c_str());
+    Logger::info(str4.c_str());
 }
 
 TEST(TestTimeSpan, Total) {
     auto time = sese::TimeSpan(1, 16, 30, 5, 100, 300);
-    SESE_INFO("total days %f", time.getTotalDays());
-    SESE_INFO("total hours %f", time.getTotalHours());
-    SESE_INFO("total minutes %f", time.getTotalMinutes());
-    SESE_INFO("total seconds %f", time.getTotalSeconds());
-    SESE_INFO("total milliseconds %f", time.getTotalMilliseconds());
-    SESE_INFO("total microseconds %" PRIu64, time.getTotalMicroseconds());
+    SESE_INFO("total days {}", time.getTotalDays());
+    SESE_INFO("total hours {}", time.getTotalHours());
+    SESE_INFO("total minutes {}", time.getTotalMinutes());
+    SESE_INFO("total seconds {}", time.getTotalSeconds());
+    SESE_INFO("total milliseconds {}", time.getTotalMilliseconds());
+    SESE_INFO("total microseconds {}", time.getTotalMicroseconds());
 }
 
 TEST(TestTimeSpan, Part) {
     auto time = sese::TimeSpan(1, 25, 30, 5, 10010, 3005);
-    SESE_INFO("days %" PRId32, time.getDays());
-    SESE_INFO("hours %" PRId32, time.getHours());
-    SESE_INFO("minutes %" PRId32, time.getMinutes());
-    SESE_INFO("seconds %" PRId32, time.getSeconds());
-    SESE_INFO("milliseconds %" PRId32, time.getMilliseconds());
-    SESE_INFO("microseconds %" PRId32, time.getMicroseconds());
+    SESE_INFO("days {}", time.getDays());
+    SESE_INFO("hours {}", time.getHours());
+    SESE_INFO("minutes {}", time.getMinutes());
+    SESE_INFO("seconds {}", time.getSeconds());
+    SESE_INFO("milliseconds {}", time.getMilliseconds());
+    SESE_INFO("microseconds {}", time.getMicroseconds());
 }
 
 #include <sese/text/DateTimeParser.h>

@@ -16,13 +16,15 @@
 #include "sese/convert/Compressor.h"
 #include "sese/convert/GZipFileOutputStream.h"
 #include "sese/convert/GZipFileInputStream.h"
-#include "sese/record/LogHelper.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/OutputBufferWrapper.h"
+#include "sese/record/Logger.h"
 
 #include "gtest/gtest.h"
 
 #include <filesystem>
+
+using sese::record::Logger;
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);
@@ -38,13 +40,13 @@ TEST(TestCompress, ZLIB) {
     size_t last_time = 0;
     do {
         rt = compressor.deflate(&out);
-        sese::record::LogHelper::d("compressing (%d/%d)", compressor.getTotalIn(), sizeof(compress_buffer_in));
+        Logger::debug("compressing ({}/{})", compressor.getTotalIn(), sizeof(compress_buffer_in));
         auto current = compressor.getTotalOut() - last_time;
         last_time = compressor.getTotalOut();
         builder.write(temp, current);
         out.reset();
     } while (rt != 0);
-    sese::record::LogHelper::d("compress done");
+    Logger::debug("compress done");
 
     char compress_buffer_out[32]{};
     auto compress_size = builder.read(compress_buffer_out, 32);
@@ -54,13 +56,13 @@ TEST(TestCompress, ZLIB) {
     last_time = 0;
     do {
         rt = decompressor.inflate(&out);
-        sese::record::LogHelper::d("decompressing (%d/%d)", decompressor.getTotalIn(), compress_size);
+        Logger::debug("decompressing ({}/{})", decompressor.getTotalIn(), compress_size);
         auto current = decompressor.getTotalOut() - last_time;
         last_time = decompressor.getTotalOut();
         builder.write(temp, current);
         out.reset();
     } while (rt != 0);
-    sese::record::LogHelper::d("decompress done");
+    Logger::debug("decompress done");
 
     char decompress_buffer_out[32]{};
     builder.read(decompress_buffer_out, 32);

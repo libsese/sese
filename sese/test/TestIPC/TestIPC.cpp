@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <gtest/gtest.h>
 #include <sese/system/IPC.h>
 #include <sese/system/Process.h>
@@ -29,16 +27,16 @@ TEST(TestIPC, Temp) {
     {
         auto result = channel->read(5);
         for (auto &&msg: result) {
-            SESE_INFO("message 5: %s", msg.getDataAsString().c_str());
+            SESE_INFO("message 5: {}", msg.getDataAsString().c_str());
         }
     }
 
     {
         auto result = channel->read(6);
         for (auto &&msg: result) {
-            SESE_INFO("message 6: %s", msg.getDataAsString().c_str());
-            SESE_INFO("message point %p", msg.data());
-            SESE_INFO("message length %zu", msg.length());
+            SESE_INFO("message 6: {}", msg.getDataAsString().c_str());
+            SESE_INFO("message point {}", msg.data());
+            SESE_INFO("message length {}", msg.length());
         }
     }
 }

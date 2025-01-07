@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/config/Json.h"
 #include "sese/net/Socket.h"
 #include "sese/net/http/RequestableFactory.h"
@@ -57,7 +55,7 @@ SESE_CTRL(MyController) {
         auto pwd = dict.find("pwd")->getString();
         resp.getBody().write("OK", 2);
         resp.setCode(200);
-        SESE_INFO("form:\nname: %s\npwd: %s", name.c_str(), pwd.c_str());
+        SESE_INFO("form:\nname: {}\npwd: {}", name, pwd);
     };
 }
 
@@ -106,7 +104,7 @@ public:
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 200);
             for (auto &&[key, value]: *client->getResponse()) {
-                SESE_INFO("%s: %s", key.c_str(), value.c_str());
+                SESE_INFO("{}: {}", key, value);
             }
         }
         {
@@ -115,7 +113,7 @@ public:
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 400);
             for (auto &&[key, value]: *client->getResponse()) {
-                SESE_INFO("%s: %s", key.c_str(), value.c_str());
+                SESE_INFO("{}: {}", key, value);
             }
         }
     }
@@ -128,7 +126,7 @@ public:
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 400);
             for (auto &&[key, value]: *client->getResponse()) {
-                SESE_INFO("%s: %s", key.c_str(), value.c_str());
+                SESE_INFO("{}: {}", key, value);
             }
         }
         {
@@ -138,7 +136,7 @@ public:
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 200);
             for (auto &&[key, value]: *client->getResponse()) {
-                SESE_INFO("%s: %s", key.c_str(), value.c_str());
+                SESE_INFO("{}: {}", key, value);
             }
         }
     }
@@ -150,13 +148,13 @@ public:
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 400);
         for (auto &&[key, value]: *client->getResponse()) {
-            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+            SESE_INFO("{}: {}", key, value);
         }
         client->getRequest()->set("name", "kaoru");
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 200);
         for (auto &&[key, value]: *client->getResponse()) {
-            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+            SESE_INFO("{}: {}", key, value);
         }
     }
 
@@ -173,7 +171,7 @@ public:
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 200);
         for (auto &&[key, value]: *client->getResponse()) {
-            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+            SESE_INFO("{}: {}", key, value);
         }
     }
 
@@ -186,7 +184,7 @@ public:
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 200);
         for (auto &&[key, value]: *client->getResponse()) {
-            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+            SESE_INFO("{}: {}", key, value);
         }
     }
 
@@ -200,7 +198,7 @@ public:
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 206);
         for (auto &&[key, value]: *client->getResponse()) {
-            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+            SESE_INFO("{}: {}", key, value);
         }
     }
 };
@@ -249,7 +247,7 @@ TEST_F(TestHttpServerV3, Range) {
 class MyService final : public sese::event::EventLoop {
 public:
     ~MyService() override {
-        printf("total socket into: %d", num);
+        printf("total socket into: {}", num);
     }
 
     void onAccept(int fd) override {
@@ -263,7 +261,7 @@ protected:
 
 static sese::net::IPAddress::Ptr createAddress() {
     auto port = sese::net::createRandomPort();
-    printf("select port %d", (int) port);
+    printf("select port {}", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
@@ -328,7 +326,7 @@ TEST(TestService, UserBalanceLoader) {
 class MyTimerableServiceV1 : public sese::service::v1::TimerableService {
 public:
     void onAccept(int fd) override {
-        printf("fd %d connect", fd);
+        printf("fd {} connect", fd);
         if (0 == sese::net::Socket::setNonblocking(static_cast<sese::socket_t>(fd))) {
             auto event = createEvent(fd, EVENT_READ, nullptr);
             createTimeoutEvent(fd, event, 3);
@@ -349,7 +347,7 @@ public:
     }
 
     void onTimeout(sese::service::v1::TimeoutEvent *timeout_event) override {
-        printf("fd %d close", timeout_event->fd);
+        printf("fd {} close", timeout_event->fd);
         sese::net::Socket::close(timeout_event->fd);
         auto event = static_cast<sese::event::Event *>(timeout_event->data);
         freeEvent(event);
@@ -391,7 +389,7 @@ TEST(TestService, TimerableService) {
 class MyTimerableServiceV2 : public sese::service::v2::TimerableService {
 public:
     void onAccept(int fd) override {
-        printf("fd %d connect", fd);
+        printf("fd {} connect", fd);
         if (0 == sese::net::Socket::setNonblocking(static_cast<sese::socket_t>(fd))) {
             auto event = createEvent(fd, EVENT_READ, nullptr);
             auto timeout = setTimeoutEvent(3, nullptr);
@@ -420,7 +418,7 @@ public:
 
     void onTimeout(sese::service::v2::TimeoutEvent *timeout_event) override {
         auto event = static_cast<sese::event::Event *>(timeout_event->data);
-        printf("fd %d close", event->fd);
+        printf("fd {} close", event->fd);
         sese::net::Socket::close(event->fd);
         freeEvent(event);
     }

@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/util/Initializer.h>
 #include <sese/record/Marco.h>
 #include <sese/io/File.h>
@@ -26,34 +24,34 @@ int main(int argc, char *argv[]) {
 
     if (argc < 2) {
         SESE_ERROR("Missing necessary command-line arguments");
-        SESE_INFO("Usage: %s <json file>", argv[0]);
+        SESE_INFO("Usage: {} <json file>", argv[0]);
         return -1;
     }
 
     std::string src = argv[1];
     auto src_file = sese::io::File::create(src, sese::io::File::B_READ);
     if (src_file == nullptr) {
-        SESE_ERROR("File %s failed to open", src.c_str());
+        SESE_ERROR("File {} failed to open", src);
         return -1;
     }
 
     auto json = sese::Json::parse(src_file.get());
     src_file->close();
     if (json.isNull()) {
-        SESE_ERROR("Parsing %s failed", src.c_str());
+        SESE_ERROR("Parsing {} failed", src);
         return -1;
     }
 
     auto dest = src + ".yml";
     auto dest_file = sese::io::File::create(dest, sese::io::File::B_WRITE_TRUNC);
     if (dest_file == nullptr) {
-        SESE_ERROR("File %s failed to open", dest.c_str());
+        SESE_ERROR("File {} failed to open", dest);
         return -1;
     }
 
     sese::Yaml::streamify(dest_file.get(), json);
     dest_file->close();
-    SESE_INFO("Saved to %s", dest.c_str());
+    SESE_INFO("Saved to {}", dest);
 
     return 0;
 }

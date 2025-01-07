@@ -12,10 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/LogHelper.h"
 #include "sese/util/MemoryViewer.h"
 #include "sese/io/OutputBufferWrapper.h"
+#include "sese/record/Logger.h"
+
 #include "gtest/gtest.h"
+
+using sese::record::Logger;
 
 TEST(TestEndian, Test16) {
     int16_t i16 = 0x1234;
@@ -36,15 +39,14 @@ TEST(TestEndian, Test64) {
 }
 
 TEST(TestEndian, MemoryViewer) {
-    sese::record::LogHelper log;
     uint32_t value = 0x12345678;
     char buffer[128]{};
     sese::io::OutputBufferWrapper output0(buffer, 64);
     sese::io::OutputBufferWrapper output1(buffer + 64, 64);
     sese::MemoryViewer::peer32(&output0, &value, EndianType::BIG);
     sese::MemoryViewer::peer32(&output1, &value, EndianType::LITTLE);
-    log.info("value view on big endian   : %s", buffer);
-    log.info("value view on little endian: %s", buffer + 64);
+    Logger::info("value view on big endian   : {}", buffer);
+    Logger::info("value view on little endian: {}", buffer + 64);
 }
 
 TEST(TestEndian, Host) {

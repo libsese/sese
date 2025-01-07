@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include <sese/service/http/HttpServer.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Initializer.h>
@@ -92,13 +90,13 @@ int main(int argc, char **argv) {
     server.regService(sese::net::IPv4Address::any(80), nullptr);
     // The return value represents whether it needs to continue to be processed as a normal request, where false represents a direct return and response
     server.regFilter("/data1", [](Request &req, Response &resp) -> bool {
-        SESE_INFO("filter /data1: %s", req.getUri().c_str());
+        SESE_INFO("filter /data1: {}", req.getUri());
         resp.setCode(404);
         return false;
     });
     // `true` stands for continued processing
     server.regFilter("/data2", [](Request &req, Response &resp) -> bool {
-        SESE_INFO("filter /data2: %s", req.getUri().c_str());
+        SESE_INFO("filter /data2: {}", req.getUri());
         resp.set("myfilter", "data2");
         return true;
     });
@@ -116,7 +114,7 @@ int main(int argc, char **argv) {
             // disconnect
             return false;
         }
-        SESE_INFO("address %s", string.c_str());
+        SESE_INFO("address {}", string);
         // Continue processing
         return true;
     });

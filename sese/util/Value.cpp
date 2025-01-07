@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include <memory>
-#define SESE_C_LIKE_FORMAT
 
 #include <sese/util/Value.h>
 #include <sese/text/Number.h>

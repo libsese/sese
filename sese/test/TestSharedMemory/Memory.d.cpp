@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <sese/record/Logger.h>
 #include <sese/system/SharedMemory.h>
-#include <sese/record/LogHelper.h>
+#include <sese/util/Initializer.h>
 
 #include <chrono>
 #include <memory>
@@ -21,22 +22,20 @@
 #include <random>
 
 using namespace std::chrono_literals;
-
-#include <sese/util/Initializer.h>
+using sese::record::Logger;
 
 int main(int argc, char **argv) {
     sese::initCore(argc, argv);
-    sese::record::LogHelper helper;
     auto mem = sese::system::SharedMemory::create("SharedMemoryForSese", sizeof(int64_t));
     if (mem == nullptr) {
-        helper.error("failed to create shared memory: errno %d", errno);
+        Logger::error("failed to create shared memory: errno {}", errno);
         return -1;
     } else {
-        helper.info("create success");
+        Logger::info("create success");
     }
 
     auto random = static_cast<int64_t>(std::random_device()());
-    helper.info("select random number: %lld", random);
+    Logger::info("select random number: {}", random);
     auto buffer = mem->getBuffer();
     auto p_int = static_cast<int64_t *>(buffer);
     *p_int = random;
@@ -49,7 +48,7 @@ int main(int argc, char **argv) {
         }
     }
 
-    helper.info("recv change number: %lld", *p_int);
+    Logger::info("recv change number: {}", *p_int);
 
     return 0;
 }

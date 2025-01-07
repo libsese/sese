@@ -26,12 +26,15 @@
 #include "sese/record/AbstractFormatter.h"
 #include "sese/record/Event.h"
 #include "sese/util/Initializer.h"
+#include "sese/thread/Thread.h"
 
 #include <memory>
 #include <vector>
+#include <source_location>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
+#pragma warning(disable : 4544)
 #endif
 
 namespace sese::record {
@@ -50,7 +53,7 @@ class ConsoleAppender;
 /**
  * @brief Logger class
  */
-class  Logger {
+class Logger {
 public:
     typedef std::shared_ptr<Logger> Ptr;
 
@@ -83,12 +86,39 @@ public:
      */
     virtual void dump(const void *buffer, size_t length) noexcept;
 
-protected:
-    std::shared_ptr<AbstractFormatter> formatter;
-    std::shared_ptr<ConsoleAppender> builtInAppender;
-    std::vector<AbstractAppender::Ptr> appenderVector;
+    struct PatternAndLocation {
+        std::string_view pattern;
+        std::source_location location;
 
-public:
+        PatternAndLocation(const char *pattern, const std::source_location &location = std::source_location::current())
+            : pattern(pattern), location(location) {
+        }
+    };
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    static void debug(PatternAndLocation pattern_and_location, ARGS &&...args);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+    static void debug(PatternAndLocation pattern_and_location, ARGS &&...);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    static void info(PatternAndLocation pattern_and_location, ARGS &&...args);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+    static void info(PatternAndLocation pattern_and_location, ARGS &&...);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    static void warn(PatternAndLocation pattern_and_location, ARGS &&...args);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+    static void warn(PatternAndLocation pattern_and_location, ARGS &&...);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+    static void error(PatternAndLocation pattern_and_location, ARGS &&...args);
+
+    template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+    static void error(PatternAndLocation pattern_and_location, ARGS &&...);
+
     /// Add log appender to global logger
     /// \param appender Log appender
     static void addGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept;
@@ -96,11 +126,64 @@ public:
     /// Remove log appender from global logger
     /// \param appender Log appender
     static void removeGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept;
+
+protected:
+    std::shared_ptr<AbstractFormatter> formatter;
+    std::shared_ptr<ConsoleAppender> builtInAppender;
+    std::vector<AbstractAppender::Ptr> appenderVector;
+
+private:
+    static void prelog(PatternAndLocation &pattern_and_location, Level level, const std::string &string) noexcept;
 };
 
 /**
  * Get global Logger pointer
  * @return Logger pointer
  */
-extern  record::Logger *getLogger() noexcept;
+extern Logger *getLogger() noexcept;
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+void Logger::debug(PatternAndLocation pattern_and_location, ARGS &&...args) {
+    auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
+    prelog(pattern_and_location, Level::DEBUG, message);
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+void Logger::debug(PatternAndLocation pattern_and_location, ARGS &&...) {
+    prelog(pattern_and_location, Level::DEBUG, std::string(pattern_and_location.pattern));
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+void Logger::info(PatternAndLocation pattern_and_location, ARGS &&...args) {
+    auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
+    prelog(pattern_and_location, Level::INFO, message);
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+void Logger::info(PatternAndLocation pattern_and_location, ARGS &&...) {
+    prelog(pattern_and_location, Level::INFO, std::string(pattern_and_location.pattern));
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+void Logger::warn(PatternAndLocation pattern_and_location, ARGS &&...args) {
+    auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
+    prelog(pattern_and_location, Level::WARN, message);
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+void Logger::warn(PatternAndLocation pattern_and_location, ARGS &&...) {
+    prelog(pattern_and_location, Level::WARN, std::string(pattern_and_location.pattern));
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
+void Logger::error(PatternAndLocation pattern_and_location, ARGS &&...args) {
+    auto message = text::fmt(pattern_and_location.pattern, std::forward<ARGS>(args)...);
+    prelog(pattern_and_location, Level::ERR, message);
+}
+
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
+void Logger::error(PatternAndLocation pattern_and_location, ARGS &&...) {
+    prelog(pattern_and_location, Level::ERR, std::string(pattern_and_location.pattern));
+}
+
 } // namespace sese::record

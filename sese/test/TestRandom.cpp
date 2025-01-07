@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/config/CSVWriter.h"
 #include "sese/io/FileStream.h"
 #include "sese/util/RandomUtil.h"
@@ -61,37 +59,37 @@ TEST(TestRandom, Misc) {
 
 TEST(TestRandomUtil, Signed) {
     auto i1 = sese::RandomUtil::next<int>();
-    SESE_INFO("random signed integer: %d", i1);
+    SESE_INFO("random signed integer: {}", i1);
 
     auto i2 = sese::RandomUtil::next<int>(20, 30);
-    SESE_INFO("random signed integer: %d", i2);
+    SESE_INFO("random signed integer: {}", i2);
     EXPECT_TRUE(i2 >= 20 && i2 <= 30);
 }
 
 TEST(TestRandomUtil, Unsigned) {
     auto i1 = sese::RandomUtil::next<unsigned>();
-    SESE_INFO("random unsigned integer: %u", i1);
+    SESE_INFO("random unsigned integer: {}", i1);
 
     auto i2 = sese::RandomUtil::next<unsigned>(20, 30);
-    SESE_INFO("random unsigned integer: %u", i2);
+    SESE_INFO("random unsigned integer: {}", i2);
     EXPECT_TRUE(i2 >= 20 && i2 <= 30);
 }
 
 TEST(TestRandomUtil, Float) {
     auto f1 = sese::RandomUtil::next<float>();
-    SESE_INFO("random float: %f", f1);
+    SESE_INFO("random float: {}", f1);
 
     auto f2 = sese::RandomUtil::next<float>(114.514f, 191.810f);
-    SESE_INFO("random float: %f", f2);
+    SESE_INFO("random float: {}", f2);
     EXPECT_TRUE(f2 >= 114.514f && f2 <= 191.810f);
 }
 
 TEST(TestRandomUtil, Double) {
     auto d1 = sese::RandomUtil::next<double>();
-    SESE_INFO("random double: %f", d1);
+    SESE_INFO("random double: {}", d1);
 
     auto d2 = sese::RandomUtil::next<double>(114.514f, 191.810f);
-    SESE_INFO("random double: %f", d2);
+    SESE_INFO("random double: {}", d2);
     EXPECT_TRUE(d2 >= 114.514f && d2 <= 191.810f);
 }
 
@@ -99,7 +97,7 @@ TEST(TestRandomUtil, String_1) {
     using sese::RandomUtil;
     size_t len = 11;
     auto str = sese::RandomUtil::nextString(len, RandomUtil::REQUIRED_DIGIT | RandomUtil::REQUIRED_LOWER_LETTER);
-    SESE_INFO("random string: %s", str.c_str());
+    SESE_INFO("random string: {}", str.c_str());
     EXPECT_EQ(str.length(), len);
 }
 
@@ -107,7 +105,7 @@ TEST(TestRandomUtil, String_2) {
     using sese::RandomUtil;
     size_t len = 17;
     auto str = sese::RandomUtil::nextString(len, RandomUtil::REQUIRED_DIGIT | RandomUtil::REQUIRED_UPPER_LETTER | RandomUtil::REQUIRED_SYMBOL);
-    SESE_INFO("random string: %s", str.c_str());
+    SESE_INFO("random string: {}", str.c_str());
     EXPECT_EQ(str.length(), len);
 }
 
@@ -115,7 +113,7 @@ TEST(TestRandomUtil, String_3) {
     using sese::RandomUtil;
     size_t len = 23;
     auto str = sese::RandomUtil::nextString(len, RandomUtil::REQUIRED_DIGIT | RandomUtil::REQUIRED_UPPER_LETTER | RandomUtil::REQUIRED_LOWER_LETTER | RandomUtil::REQUIRED_SYMBOL);
-    SESE_INFO("random string: %s", str.c_str());
+    SESE_INFO("random string: {}", str.c_str());
     EXPECT_EQ(str.length(), len);
 }
 

@@ -24,8 +24,6 @@
 #include "sese/record/AsyncLogger.h"
 #endif
 
-#include <clocale>
-
 namespace sese::record {
 
 Logger::Logger() noexcept {
@@ -45,7 +43,7 @@ void Logger::addAppender(const AbstractAppender::Ptr &appender) noexcept {
 void Logger::removeAppender(const AbstractAppender::Ptr &appender) noexcept {
     // No validation is required to remove the logic here
     // GCOVR_EXCL_START
-    for (auto iterator = appenderVector.begin(); iterator < appenderVector.end(); iterator++) {
+    for (auto iterator = appenderVector.begin(); iterator < appenderVector.end(); ++iterator) {
         if (*iterator == appender) {
             this->appenderVector.erase(iterator);
             return;
@@ -86,6 +84,20 @@ void Logger::log(const Event::Ptr &event) noexcept {
 }
 
 static Logger *logger = nullptr;
+
+void Logger::prelog(PatternAndLocation &pattern_and_location, Level level, const std::string &string) noexcept {
+    auto time = DateTime::now();
+    auto event = std::make_shared<Event>(
+        time,
+        level,
+        Thread::getCurrentThreadName(),
+        Thread::getCurrentThreadId(),
+        pattern_and_location.location.file_name(),
+        pattern_and_location.location.line(),
+        string
+    );
+    logger->log(event);
+}
 
 void Logger::addGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept {
     logger->addAppender(appender); // NOLINT

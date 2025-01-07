@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define SESE_C_LIKE_FORMAT
-
 #include "sese/util/ArgParser.h"
 #include "sese/record/Marco.h"
 #include "sese/system/CommandLine.h"
@@ -35,12 +33,12 @@ TEST(TestArgParser, Parse_0) {
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_TRUE(args->parse(argc, argv));
 
-    SESE_INFO("full path: %s", args->getFullPath().c_str());
-    SESE_INFO("current path: %s", args->getCurrentPath().c_str());
-    SESE_INFO("exec file name: %s", args->getFileName().c_str());
+    SESE_INFO("full path: {}", args->getFullPath().c_str());
+    SESE_INFO("current path: {}", args->getCurrentPath().c_str());
+    SESE_INFO("exec file name: {}", args->getFileName().c_str());
 
     auto find_value = [&args](const std::string &key, const std::string &default_value) {
-        SESE_INFO("%s = %s", key.c_str(), args->getValueByKey(key, default_value).c_str());
+        SESE_INFO("{} = {}", key.c_str(), args->getValueByKey(key, default_value).c_str());
     };
 
     find_value("a1", "undef");
@@ -50,7 +48,7 @@ TEST(TestArgParser, Parse_0) {
 
     auto set = args->getKeyValSet();
     for (auto &item: set) {
-        SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
+        SESE_INFO("{}: {}", item.first.c_str(), item.second.c_str());
     }
 }
 
