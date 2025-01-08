@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/native/linux/event/EpollEventConvert.h"
+#include "sese/internal/linux/net/event/EpollEventConvert.h"
 
 #include <sys/epoll.h>
 

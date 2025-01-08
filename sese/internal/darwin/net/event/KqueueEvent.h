@@ -13,21 +13,17 @@
 // limitations under the License.
 
 /**
- * @file WSAEventConvert.h
- * @brief WSAEventSelect event convert
+ * @file KqueueEvent.h
+ * @brief kqueue event
  * @author kaoru
  */
 
 #pragma once
 
-#include "sese/event/BaseEventConvert.h"
+#include "sese/net/event/BaseEvent.h"
 
 namespace sese::event {
-/// WSAEventSelect event convert
-class WSAEventConvert : public BaseEventConvert {
-public:
-    unsigned int fromNativeEvent(int event) override;
-
-    int toNativeEvent(unsigned int event) override;
+/// kqueue event
+class KqueueEvent : public BaseEvent {
 };
 } // namespace sese::event

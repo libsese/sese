@@ -20,10 +20,10 @@
 
 #pragma once
 
-#include "sese/event/BaseEvent.h"
-#include "sese/event/BaseEventLoop.h"
-#include "sese/native/linux/event/EpollEvent.h"
-#include "sese/native/linux/event/EpollEventConvert.h"
+#include "sese/net/event/BaseEvent.h"
+#include "sese/net/event/BaseEventLoop.h"
+#include "sese/internal/linux/net/event/EpollEvent.h"
+#include "sese/internal/linux/net/event/EpollEventConvert.h"
 
 namespace sese::event {
 /// epoll event loop

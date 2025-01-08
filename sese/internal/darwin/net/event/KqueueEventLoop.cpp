@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/native/darwin/event/KqueueEventLoop.h>
+#include <sese/internal/darwin/net/event/KqueueEventLoop.h>
 
 #include <unistd.h>
 #include <sys/event.h>

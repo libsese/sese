@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include "sese/service/TimerableService_V1.h"
-#include "sese/event/Event.h"
 
 #include <algorithm>
 #include <chrono>

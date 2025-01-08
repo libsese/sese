@@ -12,28 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/native/win/event/WSAEventConvert.h"
+/**
+*  @file EpollEventConvert.h
+*  @brief epoll event convert
+*  @author kaoru
+*/
 
-#include <winsock2.h>
+#pragma once
 
-unsigned int sese::event::WSAEventConvert::fromNativeEvent(int event) {
-    unsigned result = 0;
-    if (event & FD_READ) {
-        result |= EVENT_READ;
-    }
-    if (event & FD_WRITE) {
-        result |= EVENT_WRITE;
-    }
-    return result;
-}
+#include "sese/net/event/BaseEventConvert.h"
 
-int sese::event::WSAEventConvert::toNativeEvent(unsigned int event) {
-    int result = 0;
-    if (event & EVENT_READ) {
-        result |= FD_READ;
-    }
-    if (event & EVENT_WRITE) {
-        result |= FD_WRITE;
-    }
-    return result;
-}
+namespace sese::event {
+/// epoll epoll event convert
+class EpollEventConvert : public BaseEventConvert {
+public:
+    unsigned int fromNativeEvent(int event) override;
+
+    int toNativeEvent(unsigned int event) override;
+};
+} // namespace sese::event

@@ -13,25 +13,28 @@
 // limitations under the License.
 
 /**
- * @file KqueueEventLoop.h
- * @brief kqueue event loop
+ * @file WSAEventLoop.h
+ * @brief WSAEventSelect event loop
  * @author kaoru
  */
 
 #pragma once
 
-#include <sese/event/BaseEventLoop.h>
-#include <sese/native/darwin/event/KqueueEvent.h>
+#include <sese/internal/win/net/event/WSAEvent.h>
+#include <sese/internal/win/net/event/WSAEventConvert.h>
+#include <sese/net/event/BaseEventLoop.h>
 
 #include <atomic>
 
-namespace sese::event {
-/// kqueue event loop
-class KqueueEventLoop : public BaseEventLoop {
-public:
-    bool init() override;
+#define MAX_EVENT_SIZE 64
 
-    ~KqueueEventLoop() override;
+namespace sese::event {
+/// WSAEventSelect event loop
+class WSAEventLoop : public BaseEventLoop {
+public:
+    ~WSAEventLoop() override;
+
+    bool init() override;
 
     void dispatch(uint32_t timeout) override;
 
@@ -51,17 +54,22 @@ public:
 
     bool setEvent(BaseEvent *event) override;
 
-    void setListenFd(int fd) override { listenFd = fd; }
-
-    //protected:
-    //    bool addNativeEvent(int fd, uint32_t ev, void *data) const;
-    //
-    //    bool delNativeEvent(int fd, uint32_t ev, void *data) const;
+    void setListenFd(int fd) override;
 
 protected:
     int listenFd{-1};
-    BaseEvent *listenEvent{nullptr};
-    int kqueue{-1};
+    WSAEvent *listenEvent{nullptr};
+
+    void *wsaEvent{nullptr};
+    WSAEventConvert convert;
+
+    unsigned long numbers = 0;
+    unsigned long long sockets[MAX_EVENT_SIZE]{};
+    void *wsaEvents[MAX_EVENT_SIZE]{};
+    // Here, the lifecycle should be the responsibility of the user
+    WSAEvent *events[MAX_EVENT_SIZE]{};
 };
 
 } // namespace sese::event
+
+#undef MAX_EVENT_SIZE

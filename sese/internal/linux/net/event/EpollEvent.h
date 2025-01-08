@@ -13,21 +13,17 @@
 // limitations under the License.
 
 /**
-*  @file EpollEventConvert.h
-*  @brief epoll event convert
-*  @author kaoru
-*/
+ *  @file EpollEvent.h
+ *  @brief epoll event
+ *  @author kaoru
+ */
 
 #pragma once
 
-#include "sese/event/BaseEventConvert.h"
+#include "sese/net/event/BaseEvent.h"
 
 namespace sese::event {
-/// epoll epoll event convert
-class EpollEventConvert : public BaseEventConvert {
-public:
-    unsigned int fromNativeEvent(int event) override;
-
-    int toNativeEvent(unsigned int event) override;
+/// epoll event
+class EpollEvent : public BaseEvent {
 };
 } // namespace sese::event

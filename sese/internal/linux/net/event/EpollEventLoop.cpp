@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/event/BaseEvent.h"
-#include "sese/native/linux/event/EpollEventLoop.h"
-#include "sese/native/linux/event/EpollEvent.h"
+#include "sese/net/event/BaseEvent.h"
+#include "sese/internal/linux/net/event/EpollEventLoop.h"
+#include "sese/internal/linux/net/event/EpollEvent.h"
 
 #include <sys/epoll.h>
 #include <sys/socket.h>

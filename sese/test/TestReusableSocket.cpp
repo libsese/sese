@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/net/ReusableSocket.h"
-#include "sese/event/Event.h"
+#include "sese/net/event/Event.h"
 #include "sese/record/Marco.h"
 #include "sese/thread/Thread.h"
 #include "gtest/gtest.h"

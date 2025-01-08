@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include "sese/event/BaseEvent.h"
+#include "sese/net/event/BaseEvent.h"
 
 namespace sese::event {
 /// Basic network event converter interface

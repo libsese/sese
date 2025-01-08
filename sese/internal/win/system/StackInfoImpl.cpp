@@ -23,7 +23,7 @@ using namespace sese;
 uint16_t system::StackInfo::offset = 1;
 
 system::StackInfo::StackInfo(uint16_t limit, uint16_t skip) noexcept {
-    void **p_stack = static_cast<void **>(malloc(sizeof(void *) * limit));
+    auto p_stack = static_cast<void **>(malloc(sizeof(void *) * limit));
     auto process = GetCurrentProcess();
     SymInitialize(process, nullptr, TRUE);
     auto frames = CaptureStackBackTrace(skip + offset, limit, p_stack, nullptr);

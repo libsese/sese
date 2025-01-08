@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include "sese/event/Event.h"
+#include "sese/net/event/Event.h"
 
 #include <list>
 #include <map>

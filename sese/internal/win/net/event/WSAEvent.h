@@ -13,17 +13,19 @@
 // limitations under the License.
 
 /**
- *  @file EpollEvent.h
- *  @brief epoll event
- *  @author kaoru
+ * @file WSAEvent.h
+ * @brief WSAEventSelect event
+ * @author kaoru
  */
 
 #pragma once
 
-#include "sese/event/BaseEvent.h"
+#include "sese/net/event/BaseEvent.h"
 
 namespace sese::event {
-/// epoll event
-class EpollEvent : public BaseEvent {
+/// WSAEventSelect event
+class WSAEvent : public BaseEvent {
+public:
+    void *wsaEvent{nullptr};
 };
 } // namespace sese::event
