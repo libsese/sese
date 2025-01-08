@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/convert/SymbolConverter.h>
+#include <sese/util/SymbolConverter.h>
 #include <sese/text/StringBuilder.h>
 
 inline bool isNumber(char ch) {
@@ -29,7 +29,7 @@ std::string sese::SymbolConverter::decodeUnixClassName(const std::type_info *typ
     if (isNumber(name[0])) {
         // class name
         bool first = true;
-        char *p_str = const_cast<char *>(name.data());
+        auto p_str = const_cast<char *>(name.data());
         char *p_next = nullptr;
         while (true) {
             auto len = std::strtoll(p_str, &p_next, 10);

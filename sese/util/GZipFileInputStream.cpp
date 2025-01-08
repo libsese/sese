@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/convert/GZipFileInputStream.h>
+#include <sese/util/GZipFileInputStream.h>
 #include <zlib.h>
 
 sese::GZipFileInputStream::Ptr sese::GZipFileInputStream::create(const char *file) noexcept {

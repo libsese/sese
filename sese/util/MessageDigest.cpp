@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/convert/MessageDigest.h>
-#include <sese/convert/MD5Util.h>
-#include <sese/convert/SHA1Util.h>
-#include <sese/convert/SHA256Util.h>
+#include <sese/util/MessageDigest.h>
+#include <sese/util/MD5Util.h>
+#include <sese/util/SHA1Util.h>
+#include <sese/util/SHA256Util.h>
 
 std::unique_ptr<char[]> sese::MessageDigest::digest(Type type, const InputStream::Ptr &source, bool is_cap) noexcept {
     switch (type) {

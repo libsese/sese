@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/convert/Compressor.h"
+#include "sese/util/Compressor.h"
 #include "zlib.h"
 
 #include <algorithm>

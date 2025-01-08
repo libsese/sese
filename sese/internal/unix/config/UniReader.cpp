@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/config/UniReader.h"
-#include "sese/convert/EncodingConverter.h"
+#include "sese/util/EncodingConverter.h"
 
 //sese::UniReader::UniReader(const std::string &fileName) {
 //    fileStream = std::make_shared<FileStream>(fileName, TEXT_READ_EXISTED);

@@ -13,8 +13,8 @@
 // limitations under the License.
 
 /**
- * \file Compressor.h
- * \brief Compressor class
+ * \file Decompressor.h
+ * \brief Decompressor class
  * \version 0.1
  * \date March 4, 2023
  * \author kaoru
@@ -22,38 +22,36 @@
 
 #pragma once
 
-#include "sese/convert/ZlibConfig.h"
+#include "sese/util/ZlibConfig.h"
 #include "sese/io/OutputStream.h"
 
 namespace sese {
 
-/// Compressor class
-class Compressor {
+/// Decompressor class
+class Decompressor {
 public:
     using OutputStream = sese::io::OutputStream;
 
-    /// Create a compressor
-    /// \param type Compression format - GZIP option is not recommended here
-    /// \param level Compression level
+    /// Create a decompressor
+    /// \param type Compression format
     /// \param buffer_size Set internal buffer size
-    explicit Compressor(CompressionType type, size_t level, size_t buffer_size = ZLIB_CHUNK_SIZE);
+    explicit Decompressor(CompressionType type, size_t buffer_size = ZLIB_CHUNK_SIZE);
 
-    virtual ~Compressor();
+    virtual ~Decompressor();
 
-    /// Set the buffer to be compressed
-    /// \param input Buffer to be compressed
+    /// Set the buffer to be decompressed
+    /// \param input Buffer to be decompressed
     /// \param input_size Size of this buffer
     void input(const void *input, unsigned int input_size);
 
-    /// Perform compression
-    /// \param out Output stream for compressed data
-    /// \retval Z_OK (0) Current buffer block compressed successfully
+    /// Perform decompression
+    /// \param out Decompressed stream
+    /// \retval Z_OK (0) Current buffer block decompressed successfully
     /// \retval Z_STREAM_ERROR (-2) Other errors
     /// \retval Z_BUF_ERROR (-5) Output stream capacity insufficient
-    int deflate(OutputStream *out);
+    int inflate(OutputStream *out);
 
     /// Reset z_stream object
-    /// \return Result
     int reset();
 
     /// Size of the currently processed input buffer

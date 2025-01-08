@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/convert/EncodingConverter.h"
+#include "sese/util/EncodingConverter.h"
 #include "sese/text/String.h"
 
 std::string sese::EncodingConverter::toString(const std::wstring &wstring) noexcept {

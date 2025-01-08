@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/util/MemoryViewer.h"
-#include "sese/convert/MD5Util.h"
+#include "sese/util/MD5Util.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/util/Endian.h"
 

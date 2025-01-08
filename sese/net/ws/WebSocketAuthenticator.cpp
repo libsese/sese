@@ -16,8 +16,8 @@
 #include "sese/util/Random.h"
 #include "sese/io/InputBufferWrapper.h"
 #include "sese/io/OutputBufferWrapper.h"
-#include "sese/convert/Base64Converter.h"
-#include "sese/convert/SHA1Util.h"
+#include "sese/util/Base64Converter.h"
+#include "sese/util/SHA1Util.h"
 
 #include <random>
 

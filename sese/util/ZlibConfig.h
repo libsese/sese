@@ -22,8 +22,6 @@
 
 #pragma once
 
-#include "sese/Config.h"
-
 namespace sese {
 enum class CompressionType {
     RAW = -30,

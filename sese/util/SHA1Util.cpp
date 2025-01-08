@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/convert/SHA1Util.h>
+#include <sese/util/SHA1Util.h>
 #include <sese/util/Endian.h>
 #include <sese/io/ByteBuilder.h>
 

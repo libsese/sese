@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/convert/Decompressor.h"
+#include "sese/util/Decompressor.h"
 #include "zlib.h"
 
 sese::Decompressor::Decompressor(sese::CompressionType type, size_t buffer_size) {
