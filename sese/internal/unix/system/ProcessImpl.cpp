@@ -21,14 +21,14 @@
 
 using namespace sese::system;
 
-class Process::ProcessImpl {
+class Process::Impl {
 public:
 
-    static std::unique_ptr<ProcessImpl> createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
+    static std::unique_ptr<Impl> createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
         auto pid = fork();
         if (pid > 0) {
             // parent process
-            return std::make_unique<ProcessImpl>(pid);
+            return std::make_unique<Impl>(pid);
         } else if (pid == 0) {
             // client process
             auto c_args = new char *[args.size() + 2];
@@ -61,7 +61,7 @@ public:
         }
     }
 
-    ProcessImpl(const sese::pid_t &pid) : pid(pid) {
+    Impl(const sese::pid_t &pid) : pid(pid) {
     }
 
    static sese::pid_t getCurrentProcessId() noexcept {
@@ -94,26 +94,26 @@ Process::~Process() {
 }
 
 sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
-    if (auto impl = ProcessImpl::createEx(exec, args)) {
+    if (auto impl = Impl::createEx(exec, args)) {
         auto result = MAKE_UNIQUE_PRIVATE(Process);
-        result->process_impl = std::move(impl);
+        result->impl = std::move(impl);
         return Result<Ptr, ErrorCode>::success(std::move(result));
     }
     return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }
 
 sese::pid_t Process::getCurrentProcessId() noexcept {
-    return ProcessImpl::getCurrentProcessId();
+    return Impl::getCurrentProcessId();
 }
 
 int Process::wait() const noexcept {
-    return process_impl->wait();
+    return impl->wait();
 }
 
 bool Process::kill() const noexcept {
-    return process_impl->kill();
+    return impl->kill();
 }
 
 sese::pid_t Process::getProcessId() const noexcept {
-    return process_impl->getProcessId();
+    return impl->getProcessId();
 }

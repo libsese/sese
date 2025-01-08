@@ -56,7 +56,7 @@ public:
 private:
     Process() = default;
 
-    class ProcessImpl;
-    std::unique_ptr<ProcessImpl> process_impl;
+    class Impl;
+    std::unique_ptr<Impl> impl;
 };
 } // namespace sese::system

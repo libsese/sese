@@ -20,14 +20,14 @@
 
 using namespace sese::system;
 
-class Process::ProcessImpl {
+class Process::Impl {
 public:
     using StartupInfo = std::unique_ptr<STARTUPINFO>;
     using ProcessInfo = std::unique_ptr<PROCESS_INFORMATION>;
     StartupInfo startupinfo;
     ProcessInfo process_information;
 
-    static std::unique_ptr<ProcessImpl> createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
+    static std::unique_ptr<Impl> createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
         auto startup_info = std::make_unique<STARTUPINFO>();
         auto process_info = std::make_unique<PROCESS_INFORMATION>();
 
@@ -54,7 +54,7 @@ public:
         );
 
         if (rt) {
-            return std::make_unique<ProcessImpl>(std::move(startup_info), std::move(process_info));
+            return std::make_unique<Impl>(std::move(startup_info), std::move(process_info));
         }
         return {};
     }
@@ -78,7 +78,7 @@ public:
         return GetProcessId(process_information->hProcess);
     }
 
-    ProcessImpl(StartupInfo startupinfo, ProcessInfo process_info)
+    Impl(StartupInfo startupinfo, ProcessInfo process_info)
         : startupinfo(std::move(startupinfo)), process_information(std::move(process_info)) {
     }
 };
@@ -87,26 +87,26 @@ Process::~Process() {
 }
 
 sese::Result<Process::Ptr, sese::ErrorCode> Process::createEx(const std::string &exec, const std::vector<std::string> &args) noexcept {
-    if (auto impl = ProcessImpl::createEx(exec, args)) {
+    if (auto impl = Impl::createEx(exec, args)) {
         auto result = MAKE_UNIQUE_PRIVATE(Process);
-        result->process_impl = std::move(impl);
+        result->impl = std::move(impl);
         return Result<Ptr, ErrorCode>::success(std::move(result));
     }
     return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }
 
 sese::pid_t Process::getCurrentProcessId() noexcept {
-    return ProcessImpl::getCurrentProcessId();
+    return Impl::getCurrentProcessId();
 }
 
 int Process::wait() const noexcept {
-    return process_impl->wait();
+    return impl->wait();
 }
 
 bool Process::kill() const noexcept {
-    return process_impl->kill();
+    return impl->kill();
 }
 
 sese::pid_t Process::getProcessId() const noexcept {
-    return process_impl->getProcessId();
+    return impl->getProcessId();
 }

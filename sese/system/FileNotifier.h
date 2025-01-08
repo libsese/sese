@@ -20,7 +20,6 @@
 
 #pragma once
 
-#include "sese/Config.h"
 #include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
