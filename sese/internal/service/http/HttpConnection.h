@@ -44,8 +44,8 @@ struct HttpConnection : Handleable, std::enable_shared_from_this<HttpConnection>
     size_t real_length;
     char send_buffer[MTU_VALUE]{};
     bool is0x0a = false;
-    iocp::IOBuf io_buffer;
-    std::unique_ptr<iocp::IOBufNode> node;
+    IOBuf io_buffer;
+    std::unique_ptr<IOBufNode> node;
     io::ByteBuilder dynamic_buffer;
 
     std::weak_ptr<HttpServiceImpl> service;

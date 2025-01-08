@@ -24,7 +24,7 @@ sese::internal::service::http::HttpConnection::HttpConnection(const std::shared_
 }
 
 void sese::internal::service::http::HttpConnection::readHeader() {
-    node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
+    node = std::make_unique<IOBufNode>(MTU_VALUE);
     asyncReadSome(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (conn->keepalive) {
             conn->keepalive = false;
@@ -83,7 +83,7 @@ void sese::internal::service::http::HttpConnection::readHeader() {
 }
 
 void sese::internal::service::http::HttpConnection::readBody() {
-    node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
+    node = std::make_unique<IOBufNode>(MTU_VALUE);
     asyncReadSome(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // There was an error and it should be disconnected

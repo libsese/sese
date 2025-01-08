@@ -27,7 +27,7 @@
 
 #include <list>
 
-namespace sese::iocp {
+namespace sese {
 
 /// IOBuf Node
 struct IOBufNode {
@@ -106,4 +106,4 @@ private:
     size_t readed{0};
 };
 
-} // namespace sese::iocp
+} // namespace sese

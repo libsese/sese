@@ -14,25 +14,25 @@
 
 #include "IOBuf.h"
 
-sese::iocp::IOBufNode::IOBufNode(size_t capacity) : CAPACITY(capacity) {
+sese::IOBufNode::IOBufNode(size_t capacity) : CAPACITY(capacity) {
     buffer = malloc(capacity);
 }
 
-sese::iocp::IOBufNode::~IOBufNode() {
+sese::IOBufNode::~IOBufNode() {
     if (buffer) {
         free(buffer);
     }
 }
 
-size_t sese::iocp::IOBufNode::getReadableSize() const noexcept {
+size_t sese::IOBufNode::getReadableSize() const noexcept {
     return size - read;
 }
 
-size_t sese::iocp::IOBufNode::getWriteableSize() const noexcept {
+size_t sese::IOBufNode::getWriteableSize() const noexcept {
     return CAPACITY - size;
 }
 
-void sese::iocp::IOBuf::push(Node node) {
+void sese::IOBuf::push(Node node) {
     // if (!tail) {
     //     root = tail = cur = node;
     // } else {
@@ -49,7 +49,7 @@ void sese::iocp::IOBuf::push(Node node) {
     }
 }
 
-void sese::iocp::IOBuf::clear() {
+void sese::IOBuf::clear() {
     // Node *p_cur = root;
     // while (p_cur) {
     //     auto next = p_cur->next;
@@ -64,15 +64,15 @@ void sese::iocp::IOBuf::clear() {
     readed = 0;
 }
 
-size_t sese::iocp::IOBuf::getReadableSize() const noexcept {
+size_t sese::IOBuf::getReadableSize() const noexcept {
     return total - readed;
 }
 
-size_t sese::iocp::IOBuf::getTotalSize() const noexcept {
+size_t sese::IOBuf::getTotalSize() const noexcept {
     return total;
 }
 
-int64_t sese::iocp::IOBuf::read(void *buffer, size_t length) {
+int64_t sese::IOBuf::read(void *buffer, size_t length) {
     size_t real = 0;
     while (true) {
         size_t node_remaining = cur->get()->getReadableSize();
@@ -104,7 +104,7 @@ int64_t sese::iocp::IOBuf::read(void *buffer, size_t length) {
     return static_cast<int64_t>(real);
 }
 
-int64_t sese::iocp::IOBuf::peek(void *buffer, size_t length) {
+int64_t sese::IOBuf::peek(void *buffer, size_t length) {
     size_t real = 0;
     auto my_cur = cur;
     IOBufNode node = *(my_cur->get());
@@ -141,7 +141,7 @@ int64_t sese::iocp::IOBuf::peek(void *buffer, size_t length) {
     return static_cast<int64_t>(real);
 }
 
-int64_t sese::iocp::IOBuf::trunc(size_t length) {
+int64_t sese::IOBuf::trunc(size_t length) {
     size_t real = 0;
     while (true) {
         size_t node_remaining = cur->get()->getReadableSize();
