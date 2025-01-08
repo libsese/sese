@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/service/iocp/IOBuf.h"
-#include "sese/record/Marco.h"
+#include "IOBuf.h"
 
 sese::iocp::IOBufNode::IOBufNode(size_t capacity) : CAPACITY(capacity) {
     buffer = malloc(capacity);

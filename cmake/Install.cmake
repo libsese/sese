@@ -23,6 +23,7 @@ install(
     FILES_MATCHING
     PATTERN "*.h"
     PATTERN "*.hpp"
+    PATTERN "${PROJECT_SOURCE_DIR}/sese/internal" EXCLUDE
     PATTERN "${PROJECT_SOURCE_DIR}/sese/test" EXCLUDE
     PATTERN "${PROJECT_SOURCE_DIR}/sese/example" EXCLUDE
 )

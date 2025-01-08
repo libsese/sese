@@ -17,7 +17,7 @@
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
 
-#include <sese/service/iocp/IOBuf.h>
+#include <sese/util/IOBuf.h>
 #include <sese/net/http/Range.h>
 #include <sese/io/File.h>
 

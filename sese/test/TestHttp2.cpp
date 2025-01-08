@@ -18,7 +18,6 @@
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/Huffman.h"
 #include "sese/record/Marco.h"
-#include "sese/service/BalanceLoader.h"
 #include "sese/system/Process.h"
 
 #include "gtest/gtest.h"
