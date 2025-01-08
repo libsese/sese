@@ -36,7 +36,7 @@ struct SubStackInfo {
 };
 
 /// Stack Information
-class StackInfo {
+class StackInfo final {
 public:
     /// Create a container to store the current stack information
     /// \param limit Stack depth limit
@@ -53,7 +53,11 @@ public:
     static uint16_t offset;
 
 protected:
-    /// This function is used to remove template parameter information on Windows, and to decode symbol names on other systems
+    /// \brief Decode symbol name
+    /// \details This function is used to remove template parameter information on Windows,
+    /// and to decode symbol names on other systems.
+    /// \param str Symbol name
+    /// \return Decoded symbol name
     static std::string decodeSymbolName(const std::string &str) noexcept;
 
     std::vector<SubStackInfo> stacks;

@@ -53,7 +53,6 @@ std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept
     auto pos = str.find_first_of('<');
     if (pos == std::string::npos) {
         return str;
-    } else {
-        return str.substr(0, pos);
     }
+    return str.substr(0, pos);
 }
