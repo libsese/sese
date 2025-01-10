@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/// \file Requestable.h
-/// \brief Requestable Interface
+/// \file HttpClient.h
+/// \brief HttpClient
 /// \author kaoru
 /// \date February 23, 2024
 
@@ -21,92 +21,74 @@
 
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
-#include <sese/io/InputStream.h>
 #include <sese/io/PeekableStream.h>
 #include <sese/io/OutputStream.h>
 
 #include <functional>
 
 namespace sese::net::http {
-/// Requestable Interface
-class Requestable : public io::InputStream, public io::OutputStream {
+/// HttpClient
+class HttpClient {
 public:
     using WriteCallback = std::function<int64_t(const void *, size_t)>;
     using ReadCallback = std::function<int64_t(void *, size_t)>;
+    using Ptr = std::unique_ptr<HttpClient>;
 
-    ~Requestable() override = default;
+    /// Create a new HttpClient
+    /// \param url URL to request
+    /// \param proxy Proxy to use, empty string for no proxy
+    /// \return New HttpClient, nullptr if failed
+    static Ptr create(const std::string &url, const std::string &proxy = "");
+
+    ~HttpClient();
 
     /// Execute request
     /// \return Request status
-    virtual bool request() = 0;
+    bool request() const;
 
     /// Get the last error
     /// \return Last error
-    virtual int getLastError() = 0;
+    int getLastError() const;
 
     /// Get the last error string
     /// \return Last error string
-    virtual std::string getLastErrorString() = 0;
+    std::string getLastErrorString() const;
 
-    int64_t read(void *buf, size_t len) override = 0;
+    int64_t read(void *buf, size_t len) const;
 
-    int64_t write(const void *buf, size_t len) override = 0;
+    int64_t write(const void *buf, size_t len) const;
 
     /// Get request headers
     /// \return Request headers
-    Request::Ptr &getRequest() { return req; }
+    Request::Ptr &getRequest() const;
 
     /// Get response headers
     /// \return Response headers
-    Response::Ptr &getResponse() { return resp; }
+    Response::Ptr &getResponse() const;
 
     /// Set the external source of the request body, this option will reset after the request is completed
     /// @param read_data Source of the body to read
     /// @param expect_total Expected size of the body
-    void setReadData(io::PeekableStream *read_data, size_t expect_total) {
-        this->read_data = read_data;
-        this->expect_total = expect_total;
-    }
+    void setReadData(io::PeekableStream *read_data, size_t expect_total) const;
 
     /// Set the external destination of the response body, this option will reset after the request is completed
     /// @param write_data Destination to receive the body
-    void setWriteData(io::OutputStream *write_data) {
-        this->write_data = write_data;
-    }
+    void setWriteData(io::OutputStream *write_data) const;
 
     /// Set the external source of the request body, this option will reset after the request is completed
     /// @param read_callback Callback function to read the body, returns the size read, if incomplete reading, the transfer stops
     /// @param expect_total Expected size of the body
-    void setReadCallback(const ReadCallback &read_callback, size_t expect_total) {
-        this->read_callback = read_callback;
-        this->expect_total = expect_total;
-    }
+    void setReadCallback(const ReadCallback &read_callback, size_t expect_total) const;
 
     /// Set the external destination of the response body, this option will reset after the request is completed
     /// @param write_callback Callback function to receive the body, returns the size written, if incomplete writing, the transfer stops
-    void setWriteCallback(const WriteCallback &write_callback) {
-        this->write_callback = write_callback;
-    }
+    void setWriteCallback(const WriteCallback &write_callback) const;
 
-    /// Reset body-related settings
-    void reset() {
-        expect_total = 0;
-        read_data = &req->getBody();
-        write_data = &resp->getBody();
-        read_callback = nullptr;
-        write_callback = nullptr;
-    }
+private:
+    HttpClient() = default;
 
-protected:
-    Request::Ptr req = nullptr;
-    Response::Ptr resp = nullptr;
-
-    size_t expect_total = 0;
-
-    io::PeekableStream *read_data = nullptr;
-    io::OutputStream *write_data = nullptr;
-
-    WriteCallback write_callback;
-    ReadCallback read_callback;
+    class Impl;
+    class SSLImpl;
+    std::unique_ptr<Impl> impl;
 };
 } // namespace sese::net::http

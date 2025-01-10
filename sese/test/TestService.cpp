@@ -14,7 +14,7 @@
 
 #include "sese/config/Json.h"
 #include "sese/net/Socket.h"
-#include "sese/net/http/RequestableFactory.h"
+#include "sese/net/http/HttpClient.h"
 #include "sese/service/http/HttpServer.h"
 #include "sese/security/SSLContextBuilder.h"
 #include "sese/io/ConsoleOutputStream.h"
@@ -64,8 +64,8 @@ public:
         using sese::service::http::HttpServer;
 
         auto ssl = sese::security::SSLContextBuilder::UniqueSSL4Server();
-        ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt");
-        ssl->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem");
+        ASSERT_TRUE(ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt"));
+        ASSERT_TRUE(ssl->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem"));
 
         ssl_port = sese::net::createRandomPort();
         port = sese::net::createRandomPort();
@@ -93,7 +93,7 @@ public:
     static void onceRequestQuery(bool ssl, uint16_t port) {
         using namespace sese::net::http;
         {
-            auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/get_info?name=sese"));
+            auto client = HttpClient::create(getUrl(ssl, port, "/get_info?name=sese"));
             ASSERT_NOT_NULL(client);
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 200);
@@ -102,7 +102,7 @@ public:
             }
         }
         {
-            auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/get_info"));
+            auto client = HttpClient::create(getUrl(ssl, port, "/get_info"));
             ASSERT_NOT_NULL(client);
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 400);
@@ -115,7 +115,7 @@ public:
     static void onceRequestHeader(bool ssl, uint16_t port) {
         using namespace sese::net::http;
         {
-            auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/get_info_2"));
+            auto client = HttpClient::create(getUrl(ssl, port, "/get_info_2"));
             ASSERT_NOT_NULL(client);
             ASSERT_TRUE(client->request()) << client->getLastError();
             EXPECT_EQ(client->getResponse()->getCode(), 400);
@@ -124,7 +124,7 @@ public:
             }
         }
         {
-            auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/get_info_2"));
+            auto client = HttpClient::create(getUrl(ssl, port, "/get_info_2"));
             ASSERT_NOT_NULL(client);
             client->getRequest()->set("name", "kaoru");
             ASSERT_TRUE(client->request()) << client->getLastError();
@@ -137,7 +137,7 @@ public:
 
     static void keepalive(bool ssl, uint16_t port) {
         using namespace sese::net::http;
-        auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/get_info_2"));
+        auto client = HttpClient::create(getUrl(ssl, port, "/get_info_2"));
         ASSERT_NOT_NULL(client);
         ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 400);
@@ -154,7 +154,7 @@ public:
 
     static void form(bool ssl, uint16_t port) {
         using namespace sese::net::http;
-        auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/login"));
+        auto client = HttpClient::create(getUrl(ssl, port, "/login"));
         ASSERT_NOT_NULL(client);
         auto &req = client->getRequest();
         req->setType(RequestType::POST);
@@ -171,7 +171,7 @@ public:
 
     static void file(bool ssl, uint16_t port) {
         using namespace sese::net::http;
-        auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/www/sese/test/Data/data.ini"));
+        auto client = HttpClient::create(getUrl(ssl, port, "/www/sese/test/Data/data.ini"));
         ASSERT_NOT_NULL(client);
         auto console = std::make_unique<sese::io::ConsoleOutputStream>();
         client->setWriteData(console.get());
@@ -184,7 +184,7 @@ public:
 
     static void range(bool ssl, uint16_t port) {
         using namespace sese::net::http;
-        auto client = RequestableFactory::createHttpRequest(getUrl(ssl, port, "/www/sese/test/Data/data.ini"));
+        auto client = HttpClient::create(getUrl(ssl, port, "/www/sese/test/Data/data.ini"));
         ASSERT_NOT_NULL(client);
         auto console = std::make_unique<sese::io::ConsoleOutputStream>();
         client->setWriteData(console.get());
