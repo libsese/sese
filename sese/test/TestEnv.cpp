@@ -14,7 +14,7 @@
 
 #include <sese/system/Environment.h>
 #include <sese/system/CommandLine.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/net/Socket.h>
 
 #include <gtest/gtest.h>

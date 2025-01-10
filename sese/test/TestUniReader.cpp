@@ -15,7 +15,7 @@
 #include <gtest/gtest.h>
 
 #include <sese/config/UniReader.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 TEST(TestUniReader, Open_0) {
     auto reader = sese::UniReader::create(PROJECT_PATH "/sese/test/Data/data-0.txt");

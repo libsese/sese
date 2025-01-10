@@ -16,13 +16,13 @@
 #include "sese/io/FileStream.h"
 #include "sese/io/ConsoleOutputStream.h"
 #include "sese/io/InputBufferWrapper.h"
-#include "sese/record/Logger.h"
+#include "sese/log/Logger.h"
 
 #include <gtest/gtest.h>
 
 #include <filesystem>
 
-using sese::record::Logger;
+using sese::log::Logger;
 
 TEST(TestXML, File) {
     auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", sese::io::FileStream::B_READ);

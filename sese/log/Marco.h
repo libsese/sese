@@ -22,21 +22,21 @@
 
 #pragma once
 
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 
 #define SESE_RAW(buffer, length) \
-    sese::record::getLogger()->dump(buffer, length)
+    sese::log::getLogger()->dump(buffer, length)
 
-#define SESE_EXCEPT(e) e.printStacktrace(sese::record::getLogger())
+#define SESE_EXCEPT(e) e.printStacktrace(sese::log::getLogger())
 
 #define SESE_DEBUG(sese_tmp_format, ...) \
-    sese::record::Logger::debug(sese_tmp_format, ##__VA_ARGS__)
+    sese::log::Logger::debug(sese_tmp_format, ##__VA_ARGS__)
 
 #define SESE_INFO(sese_tmp_format, ...) \
-    sese::record::Logger::info(sese_tmp_format, ##__VA_ARGS__)
+    sese::log::Logger::info(sese_tmp_format, ##__VA_ARGS__)
 
 #define SESE_WARN(sese_tmp_format, ...) \
-    sese::record::Logger::warn(sese_tmp_format, ##__VA_ARGS__)
+    sese::log::Logger::warn(sese_tmp_format, ##__VA_ARGS__)
 
 #define SESE_ERROR(sese_tmp_format, ...) \
-    sese::record::Logger::error(sese_tmp_format, ##__VA_ARGS__)
+    sese::log::Logger::error(sese_tmp_format, ##__VA_ARGS__)

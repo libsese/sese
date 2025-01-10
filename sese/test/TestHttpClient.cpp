@@ -15,7 +15,7 @@
 #include <gtest/gtest.h>
 #include <sese/net/http/HttpClient.h>
 #include <sese/thread/Async.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 using namespace sese::net::http;
 

@@ -22,14 +22,14 @@
 #pragma once
 
 #include "sese/Config.h"
-#include "sese/record/AbstractFormatter.h"
-#include "sese/record/Event.h"
+#include "sese/log/AbstractFormatter.h"
+#include "sese/log/Event.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese::record {
+namespace sese::log {
 
 /**
  * @brief Base class for log appenders
@@ -55,4 +55,4 @@ protected:
     Level level = Level::DEBUG;
 };
 
-} // namespace sese::record
+} // namespace sese::log

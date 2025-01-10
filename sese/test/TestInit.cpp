@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/util/Initializer.h>
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 
 #include <gtest/gtest.h>
 
@@ -22,12 +22,12 @@ public:
     Task1() : InitiateTask(__FUNCTION__) {}
 
     int32_t init() noexcept override {
-        sese::record::Logger::info("loading {}", this->getName().c_str());
+        sese::log::Logger::info("loading {}", this->getName().c_str());
         return 0;
     }
 
     int32_t destroy() noexcept override {
-        sese::record::Logger::info("unloading {}", this->getName().c_str());
+        sese::log::Logger::info("unloading {}", this->getName().c_str());
         return -1;
     }
 };
@@ -37,12 +37,12 @@ public:
     Task2() : InitiateTask(__FUNCTION__) {}
 
     int32_t init() noexcept override {
-        sese::record::Logger::info("loading {}", this->getName().c_str());
+        sese::log::Logger::info("loading {}", this->getName().c_str());
         return -1;
     }
 
     int32_t destroy() noexcept override {
-        sese::record::Logger::info("unloading {}", this->getName().c_str());
+        sese::log::Logger::info("unloading {}", this->getName().c_str());
         return 0;
     }
 };

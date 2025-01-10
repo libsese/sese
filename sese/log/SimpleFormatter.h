@@ -21,11 +21,11 @@
 
 #pragma once
 
-#include "sese/record/AbstractFormatter.h"
+#include "sese/log/AbstractFormatter.h"
 #include "sese/Config.h"
-#include "sese/record/Event.h"
+#include "sese/log/Event.h"
 
-namespace sese::record {
+namespace sese::log {
 /**
  * @brief Simple formatter class
  */
@@ -59,4 +59,4 @@ private:
     std::string textPattern;
     std::string timePattern;
 };
-} // namespace sese::record
+} // namespace sese::log

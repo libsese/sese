@@ -20,13 +20,13 @@
 
 #pragma once
 
-#include "sese/record/AbstractAppender.h"
+#include "sese/log/AbstractAppender.h"
 #include "sese/io/FileStream.h"
 #include "sese/io/BufferedStream.h"
 
 #include <mutex>
 
-namespace sese::record {
+namespace sese::log {
 
 /// Block file log appender class
 class BlockAppender final : public AbstractAppender {
@@ -52,4 +52,4 @@ private:
     io::FileStream::Ptr fileStream;
 };
 
-} // namespace sese::record
+} // namespace sese::log

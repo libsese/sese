@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/container/StrCaseMap.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/Util.h>
 
 #include <algorithm>

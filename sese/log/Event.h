@@ -30,7 +30,7 @@
 #pragma warning(disable : 4251)
 #pragma warning(disable : 4819)
 #endif
-namespace sese::record {
+namespace sese::log {
 
 /// \brief Log level
 enum class Level {
@@ -76,4 +76,4 @@ private:
     int32_t line;
     std::string message;
 };
-} // namespace sese::record
+} // namespace sese::log

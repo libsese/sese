@@ -16,23 +16,23 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#include "sese/record/Logger.h"
-#include "sese/record/ConsoleAppender.h"
-#include "sese/record/SimpleFormatter.h"
+#include "sese/log/Logger.h"
+#include "sese/log/ConsoleAppender.h"
+#include "sese/log/SimpleFormatter.h"
 
 #ifdef USE_ASYNC_LOGGER
-#include "sese/record/AsyncLogger.h"
+#include "sese/log/AsyncLogger.h"
 #endif
 
-namespace sese::record {
+namespace sese::log {
 
 Logger::Logger() noexcept {
     formatter = std::make_shared<SimpleFormatter>();
     builtInAppender = std::make_shared<ConsoleAppender>();
 #ifdef SESE_IS_DEBUG
-    builtInAppender->setLevel(sese::record::Level::DEBUG);
+    builtInAppender->setLevel(sese::log::Level::DEBUG);
 #else
-    builtInAppender->setLevel(sese::record::Level::INFO);
+    builtInAppender->setLevel(sese::log::Level::INFO);
 #endif
 }
 
@@ -146,7 +146,7 @@ int32_t LoggerInitiateTask::destroy() noexcept {
     delete logger; // GCOVR_EXCL_LINE
     return 0;
 }
-} // namespace sese::record
+} // namespace sese::log
 
 #ifdef _WIN32
 #undef _CRT_SECURE_NO_WARNINGS

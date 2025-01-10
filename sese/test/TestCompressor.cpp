@@ -18,13 +18,13 @@
 #include "sese/util/GZipFileInputStream.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/OutputBufferWrapper.h"
-#include "sese/record/Logger.h"
+#include "sese/log/Logger.h"
 
 #include "gtest/gtest.h"
 
 #include <filesystem>
 
-using sese::record::Logger;
+using sese::log::Logger;
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);

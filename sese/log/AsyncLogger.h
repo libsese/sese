@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 #include <sese/thread/Thread.h>
 #include <sese/io/FixedBuilder.h>
 
@@ -30,7 +30,7 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace sese::record {
+namespace sese::log {
 
 /// Asynchronous logger
 class  AsyncLogger final : public Logger {
@@ -56,4 +56,4 @@ protected:
     std::atomic_bool isShutdown{};
     sese::Thread::Ptr thread;
 };
-} // namespace sese::record
+} // namespace sese::log

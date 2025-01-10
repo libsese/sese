@@ -17,7 +17,7 @@
 #include "sese/net/http/DynamicTable.h"
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/Huffman.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "sese/system/Process.h"
 
 #include "gtest/gtest.h"

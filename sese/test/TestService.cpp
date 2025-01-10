@@ -18,7 +18,7 @@
 #include "sese/service/http/HttpServer.h"
 #include "sese/security/SSLContextBuilder.h"
 #include "sese/io/ConsoleOutputStream.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "gtest/gtest.h"
 
 #define ASSERT_NOT_NULL(x) ASSERT_TRUE(x != nullptr)

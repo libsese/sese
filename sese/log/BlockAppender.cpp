@@ -12,21 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/BlockAppender.h"
+#include "sese/log/BlockAppender.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/thread/Locker.h"
 
 #include <algorithm>
 
 using namespace sese;
-using namespace sese::record;
+using namespace sese::log;
 
 inline std::string getDateTimeString() {
     auto date_time = DateTime::now();
     return text::DateTimeFormatter::format(date_time, RECORD_DEFAULT_FILE_TIME_PATTERN) + ".log";
 }
 
-BlockAppender::BlockAppender(size_t block_max_size, sese::record::Level level)
+BlockAppender::BlockAppender(size_t block_max_size, sese::log::Level level)
     : AbstractAppender(level), maxSize(block_max_size) {
     // #ifndef _DEBUG
     //     maxSize = blockMaxSize < 1000 * 1024 ? 1000 * 1024 : blockMaxSize;

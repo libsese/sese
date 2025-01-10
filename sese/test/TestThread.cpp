@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/thread/Async.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "sese/util/Util.h"
 
 #include "gtest/gtest.h"
@@ -21,7 +21,7 @@
 #include <cmath>
 
 using namespace std::chrono_literals;
-using sese::record::Logger;
+using sese::log::Logger;
 
 static auto type_main_thread = "Main Thread";
 static auto type_not_main_thread = "Not Main Thread";

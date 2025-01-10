@@ -21,7 +21,7 @@
 #include "sese/net/http/HttpClient.h"
 #include "sese/net/IPv6Address.h"
 #include "sese/net/http/HttpUtil.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/util/Util.h"
 #include "sese/internal/net/AsioIPConvert.h"

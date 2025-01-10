@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 #include <sese/system/SharedMemory.h>
 #include <sese/system/Process.h>
 #include <sese/util/Util.h>
 
 #include <gtest/gtest.h>
 
-using sese::record::Logger;
+using sese::log::Logger;
 using namespace std::chrono_literals;
 
 TEST(TestSharedMemory, MEM_D) {

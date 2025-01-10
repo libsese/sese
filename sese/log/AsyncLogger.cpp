@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/record/AsyncLogger.h>
-#include <sese/record/ConsoleAppender.h>
+#include <sese/log/AsyncLogger.h>
+#include <sese/log/ConsoleAppender.h>
 
 #include <chrono>
 #include <algorithm>
 
-using namespace sese::record;
+using namespace sese::log;
 using namespace std::chrono_literals;
 
 AsyncLogger::AsyncLogger() : Logger() {

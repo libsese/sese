@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/AbstractAppender.h"
+#include "sese/log/AbstractAppender.h"
 
-namespace sese::record {
+namespace sese::log {
 AbstractAppender::AbstractAppender(Level level) noexcept {
     this->level = level;
 }
-} // namespace sese::record
+} // namespace sese::log

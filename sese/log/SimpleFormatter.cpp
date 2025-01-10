@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/SimpleFormatter.h"
+#include "sese/log/SimpleFormatter.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/text/StringBuilder.h"
 #include "sese/io/InputBufferWrapper.h"
@@ -24,28 +24,28 @@
 
 namespace sese {
 
-extern "C"  const char *getLevelString(record::Level level) noexcept {
+extern "C"  const char *getLevelString(log::Level level) noexcept {
     switch (level) { // GCOVR_EXCL_LINE
-        case record::Level::DEBUG:
+        case log::Level::DEBUG:
             return "D";
-        case record::Level::INFO:
+        case log::Level::INFO:
             return "I";
-        case record::Level::WARN:
+        case log::Level::WARN:
             return "W";
-        case record::Level::ERR:
+        case log::Level::ERR:
             return "E";
         default:            // GCOVR_EXCL_LINE
             return "DEBUG"; // GCOVR_EXCL_LINE
     }
 }
 
-record::SimpleFormatter::SimpleFormatter(const std::string &text_pattern, const std::string &time_pattern) noexcept
+log::SimpleFormatter::SimpleFormatter(const std::string &text_pattern, const std::string &time_pattern) noexcept
     : AbstractFormatter() {
     this->textPattern = text_pattern;
     this->timePattern = time_pattern;
 }
 
-std::string record::SimpleFormatter::dump(const Event::Ptr &event) noexcept {
+std::string log::SimpleFormatter::dump(const Event::Ptr &event) noexcept {
     sese::text::StringBuilder builder(1024);
     auto input = sese::io::InputBufferWrapper(textPattern.c_str(), textPattern.length());
     while (true) {

@@ -15,7 +15,7 @@
 #include <sese/service/http/HttpServer.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Initializer.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/thread/Locker.h>
 #include <sese/Util.h>
 

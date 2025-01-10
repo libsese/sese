@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/ConsoleAppender.h"
+#include "sese/log/ConsoleAppender.h"
 // #include "sese/util/EncodingConverter.h"
 
 #include <cstdio>
@@ -24,9 +24,9 @@
 static HANDLE console_handle = INVALID_HANDLE_VALUE;
 #endif
 
-using sese::record::ConsoleAppender;
+using sese::log::ConsoleAppender;
 
-ConsoleAppender::ConsoleAppender(record::Level level) noexcept : record::AbstractAppender(level) {
+ConsoleAppender::ConsoleAppender(log::Level level) noexcept : log::AbstractAppender(level) {
 #ifdef _WIN32
     if (console_handle == INVALID_HANDLE_VALUE) {
         console_handle = GetStdHandle(STD_OUTPUT_HANDLE);

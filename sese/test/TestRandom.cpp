@@ -15,7 +15,7 @@
 #include "sese/config/CSVWriter.h"
 #include "sese/io/FileStream.h"
 #include "sese/util/RandomUtil.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 
 #include "gtest/gtest.h"
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 #include <sese/config/ConfigUtil.h>
 #include <sese/config/xml/XmlUtil.h>
 #include <sese/io/ConsoleOutputStream.h>
@@ -29,7 +29,7 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
-using sese::record::Logger;
+using sese::log::Logger;
 
 TEST(TestConfig, Config) {
     auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.ini", sese::io::File::T_READ);

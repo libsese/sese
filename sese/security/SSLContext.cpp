@@ -18,7 +18,7 @@
 #include <openssl/ssl.h>
 
 #include <sese/security/SSLContext.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 #include <cassert>
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/thread/Thread.h>
 #include <sese/util/Timer.h>
 #include <sese/util/TimeWheel.h>

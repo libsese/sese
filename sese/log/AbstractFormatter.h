@@ -13,38 +13,30 @@
 // limitations under the License.
 
 /**
- * @file FileAppender.h
+ * @file AbstractFormatter.h
+ * @brief Log formatter class
  * @author kaoru
- * @brief Log file appender class
  * @date March 28, 2022
  */
 
 #pragma once
-
-#include "sese/record/AbstractAppender.h"
-#include "sese/io/FileStream.h"
-#include "sese/io/BufferedStream.h"
+#include <string>
+#include "sese/log/Event.h"
 
 #ifdef _WIN32
-#pragma warning(disable : 4996)
+#pragma warning(disable : 4251)
 #endif
 
-namespace sese::record {
+namespace sese::log {
 /**
- * @brief Log file appender class
+ * @brief Log formatter class
  */
-class  FileAppender final : public sese::record::AbstractAppender {
+class  AbstractFormatter {
 public:
-    typedef std::shared_ptr<FileAppender> Ptr;
+    typedef std::shared_ptr<AbstractFormatter> Ptr;
 
-    explicit FileAppender(io::FileStream::Ptr file_stream, Level level = Level::DEBUG);
+    virtual ~AbstractFormatter() noexcept = default;
 
-    ~FileAppender() noexcept override;
-
-    void dump(const char *buffer, size_t size) noexcept override;
-
-private:
-    io::BufferedStream::Ptr bufferedStream;
-    io::FileStream::Ptr fileStream;
+    virtual std::string dump(const Event::Ptr &event) noexcept = 0;
 };
-} // namespace sese::record
+} // namespace sese::log

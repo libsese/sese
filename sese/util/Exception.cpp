@@ -63,7 +63,7 @@ void sese::Exception::printStacktrace() {
     fwrite(content.c_str(), 1, content.length(), stdout);
 }
 
-void sese::Exception::printStacktrace(sese::record::Logger *logger) {
+void sese::Exception::printStacktrace(sese::log::Logger *logger) {
     auto content = buildStacktrace();
     logger->dump(content.c_str(), content.length());
 }

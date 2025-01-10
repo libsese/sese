@@ -22,9 +22,9 @@
 #pragma once
 
 #include "sese/Config.h"
-#include "sese/record/AbstractAppender.h"
-#include "sese/record/AbstractFormatter.h"
-#include "sese/record/Event.h"
+#include "sese/log/AbstractAppender.h"
+#include "sese/log/AbstractFormatter.h"
+#include "sese/log/Event.h"
 #include "sese/util/Initializer.h"
 #include "sese/thread/Thread.h"
 
@@ -37,7 +37,7 @@
 #pragma warning(disable : 4544)
 #endif
 
-namespace sese::record {
+namespace sese::log {
 
 /// Logger initialization task
 class LoggerInitiateTask final : public InitiateTask {
@@ -162,4 +162,4 @@ void Logger::error(PatternAndLocation pattern_and_location, ARGS &&...args) {
     prelog(pattern_and_location, Level::ERR, message);
 }
 
-} // namespace sese::record
+} // namespace sese::log

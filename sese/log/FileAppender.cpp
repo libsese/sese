@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/FileAppender.h"
+#include "sese/log/FileAppender.h"
 
 // GCOVR_EXCL_START
 
-sese::record::FileAppender::FileAppender(io::FileStream::Ptr file_stream, sese::record::Level level)
+sese::log::FileAppender::FileAppender(io::FileStream::Ptr file_stream, sese::log::Level level)
     : AbstractAppender(level),
       fileStream(std::move(file_stream)) {
     bufferedStream = std::make_shared<io::BufferedStream>(this->fileStream, 4 * 1024);
@@ -24,11 +24,11 @@ sese::record::FileAppender::FileAppender(io::FileStream::Ptr file_stream, sese::
 
 // GCOVR_EXCL_STOP
 
-sese::record::FileAppender::~FileAppender() noexcept {
+sese::log::FileAppender::~FileAppender() noexcept {
     bufferedStream->flush();
     fileStream->close();
 }
 
-void sese::record::FileAppender::dump(const char *buffer, size_t size) noexcept {
+void sese::log::FileAppender::dump(const char *buffer, size_t size) noexcept {
     bufferedStream->write((void *) buffer, size);
 }

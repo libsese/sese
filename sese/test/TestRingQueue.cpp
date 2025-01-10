@@ -15,7 +15,7 @@
 #include <gtest/gtest.h>
 #include <sese/thread/Thread.h>
 #include <sese/container/BufferedQueue.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/util/StopWatch.h>
 #include <sese/container/RingQueue.h>
 

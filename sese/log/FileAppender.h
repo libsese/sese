@@ -13,33 +13,38 @@
 // limitations under the License.
 
 /**
- * @file ConsoleAppender.h
+ * @file FileAppender.h
  * @author kaoru
+ * @brief Log file appender class
  * @date March 28, 2022
- * @brief Console log appender class
  */
 
 #pragma once
 
-#include "sese/record/AbstractAppender.h"
-#include "sese/record/AbstractFormatter.h"
-#include "sese/record/Event.h"
+#include "sese/log/AbstractAppender.h"
+#include "sese/io/FileStream.h"
+#include "sese/io/BufferedStream.h"
 
-namespace sese::record {
+#ifdef _WIN32
+#pragma warning(disable : 4996)
+#endif
+
+namespace sese::log {
 /**
- * @brief Console log appender class
+ * @brief Log file appender class
  */
-class  ConsoleAppender final : public AbstractAppender {
+class  FileAppender final : public sese::log::AbstractAppender {
 public:
-    explicit ConsoleAppender(Level level = Level::DEBUG) noexcept;
+    typedef std::shared_ptr<FileAppender> Ptr;
+
+    explicit FileAppender(io::FileStream::Ptr file_stream, Level level = Level::DEBUG);
+
+    ~FileAppender() noexcept override;
 
     void dump(const char *buffer, size_t size) noexcept override;
 
-public:
-    static void setDebugColor() noexcept;
-    static void setInfoColor() noexcept;
-    static void setWarnColor() noexcept;
-    static void setErrorColor() noexcept;
-    static void setCleanColor() noexcept;
+private:
+    io::BufferedStream::Ptr bufferedStream;
+    io::FileStream::Ptr fileStream;
 };
-} // namespace sese::record
+} // namespace sese::log

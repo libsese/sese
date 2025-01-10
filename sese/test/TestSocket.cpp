@@ -14,7 +14,7 @@
 
 #include <sese/net/Socket.h>
 #include <sese/net/AddressPool.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/util/Random.h>
 
 #include <gtest/gtest.h>

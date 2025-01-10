@@ -44,7 +44,7 @@ struct Formatter<Point> {
 };
 }
 // ...
-using sese::record::Logger;
+using sese::log::Logger;
 int a = 1, b = 2;
 Point point{1, 2};
 Logger::info("hello world");
@@ -120,26 +120,8 @@ channel->write(1, "Exit");
 For Windows users, please install and config
 the [vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started).
 
-For non-Windows users, vcpkg is likewise available. But at the same time, you can choose to install the dependencies
-using the native system dependency management tool. We have provided several preset installation scripts.
-
-- Ubuntu
-
-```bash
-sudo ./scripts/install_ubuntu_deps.sh
-```
-
-- Fedora
-
-```bash
-sudo ./scripts/install_fedora_deps.sh
-```
-
-- macOS
-
-```bash
-./scripts/install_darwin_deps.sh
-```
+For non-Windows users, vcpkg is likewise available. ~~But at the same time, you can choose to install the dependencies
+using the native system dependency management tool. We have provided several preset installation scripts.~~
 
 2. Compilation options
 

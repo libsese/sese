@@ -15,7 +15,7 @@
 #include <gtest/gtest.h>
 #include <sese/system/IPC.h>
 #include <sese/system/Process.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 TEST(TestIPC, Temp) {
     auto channel = sese::system::IPCChannel::create("Test", 1024);

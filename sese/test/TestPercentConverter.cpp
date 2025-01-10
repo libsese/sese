@@ -14,7 +14,7 @@
 
 #include <sese/util/PercentConverter.h>
 #include <sese/io/OutputBufferWrapper.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 #include <gtest/gtest.h>
 

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/net/Socket.h"
-#include "sese/record/Logger.h"
+#include "sese/log/Logger.h"
 #include "sese/util/Initializer.h"
 #include "sese/security/SecurityConfig.h"
 #include "sese/system/CommandLine.h"
@@ -36,7 +36,7 @@ static Initializer g_initializer;
 [[maybe_unused]] void *Initializer::getInitializer() noexcept {
     addTask(std::make_shared<PathsInitiateTask>());
     addTask(std::make_shared<ThreadInitiateTask>());
-    addTask(std::make_shared<record::LoggerInitiateTask>());
+    addTask(std::make_shared<log::LoggerInitiateTask>());
 #ifdef _WIN32
     addTask(std::make_shared<net::SocketInitiateTask>());
 #endif
@@ -79,7 +79,7 @@ void sese::initCore(int argc, const char *const *argv) noexcept {
     Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(argc, argv));
     Initializer::addTask(std::make_shared<PathsInitiateTask>());
     Initializer::addTask(std::make_shared<ThreadInitiateTask>());
-    Initializer::addTask(std::make_shared<record::LoggerInitiateTask>());
+    Initializer::addTask(std::make_shared<log::LoggerInitiateTask>());
 #ifdef _WIN32
     Initializer::addTask(std::make_shared<net::SocketInitiateTask>());
 #endif

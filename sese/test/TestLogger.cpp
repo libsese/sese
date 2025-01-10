@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/Marco.h"
-#include "sese/record/BlockAppender.h"
-#include "sese/record/FileAppender.h"
-#include "sese/record/SimpleFormatter.h"
+#include "sese/log/Marco.h"
+#include "sese/log/BlockAppender.h"
+#include "sese/log/FileAppender.h"
+#include "sese/log/SimpleFormatter.h"
 
 #include "gtest/gtest.h"
 
@@ -24,8 +24,8 @@
 using namespace std::chrono_literals;
 
 TEST(TestLogger, BlockAppender) {
-    using sese::record::Logger;
-    auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 20, sese::record::Level::INFO);
+    using sese::log::Logger;
+    auto appender = std::make_shared<sese::log::BlockAppender>(1 * 1024 * 20, sese::log::Level::INFO);
     appender->size = appender->maxSize - 128;
     Logger::addGlobalLoggerAppender(appender);
 
@@ -41,12 +41,12 @@ TEST(TestLogger, BlockAppender) {
 }
 
 TEST(TestLogger, FileAppender) {
-    using sese::record::Logger;
+    using sese::log::Logger;
     {
-        auto logger = sese::record::getLogger();
+        auto logger = sese::log::getLogger();
         auto file_stream = sese::io::FileStream::create("hello.log", sese::io::FileStream::T_WRITE_TRUNC);
         ASSERT_TRUE(file_stream != nullptr);
-        auto file_appender = std::make_shared<sese::record::FileAppender>(file_stream);
+        auto file_appender = std::make_shared<sese::log::FileAppender>(file_stream);
         logger->addAppender(file_appender);
 
         Logger::debug("Hello");
@@ -60,10 +60,10 @@ TEST(TestLogger, FileAppender) {
 }
 
 TEST(TestLogger, SimpleFormat) {
-    using sese::record::Logger;
-    auto event = std::make_shared<sese::record::Event>(
+    using sese::log::Logger;
+    auto event = std::make_shared<sese::log::Event>(
         sese::DateTime::now(),
-        sese::record::Level::INFO,
+        sese::log::Level::INFO,
         "ThreadName",
         0,
         SESE_FILENAME,
@@ -71,24 +71,24 @@ TEST(TestLogger, SimpleFormat) {
         "Hello"
     );
 
-    auto format1 = sese::record::SimpleFormatter("c");
+    auto format1 = sese::log::SimpleFormatter("c");
     Logger::debug(format1.dump(event).c_str());
 
-    auto format2 = sese::record::SimpleFormatter("li lv la");
+    auto format2 = sese::log::SimpleFormatter("li lv la");
     Logger::debug(format2.dump(event).c_str());
 
-    auto format3 = sese::record::SimpleFormatter("fn fi fa");
+    auto format3 = sese::log::SimpleFormatter("fn fi fa");
     Logger::debug(format3.dump(event).c_str());
 
-    auto format4 = sese::record::SimpleFormatter("th tn ta");
+    auto format4 = sese::log::SimpleFormatter("th tn ta");
     Logger::debug(format4.dump(event).c_str());
 
-    auto format5 = sese::record::SimpleFormatter("%m");
+    auto format5 = sese::log::SimpleFormatter("%m");
     Logger::debug(format5.dump(event).c_str());
 }
 
 TEST(TestLogger, Methods) {
-    using sese::record::Logger;
+    using sese::log::Logger;
     Logger::debug("Hello, {}", "world");
     Logger::info("Hello");
     Logger::warn("Hello");

@@ -13,14 +13,14 @@
 // limitations under the License.
 
 #include "sese/util/DateTime.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "gtest/gtest.h"
 
 #include <thread>
 
 using namespace std::chrono_literals;
-using sese::record::Logger;
+using sese::log::Logger;
 
 TEST(TestDateTime, Info) {
     auto time = sese::DateTime::nowPtr(8);

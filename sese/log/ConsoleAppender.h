@@ -13,30 +13,33 @@
 // limitations under the License.
 
 /**
- * @file AbstractFormatter.h
- * @brief Log formatter class
+ * @file ConsoleAppender.h
  * @author kaoru
  * @date March 28, 2022
+ * @brief Console log appender class
  */
 
 #pragma once
-#include <string>
-#include "sese/record/Event.h"
 
-#ifdef _WIN32
-#pragma warning(disable : 4251)
-#endif
+#include "sese/log/AbstractAppender.h"
+#include "sese/log/AbstractFormatter.h"
+#include "sese/log/Event.h"
 
-namespace sese::record {
+namespace sese::log {
 /**
- * @brief Log formatter class
+ * @brief Console log appender class
  */
-class  AbstractFormatter {
+class  ConsoleAppender final : public AbstractAppender {
 public:
-    typedef std::shared_ptr<AbstractFormatter> Ptr;
+    explicit ConsoleAppender(Level level = Level::DEBUG) noexcept;
 
-    virtual ~AbstractFormatter() noexcept = default;
+    void dump(const char *buffer, size_t size) noexcept override;
 
-    virtual std::string dump(const Event::Ptr &event) noexcept = 0;
+public:
+    static void setDebugColor() noexcept;
+    static void setInfoColor() noexcept;
+    static void setWarnColor() noexcept;
+    static void setErrorColor() noexcept;
+    static void setCleanColor() noexcept;
 };
-} // namespace sese::record
+} // namespace sese::log

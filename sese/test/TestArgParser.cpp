@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/util/ArgParser.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "sese/system/CommandLine.h"
 #include "gtest/gtest.h"
 
