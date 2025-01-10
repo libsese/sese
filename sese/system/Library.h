@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file LibraryLoader.h
+ * @file Library.h
  * @brief External Library Loader
  * @author kaoru
  * @date April 22, 2022
@@ -35,11 +35,10 @@ namespace sese::system {
 /**
  * @brief Library Object
  */
-class LibraryObject {
+class Library {
 public:
-    using Ptr = std::shared_ptr<LibraryObject>;
+    using Ptr = std::unique_ptr<Library>;
 #ifdef _WIN32
-    using Module = HMODULE;
 #else
     using Module = void *;
 #endif
@@ -48,7 +47,7 @@ public:
      * @param name Library name
      * @return Library object, returns nullptr if loading fails
      */
-    static LibraryObject::Ptr create(const std::string &name) noexcept;
+    static Ptr create(const std::string &name) noexcept;
 
     /**
      * @brief Load an external library
@@ -62,9 +61,10 @@ public:
      * @param path Library path
      * @return Library object, returns nullptr if loading fails
      */
-    static LibraryObject::Ptr createWithPath(const system::Path &path) noexcept;
+    static Ptr createWithPath(const Path &path) noexcept;
 
-    ~LibraryObject() noexcept;
+    ~Library() noexcept;
+
     /**
      * @brief Return a function pointer from the library by name
      * @param name Function name
@@ -72,10 +72,15 @@ public:
      */
     [[nodiscard]] const void *findFunctionByName(const std::string &name) const;
 
-private:
-    explicit LibraryObject(Module module) noexcept;
+    template<typename T>
+    [[nodiscard]] T *findFunctionByNameAs(const std::string &name) const {
+        return (T *)findFunctionByName(name); // NOLINT
+    }
 
-    Module module;
+private:
+    class Impl;
+    explicit Library(std::unique_ptr<Impl> impl) noexcept;
+    std::unique_ptr<Impl> impl;
 };
 
 } // namespace sese::system

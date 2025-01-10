@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "LibraryLoader.h"
+#include "Library.h"
 
 #include "sese/util/ErrorCode.h"
 #include "sese/util/Util.h"
 
-sese::Result<sese::system::LibraryObject::Ptr, sese::ErrorCode> sese::sys::LibraryObject::createEx(const std::string &name) noexcept {
+sese::Result<sese::system::Library::Ptr, sese::ErrorCode> sese::sys::Library::createEx(const std::string &name) noexcept {
     if (auto result = create(name)) {
         return Result<Ptr, ErrorCode>::success(std::move(result));
     }
     return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});
 }
+

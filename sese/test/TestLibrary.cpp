@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/system/LibraryLoader.h"
+#include "sese/system/Library.h"
 #include "sese/Log.h"
 
 #include "gtest/gtest.h"
 
 using Func = double(double);
 
-TEST(TestLibraryLoader, Sin) {
+TEST(TestLibrary, Sin) {
 #ifdef _WIN32
     auto lib_name = "NTDLL.DLL";
 #elif __linux__
@@ -28,9 +28,9 @@ TEST(TestLibraryLoader, Sin) {
     auto *lib_name = "libstdc++.6.dylib";
 #endif
     SESE_INFO("loading lib \"{}\"", lib_name);
-    const auto OBJECT = sese::system::LibraryObject::create(lib_name);
+    const auto OBJECT = sese::system::Library::create(lib_name);
     ASSERT_NE(OBJECT, nullptr);
-    const auto SIN = (Func *) (OBJECT->findFunctionByName("sin"));
+    const auto SIN = OBJECT->findFunctionByNameAs<Func>("sin");
     ASSERT_NE(SIN, nullptr);
 
     const auto A = SIN(1.0f);
@@ -39,11 +39,10 @@ TEST(TestLibraryLoader, Sin) {
     SESE_INFO("sin(0.0f) = {}", B);
 }
 
-TEST(TestLibraryLoader, Result) {
-    auto result = sese::sys::LibraryObject::createEx("undef.dll");
-    if (result) {
+TEST(TestLibrary, Result) {
+    if (auto result = sese::sys::Library::createEx("undef.dll")) {
         SESE_INFO("{}", result.err().message());
         return;
     }
-    auto lib = result.get();
+    FAIL();
 }

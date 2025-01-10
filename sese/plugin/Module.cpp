@@ -27,8 +27,8 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
         return nullptr;
     }
 
-    auto get_module_info = (getModuleInfoFunc *) obj->findFunctionByName(STR2(GET_MODULE_INFO_FUNC_NAME));
-    auto get_factory = (getFactoryFunc *) obj->findFunctionByName(STR2(GET_CLASS_FACTORY_FUNC_NAME));
+    auto get_module_info = obj->findFunctionByNameAs<getModuleInfoFunc>(STR2(GET_MODULE_INFO_FUNC_NAME));
+    auto get_factory = obj->findFunctionByNameAs<getFactoryFunc>(STR2(GET_CLASS_FACTORY_FUNC_NAME));
     if (!get_module_info || !get_factory) {
         return nullptr;
     }
@@ -41,7 +41,7 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
     // }
 
     auto m = MAKE_UNIQUE_PRIVATE(Module);
-    m->object = obj;
+    m->object = std::move(obj);
     m->info = info;
     m->factory = factory;
     m->factory->init();
@@ -59,29 +59,29 @@ sese::Result<sese::plugin::Module::Ptr, sese::ErrorCode> sese::plugin::Module::o
 }
 
 sese::plugin::Module::Ptr sese::plugin::Module::openWithPath(const system::Path &path) noexcept {
-    return sese::plugin::Module::open(path.getNativePath());
+    return open(path.getNativePath());
 }
 
-sese::plugin::BaseClass::Ptr sese::plugin::Module::createClass(const std::string &id) noexcept {
-    auto p_factory = (ClassFactory *) this->factory;
+sese::plugin::BaseClass::Ptr sese::plugin::Module::createClass(const std::string &id) const noexcept {
+    auto p_factory = this->factory;
     return p_factory->createClassWithName(id);
 }
 
-const char *sese::plugin::Module::getName() noexcept {
-    auto p_info = (ModuleInfo *) this->info;
+const char *sese::plugin::Module::getName() const noexcept {
+    auto p_info = static_cast<ModuleInfo *>(this->info);
     return p_info->moduleName;
 }
 
-const char *sese::plugin::Module::getVersion() noexcept {
-    auto p_info = (ModuleInfo *) this->info;
+const char *sese::plugin::Module::getVersion() const noexcept {
+    auto p_info = static_cast<ModuleInfo *>(this->info);
     return p_info->versionString;
 }
 
-const char *sese::plugin::Module::getDescription() noexcept {
-    auto p_info = (ModuleInfo *) this->info;
+const char *sese::plugin::Module::getDescription() const noexcept {
+    auto p_info = static_cast<ModuleInfo *>(this->info);
     return p_info->description;
 }
 
-const sese::plugin::ClassFactory::RegisterInfoMapType &sese::plugin::Module::getRegisterClassInfo() noexcept {
+const sese::plugin::ClassFactory::RegisterInfoMapType &sese::plugin::Module::getRegisterClassInfo() const noexcept {
     return factory->getRegisterClassInfo();
 }
