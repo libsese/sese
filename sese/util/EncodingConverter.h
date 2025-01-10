@@ -23,8 +23,6 @@
 
 #include "sese/Config.h"
 #include "sese/util/NotInstantiable.h"
-#include "sese/util/Initializer.h"
-
 
 namespace sese {
 

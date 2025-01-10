@@ -16,8 +16,8 @@
 
 #include "sese/util/Util.h"
 
-sese::Result<sese::system::FileNotifier::Ptr, sese::ErrorCode> sese::sys::FileNotifier::createEx(const std::string &path, FileNotifyOption *option) noexcept {
-    if (auto result = create(path, option)) {
+sese::Result<sese::system::FileNotifier::Ptr, sese::ErrorCode> sese::sys::FileNotifier::createEx(const std::string &path) noexcept {
+    if (auto result = create(path)) {
         return Result<Ptr, ErrorCode>::success(std::move(result));
     }
     return Result<Ptr, ErrorCode>::error({getErrorCode(), getErrorString()});

@@ -1,13 +1,13 @@
 ### Custom
-CMakeSettings.json
-CMakeUserPresets.json
-build
-h2spec
-h2spec.exe
-.xmake
-.fleet
-venv
-.venv
+/CMakeSettings.json
+/CMakeUserPresets.json
+/build
+/h2spec
+/h2spec.exe
+/.xmake
+/.fleet
+/venv
+/.venv
 temp
 *.csv
 *.gcov

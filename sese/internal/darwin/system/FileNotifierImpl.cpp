@@ -17,74 +17,94 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreServices/CoreServices.h>
-#include <tuple>
 
-static void callback(
+using namespace sese::system;
+
+class FileNotifier::Impl {
+public:
+    using Ptr = std::unique_ptr<Impl>;
+
+    FSEventStreamRef stream = nullptr;
+    dispatch_queue_t queue = nullptr;
+
+    OnCreateCallback on_create;
+    OnMoveCallback on_move;
+    OnModifyCallback on_modify;
+    OnDeleteCallback on_delete;
+
+    static void callback(
         ConstFSEventStreamRef stream,
-        void *info,
+        void *this__,
         size_t num_events,
         void *event_paths,
         const FSEventStreamEventFlags event_flags[],
         const FSEventStreamEventId event_ids[]
-) {
-    auto option = (sese::system::FileNotifyOption *) info;
-    const char *last_src = nullptr;
-    for (size_t i = 0; i < num_events; ++i) {
-        auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) event_paths, (CFIndex) i);
-        auto path = (CFStringRef) CFDictionaryGetValue(dict, kFSEventStreamEventExtendedDataPathKey);
-        auto src = CFStringGetCStringPtr(path, kCFStringEncodingUTF8);
+    ) {
+        auto this_ = (FileNotifier::Impl *) this__;
+        const char *last_src = nullptr;
+        for (size_t i = 0; i < num_events; ++i) {
+            auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) event_paths, (CFIndex) i);
+            auto path = (CFStringRef) CFDictionaryGetValue(dict, kFSEventStreamEventExtendedDataPathKey);
+            auto src = CFStringGetCStringPtr(path, kCFStringEncodingUTF8);
 
-        if (event_flags[i] & kFSEventStreamEventFlagItemCreated) {
-            auto len = std::string_view(src).find_last_of('/') + 1;
-            option->onCreate(src + len);
-        }
-        if (event_flags[i] & kFSEventStreamEventFlagItemModified) {
-            auto len = std::string_view(src).find_last_of('/') + 1;
-            option->onModify(src + len);
-        }
-        if (event_flags[i] & kFSEventStreamEventFlagItemRenamed) {
-            if (last_src) {
-                auto len0 = std::string_view(last_src).find_last_of('/') + 1;
-                auto len1 = std::string_view(src).find_last_of('/') + 1;
-                option->onMove(last_src + len0, src + len1);
-                last_src = nullptr;
-            } else {
-                last_src = src;
+            if (event_flags[i] & kFSEventStreamEventFlagItemCreated) {
+                auto len = std::string_view(src).find_last_of('/') + 1;
+                if (this_->on_create) {
+                    this_->on_create(src + len);
+                }
+            }
+            if (event_flags[i] & kFSEventStreamEventFlagItemModified) {
+                auto len = std::string_view(src).find_last_of('/') + 1;
+                if (this_->on_modify) {
+                    this_->on_modify(src + len);
+                }
+            }
+            if (event_flags[i] & kFSEventStreamEventFlagItemRenamed) {
+                if (last_src) {
+                    auto len0 = std::string_view(last_src).find_last_of('/') + 1;
+                    auto len1 = std::string_view(src).find_last_of('/') + 1;
+                    if (this_->on_move) {
+                        this_->on_move(last_src + len0, src + len1);
+                    }
+                    last_src = nullptr;
+                } else {
+                    last_src = src;
+                }
+            }
+            if (event_flags[i] & kFSEventStreamEventFlagItemRemoved) {
+                auto len = std::string_view(src).find_last_of('/') + 1;
+                if (this_->on_delete) {
+                    this_->on_delete(src + len);
+                }
             }
         }
-        if (event_flags[i] & kFSEventStreamEventFlagItemRemoved) {
-            auto len = std::string_view(src).find_last_of('/') + 1;
-            option->onDelete(src + len);
-        }
     }
-}
 
-using namespace sese::system;
 
-FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
-    CFStringRef p = CFStringCreateWithCString(
+    static Ptr create(const std::string &path) noexcept {
+        CFStringRef p = CFStringCreateWithCString(
             nullptr,
             path.c_str(),
             kCFStringEncodingUTF8
-    );
+        );
 
-    CFArrayRef paths_to_watch = CFArrayCreate(
+        CFArrayRef paths_to_watch = CFArrayCreate(
             nullptr,
             (const void **) &p,
             1,
             &kCFTypeArrayCallBacks
-    );
+        );
 
-    auto notifier = MAKE_UNIQUE_PRIVATE(FileNotifier);
+        auto impl = MAKE_UNIQUE_PRIVATE(Impl);
 
-    FSEventStreamContext context;
-    context.version = 0;
-    context.info = option;
-    context.retain = nullptr;
-    context.release = nullptr;
-    context.copyDescription = nullptr;
+        FSEventStreamContext context;
+        context.version = 0;
+        context.info = impl.get();
+        context.retain = nullptr;
+        context.release = nullptr;
+        context.copyDescription = nullptr;
 
-    notifier->stream = FSEventStreamCreate(
+        impl->stream = FSEventStreamCreate(
             nullptr,
             &callback,
             &context,
@@ -92,32 +112,69 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
             kFSEventStreamEventIdSinceNow,
             1,
             kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagUseExtendedData
-    );
+        );
 
-    notifier->queue = dispatch_queue_create(nullptr, nullptr);
-    FSEventStreamSetDispatchQueue(
-            (FSEventStreamRef) notifier->stream,
-            (dispatch_queue_t) notifier->queue
-    );
+        impl->queue = dispatch_queue_create(nullptr, nullptr);
+        FSEventStreamSetDispatchQueue(
+            impl->stream,
+            impl->queue
+        );
 
-    return notifier;
+        return impl;
+    }
+
+    ~Impl() noexcept {
+        if (this->stream) {
+            shutdown();
+        }
+    }
+
+    void start() noexcept {
+        FSEventStreamStart(this->stream);
+    }
+
+    void shutdown() noexcept {
+        FSEventStreamStop(this->stream);
+        FSEventStreamInvalidate(this->stream);
+        FSEventStreamRelease(this->stream);
+        dispatch_release(this->queue);
+        stream = nullptr;
+        queue = nullptr;
+    }
+};
+
+FileNotifier::Ptr FileNotifier::create(const std::string &path) noexcept {
+    auto result = MAKE_UNIQUE_PRIVATE(FileNotifier);
+    auto impl = Impl::create(path);
+    if (result->impl = std::move(impl); !result->impl) {
+        return nullptr;
+    }
+    return result;
 }
 
 FileNotifier::~FileNotifier() noexcept {
-    if (this->stream) {
-        shutdown();
-    }
 }
 
-void FileNotifier::loopNonblocking() noexcept {
-    FSEventStreamStart((FSEventStreamRef) this->stream);
+void FileNotifier::start() const noexcept {
+    return impl->start();
 }
 
-void FileNotifier::shutdown() noexcept {
-    FSEventStreamStop((FSEventStreamRef) this->stream);
-    FSEventStreamInvalidate((FSEventStreamRef) this->stream);
-    FSEventStreamRelease((FSEventStreamRef) this->stream);
-    dispatch_release((dispatch_queue_t) this->queue);
-    stream = nullptr;
-    queue = nullptr;
+void FileNotifier::shutdown() const noexcept {
+    return impl->shutdown();
+}
+
+void FileNotifier::setOnCreate(OnCreateCallback &&callback) const noexcept {
+    impl->on_create = std::move(callback);
+}
+
+void FileNotifier::setOnMove(OnMoveCallback &&callback) const noexcept {
+    impl->on_move = std::move(callback);
+}
+
+void FileNotifier::setOnModify(OnModifyCallback &&callback) const noexcept {
+    impl->on_modify = std::move(callback);
+}
+
+void FileNotifier::setOnDelete(OnDeleteCallback &&callback) const noexcept {
+    impl->on_delete = std::move(callback);
 }

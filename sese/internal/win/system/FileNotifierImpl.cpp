@@ -13,115 +13,180 @@
 // limitations under the License.
 
 #include "sese/system/FileNotifier.h"
-#include "sese/util/Memory.h"
+#include "sese/util/EncodingConverter.h"
+#include "sese/thread/Thread.h"
 
-#include <cassert>
 #include <windows.h>
-#include <locale>
-#include <codecvt>
 
 #pragma warning(disable : 4996)
 
 using namespace sese::system;
 
-FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
-    const auto FILE_HANDLE = CreateFile(
-        path.c_str(),
-        GENERIC_READ | GENERIC_WRITE | FILE_LIST_DIRECTORY,
-        FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
-        nullptr,
-        OPEN_EXISTING,
-        FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OVERLAPPED,
-        nullptr
-    );
-    if (FILE_HANDLE == INVALID_HANDLE_VALUE) { return nullptr; }
+class FileNotifier::Impl {
+public:
+    void *file_handle = nullptr;
+    void *overlapped = nullptr;
+    std::atomic_bool is_shutdown = false;
+    Thread::Ptr th = nullptr;
 
-    const auto overlapped = new OVERLAPPED{};
-    overlapped->hEvent = CreateEventA(nullptr, false, false, nullptr);
+    OnCreateCallback on_create;
+    OnMoveCallback on_move;
+    OnModifyCallback on_modify;
+    OnDeleteCallback on_delete;
 
-    auto notifier = MAKE_UNIQUE_PRIVATE(FileNotifier);
-    notifier->file_handle = FILE_HANDLE;
-    notifier->overlapped = overlapped;
-    notifier->option = option;
-
-    return notifier;
-}
-
-FileNotifier::~FileNotifier() noexcept { if (this->th) { shutdown(); } }
-
-void FileNotifier::loopNonblocking() noexcept {
-    auto proc = [this]() {
-        std::wstring_convert<std::codecvt_utf8<wchar_t> > convert;
-        DWORD read = 0;
-        while (!is_shutdown) {
-            char buffer[1024];
-            if (!ReadDirectoryChangesW(
-                (HANDLE) file_handle,
-                buffer,
-                sizeof(buffer),
-                false,
-                FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_ATTRIBUTES |
-                FILE_NOTIFY_CHANGE_SIZE | FILE_NOTIFY_CHANGE_LAST_WRITE | FILE_NOTIFY_CHANGE_SECURITY,
-                (LPDWORD) &read,
-                static_cast<LPOVERLAPPED>(overlapped),
-                nullptr
-            )) { break; }
-            if (WaitForSingleObject(static_cast<LPOVERLAPPED>(overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
-                if (!is_shutdown) {
-                    size_t count = 0;
-                    auto info_pos = buffer + 0;
-                    std::string name0;
-                    std::string name1;
-                again:
-                    const auto INFO = reinterpret_cast<FILE_NOTIFY_INFORMATION *>(info_pos);
-                    if (count % 2) {
-                        name1 = convert.to_bytes(
-                            INFO->FileName,
-                            reinterpret_cast<wchar_t *>(reinterpret_cast<char *>(INFO->FileName) + INFO->FileNameLength)
-                        );
-                    } else {
-                        name0 = convert.to_bytes(
-                            INFO->FileName,
-                            reinterpret_cast<wchar_t *>(reinterpret_cast<char *>(INFO->FileName) + INFO->FileNameLength)
-                        );
-                    }
-
-                    switch (INFO->Action) {
-                        case FILE_ACTION_ADDED:
-                            option->onCreate(name0);
-                            break;
-                        case FILE_ACTION_MODIFIED:
-                            option->onModify(name0);
-                            break;
-                        case FILE_ACTION_REMOVED:
-                            option->onDelete(name0);
-                            break;
-                        case FILE_ACTION_RENAMED_OLD_NAME:
-                            count += 1;
-                            info_pos += INFO->NextEntryOffset;
-                            goto again;
-                        case FILE_ACTION_RENAMED_NEW_NAME:
-                            count += 1;
-                            option->onMove(name0, name1);
-                            break;
-                        default:
-                            assert(false);
-                            break;
-                    }
-                } else { break; }
-            }
+    static std::unique_ptr<Impl> create(const std::string &path) noexcept {
+        const auto FILE_HANDLE = CreateFile(
+            path.c_str(),
+            GENERIC_READ | GENERIC_WRITE | FILE_LIST_DIRECTORY,
+            FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
+            nullptr,
+            OPEN_EXISTING,
+            FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OVERLAPPED,
+            nullptr
+        );
+        if (FILE_HANDLE == INVALID_HANDLE_VALUE) {
+            return nullptr;
         }
-    };
-    th = std::make_unique<Thread>(proc);
-    th->start();
+
+        const auto overlapped = new OVERLAPPED{};
+        overlapped->hEvent = CreateEventA(nullptr, false, false, nullptr);
+
+        auto impl = std::make_unique<Impl>();
+        impl->file_handle = FILE_HANDLE;
+        impl->overlapped = overlapped;
+
+        return impl;
+    }
+
+    ~Impl() noexcept {
+        if (this->th) {
+            shutdown();
+        }
+    }
+
+    void shutdown() {
+        is_shutdown = true;
+        SetEvent(static_cast<LPOVERLAPPED>(overlapped)->hEvent);
+        th->join();
+        th = nullptr;
+        CloseHandle(file_handle);
+        file_handle = nullptr;
+        delete static_cast<LPOVERLAPPED>(overlapped);
+    }
+
+    void start() {
+        auto proc = [this] {
+            DWORD read = 0;
+            while (!is_shutdown) {
+                char buffer[1024];
+                if (!ReadDirectoryChangesW(
+                        file_handle,
+                        buffer,
+                        sizeof(buffer),
+                        false,
+                        FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_ATTRIBUTES |
+                            FILE_NOTIFY_CHANGE_SIZE | FILE_NOTIFY_CHANGE_LAST_WRITE | FILE_NOTIFY_CHANGE_SECURITY,
+                        &read,
+                        static_cast<LPOVERLAPPED>(overlapped),
+                        nullptr
+                    )) {
+                    break;
+                }
+                if (WaitForSingleObject(static_cast<LPOVERLAPPED>(overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
+                    if (!is_shutdown) {
+                        size_t count = 0;
+                        auto info_pos = buffer + 0;
+                        std::string name0;
+                        std::string name1;
+                    again:
+                        const auto INFO = reinterpret_cast<FILE_NOTIFY_INFORMATION *>(info_pos);
+                        if (count % 2) {
+                            std::wstring_view range = {
+                                INFO->FileName,
+                                INFO->FileNameLength / sizeof(wchar_t)
+                            };
+                            name1 = EncodingConverter::toString(std::wstring(range));
+                        } else {
+                            std::wstring_view range = {
+                                INFO->FileName,
+                                INFO->FileNameLength / sizeof(wchar_t)
+                            };
+                            name0 = EncodingConverter::toString(std::wstring(range));
+                        }
+
+                        switch (INFO->Action) {
+                            case FILE_ACTION_ADDED:
+                                if (on_create) {
+                                    on_create(name0);
+                                }
+                                break;
+                            case FILE_ACTION_MODIFIED:
+                                if (on_modify) {
+                                    on_modify(name0);
+                                }
+                                break;
+                            case FILE_ACTION_REMOVED:
+                                if (on_delete) {
+                                    on_delete(name0);
+                                }
+                                break;
+                            case FILE_ACTION_RENAMED_OLD_NAME:
+                                count += 1;
+                                info_pos += INFO->NextEntryOffset;
+                                goto again;
+                            case FILE_ACTION_RENAMED_NEW_NAME:
+                                count += 1;
+                                if (on_move) {
+                                    on_move(name0, name1);
+                                }
+                                break;
+                            default:
+                                assert(false);
+                                break;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+            }
+        };
+        th = std::make_unique<Thread>(proc);
+        th->start();
+    }
+};
+
+FileNotifier::Ptr FileNotifier::create(const std::string &path) noexcept {
+    auto result = MAKE_UNIQUE_PRIVATE(FileNotifier);
+    auto impl = Impl::create(path);
+    if (result->impl = std::move(impl); !result->impl) {
+        return nullptr;
+    }
+    return result;
 }
 
-void FileNotifier::shutdown() noexcept {
-    is_shutdown = true;
-    SetEvent(static_cast<LPOVERLAPPED>(overlapped)->hEvent);
-    th->join();
-    th = nullptr;
-    CloseHandle(file_handle);
-    file_handle = nullptr;
-    delete static_cast<LPOVERLAPPED>(overlapped);
+FileNotifier::~FileNotifier() noexcept {
+}
+
+void FileNotifier::start() const noexcept {
+    return impl->start();
+}
+
+void FileNotifier::shutdown() const noexcept {
+    return impl->shutdown();
+}
+
+void FileNotifier::setOnCreate(OnCreateCallback &&callback) const noexcept {
+    impl->on_create = std::move(callback);
+}
+
+void FileNotifier::setOnMove(OnMoveCallback &&callback) const noexcept {
+    impl->on_move = std::move(callback);
+}
+
+void FileNotifier::setOnModify(OnModifyCallback &&callback) const noexcept {
+    impl->on_modify = std::move(callback);
+}
+
+void FileNotifier::setOnDelete(OnDeleteCallback &&callback) const noexcept {
+    impl->on_delete = std::move(callback);
 }
