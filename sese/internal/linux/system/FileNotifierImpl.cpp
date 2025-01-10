@@ -14,8 +14,10 @@
 
 #include "sese/system/FileNotifier.h"
 #include "sese/util/Memory.h"
+#include "sese/thread/Thread.h"
 
 #include <cstdio>
+#include <atomic>
 #include <sys/inotify.h>
 #if defined(__GLIBC__)
 #include <sys/fcntl.h>
