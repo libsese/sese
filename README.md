@@ -21,9 +21,10 @@
 ## Intro
 
 This is a cross-platform framework for developing fundamental components,
- used to some extent as a supplement to the standard library.
- It is positioned similarly to `Boost` and `folly` with respect to the standard library.
- The project uses C++ 20 standard and introduces vcpkg as a package manager to help us simplify dependency management issues.
+used to some extent as a supplement to the standard library.
+It is positioned similarly to `Boost` and `folly` with respect to the standard library.
+The project uses C++ 20 standard and introduces vcpkg as a package manager to help us simplify dependency management
+issues.
 
 ## Demo
 
@@ -163,35 +164,37 @@ The main job is to write the project's dependency configuration file, for exampl
 
 ```json
 {
-  "dependencies": [
-    "sese"
-  ]
+    "dependencies": [
+        "sese"
+    ]
 }
 ```
 
 > [!IMPORTANT]
-> Since the built-in baseline `14b91796a68c87bc8d5cb35911b39287ccb7bd95`, sese has been included in the built-in list. Before this,
-> you needed to create an additional configuration file to import our [private registry](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries), just like this:
+> Since the built-in baseline `14b91796a68c87bc8d5cb35911b39287ccb7bd95`, sese has been included in the built-in list.
+> Before this,
+> you needed to create an additional configuration file to import
+> our [private registry](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries), just like this:
 
 `vcpkg-configuration.json`
 
 ```json
 {
-  "default-registry": {
-    "kind": "git",
-    "repository": "https://github.com/microsoft/vcpkg.git",
-    "baseline": "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
-  },
-  "registries": [
-    {
-      "kind": "git",
-      "repository": "https://github.com/libsese/vcpkg-registry.git",
-      "baseline": "73268778d5f796f188ca66f71536377b171ee37e",
-      "packages": [
-        "sese"
-      ]
-    }
-  ]
+    "default-registry": {
+        "kind": "git",
+        "repository": "https://github.com/microsoft/vcpkg.git",
+        "baseline": "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
+    },
+    "registries": [
+        {
+            "kind": "git",
+            "repository": "https://github.com/libsese/vcpkg-registry.git",
+            "baseline": "73268778d5f796f188ca66f71536377b171ee37e",
+            "packages": [
+                "sese"
+            ]
+        }
+    ]
 }
 ```
 
@@ -200,20 +203,20 @@ If you're not using vcpkg, the above steps are unnecessary.
 ### Testing
 
 We used googletest as our testing framework. Detailed information about our tests can be found in
- github actions, including the results of various platforms and linux test coverage.
+github actions, including the results of various platforms and linux test coverage.
 
-| Platform | Entry | Unit Test | Coverage Test |
-|--|--|--|--|
-| Windows | [Unit Tests](https://github.com/libsese/sese/actions/workflows/windows-2022.yml) | ✅ |
-| Linux | [Unit Tests](https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml) | ✅ | ✅ |
-| macOS | [Unit Tests](https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml) | ✅ |
+| Platform | Unit Test | Coverage Test |
+|----------|-----------|---------------|
+| Windows  | ✅         |               |
+| Linux    | ✅         | ✅             |
+| macOS    | ✅         |               |
 
 1. Local Testing
 
 - Services on Ubuntu workflow
 
 If you need to run full tests locally, you may need to pay attention to the database side of the
- test, which requires some additional service and configuration support.
+test, which requires some additional service and configuration support.
 
 https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L14-L34
 
@@ -245,13 +248,16 @@ https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.g
 
 ## Documents
 
-[Documents](https://libsese.github.io/sese/) will be updated automatically with the update of the main branch to making pages.
+[Documents](https://libsese.github.io/sese/) will be updated automatically with the update of the main branch to making
+pages.
 
-Document content is automatically generated from code comments, and the docs directory actually houses some of the resources needed to build the document.
+Document content is automatically generated from code comments, and the docs directory actually houses some of the
+resources needed to build the document.
 
 ## Contributors
 
 ![Contributors](https://contrib.rocks/image?repo=libsese/sese)
 
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flibsese%2Fsese.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flibsese%2Fsese?ref=badge_large)
