@@ -17,16 +17,11 @@
 /// \author kaoru
 /// \date March 29, 2024
 
-#ifndef SESE_CORE_SEMAPHORE_H
-#define SESE_CORE_SEMAPHORE_H
+#pragma once
 
 #include <sese/Config.h>
 
 #include <chrono>
-
-#ifndef SESE_PLATFORM_WINDOWS
-#include <semaphore.h>
-#endif
 
 namespace sese::system {
 
@@ -39,33 +34,27 @@ public:
     /// \param name Name
     /// \param initial_count Initial count, default is 1 behaving like a mutex
     /// \retval nullptr Creation failed
-    static Semaphore::Ptr create(std::string name, uint32_t initial_count = 1);
+    static Ptr create(std::string name, uint32_t initial_count = 1);
 
     ~Semaphore();
 
     /// Block and wait until resource is acquired
-    bool lock();
+    bool lock() const;
 
     /// Release the current resource
-    bool unlock();
+    bool unlock() const;
 
     /// Try to acquire resource within a certain time
     /// \param ms Waiting time in milliseconds, invalid on APPLE platforms
     /// \return Whether acquisition is successful
-    bool tryLock(std::chrono::milliseconds ms);
+    bool tryLock(std::chrono::milliseconds ms) const;
 
 private:
-    Semaphore() = default;
 
-#ifdef SESE_PLATFORM_WINDOWS
-    HANDLE hSemaphore{};
-#else
-    std::string sem_name{};
-    sem_t *semaphore{};
-#endif
+    class Impl;
+    std::unique_ptr<Impl> impl;
+
+    explicit Semaphore(std::unique_ptr<Impl> impl);
 };
 
 }
-
-#endif //SESE_CORE_SEMAPHORE_H
-
