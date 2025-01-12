@@ -44,9 +44,5 @@ var searchData=
   ['etoomanyrefs_41',['ETOOMANYREFS',['../_windows_config_8h.html#a10426080250efba47f4aaf254036ff00',1,'WindowsConfig.h']]],
   ['eusers_42',['EUSERS',['../_windows_config_8h.html#a9b153104ed38c8579f009f81bc7b2dc9',1,'WindowsConfig.h']]],
   ['event_43',['EVENT',['../_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464',1,'TimeWheel.cpp']]],
-  ['event_5ferror_44',['EVENT_ERROR',['../_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3',1,'BaseEvent.h']]],
-  ['event_5fnull_45',['EVENT_NULL',['../_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695',1,'BaseEvent.h']]],
-  ['event_5fread_46',['EVENT_READ',['../_base_event_8h.html#ac03f8506739d508e600347184b53e22c',1,'BaseEvent.h']]],
-  ['event_5fwrite_47',['EVENT_WRITE',['../_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f',1,'BaseEvent.h']]],
-  ['ewouldblock_48',['EWOULDBLOCK',['../_windows_config_8h.html#a4a3a0b3605fd3b2336455062ee8e25f0',1,'WindowsConfig.h']]]
+  ['ewouldblock_44',['EWOULDBLOCK',['../_windows_config_8h.html#a4a3a0b3605fd3b2336455062ee8e25f0',1,'WindowsConfig.h']]]
 ];

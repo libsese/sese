@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -185,9 +185,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a69b68119e2faebfc84118e91d9af1a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fa7a875b2ceb2a9e9d1fc4b2758c09f" id="r_a5fa7a875b2ceb2a9e9d1fc4b2758c09f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fa7a875b2ceb2a9e9d1fc4b2758c09f">writeBody</a> ()</td></tr>
 <tr class="separator:a5fa7a875b2ceb2a9e9d1fc4b2758c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac14e9876ae4be63c4fd44b0b2934a6dc" id="r_ac14e9876ae4be63c4fd44b0b2934a6dc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac14e9876ae4be63c4fd44b0b2934a6dc">writeBlock</a> (const char *buffer, size_t length, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;<a class="el" href="native_2darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)=0</td></tr>
+<tr class="memitem:ac14e9876ae4be63c4fd44b0b2934a6dc" id="r_ac14e9876ae4be63c4fd44b0b2934a6dc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac14e9876ae4be63c4fd44b0b2934a6dc">writeBlock</a> (const char *buffer, size_t length, const std::function&lt; void(const asio::error_code &amp;code)&gt; &amp;callback)=0</td></tr>
 <tr class="separator:ac14e9876ae4be63c4fd44b0b2934a6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d262d096f69394c5b3582aca78f27cc" id="r_a8d262d096f69394c5b3582aca78f27cc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d262d096f69394c5b3582aca78f27cc">asyncReadSome</a> (const asio::mutable_buffers_1 &amp;buffer, const std::function&lt; void(const asio::error_code &amp;error, std::size_t bytes_transferred)&gt; &amp;<a class="el" href="native_2darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)=0</td></tr>
+<tr class="memitem:a8d262d096f69394c5b3582aca78f27cc" id="r_a8d262d096f69394c5b3582aca78f27cc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d262d096f69394c5b3582aca78f27cc">asyncReadSome</a> (const asio::mutable_buffers_1 &amp;buffer, const std::function&lt; void(const asio::error_code &amp;error, std::size_t bytes_transferred)&gt; &amp;callback)=0</td></tr>
 <tr class="separator:a8d262d096f69394c5b3582aca78f27cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b95a564dafc6fb86281737a91819cb" id="r_a24b95a564dafc6fb86281737a91819cb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24b95a564dafc6fb86281737a91819cb">checkKeepalive</a> ()=0</td></tr>
 <tr class="separator:a24b95a564dafc6fb86281737a91819cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,10 +210,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af10f6ca6d3e8f10929b67490348d27f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a003f1d8732de616c3fe079b45571e8d7" id="r_a003f1d8732de616c3fe079b45571e8d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a003f1d8732de616c3fe079b45571e8d7">is0x0a</a> = false</td></tr>
 <tr class="separator:a003f1d8732de616c3fe079b45571e8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aa995edb87bc0576af12599eed3a678" id="r_a9aa995edb87bc0576af12599eed3a678"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html">iocp::IOBuf</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9aa995edb87bc0576af12599eed3a678">io_buffer</a></td></tr>
-<tr class="separator:a9aa995edb87bc0576af12599eed3a678"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5143182141605389fdb00611176d668" id="r_af5143182141605389fdb00611176d668"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html">iocp::IOBufNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5143182141605389fdb00611176d668">node</a></td></tr>
-<tr class="separator:af5143182141605389fdb00611176d668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2979824d33167a820c2a426916020adc" id="r_a2979824d33167a820c2a426916020adc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_i_o_buf.html">IOBuf</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2979824d33167a820c2a426916020adc">io_buffer</a></td></tr>
+<tr class="separator:a2979824d33167a820c2a426916020adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ff611040697349b8f4df6260122fd1" id="r_a14ff611040697349b8f4df6260122fd1"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="structsese_1_1_i_o_buf_node.html">IOBufNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14ff611040697349b8f4df6260122fd1">node</a></td></tr>
+<tr class="separator:a14ff611040697349b8f4df6260122fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a698dd18b2d153756ea5dfde764c6ca39" id="r_a698dd18b2d153756ea5dfde764c6ca39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a698dd18b2d153756ea5dfde764c6ca39">dynamic_buffer</a></td></tr>
 <tr class="separator:a698dd18b2d153756ea5dfde764c6ca39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a371853844b11a76c994c9e244ee7d30d" id="r_a371853844b11a76c994c9e244ee7d30d"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html">HttpServiceImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a371853844b11a76c994c9e244ee7d30d">service</a></td></tr>
@@ -657,14 +657,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9aa995edb87bc0576af12599eed3a678" name="a9aa995edb87bc0576af12599eed3a678"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aa995edb87bc0576af12599eed3a678">&#9670;&#160;</a></span>io_buffer</h2>
+<a id="a2979824d33167a820c2a426916020adc" name="a2979824d33167a820c2a426916020adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2979824d33167a820c2a426916020adc">&#9670;&#160;</a></span>io_buffer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html">iocp::IOBuf</a> sese::internal::service::http::HttpConnection::io_buffer</td>
+          <td class="memname"><a class="el" href="classsese_1_1_i_o_buf.html">IOBuf</a> sese::internal::service::http::HttpConnection::io_buffer</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -685,14 +685,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af5143182141605389fdb00611176d668" name="af5143182141605389fdb00611176d668"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5143182141605389fdb00611176d668">&#9670;&#160;</a></span>node</h2>
+<a id="a14ff611040697349b8f4df6260122fd1" name="a14ff611040697349b8f4df6260122fd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ff611040697349b8f4df6260122fd1">&#9670;&#160;</a></span>node</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html">iocp::IOBufNode</a>&gt; sese::internal::service::http::HttpConnection::node</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="structsese_1_1_i_o_buf_node.html">IOBufNode</a>&gt; sese::internal::service::http::HttpConnection::node</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -765,7 +765,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html">HttpConnection</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:07 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:54 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

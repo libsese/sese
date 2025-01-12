@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -158,11 +158,11 @@ sese::Result&lt;T&gt;</h1>
 <div class="line">    <a class="code hl_function" href="namespacesese.html#a1f4b46ffad174639bc2bfe96d85f8892" title="Initialize sese-core.">sese::initCore</a>(argc, argv);</div>
 <div class="line">    <span class="keyword">auto</span> result = to_int(<span class="stringliteral">&quot;114514homo&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">if</span> (result) {</div>
-<div class="line">        <a class="code hl_define" href="record_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(<span class="stringliteral">&quot;{}&quot;</span>, result.err().message());</div>
+<div class="line">        <a class="code hl_define" href="log_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(<span class="stringliteral">&quot;{}&quot;</span>, result.err().message());</div>
 <div class="line">        <span class="keywordflow">return</span> result.err().value();</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keyword">auto</span> num = result.get();</div>
-<div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;{}&quot;</span>, num);</div>
+<div class="line">    <a class="code hl_define" href="log_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;{}&quot;</span>, num);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md57"></a>
@@ -191,7 +191,7 @@ Classic</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:06 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:54 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

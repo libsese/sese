@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -133,11 +133,11 @@ $(function(){initNavTree('classsese_1_1system_1_1_shared_memory.html',''); initR
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classsese_1_1system_1_1_shared_memory-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">sese::system::SharedMemory Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
@@ -149,6 +149,11 @@ $(function(){initNavTree('classsese_1_1system_1_1_shared_memory.html',''); initR
 
 <p><code>#include &lt;<a class="el" href="_shared_memory_8h_source.html">SharedMemory.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shared_memory_1_1_impl.html">Impl</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:aab05e8c936f11e27ad800af46a391753" id="r_aab05e8c936f11e27ad800af46a391753"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab05e8c936f11e27ad800af46a391753">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1system_1_1_shared_memory.html">SharedMemory</a>&gt;</td></tr>
@@ -157,40 +162,30 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2861717e9a6b1682c062328d0ea87e3" id="r_aa2861717e9a6b1682c062328d0ea87e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2861717e9a6b1682c062328d0ea87e3">~SharedMemory</a> () noexcept</td></tr>
-<tr class="memdesc:aa2861717e9a6b1682c062328d0ea87e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <br /></td></tr>
 <tr class="separator:aa2861717e9a6b1682c062328d0ea87e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e7d376a4a7e7b2e7bfc96b914d3969a" id="r_a5e7d376a4a7e7b2e7bfc96b914d3969a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e7d376a4a7e7b2e7bfc96b914d3969a">getBuffer</a> () noexcept</td></tr>
-<tr class="separator:a5e7d376a4a7e7b2e7bfc96b914d3969a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3b915e099413cb1a82755e8d3dbb433" id="r_ad3b915e099413cb1a82755e8d3dbb433"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3b915e099413cb1a82755e8d3dbb433">getBuffer</a> () const noexcept</td></tr>
+<tr class="separator:ad3b915e099413cb1a82755e8d3dbb433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a609004e73674720758b98086799b0748" id="r_a609004e73674720758b98086799b0748"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#aab05e8c936f11e27ad800af46a391753">SharedMemory::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a609004e73674720758b98086799b0748">create</a> (const char *name, size_t size) noexcept</td></tr>
+<tr class="memitem:a609004e73674720758b98086799b0748" id="r_a609004e73674720758b98086799b0748"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#aab05e8c936f11e27ad800af46a391753">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a609004e73674720758b98086799b0748">create</a> (const char *name, size_t size) noexcept</td></tr>
 <tr class="separator:a609004e73674720758b98086799b0748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b67c3543d9bff4f9a86a570993211f4" id="r_a4b67c3543d9bff4f9a86a570993211f4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#aab05e8c936f11e27ad800af46a391753">Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b67c3543d9bff4f9a86a570993211f4">createEx</a> (const char *name, size_t size) noexcept</td></tr>
 <tr class="separator:a4b67c3543d9bff4f9a86a570993211f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af17d5de9adecaa8dc3a483631b7f8c74" id="r_af17d5de9adecaa8dc3a483631b7f8c74"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#aab05e8c936f11e27ad800af46a391753">SharedMemory::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af17d5de9adecaa8dc3a483631b7f8c74">use</a> (const char *name) noexcept</td></tr>
+<tr class="memitem:af17d5de9adecaa8dc3a483631b7f8c74" id="r_af17d5de9adecaa8dc3a483631b7f8c74"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#aab05e8c936f11e27ad800af46a391753">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af17d5de9adecaa8dc3a483631b7f8c74">use</a> (const char *name) noexcept</td></tr>
 <tr class="separator:af17d5de9adecaa8dc3a483631b7f8c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abca98f579fb6683f63040a5a4b572a4b" id="r_abca98f579fb6683f63040a5a4b572a4b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#aab05e8c936f11e27ad800af46a391753">Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abca98f579fb6683f63040a5a4b572a4b">useEx</a> (const char *name) noexcept</td></tr>
 <tr class="separator:abca98f579fb6683f63040a5a4b572a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a6888d13296968df9d86693109090b841" id="r_a6888d13296968df9d86693109090b841"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6888d13296968df9d86693109090b841">SharedMemory</a> ()=default</td></tr>
-<tr class="separator:a6888d13296968df9d86693109090b841"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a70064b1ed2752adbd17f7115d8c02b21" id="r_a70064b1ed2752adbd17f7115d8c02b21"><td class="memItemLeft" align="right" valign="top">static key_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70064b1ed2752adbd17f7115d8c02b21">name2key</a> (const char *name) noexcept</td></tr>
-<tr class="separator:a70064b1ed2752adbd17f7115d8c02b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cecbee678b4084bb667f862932d5087" id="r_a3cecbee678b4084bb667f862932d5087"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cecbee678b4084bb667f862932d5087">SharedMemory</a> (std::unique_ptr&lt; <a class="el" href="class_shared_memory_1_1_impl.html">Impl</a> &gt; <a class="el" href="#a6cb6f9915b1ce7fd28867a4b99ad11ab">impl</a>) noexcept</td></tr>
+<tr class="separator:a3cecbee678b4084bb667f862932d5087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:abfec4f8addcfee061b17fa2feaffba1a" id="r_abfec4f8addcfee061b17fa2feaffba1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfec4f8addcfee061b17fa2feaffba1a">id</a> {}</td></tr>
-<tr class="separator:abfec4f8addcfee061b17fa2feaffba1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d5d363813eab416f8c4373f4e6d1e85" id="r_a9d5d363813eab416f8c4373f4e6d1e85"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d5d363813eab416f8c4373f4e6d1e85">buffer</a> = nullptr</td></tr>
-<tr class="separator:a9d5d363813eab416f8c4373f4e6d1e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fac63c9b0cda7152e33f5133abd1e30" id="r_a2fac63c9b0cda7152e33f5133abd1e30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fac63c9b0cda7152e33f5133abd1e30">isOwner</a> {}</td></tr>
-<tr class="separator:a2fac63c9b0cda7152e33f5133abd1e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb6f9915b1ce7fd28867a4b99ad11ab" id="r_a6cb6f9915b1ce7fd28867a4b99ad11ab"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_shared_memory_1_1_impl.html">Impl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cb6f9915b1ce7fd28867a4b99ad11ab">impl</a></td></tr>
+<tr class="separator:a6cb6f9915b1ce7fd28867a4b99ad11ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Shared Memory Class. </p>
@@ -233,14 +228,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destructor. </p>
-
-<p class="reference">References <a class="el" href="#a9d5d363813eab416f8c4373f4e6d1e85">buffer</a>, and <a class="el" href="#a2fac63c9b0cda7152e33f5133abd1e30">isOwner</a>.</p>
-
 </div>
 </div>
-<a id="a6888d13296968df9d86693109090b841" name="a6888d13296968df9d86693109090b841"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6888d13296968df9d86693109090b841">&#9670;&#160;</a></span>SharedMemory()</h2>
+<a id="a3cecbee678b4084bb667f862932d5087" name="a3cecbee678b4084bb667f862932d5087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cecbee678b4084bb667f862932d5087">&#9670;&#160;</a></span>SharedMemory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,15 +240,15 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">sese::system::SharedMemory::SharedMemory </td>
+          <td class="memname">SharedMemory::SharedMemory </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_shared_memory_1_1_impl.html">Impl</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>impl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -343,8 +334,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5e7d376a4a7e7b2e7bfc96b914d3969a" name="a5e7d376a4a7e7b2e7bfc96b914d3969a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e7d376a4a7e7b2e7bfc96b914d3969a">&#9670;&#160;</a></span>getBuffer()</h2>
+<a id="ad3b915e099413cb1a82755e8d3dbb433" name="ad3b915e099413cb1a82755e8d3dbb433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3b915e099413cb1a82755e8d3dbb433">&#9670;&#160;</a></span>getBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -356,7 +347,7 @@ Private Attributes</h2></td></tr>
           <td class="memname">void * SharedMemory::getBuffer </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -367,32 +358,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the actual address of the shared memory </p><dl class="section return"><dt>Returns</dt><dd>Shared memory block </dd></dl>
 
-<p class="reference">References <a class="el" href="#a9d5d363813eab416f8c4373f4e6d1e85">buffer</a>.</p>
-
-</div>
-</div>
-<a id="a70064b1ed2752adbd17f7115d8c02b21" name="a70064b1ed2752adbd17f7115d8c02b21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70064b1ed2752adbd17f7115d8c02b21">&#9670;&#160;</a></span>name2key()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">key_t SharedMemory::name2key </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p class="reference">References <a class="el" href="#a6cb6f9915b1ce7fd28867a4b99ad11ab">impl</a>.</p>
 
 </div>
 </div>
@@ -466,8 +432,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9d5d363813eab416f8c4373f4e6d1e85" name="a9d5d363813eab416f8c4373f4e6d1e85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d5d363813eab416f8c4373f4e6d1e85">&#9670;&#160;</a></span>buffer</h2>
+<a id="a6cb6f9915b1ce7fd28867a4b99ad11ab" name="a6cb6f9915b1ce7fd28867a4b99ad11ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb6f9915b1ce7fd28867a4b99ad11ab">&#9670;&#160;</a></span>impl</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -476,7 +442,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void* sese::system::SharedMemory::buffer = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="class_shared_memory_1_1_impl.html">Impl</a>&gt; sese::system::SharedMemory::impl</td>
         </tr>
       </table>
   </td>
@@ -486,61 +452,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="#a5e7d376a4a7e7b2e7bfc96b914d3969a">getBuffer()</a>, and <a class="el" href="#aa2861717e9a6b1682c062328d0ea87e3">~SharedMemory()</a>.</p>
-
-</div>
-</div>
-<a id="abfec4f8addcfee061b17fa2feaffba1a" name="abfec4f8addcfee061b17fa2feaffba1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfec4f8addcfee061b17fa2feaffba1a">&#9670;&#160;</a></span>id</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int sese::system::SharedMemory::id {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2fac63c9b0cda7152e33f5133abd1e30" name="a2fac63c9b0cda7152e33f5133abd1e30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fac63c9b0cda7152e33f5133abd1e30">&#9670;&#160;</a></span>isOwner</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sese::system::SharedMemory::isOwner {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="#aa2861717e9a6b1682c062328d0ea87e3">~SharedMemory()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ad3b915e099413cb1a82755e8d3dbb433">getBuffer()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sese/system/<a class="el" href="_shared_memory_8h_source.html">SharedMemory.h</a></li>
-<li>sese/native/unix/system/<a class="el" href="native_2unix_2system_2_shared_memory_8cpp.html">SharedMemory.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="native_2win_2system_2_shared_memory_8cpp.html">SharedMemory.cpp</a></li>
-<li>sese/system/<a class="el" href="system_2_shared_memory_8cpp.html">SharedMemory.cpp</a></li>
+<li>sese/internal/unix/system/<a class="el" href="unix_2system_2_shared_memory_impl_8cpp.html">SharedMemoryImpl.cpp</a></li>
+<li>sese/internal/win/system/<a class="el" href="win_2system_2_shared_memory_impl_8cpp.html">SharedMemoryImpl.cpp</a></li>
+<li>sese/system/<a class="el" href="_shared_memory_8cpp.html">SharedMemory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -548,7 +468,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_shared_memory.html">SharedMemory</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:08 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

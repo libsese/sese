@@ -1,5 +1,5 @@
 var _logger_8cpp =
 [
-    [ "getLogger", "_logger_8cpp.html#a06e85e7fe9b8bd06544cfe2a83d15878", null ],
-    [ "logger", "_logger_8cpp.html#ab4254674635b8529ea32b4d1588de4d3", null ]
+    [ "getLogger", "_logger_8cpp.html#a56827e66013e48c27cfd581cc3f35271", null ],
+    [ "logger", "_logger_8cpp.html#a87a97a963e54675f559bb7eba8649efc", null ]
 ];

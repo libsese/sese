@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -133,12 +133,14 @@ $(function(){initNavTree('classsese_1_1system_1_1_file_notifier.html',''); initR
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classsese_1_1system_1_1_file_notifier-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">sese::system::FileNotifier Class Reference</div></div>
+  <div class="headertitle"><div class="title">sese::system::FileNotifier Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -147,39 +149,121 @@ $(function(){initNavTree('classsese_1_1system_1_1_file_notifier.html',''); initR
 
 <p><code>#include &lt;<a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_notifier_1_1_impl.html">Impl</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a742b5e2f2ea550bead834fb4bd8c88c8" id="r_a742b5e2f2ea550bead834fb4bd8c88c8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1system_1_1_file_notifier.html">FileNotifier</a>&gt;</td></tr>
 <tr class="separator:a742b5e2f2ea550bead834fb4bd8c88c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acada2d4bda27ecaca189274593af7f3b" id="r_acada2d4bda27ecaca189274593af7f3b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acada2d4bda27ecaca189274593af7f3b">OnCreateCallback</a> = std::function&lt;void(std::string_view)&gt;</td></tr>
+<tr class="separator:acada2d4bda27ecaca189274593af7f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8447b500ebb4978d050b4058c727acaf" id="r_a8447b500ebb4978d050b4058c727acaf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8447b500ebb4978d050b4058c727acaf">OnMoveCallback</a> = std::function&lt;void(std::string_view, std::string_view)&gt;</td></tr>
+<tr class="separator:a8447b500ebb4978d050b4058c727acaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22a7491edc96d5e750cf73dc499261a" id="r_af22a7491edc96d5e750cf73dc499261a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af22a7491edc96d5e750cf73dc499261a">OnModifyCallback</a> = std::function&lt;void(std::string_view)&gt;</td></tr>
+<tr class="separator:af22a7491edc96d5e750cf73dc499261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa09d1832b219ec74351a00761509550e" id="r_aa09d1832b219ec74351a00761509550e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa09d1832b219ec74351a00761509550e">OnDeleteCallback</a> = std::function&lt;void(std::string_view)&gt;</td></tr>
+<tr class="separator:aa09d1832b219ec74351a00761509550e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3bb4e75333341df153a046191a7d27f3" id="r_a3bb4e75333341df153a046191a7d27f3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bb4e75333341df153a046191a7d27f3">~FileNotifier</a> () noexcept</td></tr>
+<tr class="memitem:a3bb4e75333341df153a046191a7d27f3" id="r_a3bb4e75333341df153a046191a7d27f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bb4e75333341df153a046191a7d27f3">~FileNotifier</a> () noexcept</td></tr>
 <tr class="separator:a3bb4e75333341df153a046191a7d27f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9da0fd7e668a72e2b96d24f4e756b0c5" id="r_a9da0fd7e668a72e2b96d24f4e756b0c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9da0fd7e668a72e2b96d24f4e756b0c5">loopNonblocking</a> () noexcept</td></tr>
-<tr class="memdesc:a9da0fd7e668a72e2b96d24f4e756b0c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a thread to start processing the change event.  <br /></td></tr>
-<tr class="separator:a9da0fd7e668a72e2b96d24f4e756b0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a844550dad1d2a8d786ed3ffbef855783" id="r_a844550dad1d2a8d786ed3ffbef855783"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a844550dad1d2a8d786ed3ffbef855783">shutdown</a> () noexcept</td></tr>
-<tr class="memdesc:a844550dad1d2a8d786ed3ffbef855783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut down the monitor and block until the background thread exits.  <br /></td></tr>
-<tr class="separator:a844550dad1d2a8d786ed3ffbef855783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b71b103ba77935ab74b8543f3f233d" id="r_a77b71b103ba77935ab74b8543f3f233d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b71b103ba77935ab74b8543f3f233d">start</a> () const noexcept</td></tr>
+<tr class="memdesc:a77b71b103ba77935ab74b8543f3f233d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a thread to start processing the change event.  <br /></td></tr>
+<tr class="separator:a77b71b103ba77935ab74b8543f3f233d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b7fcd2b5dd15af55eb4d275ab7bf352" id="r_a4b7fcd2b5dd15af55eb4d275ab7bf352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b7fcd2b5dd15af55eb4d275ab7bf352">shutdown</a> () const noexcept</td></tr>
+<tr class="memdesc:a4b7fcd2b5dd15af55eb4d275ab7bf352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut down the monitor and block until the background thread exits.  <br /></td></tr>
+<tr class="separator:a4b7fcd2b5dd15af55eb4d275ab7bf352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09247e28921030c64a13b0bae7f16728" id="r_a09247e28921030c64a13b0bae7f16728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09247e28921030c64a13b0bae7f16728">setOnCreate</a> (<a class="el" href="#acada2d4bda27ecaca189274593af7f3b">OnCreateCallback</a> &amp;&amp;callback) const noexcept</td></tr>
+<tr class="separator:a09247e28921030c64a13b0bae7f16728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a0e5a10f2d7159f48b511cf18bff4e" id="r_a84a0e5a10f2d7159f48b511cf18bff4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84a0e5a10f2d7159f48b511cf18bff4e">setOnMove</a> (<a class="el" href="#a8447b500ebb4978d050b4058c727acaf">OnMoveCallback</a> &amp;&amp;callback) const noexcept</td></tr>
+<tr class="separator:a84a0e5a10f2d7159f48b511cf18bff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d75828e381e28db8f0473e65d0ff83" id="r_a96d75828e381e28db8f0473e65d0ff83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96d75828e381e28db8f0473e65d0ff83">setOnModify</a> (<a class="el" href="#af22a7491edc96d5e750cf73dc499261a">OnModifyCallback</a> &amp;&amp;callback) const noexcept</td></tr>
+<tr class="separator:a96d75828e381e28db8f0473e65d0ff83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c7cb15b457783d7eae821ce5ce78be" id="r_ac5c7cb15b457783d7eae821ce5ce78be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5c7cb15b457783d7eae821ce5ce78be">setOnDelete</a> (<a class="el" href="#aa09d1832b219ec74351a00761509550e">OnDeleteCallback</a> &amp;&amp;callback) const noexcept</td></tr>
+<tr class="separator:ac5c7cb15b457783d7eae821ce5ce78be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3e9cb4c190e5ec266c73bb2a04f0809e" id="r_a3e9cb4c190e5ec266c73bb2a04f0809e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">FileNotifier::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e9cb4c190e5ec266c73bb2a04f0809e">create</a> (const std::string &amp;path, <a class="el" href="structsese_1_1system_1_1_file_notify_option.html">FileNotifyOption</a> *option) noexcept</td></tr>
-<tr class="separator:a3e9cb4c190e5ec266c73bb2a04f0809e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e08d3b2e7ade582850769cc3904c96c" id="r_a6e08d3b2e7ade582850769cc3904c96c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e08d3b2e7ade582850769cc3904c96c">createEx</a> (const std::string &amp;path, <a class="el" href="structsese_1_1system_1_1_file_notify_option.html">FileNotifyOption</a> *option) noexcept</td></tr>
-<tr class="separator:a6e08d3b2e7ade582850769cc3904c96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac759fd43111bc2546a0cd265b41d4f0e" id="r_ac759fd43111bc2546a0cd265b41d4f0e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac759fd43111bc2546a0cd265b41d4f0e">create</a> (const std::string &amp;path) noexcept</td></tr>
+<tr class="separator:ac759fd43111bc2546a0cd265b41d4f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559debe09845d18adabb78d9a86a9ce2" id="r_a559debe09845d18adabb78d9a86a9ce2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a559debe09845d18adabb78d9a86a9ce2">createEx</a> (const std::string &amp;path) noexcept</td></tr>
+<tr class="separator:a559debe09845d18adabb78d9a86a9ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ae65a96fa4752c2afed9dc717d8f4e51d" id="r_ae65a96fa4752c2afed9dc717d8f4e51d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae65a96fa4752c2afed9dc717d8f4e51d">FileNotifier</a> ()=default</td></tr>
 <tr class="separator:ae65a96fa4752c2afed9dc717d8f4e51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2e407809416fa3752992d9546993e098" id="r_a2e407809416fa3752992d9546993e098"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_file_notifier_1_1_impl.html">Impl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e407809416fa3752992d9546993e098">impl</a></td></tr>
+<tr class="separator:a2e407809416fa3752992d9546993e098"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>File Change Monitor. </p>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug</a></b></dt><dd>This implementation has an inconsistent event order in Darwin compared to Windows and Linux. </dd></dl>
 <p>In Darwin, multiple events for the same file are triggered first, while in Windows and Linux, events are triggered in chronological order. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="acada2d4bda27ecaca189274593af7f3b" name="acada2d4bda27ecaca189274593af7f3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acada2d4bda27ecaca189274593af7f3b">&#9670;&#160;</a></span>OnCreateCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#acada2d4bda27ecaca189274593af7f3b">sese::system::FileNotifier::OnCreateCallback</a> = std::function&lt;void(std::string_view)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa09d1832b219ec74351a00761509550e" name="aa09d1832b219ec74351a00761509550e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09d1832b219ec74351a00761509550e">&#9670;&#160;</a></span>OnDeleteCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#aa09d1832b219ec74351a00761509550e">sese::system::FileNotifier::OnDeleteCallback</a> = std::function&lt;void(std::string_view)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af22a7491edc96d5e750cf73dc499261a" name="af22a7491edc96d5e750cf73dc499261a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22a7491edc96d5e750cf73dc499261a">&#9670;&#160;</a></span>OnModifyCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#af22a7491edc96d5e750cf73dc499261a">sese::system::FileNotifier::OnModifyCallback</a> = std::function&lt;void(std::string_view)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8447b500ebb4978d050b4058c727acaf" name="a8447b500ebb4978d050b4058c727acaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8447b500ebb4978d050b4058c727acaf">&#9670;&#160;</a></span>OnMoveCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a8447b500ebb4978d050b4058c727acaf">sese::system::FileNotifier::OnMoveCallback</a> = std::function&lt;void(std::string_view, std::string_view)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a742b5e2f2ea550bead834fb4bd8c88c8" name="a742b5e2f2ea550bead834fb4bd8c88c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a742b5e2f2ea550bead834fb4bd8c88c8">&#9670;&#160;</a></span>Ptr</h2>
 
@@ -213,12 +297,10 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="reference">References <a class="el" href="#a844550dad1d2a8d786ed3ffbef855783">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -248,8 +330,8 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3e9cb4c190e5ec266c73bb2a04f0809e" name="a3e9cb4c190e5ec266c73bb2a04f0809e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e9cb4c190e5ec266c73bb2a04f0809e">&#9670;&#160;</a></span>create()</h2>
+<a id="ac759fd43111bc2546a0cd265b41d4f0e" name="ac759fd43111bc2546a0cd265b41d4f0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac759fd43111bc2546a0cd265b41d4f0e">&#9670;&#160;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,12 +342,8 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">FileNotifier::Ptr</a> FileNotifier::create </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html">FileNotifyOption</a> *</td>          <td class="paramname"><span class="paramname"><em>option</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -276,8 +354,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Create file monitor </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>The path to the [directory] </td></tr>
-    <tr><td class="paramname">option</td><td>Callback options </td></tr>
+    <tr><td class="paramname">path</td><td>The path to the directory </td></tr>
   </table>
   </dd>
 </dl>
@@ -288,12 +365,12 @@ Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="native_2darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a>, and <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>.</p>
+<p class="reference">References <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>.</p>
 
 </div>
 </div>
-<a id="a6e08d3b2e7ade582850769cc3904c96c" name="a6e08d3b2e7ade582850769cc3904c96c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e08d3b2e7ade582850769cc3904c96c">&#9670;&#160;</a></span>createEx()</h2>
+<a id="a559debe09845d18adabb78d9a86a9ce2" name="a559debe09845d18adabb78d9a86a9ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a559debe09845d18adabb78d9a86a9ce2">&#9670;&#160;</a></span>createEx()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,12 +381,8 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static <a class="el" href="classsese_1_1_result.html">Result</a>&lt; <a class="el" href="#a742b5e2f2ea550bead834fb4bd8c88c8">Ptr</a>, <a class="el" href="classsese_1_1_error_code.html">ErrorCode</a> &gt; sese::system::FileNotifier::createEx </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html">FileNotifyOption</a> *</td>          <td class="paramname"><span class="paramname"><em>option</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -321,8 +394,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9da0fd7e668a72e2b96d24f4e756b0c5" name="a9da0fd7e668a72e2b96d24f4e756b0c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9da0fd7e668a72e2b96d24f4e756b0c5">&#9670;&#160;</a></span>loopNonblocking()</h2>
+<a id="a09247e28921030c64a13b0bae7f16728" name="a09247e28921030c64a13b0bae7f16728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09247e28921030c64a13b0bae7f16728">&#9670;&#160;</a></span>setOnCreate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,10 +404,10 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void FileNotifier::loopNonblocking </td>
+          <td class="memname">void FileNotifier::setOnCreate </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype"><a class="el" href="#acada2d4bda27ecaca189274593af7f3b">OnCreateCallback</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -343,13 +416,110 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Start a thread to start processing the change event. </p>
+<p>Set the callback function to be called when a file is created </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback function </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a844550dad1d2a8d786ed3ffbef855783" name="a844550dad1d2a8d786ed3ffbef855783"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a844550dad1d2a8d786ed3ffbef855783">&#9670;&#160;</a></span>shutdown()</h2>
+<a id="ac5c7cb15b457783d7eae821ce5ce78be" name="ac5c7cb15b457783d7eae821ce5ce78be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c7cb15b457783d7eae821ce5ce78be">&#9670;&#160;</a></span>setOnDelete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileNotifier::setOnDelete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aa09d1832b219ec74351a00761509550e">OnDeleteCallback</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the callback function to be called when a file is deleted </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96d75828e381e28db8f0473e65d0ff83" name="a96d75828e381e28db8f0473e65d0ff83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d75828e381e28db8f0473e65d0ff83">&#9670;&#160;</a></span>setOnModify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileNotifier::setOnModify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#af22a7491edc96d5e750cf73dc499261a">OnModifyCallback</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the callback function to be called when a file is modified </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a84a0e5a10f2d7159f48b511cf18bff4e" name="a84a0e5a10f2d7159f48b511cf18bff4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a0e5a10f2d7159f48b511cf18bff4e">&#9670;&#160;</a></span>setOnMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileNotifier::setOnMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a8447b500ebb4978d050b4058c727acaf">OnMoveCallback</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the callback function to be called when a file is moved </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Callback function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4b7fcd2b5dd15af55eb4d275ab7bf352" name="a4b7fcd2b5dd15af55eb4d275ab7bf352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b7fcd2b5dd15af55eb4d275ab7bf352">&#9670;&#160;</a></span>shutdown()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -361,7 +531,7 @@ Private Member Functions</h2></td></tr>
           <td class="memname">void FileNotifier::shutdown </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -373,15 +543,69 @@ Private Member Functions</h2></td></tr>
 
 <p>Shut down the monitor and block until the background thread exits. </p>
 
-<p class="reference">Referenced by <a class="el" href="#a3bb4e75333341df153a046191a7d27f3">~FileNotifier()</a>.</p>
+<p class="reference">References <a class="el" href="#a2e407809416fa3752992d9546993e098">impl</a>.</p>
+
+</div>
+</div>
+<a id="a77b71b103ba77935ab74b8543f3f233d" name="a77b71b103ba77935ab74b8543f3f233d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77b71b103ba77935ab74b8543f3f233d">&#9670;&#160;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileNotifier::start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start a thread to start processing the change event. </p>
+
+<p class="reference">References <a class="el" href="#a2e407809416fa3752992d9546993e098">impl</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a2e407809416fa3752992d9546993e098" name="a2e407809416fa3752992d9546993e098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e407809416fa3752992d9546993e098">&#9670;&#160;</a></span>impl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="class_file_notifier_1_1_impl.html">Impl</a>&gt; sese::system::FileNotifier::impl</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="class_file_notifier_1_1_impl.html#a130b119e8b3933e05f2b5ce16f0a727e">sese::system::FileNotifier::Impl::create()</a>, <a class="el" href="#a4b7fcd2b5dd15af55eb4d275ab7bf352">shutdown()</a>, and <a class="el" href="#a77b71b103ba77935ab74b8543f3f233d">start()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sese/system/<a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a></li>
-<li>sese/native/darwin/system/<a class="el" href="native_2darwin_2system_2_file_notifier_8cpp.html">FileNotifier.cpp</a></li>
-<li>sese/native/linux/system/<a class="el" href="native_2linux_2system_2_file_notifier_8cpp.html">FileNotifier.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="native_2win_2system_2_file_notifier_8cpp.html">FileNotifier.cpp</a></li>
+<li>sese/internal/darwin/system/<a class="el" href="darwin_2system_2_file_notifier_impl_8cpp.html">FileNotifierImpl.cpp</a></li>
+<li>sese/internal/linux/system/<a class="el" href="linux_2system_2_file_notifier_impl_8cpp.html">FileNotifierImpl.cpp</a></li>
+<li>sese/internal/win/system/<a class="el" href="win_2system_2_file_notifier_impl_8cpp.html">FileNotifierImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -389,7 +613,7 @@ Private Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_file_notifier.html">FileNotifier</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:08 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

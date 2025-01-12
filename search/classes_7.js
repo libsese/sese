@@ -10,7 +10,7 @@ var searchData=
   ['hpackutil_7',['HPackUtil',['../classsese_1_1net_1_1http_1_1_h_pack_util.html',1,'sese::net::http']]],
   ['http2frame_8',['Http2Frame',['../structsese_1_1net_1_1http_1_1_http2_frame.html',1,'sese::net::http']]],
   ['http2frameinfo_9',['Http2FrameInfo',['../structsese_1_1net_1_1http_1_1_http2_frame_info.html',1,'sese::net::http']]],
-  ['httpclientimpl_10',['HttpClientImpl',['../classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html',1,'sese::internal::net::http']]],
+  ['httpclient_10',['HttpClient',['../classsese_1_1net_1_1http_1_1_http_client.html',1,'sese::net::http']]],
   ['httpconnection_11',['HttpConnection',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html',1,'sese::internal::service::http']]],
   ['httpconnectionex_12',['HttpConnectionEx',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex.html',1,'sese::internal::service::http']]],
   ['httpconnectioneximpl_13',['HttpConnectionExImpl',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_ex_impl.html',1,'sese::internal::service::http']]],
@@ -22,10 +22,9 @@ var searchData=
   ['httpservice_19',['HttpService',['../classsese_1_1service_1_1http_1_1_http_service.html',1,'sese::service::http']]],
   ['httpserviceimpl_20',['HttpServiceImpl',['../classsese_1_1internal_1_1service_1_1http_1_1_http_service_impl.html',1,'sese::internal::service::http']]],
   ['httpservletcontext_21',['HttpServletContext',['../classsese_1_1net_1_1http_1_1_http_servlet_context.html',1,'sese::net::http']]],
-  ['httpsslclientimpl_22',['HttpSSLClientImpl',['../classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html',1,'sese::internal::net::http']]],
-  ['httpstream_23',['HttpStream',['../structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html',1,'sese::internal::service::http']]],
-  ['httputil_24',['HttpUtil',['../classsese_1_1net_1_1http_1_1_http_util.html',1,'sese::net::http']]],
-  ['huffman_5fencoder_5ft_25',['huffman_encoder_t',['../classsese_1_1net_1_1http_1_1huffman__encoder__t.html',1,'sese::net::http']]],
-  ['huffman_5fnode_5ft_26',['huffman_node_t',['../classsese_1_1net_1_1http_1_1huffman__node__t.html',1,'sese::net::http']]],
-  ['huffman_5ftree_5ft_27',['huffman_tree_t',['../classsese_1_1net_1_1http_1_1huffman__tree__t.html',1,'sese::net::http']]]
+  ['httpstream_22',['HttpStream',['../structsese_1_1internal_1_1service_1_1http_1_1_http_stream.html',1,'sese::internal::service::http']]],
+  ['httputil_23',['HttpUtil',['../classsese_1_1net_1_1http_1_1_http_util.html',1,'sese::net::http']]],
+  ['huffman_5fencoder_5ft_24',['huffman_encoder_t',['../classsese_1_1net_1_1http_1_1huffman__encoder__t.html',1,'sese::net::http']]],
+  ['huffman_5fnode_5ft_25',['huffman_node_t',['../classsese_1_1net_1_1http_1_1huffman__node__t.html',1,'sese::net::http']]],
+  ['huffman_5ftree_5ft_26',['huffman_tree_t',['../classsese_1_1net_1_1http_1_1huffman__tree__t.html',1,'sese::net::http']]]
 ];

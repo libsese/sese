@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -133,6 +133,7 @@ $(function(){initNavTree('classsese_1_1system_1_1_semaphore.html',''); initResiz
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
@@ -148,6 +149,11 @@ $(function(){initNavTree('classsese_1_1system_1_1_semaphore.html',''); initResiz
 
 <p><code>#include &lt;<a class="el" href="_semaphore_8h_source.html">Semaphore.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semaphore_1_1_impl.html">Impl</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a9fcc69c712f144f8ba81633e4d7032bb" id="r_a9fcc69c712f144f8ba81633e4d7032bb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fcc69c712f144f8ba81633e4d7032bb">Ptr</a> = std::unique_ptr&lt;<a class="el" href="classsese_1_1system_1_1_semaphore.html">Semaphore</a>&gt;</td></tr>
@@ -157,31 +163,29 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a633658a6fde276bffc912028725c6ade" id="r_a633658a6fde276bffc912028725c6ade"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a633658a6fde276bffc912028725c6ade">~Semaphore</a> ()</td></tr>
 <tr class="separator:a633658a6fde276bffc912028725c6ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9a80df9dd33bd6f90acdbf7318f8989" id="r_af9a80df9dd33bd6f90acdbf7318f8989"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9a80df9dd33bd6f90acdbf7318f8989">lock</a> ()</td></tr>
-<tr class="memdesc:af9a80df9dd33bd6f90acdbf7318f8989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block and wait until resource is acquired.  <br /></td></tr>
-<tr class="separator:af9a80df9dd33bd6f90acdbf7318f8989"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5989712b3db62459b9db4bae311f2209" id="r_a5989712b3db62459b9db4bae311f2209"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5989712b3db62459b9db4bae311f2209">unlock</a> ()</td></tr>
-<tr class="memdesc:a5989712b3db62459b9db4bae311f2209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the current resource.  <br /></td></tr>
-<tr class="separator:a5989712b3db62459b9db4bae311f2209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74ea0e4930ccab512555d11bdaa6ee1a" id="r_a74ea0e4930ccab512555d11bdaa6ee1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74ea0e4930ccab512555d11bdaa6ee1a">tryLock</a> (std::chrono::milliseconds ms)</td></tr>
-<tr class="separator:a74ea0e4930ccab512555d11bdaa6ee1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeddd74d9a7ff599ab80a92d4e9bbb7b1" id="r_aeddd74d9a7ff599ab80a92d4e9bbb7b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeddd74d9a7ff599ab80a92d4e9bbb7b1">lock</a> () const</td></tr>
+<tr class="memdesc:aeddd74d9a7ff599ab80a92d4e9bbb7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block and wait until resource is acquired.  <br /></td></tr>
+<tr class="separator:aeddd74d9a7ff599ab80a92d4e9bbb7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95dbcb28912a82f2ea434a0a4d7f4021" id="r_a95dbcb28912a82f2ea434a0a4d7f4021"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95dbcb28912a82f2ea434a0a4d7f4021">unlock</a> () const</td></tr>
+<tr class="memdesc:a95dbcb28912a82f2ea434a0a4d7f4021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the current resource.  <br /></td></tr>
+<tr class="separator:a95dbcb28912a82f2ea434a0a4d7f4021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3bbb97a6ddfd23662120b6d58afa1e" id="r_aeb3bbb97a6ddfd23662120b6d58afa1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb3bbb97a6ddfd23662120b6d58afa1e">tryLock</a> (std::chrono::milliseconds ms) const</td></tr>
+<tr class="separator:aeb3bbb97a6ddfd23662120b6d58afa1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af9e19da767e9018dc4f2fe8f75460a78" id="r_af9e19da767e9018dc4f2fe8f75460a78"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a9fcc69c712f144f8ba81633e4d7032bb">Semaphore::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9e19da767e9018dc4f2fe8f75460a78">create</a> (std::string name, uint32_t initial_count=1)</td></tr>
+<tr class="memitem:af9e19da767e9018dc4f2fe8f75460a78" id="r_af9e19da767e9018dc4f2fe8f75460a78"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a9fcc69c712f144f8ba81633e4d7032bb">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9e19da767e9018dc4f2fe8f75460a78">create</a> (std::string name, uint32_t initial_count=1)</td></tr>
 <tr class="separator:af9e19da767e9018dc4f2fe8f75460a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a0ec43dfb93e93a5b1e9e58ecba8a1e6d" id="r_a0ec43dfb93e93a5b1e9e58ecba8a1e6d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ec43dfb93e93a5b1e9e58ecba8a1e6d">Semaphore</a> ()=default</td></tr>
-<tr class="separator:a0ec43dfb93e93a5b1e9e58ecba8a1e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaec7ade9a3a44d9acc79a0c879f4c34" id="r_aaaec7ade9a3a44d9acc79a0c879f4c34"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaec7ade9a3a44d9acc79a0c879f4c34">Semaphore</a> (std::unique_ptr&lt; <a class="el" href="class_semaphore_1_1_impl.html">Impl</a> &gt; <a class="el" href="#a5a8be060b0c0d86d7165fb2219c1303b">impl</a>)</td></tr>
+<tr class="separator:aaaec7ade9a3a44d9acc79a0c879f4c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a4b243aa3a38a2b466226b3ac3f07c934" id="r_a4b243aa3a38a2b466226b3ac3f07c934"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b243aa3a38a2b466226b3ac3f07c934">sem_name</a> {}</td></tr>
-<tr class="separator:a4b243aa3a38a2b466226b3ac3f07c934"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a974c72be440826550e988b3faf6fba31" id="r_a974c72be440826550e988b3faf6fba31"><td class="memItemLeft" align="right" valign="top">sem_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a974c72be440826550e988b3faf6fba31">semaphore</a> {}</td></tr>
-<tr class="separator:a974c72be440826550e988b3faf6fba31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a8be060b0c0d86d7165fb2219c1303b" id="r_a5a8be060b0c0d86d7165fb2219c1303b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_semaphore_1_1_impl.html">Impl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a8be060b0c0d86d7165fb2219c1303b">impl</a></td></tr>
+<tr class="separator:a5a8be060b0c0d86d7165fb2219c1303b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Named <a class="el" href="classsese_1_1system_1_1_semaphore.html" title="Named Semaphore.">Semaphore</a>. </p>
@@ -216,12 +220,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="#a4b243aa3a38a2b466226b3ac3f07c934">sem_name</a>, and <a class="el" href="#a974c72be440826550e988b3faf6fba31">semaphore</a>.</p>
-
 </div>
 </div>
-<a id="a0ec43dfb93e93a5b1e9e58ecba8a1e6d" name="a0ec43dfb93e93a5b1e9e58ecba8a1e6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ec43dfb93e93a5b1e9e58ecba8a1e6d">&#9670;&#160;</a></span>Semaphore()</h2>
+<a id="aaaec7ade9a3a44d9acc79a0c879f4c34" name="aaaec7ade9a3a44d9acc79a0c879f4c34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaec7ade9a3a44d9acc79a0c879f4c34">&#9670;&#160;</a></span>Semaphore()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,15 +232,15 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">sese::system::Semaphore::Semaphore </td>
+          <td class="memname">Semaphore::Semaphore </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_semaphore_1_1_impl.html">Impl</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>impl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -286,14 +288,14 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>.</p>
+<p class="reference">References <a class="el" href="class_semaphore_1_1_impl.html#a40759d8f1c533e13fac3a0dc021a9bb3">sese::system::Semaphore::Impl::create()</a>, <a class="el" href="#a5a8be060b0c0d86d7165fb2219c1303b">impl</a>, and <a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classsese_1_1system_1_1_i_p_c_channel.html#a020521e704dc74be511d5174f9b470fb">sese::system::IPCChannel::create()</a>, and <a class="el" href="classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed">sese::system::IPCChannel::use()</a>.</p>
 
 </div>
 </div>
-<a id="af9a80df9dd33bd6f90acdbf7318f8989" name="af9a80df9dd33bd6f90acdbf7318f8989"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9a80df9dd33bd6f90acdbf7318f8989">&#9670;&#160;</a></span>lock()</h2>
+<a id="aeddd74d9a7ff599ab80a92d4e9bbb7b1" name="aeddd74d9a7ff599ab80a92d4e9bbb7b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeddd74d9a7ff599ab80a92d4e9bbb7b1">&#9670;&#160;</a></span>lock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,19 +304,19 @@ Private Attributes</h2></td></tr>
           <td class="memname">bool Semaphore::lock </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Block and wait until resource is acquired. </p>
 
-<p class="reference">References <a class="el" href="#a974c72be440826550e988b3faf6fba31">semaphore</a>.</p>
+<p class="reference">References <a class="el" href="#a5a8be060b0c0d86d7165fb2219c1303b">impl</a>.</p>
 
 </div>
 </div>
-<a id="a74ea0e4930ccab512555d11bdaa6ee1a" name="a74ea0e4930ccab512555d11bdaa6ee1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74ea0e4930ccab512555d11bdaa6ee1a">&#9670;&#160;</a></span>tryLock()</h2>
+<a id="aeb3bbb97a6ddfd23662120b6d58afa1e" name="aeb3bbb97a6ddfd23662120b6d58afa1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb3bbb97a6ddfd23662120b6d58afa1e">&#9670;&#160;</a></span>tryLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -323,7 +325,7 @@ Private Attributes</h2></td></tr>
           <td class="memname">bool Semaphore::tryLock </td>
           <td>(</td>
           <td class="paramtype">std::chrono::milliseconds</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -335,12 +337,12 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether acquisition is successful </dd></dl>
 
-<p class="reference">References <a class="el" href="#a974c72be440826550e988b3faf6fba31">semaphore</a>.</p>
+<p class="reference">References <a class="el" href="#a5a8be060b0c0d86d7165fb2219c1303b">impl</a>.</p>
 
 </div>
 </div>
-<a id="a5989712b3db62459b9db4bae311f2209" name="a5989712b3db62459b9db4bae311f2209"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5989712b3db62459b9db4bae311f2209">&#9670;&#160;</a></span>unlock()</h2>
+<a id="a95dbcb28912a82f2ea434a0a4d7f4021" name="a95dbcb28912a82f2ea434a0a4d7f4021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95dbcb28912a82f2ea434a0a4d7f4021">&#9670;&#160;</a></span>unlock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -349,20 +351,20 @@ Private Attributes</h2></td></tr>
           <td class="memname">bool Semaphore::unlock </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Release the current resource. </p>
 
-<p class="reference">References <a class="el" href="#a974c72be440826550e988b3faf6fba31">semaphore</a>.</p>
+<p class="reference">References <a class="el" href="#a5a8be060b0c0d86d7165fb2219c1303b">impl</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4b243aa3a38a2b466226b3ac3f07c934" name="a4b243aa3a38a2b466226b3ac3f07c934"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b243aa3a38a2b466226b3ac3f07c934">&#9670;&#160;</a></span>sem_name</h2>
+<a id="a5a8be060b0c0d86d7165fb2219c1303b" name="a5a8be060b0c0d86d7165fb2219c1303b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a8be060b0c0d86d7165fb2219c1303b">&#9670;&#160;</a></span>impl</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -371,7 +373,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string sese::system::Semaphore::sem_name {}</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="class_semaphore_1_1_impl.html">Impl</a>&gt; sese::system::Semaphore::impl</td>
         </tr>
       </table>
   </td>
@@ -381,38 +383,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="#a633658a6fde276bffc912028725c6ade">~Semaphore()</a>.</p>
-
-</div>
-</div>
-<a id="a974c72be440826550e988b3faf6fba31" name="a974c72be440826550e988b3faf6fba31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a974c72be440826550e988b3faf6fba31">&#9670;&#160;</a></span>semaphore</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">sem_t* sese::system::Semaphore::semaphore {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="#af9a80df9dd33bd6f90acdbf7318f8989">lock()</a>, <a class="el" href="#a74ea0e4930ccab512555d11bdaa6ee1a">tryLock()</a>, <a class="el" href="#a5989712b3db62459b9db4bae311f2209">unlock()</a>, and <a class="el" href="#a633658a6fde276bffc912028725c6ade">~Semaphore()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#af9e19da767e9018dc4f2fe8f75460a78">create()</a>, <a class="el" href="#aeddd74d9a7ff599ab80a92d4e9bbb7b1">lock()</a>, <a class="el" href="#aeb3bbb97a6ddfd23662120b6d58afa1e">tryLock()</a>, and <a class="el" href="#a95dbcb28912a82f2ea434a0a4d7f4021">unlock()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sese/system/<a class="el" href="_semaphore_8h_source.html">Semaphore.h</a></li>
-<li>sese/native/unix/system/<a class="el" href="unix_2system_2_semaphore_8cpp.html">Semaphore.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="win_2system_2_semaphore_8cpp.html">Semaphore.cpp</a></li>
+<li>sese/internal/unix/system/<a class="el" href="unix_2system_2_semaphore_impl_8cpp.html">SemaphoreImpl.cpp</a></li>
+<li>sese/internal/win/system/<a class="el" href="win_2system_2_semaphore_impl_8cpp.html">SemaphoreImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -420,7 +398,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_semaphore.html">Semaphore</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:08 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

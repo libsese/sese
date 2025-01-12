@@ -1,0 +1,636 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>Sese Framework: sese::log::Event Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sese Framework
+   &#160;<span id="projectnumber">3.0.0</span>
+   </div>
+   <div id="projectbrief">A cross-platform framework</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classsese_1_1log_1_1_event.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classsese_1_1log_1_1_event-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">sese::log::Event Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Log event class.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_event_8h_source.html">Event.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a911916a96550c008a56aabb549be4bb4" id="r_a911916a96550c008a56aabb549be4bb4"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1log_1_1_event.html">Event</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a911916a96550c008a56aabb549be4bb4">Ptr</a></td></tr>
+<tr class="separator:a911916a96550c008a56aabb549be4bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a78192c929b7595d07ac1ed86030c3652" id="r_a78192c929b7595d07ac1ed86030c3652"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event</a> (<a class="el" href="classsese_1_1_date_time.html">DateTime</a> date_time, <a class="el" href="namespacesese_1_1log.html#a649cc694bd023395810de2b459277dd7">Level</a> lv, std::string thread_name, <a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a> id, std::string <a class="el" href="#a3ebc4c6038eb25d7861708ca8710d59c">file</a>, int32_t <a class="el" href="#ade4ac4270d4855ee8aca56bc9ee266fc">line</a>, std::string msg) noexcept</td></tr>
+<tr class="separator:a78192c929b7595d07ac1ed86030c3652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2380e407c51f527a99c780ac2926f882" id="r_a2380e407c51f527a99c780ac2926f882"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2380e407c51f527a99c780ac2926f882">getTime</a> () const noexcept</td></tr>
+<tr class="separator:a2380e407c51f527a99c780ac2926f882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e744b0391c8eec94302913d2e8fff8d" id="r_a9e744b0391c8eec94302913d2e8fff8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1log.html#a649cc694bd023395810de2b459277dd7">Level</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e744b0391c8eec94302913d2e8fff8d">getLevel</a> () const noexcept</td></tr>
+<tr class="separator:a9e744b0391c8eec94302913d2e8fff8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee7801c4a2e9248ac2c52d8fc2f198a" id="r_a6ee7801c4a2e9248ac2c52d8fc2f198a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ee7801c4a2e9248ac2c52d8fc2f198a">getThreadId</a> () const noexcept</td></tr>
+<tr class="separator:a6ee7801c4a2e9248ac2c52d8fc2f198a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1aa0ac5fe71ac2339791bb266cbee29" id="r_ac1aa0ac5fe71ac2339791bb266cbee29"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1aa0ac5fe71ac2339791bb266cbee29">getLine</a> () const noexcept</td></tr>
+<tr class="separator:ac1aa0ac5fe71ac2339791bb266cbee29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae942a5999c4b8db740510f46623f957b" id="r_ae942a5999c4b8db740510f46623f957b"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae942a5999c4b8db740510f46623f957b">getFileName</a> () const noexcept</td></tr>
+<tr class="separator:ae942a5999c4b8db740510f46623f957b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e7f0779c9b4d7737012dd114e5340fe" id="r_a9e7f0779c9b4d7737012dd114e5340fe"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e7f0779c9b4d7737012dd114e5340fe">getMessage</a> () const noexcept</td></tr>
+<tr class="separator:a9e7f0779c9b4d7737012dd114e5340fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b7827efbe1561307399c2fffb56866" id="r_ad1b7827efbe1561307399c2fffb56866"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1b7827efbe1561307399c2fffb56866">getThreadName</a> () const noexcept</td></tr>
+<tr class="separator:ad1b7827efbe1561307399c2fffb56866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af07848cdf966bd570726fb000d11fb60" id="r_af07848cdf966bd570726fb000d11fb60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af07848cdf966bd570726fb000d11fb60">dateTime</a></td></tr>
+<tr class="separator:af07848cdf966bd570726fb000d11fb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ea4d005c5d9eb57391141cb7c3eafb" id="r_a18ea4d005c5d9eb57391141cb7c3eafb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1log.html#a649cc694bd023395810de2b459277dd7">Level</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18ea4d005c5d9eb57391141cb7c3eafb">level</a></td></tr>
+<tr class="separator:a18ea4d005c5d9eb57391141cb7c3eafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada6b7c1a8e0c8ba5f42cd759d297fb8e" id="r_ada6b7c1a8e0c8ba5f42cd759d297fb8e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada6b7c1a8e0c8ba5f42cd759d297fb8e">threadName</a></td></tr>
+<tr class="separator:ada6b7c1a8e0c8ba5f42cd759d297fb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c8e6066c9d7bc827ee2e7b7a11b3fc" id="r_aa9c8e6066c9d7bc827ee2e7b7a11b3fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9c8e6066c9d7bc827ee2e7b7a11b3fc">threadId</a></td></tr>
+<tr class="separator:aa9c8e6066c9d7bc827ee2e7b7a11b3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ebc4c6038eb25d7861708ca8710d59c" id="r_a3ebc4c6038eb25d7861708ca8710d59c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ebc4c6038eb25d7861708ca8710d59c">file</a></td></tr>
+<tr class="separator:a3ebc4c6038eb25d7861708ca8710d59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade4ac4270d4855ee8aca56bc9ee266fc" id="r_ade4ac4270d4855ee8aca56bc9ee266fc"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade4ac4270d4855ee8aca56bc9ee266fc">line</a></td></tr>
+<tr class="separator:ade4ac4270d4855ee8aca56bc9ee266fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec36576721b7d3854eead2e9de0c54e" id="r_a9ec36576721b7d3854eead2e9de0c54e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ec36576721b7d3854eead2e9de0c54e">message</a></td></tr>
+<tr class="separator:a9ec36576721b7d3854eead2e9de0c54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Log event class. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a911916a96550c008a56aabb549be4bb4" name="a911916a96550c008a56aabb549be4bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a911916a96550c008a56aabb549be4bb4">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classsese_1_1log_1_1_event.html">Event</a>&gt; <a class="el" href="#a911916a96550c008a56aabb549be4bb4">sese::log::Event::Ptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a78192c929b7595d07ac1ed86030c3652" name="a78192c929b7595d07ac1ed86030c3652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78192c929b7595d07ac1ed86030c3652">&#9670;&#160;</a></span>Event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::log::Event::Event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_date_time.html">DateTime</a></td>          <td class="paramname"><span class="paramname"><em>date_time</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1log.html#a649cc694bd023395810de2b459277dd7">Level</a></td>          <td class="paramname"><span class="paramname"><em>lv</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>thread_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>msg</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#af07848cdf966bd570726fb000d11fb60">dateTime</a>, <a class="el" href="#a3ebc4c6038eb25d7861708ca8710d59c">file</a>, <a class="el" href="#a18ea4d005c5d9eb57391141cb7c3eafb">level</a>, <a class="el" href="#ade4ac4270d4855ee8aca56bc9ee266fc">line</a>, <a class="el" href="#a9ec36576721b7d3854eead2e9de0c54e">message</a>, <a class="el" href="#aa9c8e6066c9d7bc827ee2e7b7a11b3fc">threadId</a>, and <a class="el" href="#ada6b7c1a8e0c8ba5f42cd759d297fb8e">threadName</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae942a5999c4b8db740510f46623f957b" name="ae942a5999c4b8db740510f46623f957b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae942a5999c4b8db740510f46623f957b">&#9670;&#160;</a></span>getFileName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto &amp; sese::log::Event::getFileName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#a3ebc4c6038eb25d7861708ca8710d59c">file</a>.</p>
+
+</div>
+</div>
+<a id="a9e744b0391c8eec94302913d2e8fff8d" name="a9e744b0391c8eec94302913d2e8fff8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e744b0391c8eec94302913d2e8fff8d">&#9670;&#160;</a></span>getLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1log.html#a649cc694bd023395810de2b459277dd7">Level</a> sese::log::Event::getLevel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#a18ea4d005c5d9eb57391141cb7c3eafb">level</a>.</p>
+
+</div>
+</div>
+<a id="ac1aa0ac5fe71ac2339791bb266cbee29" name="ac1aa0ac5fe71ac2339791bb266cbee29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1aa0ac5fe71ac2339791bb266cbee29">&#9670;&#160;</a></span>getLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::log::Event::getLine </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#ade4ac4270d4855ee8aca56bc9ee266fc">line</a>.</p>
+
+</div>
+</div>
+<a id="a9e7f0779c9b4d7737012dd114e5340fe" name="a9e7f0779c9b4d7737012dd114e5340fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7f0779c9b4d7737012dd114e5340fe">&#9670;&#160;</a></span>getMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto &amp; sese::log::Event::getMessage </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#a9ec36576721b7d3854eead2e9de0c54e">message</a>.</p>
+
+</div>
+</div>
+<a id="a6ee7801c4a2e9248ac2c52d8fc2f198a" name="a6ee7801c4a2e9248ac2c52d8fc2f198a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ee7801c4a2e9248ac2c52d8fc2f198a">&#9670;&#160;</a></span>getThreadId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a> sese::log::Event::getThreadId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#aa9c8e6066c9d7bc827ee2e7b7a11b3fc">threadId</a>.</p>
+
+</div>
+</div>
+<a id="ad1b7827efbe1561307399c2fffb56866" name="ad1b7827efbe1561307399c2fffb56866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b7827efbe1561307399c2fffb56866">&#9670;&#160;</a></span>getThreadName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto &amp; sese::log::Event::getThreadName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#ada6b7c1a8e0c8ba5f42cd759d297fb8e">threadName</a>.</p>
+
+</div>
+</div>
+<a id="a2380e407c51f527a99c780ac2926f882" name="a2380e407c51f527a99c780ac2926f882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2380e407c51f527a99c780ac2926f882">&#9670;&#160;</a></span>getTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp; sese::log::Event::getTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#af07848cdf966bd570726fb000d11fb60">dateTime</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af07848cdf966bd570726fb000d11fb60" name="af07848cdf966bd570726fb000d11fb60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af07848cdf966bd570726fb000d11fb60">&#9670;&#160;</a></span>dateTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_date_time.html">DateTime</a> sese::log::Event::dateTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#a2380e407c51f527a99c780ac2926f882">getTime()</a>.</p>
+
+</div>
+</div>
+<a id="a3ebc4c6038eb25d7861708ca8710d59c" name="a3ebc4c6038eb25d7861708ca8710d59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ebc4c6038eb25d7861708ca8710d59c">&#9670;&#160;</a></span>file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::log::Event::file</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#ae942a5999c4b8db740510f46623f957b">getFileName()</a>.</p>
+
+</div>
+</div>
+<a id="a18ea4d005c5d9eb57391141cb7c3eafb" name="a18ea4d005c5d9eb57391141cb7c3eafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18ea4d005c5d9eb57391141cb7c3eafb">&#9670;&#160;</a></span>level</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1log.html#a649cc694bd023395810de2b459277dd7">Level</a> sese::log::Event::level</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#a9e744b0391c8eec94302913d2e8fff8d">getLevel()</a>.</p>
+
+</div>
+</div>
+<a id="ade4ac4270d4855ee8aca56bc9ee266fc" name="ade4ac4270d4855ee8aca56bc9ee266fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade4ac4270d4855ee8aca56bc9ee266fc">&#9670;&#160;</a></span>line</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::log::Event::line</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#ac1aa0ac5fe71ac2339791bb266cbee29">getLine()</a>.</p>
+
+</div>
+</div>
+<a id="a9ec36576721b7d3854eead2e9de0c54e" name="a9ec36576721b7d3854eead2e9de0c54e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ec36576721b7d3854eead2e9de0c54e">&#9670;&#160;</a></span>message</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::log::Event::message</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#a9e7f0779c9b4d7737012dd114e5340fe">getMessage()</a>.</p>
+
+</div>
+</div>
+<a id="aa9c8e6066c9d7bc827ee2e7b7a11b3fc" name="aa9c8e6066c9d7bc827ee2e7b7a11b3fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c8e6066c9d7bc827ee2e7b7a11b3fc">&#9670;&#160;</a></span>threadId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese.html#af8031ded8561ae6e4052c1785a372849">tid_t</a> sese::log::Event::threadId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#a6ee7801c4a2e9248ac2c52d8fc2f198a">getThreadId()</a>.</p>
+
+</div>
+</div>
+<a id="ada6b7c1a8e0c8ba5f42cd759d297fb8e" name="ada6b7c1a8e0c8ba5f42cd759d297fb8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6b7c1a8e0c8ba5f42cd759d297fb8e">&#9670;&#160;</a></span>threadName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::log::Event::threadName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a78192c929b7595d07ac1ed86030c3652">Event()</a>, and <a class="el" href="#ad1b7827efbe1561307399c2fffb56866">getThreadName()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>sese/log/<a class="el" href="_event_8h_source.html">Event.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1log.html">log</a></li><li class="navelem"><a class="el" href="classsese_1_1log_1_1_event.html">Event</a></li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

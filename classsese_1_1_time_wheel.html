@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -152,7 +152,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad88678f249e0937fddba84c86c756171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83486ae59127621c1c2bfd92de607ce6" id="r_a83486ae59127621c1c2bfd92de607ce6"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83486ae59127621c1c2bfd92de607ce6">~TimeWheel</a> ()</td></tr>
 <tr class="separator:a83486ae59127621c1c2bfd92de607ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad28e39359a50a74f841abc2bfebcc4d0" id="r_ad28e39359a50a74f841abc2bfebcc4d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad28e39359a50a74f841abc2bfebcc4d0">delay</a> (const <a class="el" href="structsese_1_1_timeout_event.html#adf1f3bf9bb96a6245314e690f69f1a1f">TimeoutEvent::Callback</a> &amp;<a class="el" href="native_2darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>, int64_t seconds, bool repeat=false)</td></tr>
+<tr class="memitem:ad28e39359a50a74f841abc2bfebcc4d0" id="r_ad28e39359a50a74f841abc2bfebcc4d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad28e39359a50a74f841abc2bfebcc4d0">delay</a> (const <a class="el" href="structsese_1_1_timeout_event.html#adf1f3bf9bb96a6245314e690f69f1a1f">TimeoutEvent::Callback</a> &amp;callback, int64_t seconds, bool repeat=false)</td></tr>
 <tr class="separator:ad28e39359a50a74f841abc2bfebcc4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb2f1bbbeedeb421d16d63a0dd1c390" id="r_abdb2f1bbbeedeb421d16d63a0dd1c390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb2f1bbbeedeb421d16d63a0dd1c390">cancel</a> (<a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> *event)</td></tr>
 <tr class="separator:abdb2f1bbbeedeb421d16d63a0dd1c390"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -247,8 +247,6 @@ Protected Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243">sese::TimeoutEventSlot::events</a>, <a class="el" href="#a78bdf3a8f381fd93b847e2830d027d46">slots</a>, and <a class="el" href="#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aa1af5b04ac5b7490808e0407172a4828">sese::_windows::iocp::v1::NativeIOCPServer::cancelTimeout()</a>, <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">sese::service::v2::TimerableService::cancelTimeoutEvent()</a>, and <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">sese::_windows::iocp::v1::NativeIOCPServer::releaseContext()</a>.</p>
-
 </div>
 </div>
 <a id="a8bf36bb2b8cfcd0c2d25047058d1a720" name="a8bf36bb2b8cfcd0c2d25047058d1a720"></a>
@@ -269,8 +267,6 @@ Protected Attributes</h2></td></tr>
 <p>Check for any timeout events that need to be triggered, and trigger the corresponding callback functions and destroy the events as needed. </p>
 
 <p class="reference">References <a class="el" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>, <a class="el" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243">sese::TimeoutEventSlot::events</a>, <a class="el" href="#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp()</a>, <a class="el" href="#aa359f4e5a5a6552aa9d62df1e8590ab9">lastCheckTime</a>, <a class="el" href="#a78bdf3a8f381fd93b847e2830d027d46">slots</a>, and <a class="el" href="#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">sese::_windows::iocp::v1::NativeIOCPServer::acceptThreadProc()</a>, and <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a8c0c0cc7a7acd12856b684ae219d2696">sese::service::v2::TimerableService::dispatch()</a>.</p>
 
 </div>
 </div>
@@ -307,9 +303,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Timeout event </dd></dl>
 
-<p class="reference">References <a class="el" href="native_2darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a>, <a class="el" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243">sese::TimeoutEventSlot::events</a>, <a class="el" href="#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp()</a>, <a class="el" href="structsese_1_1_timeout_event.html#a1faccf1da114a3e28d0d4913dccb40f4">sese::TimeoutEvent::range</a>, <a class="el" href="#a78bdf3a8f381fd93b847e2830d027d46">slots</a>, and <a class="el" href="#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aff6c0e9b7a2544e87af2cd93d0830d4a">sese::_windows::iocp::v1::NativeIOCPServer::setTimeout()</a>, and <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a81a1ae4f7fe235f6fe1a68bd142eee38">sese::service::v2::TimerableService::setTimeoutEvent()</a>.</p>
+<p class="reference">References <a class="el" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243">sese::TimeoutEventSlot::events</a>, <a class="el" href="#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp()</a>, <a class="el" href="structsese_1_1_timeout_event.html#a1faccf1da114a3e28d0d4913dccb40f4">sese::TimeoutEvent::range</a>, <a class="el" href="#a78bdf3a8f381fd93b847e2830d027d46">slots</a>, and <a class="el" href="#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>.</p>
 
 </div>
 </div>
@@ -423,7 +417,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_time_wheel.html">TimeWheel</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:07 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:54 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

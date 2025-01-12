@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>Sese Framework: sese/record/AbstractFormatter.h Source File</title>
+<title>Sese Framework: sese/log/AbstractFormatter.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -151,31 +151,31 @@ $(function(){initNavTree('_abstract_formatter_8h_source.html',''); initResizable
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="record_2_event_8h.html" title="Log event class.">sese/record/Event.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_event_8h.html" title="Log event class.">sese/log/Event.h</a>&quot;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#ifdef _WIN32</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#pragma warning(disable : 4251)</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1record.html">sese::record</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1log.html">sese::log</a> {</div>
 <div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_abstract_formatter.html">   34</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1record_1_1_abstract_formatter.html" title="Log formatter class.">AbstractFormatter</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classsese_1_1log_1_1_abstract_formatter.html">   34</a></span><span class="keyword">class  </span><a class="code hl_class" href="classsese_1_1log_1_1_abstract_formatter.html" title="Log formatter class.">AbstractFormatter</a> {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_abstract_formatter.html#a055f5800c470d6ec18daf7f8ce5923f7">   36</a></span>    <span class="keyword">typedef</span> std::shared_ptr&lt;AbstractFormatter&gt; <a class="code hl_typedef" href="classsese_1_1record_1_1_abstract_formatter.html#a055f5800c470d6ec18daf7f8ce5923f7">Ptr</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classsese_1_1log_1_1_abstract_formatter.html#a094507a18fa7a42a46893eb7f668ecdd">   36</a></span>    <span class="keyword">typedef</span> std::shared_ptr&lt;AbstractFormatter&gt; <a class="code hl_typedef" href="classsese_1_1log_1_1_abstract_formatter.html#a094507a18fa7a42a46893eb7f668ecdd">Ptr</a>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_abstract_formatter.html#a3da688b74c8217cfe083657c161219da">   38</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classsese_1_1record_1_1_abstract_formatter.html#a3da688b74c8217cfe083657c161219da">~AbstractFormatter</a>() noexcept = default;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classsese_1_1log_1_1_abstract_formatter.html#aea481843a003c49a78f341d15a082d87">   38</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classsese_1_1log_1_1_abstract_formatter.html#aea481843a003c49a78f341d15a082d87">~AbstractFormatter</a>() noexcept = default;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_abstract_formatter.html#aeb7216955a7c89eee57e863f28a97102">   40</a></span>    virtual std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1record_1_1_abstract_formatter.html#aeb7216955a7c89eee57e863f28a97102">dump</a>(const <a class="code hl_class" href="classsese_1_1record_1_1_event.html" title="Log event class.">Event</a>::<a class="code hl_typedef" href="classsese_1_1record_1_1_abstract_formatter.html#a055f5800c470d6ec18daf7f8ce5923f7">Ptr</a> &amp;event) noexcept = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1log_1_1_abstract_formatter.html#af622a710361a2edd349ed9cdbd04a918">   40</a></span>    virtual std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1log_1_1_abstract_formatter.html#af622a710361a2edd349ed9cdbd04a918">dump</a>(const <a class="code hl_class" href="classsese_1_1log_1_1_event.html" title="Log event class.">Event</a>::<a class="code hl_typedef" href="classsese_1_1log_1_1_abstract_formatter.html#a094507a18fa7a42a46893eb7f668ecdd">Ptr</a> &amp;event) noexcept = 0;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <span class="comment">// namespace sese::record</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <span class="comment">// namespace sese::log</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="_abstract_formatter_8h.html">AbstractFormatter.h</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:06 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_3ace1f65e9b43d0d0d88d1746c300e2c.html">log</a></li><li class="navelem"><a class="el" href="_abstract_formatter_8h.html">AbstractFormatter.h</a></li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:53 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -1,0 +1,947 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>Sese Framework: sese::net::http::HttpClient::Impl Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sese Framework
+   &#160;<span id="projectnumber">3.0.0</span>
+   </div>
+   <div id="projectbrief">A cross-platform framework</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classsese_1_1net_1_1http_1_1_http_client_1_1_impl.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classsese_1_1net_1_1http_1_1_http_client_1_1_impl-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::http::HttpClient::Impl Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HTTP/1.1 client based on ASIO.  
+ <a href="#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for sese::net::http::HttpClient::Impl:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1net_1_1http_1_1_http_client_1_1_impl.png" usemap="#sese::net::http::HttpClient::Impl_map" alt=""/>
+  <map id="sese::net::http::HttpClient::Impl_map" name="sese::net::http::HttpClient::Impl_map">
+<area href="classsese_1_1io_1_1_input_stream.html" title="Stream input interface class." alt="sese::io::InputStream" shape="rect" coords="0,0,198,24"/>
+<area href="classsese_1_1io_1_1_output_stream.html" title="Stream output interface class." alt="sese::io::OutputStream" shape="rect" coords="208,0,406,24"/>
+<area href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html" title="HTTP/1.1 client based on ASIO." alt="sese::net::http::HttpClient::SSLImpl" shape="rect" coords="104,112,302,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a22ca0ec415c9dce69dacb15e84e5c207" id="r_a22ca0ec415c9dce69dacb15e84e5c207"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22ca0ec415c9dce69dacb15e84e5c207">Impl</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> &amp;addr, <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Request::Ptr</a> <a class="el" href="#aa757b78b9480308611c5cf5e9e2bb565">req</a>)</td></tr>
+<tr class="separator:a22ca0ec415c9dce69dacb15e84e5c207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d4139c8f4516bdcd8fe28d9182d4181" id="r_a0d4139c8f4516bdcd8fe28d9182d4181"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d4139c8f4516bdcd8fe28d9182d4181">~Impl</a> () override</td></tr>
+<tr class="separator:a0d4139c8f4516bdcd8fe28d9182d4181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a81983969b0d9fb2f84eed6285e74bd" id="r_a9a81983969b0d9fb2f84eed6285e74bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request</a> ()</td></tr>
+<tr class="separator:a9a81983969b0d9fb2f84eed6285e74bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8c292a553b65c8db6fd0fceb53ae876" id="r_ae8c292a553b65c8db6fd0fceb53ae876"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset</a> ()</td></tr>
+<tr class="memdesc:ae8c292a553b65c8db6fd0fceb53ae876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset body-related settings.  <br /></td></tr>
+<tr class="separator:ae8c292a553b65c8db6fd0fceb53ae876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ade7634d7dc71553f22dff37a1f6a02" id="r_a5ade7634d7dc71553f22dff37a1f6a02"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ade7634d7dc71553f22dff37a1f6a02">handshake</a> ()</td></tr>
+<tr class="separator:a5ade7634d7dc71553f22dff37a1f6a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae203395a540fd50a4f0b29b55925c949" id="r_ae203395a540fd50a4f0b29b55925c949"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae203395a540fd50a4f0b29b55925c949">shutdown</a> ()</td></tr>
+<tr class="separator:ae203395a540fd50a4f0b29b55925c949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a740ec68001568ad4c40394ab1faeaefd" id="r_a740ec68001568ad4c40394ab1faeaefd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a740ec68001568ad4c40394ab1faeaefd">writeHeader</a> (<a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> &amp;builder)</td></tr>
+<tr class="separator:a740ec68001568ad4c40394ab1faeaefd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa04fbcc66225079dffd2948822fd380b" id="r_aa04fbcc66225079dffd2948822fd380b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa04fbcc66225079dffd2948822fd380b">writeBodyByCallback</a> ()</td></tr>
+<tr class="separator:aa04fbcc66225079dffd2948822fd380b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37771048c72b9d160b5d9c832cc1744e" id="r_a37771048c72b9d160b5d9c832cc1744e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37771048c72b9d160b5d9c832cc1744e">writeBodyByData</a> ()</td></tr>
+<tr class="separator:a37771048c72b9d160b5d9c832cc1744e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862bac977f7e3863831be676199f6b2e" id="r_a862bac977f7e3863831be676199f6b2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a862bac977f7e3863831be676199f6b2e">writeBodyByAuto</a> ()</td></tr>
+<tr class="separator:a862bac977f7e3863831be676199f6b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8012bcf487befcd3d9f869f46adebe8e" id="r_a8012bcf487befcd3d9f869f46adebe8e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8012bcf487befcd3d9f869f46adebe8e">readBodyByCallback</a> (size_t expect)</td></tr>
+<tr class="separator:a8012bcf487befcd3d9f869f46adebe8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646eb9f814eb4b672634b4223f434ee7" id="r_a646eb9f814eb4b672634b4223f434ee7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a646eb9f814eb4b672634b4223f434ee7">readBodyByData</a> (size_t expect)</td></tr>
+<tr class="separator:a646eb9f814eb4b672634b4223f434ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559229837e6dddb7e07a1054406d7ed5" id="r_a559229837e6dddb7e07a1054406d7ed5"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read</a> (void *buf, size_t len) override</td></tr>
+<tr class="separator:a559229837e6dddb7e07a1054406d7ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1860e094cecc719f1633c369f1e237" id="r_acd1860e094cecc719f1633c369f1e237"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd1860e094cecc719f1633c369f1e237">write</a> (const void *buf, size_t len) override</td></tr>
+<tr class="separator:acd1860e094cecc719f1633c369f1e237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83308d382cce33fea6a91b845edc2ed" id="r_ae83308d382cce33fea6a91b845edc2ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae83308d382cce33fea6a91b845edc2ed">getLastError</a> () const</td></tr>
+<tr class="separator:ae83308d382cce33fea6a91b845edc2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa18ce7a70f0397b68e0e57c606a97f02" id="r_aa18ce7a70f0397b68e0e57c606a97f02"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa18ce7a70f0397b68e0e57c606a97f02">getLastErrorString</a> () const</td></tr>
+<tr class="separator:aa18ce7a70f0397b68e0e57c606a97f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="memitem:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream" id="r_acc4179962d8ad6f886cf4d85642823a3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#acc4179962d8ad6f886cf4d85642823a3">~InputStream</a> () noexcept=default</td></tr>
+<tr class="separator:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
+<tr class="separator:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9c6371443664ed220cff5a3d8aeb39 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_abf9c6371443664ed220cff5a3d8aeb39"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#abf9c6371443664ed220cff5a3d8aeb39">write</a> (const std::string_view &amp;buffer)</td></tr>
+<tr class="separator:abf9c6371443664ed220cff5a3d8aeb39 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2dba133806f97418ee6314cdd9946c2 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ab2dba133806f97418ee6314cdd9946c2"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ab2dba133806f97418ee6314cdd9946c2">write</a> (const <a class="el" href="namespacesese_1_1text.html#ab823060b68afa9c1de4ed91a22565f1a">text::StringView</a> &amp;buffer)</td></tr>
+<tr class="separator:ab2dba133806f97418ee6314cdd9946c2 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeacd2a67fb41593c5571525428846f9c inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_aeacd2a67fb41593c5571525428846f9c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aeacd2a67fb41593c5571525428846f9c inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memTemplItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#aeacd2a67fb41593c5571525428846f9c">write</a> (std::vector&lt; T &gt; &amp;buffer)</td></tr>
+<tr class="separator:aeacd2a67fb41593c5571525428846f9c inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab257a95dc38d0936f82f931447335204 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ab257a95dc38d0936f82f931447335204"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t N&gt; </td></tr>
+<tr class="memitem:ab257a95dc38d0936f82f931447335204 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memTemplItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ab257a95dc38d0936f82f931447335204">write</a> (std::array&lt; T, N &gt; &amp;buffer)</td></tr>
+<tr class="separator:ab257a95dc38d0936f82f931447335204 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa83e855a70c8f3a3bf28b8c14c8cc758" id="r_aa83e855a70c8f3a3bf28b8c14c8cc758"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa83e855a70c8f3a3bf28b8c14c8cc758">address</a></td></tr>
+<tr class="separator:aa83e855a70c8f3a3bf28b8c14c8cc758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a537436e79f4a15cbb791ae2b7806e429" id="r_a537436e79f4a15cbb791ae2b7806e429"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a537436e79f4a15cbb791ae2b7806e429">cookies</a></td></tr>
+<tr class="separator:a537436e79f4a15cbb791ae2b7806e429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8689936449e059570f7c600c3077e6" id="r_a3f8689936449e059570f7c600c3077e6"><td class="memItemLeft" align="right" valign="top">asio::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f8689936449e059570f7c600c3077e6">code</a> {}</td></tr>
+<tr class="separator:a3f8689936449e059570f7c600c3077e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be16b3a9619da88e53a53a6e0bff622" id="r_a7be16b3a9619da88e53a53a6e0bff622"><td class="memItemLeft" align="right" valign="top">asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7be16b3a9619da88e53a53a6e0bff622">ioContext</a></td></tr>
+<tr class="separator:a7be16b3a9619da88e53a53a6e0bff622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa98fd524232901a4451f0fa7574ceb32" id="r_aa98fd524232901a4451f0fa7574ceb32"><td class="memItemLeft" align="right" valign="top">asio::ip::tcp::socket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa98fd524232901a4451f0fa7574ceb32">socket</a></td></tr>
+<tr class="separator:aa98fd524232901a4451f0fa7574ceb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a326f8dca6e9b62ff81a3686cb591acdc" id="r_a326f8dca6e9b62ff81a3686cb591acdc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a326f8dca6e9b62ff81a3686cb591acdc">first</a> = true</td></tr>
+<tr class="separator:a326f8dca6e9b62ff81a3686cb591acdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa757b78b9480308611c5cf5e9e2bb565" id="r_aa757b78b9480308611c5cf5e9e2bb565"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Request::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa757b78b9480308611c5cf5e9e2bb565">req</a> = nullptr</td></tr>
+<tr class="separator:aa757b78b9480308611c5cf5e9e2bb565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1105d07a5e7cc7982e9d81fbf1b57495" id="r_a1105d07a5e7cc7982e9d81fbf1b57495"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html#aec7112810fa62f546e506783b0444fb6">Response::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1105d07a5e7cc7982e9d81fbf1b57495">resp</a> = nullptr</td></tr>
+<tr class="separator:a1105d07a5e7cc7982e9d81fbf1b57495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b31d3898c31a326589870621acdd31" id="r_ab2b31d3898c31a326589870621acdd31"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2b31d3898c31a326589870621acdd31">expect_total</a> = 0</td></tr>
+<tr class="separator:ab2b31d3898c31a326589870621acdd31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67299fa2c8e07838e654d01a798451a" id="r_ad67299fa2c8e07838e654d01a798451a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html">io::PeekableStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad67299fa2c8e07838e654d01a798451a">read_data</a> = nullptr</td></tr>
+<tr class="separator:ad67299fa2c8e07838e654d01a798451a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c2e3e7c563afac835c70490d3190110" id="r_a5c2e3e7c563afac835c70490d3190110"><td class="memItemLeft" align="right" valign="top">OutputStream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c2e3e7c563afac835c70490d3190110">write_data</a> = nullptr</td></tr>
+<tr class="separator:a5c2e3e7c563afac835c70490d3190110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c06f93536c4ea88f3c32ad28e1bc92c" id="r_a3c06f93536c4ea88f3c32ad28e1bc92c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client.html#a22850a06e00d076207f77505ac6ad5f7">WriteCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c06f93536c4ea88f3c32ad28e1bc92c">write_callback</a></td></tr>
+<tr class="separator:a3c06f93536c4ea88f3c32ad28e1bc92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a425480279d6a5db4c6d64e76d72eae41" id="r_a425480279d6a5db4c6d64e76d72eae41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client.html#a6d27753a663fbe8758a1a32c3ccb7858">ReadCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a425480279d6a5db4c6d64e76d72eae41">read_callback</a></td></tr>
+<tr class="separator:a425480279d6a5db4c6d64e76d72eae41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="memitem:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream" id="r_a0452a75dd0ee9345d78e9d14c1b7cb78"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_input_stream.html">InputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">Ptr</a></td></tr>
+<tr class="separator:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="memitem:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream" id="r_a4446385dc8f0d3431a03fda5165a4b3a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">Ptr</a></td></tr>
+<tr class="separator:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>HTTP/1.1 client based on ASIO. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a22ca0ec415c9dce69dacb15e84e5c207" name="a22ca0ec415c9dce69dacb15e84e5c207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ca0ec415c9dce69dacb15e84e5c207">&#9670;&#160;</a></span>Impl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::http::HttpClient::Impl::Impl </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Request::Ptr</a></td>          <td class="paramname"><span class="paramname"><em>req</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#aa83e855a70c8f3a3bf28b8c14c8cc758">address</a>, <a class="el" href="#a537436e79f4a15cbb791ae2b7806e429">cookies</a>, <a class="el" href="#aa757b78b9480308611c5cf5e9e2bb565">req</a>, <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>, and <a class="el" href="#a1105d07a5e7cc7982e9d81fbf1b57495">resp</a>.</p>
+
+</div>
+</div>
+<a id="a0d4139c8f4516bdcd8fe28d9182d4181" name="a0d4139c8f4516bdcd8fe28d9182d4181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d4139c8f4516bdcd8fe28d9182d4181">&#9670;&#160;</a></span>~Impl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::http::HttpClient::Impl::~Impl </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#aa98fd524232901a4451f0fa7574ceb32">socket</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae83308d382cce33fea6a91b845edc2ed" name="ae83308d382cce33fea6a91b845edc2ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae83308d382cce33fea6a91b845edc2ed">&#9670;&#160;</a></span>getLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::net::http::HttpClient::Impl::getLastError </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#a3f8689936449e059570f7c600c3077e6">code</a>.</p>
+
+</div>
+</div>
+<a id="aa18ce7a70f0397b68e0e57c606a97f02" name="aa18ce7a70f0397b68e0e57c606a97f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa18ce7a70f0397b68e0e57c606a97f02">&#9670;&#160;</a></span>getLastErrorString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::net::http::HttpClient::Impl::getLastErrorString </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#a3f8689936449e059570f7c600c3077e6">code</a>.</p>
+
+</div>
+</div>
+<a id="a5ade7634d7dc71553f22dff37a1f6a02" name="a5ade7634d7dc71553f22dff37a1f6a02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ade7634d7dc71553f22dff37a1f6a02">&#9670;&#160;</a></span>handshake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::net::http::HttpClient::Impl::handshake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#a19f5cbccf2ee6acfdb95b7e4266f6533">sese::net::http::HttpClient::SSLImpl</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a559229837e6dddb7e07a1054406d7ed5" name="a559229837e6dddb7e07a1054406d7ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a559229837e6dddb7e07a1054406d7ed5">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::net::http::HttpClient::Impl::read </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#a10536d792e93e5edd2f1a096e1b7f333">sese::net::http::HttpClient::SSLImpl</a>.</p>
+
+<p class="reference">References <a class="el" href="#a3f8689936449e059570f7c600c3077e6">code</a>, <a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read()</a>, and <a class="el" href="#aa98fd524232901a4451f0fa7574ceb32">socket</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read()</a>, <a class="el" href="#a8012bcf487befcd3d9f869f46adebe8e">readBodyByCallback()</a>, and <a class="el" href="#a646eb9f814eb4b672634b4223f434ee7">readBodyByData()</a>.</p>
+
+</div>
+</div>
+<a id="a8012bcf487befcd3d9f869f46adebe8e" name="a8012bcf487befcd3d9f869f46adebe8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8012bcf487befcd3d9f869f46adebe8e">&#9670;&#160;</a></span>readBodyByCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::readBodyByCallback </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>expect</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read()</a>, and <a class="el" href="#a3c06f93536c4ea88f3c32ad28e1bc92c">write_callback</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a646eb9f814eb4b672634b4223f434ee7" name="a646eb9f814eb4b672634b4223f434ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646eb9f814eb4b672634b4223f434ee7">&#9670;&#160;</a></span>readBodyByData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::readBodyByData </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>expect</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read()</a>, and <a class="el" href="#a5c2e3e7c563afac835c70490d3190110">write_data</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a9a81983969b0d9fb2f84eed6285e74bd" name="a9a81983969b0d9fb2f84eed6285e74bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a81983969b0d9fb2f84eed6285e74bd">&#9670;&#160;</a></span>request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::request </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#aa83e855a70c8f3a3bf28b8c14c8cc758">address</a>, <a class="el" href="#a3f8689936449e059570f7c600c3077e6">code</a>, <a class="el" href="namespacesese_1_1internal_1_1net.html#af1db21106bdd2952c72ab8fcd2f2e2a2">sese::internal::net::convert()</a>, <a class="el" href="#ab2b31d3898c31a326589870621acdd31">expect_total</a>, <a class="el" href="#a326f8dca6e9b62ff81a3686cb591acdc">first</a>, <a class="el" href="#a5ade7634d7dc71553f22dff37a1f6a02">handshake()</a>, <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325ae15e216fc1c639f787b1231ecdfa1bf8">sese::net::http::HEAD</a>, <a class="el" href="#a425480279d6a5db4c6d64e76d72eae41">read_callback</a>, <a class="el" href="#a8012bcf487befcd3d9f869f46adebe8e">readBodyByCallback()</a>, <a class="el" href="#a646eb9f814eb4b672634b4223f434ee7">readBodyByData()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="#aa757b78b9480308611c5cf5e9e2bb565">req</a>, <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>, <a class="el" href="#a1105d07a5e7cc7982e9d81fbf1b57495">resp</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#abf1c72f1b44582756c202b6709fe65f5">sese::net::http::HttpUtil::sendRequest()</a>, <a class="el" href="#ae203395a540fd50a4f0b29b55925c949">shutdown()</a>, <a class="el" href="#aa98fd524232901a4451f0fa7574ceb32">socket</a>, <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>, <a class="el" href="#a3c06f93536c4ea88f3c32ad28e1bc92c">write_callback</a>, <a class="el" href="#a862bac977f7e3863831be676199f6b2e">writeBodyByAuto()</a>, <a class="el" href="#aa04fbcc66225079dffd2948822fd380b">writeBodyByCallback()</a>, <a class="el" href="#a37771048c72b9d160b5d9c832cc1744e">writeBodyByData()</a>, and <a class="el" href="#a740ec68001568ad4c40394ab1faeaefd">writeHeader()</a>.</p>
+
+</div>
+</div>
+<a id="ae8c292a553b65c8db6fd0fceb53ae876" name="ae8c292a553b65c8db6fd0fceb53ae876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8c292a553b65c8db6fd0fceb53ae876">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::http::HttpClient::Impl::reset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reset body-related settings. </p>
+
+<p class="reference">References <a class="el" href="#ab2b31d3898c31a326589870621acdd31">expect_total</a>, <a class="el" href="#a425480279d6a5db4c6d64e76d72eae41">read_callback</a>, <a class="el" href="#ad67299fa2c8e07838e654d01a798451a">read_data</a>, <a class="el" href="#aa757b78b9480308611c5cf5e9e2bb565">req</a>, <a class="el" href="#a1105d07a5e7cc7982e9d81fbf1b57495">resp</a>, <a class="el" href="#a3c06f93536c4ea88f3c32ad28e1bc92c">write_callback</a>, and <a class="el" href="#a5c2e3e7c563afac835c70490d3190110">write_data</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a22ca0ec415c9dce69dacb15e84e5c207">Impl()</a>, and <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="ae203395a540fd50a4f0b29b55925c949" name="ae203395a540fd50a4f0b29b55925c949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae203395a540fd50a4f0b29b55925c949">&#9670;&#160;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::net::http::HttpClient::Impl::shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#a9664be769bce20f75055cadd1c33d1f3">sese::net::http::HttpClient::SSLImpl</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="acd1860e094cecc719f1633c369f1e237" name="acd1860e094cecc719f1633c369f1e237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd1860e094cecc719f1633c369f1e237">&#9670;&#160;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::net::http::HttpClient::Impl::write </td>
+          <td>(</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#ab223f068e9919d6683074439be6ea3b2">sese::net::http::HttpClient::SSLImpl</a>.</p>
+
+<p class="reference">References <a class="el" href="#a3f8689936449e059570f7c600c3077e6">code</a>, and <a class="el" href="#aa98fd524232901a4451f0fa7574ceb32">socket</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a862bac977f7e3863831be676199f6b2e">writeBodyByAuto()</a>, <a class="el" href="#aa04fbcc66225079dffd2948822fd380b">writeBodyByCallback()</a>, <a class="el" href="#a37771048c72b9d160b5d9c832cc1744e">writeBodyByData()</a>, and <a class="el" href="#a740ec68001568ad4c40394ab1faeaefd">writeHeader()</a>.</p>
+
+</div>
+</div>
+<a id="a862bac977f7e3863831be676199f6b2e" name="a862bac977f7e3863831be676199f6b2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862bac977f7e3863831be676199f6b2e">&#9670;&#160;</a></span>writeBodyByAuto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::writeBodyByAuto </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="#aa757b78b9480308611c5cf5e9e2bb565">req</a>, and <a class="el" href="#acd1860e094cecc719f1633c369f1e237">write()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="aa04fbcc66225079dffd2948822fd380b" name="aa04fbcc66225079dffd2948822fd380b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa04fbcc66225079dffd2948822fd380b">&#9670;&#160;</a></span>writeBodyByCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::writeBodyByCallback </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#ab2b31d3898c31a326589870621acdd31">expect_total</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="#a425480279d6a5db4c6d64e76d72eae41">read_callback</a>, and <a class="el" href="#acd1860e094cecc719f1633c369f1e237">write()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a37771048c72b9d160b5d9c832cc1744e" name="a37771048c72b9d160b5d9c832cc1744e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37771048c72b9d160b5d9c832cc1744e">&#9670;&#160;</a></span>writeBodyByData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::writeBodyByData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="#ab2b31d3898c31a326589870621acdd31">expect_total</a>, <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a628ee255e598043189b2ac0e4e319193">sese::io::PeekableStream::peek()</a>, <a class="el" href="#ad67299fa2c8e07838e654d01a798451a">read_data</a>, <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#ae7eaaf3b47b873769e0a0249b06588ad">sese::io::PeekableStream::trunc()</a>, and <a class="el" href="#acd1860e094cecc719f1633c369f1e237">write()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a740ec68001568ad4c40394ab1faeaefd" name="a740ec68001568ad4c40394ab1faeaefd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a740ec68001568ad4c40394ab1faeaefd">&#9670;&#160;</a></span>writeHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::writeHeader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>builder</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">sese::io::AbstractByteBuffer::peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">sese::io::AbstractByteBuffer::resetPos()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">sese::io::AbstractByteBuffer::trunc()</a>, and <a class="el" href="#acd1860e094cecc719f1633c369f1e237">write()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa83e855a70c8f3a3bf28b8c14c8cc758" name="aa83e855a70c8f3a3bf28b8c14c8cc758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83e855a70c8f3a3bf28b8c14c8cc758">&#9670;&#160;</a></span>address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> sese::net::http::HttpClient::Impl::address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a22ca0ec415c9dce69dacb15e84e5c207">Impl()</a>, and <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a3f8689936449e059570f7c600c3077e6" name="a3f8689936449e059570f7c600c3077e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8689936449e059570f7c600c3077e6">&#9670;&#160;</a></span>code</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::error_code sese::net::http::HttpClient::Impl::code {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#ae83308d382cce33fea6a91b845edc2ed">getLastError()</a>, <a class="el" href="#aa18ce7a70f0397b68e0e57c606a97f02">getLastErrorString()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#a19f5cbccf2ee6acfdb95b7e4266f6533">sese::net::http::HttpClient::SSLImpl::handshake()</a>, <a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#a10536d792e93e5edd2f1a096e1b7f333">sese::net::http::HttpClient::SSLImpl::read()</a>, <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#a9664be769bce20f75055cadd1c33d1f3">sese::net::http::HttpClient::SSLImpl::shutdown()</a>, <a class="el" href="#acd1860e094cecc719f1633c369f1e237">write()</a>, and <a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#ab223f068e9919d6683074439be6ea3b2">sese::net::http::HttpClient::SSLImpl::write()</a>.</p>
+
+</div>
+</div>
+<a id="a537436e79f4a15cbb791ae2b7806e429" name="a537436e79f4a15cbb791ae2b7806e429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a537436e79f4a15cbb791ae2b7806e429">&#9670;&#160;</a></span>cookies</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> sese::net::http::HttpClient::Impl::cookies</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a22ca0ec415c9dce69dacb15e84e5c207">Impl()</a>.</p>
+
+</div>
+</div>
+<a id="ab2b31d3898c31a326589870621acdd31" name="ab2b31d3898c31a326589870621acdd31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2b31d3898c31a326589870621acdd31">&#9670;&#160;</a></span>expect_total</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::net::http::HttpClient::Impl::expect_total = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>, <a class="el" href="#aa04fbcc66225079dffd2948822fd380b">writeBodyByCallback()</a>, and <a class="el" href="#a37771048c72b9d160b5d9c832cc1744e">writeBodyByData()</a>.</p>
+
+</div>
+</div>
+<a id="a326f8dca6e9b62ff81a3686cb591acdc" name="a326f8dca6e9b62ff81a3686cb591acdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a326f8dca6e9b62ff81a3686cb591acdc">&#9670;&#160;</a></span>first</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::HttpClient::Impl::first = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>.</p>
+
+</div>
+</div>
+<a id="a7be16b3a9619da88e53a53a6e0bff622" name="a7be16b3a9619da88e53a53a6e0bff622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7be16b3a9619da88e53a53a6e0bff622">&#9670;&#160;</a></span>ioContext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::io_context sese::net::http::HttpClient::Impl::ioContext</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a425480279d6a5db4c6d64e76d72eae41" name="a425480279d6a5db4c6d64e76d72eae41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a425480279d6a5db4c6d64e76d72eae41">&#9670;&#160;</a></span>read_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client.html#a6d27753a663fbe8758a1a32c3ccb7858">ReadCallback</a> sese::net::http::HttpClient::Impl::read_callback</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>, and <a class="el" href="#aa04fbcc66225079dffd2948822fd380b">writeBodyByCallback()</a>.</p>
+
+</div>
+</div>
+<a id="ad67299fa2c8e07838e654d01a798451a" name="ad67299fa2c8e07838e654d01a798451a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad67299fa2c8e07838e654d01a798451a">&#9670;&#160;</a></span>read_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html">io::PeekableStream</a>* sese::net::http::HttpClient::Impl::read_data = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>, and <a class="el" href="#a37771048c72b9d160b5d9c832cc1744e">writeBodyByData()</a>.</p>
+
+</div>
+</div>
+<a id="aa757b78b9480308611c5cf5e9e2bb565" name="aa757b78b9480308611c5cf5e9e2bb565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa757b78b9480308611c5cf5e9e2bb565">&#9670;&#160;</a></span>req</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Request::Ptr</a> sese::net::http::HttpClient::Impl::req = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a22ca0ec415c9dce69dacb15e84e5c207">Impl()</a>, <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>, and <a class="el" href="#a862bac977f7e3863831be676199f6b2e">writeBodyByAuto()</a>.</p>
+
+</div>
+</div>
+<a id="a1105d07a5e7cc7982e9d81fbf1b57495" name="a1105d07a5e7cc7982e9d81fbf1b57495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1105d07a5e7cc7982e9d81fbf1b57495">&#9670;&#160;</a></span>resp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html#aec7112810fa62f546e506783b0444fb6">Response::Ptr</a> sese::net::http::HttpClient::Impl::resp = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a22ca0ec415c9dce69dacb15e84e5c207">Impl()</a>, <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, and <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>.</p>
+
+</div>
+</div>
+<a id="aa98fd524232901a4451f0fa7574ceb32" name="aa98fd524232901a4451f0fa7574ceb32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa98fd524232901a4451f0fa7574ceb32">&#9670;&#160;</a></span>socket</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::ip::tcp::socket sese::net::http::HttpClient::Impl::socket</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a559229837e6dddb7e07a1054406d7ed5">read()</a>, <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, <a class="el" href="#acd1860e094cecc719f1633c369f1e237">write()</a>, and <a class="el" href="#a0d4139c8f4516bdcd8fe28d9182d4181">~Impl()</a>.</p>
+
+</div>
+</div>
+<a id="a3c06f93536c4ea88f3c32ad28e1bc92c" name="a3c06f93536c4ea88f3c32ad28e1bc92c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c06f93536c4ea88f3c32ad28e1bc92c">&#9670;&#160;</a></span>write_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client.html#a22850a06e00d076207f77505ac6ad5f7">WriteCallback</a> sese::net::http::HttpClient::Impl::write_callback</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a8012bcf487befcd3d9f869f46adebe8e">readBodyByCallback()</a>, <a class="el" href="#a9a81983969b0d9fb2f84eed6285e74bd">request()</a>, and <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>.</p>
+
+</div>
+</div>
+<a id="a5c2e3e7c563afac835c70490d3190110" name="a5c2e3e7c563afac835c70490d3190110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c2e3e7c563afac835c70490d3190110">&#9670;&#160;</a></span>write_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OutputStream* sese::net::http::HttpClient::Impl::write_data = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="#a646eb9f814eb4b672634b4223f434ee7">readBodyByData()</a>, and <a class="el" href="#ae8c292a553b65c8db6fd0fceb53ae876">reset()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>sese/internal/net/http/<a class="el" href="_http_client_impl_8cpp.html">HttpClientImpl.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client.html">HttpClient</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_impl.html">Impl</a></li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

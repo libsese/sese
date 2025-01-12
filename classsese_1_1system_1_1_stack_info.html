@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -138,7 +138,7 @@ $(function(){initNavTree('classsese_1_1system_1_1_stack_info.html',''); initResi
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classsese_1_1system_1_1_stack_info-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">sese::system::StackInfo Class Reference</div></div>
+  <div class="headertitle"><div class="title">sese::system::StackInfo Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -160,7 +160,7 @@ Static Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
 <tr class="memitem:a253d580b54ba703ddc9d176d949c5d62" id="r_a253d580b54ba703ddc9d176d949c5d62"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a253d580b54ba703ddc9d176d949c5d62">decodeSymbolName</a> (const std::string &amp;str) noexcept</td></tr>
-<tr class="memdesc:a253d580b54ba703ddc9d176d949c5d62"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to remove template parameter information on Windows, and to decode symbol names on other systems.  <br /></td></tr>
+<tr class="memdesc:a253d580b54ba703ddc9d176d949c5d62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decode symbol name.  <br /></td></tr>
 <tr class="separator:a253d580b54ba703ddc9d176d949c5d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -205,7 +205,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="darwin_2system_2_stack_info_8cpp.html#a7b0f2d58a1eae5d507a65f9cf39ede15">findPos2()</a>, and <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
+<p class="reference">References <a class="el" href="darwin_2system_2_stack_info_impl_8cpp.html#a7b0f2d58a1eae5d507a65f9cf39ede15">findPos2()</a>, and <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
 
 </div>
 </div>
@@ -233,7 +233,14 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>This function is used to remove template parameter information on Windows, and to decode symbol names on other systems. </p>
+<p>Decode symbol name. </p>
+<p>This function is used to remove template parameter information on Windows, and to decode symbol names on other systems. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Symbol name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Decoded symbol name </dd></dl>
 
 <p class="reference">References <a class="el" href="classsese_1_1io_1_1_output_buffer_wrapper.html#a7ffb22eed841a0e039a52b73fc9211ae">sese::io::OutputBufferWrapper::write()</a>.</p>
 
@@ -286,10 +293,10 @@ Protected Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sese/system/<a class="el" href="_stack_info_8h_source.html">StackInfo.h</a></li>
-<li>sese/native/darwin/system/<a class="el" href="darwin_2system_2_stack_info_8cpp.html">StackInfo.cpp</a></li>
-<li>sese/native/linux/system/<a class="el" href="linux_2system_2_stack_info_8cpp.html">StackInfo.cpp</a></li>
-<li>sese/native/unix/system/<a class="el" href="unix_2system_2_stack_info_8cpp.html">StackInfo.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="win_2system_2_stack_info_8cpp.html">StackInfo.cpp</a></li>
+<li>sese/internal/darwin/system/<a class="el" href="darwin_2system_2_stack_info_impl_8cpp.html">StackInfoImpl.cpp</a></li>
+<li>sese/internal/linux/system/<a class="el" href="linux_2system_2_stack_info_impl_8cpp.html">StackInfoImpl.cpp</a></li>
+<li>sese/internal/unix/system/<a class="el" href="unix_2system_2_stack_info_impl_8cpp.html">StackInfoImpl.cpp</a></li>
+<li>sese/internal/win/system/<a class="el" href="win_2system_2_stack_info_impl_8cpp.html">StackInfoImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -297,7 +304,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_stack_info.html">StackInfo</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:08 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

@@ -11,12 +11,11 @@ var searchData=
   ['mariapreparedstatementimpl_8',['MariaPreparedStatementImpl',['../classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#ab98a0aaaf705ed6aea5756b3346393c5',1,'sese::db::impl::MariaPreparedStatementImpl']]],
   ['mariaresultsetimpl_9',['MariaResultSetImpl',['../classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a199e2e922326776394382f874149bc46',1,'sese::db::impl::MariaResultSetImpl']]],
   ['mariastmtresultset_10',['MariaStmtResultSet',['../classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#af00953545f7b5e751bce15ed54f747de',1,'sese::db::impl::MariaStmtResultSet']]],
-  ['master_11',['master',['../classsese_1_1service_1_1_user_balance_loader.html#af60e64315c8a246071ab3b7ecc8f56ef',1,'sese::service::UserBalanceLoader']]],
-  ['md5context_12',['MD5Context',['../classsese_1_1security_1_1evp_1_1_m_d5_context.html#a2abf50cc6d245ada51214bfc1528f2a8',1,'sese::security::evp::MD5Context']]],
-  ['memoryviewer_13',['MemoryViewer',['../classsese_1_1_memory_viewer.html#a1ac75bd2777201f475a174319ec7feb5',1,'sese::MemoryViewer']]],
-  ['message_14',['Message',['../classsese_1_1system_1_1_message.html#ab4d5bfa325f842124cf7af6c2b149695',1,'sese::system::Message']]],
-  ['message_15',['message',['../classsese_1_1_error_code.html#aca85974c36a5b6c39d9d368b234d7758',1,'sese::ErrorCode::message()'],['../classsese_1_1_exception.html#addf76564afcd3acbd99c5f416941e3c6',1,'sese::Exception::message()']]],
-  ['messagedigest_16',['MessageDigest',['../classsese_1_1_message_digest.html#a61c7795578f99517c75585cea7de3e15',1,'sese::MessageDigest::MessageDigest()'],['../classsese_1_1security_1_1_message_digest.html#a4900d502c74314c1a014a5120b627c98',1,'sese::security::MessageDigest::MessageDigest()']]],
-  ['module_17',['Module',['../classsese_1_1plugin_1_1_module.html#ad38fbc1e9bb58cef9dd820eb927fff35',1,'sese::plugin::Module']]],
-  ['mon2number_18',['mon2number',['../classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3',1,'sese::text::DateTimeFormatter']]]
+  ['md5context_11',['MD5Context',['../classsese_1_1security_1_1evp_1_1_m_d5_context.html#a2abf50cc6d245ada51214bfc1528f2a8',1,'sese::security::evp::MD5Context']]],
+  ['memoryviewer_12',['MemoryViewer',['../classsese_1_1_memory_viewer.html#a1ac75bd2777201f475a174319ec7feb5',1,'sese::MemoryViewer']]],
+  ['message_13',['Message',['../classsese_1_1system_1_1_message.html#ab4d5bfa325f842124cf7af6c2b149695',1,'sese::system::Message']]],
+  ['message_14',['message',['../classsese_1_1_error_code.html#aca85974c36a5b6c39d9d368b234d7758',1,'sese::ErrorCode::message()'],['../classsese_1_1_exception.html#addf76564afcd3acbd99c5f416941e3c6',1,'sese::Exception::message()']]],
+  ['messagedigest_15',['MessageDigest',['../classsese_1_1security_1_1_message_digest.html#a4900d502c74314c1a014a5120b627c98',1,'sese::security::MessageDigest::MessageDigest()'],['../classsese_1_1_message_digest.html#a61c7795578f99517c75585cea7de3e15',1,'sese::MessageDigest::MessageDigest()']]],
+  ['module_16',['Module',['../classsese_1_1plugin_1_1_module.html#ad38fbc1e9bb58cef9dd820eb927fff35',1,'sese::plugin::Module']]],
+  ['mon2number_17',['mon2number',['../classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3',1,'sese::text::DateTimeFormatter']]]
 ];

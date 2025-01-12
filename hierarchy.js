@@ -1,12 +1,12 @@
 var hierarchy =
 [
-    [ "sese::record::AbstractAppender", "classsese_1_1record_1_1_abstract_appender.html", [
-      [ "sese::record::BlockAppender", "classsese_1_1record_1_1_block_appender.html", null ],
-      [ "sese::record::ConsoleAppender", "classsese_1_1record_1_1_console_appender.html", null ],
-      [ "sese::record::FileAppender", "classsese_1_1record_1_1_file_appender.html", null ]
+    [ "sese::log::AbstractAppender", "classsese_1_1log_1_1_abstract_appender.html", [
+      [ "sese::log::BlockAppender", "classsese_1_1log_1_1_block_appender.html", null ],
+      [ "sese::log::ConsoleAppender", "classsese_1_1log_1_1_console_appender.html", null ],
+      [ "sese::log::FileAppender", "classsese_1_1log_1_1_file_appender.html", null ]
     ] ],
-    [ "sese::record::AbstractFormatter", "classsese_1_1record_1_1_abstract_formatter.html", [
-      [ "sese::record::SimpleFormatter", "classsese_1_1record_1_1_simple_formatter.html", null ]
+    [ "sese::log::AbstractFormatter", "classsese_1_1log_1_1_abstract_formatter.html", [
+      [ "sese::log::SimpleFormatter", "classsese_1_1log_1_1_simple_formatter.html", null ]
     ] ],
     [ "sese::text::AbstractStringBuffer", "classsese_1_1text_1_1_abstract_string_buffer.html", [
       [ "sese::text::StringBuffer", "classsese_1_1text_1_1_string_buffer.html", null ],
@@ -23,20 +23,6 @@ var hierarchy =
     [ "sese::archive::ArchiveReader", "classsese_1_1archive_1_1_archive_reader.html", null ],
     [ "sese::archive::ArchiveWriter", "classsese_1_1archive_1_1_archive_writer.html", null ],
     [ "sese::ArgParser", "classsese_1_1_arg_parser.html", null ],
-    [ "sese::event::BaseEvent", "structsese_1_1event_1_1_base_event.html", [
-      [ "sese::event::EpollEvent", "classsese_1_1event_1_1_epoll_event.html", null ],
-      [ "sese::event::KqueueEvent", "classsese_1_1event_1_1_kqueue_event.html", null ],
-      [ "sese::event::WSAEvent", "classsese_1_1event_1_1_w_s_a_event.html", null ]
-    ] ],
-    [ "sese::event::BaseEventConvert", "classsese_1_1event_1_1_base_event_convert.html", [
-      [ "sese::event::EpollEventConvert", "classsese_1_1event_1_1_epoll_event_convert.html", null ],
-      [ "sese::event::WSAEventConvert", "classsese_1_1event_1_1_w_s_a_event_convert.html", null ]
-    ] ],
-    [ "sese::event::BaseEventLoop", "classsese_1_1event_1_1_base_event_loop.html", [
-      [ "sese::event::EpollEventLoop", "classsese_1_1event_1_1_epoll_event_loop.html", null ],
-      [ "sese::event::KqueueEventLoop", "classsese_1_1event_1_1_kqueue_event_loop.html", null ],
-      [ "sese::event::WSAEventLoop", "classsese_1_1event_1_1_w_s_a_event_loop.html", null ]
-    ] ],
     [ "sese::io::BaseStreamReader< T >", "classsese_1_1io_1_1_base_stream_reader.html", null ],
     [ "sese::Bimap< K, V >", "classsese_1_1_bimap.html", null ],
     [ "sese::Bitset32", "structsese_1_1_bitset32.html", null ],
@@ -111,16 +97,7 @@ var hierarchy =
       [ "sese::security::SSLContext", "classsese_1_1security_1_1_s_s_l_context.html", null ]
     ] ],
     [ "sese::ErrorCode", "classsese_1_1_error_code.html", null ],
-    [ "sese::record::Event", "classsese_1_1record_1_1_event.html", null ],
-    [ "sese::event::EventLoop", null, [
-      [ "sese::service::MasterEventLoop", "classsese_1_1service_1_1_master_event_loop.html", null ],
-      [ "sese::service::v1::TimerableService", "classsese_1_1service_1_1v1_1_1_timerable_service.html", [
-        [ "sese::service::TcpTransporter", "classsese_1_1service_1_1_tcp_transporter.html", null ]
-      ] ],
-      [ "sese::service::v2::TimerableService", "classsese_1_1service_1_1v2_1_1_timerable_service.html", [
-        [ "sese::iocp::v1::IOCPService", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html", null ]
-      ] ]
-    ] ],
+    [ "sese::log::Event", "classsese_1_1log_1_1_event.html", null ],
     [ "std::exception", null, [
       [ "sese::UnixException", "classsese_1_1_unix_exception.html", [
         [ "sese::Exception", "classsese_1_1_exception.html", null ]
@@ -133,7 +110,6 @@ var hierarchy =
     ] ],
     [ "sese::system::FileLocker", "classsese_1_1system_1_1_file_locker.html", null ],
     [ "sese::system::FileNotifier", "classsese_1_1system_1_1_file_notifier.html", null ],
-    [ "sese::system::FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", null ],
     [ "sese::net::dns::DnsPackage::Flags", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_flags.html", null ],
     [ "sese::text::FmtCtx", "structsese_1_1text_1_1_fmt_ctx.html", null ],
     [ "sese::text::FormatOption", "structsese_1_1text_1_1_format_option.html", null ],
@@ -161,18 +137,25 @@ var hierarchy =
     [ "sese::net::http::HeaderBuilder", "classsese_1_1net_1_1http_1_1_header_builder.html", null ],
     [ "sese::net::http::Http2Frame", "structsese_1_1net_1_1http_1_1_http2_frame.html", null ],
     [ "sese::net::http::Http2FrameInfo", "structsese_1_1net_1_1http_1_1_http2_frame_info.html", null ],
+    [ "sese::net::http::HttpClient", "classsese_1_1net_1_1http_1_1_http_client.html", null ],
     [ "sese::service::http::HttpServer", "classsese_1_1service_1_1http_1_1_http_server.html", null ],
     [ "sese::net::http::HttpServletContext", "classsese_1_1net_1_1http_1_1_http_servlet_context.html", null ],
     [ "sese::net::http::HttpUtil", "classsese_1_1net_1_1http_1_1_http_util.html", null ],
     [ "sese::net::http::huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", null ],
     [ "sese::net::http::huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", null ],
     [ "sese::net::http::huffman_tree_t", "classsese_1_1net_1_1http_1_1huffman__tree__t.html", null ],
+    [ "sese::system::FileLocker::Impl", "class_file_locker_1_1_impl.html", null ],
+    [ "sese::system::FileNotifier::Impl", "class_file_notifier_1_1_impl.html", null ],
+    [ "sese::system::Library::Impl", "class_library_1_1_impl.html", null ],
+    [ "sese::system::Process::Impl", "class_process_1_1_impl.html", null ],
+    [ "sese::system::Semaphore::Impl", "class_semaphore_1_1_impl.html", null ],
+    [ "sese::system::SharedMemory::Impl", "class_shared_memory_1_1_impl.html", null ],
     [ "sese::net::dns::DnsPackage::Index", "classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html", null ],
     [ "sese::ini::IniConfig", "structsese_1_1ini_1_1_ini_config.html", null ],
     [ "sese::Initializer", "classsese_1_1_initializer.html", null ],
     [ "sese::InitiateTask", "classsese_1_1_initiate_task.html", [
       [ "sese::ThreadInitiateTask", "classsese_1_1_thread_initiate_task.html", null ],
-      [ "sese::record::LoggerInitiateTask", "classsese_1_1record_1_1_logger_initiate_task.html", null ],
+      [ "sese::log::LoggerInitiateTask", "classsese_1_1log_1_1_logger_initiate_task.html", null ],
       [ "sese::security::SecurityInitTask", "classsese_1_1security_1_1_security_init_task.html", null ],
       [ "sese::system::CommandLineInitiateTask", "classsese_1_1system_1_1_command_line_initiate_task.html", null ],
       [ "sese::system::PathsInitiateTask", "classsese_1_1system_1_1_paths_initiate_task.html", null ]
@@ -180,7 +163,7 @@ var hierarchy =
     [ "sese::ini::IniUtil", "classsese_1_1ini_1_1_ini_util.html", null ],
     [ "sese::io::InputStream", "classsese_1_1io_1_1_input_stream.html", [
       [ "sese::GZipFileInputStream", "classsese_1_1_g_zip_file_input_stream.html", null ],
-      [ "sese::_windows::iocp::v1::NativeContext", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html", null ],
+      [ "sese::IOBuf", "classsese_1_1_i_o_buf.html", null ],
       [ "sese::archive::ArchiveInputStream", "classsese_1_1archive_1_1_archive_input_stream.html", null ],
       [ "sese::io::BufferedInputStream", "classsese_1_1io_1_1_buffered_input_stream.html", null ],
       [ "sese::io::InputBufferWrapper", "classsese_1_1io_1_1_input_buffer_wrapper.html", null ],
@@ -202,29 +185,24 @@ var hierarchy =
         [ "sese::io::FileStream", "classsese_1_1io_1_1_file_stream.html", null ],
         [ "sese::net::Socket", "classsese_1_1net_1_1_socket.html", null ]
       ] ],
-      [ "sese::iocp::IOBuf", "classsese_1_1iocp_1_1_i_o_buf.html", null ],
-      [ "sese::iocp::v1::Context", "classsese_1_1iocp_1_1v1_1_1_context.html", null ],
-      [ "sese::net::http::Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", [
-        [ "sese::internal::net::http::HttpClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html", [
-          [ "sese::internal::net::http::HttpSSLClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html", null ]
-        ] ]
+      [ "sese::net::http::HttpClient::Impl", "classsese_1_1net_1_1http_1_1_http_client_1_1_impl.html", [
+        [ "sese::net::http::HttpClient::SSLImpl", "classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html", null ]
       ] ],
       [ "sese::res::ResourceStream", "classsese_1_1res_1_1_resource_stream.html", null ]
     ] ],
     [ "sese::io::InputStreamReader", "classsese_1_1io_1_1_input_stream_reader.html", null ],
-    [ "sese::iocp::IOBufNode", "structsese_1_1iocp_1_1_i_o_buf_node.html", null ],
-    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", null ],
+    [ "sese::IOBufNode", "structsese_1_1_i_o_buf_node.html", null ],
     [ "sese::system::IPCChannel", "classsese_1_1system_1_1_i_p_c_channel.html", null ],
     [ "sese::Range< TYPE >::Iterator", "classsese_1_1_range_1_1_iterator.html", null ],
     [ "sstr::SStringView::Iterator", "classsstr_1_1_s_string_view_1_1_iterator.html", null ],
-    [ "sese::system::LibraryObject", "classsese_1_1system_1_1_library_object.html", null ],
+    [ "sese::system::Library", "classsese_1_1system_1_1_library.html", null ],
     [ "sese::concurrent::LinkedQueue< T >", "classsese_1_1concurrent_1_1_linked_queue.html", null ],
     [ "sese::concurrent::LinkedQueue< T * >", "classsese_1_1concurrent_1_1_linked_queue.html", null ],
     [ "sese::concurrent::LinkedStack< T >", "classsese_1_1concurrent_1_1_linked_stack.html", null ],
     [ "sese::Value::List", "classsese_1_1_value_1_1_list.html", null ],
     [ "sese::Locker< T >", "classsese_1_1_locker.html", null ],
-    [ "sese::record::Logger", "classsese_1_1record_1_1_logger.html", [
-      [ "sese::record::AsyncLogger", "classsese_1_1record_1_1_async_logger.html", null ]
+    [ "sese::log::Logger", "classsese_1_1log_1_1_logger.html", [
+      [ "sese::log::AsyncLogger", "classsese_1_1log_1_1_async_logger.html", null ]
     ] ],
     [ "sese::LongLongSplitter", "structsese_1_1_long_long_splitter.html", null ],
     [ "sese::MD5Util", "classsese_1_1_m_d5_util.html", null ],
@@ -233,7 +211,6 @@ var hierarchy =
     [ "sese::system::MessageIterator", "structsese_1_1system_1_1_message_iterator.html", null ],
     [ "sese::plugin::Module", "classsese_1_1plugin_1_1_module.html", null ],
     [ "sese::plugin::ModuleInfo", "structsese_1_1plugin_1_1_module_info.html", null ],
-    [ "sese::_windows::iocp::v1::NativeIOCPServer", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html", null ],
     [ "sese::system::NetworkInterface", "structsese_1_1system_1_1_network_interface.html", null ],
     [ "sese::system::NetworkUtil", "classsese_1_1system_1_1_network_util.html", null ],
     [ "sese::concurrent::LinkedQueue< T >::Node", "structsese_1_1concurrent_1_1_linked_queue_1_1_node.html", null ],
@@ -258,7 +235,6 @@ var hierarchy =
       [ "sese::Yaml", "classsese_1_1_yaml.html", null ],
       [ "sese::net::http::HPackUtil", "classsese_1_1net_1_1http_1_1_h_pack_util.html", null ],
       [ "sese::net::http::HttpConverter", "classsese_1_1net_1_1http_1_1_http_converter.html", null ],
-      [ "sese::net::http::RequestableFactory", "classsese_1_1net_1_1http_1_1_requestable_factory.html", null ],
       [ "sese::net::ws::WebsocketAuthenticator", "classsese_1_1net_1_1ws_1_1_websocket_authenticator.html", null ],
       [ "sese::security::MessageDigest", "classsese_1_1security_1_1_message_digest.html", null ],
       [ "sese::security::SSLContextBuilder", "classsese_1_1security_1_1_s_s_l_context_builder.html", null ],
@@ -270,7 +246,6 @@ var hierarchy =
     [ "sese::Value::Null", "classsese_1_1_value_1_1_null.html", null ],
     [ "sese::io::OutputStream", "classsese_1_1io_1_1_output_stream.html", [
       [ "sese::GZipFileOutputStream", "classsese_1_1_g_zip_file_output_stream.html", null ],
-      [ "sese::_windows::iocp::v1::NativeContext", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html", null ],
       [ "sese::archive::ArchiveOutputStream", "classsese_1_1archive_1_1_archive_output_stream.html", null ],
       [ "sese::io::BufferedOutputStream", "classsese_1_1io_1_1_buffered_output_stream.html", null ],
       [ "sese::io::ConsoleOutputStream", "classsese_1_1io_1_1_console_output_stream.html", null ],
@@ -278,22 +253,18 @@ var hierarchy =
       [ "sese::io::OutputBufferWrapper", "classsese_1_1io_1_1_output_buffer_wrapper.html", null ],
       [ "sese::io::StdOutputStreamWrapper", "classsese_1_1io_1_1_std_output_stream_wrapper.html", null ],
       [ "sese::io::Stream", "classsese_1_1io_1_1_stream.html", null ],
-      [ "sese::iocp::v1::Context", "classsese_1_1iocp_1_1v1_1_1_context.html", null ],
-      [ "sese::net::http::Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", null ]
+      [ "sese::net::http::HttpClient::Impl", "classsese_1_1net_1_1http_1_1_http_client_1_1_impl.html", null ]
     ] ],
-    [ "sese::_windows::iocp::v1::OverlappedWrapper", "structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html", null ],
     [ "sese::system::Path", "classsese_1_1system_1_1_path.html", null ],
     [ "sese::system::Paths", "classsese_1_1system_1_1_paths.html", null ],
-    [ "sese::record::Logger::PatternAndLocation", "structsese_1_1record_1_1_logger_1_1_pattern_and_location.html", null ],
+    [ "sese::log::Logger::PatternAndLocation", "structsese_1_1log_1_1_logger_1_1_pattern_and_location.html", null ],
     [ "sese::io::PeekableStream", "classsese_1_1io_1_1_peekable_stream.html", [
-      [ "sese::_windows::iocp::v1::NativeContext", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html", null ],
+      [ "sese::IOBuf", "classsese_1_1_i_o_buf.html", null ],
       [ "sese::io::AbstractByteBuffer", "classsese_1_1io_1_1_abstract_byte_buffer.html", null ],
       [ "sese::io::AbstractFixedBuffer", "classsese_1_1io_1_1_abstract_fixed_buffer.html", null ],
       [ "sese::io::FileStream", "classsese_1_1io_1_1_file_stream.html", null ],
       [ "sese::io::InputBufferWrapper", "classsese_1_1io_1_1_input_buffer_wrapper.html", null ],
       [ "sese::io::StdInputStreamWrapper", "classsese_1_1io_1_1_std_input_stream_wrapper.html", null ],
-      [ "sese::iocp::IOBuf", "classsese_1_1iocp_1_1_i_o_buf.html", null ],
-      [ "sese::iocp::v1::Context", "classsese_1_1iocp_1_1v1_1_1_context.html", null ],
       [ "sese::net::Socket", "classsese_1_1net_1_1_socket.html", null ],
       [ "sese::res::ResourceStream", "classsese_1_1res_1_1_resource_stream.html", null ]
     ] ],
@@ -304,7 +275,6 @@ var hierarchy =
     ] ],
     [ "sese::system::Process", "classsese_1_1system_1_1_process.html", null ],
     [ "sese::system::ProcessBuilder", "classsese_1_1system_1_1_process_builder.html", null ],
-    [ "sese::system::Process::ProcessImpl", "class_process_1_1_process_impl.html", null ],
     [ "sese::net::dns::DnsPackage::Question", "structsese_1_1net_1_1dns_1_1_dns_package_1_1_question.html", null ],
     [ "sese::RandomUtil", "classsese_1_1_random_util.html", null ],
     [ "sese::net::http::Range", "structsese_1_1net_1_1http_1_1_range.html", null ],
@@ -350,7 +320,6 @@ var hierarchy =
     [ "sese::Singleton< T, X, N >", "classsese_1_1_singleton.html", null ],
     [ "sese::SingletonPtr< T, X, N >", "classsese_1_1_singleton_ptr.html", null ],
     [ "sese::SingletonPtr< sese::ThreadPool >", "classsese_1_1_singleton_ptr.html", null ],
-    [ "sese::service::UserBalanceLoader::SocketStatus", "structsese_1_1service_1_1_user_balance_loader_1_1_socket_status.html", null ],
     [ "sese::SpinLock", "classsese_1_1_spin_lock.html", null ],
     [ "sstr::SStringView", "classsstr_1_1_s_string_view.html", [
       [ "sstr::SString", "classsstr_1_1_s_string.html", null ]
@@ -362,12 +331,7 @@ var hierarchy =
     [ "sese::StrCmp", "structsese_1_1_str_cmp.html", null ],
     [ "sese::StrCmpI", "structsese_1_1_str_cmp_i.html", null ],
     [ "sese::system::SubStackInfo", "structsese_1_1system_1_1_sub_stack_info.html", null ],
-    [ "sese::service::SystemBalanceLoader", "classsese_1_1service_1_1_system_balance_loader.html", null ],
-    [ "sese::service::TcpConnection", "structsese_1_1service_1_1_tcp_connection.html", null ],
-    [ "sese::service::TcpTransporterConfig", "structsese_1_1service_1_1_tcp_transporter_config.html", null ],
     [ "sese::text::TextReader", "classsese_1_1text_1_1_text_reader.html", null ],
-    [ "sese::service::v1::TimeoutEvent", "structsese_1_1service_1_1v1_1_1_timeout_event.html", null ],
-    [ "sese::service::v2::TimeoutEvent", "structsese_1_1service_1_1v2_1_1_timeout_event.html", null ],
     [ "sese::TimeoutEvent", "structsese_1_1_timeout_event.html", null ],
     [ "sese::TimeoutEventSlot", "structsese_1_1_timeout_event_slot.html", null ],
     [ "sese::TimeSpan", "classsese_1_1_time_span.html", null ],
@@ -380,7 +344,6 @@ var hierarchy =
     ] ],
     [ "sese::UniReader", "classsese_1_1_uni_reader.html", null ],
     [ "sese::net::http::Url", "classsese_1_1net_1_1http_1_1_url.html", null ],
-    [ "sese::service::UserBalanceLoader", "classsese_1_1service_1_1_user_balance_loader.html", null ],
     [ "sese::Uuid", "classsese_1_1_uuid.html", null ],
     [ "sese::UuidBuilder", "classsese_1_1_uuid_builder.html", null ],
     [ "sese::Value", "classsese_1_1_value.html", null ],

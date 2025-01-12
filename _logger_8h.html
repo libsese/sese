@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>Sese Framework: sese/record/Logger.h File Reference</title>
+<title>Sese Framework: sese/log/Logger.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -143,9 +143,9 @@ $(function(){initNavTree('_logger_8h.html',''); initResizable(true); });
 <p>Logger class.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_config_8h_source.html">sese/Config.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_abstract_appender_8h_source.html">sese/record/AbstractAppender.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_abstract_formatter_8h_source.html">sese/record/AbstractFormatter.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="record_2_event_8h_source.html">sese/record/Event.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_abstract_appender_8h_source.html">sese/log/AbstractAppender.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_abstract_formatter_8h_source.html">sese/log/AbstractFormatter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_event_8h_source.html">sese/log/Event.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_initializer_8h_source.html">sese/util/Initializer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -156,26 +156,26 @@ $(function(){initNavTree('_logger_8h.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger_initiate_task.html">sese::record::LoggerInitiateTask</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a> initialization task.  <a href="classsese_1_1record_1_1_logger_initiate_task.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1log_1_1_logger_initiate_task.html">sese::log::LoggerInitiateTask</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1log_1_1_logger.html" title="Logger class.">Logger</a> initialization task.  <a href="classsese_1_1log_1_1_logger_initiate_task.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html">sese::record::Logger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1record_1_1_logger.html" title="Logger class.">Logger</a> class.  <a href="classsese_1_1record_1_1_logger.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1log_1_1_logger.html">sese::log::Logger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1log_1_1_logger.html" title="Logger class.">Logger</a> class.  <a href="classsese_1_1log_1_1_logger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1record_1_1_logger_1_1_pattern_and_location.html">sese::record::Logger::PatternAndLocation</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1log_1_1_logger_1_1_pattern_and_location.html">sese::log::Logger::PatternAndLocation</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1record.html">sese::record</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1log.html">sese::log</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a06e85e7fe9b8bd06544cfe2a83d15878" id="r_a06e85e7fe9b8bd06544cfe2a83d15878"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1record_1_1_logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1record.html#a06e85e7fe9b8bd06544cfe2a83d15878">sese::record::getLogger</a> () noexcept</td></tr>
-<tr class="separator:a06e85e7fe9b8bd06544cfe2a83d15878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56827e66013e48c27cfd581cc3f35271" id="r_a56827e66013e48c27cfd581cc3f35271"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1log_1_1_logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1log.html#a56827e66013e48c27cfd581cc3f35271">sese::log::getLogger</a> () noexcept</td></tr>
+<tr class="separator:a56827e66013e48c27cfd581cc3f35271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Logger class. </p>
@@ -186,8 +186,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="_logger_8h.html">Logger.h</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:06 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_3ace1f65e9b43d0d0d88d1746c300e2c.html">log</a></li><li class="navelem"><a class="el" href="_logger_8h.html">Logger.h</a></li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:54 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

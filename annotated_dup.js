@@ -1,15 +1,6 @@
 var annotated_dup =
 [
     [ "sese", "namespacesese.html", [
-      [ "_windows", "namespacesese_1_1__windows.html", [
-        [ "iocp", "namespacesese_1_1__windows_1_1iocp.html", [
-          [ "v1", "namespacesese_1_1__windows_1_1iocp_1_1v1.html", [
-            [ "NativeContext", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context" ],
-            [ "NativeIOCPServer", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server" ],
-            [ "OverlappedWrapper", "structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html", "structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper" ]
-          ] ]
-        ] ]
-      ] ],
       [ "archive", "namespacesese_1_1archive.html", [
         [ "ArchiveInputStream", "classsese_1_1archive_1_1_archive_input_stream.html", "classsese_1_1archive_1_1_archive_input_stream" ],
         [ "ArchiveOutputStream", "classsese_1_1archive_1_1_archive_output_stream.html", "classsese_1_1archive_1_1_archive_output_stream" ],
@@ -42,29 +33,12 @@ var annotated_dup =
         [ "PreparedStatement", "classsese_1_1db_1_1_prepared_statement.html", "classsese_1_1db_1_1_prepared_statement" ],
         [ "ResultSet", "classsese_1_1db_1_1_result_set.html", "classsese_1_1db_1_1_result_set" ]
       ] ],
-      [ "event", "namespacesese_1_1event.html", [
-        [ "BaseEvent", "structsese_1_1event_1_1_base_event.html", "structsese_1_1event_1_1_base_event" ],
-        [ "BaseEventConvert", "classsese_1_1event_1_1_base_event_convert.html", "classsese_1_1event_1_1_base_event_convert" ],
-        [ "BaseEventLoop", "classsese_1_1event_1_1_base_event_loop.html", "classsese_1_1event_1_1_base_event_loop" ],
-        [ "EpollEvent", "classsese_1_1event_1_1_epoll_event.html", null ],
-        [ "EpollEventConvert", "classsese_1_1event_1_1_epoll_event_convert.html", "classsese_1_1event_1_1_epoll_event_convert" ],
-        [ "EpollEventLoop", "classsese_1_1event_1_1_epoll_event_loop.html", "classsese_1_1event_1_1_epoll_event_loop" ],
-        [ "KqueueEvent", "classsese_1_1event_1_1_kqueue_event.html", null ],
-        [ "KqueueEventLoop", "classsese_1_1event_1_1_kqueue_event_loop.html", "classsese_1_1event_1_1_kqueue_event_loop" ],
-        [ "WSAEvent", "classsese_1_1event_1_1_w_s_a_event.html", "classsese_1_1event_1_1_w_s_a_event" ],
-        [ "WSAEventConvert", "classsese_1_1event_1_1_w_s_a_event_convert.html", "classsese_1_1event_1_1_w_s_a_event_convert" ],
-        [ "WSAEventLoop", "classsese_1_1event_1_1_w_s_a_event_loop.html", "classsese_1_1event_1_1_w_s_a_event_loop" ]
-      ] ],
       [ "ini", "namespacesese_1_1ini.html", [
         [ "IniConfig", "structsese_1_1ini_1_1_ini_config.html", "structsese_1_1ini_1_1_ini_config" ],
         [ "IniUtil", "classsese_1_1ini_1_1_ini_util.html", "classsese_1_1ini_1_1_ini_util" ]
       ] ],
       [ "internal", "namespacesese_1_1internal.html", [
         [ "net", "namespacesese_1_1internal_1_1net.html", [
-          [ "http", "namespacesese_1_1internal_1_1net_1_1http.html", [
-            [ "HttpClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl.html", "classsese_1_1internal_1_1net_1_1http_1_1_http_client_impl" ],
-            [ "HttpSSLClientImpl", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl.html", "classsese_1_1internal_1_1net_1_1http_1_1_http_s_s_l_client_impl" ]
-          ] ],
           [ "service", "namespacesese_1_1internal_1_1net_1_1service.html", [
             [ "dns", "namespacesese_1_1internal_1_1net_1_1service_1_1dns.html", [
               [ "DnsService", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html", "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service" ]
@@ -113,14 +87,17 @@ var annotated_dup =
         [ "StdOutputStreamWrapper", "classsese_1_1io_1_1_std_output_stream_wrapper.html", "classsese_1_1io_1_1_std_output_stream_wrapper" ],
         [ "Stream", "classsese_1_1io_1_1_stream.html", "classsese_1_1io_1_1_stream" ]
       ] ],
-      [ "iocp", "namespacesese_1_1iocp.html", [
-        [ "v1", "namespacesese_1_1iocp_1_1v1.html", [
-          [ "Context", "classsese_1_1iocp_1_1v1_1_1_context.html", "classsese_1_1iocp_1_1v1_1_1_context" ],
-          [ "IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server" ],
-          [ "IOCPService", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service" ]
-        ] ],
-        [ "IOBuf", "classsese_1_1iocp_1_1_i_o_buf.html", "classsese_1_1iocp_1_1_i_o_buf" ],
-        [ "IOBufNode", "structsese_1_1iocp_1_1_i_o_buf_node.html", "structsese_1_1iocp_1_1_i_o_buf_node" ]
+      [ "log", "namespacesese_1_1log.html", [
+        [ "AbstractAppender", "classsese_1_1log_1_1_abstract_appender.html", "classsese_1_1log_1_1_abstract_appender" ],
+        [ "AbstractFormatter", "classsese_1_1log_1_1_abstract_formatter.html", "classsese_1_1log_1_1_abstract_formatter" ],
+        [ "AsyncLogger", "classsese_1_1log_1_1_async_logger.html", "classsese_1_1log_1_1_async_logger" ],
+        [ "BlockAppender", "classsese_1_1log_1_1_block_appender.html", "classsese_1_1log_1_1_block_appender" ],
+        [ "ConsoleAppender", "classsese_1_1log_1_1_console_appender.html", "classsese_1_1log_1_1_console_appender" ],
+        [ "Event", "classsese_1_1log_1_1_event.html", "classsese_1_1log_1_1_event" ],
+        [ "FileAppender", "classsese_1_1log_1_1_file_appender.html", "classsese_1_1log_1_1_file_appender" ],
+        [ "Logger", "classsese_1_1log_1_1_logger.html", "classsese_1_1log_1_1_logger" ],
+        [ "LoggerInitiateTask", "classsese_1_1log_1_1_logger_initiate_task.html", "classsese_1_1log_1_1_logger_initiate_task" ],
+        [ "SimpleFormatter", "classsese_1_1log_1_1_simple_formatter.html", "classsese_1_1log_1_1_simple_formatter" ]
       ] ],
       [ "net", "namespacesese_1_1net.html", [
         [ "dns", "namespacesese_1_1net_1_1dns.html", [
@@ -137,6 +114,7 @@ var annotated_dup =
           [ "HPackUtil", "classsese_1_1net_1_1http_1_1_h_pack_util.html", "classsese_1_1net_1_1http_1_1_h_pack_util" ],
           [ "Http2Frame", "structsese_1_1net_1_1http_1_1_http2_frame.html", "structsese_1_1net_1_1http_1_1_http2_frame" ],
           [ "Http2FrameInfo", "structsese_1_1net_1_1http_1_1_http2_frame_info.html", "structsese_1_1net_1_1http_1_1_http2_frame_info" ],
+          [ "HttpClient", "classsese_1_1net_1_1http_1_1_http_client.html", "classsese_1_1net_1_1http_1_1_http_client" ],
           [ "HttpConverter", "classsese_1_1net_1_1http_1_1_http_converter.html", "classsese_1_1net_1_1http_1_1_http_converter" ],
           [ "HttpServletContext", "classsese_1_1net_1_1http_1_1_http_servlet_context.html", "classsese_1_1net_1_1http_1_1_http_servlet_context" ],
           [ "HttpUtil", "classsese_1_1net_1_1http_1_1_http_util.html", "classsese_1_1net_1_1http_1_1_http_util" ],
@@ -145,8 +123,6 @@ var annotated_dup =
           [ "huffman_tree_t", "classsese_1_1net_1_1http_1_1huffman__tree__t.html", "classsese_1_1net_1_1http_1_1huffman__tree__t" ],
           [ "Range", "structsese_1_1net_1_1http_1_1_range.html", "structsese_1_1net_1_1http_1_1_range" ],
           [ "Request", "classsese_1_1net_1_1http_1_1_request.html", "classsese_1_1net_1_1http_1_1_request" ],
-          [ "Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", "classsese_1_1net_1_1http_1_1_requestable" ],
-          [ "RequestableFactory", "classsese_1_1net_1_1http_1_1_requestable_factory.html", "classsese_1_1net_1_1http_1_1_requestable_factory" ],
           [ "RequestHeader", "classsese_1_1net_1_1http_1_1_request_header.html", "classsese_1_1net_1_1http_1_1_request_header" ],
           [ "RequestParser", "classsese_1_1net_1_1http_1_1_request_parser.html", "classsese_1_1net_1_1http_1_1_request_parser" ],
           [ "Response", "classsese_1_1net_1_1http_1_1_response.html", "classsese_1_1net_1_1http_1_1_response" ],
@@ -170,18 +146,6 @@ var annotated_dup =
         [ "ClassFactory", "classsese_1_1plugin_1_1_class_factory.html", "classsese_1_1plugin_1_1_class_factory" ],
         [ "Module", "classsese_1_1plugin_1_1_module.html", "classsese_1_1plugin_1_1_module" ],
         [ "ModuleInfo", "structsese_1_1plugin_1_1_module_info.html", "structsese_1_1plugin_1_1_module_info" ]
-      ] ],
-      [ "record", "namespacesese_1_1record.html", [
-        [ "AbstractAppender", "classsese_1_1record_1_1_abstract_appender.html", "classsese_1_1record_1_1_abstract_appender" ],
-        [ "AbstractFormatter", "classsese_1_1record_1_1_abstract_formatter.html", "classsese_1_1record_1_1_abstract_formatter" ],
-        [ "AsyncLogger", "classsese_1_1record_1_1_async_logger.html", "classsese_1_1record_1_1_async_logger" ],
-        [ "BlockAppender", "classsese_1_1record_1_1_block_appender.html", "classsese_1_1record_1_1_block_appender" ],
-        [ "ConsoleAppender", "classsese_1_1record_1_1_console_appender.html", "classsese_1_1record_1_1_console_appender" ],
-        [ "Event", "classsese_1_1record_1_1_event.html", "classsese_1_1record_1_1_event" ],
-        [ "FileAppender", "classsese_1_1record_1_1_file_appender.html", "classsese_1_1record_1_1_file_appender" ],
-        [ "Logger", "classsese_1_1record_1_1_logger.html", "classsese_1_1record_1_1_logger" ],
-        [ "LoggerInitiateTask", "classsese_1_1record_1_1_logger_initiate_task.html", "classsese_1_1record_1_1_logger_initiate_task" ],
-        [ "SimpleFormatter", "classsese_1_1record_1_1_simple_formatter.html", "classsese_1_1record_1_1_simple_formatter" ]
       ] ],
       [ "res", "namespacesese_1_1res.html", [
         [ "BundlerResource", "classsese_1_1res_1_1_bundler_resource.html", "classsese_1_1res_1_1_bundler_resource" ],
@@ -217,21 +181,7 @@ var annotated_dup =
           [ "HttpServer", "classsese_1_1service_1_1http_1_1_http_server.html", "classsese_1_1service_1_1http_1_1_http_server" ],
           [ "HttpService", "classsese_1_1service_1_1http_1_1_http_service.html", "classsese_1_1service_1_1http_1_1_http_service" ]
         ] ],
-        [ "v1", "namespacesese_1_1service_1_1v1.html", [
-          [ "TimeoutEvent", "structsese_1_1service_1_1v1_1_1_timeout_event.html", "structsese_1_1service_1_1v1_1_1_timeout_event" ],
-          [ "TimerableService", "classsese_1_1service_1_1v1_1_1_timerable_service.html", "classsese_1_1service_1_1v1_1_1_timerable_service" ]
-        ] ],
-        [ "v2", "namespacesese_1_1service_1_1v2.html", [
-          [ "TimeoutEvent", "structsese_1_1service_1_1v2_1_1_timeout_event.html", "structsese_1_1service_1_1v2_1_1_timeout_event" ],
-          [ "TimerableService", "classsese_1_1service_1_1v2_1_1_timerable_service.html", "classsese_1_1service_1_1v2_1_1_timerable_service" ]
-        ] ],
-        [ "MasterEventLoop", "classsese_1_1service_1_1_master_event_loop.html", "classsese_1_1service_1_1_master_event_loop" ],
-        [ "Service", "classsese_1_1service_1_1_service.html", "classsese_1_1service_1_1_service" ],
-        [ "SystemBalanceLoader", "classsese_1_1service_1_1_system_balance_loader.html", "classsese_1_1service_1_1_system_balance_loader" ],
-        [ "TcpConnection", "structsese_1_1service_1_1_tcp_connection.html", "structsese_1_1service_1_1_tcp_connection" ],
-        [ "TcpTransporter", "classsese_1_1service_1_1_tcp_transporter.html", "classsese_1_1service_1_1_tcp_transporter" ],
-        [ "TcpTransporterConfig", "structsese_1_1service_1_1_tcp_transporter_config.html", "structsese_1_1service_1_1_tcp_transporter_config" ],
-        [ "UserBalanceLoader", "classsese_1_1service_1_1_user_balance_loader.html", "classsese_1_1service_1_1_user_balance_loader" ]
+        [ "Service", "classsese_1_1service_1_1_service.html", "classsese_1_1service_1_1_service" ]
       ] ],
       [ "system", "namespacesese_1_1system.html", [
         [ "CommandLine", "classsese_1_1system_1_1_command_line.html", "classsese_1_1system_1_1_command_line" ],
@@ -239,9 +189,8 @@ var annotated_dup =
         [ "Environment", "classsese_1_1system_1_1_environment.html", "classsese_1_1system_1_1_environment" ],
         [ "FileLocker", "classsese_1_1system_1_1_file_locker.html", "classsese_1_1system_1_1_file_locker" ],
         [ "FileNotifier", "classsese_1_1system_1_1_file_notifier.html", "classsese_1_1system_1_1_file_notifier" ],
-        [ "FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", "structsese_1_1system_1_1_file_notify_option" ],
         [ "IPCChannel", "classsese_1_1system_1_1_i_p_c_channel.html", "classsese_1_1system_1_1_i_p_c_channel" ],
-        [ "LibraryObject", "classsese_1_1system_1_1_library_object.html", "classsese_1_1system_1_1_library_object" ],
+        [ "Library", "classsese_1_1system_1_1_library.html", "classsese_1_1system_1_1_library" ],
         [ "MemInfo", "structsese_1_1system_1_1_mem_info.html", "structsese_1_1system_1_1_mem_info" ],
         [ "Message", "classsese_1_1system_1_1_message.html", "classsese_1_1system_1_1_message" ],
         [ "MessageIterator", "structsese_1_1system_1_1_message_iterator.html", "structsese_1_1system_1_1_message_iterator" ],
@@ -307,6 +256,8 @@ var annotated_dup =
       [ "has_end< T, void_t< decltype(std::declval< T >().begin())> >", "structsese_1_1has__end_3_01_t_00_01void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_08_8begin_07_08_08_4_01_4.html", null ],
       [ "Initializer", "classsese_1_1_initializer.html", "classsese_1_1_initializer" ],
       [ "InitiateTask", "classsese_1_1_initiate_task.html", "classsese_1_1_initiate_task" ],
+      [ "IOBuf", "classsese_1_1_i_o_buf.html", "classsese_1_1_i_o_buf" ],
+      [ "IOBufNode", "structsese_1_1_i_o_buf_node.html", "structsese_1_1_i_o_buf_node" ],
       [ "is_iterable", "structsese_1_1is__iterable.html", null ],
       [ "is_pair", "structsese_1_1is__pair.html", null ],
       [ "is_pair< std::pair< T1, T2 > >", "structsese_1_1is__pair_3_01std_1_1pair_3_01_t1_00_01_t2_01_4_01_4.html", null ],

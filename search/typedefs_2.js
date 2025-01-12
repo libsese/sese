@@ -6,6 +6,5 @@ var searchData=
   ['compressmapping_3',['CompressMapping',['../classsese_1_1net_1_1dns_1_1_dns_package_1_1_index.html#aa0b8e7d02607c8d5f602b0fafc6d9b73',1,'sese::net::dns::DnsPackage::Index']]],
   ['connectioncallback_4',['ConnectionCallback',['../classsese_1_1service_1_1http_1_1_http_service.html#aa54b8e86ace9797358465acf8a907473',1,'sese::service::http::HttpService']]],
   ['constiterator_5',['ConstIterator',['../classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb',1,'sese::Value::List::ConstIterator'],['../classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab',1,'sese::Value::Dict::ConstIterator']]],
-  ['constreverseiterator_6',['ConstReverseIterator',['../classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a',1,'sese::Value::List::ConstReverseIterator'],['../classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641',1,'sese::Value::Dict::ConstReverseIterator']]],
-  ['context_7',['Context',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aff88310d725a2dde054f3109831a4d73',1,'sese::_windows::iocp::v1::NativeIOCPServer::Context'],['../namespacesese_1_1iocp.html#a731fe4167cc7698eec326c89fcbeb66e',1,'sese::iocp::Context']]]
+  ['constreverseiterator_6',['ConstReverseIterator',['../classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a',1,'sese::Value::List::ConstReverseIterator'],['../classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641',1,'sese::Value::Dict::ConstReverseIterator']]]
 ];

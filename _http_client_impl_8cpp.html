@@ -62,7 +62,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Sese Framework
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">3.0.0</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
   </td>
@@ -132,21 +132,56 @@ $(function(){initNavTree('_http_client_impl_8cpp.html',''); initResizable(true);
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle"><div class="title">HttpClientImpl.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_http_util_8h_source.html">sese/net/http/HttpUtil.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_http_client_impl_8h_source.html">sese/internal/net/http/HttpClientImpl.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_asio_i_p_convert_8h_source.html">sese/internal/net/AsioIPConvert.h</a>&quot;</code><br />
+
+<p>HTTP/1.1 client based on ASIO.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_cookie_map_8h_source.html">sese/net/http/CookieMap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_http_client_8h_source.html">sese/net/http/HttpClient.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_i_pv6_address_8h_source.html">sese/net/IPv6Address.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_http_util_8h_source.html">sese/net/http/HttpUtil.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="log_2_marco_8h_source.html">sese/log/Marco.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_byte_builder_8h_source.html">sese/io/ByteBuilder.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="util_2_util_8h_source.html">sese/util/Util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_asio_i_p_convert_8h_source.html">sese/internal/net/AsioIPConvert.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_request_parser_8h_source.html">sese/net/http/RequestParser.h</a>&quot;</code><br />
+<code>#include &lt;asio.hpp&gt;</code><br />
+<code>#include &lt;asio/ssl.hpp&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_impl.html">sese::net::http::HttpClient::Impl</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP/1.1 client based on ASIO.  <a href="classsese_1_1net_1_1http_1_1_http_client_1_1_impl.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html">sese::net::http::HttpClient::SSLImpl</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP/1.1 client based on ASIO.  <a href="classsese_1_1net_1_1http_1_1_http_client_1_1_s_s_l_impl.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net.html">sese::net</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html">sese::net::http</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>HTTP/1.1 client based on ASIO. </p>
+<dl class="section author"><dt>Author</dt><dd>kaoru </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>April 10, 2024 </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_7d3fb913f6b3b461897efa8818b452ce.html">internal</a></li><li class="navelem"><a class="el" href="dir_3491aff7cba398ff0383695f9587d3f2.html">net</a></li><li class="navelem"><a class="el" href="dir_c4d8f1531954546a209568d3a2497ed1.html">http</a></li><li class="navelem"><a class="el" href="_http_client_impl_8cpp.html">HttpClientImpl.cpp</a></li>
-    <li class="footer">Generated on Tue Jan 7 2025 15:49:06 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sun Jan 12 2025 14:30:54 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

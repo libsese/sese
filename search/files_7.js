@@ -10,8 +10,8 @@ var searchData=
   ['hpackutil_2eh_7',['HPackUtil.h',['../_h_pack_util_8h.html',1,'']]],
   ['http2frame_2ecpp_8',['Http2Frame.cpp',['../_http2_frame_8cpp.html',1,'']]],
   ['http2frame_2eh_9',['Http2Frame.h',['../_http2_frame_8h.html',1,'']]],
-  ['httpclientimpl_2ecpp_10',['HttpClientImpl.cpp',['../_http_client_impl_8cpp.html',1,'']]],
-  ['httpclientimpl_2eh_11',['HttpClientImpl.h',['../_http_client_impl_8h.html',1,'']]],
+  ['httpclient_2eh_10',['HttpClient.h',['../_http_client_8h.html',1,'']]],
+  ['httpclientimpl_2ecpp_11',['HttpClientImpl.cpp',['../_http_client_impl_8cpp.html',1,'']]],
   ['httpconnection_2ecpp_12',['HttpConnection.cpp',['../_http_connection_8cpp.html',1,'']]],
   ['httpconnection_2eh_13',['HttpConnection.h',['../_http_connection_8h.html',1,'']]],
   ['httpconnectionex_2ecpp_14',['HttpConnectionEx.cpp',['../_http_connection_ex_8cpp.html',1,'']]],
@@ -27,10 +27,8 @@ var searchData=
   ['httpserviceimpl_2ecpp_24',['HttpServiceImpl.cpp',['../_http_service_impl_8cpp.html',1,'']]],
   ['httpserviceimpl_2eh_25',['HttpServiceImpl.h',['../_http_service_impl_8h.html',1,'']]],
   ['httpservletcontext_2eh_26',['HttpServletContext.h',['../_http_servlet_context_8h.html',1,'']]],
-  ['httpsslclientimpl_2ecpp_27',['HttpSSLClientImpl.cpp',['../_http_s_s_l_client_impl_8cpp.html',1,'']]],
-  ['httpsslclientimpl_2eh_28',['HttpSSLClientImpl.h',['../_http_s_s_l_client_impl_8h.html',1,'']]],
-  ['httputil_2ecpp_29',['HttpUtil.cpp',['../_http_util_8cpp.html',1,'']]],
-  ['httputil_2eh_30',['HttpUtil.h',['../_http_util_8h.html',1,'']]],
-  ['huffman_2ecpp_31',['Huffman.cpp',['../_huffman_8cpp.html',1,'']]],
-  ['huffman_2eh_32',['Huffman.h',['../_huffman_8h.html',1,'']]]
+  ['httputil_2ecpp_27',['HttpUtil.cpp',['../_http_util_8cpp.html',1,'']]],
+  ['httputil_2eh_28',['HttpUtil.h',['../_http_util_8h.html',1,'']]],
+  ['huffman_2ecpp_29',['Huffman.cpp',['../_huffman_8cpp.html',1,'']]],
+  ['huffman_2eh_30',['Huffman.h',['../_huffman_8h.html',1,'']]]
 ];
