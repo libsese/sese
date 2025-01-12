@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/convert/MessageDigest.h"
+#include "sese/util/MessageDigest.h"
 #include "sese/security/MessageDigest.h"
 #include "sese/io/InputBufferWrapper.h"
 #include "sese/io/FileStream.h"

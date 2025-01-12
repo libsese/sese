@@ -16,7 +16,7 @@
 #include <sese/net/AddressPool.h>
 #include <sese/util/Random.h>
 #include <sese/thread/Thread.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 #include <gtest/gtest.h>
 

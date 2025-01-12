@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/record/AsyncLogger.h"
-#include "sese/record/BlockAppender.h"
-#include "sese/record/Marco.h"
+#include "sese/log/AsyncLogger.h"
+#include "sese/log/BlockAppender.h"
+#include "sese/log/Marco.h"
 #include "sese/util/Util.h"
 
 #include "gtest/gtest.h"
 
-auto makeEvent(sese::record::Level level) {
-    return std::make_shared<sese::record::Event>(
+auto makeEvent(sese::log::Level level) {
+    return std::make_shared<sese::log::Event>(
             sese::DateTime::now(),
             level,
             "ThreadName",
@@ -32,18 +32,18 @@ auto makeEvent(sese::record::Level level) {
 }
 
 TEST(TestAsyncLogger, DISABLED_HighLoad) {
-    auto logger = sese::record::AsyncLogger();
+    auto logger = sese::log::AsyncLogger();
     for (auto i = 0; i < 640; i++) {
-        logger.log(makeEvent(sese::record::Level::DEBUG));
+        logger.log(makeEvent(sese::log::Level::DEBUG));
     }
 }
 
 TEST(TestAsyncLogger, DISABLED_MuiltThread) {
-    auto logger = sese::record::AsyncLogger();
+    auto logger = sese::log::AsyncLogger();
 
     auto func = [&logger]() {
         for (auto i = 0; i < 640; i++) {
-            logger.log(makeEvent(sese::record::Level::DEBUG));
+            logger.log(makeEvent(sese::log::Level::DEBUG));
         }
     };
 

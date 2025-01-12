@@ -13,16 +13,16 @@
 // limitations under the License.
 
 #include <gtest/gtest.h>
-#include <sese/net/http/RequestableFactory.h>
+#include <sese/net/http/HttpClient.h>
 #include <sese/thread/Async.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 using namespace sese::net::http;
 
 #define ASSERT_NOT_NULL(x) ASSERT_TRUE(x != nullptr)
 
 TEST(TestHttpClient, WithoutSSL) {
-    auto client = RequestableFactory::createHttpRequest("http://www.baidu.com");
+    auto client = HttpClient::create("http://www.baidu.com");
     ASSERT_NOT_NULL(client);
     ASSERT_TRUE(client->request()) << client->getLastError();
 
@@ -34,7 +34,7 @@ TEST(TestHttpClient, WithoutSSL) {
 TEST(TestHttpClient, WithSSL) {
     using namespace std::chrono_literals;
 
-    auto client = RequestableFactory::createHttpRequest("https://www.baidu.com");
+    auto client = HttpClient::create("https://www.baidu.com");
     ASSERT_NOT_NULL(client);
     // ASSERT_TRUE(client->request()) << client->getLastError();
     auto future = sese::async<bool>([&]{return client->request();});
@@ -49,7 +49,7 @@ TEST(TestHttpClient, WithSSL) {
 }
 
 TEST(TestHttpClient, DISABLED_WithProxy) {
-    auto client = RequestableFactory::createHttpRequest("https://www.baidu.com", "http://127.0.0.1:7890");
+    auto client = HttpClient::create("https://www.baidu.com", "http://127.0.0.1:7890");
     ASSERT_NOT_NULL(client);
     ASSERT_TRUE(client->request()) << client->getLastError();
 
@@ -59,7 +59,7 @@ TEST(TestHttpClient, DISABLED_WithProxy) {
 }
 
 TEST(TestHttpClient, KeepAlive) {
-    auto client = RequestableFactory::createHttpRequest("https://www.baidu.com");
+    auto client = HttpClient::create("https://www.baidu.com");
     ASSERT_NOT_NULL(client);
     client->getRequest()->setType(RequestType::HEAD);
     ASSERT_TRUE(client->request()) << client->getLastError() << client->getLastErrorString();

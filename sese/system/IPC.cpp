@@ -13,10 +13,8 @@
 // limitations under the License.
 
 #include "sese/util/Util.h"
-
-
-#include <sese/system/IPC.h>
-#include <sese/thread/Locker.h>
+#include "sese/system/IPC.h"
+#include "sese/thread/Locker.h"
 
 using sese::system::IPCChannel;
 using sese::system::MemInfo;

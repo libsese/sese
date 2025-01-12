@@ -23,7 +23,7 @@
 
 #include <sese/Config.h>
 #include <sese/io/OutputStream.h>
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 #include <sese/system/StackInfo.h>
 
 #include <exception>
@@ -67,7 +67,7 @@ public:
 
     /// Print stack trace to logger
     /// \param logger Logger
-    void printStacktrace(sese::record::Logger *logger);
+    void printStacktrace(sese::log::Logger *logger);
 
     /// Print stack trace to output stream
     /// \param output Output stream

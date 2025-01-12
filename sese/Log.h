@@ -14,4 +14,4 @@
 
 #pragma once
 
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>

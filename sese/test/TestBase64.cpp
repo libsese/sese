@@ -15,7 +15,7 @@
 #include "sese/io/InputBufferWrapper.h"
 #include "sese/io/OutputBufferWrapper.h"
 #include "sese/io/FixedBuilder.h"
-#include "sese/convert/Base64Converter.h"
+#include "sese/util/Base64Converter.h"
 #include "gtest/gtest.h"
 
 TEST(TestBase64, Base64Encode_0) {

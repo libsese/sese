@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/system/IPC.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/util/Initializer.h>
 #include <sese/util/Util.h>
 

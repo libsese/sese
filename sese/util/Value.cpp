@@ -16,7 +16,7 @@
 
 #include <sese/util/Value.h>
 #include <sese/text/Number.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 #include <algorithm>
 #include <cassert>

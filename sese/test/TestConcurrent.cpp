@@ -16,7 +16,7 @@
 #include <sese/concurrent/LinkedQueue.h>
 #include <sese/concurrent/ObjectPool.h>
 #include <sese/thread/Async.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 #include <gtest/gtest.h>
 

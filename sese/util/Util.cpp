@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/util/Util.h>
-#include <sese/convert/SymbolConverter.h>
+#include <sese/util/SymbolConverter.h>
 
 #include <cstring>
 

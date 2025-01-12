@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/archive/ArchiveReader.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/io/File.h>
 
 #include <gtest/gtest.h>

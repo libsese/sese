@@ -15,6 +15,7 @@
 #include <sese/system/FileNotifier.h>
 #include <sese/system/ProcessBuilder.h>
 
+#include <filesystem>
 #include <thread>
 
 #include "gtest/gtest.h"
@@ -27,26 +28,26 @@
 
 using namespace std::chrono_literals;
 
-class Option : public sese::system::FileNotifyOption {
-public:
-    void onCreate(std::string_view name) override {
-        printf("touch %s\n", name.data());
-    }
-    void onMove(std::string_view src_name, std::string_view dst_name) override {
-        printf("mv %s %s\n", src_name.data(), dst_name.data());
-    }
-    void onModify(std::string_view name) override {
-        printf("mod %s\n", name.data());
-    }
-    void onDelete(std::string_view name) override {
-        printf("rm %s\n", name.data());
-    }
-};
-
 TEST(TestFileNotifier, Notify) {
-    Option option{};
-    auto notifier = sese::system::FileNotifier::create(PATH, &option);
-    notifier->loopNonblocking();
+    std::filesystem::create_directory(PATH);
+    auto notifier_or = sese::system::FileNotifier::createEx(PATH);
+    if (notifier_or) {
+        FAIL() << notifier_or.err().message();
+    }
+    auto &notifier = notifier_or.get();
+    notifier->setOnCreate([](std::string_view name) {
+        printf("touch %s\n", name.data());
+    });
+    notifier->setOnModify([](std::string_view name) {
+        printf("mod %s\n", name.data());
+    });
+    notifier->setOnDelete([](std::string_view name) {
+        printf("rm %s\n", name.data());
+    });
+    notifier->setOnMove([](std::string_view src_name, std::string_view dst_name) {
+        printf("mv %s %s\n", src_name.data(), dst_name.data());
+    });
+    notifier->start();
 
     auto result = sese::system::ProcessBuilder(PY_EXECUTABLE)
         .arg(PROJECT_PATH "/scripts/change_file.py")

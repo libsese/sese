@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include <sese/Config.h>
+#include "sese/Config.h"
 
 namespace sese::system {
 
@@ -31,7 +31,9 @@ class FileLocker {
 public:
     /// Initialize a file lock based on the file descriptor
     /// \param fd File descriptor
-    explicit FileLocker(int32_t fd) : fd(fd) {}
+    explicit FileLocker(int32_t fd);
+
+    ~FileLocker();
 
     /// Apply a write lock to the current file
     /// \param start Starting offset
@@ -56,11 +58,8 @@ public:
     [[nodiscard]] bool unlock();
 
 private:
-    int32_t fd{};
-#ifdef SESE_PLATFORM_WINDOWS
-    int64_t offset{};
-    int64_t size{};
-#endif
+    class Impl;
+    std::unique_ptr<Impl> impl;
 };
 
 } // namespace sese::system

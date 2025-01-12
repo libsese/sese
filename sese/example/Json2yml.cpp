@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/util/Initializer.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/io/File.h>
 #include <sese/config/Json.h>
 #include <sese/config/Yaml.h>

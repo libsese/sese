@@ -12,19 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/convert/Decompressor.h"
-#include "sese/convert/Compressor.h"
-#include "sese/convert/GZipFileOutputStream.h"
-#include "sese/convert/GZipFileInputStream.h"
+#include "sese/util/Decompressor.h"
+#include "sese/util/Compressor.h"
+#include "sese/util/GZipFileOutputStream.h"
+#include "sese/util/GZipFileInputStream.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/OutputBufferWrapper.h"
-#include "sese/record/Logger.h"
+#include "sese/log/Logger.h"
 
 #include "gtest/gtest.h"
 
 #include <filesystem>
 
-using sese::record::Logger;
+using sese::log::Logger;
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);

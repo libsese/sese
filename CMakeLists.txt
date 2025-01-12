@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.21)
 include(cmake/Options.cmake)
 project(
     sese
-    VERSION 2.3.0
+    VERSION 3.0.0
     LANGUAGES CXX
 )
 set(CMAKE_CXX_STANDARD 20)

@@ -20,77 +20,60 @@
 
 #pragma once
 
-#include "sese/Config.h"
 #include "sese/util/ErrorCode.h"
 #include "sese/util/Result.h"
 
-#include <atomic>
-#ifdef __APPLE__
-#include <tuple>
-#else
-#include "sese/thread/Thread.h"
-#endif
+#include <functional>
+#include <memory>
 
 namespace sese::system {
-
-/// File Change Callback Option Class
-struct FileNotifyOption {
-    virtual ~FileNotifyOption() = default;
-
-    /// Create file
-    virtual void onCreate(std::string_view name) = 0;
-
-    /// Move file
-    virtual void onMove(std::string_view src_name, std::string_view dst_name) = 0;
-
-    /// Modify file
-    virtual void onModify(std::string_view name) = 0;
-
-    /// Delete file
-    virtual void onDelete(std::string_view name) = 0;
-};
 
 /// \brief File Change Monitor
 /// \bug This implementation has an inconsistent event order in Darwin compared to Windows and Linux. <p>
 /// In Darwin, multiple events for the same file are triggered first, while in Windows and Linux, events are triggered in chronological order.
-class FileNotifier {
+class FileNotifier final {
 public:
     using Ptr = std::unique_ptr<FileNotifier>;
+    using OnCreateCallback = std::function<void(std::string_view)>;
+    using OnMoveCallback = std::function<void(std::string_view, std::string_view)>;
+    using OnModifyCallback = std::function<void(std::string_view)>;
+    using OnDeleteCallback = std::function<void(std::string_view)>;
 
     /// Create file monitor
-    /// \param path The path to the [directory]
-    /// \param option Callback options
+    /// \param path The path to the directory
     /// \retval nullptr Creation failed
-    static FileNotifier::Ptr create(const std::string &path, FileNotifyOption *option) noexcept;
+    static Ptr create(const std::string &path) noexcept;
 
-    static Result<Ptr, ErrorCode> createEx(const std::string &path, FileNotifyOption *option) noexcept;
+    static Result<Ptr, ErrorCode> createEx(const std::string &path) noexcept;
 
-    virtual ~FileNotifier() noexcept;
+    ~FileNotifier() noexcept;
 
     /// Start a thread to start processing the change event
-    void loopNonblocking() noexcept;
+    void start() const noexcept;
 
     /// Shut down the monitor and block until the background thread exits
-    void shutdown() noexcept;
+    void shutdown() const noexcept;
+
+    /// Set the callback function to be called when a file is created
+    /// \param callback Callback function
+    void setOnCreate(OnCreateCallback &&callback) const noexcept;
+
+    /// Set the callback function to be called when a file is moved
+    /// \param callback Callback function
+    void setOnMove(OnMoveCallback &&callback) const noexcept;
+
+    /// Set the callback function to be called when a file is modified
+    /// \param callback Callback function
+    void setOnModify(OnModifyCallback &&callback) const noexcept;
+
+    /// Set the callback function to be called when a file is deleted
+    /// \param callback Callback function
+    void setOnDelete(OnDeleteCallback &&callback) const noexcept;
 
 private:
     FileNotifier() = default;
 
-#ifdef WIN32
-    void *file_handle = nullptr;
-    void *overlapped = nullptr;
-    std::atomic_bool is_shutdown = false;
-    FileNotifyOption *option = nullptr;
-    Thread::Ptr th = nullptr;
-#elif __linux__
-    int inotify_fd = -1;
-    int watch_fd = -1;
-    std::atomic_bool is_shutdown = false;
-    FileNotifyOption *option = nullptr;
-    Thread::Ptr th = nullptr;
-#elif __APPLE__
-    void *stream = nullptr;
-    void *queue = nullptr;
-#endif
+    class Impl;
+    std::unique_ptr<Impl> impl;
 };
 } // namespace sese::system

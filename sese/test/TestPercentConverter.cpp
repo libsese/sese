@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/convert/PercentConverter.h>
+#include <sese/util/PercentConverter.h>
 #include <sese/io/OutputBufferWrapper.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 #include <gtest/gtest.h>
 

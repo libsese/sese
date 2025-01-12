@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/internal/db/maria/MariaPreparedStatementImpl.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 
 sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
         MYSQL_STMT *stmt,

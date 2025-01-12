@@ -21,7 +21,7 @@
 #pragma once
 
 #include "sese/plugin/Marco.h"
-#include "sese/system/LibraryLoader.h"
+#include "sese/system/Library.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -33,7 +33,7 @@ namespace sese::plugin {
 class Module {
 public:
     using Ptr = std::unique_ptr<Module>;
-    using LibraryObject = sese::system::LibraryObject;
+    using LibraryObject = sese::system::Library;
 
     /// \brief Attempt to load a module from a dynamic library
     /// \param path Dynamic library path
@@ -49,20 +49,20 @@ public:
 
     /// \brief Get the module name
     /// \return Module name
-    const char *getName() noexcept;
+    const char *getName() const noexcept;
 
     /// \brief Get the module version
     /// \return Module version
-    const char *getVersion() noexcept;
+    const char *getVersion() const noexcept;
 
     /// \brief Get the module description
     /// \return Module description
-    const char *getDescription() noexcept;
+    const char *getDescription() const noexcept;
 
     /// \brief Construct an object using the class factory of the module
     /// \param id Object identifier
     /// \retval nullptr Instantiation error
-    BaseClass::Ptr createClass(const std::string &id) noexcept;
+    BaseClass::Ptr createClass(const std::string &id) const noexcept;
 
     /// \brief Construct an object using the class factory of the module and cast to a specified type
     /// \tparam TYPE Specified type
@@ -80,7 +80,7 @@ public:
     /// \brief Get the type information of registered classes in the module
     /// \return Type information
     const ClassFactory::RegisterInfoMapType &
-    getRegisterClassInfo() noexcept;
+    getRegisterClassInfo() const noexcept;
 
 private:
     Module() = default;

@@ -25,7 +25,7 @@
 - ⭕️ Better web-related support
 - ⭕️ IP/TCP based filters
 
-## Version 2.4.0
+## Version 3.0.0
 
 - ⭕️ DNS module decoupling and refactoring
 - ⭕️️ Better Exception

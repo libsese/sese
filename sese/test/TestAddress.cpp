@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "sese/net/AddressPool.h"
-#include "sese/record/Marco.h"
+#include "sese/log/Marco.h"
 #include "gtest/gtest.h"
 
 TEST(TestAddress, AddressLookUp) {

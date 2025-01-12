@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <sese/record/Logger.h>
+#include <sese/log/Logger.h>
 #include <sese/system/SharedMemory.h>
 #include <sese/util/Initializer.h>
 
@@ -22,7 +22,7 @@
 #include <random>
 
 using namespace std::chrono_literals;
-using sese::record::Logger;
+using sese::log::Logger;
 
 int main(int argc, char **argv) {
     sese::initCore(argc, argv);

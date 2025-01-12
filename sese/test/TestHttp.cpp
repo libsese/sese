@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <sese/net/Socket.h>
-#include <sese/record/Marco.h>
+#include <sese/log/Marco.h>
 #include <sese/net/http/HeaderBuilder.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/UrlHelper.h>

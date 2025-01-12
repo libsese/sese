@@ -19,15 +19,12 @@
  * \date December 8, 2022
  * \version 0.1
  */
+
 #pragma once
 
 #include <sese/Config.h>
 #include <sese/util/Result.h>
 #include <sese/util/ErrorCode.h>
-#ifdef WIN32
-#else
-#include <sys/shm.h>
-#endif
 
 namespace sese::system {
 
@@ -41,7 +38,7 @@ public:
     /// \param size Shared memory size
     /// \return Pointer to the shared memory object
     /// \retval nullptr Creation failed
-    static SharedMemory::Ptr create(const char *name, size_t size) noexcept;
+    static Ptr create(const char *name, size_t size) noexcept;
 
     static Result<Ptr, ErrorCode> createEx(const char *name, size_t size) noexcept;
 
@@ -49,27 +46,20 @@ public:
     /// \param name Shared memory name
     /// \return Pointer to the shared memory object
     /// \retval nullptr Acquisition failed
-    static SharedMemory::Ptr use(const char *name) noexcept;
+    static Ptr use(const char *name) noexcept;
 
     static Result<Ptr, ErrorCode> useEx(const char *name) noexcept;
 
-    /// Destructor
     ~SharedMemory() noexcept;
+
     /// Get the actual address of the shared memory
     /// \return Shared memory block
-    void *getBuffer() noexcept;
+    void *getBuffer() const noexcept;
 
 private:
-    SharedMemory() = default;
+    class Impl;
+    std::unique_ptr<Impl> impl;
 
-private:
-#ifdef WIN32
-    void *hMapFile = nullptr;
-#else
-    int id{};
-    static key_t name2key(const char *name) noexcept;
-#endif
-    void *buffer = nullptr;
-    bool isOwner{};
+    explicit SharedMemory(std::unique_ptr<Impl> impl) noexcept;
 };
 } // namespace sese::system
