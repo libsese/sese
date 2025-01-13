@@ -21,6 +21,8 @@
 
 #include <sese/thread/GlobalThreadPool.h>
 
+#include <coroutine>
+
 namespace sese {
 
 /// \brief Launch an anonymous thread to execute a task
@@ -45,6 +47,28 @@ std::shared_future<RETURN_TYPE> async(ThreadPool &pool, const std::function<RETU
 template<class RETURN_TYPE>
 std::shared_future<RETURN_TYPE> asyncWithGlobalPool(const std::function<RETURN_TYPE()> &task) noexcept;
 
+template<class T>
+class FutureAwaiter {
+public:
+    explicit FutureAwaiter(std::shared_future<T> future) : future(future) {}
+
+    [[nodiscard]] bool await_ready() noexcept {
+        return future.wait_for(std::chrono::seconds(0)) == std::future_status::ready;
+    }
+
+    void await_suspend(std::coroutine_handle<> handle) noexcept {
+        future.wait();
+        handle.resume();
+    }
+
+    T await_resume() noexcept {
+        return future.get();
+    }
+
+private:
+    std::shared_future<T> future;
+};
+
 } // namespace sese
 
 template<class RETURN_TYPE>
@@ -53,12 +77,12 @@ std::shared_future<RETURN_TYPE> sese::async(const std::function<RETURN_TYPE()> &
     std::shared_future<RETURN_TYPE> future(packaged_task.get_future());
 
     std::thread(
-            [&](std::packaged_task<RETURN_TYPE()> task) {
-                task();
-            },
-            std::move(packaged_task)
+        [&](std::packaged_task<RETURN_TYPE()> task) {
+            task();
+        },
+        std::move(packaged_task)
     )
-            .detach();
+        .detach();
 
     return future;
 }
