@@ -16,7 +16,6 @@
 #include "sese/util/StopWatch.h"
 #include "sese/util/Util.h"
 #include "sese/thread/Async.h"
-#include "sese/thread/Promise.h"
 #include "sese/thread/SpinLock.h"
 #include "sese/thread/Locker.h"
 #include "sese/thread/GlobalThreadPool.h"
@@ -166,10 +165,10 @@ TEST(TestThread, ThreadPool_Future) {
 }
 
 sese::DefaultPromise run_with_pool() {
-    int i = co_await sese::FutureAwaiter(sese::asyncWithGlobalPool<int>([] {
+    int i = co_await sese::asyncWithGlobalPool<int>(sese::UseCoroutine{}, [] {
         SESE_INFO("SetValue");
         return 10 + 20;
-    }));
+    });
     SESE_INFO("Getvalue {}", i);
 }
 
@@ -210,10 +209,10 @@ TEST(TestThread, Thread_Future) {
 }
 
 sese::DefaultPromise run() {
-    int i = co_await sese::FutureAwaiter(sese::async<int>([] {
+    int i = co_await sese::async<int>(sese::UseCoroutine{}, [] {
         SESE_INFO("SetValue");
         return 10;
-    }));
+    });
     SESE_INFO("Getvalue {}", i);
 }
 
