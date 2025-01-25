@@ -12,9 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/thread/Async.h"
 #include "sese/log/Marco.h"
+#include "sese/util/StopWatch.h"
 #include "sese/util/Util.h"
+#include "sese/thread/Async.h"
+#include "sese/thread/SpinLock.h"
+#include "sese/thread/Locker.h"
+#include "sese/thread/GlobalThreadPool.h"
 
 #include "gtest/gtest.h"
 
@@ -26,7 +30,16 @@ using sese::log::Logger;
 static auto type_main_thread = "Main Thread";
 static auto type_not_main_thread = "Not Main Thread";
 
-void proc(int &num);
+void proc(int &num) {
+    Logger::debug("Thread's name = {}, tid = {}", sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
+
+    auto i = sese::Thread::getCurrentThreadData();
+    auto msg = i ? type_not_main_thread : type_main_thread;
+    Logger::debug("Current thread is {}", msg);
+
+    ASSERT_TRUE(i != nullptr);
+    num = 1;
+}
 
 TEST(TestThread, Thread) {
     int num = 0;
@@ -45,17 +58,6 @@ TEST(TestThread, Thread) {
     auto i = sese::Thread::getCurrentThreadData();
     auto msg = i ? type_not_main_thread : type_main_thread;
     Logger::debug("Current thread is {}", msg);
-}
-
-void proc(int &num) {
-    Logger::debug("Thread's name = {}, tid = {}", sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
-
-    auto i = sese::Thread::getCurrentThreadData();
-    auto msg = i ? type_not_main_thread : type_main_thread;
-    Logger::debug("Current thread is {}", msg);
-
-    ASSERT_TRUE(i != nullptr);
-    num = 1;
 }
 
 TEST(TestThread, ThreadPool) {
@@ -88,20 +90,8 @@ TEST(TestThread, ThreadPool) {
     pool.shutdown();
 }
 
-TEST(TestThread, AutoShutdown) {
+TEST(TestThread, ThreadPool_AutoShutdown) {
     auto pool = sese::ThreadPool("nameless", 0);
-}
-
-TEST(TestThread, AutoJoin) {
-    int i = 0;
-    {
-        sese::Thread th([&i] {
-            sese::sleep(2s);
-            i = 114514;
-        });
-        th.start();
-    }
-    ASSERT_EQ(i, 114514);
 }
 
 TEST(TestThread, MainThread) {
@@ -135,26 +125,8 @@ TEST(TestThread, MainThread) {
     std::this_thread::sleep_for(100ms);
 }
 
-void func(std::packaged_task<int()> task) {
-    task();
-}
-
-template<class RETURN_TYPE>
-std::shared_future<RETURN_TYPE> postTask(sese::ThreadPool &pool, const std::function<RETURN_TYPE()> &task) {
-    using TaskPtr = std::shared_ptr<std::packaged_task<RETURN_TYPE()>>;
-    TaskPtr packaged_task = std::make_shared<std::packaged_task<RETURN_TYPE()>>(task);
-    std::shared_future<RETURN_TYPE> future(packaged_task->get_future());
-
-    pool.postTask([task = std::move(packaged_task)]() mutable {
-        (*task)();
-    });
-
-    return future;
-}
-
 TEST(TestThread, ThreadPool_Future) {
     auto pool = sese::ThreadPool("Future", 2);
-
     {
         int i = 1, j = 1;
         auto future = sese::async<int>(pool, [&] {
@@ -192,11 +164,35 @@ TEST(TestThread, ThreadPool_Future) {
     }
 }
 
+sese::DefaultPromise run_with_pool() {
+    int i = co_await sese::asyncWithGlobalPool<int>(sese::UseCoroutine{}, [] {
+        SESE_INFO("SetValue");
+        return 10 + 20;
+    });
+    SESE_INFO("Getvalue {}", i);
+}
+
+TEST(TestThread, ThreadPool_Await) {
+    run_with_pool();
+}
+
+TEST(TestThread, Thread_AutoJoin) {
+    int i = 0;
+    {
+        sese::Thread th([&i] {
+            sese::sleep(2s);
+            i = 114514;
+        });
+        th.start();
+    }
+    ASSERT_EQ(i, 114514);
+}
+
 TEST(TestThread, Thread_Future) {
     {
         int i = 1, j = 1;
         auto future = sese::async<int>([&] {
-            std::this_thread::sleep_for(200ms);
+            // std::this_thread::sleep_for(200ms);
             SESE_INFO("SetValue");
             return i + j;
         });
@@ -212,7 +208,17 @@ TEST(TestThread, Thread_Future) {
     }
 }
 
-#include <sese/thread/GlobalThreadPool.h>
+sese::DefaultPromise run() {
+    int i = co_await sese::async<int>(sese::UseCoroutine{}, [] {
+        SESE_INFO("SetValue");
+        return 10;
+    });
+    SESE_INFO("Getvalue {}", i);
+}
+
+TEST(TestThread, Thread_Await) {
+    run();
+}
 
 TEST(TestThread, GlobalThreadPool) {
     sese::GlobalThreadPool::postTask([] {
@@ -235,10 +241,6 @@ TEST(TestThread, GlobalThreadPool) {
     SESE_INFO("Getvalue {}", rt);
     // EXPECT_EQ(rt, 3);
 }
-
-#include <sese/thread/SpinLock.h>
-#include <sese/thread/Locker.h>
-#include <sese/util/StopWatch.h>
 
 TEST(TestThread, SpinLock) {
     int i = 0;
