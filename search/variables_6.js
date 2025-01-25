@@ -33,5 +33,6 @@ var searchData=
   ['frame_5ftype_5fwindow_5fupdate_30',['FRAME_TYPE_WINDOW_UPDATE',['../namespacesese_1_1net_1_1http.html#ab425c0da8cac859a3ff5375052d0cdb9',1,'sese::net::http']]],
   ['fullpath_31',['fullPath',['../classsese_1_1_arg_parser.html#a4c0b15fcfd7930d459dd34ad0b5165a6',1,'sese::ArgParser']]],
   ['func_32',['func',['../structsese_1_1system_1_1_sub_stack_info.html#ab4dc2f5d7eaa3c5fe2940f94eb63939e',1,'sese::system::SubStackInfo']]],
-  ['function_33',['function',['../structsese_1_1_thread_1_1_runtime_data.html#a731358316e082dbcda11e9c805e98f36',1,'sese::Thread::RuntimeData']]]
+  ['function_33',['function',['../structsese_1_1_thread_1_1_runtime_data.html#a731358316e082dbcda11e9c805e98f36',1,'sese::Thread::RuntimeData']]],
+  ['future_34',['future',['../classsese_1_1_future_awaiter.html#a2634651506b032add21149b011f3d7a7',1,'sese::FutureAwaiter']]]
 ];

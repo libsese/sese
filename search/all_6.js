@@ -89,13 +89,13 @@ var searchData=
   ['assert_5fdouble_5fsize_86',['ASSERT_DOUBLE_SIZE',['../_endian_8h.html#adc65a591065360bedcf13bf0b0a984ef',1,'Endian.h']]],
   ['assert_5ffloat_5fsize_87',['ASSERT_FLOAT_SIZE',['../_endian_8h.html#a1252e3c5ff559d127a5ab9483dca4269',1,'Endian.h']]],
   ['assert_5fwrite_88',['ASSERT_WRITE',['../_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a',1,'IniUtil.cpp']]],
-  ['async_89',['async',['../namespacesese.html#a12bdf7f3f31fb532b9a6c6630f251300',1,'sese::async(const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept'],['../namespacesese.html#a6a6da68e9dbdc9dd32902487bde06506',1,'sese::async(ThreadPool &amp;pool, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept']]],
+  ['async_89',['async',['../namespacesese.html#a12bdf7f3f31fb532b9a6c6630f251300',1,'sese::async(const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept'],['../namespacesese.html#aafef6e598331e5d2332448147d3257af',1,'sese::async(UseCoroutine, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept'],['../namespacesese.html#a6a6da68e9dbdc9dd32902487bde06506',1,'sese::async(ThreadPool &amp;pool, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept'],['../namespacesese.html#a10a1bf41c696879834591d90ddd204ae',1,'sese::async(UseCoroutine, ThreadPool &amp;pool, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept']]],
   ['async_2eh_90',['Async.h',['../_async_8h.html',1,'']]],
   ['asynclogger_91',['AsyncLogger',['../classsese_1_1log_1_1_async_logger.html',1,'sese::log::AsyncLogger'],['../classsese_1_1log_1_1_async_logger.html#a1ec00e14d6d7bd41638028cb792c4efe',1,'sese::log::AsyncLogger::AsyncLogger()']]],
   ['asynclogger_2ecpp_92',['AsyncLogger.cpp',['../_async_logger_8cpp.html',1,'']]],
   ['asynclogger_2eh_93',['AsyncLogger.h',['../_async_logger_8h.html',1,'']]],
   ['asyncreadsome_94',['asyncReadSome',['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection.html#a8d262d096f69394c5b3582aca78f27cc',1,'sese::internal::service::http::HttpConnection::asyncReadSome()'],['../structsese_1_1internal_1_1service_1_1http_1_1_http_connection_impl.html#a78c6da3190e5dad5441fc171516904da',1,'sese::internal::service::http::HttpConnectionImpl::asyncReadSome()'],['../structsese_1_1internal_1_1service_1_1http_1_1_https_connection_impl.html#acdc465985cbee6b64e02bee844994d8a',1,'sese::internal::service::http::HttpsConnectionImpl::asyncReadSome()']]],
-  ['asyncwithglobalpool_95',['asyncWithGlobalPool',['../namespacesese.html#ad886f60f663e826d49276753928e0209',1,'sese']]],
+  ['asyncwithglobalpool_95',['asyncWithGlobalPool',['../namespacesese.html#ad886f60f663e826d49276753928e0209',1,'sese::asyncWithGlobalPool(const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept'],['../namespacesese.html#adade387047700a77d8ce79a5a4a52600',1,'sese::asyncWithGlobalPool(UseCoroutine, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept']]],
   ['at_96',['at',['../classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850',1,'sstr::SStringView::at()'],['../_s_string_8cpp.html#a8252847139f3ffb67cc7e1afeeaba632',1,'at():&#160;SString.cpp']]],
   ['attributes_97',['attributes',['../classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3',1,'sese::xml::Element']]],
   ['attrtype_98',['AttrType',['../classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379',1,'sese::xml::Element']]],
@@ -103,5 +103,8 @@ var searchData=
   ['authority_100',['Authority',['../classsese_1_1net_1_1dns_1_1_dns_package.html#ac8556376d8e62b1dff8045e7c0933e3f',1,'sese::net::dns::DnsPackage']]],
   ['authors_101',['AUTHORS',['../md__a_u_t_h_o_r_s.html',1,'']]],
   ['authors_2emd_102',['AUTHORS.md',['../_a_u_t_h_o_r_s_8md.html',1,'']]],
-  ['authprivatekey_103',['authPrivateKey',['../classsese_1_1security_1_1_s_s_l_context.html#ab53b7ae9f3fea7e2067da6458ccc944a',1,'sese::security::SSLContext']]]
+  ['authprivatekey_103',['authPrivateKey',['../classsese_1_1security_1_1_s_s_l_context.html#ab53b7ae9f3fea7e2067da6458ccc944a',1,'sese::security::SSLContext']]],
+  ['await_5fready_104',['await_ready',['../classsese_1_1_future_awaiter.html#a9fbdbdf0291411806c7a57d67b9453c8',1,'sese::FutureAwaiter']]],
+  ['await_5fresume_105',['await_resume',['../classsese_1_1_future_awaiter.html#a6e171d68ebe671efb0ac8e3626d9afc7',1,'sese::FutureAwaiter']]],
+  ['await_5fsuspend_106',['await_suspend',['../classsese_1_1_future_awaiter.html#a4c487113191e871d88926c41ce110cb6',1,'sese::FutureAwaiter']]]
 ];

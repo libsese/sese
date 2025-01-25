@@ -217,6 +217,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html">Decompressor</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1_decompressor.html" title="Decompressor class.">Decompressor</a> class.  <a href="classsese_1_1_decompressor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_default_promise.html">DefaultPromise</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_encoding_converter.html">EncodingConverter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">String encoding conversion.  <a href="classsese_1_1_encoding_converter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,6 +227,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_exception.html">Exception</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1_exception.html" title="Exception class.">Exception</a> class.  <a href="classsese_1_1_exception.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_future_awaiter.html">FutureAwaiter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_global_thread_pool.html">GlobalThreadPool</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global thread pools, which use system thread pools on Windows, and slacker singleton thread pools on UNIX platforms.  <a href="classsese_1_1_global_thread_pool.html#details">More...</a><br /></td></tr>
@@ -384,6 +388,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_unix_exception.html">UnixException</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unix exception wrapper class.  <a href="classsese_1_1_unix_exception.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_uuid.html">Uuid</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classsese_1_1_uuid.html" title="Uuid Class.">Uuid</a> Class.  <a href="classsese_1_1_uuid.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -458,14 +464,26 @@ Functions</h2></td></tr>
 <tr class="memitem:a12bdf7f3f31fb532b9a6c6630f251300"><td class="memTemplItemLeft" align="right" valign="top">std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a12bdf7f3f31fb532b9a6c6630f251300">async</a> (const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
 <tr class="memdesc:a12bdf7f3f31fb532b9a6c6630f251300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch an anonymous thread to execute a task.  <br /></td></tr>
 <tr class="separator:a12bdf7f3f31fb532b9a6c6630f251300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafef6e598331e5d2332448147d3257af" id="r_aafef6e598331e5d2332448147d3257af"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
+<tr class="memitem:aafef6e598331e5d2332448147d3257af"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aafef6e598331e5d2332448147d3257af">async</a> (<a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a>, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
+<tr class="memdesc:aafef6e598331e5d2332448147d3257af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch an anonymous thread to execute a task.  <br /></td></tr>
+<tr class="separator:aafef6e598331e5d2332448147d3257af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a6da68e9dbdc9dd32902487bde06506" id="r_a6a6da68e9dbdc9dd32902487bde06506"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
 <tr class="memitem:a6a6da68e9dbdc9dd32902487bde06506"><td class="memTemplItemLeft" align="right" valign="top">std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6a6da68e9dbdc9dd32902487bde06506">async</a> (<a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> &amp;pool, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
 <tr class="memdesc:a6a6da68e9dbdc9dd32902487bde06506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submit a task to an existing thread pool.  <br /></td></tr>
 <tr class="separator:a6a6da68e9dbdc9dd32902487bde06506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a1bf41c696879834591d90ddd204ae" id="r_a10a1bf41c696879834591d90ddd204ae"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
+<tr class="memitem:a10a1bf41c696879834591d90ddd204ae"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a10a1bf41c696879834591d90ddd204ae">async</a> (<a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a>, <a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> &amp;pool, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
+<tr class="memdesc:a10a1bf41c696879834591d90ddd204ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submit a task to an existing thread pool.  <br /></td></tr>
+<tr class="separator:a10a1bf41c696879834591d90ddd204ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad886f60f663e826d49276753928e0209" id="r_ad886f60f663e826d49276753928e0209"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
 <tr class="memitem:ad886f60f663e826d49276753928e0209"><td class="memTemplItemLeft" align="right" valign="top">std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad886f60f663e826d49276753928e0209">asyncWithGlobalPool</a> (const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
 <tr class="memdesc:ad886f60f663e826d49276753928e0209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submit a task to the global thread pool.  <br /></td></tr>
 <tr class="separator:ad886f60f663e826d49276753928e0209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adade387047700a77d8ce79a5a4a52600" id="r_adade387047700a77d8ce79a5a4a52600"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
+<tr class="memitem:adade387047700a77d8ce79a5a4a52600"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#adade387047700a77d8ce79a5a4a52600">asyncWithGlobalPool</a> (<a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a>, const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
+<tr class="memdesc:adade387047700a77d8ce79a5a4a52600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submit a task to the global thread pool.  <br /></td></tr>
+<tr class="separator:adade387047700a77d8ce79a5a4a52600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f4b46ffad174639bc2bfe96d85f8892" id="r_a1f4b46ffad174639bc2bfe96d85f8892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f4b46ffad174639bc2bfe96d85f8892">initCore</a> (int argc, const char *const *argv) noexcept</td></tr>
 <tr class="memdesc:a1f4b46ffad174639bc2bfe96d85f8892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize sese-core.  <br /></td></tr>
 <tr class="separator:a1f4b46ffad174639bc2bfe96d85f8892"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -781,7 +799,7 @@ template&lt;typename T &gt; </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a12bdf7f3f31fb532b9a6c6630f251300" name="a12bdf7f3f31fb532b9a6c6630f251300"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12bdf7f3f31fb532b9a6c6630f251300">&#9670;&#160;</a></span>async() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a12bdf7f3f31fb532b9a6c6630f251300">&#9670;&#160;</a></span>async() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -820,10 +838,12 @@ template&lt;class RETURN_TYPE &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::shared_future object </dd></dl>
 
+<p class="reference">Referenced by <a class="el" href="#aafef6e598331e5d2332448147d3257af">async()</a>, and <a class="el" href="#a10a1bf41c696879834591d90ddd204ae">async()</a>.</p>
+
 </div>
 </div>
 <a id="a6a6da68e9dbdc9dd32902487bde06506" name="a6a6da68e9dbdc9dd32902487bde06506"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a6da68e9dbdc9dd32902487bde06506">&#9670;&#160;</a></span>async() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a6da68e9dbdc9dd32902487bde06506">&#9670;&#160;</a></span>async() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -871,8 +891,110 @@ template&lt;class RETURN_TYPE &gt; </div>
 
 </div>
 </div>
+<a id="aafef6e598331e5d2332448147d3257af" name="aafef6e598331e5d2332448147d3257af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafef6e598331e5d2332448147d3257af">&#9670;&#160;</a></span>async() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class RETURN_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto sese::async </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; RETURN_TYPE()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>task</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Launch an anonymous thread to execute a task. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">RETURN_TYPE</td><td>Return type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>Task </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>awaitable object </dd></dl>
+
+<p class="reference">References <a class="el" href="#a12bdf7f3f31fb532b9a6c6630f251300">async()</a>.</p>
+
+</div>
+</div>
+<a id="a10a1bf41c696879834591d90ddd204ae" name="a10a1bf41c696879834591d90ddd204ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a1bf41c696879834591d90ddd204ae">&#9670;&#160;</a></span>async() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class RETURN_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto sese::async </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pool</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; RETURN_TYPE()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>task</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Submit a task to an existing thread pool. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">RETURN_TYPE</td><td>Return type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pool</td><td>Existing thread pool </td></tr>
+    <tr><td class="paramname">task</td><td>Task </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>awaitable object </dd></dl>
+
+<p class="reference">References <a class="el" href="#a12bdf7f3f31fb532b9a6c6630f251300">async()</a>.</p>
+
+</div>
+</div>
 <a id="ad886f60f663e826d49276753928e0209" name="ad886f60f663e826d49276753928e0209"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad886f60f663e826d49276753928e0209">&#9670;&#160;</a></span>asyncWithGlobalPool()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad886f60f663e826d49276753928e0209">&#9670;&#160;</a></span>asyncWithGlobalPool() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -911,7 +1033,55 @@ template&lt;class RETURN_TYPE &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::shared_future object </dd></dl>
 
-<p class="reference">References <a class="el" href="classsese_1_1_global_thread_pool.html#a36b670e57248aed6aced9a386e432488">sese::GlobalThreadPool::postTask()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#adade387047700a77d8ce79a5a4a52600">asyncWithGlobalPool()</a>.</p>
+
+</div>
+</div>
+<a id="adade387047700a77d8ce79a5a4a52600" name="adade387047700a77d8ce79a5a4a52600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adade387047700a77d8ce79a5a4a52600">&#9670;&#160;</a></span>asyncWithGlobalPool() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class RETURN_TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto sese::asyncWithGlobalPool </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_use_coroutine.html">UseCoroutine</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; RETURN_TYPE()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>task</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Submit a task to the global thread pool. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">RETURN_TYPE</td><td>Return type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>Task </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>awaitable object </dd></dl>
+
+<p class="reference">References <a class="el" href="#ad886f60f663e826d49276753928e0209">asyncWithGlobalPool()</a>.</p>
 
 </div>
 </div>
@@ -1805,7 +1975,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li>
-    <li class="footer">Generated on Sun Jan 12 2025 14:30:54 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Generated on Sat Jan 25 2025 11:31:55 for Sese Framework by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>
 </body>

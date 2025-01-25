@@ -11,5 +11,6 @@ var searchData=
   ['postgresresultsetimpl_8',['PostgresResultSetImpl',['../classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html',1,'sese::db::impl']]],
   ['preparedstatement_9',['PreparedStatement',['../classsese_1_1db_1_1_prepared_statement.html',1,'sese::db']]],
   ['process_10',['Process',['../classsese_1_1system_1_1_process.html',1,'sese::system']]],
-  ['processbuilder_11',['ProcessBuilder',['../classsese_1_1system_1_1_process_builder.html',1,'sese::system']]]
+  ['processbuilder_11',['ProcessBuilder',['../classsese_1_1system_1_1_process_builder.html',1,'sese::system']]],
+  ['promise_5ftype_12',['promise_type',['../classsese_1_1_default_promise_1_1promise__type.html',1,'sese::DefaultPromise']]]
 ];
