@@ -86,7 +86,7 @@ Thread::Thread(const std::function<void()> &function, const std::string &name) {
     this->data->function = function;                      // GCOVR_EXCL_LINE
 }
 
-Thread::Thread(Thread &thread) {
+Thread::Thread(Thread &&thread) noexcept {
     this->data = std::move(thread.data); // GCOVR_EXCL_LINE
 }
 
@@ -120,5 +120,11 @@ bool Thread::joinable() const {
 void Thread::detach() const {
     this->data->th.detach();
 }
+
+Thread &Thread::operator=(Thread &&thread) noexcept {
+    this->data = std::move(thread.data);
+    return *this;
+}
+
 
 } // namespace sese

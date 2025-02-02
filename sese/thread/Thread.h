@@ -62,13 +62,15 @@ public:
     struct RuntimeData;
 
     explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
-    Thread(Thread &thread);
+    Thread(Thread &&thread) noexcept;
     ~Thread() override;
 
     void start() const;
     void join() const;
     void detach() const;
     [[nodiscard]] bool joinable() const;
+
+    Thread &operator=(Thread &&thread) noexcept;
 
     static void run(std::shared_ptr<RuntimeData> data);
 
