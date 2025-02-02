@@ -1,7 +1,7 @@
 var searchData=
 [
   ['textreader_0',['TextReader',['../classsese_1_1text_1_1_text_reader.html#acbe7c707d3a385dae298cc3bbfcc4dc0',1,'sese::text::TextReader']]],
-  ['thread_1',['Thread',['../classsese_1_1_thread.html#ae9146439e2a580926ed3e6647bc6b712',1,'sese::Thread::Thread(const std::function&lt; void()&gt; &amp;function, const std::string &amp;name=THREAD_DEFAULT_NAME)'],['../classsese_1_1_thread.html#aece53e61faeb5cc6f0b79826f9f097f0',1,'sese::Thread::Thread(Thread &amp;thread)']]],
+  ['thread_1',['Thread',['../classsese_1_1_thread.html#ae9146439e2a580926ed3e6647bc6b712',1,'sese::Thread::Thread(const std::function&lt; void()&gt; &amp;function, const std::string &amp;name=THREAD_DEFAULT_NAME)'],['../classsese_1_1_thread.html#acfe4f9b878e2617a354b2e0acffcf9b2',1,'sese::Thread::Thread(Thread &amp;&amp;thread) noexcept']]],
   ['threadinitiatetask_2',['ThreadInitiateTask',['../classsese_1_1_thread_initiate_task.html#ac5489a7ceb80808147c934749ba421da',1,'sese::ThreadInitiateTask']]],
   ['threadpool_3',['ThreadPool',['../classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c',1,'sese::ThreadPool']]],
   ['timer_4',['Timer',['../classsese_1_1_timer.html#a783fcbbfacfb1e5310567bc27daa69e3',1,'sese::Timer']]],

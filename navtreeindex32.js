@@ -1,5 +1,7 @@
 var NAVTREEINDEX32 =
 {
+"structsese_1_1text_1_1_format_option.html#a0ec664ceb3771ae45b9a1c6562703bfb":[11,0,0,13,5,1],
+"structsese_1_1text_1_1_format_option.html#a0ec664ceb3771ae45b9a1c6562703bfb":[12,0,0,13,5,1],
 "structsese_1_1text_1_1_format_option.html#a20fd011af85685a840a99039217e4f15":[11,0,0,13,5,0],
 "structsese_1_1text_1_1_format_option.html#a20fd011af85685a840a99039217e4f15":[12,0,0,13,5,0],
 "structsese_1_1text_1_1_format_option.html#a5a6a48bed84e1a152c6298ffe73cf961":[11,0,0,13,5,3],

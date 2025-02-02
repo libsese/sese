@@ -1,5 +1,7 @@
 var NAVTREEINDEX15 =
 {
+"classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#ae18290f82db73ef50606e316b9e97ee6":[11,0,0,4,0,0,0,0,18],
+"classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#ae18290f82db73ef50606e316b9e97ee6":[12,0,0,4,0,0,0,0,18],
 "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#aee3104d740cc5e6ebba89c1675b2bff3":[11,0,0,4,0,0,0,0,7],
 "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#aee3104d740cc5e6ebba89c1675b2bff3":[12,0,0,4,0,0,0,0,7],
 "classsese_1_1internal_1_1net_1_1service_1_1dns_1_1_dns_service.html#af74781ba7cfa02e16aa6ea737a73a0c1":[11,0,0,4,0,0,0,0,16],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "classsese_1_1io_1_1_buffered_stream.html#aff27bdf2429f485852bdbb6615c95f68":[11,0,0,5,5,7],
 "classsese_1_1io_1_1_buffered_stream.html#aff27bdf2429f485852bdbb6615c95f68":[12,0,0,5,5,7],
 "classsese_1_1io_1_1_byte_buffer.html":[11,0,0,5,6],
-"classsese_1_1io_1_1_byte_buffer.html":[12,0,0,5,6],
-"classsese_1_1io_1_1_byte_buffer.html#a133d8c98ef62895335a0d1098cae0a57":[11,0,0,5,6,2],
-"classsese_1_1io_1_1_byte_buffer.html#a133d8c98ef62895335a0d1098cae0a57":[12,0,0,5,6,2]
+"classsese_1_1io_1_1_byte_buffer.html":[12,0,0,5,6]
 };
